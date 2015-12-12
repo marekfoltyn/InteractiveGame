@@ -1,4 +1,5 @@
 #include "HelloWorldScene.h"
+#include "ChatServer.cpp"
 
 USING_NS_CC;
 
@@ -27,7 +28,7 @@ bool HelloWorld::init()
         return false;
     }
     
-    Size visibleSize = Director::getInstance()->getVisibleSize();
+    cocos2d::Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
     /////////////////////////////
@@ -71,6 +72,12 @@ bool HelloWorld::init()
 
     // add the sprite as a child to this layer
     this->addChild(sprite, 0);
+    
+
+    ///////////// RakNet test //////////////
+    
+    ChatServer * chatServer = new ChatServer();
+    chatServer->start();
     
     return true;
 }

@@ -13,6 +13,21 @@ src/Drops/proj.ios_mac/Drops.xcodeproj/xcuserdata/
 src/DropsControl/proj.android-studio/.idea
 src/DropsControl/cocos2d/cocos/platform/android/java/local.properties
 src/DropsControl/proj.android/local.properties
+
+src/Drops/proj.android-studio/.idea/*
+src/Drops/proj.android-studio/app/assets/*
+src/Drops/proj.android-studio/app/build/*
+src/Drops/proj.android-studio/app/obj/*
+src/Drops/proj.android-studio/app/libs/*
+src/Drops/proj.ios_mac/build/*
+
+
+src/Drops/cocos2d/cocos/platform/android/libcocos2dx/build/
+src/Drops/proj.ios_mac/Drops.xcodeproj/project.xcworkspace/xcuserdata/marek.xcuserdatad/WorkspaceSettings.xcsettings
+src/Drops/proj.ios_mac/Drops.xcodeproj/project.xcworkspace/xcuserdata/marek.xcuserdatad/UserInterfaceState.xcuserstate
+src/Drops/bin/*
+
+
 docs/.bakalarska_prace.lb
 docs/bakalarska_prace.aux
 docs/bakalarska_prace.lof
@@ -21,6 +36,6 @@ docs/bakalarska_prace.out
 docs/bakalarska_prace.synctex.gz
 docs/bakalarska_prace.toc
 
-src/Drops/proj.ios_mac/Drops.xcodeproj/project.xcworkspace/xcuserdata/marek.xcuserdatad/WorkspaceSettings.xcsettings
 
-src/Drops/proj.ios_mac/Drops.xcodeproj/project.xcworkspace/xcuserdata/marek.xcuserdatad/UserInterfaceState.xcuserstate
+*.o
+*.d
