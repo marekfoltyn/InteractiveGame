@@ -1,6 +1,7 @@
 #include "LobbyScene.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
+#include "MessageIdentifiers.h"
 
 USING_NS_CC;
 
