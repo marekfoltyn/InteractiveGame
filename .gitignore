@@ -9,7 +9,8 @@ thesis/bakalarska_prace.synctex.gz
 thesis/bakalarska_prace.toc
 
 source/game/InteractiveGame/proj.ios_mac/Build/*
-source/game/InteractiveController/proj.ios_mac/Build/*
+source/controller/InteractiveController/proj.ios_mac/Build/*
+source/controller/InteractiveController/proj.android/bin/*
 
 *.o
 *.d
