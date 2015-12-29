@@ -1,4 +1,4 @@
-#include "HelloWorldScene.h"
+#include "LobbyScene.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 
@@ -6,13 +6,13 @@ USING_NS_CC;
 
 using namespace cocostudio::timeline;
 
-Scene* HelloWorld::createScene()
+Scene* LobbyScene::createScene()
 {
     // 'scene' is an autorelease object
     auto scene = Scene::create();
     
     // 'layer' is an autorelease object
-    auto layer = HelloWorld::create();
+    auto layer = LobbyScene::create();
 
     // add layer as a child to scene
     scene->addChild(layer);
@@ -22,7 +22,7 @@ Scene* HelloWorld::createScene()
 }
 
 // on "init" you need to initialize your instance
-bool HelloWorld::init()
+bool LobbyScene::init()
 {
     //////////////////////////////
     // 1. super init first
@@ -32,8 +32,10 @@ bool HelloWorld::init()
     }
     
     auto rootNode = CSLoader::createNode("MainScene.csb");
-
     addChild(rootNode);
+    
+    // run async Connector (as a server)
+    // Connector::getInstance()->startServer(SERVER_PORT)
 
     return true;
 }
