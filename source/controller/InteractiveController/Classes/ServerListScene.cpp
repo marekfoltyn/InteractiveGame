@@ -1,4 +1,4 @@
-#include "HelloWorldScene.h"
+#include "ServerListScene.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 
@@ -9,13 +9,13 @@ USING_NS_CC;
 
 using namespace cocostudio::timeline;
 
-Scene* HelloWorld::createScene()
+Scene * ServerListScene::createScene()
 {
     // 'scene' is an autorelease object
     auto scene = Scene::create();
     
     // 'layer' is an autorelease object
-    auto layer = HelloWorld::create();
+    auto layer = ServerListScene::create();
 
     // add layer as a child to scene
     scene->addChild(layer);
@@ -25,7 +25,7 @@ Scene* HelloWorld::createScene()
 }
 
 // on "init" you need to initialize your instance
-bool HelloWorld::init()
+bool ServerListScene::init()
 {
     //////////////////////////////
     // 1. super init first
