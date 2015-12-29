@@ -1,4 +1,4 @@
 # Interactive Game
 PC game interactively controlled via smartphone
 
-Bachelor final thesis
+Bachelor final thesis (FIT CVUT)
