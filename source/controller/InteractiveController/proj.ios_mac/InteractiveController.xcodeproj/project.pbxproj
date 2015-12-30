@@ -170,6 +170,7 @@
 		EA41890F1C32F952004B8934 /* VariadicSQLParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA4188281C32F952004B8934 /* VariadicSQLParser.cpp */; };
 		EA4189111C32F952004B8934 /* VitaIncludes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA41882B1C32F952004B8934 /* VitaIncludes.cpp */; };
 		EA4189131C32F952004B8934 /* WSAStartupSingleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA41882F1C32F952004B8934 /* WSAStartupSingleton.cpp */; };
+		EA41891D1C33C31B004B8934 /* Connector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA41891B1C33C31B004B8934 /* Connector.cpp */; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
 /* End PBXBuildFile section */
@@ -497,6 +498,8 @@
 		EA41882F1C32F952004B8934 /* WSAStartupSingleton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WSAStartupSingleton.cpp; path = ../../../network/raknet/WSAStartupSingleton.cpp; sourceTree = "<group>"; };
 		EA4188301C32F952004B8934 /* WSAStartupSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WSAStartupSingleton.h; path = ../../../network/raknet/WSAStartupSingleton.h; sourceTree = "<group>"; };
 		EA4188321C32F952004B8934 /* XBox360Includes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XBox360Includes.h; path = ../../../network/raknet/XBox360Includes.h; sourceTree = "<group>"; };
+		EA41891B1C33C31B004B8934 /* Connector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Connector.cpp; path = ../../../network/Connector.cpp; sourceTree = "<group>"; };
+		EA41891C1C33C31B004B8934 /* Connector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Connector.h; path = ../../../network/Connector.h; sourceTree = "<group>"; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -623,6 +626,7 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				EA41891A1C33C309004B8934 /* Network */,
 				EA4186B61C32F8EB004B8934 /* RakNet */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
@@ -968,6 +972,15 @@
 			name = RakNet;
 			sourceTree = "<group>";
 		};
+		EA41891A1C33C309004B8934 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				EA41891B1C33C31B004B8934 /* Connector.cpp */,
+				EA41891C1C33C31B004B8934 /* Connector.h */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1138,6 +1151,7 @@
 				EA4188B81C32F952004B8934 /* RakNetSocket2_Vita.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				EA4188D31C32F952004B8934 /* Rand.cpp in Sources */,
+				EA41891D1C33C31B004B8934 /* Connector.cpp in Sources */,
 				EA4188C01C32F952004B8934 /* RakNetSocket2.cpp in Sources */,
 				EA4188DF1C32F952004B8934 /* Router2.cpp in Sources */,
 				EA4188411C32F952004B8934 /* CloudServer.cpp in Sources */,
