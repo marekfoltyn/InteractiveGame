@@ -20,6 +20,9 @@ public:
     bool startServer(int port);
     bool startClient(int port);
     
+    void stopServer();
+    void stopClient();
+    
 private:
     
     // Hidden singleton constructor

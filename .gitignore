@@ -11,6 +11,7 @@ thesis/bakalarska_prace.toc
 source/game/InteractiveGame/proj.ios_mac/Build/*
 source/controller/InteractiveController/proj.ios_mac/Build/*
 source/controller/InteractiveController/proj.android/bin/*
+source/network/Server/Build/*
 
 *.o
 *.d
