@@ -25,11 +25,9 @@ private:
     // Hidden singleton constructor
     Connector();
     
-    // client/server mode
-    bool isServer;
-    
-    // RakNet interface (for both client and server)
-    RakNet::RakPeerInterface * rakInterface;
+    // RakNet interfaces
+    RakNet::RakPeerInterface * server = nullptr;
+    RakNet::RakPeerInterface * client = nullptr;
     
     // Singleton instance pointer
     static Connector * instance;

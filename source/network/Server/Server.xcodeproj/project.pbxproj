@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		EA2817B81C3431BD00FCAA47 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2817B71C3431BD00FCAA47 /* main.cpp */; };
+		EA2817C01C34320D00FCAA47 /* Connector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2817BE1C34320D00FCAA47 /* Connector.cpp */; };
+		EA2817C31C34358E00FCAA47 /* raknetx86_64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA2817C21C34358E00FCAA47 /* raknetx86_64.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,10 @@
 /* Begin PBXFileReference section */
 		EA2817B41C3431BD00FCAA47 /* Server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Server; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA2817B71C3431BD00FCAA47 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		EA2817BE1C34320D00FCAA47 /* Connector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Connector.cpp; path = ../Connector.cpp; sourceTree = "<group>"; };
+		EA2817BF1C34320D00FCAA47 /* Connector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Connector.h; path = ../Connector.h; sourceTree = "<group>"; };
+		EA2817C21C34358E00FCAA47 /* raknetx86_64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = raknetx86_64.a; path = ../../raknet/raknetx86_64.a; sourceTree = "<group>"; };
+		EA2817C41C34388800FCAA47 /* Definitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Definitions.h; path = ../Definitions.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA2817C31C34358E00FCAA47 /* raknetx86_64.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +48,8 @@
 		EA2817AB1C3431BD00FCAA47 = {
 			isa = PBXGroup;
 			children = (
+				EA2817C51C343A5A00FCAA47 /* RakNet */,
+				EA2817C11C34321100FCAA47 /* NetworkFramework */,
 				EA2817B61C3431BD00FCAA47 /* Server */,
 				EA2817B51C3431BD00FCAA47 /* Products */,
 			);
@@ -59,6 +68,25 @@
 			children = (
 				EA2817B71C3431BD00FCAA47 /* main.cpp */,
 			);
+			path = Server;
+			sourceTree = "<group>";
+		};
+		EA2817C11C34321100FCAA47 /* NetworkFramework */ = {
+			isa = PBXGroup;
+			children = (
+				EA2817C41C34388800FCAA47 /* Definitions.h */,
+				EA2817BE1C34320D00FCAA47 /* Connector.cpp */,
+				EA2817BF1C34320D00FCAA47 /* Connector.h */,
+			);
+			name = NetworkFramework;
+			sourceTree = "<group>";
+		};
+		EA2817C51C343A5A00FCAA47 /* RakNet */ = {
+			isa = PBXGroup;
+			children = (
+				EA2817C21C34358E00FCAA47 /* raknetx86_64.a */,
+			);
+			name = RakNet;
 			path = Server;
 			sourceTree = "<group>";
 		};
@@ -119,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA2817B81C3431BD00FCAA47 /* main.cpp in Sources */,
+				EA2817C01C34320D00FCAA47 /* Connector.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +236,7 @@
 		EA2817BC1C3431BD00FCAA47 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = "$(SRCROOT)../raknet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -214,6 +244,7 @@
 		EA2817BD1C3431BD00FCAA47 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = "$(SRCROOT)../raknet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

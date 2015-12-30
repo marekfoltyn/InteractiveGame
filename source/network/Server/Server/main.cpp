@@ -7,9 +7,12 @@
 //
 
 #include <iostream>
+#include "Connector.h"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    
+    Connector * c = Connector::getInstance();
+    c->startServer(54000);
+    
     return 0;
 }
