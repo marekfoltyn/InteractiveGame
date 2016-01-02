@@ -12,6 +12,7 @@ source/game/InteractiveGame/proj.ios_mac/Build/*
 source/controller/InteractiveController/proj.ios_mac/Build/*
 source/controller/InteractiveController/proj.android/bin/*
 source/network/Server/Build/*
+source/network/Client/Build/*
 
 *.o
 *.d
