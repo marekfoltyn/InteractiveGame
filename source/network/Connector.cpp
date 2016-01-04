@@ -1,6 +1,19 @@
 #include "Connector.h"
 #include "Definitions.h"
 
+#include "raknet/MessageIdentifiers.h"
+#include "raknet/RakPeerInterface.h"
+#include "raknet/RakPeerInterface.h"
+#include "raknet/RakNetTypes.h"
+#include "raknet/GetTime.h"
+#include "raknet/BitStream.h"
+#include "raknet/RakSleep.h"
+
+#include <assert.h>
+#include <cstdio>
+#include <cstring>
+#include <stdlib.h>
+
 // initialize static variable
 Connector * Connector::instance = nullptr;
 
@@ -16,7 +29,9 @@ Connector * Connector::getInstance(){
 /**
  *  Constructor, now does nothing
  */
-Connector::Connector(){}
+Connector::Connector(){
+    loopIsActive = false;
+}
 
 /**
  *  Starts a server
@@ -64,6 +79,8 @@ bool Connector::startServer(int port){
         RakNet::SystemAddress sa = server->GetInternalID(RakNet::UNASSIGNED_SYSTEM_ADDRESS, i);
         LOG("%i. %s:%i\n", i+1, sa.ToString(false), sa.GetPort());
     }
+    
+    startPacketProcessor();
 
     return true;
 }
@@ -73,6 +90,7 @@ bool Connector::startServer(int port){
  */
 void Connector::stopServer(){
     if(server != nullptr){
+        stopPacketProcessor();
         RakNet::RakPeerInterface::DestroyInstance(server);
         server = nullptr;
     }
@@ -86,8 +104,8 @@ bool Connector::startClient(int port){
     client = RakNet::RakPeerInterface::GetInstance();
     RakNet::SocketDescriptor socketDescriptor( port, 0 );
     socketDescriptor.socketFamily = AF_INET; // Only IPV4 supports broadcast on 255.255.255.255
-    bool b = client->Startup(1, &socketDescriptor, 1);
-    if(!b){
+    auto b = client->Startup(1, &socketDescriptor, 1);
+    if(b != RakNet::RAKNET_STARTED){
         LOG("Client start failed.");
         return false;
     }
@@ -100,6 +118,8 @@ bool Connector::startClient(int port){
         printf("%i. %s\n", i+1, client->GetLocalIP(i));
     }
     
+    startPacketProcessor();
+    
     return true;
 }
 
@@ -108,7 +128,89 @@ bool Connector::startClient(int port){
  */
 void Connector::stopClient(){
     if(client != nullptr){
+        stopPacketProcessor();
         RakNet::RakPeerInterface::DestroyInstance(client);
         client = nullptr;
     }
 }
+
+void Connector::PingServers(int timeoutMS){
+    if(client==nullptr){
+        LOG("Client is not started!");
+        return;
+    }
+    
+    client->Ping("255.255.255.255", SERVER_PORT, false);
+    LOG("Pinging\n");
+    
+}
+
+void Connector::infiniteReceiveLoop(){
+    
+    LOG("infiniteReceiveLoop started!\n");
+    
+    while (loopIsActive){
+        
+        RakNet::Packet * p;
+        
+        // receive packet
+        if (server){
+            p = server->Receive();
+        } else {
+            p = client->Receive();
+        }
+        
+        if (p==0)
+        {
+            RakSleep(RAKNET_SLEEP);
+            continue;
+        }
+        
+        
+        if (p->data[0]==ID_UNCONNECTED_PONG){
+            
+            RakNet::TimeMS time;
+            RakNet::BitStream bsIn(p->data,p->length,false);
+            bsIn.IgnoreBytes(1);
+            bsIn.Read(time);
+            LOG("Got pong from %s with time %i\n", p->systemAddress.ToString(), RakNet::GetTimeMS() - time);
+            
+        } else if (p->data[0]==ID_UNCONNECTED_PING){
+            
+            LOG("ID_UNCONNECTED_PING from %s\n",p->guid.ToString());
+        
+        } else if (p->data[0]==ID_UNCONNECTED_PING_OPEN_CONNECTIONS){
+            
+            LOG("ID_UNCONNECTED_PING_OPEN_CONNECTIONS from %s\n",p->guid.ToString());
+        
+        }
+        
+        client->DeallocatePacket(p);
+        RakSleep(30);
+    }
+    
+}
+
+void Connector::startPacketProcessor(){
+    packetProcessorThread = std::thread(&Connector::infiniteReceiveLoop,this);
+    packetProcessorThread.detach();
+}
+
+void Connector::stopPacketProcessor(){
+    loopIsActive = false;
+}
+
+void Connector::addPacketCallback(int packetType, callbackFuncType callback ){
+    
+    callbackMap[packetType] = callback;
+    
+}
+
+
+void Connector::removePacketCallback(int packetType){
+    
+    callbackMap.erase(packetType);
+    
+    
+}
+

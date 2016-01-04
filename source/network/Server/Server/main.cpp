@@ -8,11 +8,13 @@
 
 #include <iostream>
 #include "Connector.h"
+#include "Definitions.h"
 
 int main(int argc, const char * argv[]) {
     
+    
     Connector * c = Connector::getInstance();
-    c->startServer(54000);
+    c->startServer(SERVER_PORT);
     
     return 0;
 }

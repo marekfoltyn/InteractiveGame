@@ -10,6 +10,11 @@
 // password needed for connection
 #define INCOMING_PASSWORD "ahojkamo"
 
+// server port used for all communication
+#define SERVER_PORT 54027
+
+// sleep time between receiving packets
+#define RAKNET_SLEEP 30
 
 
 #endif // _DEFINITIONS_H_

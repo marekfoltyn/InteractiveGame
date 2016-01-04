@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		EA2817A51C34318C00FCAA47 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2817A41C34318C00FCAA47 /* main.cpp */; };
+		EAE3AA3F1C3A9D9300279139 /* raknetx86_64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE3AA3E1C3A9D9300279139 /* raknetx86_64.a */; };
+		EAE3AA441C3A9E8200279139 /* Connector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAE3AA411C3A9E8200279139 /* Connector.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +26,11 @@
 
 /* Begin PBXFileReference section */
 		EA2817A11C34318C00FCAA47 /* Client */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Client; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA2817A41C34318C00FCAA47 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		EA2817A41C34318C00FCAA47 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = Client/main.cpp; sourceTree = "<group>"; };
+		EAE3AA3E1C3A9D9300279139 /* raknetx86_64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = raknetx86_64.a; path = ../raknet/raknetx86_64.a; sourceTree = "<group>"; };
+		EAE3AA411C3A9E8200279139 /* Connector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Connector.cpp; path = ../Connector.cpp; sourceTree = "<group>"; };
+		EAE3AA421C3A9E8200279139 /* Connector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Connector.h; path = ../Connector.h; sourceTree = "<group>"; };
+		EAE3AA431C3A9E8200279139 /* Definitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Definitions.h; path = ../Definitions.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAE3AA3F1C3A9D9300279139 /* raknetx86_64.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +48,8 @@
 		EA2817981C34318C00FCAA47 = {
 			isa = PBXGroup;
 			children = (
+				EAE3AA451C3A9E8700279139 /* NeworkFramework */,
+				EAE3AA401C3A9E5E00279139 /* RakNet */,
 				EA2817A31C34318C00FCAA47 /* Client */,
 				EA2817A21C34318C00FCAA47 /* Products */,
 			);
@@ -57,9 +66,27 @@
 		EA2817A31C34318C00FCAA47 /* Client */ = {
 			isa = PBXGroup;
 			children = (
-				EA2817A41C34318C00FCAA47 /* main.cpp */,
 			);
 			path = Client;
+			sourceTree = "<group>";
+		};
+		EAE3AA401C3A9E5E00279139 /* RakNet */ = {
+			isa = PBXGroup;
+			children = (
+				EAE3AA3E1C3A9D9300279139 /* raknetx86_64.a */,
+			);
+			name = RakNet;
+			sourceTree = "<group>";
+		};
+		EAE3AA451C3A9E8700279139 /* NeworkFramework */ = {
+			isa = PBXGroup;
+			children = (
+				EAE3AA411C3A9E8200279139 /* Connector.cpp */,
+				EAE3AA421C3A9E8200279139 /* Connector.h */,
+				EAE3AA431C3A9E8200279139 /* Definitions.h */,
+				EA2817A41C34318C00FCAA47 /* main.cpp */,
+			);
+			name = NeworkFramework;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA2817A51C34318C00FCAA47 /* main.cpp in Sources */,
+				EAE3AA441C3A9E8200279139 /* Connector.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +235,7 @@
 		EA2817A91C34318C00FCAA47 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = "$(SRCROOT)../raknet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -214,6 +243,7 @@
 		EA2817AA1C34318C00FCAA47 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = "$(SRCROOT)../raknet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -237,6 +267,7 @@
 				EA2817AA1C34318C00FCAA47 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
