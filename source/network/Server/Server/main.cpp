@@ -16,5 +16,9 @@ int main(int argc, const char * argv[]) {
     Connector * c = Connector::getInstance();
     c->startServer(SERVER_PORT);
     
+    LOG("type whatever to exit\n");
+    char ch;
+    std::cin >> ch;
+    
     return 0;
 }

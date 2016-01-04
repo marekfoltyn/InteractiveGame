@@ -26,11 +26,165 @@
 
 /* Begin PBXFileReference section */
 		EA2817A11C34318C00FCAA47 /* Client */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Client; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA2817A41C34318C00FCAA47 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = Client/main.cpp; sourceTree = "<group>"; };
+		EA2817A41C34318C00FCAA47 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		EAE3AA3E1C3A9D9300279139 /* raknetx86_64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = raknetx86_64.a; path = ../raknet/raknetx86_64.a; sourceTree = "<group>"; };
 		EAE3AA411C3A9E8200279139 /* Connector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Connector.cpp; path = ../Connector.cpp; sourceTree = "<group>"; };
 		EAE3AA421C3A9E8200279139 /* Connector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Connector.h; path = ../Connector.h; sourceTree = "<group>"; };
 		EAE3AA431C3A9E8200279139 /* Definitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Definitions.h; path = ../Definitions.h; sourceTree = "<group>"; };
+		EAE3AA461C3B034000279139 /* _FindFirst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _FindFirst.h; path = ../raknet/_FindFirst.h; sourceTree = "<group>"; };
+		EAE3AA471C3B034000279139 /* AutopatcherPatchContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AutopatcherPatchContext.h; path = ../raknet/AutopatcherPatchContext.h; sourceTree = "<group>"; };
+		EAE3AA481C3B034000279139 /* AutopatcherRepositoryInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AutopatcherRepositoryInterface.h; path = ../raknet/AutopatcherRepositoryInterface.h; sourceTree = "<group>"; };
+		EAE3AA491C3B034000279139 /* Base64Encoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base64Encoder.h; path = ../raknet/Base64Encoder.h; sourceTree = "<group>"; };
+		EAE3AA4A1C3B034000279139 /* BitStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BitStream.h; path = ../raknet/BitStream.h; sourceTree = "<group>"; };
+		EAE3AA4B1C3B034000279139 /* CCRakNetSlidingWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCRakNetSlidingWindow.h; path = ../raknet/CCRakNetSlidingWindow.h; sourceTree = "<group>"; };
+		EAE3AA4C1C3B034000279139 /* CCRakNetUDT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCRakNetUDT.h; path = ../raknet/CCRakNetUDT.h; sourceTree = "<group>"; };
+		EAE3AA4D1C3B034000279139 /* CloudClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudClient.h; path = ../raknet/CloudClient.h; sourceTree = "<group>"; };
+		EAE3AA4E1C3B034000279139 /* CloudCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudCommon.h; path = ../raknet/CloudCommon.h; sourceTree = "<group>"; };
+		EAE3AA4F1C3B034000279139 /* CloudServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudServer.h; path = ../raknet/CloudServer.h; sourceTree = "<group>"; };
+		EAE3AA501C3B034000279139 /* CommandParserInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommandParserInterface.h; path = ../raknet/CommandParserInterface.h; sourceTree = "<group>"; };
+		EAE3AA511C3B034000279139 /* ConnectionGraph2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConnectionGraph2.h; path = ../raknet/ConnectionGraph2.h; sourceTree = "<group>"; };
+		EAE3AA521C3B034000279139 /* ConsoleServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConsoleServer.h; path = ../raknet/ConsoleServer.h; sourceTree = "<group>"; };
+		EAE3AA531C3B034000279139 /* DataCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataCompressor.h; path = ../raknet/DataCompressor.h; sourceTree = "<group>"; };
+		EAE3AA541C3B034000279139 /* DirectoryDeltaTransfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DirectoryDeltaTransfer.h; path = ../raknet/DirectoryDeltaTransfer.h; sourceTree = "<group>"; };
+		EAE3AA551C3B034000279139 /* DR_SHA1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DR_SHA1.h; path = ../raknet/DR_SHA1.h; sourceTree = "<group>"; };
+		EAE3AA561C3B034000279139 /* DS_BinarySearchTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_BinarySearchTree.h; path = ../raknet/DS_BinarySearchTree.h; sourceTree = "<group>"; };
+		EAE3AA571C3B034000279139 /* DS_BPlusTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_BPlusTree.h; path = ../raknet/DS_BPlusTree.h; sourceTree = "<group>"; };
+		EAE3AA581C3B034000279139 /* DS_BytePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_BytePool.h; path = ../raknet/DS_BytePool.h; sourceTree = "<group>"; };
+		EAE3AA591C3B034000279139 /* DS_ByteQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_ByteQueue.h; path = ../raknet/DS_ByteQueue.h; sourceTree = "<group>"; };
+		EAE3AA5A1C3B034000279139 /* DS_Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_Hash.h; path = ../raknet/DS_Hash.h; sourceTree = "<group>"; };
+		EAE3AA5B1C3B034000279139 /* DS_Heap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_Heap.h; path = ../raknet/DS_Heap.h; sourceTree = "<group>"; };
+		EAE3AA5C1C3B034000279139 /* DS_HuffmanEncodingTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_HuffmanEncodingTree.h; path = ../raknet/DS_HuffmanEncodingTree.h; sourceTree = "<group>"; };
+		EAE3AA5D1C3B034000279139 /* DS_HuffmanEncodingTreeFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_HuffmanEncodingTreeFactory.h; path = ../raknet/DS_HuffmanEncodingTreeFactory.h; sourceTree = "<group>"; };
+		EAE3AA5E1C3B034000279139 /* DS_HuffmanEncodingTreeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_HuffmanEncodingTreeNode.h; path = ../raknet/DS_HuffmanEncodingTreeNode.h; sourceTree = "<group>"; };
+		EAE3AA5F1C3B034000279139 /* DS_LinkedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_LinkedList.h; path = ../raknet/DS_LinkedList.h; sourceTree = "<group>"; };
+		EAE3AA601C3B034000279139 /* DS_List.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_List.h; path = ../raknet/DS_List.h; sourceTree = "<group>"; };
+		EAE3AA611C3B034000279139 /* DS_Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_Map.h; path = ../raknet/DS_Map.h; sourceTree = "<group>"; };
+		EAE3AA621C3B034000279139 /* DS_MemoryPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_MemoryPool.h; path = ../raknet/DS_MemoryPool.h; sourceTree = "<group>"; };
+		EAE3AA631C3B034000279139 /* DS_Multilist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_Multilist.h; path = ../raknet/DS_Multilist.h; sourceTree = "<group>"; };
+		EAE3AA641C3B034000279139 /* DS_OrderedChannelHeap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_OrderedChannelHeap.h; path = ../raknet/DS_OrderedChannelHeap.h; sourceTree = "<group>"; };
+		EAE3AA651C3B034000279139 /* DS_OrderedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_OrderedList.h; path = ../raknet/DS_OrderedList.h; sourceTree = "<group>"; };
+		EAE3AA661C3B034000279139 /* DS_Queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_Queue.h; path = ../raknet/DS_Queue.h; sourceTree = "<group>"; };
+		EAE3AA671C3B034000279139 /* DS_QueueLinkedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_QueueLinkedList.h; path = ../raknet/DS_QueueLinkedList.h; sourceTree = "<group>"; };
+		EAE3AA681C3B034000279139 /* DS_RangeList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_RangeList.h; path = ../raknet/DS_RangeList.h; sourceTree = "<group>"; };
+		EAE3AA691C3B034000279139 /* DS_Table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_Table.h; path = ../raknet/DS_Table.h; sourceTree = "<group>"; };
+		EAE3AA6A1C3B034000279139 /* DS_ThreadsafeAllocatingQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_ThreadsafeAllocatingQueue.h; path = ../raknet/DS_ThreadsafeAllocatingQueue.h; sourceTree = "<group>"; };
+		EAE3AA6B1C3B034000279139 /* DS_Tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_Tree.h; path = ../raknet/DS_Tree.h; sourceTree = "<group>"; };
+		EAE3AA6C1C3B034000279139 /* DS_WeightedGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_WeightedGraph.h; path = ../raknet/DS_WeightedGraph.h; sourceTree = "<group>"; };
+		EAE3AA6D1C3B034000279139 /* DynDNS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DynDNS.h; path = ../raknet/DynDNS.h; sourceTree = "<group>"; };
+		EAE3AA6E1C3B034000279139 /* EmailSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmailSender.h; path = ../raknet/EmailSender.h; sourceTree = "<group>"; };
+		EAE3AA6F1C3B034000279139 /* EmptyHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmptyHeader.h; path = ../raknet/EmptyHeader.h; sourceTree = "<group>"; };
+		EAE3AA701C3B034000279139 /* EpochTimeToString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EpochTimeToString.h; path = ../raknet/EpochTimeToString.h; sourceTree = "<group>"; };
+		EAE3AA711C3B034000279139 /* Export.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Export.h; path = ../raknet/Export.h; sourceTree = "<group>"; };
+		EAE3AA721C3B034000279139 /* FileList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileList.h; path = ../raknet/FileList.h; sourceTree = "<group>"; };
+		EAE3AA731C3B034000279139 /* FileListNodeContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileListNodeContext.h; path = ../raknet/FileListNodeContext.h; sourceTree = "<group>"; };
+		EAE3AA741C3B034000279139 /* FileListTransfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileListTransfer.h; path = ../raknet/FileListTransfer.h; sourceTree = "<group>"; };
+		EAE3AA751C3B034000279139 /* FileListTransferCBInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileListTransferCBInterface.h; path = ../raknet/FileListTransferCBInterface.h; sourceTree = "<group>"; };
+		EAE3AA761C3B034000279139 /* FileOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileOperations.h; path = ../raknet/FileOperations.h; sourceTree = "<group>"; };
+		EAE3AA771C3B034000279139 /* FormatString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FormatString.h; path = ../raknet/FormatString.h; sourceTree = "<group>"; };
+		EAE3AA781C3B034000279139 /* FullyConnectedMesh2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FullyConnectedMesh2.h; path = ../raknet/FullyConnectedMesh2.h; sourceTree = "<group>"; };
+		EAE3AA791C3B034000279139 /* Getche.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Getche.h; path = ../raknet/Getche.h; sourceTree = "<group>"; };
+		EAE3AA7A1C3B034000279139 /* Gets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Gets.h; path = ../raknet/Gets.h; sourceTree = "<group>"; };
+		EAE3AA7B1C3B034000279139 /* GetTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetTime.h; path = ../raknet/GetTime.h; sourceTree = "<group>"; };
+		EAE3AA7C1C3B034000279139 /* gettimeofday.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gettimeofday.h; path = ../raknet/gettimeofday.h; sourceTree = "<group>"; };
+		EAE3AA7D1C3B034000279139 /* GridSectorizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GridSectorizer.h; path = ../raknet/GridSectorizer.h; sourceTree = "<group>"; };
+		EAE3AA7E1C3B034000279139 /* HTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPConnection.h; path = ../raknet/HTTPConnection.h; sourceTree = "<group>"; };
+		EAE3AA7F1C3B034000279139 /* HTTPConnection2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPConnection2.h; path = ../raknet/HTTPConnection2.h; sourceTree = "<group>"; };
+		EAE3AA801C3B034000279139 /* CheckSum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckSum.h; path = ../raknet/CheckSum.h; sourceTree = "<group>"; };
+		EAE3AA811C3B034000279139 /* IncrementalReadInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IncrementalReadInterface.h; path = ../raknet/IncrementalReadInterface.h; sourceTree = "<group>"; };
+		EAE3AA821C3B034000279139 /* InternalPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InternalPacket.h; path = ../raknet/InternalPacket.h; sourceTree = "<group>"; };
+		EAE3AA831C3B034000279139 /* Itoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Itoa.h; path = ../raknet/Itoa.h; sourceTree = "<group>"; };
+		EAE3AA841C3B034000279139 /* Kbhit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Kbhit.h; path = ../raknet/Kbhit.h; sourceTree = "<group>"; };
+		EAE3AA851C3B034000279139 /* LinuxStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LinuxStrings.h; path = ../raknet/LinuxStrings.h; sourceTree = "<group>"; };
+		EAE3AA861C3B034000279139 /* LocklessTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocklessTypes.h; path = ../raknet/LocklessTypes.h; sourceTree = "<group>"; };
+		EAE3AA871C3B034000279139 /* LogCommandParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogCommandParser.h; path = ../raknet/LogCommandParser.h; sourceTree = "<group>"; };
+		EAE3AA881C3B034000279139 /* MessageFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageFilter.h; path = ../raknet/MessageFilter.h; sourceTree = "<group>"; };
+		EAE3AA891C3B034000279139 /* MessageIdentifiers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageIdentifiers.h; path = ../raknet/MessageIdentifiers.h; sourceTree = "<group>"; };
+		EAE3AA8A1C3B034000279139 /* MTUSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTUSize.h; path = ../raknet/MTUSize.h; sourceTree = "<group>"; };
+		EAE3AA8B1C3B034000279139 /* NativeFeatureIncludes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NativeFeatureIncludes.h; path = ../raknet/NativeFeatureIncludes.h; sourceTree = "<group>"; };
+		EAE3AA8C1C3B034000279139 /* NativeFeatureIncludesOverrides.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NativeFeatureIncludesOverrides.h; path = ../raknet/NativeFeatureIncludesOverrides.h; sourceTree = "<group>"; };
+		EAE3AA8D1C3B034000279139 /* NativeTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NativeTypes.h; path = ../raknet/NativeTypes.h; sourceTree = "<group>"; };
+		EAE3AA8E1C3B034000279139 /* NatPunchthroughClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NatPunchthroughClient.h; path = ../raknet/NatPunchthroughClient.h; sourceTree = "<group>"; };
+		EAE3AA8F1C3B034000279139 /* NatPunchthroughServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NatPunchthroughServer.h; path = ../raknet/NatPunchthroughServer.h; sourceTree = "<group>"; };
+		EAE3AA901C3B034000279139 /* NatTypeDetectionClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NatTypeDetectionClient.h; path = ../raknet/NatTypeDetectionClient.h; sourceTree = "<group>"; };
+		EAE3AA911C3B034000279139 /* NatTypeDetectionCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NatTypeDetectionCommon.h; path = ../raknet/NatTypeDetectionCommon.h; sourceTree = "<group>"; };
+		EAE3AA921C3B034000279139 /* NatTypeDetectionServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NatTypeDetectionServer.h; path = ../raknet/NatTypeDetectionServer.h; sourceTree = "<group>"; };
+		EAE3AA931C3B034000279139 /* NetworkIDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkIDManager.h; path = ../raknet/NetworkIDManager.h; sourceTree = "<group>"; };
+		EAE3AA941C3B034000279139 /* NetworkIDObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkIDObject.h; path = ../raknet/NetworkIDObject.h; sourceTree = "<group>"; };
+		EAE3AA951C3B034000279139 /* PacketConsoleLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PacketConsoleLogger.h; path = ../raknet/PacketConsoleLogger.h; sourceTree = "<group>"; };
+		EAE3AA961C3B034000279139 /* PacketFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PacketFileLogger.h; path = ../raknet/PacketFileLogger.h; sourceTree = "<group>"; };
+		EAE3AA971C3B034000279139 /* PacketizedTCP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PacketizedTCP.h; path = ../raknet/PacketizedTCP.h; sourceTree = "<group>"; };
+		EAE3AA981C3B034000279139 /* PacketLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PacketLogger.h; path = ../raknet/PacketLogger.h; sourceTree = "<group>"; };
+		EAE3AA991C3B034000279139 /* PacketOutputWindowLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PacketOutputWindowLogger.h; path = ../raknet/PacketOutputWindowLogger.h; sourceTree = "<group>"; };
+		EAE3AA9A1C3B034000279139 /* PacketPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PacketPool.h; path = ../raknet/PacketPool.h; sourceTree = "<group>"; };
+		EAE3AA9B1C3B034000279139 /* PacketPriority.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PacketPriority.h; path = ../raknet/PacketPriority.h; sourceTree = "<group>"; };
+		EAE3AA9C1C3B034000279139 /* PluginInterface2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PluginInterface2.h; path = ../raknet/PluginInterface2.h; sourceTree = "<group>"; };
+		EAE3AA9D1C3B034000279139 /* PS3Includes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PS3Includes.h; path = ../raknet/PS3Includes.h; sourceTree = "<group>"; };
+		EAE3AA9E1C3B034000279139 /* PS4Includes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PS4Includes.h; path = ../raknet/PS4Includes.h; sourceTree = "<group>"; };
+		EAE3AA9F1C3B034000279139 /* Rackspace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rackspace.h; path = ../raknet/Rackspace.h; sourceTree = "<group>"; };
+		EAE3AAA01C3B034000279139 /* RakAlloca.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakAlloca.h; path = ../raknet/RakAlloca.h; sourceTree = "<group>"; };
+		EAE3AAA11C3B034000279139 /* RakAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakAssert.h; path = ../raknet/RakAssert.h; sourceTree = "<group>"; };
+		EAE3AAA21C3B034000279139 /* RakMemoryOverride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakMemoryOverride.h; path = ../raknet/RakMemoryOverride.h; sourceTree = "<group>"; };
+		EAE3AAA31C3B034000279139 /* RakNetCommandParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakNetCommandParser.h; path = ../raknet/RakNetCommandParser.h; sourceTree = "<group>"; };
+		EAE3AAA41C3B034000279139 /* RakNetDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakNetDefines.h; path = ../raknet/RakNetDefines.h; sourceTree = "<group>"; };
+		EAE3AAA51C3B034000279139 /* RakNetDefinesOverrides.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakNetDefinesOverrides.h; path = ../raknet/RakNetDefinesOverrides.h; sourceTree = "<group>"; };
+		EAE3AAA61C3B034000279139 /* RakNetSmartPtr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakNetSmartPtr.h; path = ../raknet/RakNetSmartPtr.h; sourceTree = "<group>"; };
+		EAE3AAA71C3B034000279139 /* RakNetSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakNetSocket.h; path = ../raknet/RakNetSocket.h; sourceTree = "<group>"; };
+		EAE3AAA81C3B034000279139 /* RakNetSocket2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakNetSocket2.h; path = ../raknet/RakNetSocket2.h; sourceTree = "<group>"; };
+		EAE3AAA91C3B034000279139 /* RakNetStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakNetStatistics.h; path = ../raknet/RakNetStatistics.h; sourceTree = "<group>"; };
+		EAE3AAAA1C3B034000279139 /* RakNetTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakNetTime.h; path = ../raknet/RakNetTime.h; sourceTree = "<group>"; };
+		EAE3AAAB1C3B034000279139 /* RakNetTransport2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakNetTransport2.h; path = ../raknet/RakNetTransport2.h; sourceTree = "<group>"; };
+		EAE3AAAC1C3B034000279139 /* RakNetTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakNetTypes.h; path = ../raknet/RakNetTypes.h; sourceTree = "<group>"; };
+		EAE3AAAD1C3B034000279139 /* RakNetVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakNetVersion.h; path = ../raknet/RakNetVersion.h; sourceTree = "<group>"; };
+		EAE3AAAE1C3B034000279139 /* RakPeer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakPeer.h; path = ../raknet/RakPeer.h; sourceTree = "<group>"; };
+		EAE3AAAF1C3B034000279139 /* RakPeerInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakPeerInterface.h; path = ../raknet/RakPeerInterface.h; sourceTree = "<group>"; };
+		EAE3AAB01C3B034000279139 /* RakSleep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakSleep.h; path = ../raknet/RakSleep.h; sourceTree = "<group>"; };
+		EAE3AAB11C3B034000279139 /* RakString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakString.h; path = ../raknet/RakString.h; sourceTree = "<group>"; };
+		EAE3AAB21C3B034000279139 /* RakThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakThread.h; path = ../raknet/RakThread.h; sourceTree = "<group>"; };
+		EAE3AAB31C3B034000279139 /* RakWString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakWString.h; path = ../raknet/RakWString.h; sourceTree = "<group>"; };
+		EAE3AAB41C3B034000279139 /* Rand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rand.h; path = ../raknet/Rand.h; sourceTree = "<group>"; };
+		EAE3AAB51C3B034000279139 /* RandSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RandSync.h; path = ../raknet/RandSync.h; sourceTree = "<group>"; };
+		EAE3AAB61C3B034000279139 /* ReadyEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReadyEvent.h; path = ../raknet/ReadyEvent.h; sourceTree = "<group>"; };
+		EAE3AAB71C3B034000279139 /* RefCountedObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RefCountedObj.h; path = ../raknet/RefCountedObj.h; sourceTree = "<group>"; };
+		EAE3AAB81C3B034000279139 /* RelayPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RelayPlugin.h; path = ../raknet/RelayPlugin.h; sourceTree = "<group>"; };
+		EAE3AAB91C3B034000279139 /* ReliabilityLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReliabilityLayer.h; path = ../raknet/ReliabilityLayer.h; sourceTree = "<group>"; };
+		EAE3AABA1C3B034000279139 /* ReplicaEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReplicaEnums.h; path = ../raknet/ReplicaEnums.h; sourceTree = "<group>"; };
+		EAE3AABB1C3B034000279139 /* ReplicaManager3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReplicaManager3.h; path = ../raknet/ReplicaManager3.h; sourceTree = "<group>"; };
+		EAE3AABC1C3B034000279139 /* Router2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Router2.h; path = ../raknet/Router2.h; sourceTree = "<group>"; };
+		EAE3AABD1C3B034000279139 /* RPC4Plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPC4Plugin.h; path = ../raknet/RPC4Plugin.h; sourceTree = "<group>"; };
+		EAE3AABE1C3B034000279139 /* SecureHandshake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecureHandshake.h; path = ../raknet/SecureHandshake.h; sourceTree = "<group>"; };
+		EAE3AABF1C3B034000279139 /* SendToThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendToThread.h; path = ../raknet/SendToThread.h; sourceTree = "<group>"; };
+		EAE3AAC01C3B034000279139 /* SignaledEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignaledEvent.h; path = ../raknet/SignaledEvent.h; sourceTree = "<group>"; };
+		EAE3AAC11C3B034000279139 /* SimpleMutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleMutex.h; path = ../raknet/SimpleMutex.h; sourceTree = "<group>"; };
+		EAE3AAC21C3B034000279139 /* SimpleTCPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleTCPServer.h; path = ../raknet/SimpleTCPServer.h; sourceTree = "<group>"; };
+		EAE3AAC31C3B034000279139 /* SingleProducerConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SingleProducerConsumer.h; path = ../raknet/SingleProducerConsumer.h; sourceTree = "<group>"; };
+		EAE3AAC41C3B034000279139 /* SocketDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocketDefines.h; path = ../raknet/SocketDefines.h; sourceTree = "<group>"; };
+		EAE3AAC51C3B034000279139 /* SocketIncludes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocketIncludes.h; path = ../raknet/SocketIncludes.h; sourceTree = "<group>"; };
+		EAE3AAC61C3B034000279139 /* SocketLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocketLayer.h; path = ../raknet/SocketLayer.h; sourceTree = "<group>"; };
+		EAE3AAC71C3B034000279139 /* StatisticsHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatisticsHistory.h; path = ../raknet/StatisticsHistory.h; sourceTree = "<group>"; };
+		EAE3AAC81C3B034000279139 /* StringCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StringCompressor.h; path = ../raknet/StringCompressor.h; sourceTree = "<group>"; };
+		EAE3AAC91C3B034000279139 /* StringTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StringTable.h; path = ../raknet/StringTable.h; sourceTree = "<group>"; };
+		EAE3AACA1C3B034000279139 /* SuperFastHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperFastHash.h; path = ../raknet/SuperFastHash.h; sourceTree = "<group>"; };
+		EAE3AACB1C3B034000279139 /* TableSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableSerializer.h; path = ../raknet/TableSerializer.h; sourceTree = "<group>"; };
+		EAE3AACC1C3B034000279139 /* TCPInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCPInterface.h; path = ../raknet/TCPInterface.h; sourceTree = "<group>"; };
+		EAE3AACD1C3B034000279139 /* TeamBalancer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TeamBalancer.h; path = ../raknet/TeamBalancer.h; sourceTree = "<group>"; };
+		EAE3AACE1C3B034000279139 /* TeamManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TeamManager.h; path = ../raknet/TeamManager.h; sourceTree = "<group>"; };
+		EAE3AACF1C3B034000279139 /* TelnetTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TelnetTransport.h; path = ../raknet/TelnetTransport.h; sourceTree = "<group>"; };
+		EAE3AAD01C3B034000279139 /* ThreadPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThreadPool.h; path = ../raknet/ThreadPool.h; sourceTree = "<group>"; };
+		EAE3AAD11C3B034000279139 /* ThreadsafePacketLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThreadsafePacketLogger.h; path = ../raknet/ThreadsafePacketLogger.h; sourceTree = "<group>"; };
+		EAE3AAD21C3B034000279139 /* TransportInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransportInterface.h; path = ../raknet/TransportInterface.h; sourceTree = "<group>"; };
+		EAE3AAD31C3B034000279139 /* TwoWayAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwoWayAuthentication.h; path = ../raknet/TwoWayAuthentication.h; sourceTree = "<group>"; };
+		EAE3AAD41C3B034000279139 /* UDPForwarder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UDPForwarder.h; path = ../raknet/UDPForwarder.h; sourceTree = "<group>"; };
+		EAE3AAD51C3B034000279139 /* UDPProxyClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UDPProxyClient.h; path = ../raknet/UDPProxyClient.h; sourceTree = "<group>"; };
+		EAE3AAD61C3B034000279139 /* UDPProxyCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UDPProxyCommon.h; path = ../raknet/UDPProxyCommon.h; sourceTree = "<group>"; };
+		EAE3AAD71C3B034000279139 /* UDPProxyCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UDPProxyCoordinator.h; path = ../raknet/UDPProxyCoordinator.h; sourceTree = "<group>"; };
+		EAE3AAD81C3B034000279139 /* UDPProxyServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UDPProxyServer.h; path = ../raknet/UDPProxyServer.h; sourceTree = "<group>"; };
+		EAE3AAD91C3B034000279139 /* VariableDeltaSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VariableDeltaSerializer.h; path = ../raknet/VariableDeltaSerializer.h; sourceTree = "<group>"; };
+		EAE3AADA1C3B034000279139 /* VariableListDeltaTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VariableListDeltaTracker.h; path = ../raknet/VariableListDeltaTracker.h; sourceTree = "<group>"; };
+		EAE3AADB1C3B034000279139 /* VariadicSQLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VariadicSQLParser.h; path = ../raknet/VariadicSQLParser.h; sourceTree = "<group>"; };
+		EAE3AADC1C3B034000279139 /* VitaIncludes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VitaIncludes.h; path = ../raknet/VitaIncludes.h; sourceTree = "<group>"; };
+		EAE3AADD1C3B034000279139 /* WindowsIncludes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WindowsIncludes.h; path = ../raknet/WindowsIncludes.h; sourceTree = "<group>"; };
+		EAE3AADE1C3B034000279139 /* WSAStartupSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WSAStartupSingleton.h; path = ../raknet/WSAStartupSingleton.h; sourceTree = "<group>"; };
+		EAE3AADF1C3B034000279139 /* XBox360Includes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XBox360Includes.h; path = ../raknet/XBox360Includes.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +220,7 @@
 		EA2817A31C34318C00FCAA47 /* Client */ = {
 			isa = PBXGroup;
 			children = (
+				EA2817A41C34318C00FCAA47 /* main.cpp */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -74,6 +229,160 @@
 			isa = PBXGroup;
 			children = (
 				EAE3AA3E1C3A9D9300279139 /* raknetx86_64.a */,
+				EAE3AA461C3B034000279139 /* _FindFirst.h */,
+				EAE3AA471C3B034000279139 /* AutopatcherPatchContext.h */,
+				EAE3AA481C3B034000279139 /* AutopatcherRepositoryInterface.h */,
+				EAE3AA491C3B034000279139 /* Base64Encoder.h */,
+				EAE3AA4A1C3B034000279139 /* BitStream.h */,
+				EAE3AA4B1C3B034000279139 /* CCRakNetSlidingWindow.h */,
+				EAE3AA4C1C3B034000279139 /* CCRakNetUDT.h */,
+				EAE3AA4D1C3B034000279139 /* CloudClient.h */,
+				EAE3AA4E1C3B034000279139 /* CloudCommon.h */,
+				EAE3AA4F1C3B034000279139 /* CloudServer.h */,
+				EAE3AA501C3B034000279139 /* CommandParserInterface.h */,
+				EAE3AA511C3B034000279139 /* ConnectionGraph2.h */,
+				EAE3AA521C3B034000279139 /* ConsoleServer.h */,
+				EAE3AA531C3B034000279139 /* DataCompressor.h */,
+				EAE3AA541C3B034000279139 /* DirectoryDeltaTransfer.h */,
+				EAE3AA551C3B034000279139 /* DR_SHA1.h */,
+				EAE3AA561C3B034000279139 /* DS_BinarySearchTree.h */,
+				EAE3AA571C3B034000279139 /* DS_BPlusTree.h */,
+				EAE3AA581C3B034000279139 /* DS_BytePool.h */,
+				EAE3AA591C3B034000279139 /* DS_ByteQueue.h */,
+				EAE3AA5A1C3B034000279139 /* DS_Hash.h */,
+				EAE3AA5B1C3B034000279139 /* DS_Heap.h */,
+				EAE3AA5C1C3B034000279139 /* DS_HuffmanEncodingTree.h */,
+				EAE3AA5D1C3B034000279139 /* DS_HuffmanEncodingTreeFactory.h */,
+				EAE3AA5E1C3B034000279139 /* DS_HuffmanEncodingTreeNode.h */,
+				EAE3AA5F1C3B034000279139 /* DS_LinkedList.h */,
+				EAE3AA601C3B034000279139 /* DS_List.h */,
+				EAE3AA611C3B034000279139 /* DS_Map.h */,
+				EAE3AA621C3B034000279139 /* DS_MemoryPool.h */,
+				EAE3AA631C3B034000279139 /* DS_Multilist.h */,
+				EAE3AA641C3B034000279139 /* DS_OrderedChannelHeap.h */,
+				EAE3AA651C3B034000279139 /* DS_OrderedList.h */,
+				EAE3AA661C3B034000279139 /* DS_Queue.h */,
+				EAE3AA671C3B034000279139 /* DS_QueueLinkedList.h */,
+				EAE3AA681C3B034000279139 /* DS_RangeList.h */,
+				EAE3AA691C3B034000279139 /* DS_Table.h */,
+				EAE3AA6A1C3B034000279139 /* DS_ThreadsafeAllocatingQueue.h */,
+				EAE3AA6B1C3B034000279139 /* DS_Tree.h */,
+				EAE3AA6C1C3B034000279139 /* DS_WeightedGraph.h */,
+				EAE3AA6D1C3B034000279139 /* DynDNS.h */,
+				EAE3AA6E1C3B034000279139 /* EmailSender.h */,
+				EAE3AA6F1C3B034000279139 /* EmptyHeader.h */,
+				EAE3AA701C3B034000279139 /* EpochTimeToString.h */,
+				EAE3AA711C3B034000279139 /* Export.h */,
+				EAE3AA721C3B034000279139 /* FileList.h */,
+				EAE3AA731C3B034000279139 /* FileListNodeContext.h */,
+				EAE3AA741C3B034000279139 /* FileListTransfer.h */,
+				EAE3AA751C3B034000279139 /* FileListTransferCBInterface.h */,
+				EAE3AA761C3B034000279139 /* FileOperations.h */,
+				EAE3AA771C3B034000279139 /* FormatString.h */,
+				EAE3AA781C3B034000279139 /* FullyConnectedMesh2.h */,
+				EAE3AA791C3B034000279139 /* Getche.h */,
+				EAE3AA7A1C3B034000279139 /* Gets.h */,
+				EAE3AA7B1C3B034000279139 /* GetTime.h */,
+				EAE3AA7C1C3B034000279139 /* gettimeofday.h */,
+				EAE3AA7D1C3B034000279139 /* GridSectorizer.h */,
+				EAE3AA7E1C3B034000279139 /* HTTPConnection.h */,
+				EAE3AA7F1C3B034000279139 /* HTTPConnection2.h */,
+				EAE3AA801C3B034000279139 /* CheckSum.h */,
+				EAE3AA811C3B034000279139 /* IncrementalReadInterface.h */,
+				EAE3AA821C3B034000279139 /* InternalPacket.h */,
+				EAE3AA831C3B034000279139 /* Itoa.h */,
+				EAE3AA841C3B034000279139 /* Kbhit.h */,
+				EAE3AA851C3B034000279139 /* LinuxStrings.h */,
+				EAE3AA861C3B034000279139 /* LocklessTypes.h */,
+				EAE3AA871C3B034000279139 /* LogCommandParser.h */,
+				EAE3AA881C3B034000279139 /* MessageFilter.h */,
+				EAE3AA891C3B034000279139 /* MessageIdentifiers.h */,
+				EAE3AA8A1C3B034000279139 /* MTUSize.h */,
+				EAE3AA8B1C3B034000279139 /* NativeFeatureIncludes.h */,
+				EAE3AA8C1C3B034000279139 /* NativeFeatureIncludesOverrides.h */,
+				EAE3AA8D1C3B034000279139 /* NativeTypes.h */,
+				EAE3AA8E1C3B034000279139 /* NatPunchthroughClient.h */,
+				EAE3AA8F1C3B034000279139 /* NatPunchthroughServer.h */,
+				EAE3AA901C3B034000279139 /* NatTypeDetectionClient.h */,
+				EAE3AA911C3B034000279139 /* NatTypeDetectionCommon.h */,
+				EAE3AA921C3B034000279139 /* NatTypeDetectionServer.h */,
+				EAE3AA931C3B034000279139 /* NetworkIDManager.h */,
+				EAE3AA941C3B034000279139 /* NetworkIDObject.h */,
+				EAE3AA951C3B034000279139 /* PacketConsoleLogger.h */,
+				EAE3AA961C3B034000279139 /* PacketFileLogger.h */,
+				EAE3AA971C3B034000279139 /* PacketizedTCP.h */,
+				EAE3AA981C3B034000279139 /* PacketLogger.h */,
+				EAE3AA991C3B034000279139 /* PacketOutputWindowLogger.h */,
+				EAE3AA9A1C3B034000279139 /* PacketPool.h */,
+				EAE3AA9B1C3B034000279139 /* PacketPriority.h */,
+				EAE3AA9C1C3B034000279139 /* PluginInterface2.h */,
+				EAE3AA9D1C3B034000279139 /* PS3Includes.h */,
+				EAE3AA9E1C3B034000279139 /* PS4Includes.h */,
+				EAE3AA9F1C3B034000279139 /* Rackspace.h */,
+				EAE3AAA01C3B034000279139 /* RakAlloca.h */,
+				EAE3AAA11C3B034000279139 /* RakAssert.h */,
+				EAE3AAA21C3B034000279139 /* RakMemoryOverride.h */,
+				EAE3AAA31C3B034000279139 /* RakNetCommandParser.h */,
+				EAE3AAA41C3B034000279139 /* RakNetDefines.h */,
+				EAE3AAA51C3B034000279139 /* RakNetDefinesOverrides.h */,
+				EAE3AAA61C3B034000279139 /* RakNetSmartPtr.h */,
+				EAE3AAA71C3B034000279139 /* RakNetSocket.h */,
+				EAE3AAA81C3B034000279139 /* RakNetSocket2.h */,
+				EAE3AAA91C3B034000279139 /* RakNetStatistics.h */,
+				EAE3AAAA1C3B034000279139 /* RakNetTime.h */,
+				EAE3AAAB1C3B034000279139 /* RakNetTransport2.h */,
+				EAE3AAAC1C3B034000279139 /* RakNetTypes.h */,
+				EAE3AAAD1C3B034000279139 /* RakNetVersion.h */,
+				EAE3AAAE1C3B034000279139 /* RakPeer.h */,
+				EAE3AAAF1C3B034000279139 /* RakPeerInterface.h */,
+				EAE3AAB01C3B034000279139 /* RakSleep.h */,
+				EAE3AAB11C3B034000279139 /* RakString.h */,
+				EAE3AAB21C3B034000279139 /* RakThread.h */,
+				EAE3AAB31C3B034000279139 /* RakWString.h */,
+				EAE3AAB41C3B034000279139 /* Rand.h */,
+				EAE3AAB51C3B034000279139 /* RandSync.h */,
+				EAE3AAB61C3B034000279139 /* ReadyEvent.h */,
+				EAE3AAB71C3B034000279139 /* RefCountedObj.h */,
+				EAE3AAB81C3B034000279139 /* RelayPlugin.h */,
+				EAE3AAB91C3B034000279139 /* ReliabilityLayer.h */,
+				EAE3AABA1C3B034000279139 /* ReplicaEnums.h */,
+				EAE3AABB1C3B034000279139 /* ReplicaManager3.h */,
+				EAE3AABC1C3B034000279139 /* Router2.h */,
+				EAE3AABD1C3B034000279139 /* RPC4Plugin.h */,
+				EAE3AABE1C3B034000279139 /* SecureHandshake.h */,
+				EAE3AABF1C3B034000279139 /* SendToThread.h */,
+				EAE3AAC01C3B034000279139 /* SignaledEvent.h */,
+				EAE3AAC11C3B034000279139 /* SimpleMutex.h */,
+				EAE3AAC21C3B034000279139 /* SimpleTCPServer.h */,
+				EAE3AAC31C3B034000279139 /* SingleProducerConsumer.h */,
+				EAE3AAC41C3B034000279139 /* SocketDefines.h */,
+				EAE3AAC51C3B034000279139 /* SocketIncludes.h */,
+				EAE3AAC61C3B034000279139 /* SocketLayer.h */,
+				EAE3AAC71C3B034000279139 /* StatisticsHistory.h */,
+				EAE3AAC81C3B034000279139 /* StringCompressor.h */,
+				EAE3AAC91C3B034000279139 /* StringTable.h */,
+				EAE3AACA1C3B034000279139 /* SuperFastHash.h */,
+				EAE3AACB1C3B034000279139 /* TableSerializer.h */,
+				EAE3AACC1C3B034000279139 /* TCPInterface.h */,
+				EAE3AACD1C3B034000279139 /* TeamBalancer.h */,
+				EAE3AACE1C3B034000279139 /* TeamManager.h */,
+				EAE3AACF1C3B034000279139 /* TelnetTransport.h */,
+				EAE3AAD01C3B034000279139 /* ThreadPool.h */,
+				EAE3AAD11C3B034000279139 /* ThreadsafePacketLogger.h */,
+				EAE3AAD21C3B034000279139 /* TransportInterface.h */,
+				EAE3AAD31C3B034000279139 /* TwoWayAuthentication.h */,
+				EAE3AAD41C3B034000279139 /* UDPForwarder.h */,
+				EAE3AAD51C3B034000279139 /* UDPProxyClient.h */,
+				EAE3AAD61C3B034000279139 /* UDPProxyCommon.h */,
+				EAE3AAD71C3B034000279139 /* UDPProxyCoordinator.h */,
+				EAE3AAD81C3B034000279139 /* UDPProxyServer.h */,
+				EAE3AAD91C3B034000279139 /* VariableDeltaSerializer.h */,
+				EAE3AADA1C3B034000279139 /* VariableListDeltaTracker.h */,
+				EAE3AADB1C3B034000279139 /* VariadicSQLParser.h */,
+				EAE3AADC1C3B034000279139 /* VitaIncludes.h */,
+				EAE3AADD1C3B034000279139 /* WindowsIncludes.h */,
+				EAE3AADE1C3B034000279139 /* WSAStartupSingleton.h */,
+				EAE3AADF1C3B034000279139 /* XBox360Includes.h */,
 			);
 			name = RakNet;
 			sourceTree = "<group>";
@@ -84,7 +393,6 @@
 				EAE3AA411C3A9E8200279139 /* Connector.cpp */,
 				EAE3AA421C3A9E8200279139 /* Connector.h */,
 				EAE3AA431C3A9E8200279139 /* Definitions.h */,
-				EA2817A41C34318C00FCAA47 /* main.cpp */,
 			);
 			name = NeworkFramework;
 			sourceTree = "<group>";

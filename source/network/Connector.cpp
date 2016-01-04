@@ -192,6 +192,7 @@ void Connector::infiniteReceiveLoop(){
 }
 
 void Connector::startPacketProcessor(){
+    loopIsActive = true;
     packetProcessorThread = std::thread(&Connector::infiniteReceiveLoop,this);
     packetProcessorThread.detach();
 }

@@ -1,6 +1,10 @@
 #ifndef  _DEFINITIONS_H_
 #define  _DEFINITIONS_H_
 
+#include "MessageIdentifiers.h"
+
+typedef void(*callbackFunc)(int);
+
 // time (ms) during when reliable packet was not able to be received -> connection lost
 #define CONNECTION_LOST_TIMEOUT 5000
 
@@ -13,8 +17,15 @@
 // server port used for all communication
 #define SERVER_PORT 54027
 
+// client port used for all communication
+#define CLIENT_PORT 54023
+
 // sleep time between receiving packets
 #define RAKNET_SLEEP 30
 
+
+
+// Message types
+#define PACKET_PING_REPLY ID_UNCONNECTED_PONG
 
 #endif // _DEFINITIONS_H_

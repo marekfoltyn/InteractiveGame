@@ -22,12 +22,12 @@ class callback{
 int main(int argc, const char * argv[]) {
     
     Connector * c = Connector::getInstance();
-    c->startClient(52589);
+    c->startClient(CLIENT_PORT);
     
     //TODO: vyresit RakNet namespace
-    c->addPacketCallback(RakNet::ID_UNCONNECTED_PONG, callback::pingCallback());
+    c->addPacketCallback(PACKET_PING_REPLY, callback::pingCallback);
     
-    c->PingServers(4000);
+    c->PingServers(SERVER_PORT);
     
     LOG("type whatever to exit\n");
     char ch;
