@@ -8,7 +8,9 @@
 #include <map>
 
 // callback function type for packet processing
-typedef void(*callbackFuncType)(void);
+// char * ... binary packet data
+// int    ... size of the data (in bytes)
+typedef void(*callbackFuncType)(unsigned char*, int);
 
 /**
  @brief     Singleton class responsible for entire network communication.

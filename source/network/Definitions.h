@@ -3,8 +3,6 @@
 
 #include "MessageIdentifiers.h"
 
-typedef void(*callbackFunc)(int);
-
 // time (ms) during when reliable packet was not able to be received -> connection lost
 #define CONNECTION_LOST_TIMEOUT 5000
 
@@ -25,7 +23,9 @@ typedef void(*callbackFunc)(int);
 
 
 
-// Message types
-#define PACKET_PING_REPLY ID_UNCONNECTED_PONG
+/////////////////// Message types  ///////////////////
+
+#define PACKET_PING                        ID_UNCONNECTED_PING
+#define PACKET_PING_REPLY                  ID_UNCONNECTED_PONG
 
 #endif // _DEFINITIONS_H_

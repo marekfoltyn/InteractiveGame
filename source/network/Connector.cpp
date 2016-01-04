@@ -115,7 +115,7 @@ bool Connector::startClient(int port){
     unsigned int i;
     for (i=0; i < client->GetNumberOfAddresses(); i++)
     {
-        printf("%i. %s\n", i+1, client->GetLocalIP(i));
+        LOG("%i. %s\n", i+1, client->GetLocalIP(i));
     }
     
     startPacketProcessor();
@@ -166,6 +166,11 @@ void Connector::infiniteReceiveLoop(){
             continue;
         }
         
+        // find appropriate callback function
+        auto found = callbackMap.find(p->data[0]);
+        if( found != callbackMap.end() ){
+            //callbackMap[p->data[0]](p->data+1,p->bitSize/8-1);
+        }
         
         if (p->data[0]==ID_UNCONNECTED_PONG){
             
@@ -185,7 +190,12 @@ void Connector::infiniteReceiveLoop(){
         
         }
         
-        client->DeallocatePacket(p);
+        if(client == nullptr){
+            server->DeallocatePacket(p);
+        } else {
+            client->DeallocatePacket(p);
+        }
+        
         RakSleep(30);
     }
     

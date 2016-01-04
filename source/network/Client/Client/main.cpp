@@ -13,8 +13,9 @@
 class callback{
     public:
 
-    static void pingCallback(){
+    static void pingCallback(unsigned char * data, int byteCount){
         LOG("Callback!\n");
+        exit(0);
     }
     
 };
