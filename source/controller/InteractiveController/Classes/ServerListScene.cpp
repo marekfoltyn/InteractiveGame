@@ -4,6 +4,8 @@
 
 #include "MessageIdentifiers.h"
 #include "RakPeerInterface.h"
+#include "Connector.h"
+#include "Definitions.h"
 
 USING_NS_CC;
 
@@ -37,6 +39,18 @@ bool ServerListScene::init()
     auto rootNode = CSLoader::createNode("MainScene.csb");
 
     addChild(rootNode);
+    
+    auto c = Connector::getInstance();
+    c->startClient(44444);
+    
+    //TODO: zprovoznit tohle
+    //c->addPacketCallback(PACKET_PING_REPLY, CC_CALLBACK_0(ServerListScene::serverFound, this));
+    
+    c->PingServers(10000);
 
     return true;
+}
+
+void ServerListScene::serverFound(char * data, int byteCount){
+    CCLOG("Server found!");
 }

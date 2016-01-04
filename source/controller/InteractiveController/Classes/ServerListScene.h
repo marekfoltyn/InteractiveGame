@@ -14,6 +14,8 @@ public:
 
     // implement the "static create()" method manually
     CREATE_FUNC(ServerListScene);
+    
+    void serverFound(char * data, int byteCount);
 };
 
 #endif // __SERVERLIST_SCENE_H__
