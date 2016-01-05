@@ -10,10 +10,19 @@
 #include "Connector.h"
 #include "Definitions.h"
 
+class Callbacker{
+public:
+    void pingCallback(RakNet::Packet* p){
+        LOG("received ping from %s\n", p->systemAddress.ToString());
+    }
+};
+
 int main(int argc, const char * argv[]) {
     
+    Callbacker call;
     
     Connector * c = Connector::getInstance();
+    c->addPacketCallback(PACKET_PING, RAKNET_CALLBACK_1(Callbacker::pingCallback, call));
     c->startServer(SERVER_PORT);
     
     LOG("type whatever to exit\n");

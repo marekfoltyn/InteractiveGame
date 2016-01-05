@@ -5,25 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4c56f90-9a40-44cb-b2e2-178db54144e4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../network/Client/Build/Products/Debug/Client" afterPath="$PROJECT_DIR$/../../../network/Client/Build/Products/Debug/Client" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bin/debug/android/InteractiveController-debug.apk" afterPath="$PROJECT_DIR$/../bin/debug/android/InteractiveController-debug.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../network/Server/Build/Products/Debug/Server" afterPath="$PROJECT_DIR$/../../../network/Server/Build/Products/Debug/Server" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../proj.ios_mac/InteractiveController.xcodeproj/project.xcworkspace/xcuserdata/marek.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/../proj.ios_mac/InteractiveController.xcodeproj/project.xcworkspace/xcuserdata/marek.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../game/InteractiveGame/proj.ios_mac/InteractiveGame.xcodeproj/project.xcworkspace/xcuserdata/marek.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/../../../game/InteractiveGame/proj.ios_mac/InteractiveGame.xcodeproj/project.xcworkspace/xcuserdata/marek.xcuserdatad/UserInterfaceState.xcuserstate" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../network/Client/Client.xcodeproj/project.xcworkspace/xcuserdata/marek.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/../../../network/Client/Client.xcodeproj/project.xcworkspace/xcuserdata/marek.xcuserdatad/UserInterfaceState.xcuserstate" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../network/Server/Server.xcodeproj/project.xcworkspace/xcuserdata/marek.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/../../../network/Server/Server.xcodeproj/project.xcworkspace/xcuserdata/marek.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../network/Client/Build/Intermediates/Client.build/Debug/Client.build/dgph" afterPath="$PROJECT_DIR$/../../../network/Client/Build/Intermediates/Client.build/Debug/Client.build/dgph" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../network/Server/Build/Intermediates/Server.build/Debug/Server.build/dgph" afterPath="$PROJECT_DIR$/../../../network/Server/Build/Intermediates/Server.build/Debug/Server.build/dgph" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/armeabi/libcocos2dcpp.so" afterPath="$PROJECT_DIR$/libs/armeabi/libcocos2dcpp.so" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/local/armeabi/libcocos2dcpp.so" afterPath="$PROJECT_DIR$/obj/local/armeabi/libcocos2dcpp.so" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Classes/AppDelegate.cpp" afterPath="$PROJECT_DIR$/../Classes/AppDelegate.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/foltyma1/interactivecontroller/BuildConfig.java" afterPath="$PROJECT_DIR$/gen/foltyma1/interactivecontroller/BuildConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../network/Connector.cpp" afterPath="$PROJECT_DIR$/../../../network/Connector.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../network/Connector.h" afterPath="$PROJECT_DIR$/../../../network/Connector.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../game/InteractiveGame/Classes/LobbyScene.cpp" afterPath="$PROJECT_DIR$/../../../game/InteractiveGame/Classes/LobbyScene.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Classes/ServerListScene.cpp" afterPath="$PROJECT_DIR$/../Classes/ServerListScene.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Classes/ServerListScene.h" afterPath="$PROJECT_DIR$/../Classes/ServerListScene.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../network/Client/Client/main.cpp" afterPath="$PROJECT_DIR$/../../../network/Client/Client/main.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../network/Server/Server/main.cpp" afterPath="$PROJECT_DIR$/../../../network/Server/Server/main.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="proj.android.iws" />
