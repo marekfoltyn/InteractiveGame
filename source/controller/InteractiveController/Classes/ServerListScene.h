@@ -2,6 +2,7 @@
 #define __SERVERLIST_SCENE_H__
 
 #include "cocos2d.h"
+#include "RakPeerInterface.h"
 
 class ServerListScene : public cocos2d::Layer
 {
@@ -15,7 +16,7 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(ServerListScene);
     
-    void serverFound(char * data, int byteCount);
+    void serverFound(RakNet::Packet*);
 };
 
 #endif // __SERVERLIST_SCENE_H__

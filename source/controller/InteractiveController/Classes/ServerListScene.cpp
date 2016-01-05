@@ -44,13 +44,13 @@ bool ServerListScene::init()
     c->startClient(44444);
     
     //TODO: zprovoznit tohle
-    //c->addPacketCallback(PACKET_PING_REPLY, CC_CALLBACK_0(ServerListScene::serverFound, this));
+    c->addPacketCallback(PACKET_PING_REPLY, RAKNET_CALLBACK_1(ServerListScene::serverFound, this));
     
     c->PingServers(10000);
-
+    
     return true;
 }
 
-void ServerListScene::serverFound(char * data, int byteCount){
+void ServerListScene::serverFound(RakNet::Packet*p){
     CCLOG("Server found!");
 }

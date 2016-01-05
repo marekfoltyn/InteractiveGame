@@ -32,7 +32,7 @@ public:
     void stopClient();
     
     // add callback to packet type
-    void addPacketCallback(int packetType, callbackFuncType );
+    void addPacketCallback(int packetType, const std::function<void(RakNet::Packet*)>& callback );
     void removePacketCallback(int packetType);
     
     //// Client ////
@@ -60,11 +60,19 @@ private:
     std::thread packetProcessorThread;
     
     // Map of callback functions for packet types
-    std::map<int, callbackFuncType> callbackMap;
+    std::map<int, std::function<void(RakNet::Packet*)>> callbackMap;
     
     // If true, receive loop will continue; if false, loop finishes before next loop
     bool loopIsActive;
     
 };
+
+// New callbacks based on C++11
+// Number at the end tells how many arguments the callback function has
+#define RAKNET_CALLBACK_0(__selector__,__target__, ...) std::bind(&__selector__,__target__, ##__VA_ARGS__)
+#define RAKNET_CALLBACK_1(__selector__,__target__, ...) std::bind(&__selector__,__target__, std::placeholders::_1, ##__VA_ARGS__)
+#define RAKNET_CALLBACK_2(__selector__,__target__, ...) std::bind(&__selector__,__target__, std::placeholders::_1, std::placeholders::_2, ##__VA_ARGS__)
+#define RAKNET_CALLBACK_3(__selector__,__target__, ...) std::bind(&__selector__,__target__, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, ##__VA_ARGS__)
+
 
 #endif // _CONNECTOR_H_

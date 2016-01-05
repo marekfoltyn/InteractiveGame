@@ -170,6 +170,7 @@ void Connector::infiniteReceiveLoop(){
         auto found = callbackMap.find(p->data[0]);
         if( found != callbackMap.end() ){
             //callbackMap[p->data[0]](p->data+1,p->bitSize/8-1);
+            callbackMap[p->data[0]](p);
         }
         
         if (p->data[0]==ID_UNCONNECTED_PONG){
@@ -211,7 +212,7 @@ void Connector::stopPacketProcessor(){
     loopIsActive = false;
 }
 
-void Connector::addPacketCallback(int packetType, callbackFuncType callback ){
+void Connector::addPacketCallback(int packetType, const std::function<void(RakNet::Packet*)>& callback ){
     
     callbackMap[packetType] = callback;
     

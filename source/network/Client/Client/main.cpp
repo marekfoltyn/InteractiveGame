@@ -10,10 +10,12 @@
 #include "Connector.h"
 #include "Definitions.h"
 
+using namespace std::placeholders;
+
 class callback{
     public:
 
-    static void pingCallback(unsigned char * data, int byteCount){
+    void pingCallback(RakNet::Packet*){
         LOG("Callback!\n");
         exit(0);
     }
@@ -22,11 +24,12 @@ class callback{
 
 int main(int argc, const char * argv[]) {
     
+    callback call;
+    
     Connector * c = Connector::getInstance();
     c->startClient(CLIENT_PORT);
     
-    //TODO: vyresit RakNet namespace
-    c->addPacketCallback(PACKET_PING_REPLY, callback::pingCallback);
+    c->addPacketCallback(PACKET_PING_REPLY, RAKNET_CALLBACK_1(callback::pingCallback, call));
     
     c->PingServers(SERVER_PORT);
     
