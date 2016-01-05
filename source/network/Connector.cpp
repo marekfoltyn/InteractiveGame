@@ -212,7 +212,7 @@ void Connector::stopPacketProcessor(){
     loopIsActive = false;
 }
 
-void Connector::addPacketCallback(int packetType, const std::function<void(RakNet::Packet*)>& callback ){
+void Connector::addPacketCallback(int packetType, const CALLBACK_TYPE& callback ){
     
     callbackMap[packetType] = callback;
     

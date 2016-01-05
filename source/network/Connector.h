@@ -8,9 +8,8 @@
 #include <map>
 
 // callback function type for packet processing
-// char * ... binary packet data
-// int    ... size of the data (in bytes)
-typedef void(*callbackFuncType)(unsigned char*, int);
+// const std::function<void(RakNet::Packet*)> ... function it format: void functionName(RakNet::Packet * p)
+#define CALLBACK_TYPE std::function<void(RakNet::Packet*)>
 
 /**
  @brief     Singleton class responsible for entire network communication.
@@ -32,7 +31,7 @@ public:
     void stopClient();
     
     // add callback to packet type
-    void addPacketCallback(int packetType, const std::function<void(RakNet::Packet*)>& callback );
+    void addPacketCallback(int packetType, const CALLBACK_TYPE& callback );
     void removePacketCallback(int packetType);
     
     //// Client ////
@@ -60,7 +59,7 @@ private:
     std::thread packetProcessorThread;
     
     // Map of callback functions for packet types
-    std::map<int, std::function<void(RakNet::Packet*)>> callbackMap;
+    std::map<int, CALLBACK_TYPE> callbackMap;
     
     // If true, receive loop will continue; if false, loop finishes before next loop
     bool loopIsActive;

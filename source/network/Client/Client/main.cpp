@@ -15,7 +15,7 @@ using namespace std::placeholders;
 class callback{
     public:
 
-    void pingCallback(RakNet::Packet*){
+    void pingCallback(RakNet::Packet*) {
         LOG("Callback!\n");
         exit(0);
     }
