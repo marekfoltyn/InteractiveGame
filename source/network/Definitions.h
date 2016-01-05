@@ -25,7 +25,8 @@
 
 /////////////////// Message types  ///////////////////
 
-#define PACKET_PING                        ID_UNCONNECTED_PING
-#define PACKET_PING_REPLY                  ID_UNCONNECTED_PONG
+#define PACKET_FIND_SERVER                 ID_UNCONNECTED_PING
+#define PACKET_SERVER_FOUND                ID_UNCONNECTED_PONG
+#define PACKET_SERVER_NAME                 ID_ADVERTISE_SYSTEM
 
 #endif // _DEFINITIONS_H_

@@ -35,7 +35,14 @@ public:
     void removePacketCallback(int packetType);
     
     //// Client ////
+    
+    // callback -> void 
     void PingServers(int timeoutMS);
+    void FindServerName(RakNet::SystemAddress serverAddress);
+    
+    //// Server ////
+    void setServerName(char * name, int len);
+    void getServerName(char ** name, int * len); // saves return values to pointers
     
 private:
     

@@ -22,7 +22,7 @@ int main(int argc, const char * argv[]) {
     Callbacker call;
     
     Connector * c = Connector::getInstance();
-    c->addPacketCallback(PACKET_PING, RAKNET_CALLBACK_1(Callbacker::pingCallback, call));
+    c->addPacketCallback(PACKET_FIND_SERVER, RAKNET_CALLBACK_1(Callbacker::pingCallback, call));
     c->startServer(SERVER_PORT);
     
     LOG("type whatever to exit\n");

@@ -80,6 +80,9 @@ bool Connector::startServer(int port){
         LOG("%i. %s:%i\n", i+1, sa.ToString(false), sa.GetPort());
     }
     
+    
+    server->SetOfflinePingResponse("Unnamed Server", strlen("Unnamed Server")+1);
+    
     startPacketProcessor();
 
     return true;
@@ -145,6 +148,10 @@ void Connector::PingServers(int timeoutMS){
     
 }
 
+void Connector::FindServerName(RakNet::SystemAddress serverAddress){
+    
+}
+
 void Connector::infiniteReceiveLoop(){
     
     LOG("infiniteReceiveLoop started!\n");
@@ -166,29 +173,11 @@ void Connector::infiniteReceiveLoop(){
             continue;
         }
         
-        // find appropriate callback function
+        // call appropriate callback function, if exists
         auto found = callbackMap.find(p->data[0]);
         if( found != callbackMap.end() ){
             //callbackMap[p->data[0]](p->data+1,p->bitSize/8-1);
             callbackMap[p->data[0]](p);
-        }
-        
-        if (p->data[0]==ID_UNCONNECTED_PONG){
-            
-            RakNet::TimeMS time;
-            RakNet::BitStream bsIn(p->data,p->length,false);
-            bsIn.IgnoreBytes(1);
-            bsIn.Read(time);
-            LOG("Got pong from %s with time %i\n", p->systemAddress.ToString(), RakNet::GetTimeMS() - time);
-            
-        } else if (p->data[0]==ID_UNCONNECTED_PING){
-            
-            LOG("ID_UNCONNECTED_PING from %s\n",p->guid.ToString());
-        
-        } else if (p->data[0]==ID_UNCONNECTED_PING_OPEN_CONNECTIONS){
-            
-            LOG("ID_UNCONNECTED_PING_OPEN_CONNECTIONS from %s\n",p->guid.ToString());
-        
         }
         
         if(client == nullptr){
