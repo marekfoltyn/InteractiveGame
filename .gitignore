@@ -12,6 +12,7 @@ source/game/InteractiveGame/proj.ios_mac/Build/*
 
 source/controller/InteractiveController/proj.ios_mac/Build/*
 source/controller/InteractiveController/proj.ios_mac/InteractiveController.xcodeproj/project.xcworkspace/xcuserdata
+source/controller/InteractiveController/proj.ios_mac/InteractiveController.xcodeproj/xcuserdata
 source/controller/InteractiveController/proj.android/bin/*
 source/controller/InteractiveController/proj.android/obj/*
 source/controller/InteractiveController/proj.android/.idea/*
@@ -20,9 +21,11 @@ source/controller/InteractiveController/bin/*
 
 source/network/Server/Build/*
 source/network/Server/Server.xcodeproj/project.xcworkspace/xcuserdata/*
+source/network/Server/Server.xcodeproj/xcuserdata
 
 source/network/Client/Build/*
 source/network/Client/Client.xcodeproj/project.xcworkspace/xcuserdata/*
+source/network/Client/Client.xcodeproj/xcuserdata
 *.o
 *.d
 *.so
