@@ -13,9 +13,6 @@
 #include <cstring>
 #include <stdlib.h>
 
-//DEBUG
-#include "cocos2d.h"
-
 // initialize static variable
 Connector * Connector::instance = nullptr;
 
@@ -100,6 +97,18 @@ void Connector::stopServer(){
         server = nullptr;
     }
 }
+
+void Connector::setServerName(const char * name, int len){
+    if(server == nullptr){
+        return;
+    }
+    
+    server->SetOfflinePingResponse(name, len);
+}
+void Connector::getServerName(char ** name, int * len){
+    
+}
+
 
 /**
  *  Starts a client

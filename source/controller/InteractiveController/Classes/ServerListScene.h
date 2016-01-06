@@ -7,6 +7,7 @@
 class ServerListScene : public cocos2d::Layer
 {
 public:
+    
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
     static cocos2d::Scene * createScene();
 
@@ -22,6 +23,17 @@ public:
     void serverFound(RakNet::Packet*);
     
     void findServers();
+    
+    void exitGame(Ref * pSender);
+    
+    void searchLabelNoDot();
+    void searchLabelOneDot();
+    void searchLabelTwoDots();
+    void searchLabelThreeDots();
+    
+private:
+    cocos2d::Label * lblSearching;
+    cocos2d::Label * lblServerName;
 };
 
 #endif // __SERVERLIST_SCENE_H__

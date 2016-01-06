@@ -44,7 +44,7 @@ public:
     void FindServerName(RakNet::SystemAddress serverAddress);
     
     //////////// Server ////////////
-    void setServerName(char * name, int len);
+    void setServerName(const char * name, int len);
     void getServerName(char ** name, int * len); // saves return values to pointers
     
     //////////// Other ////////////

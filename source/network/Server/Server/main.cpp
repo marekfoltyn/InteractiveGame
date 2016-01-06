@@ -25,6 +25,8 @@ int main(int argc, const char * argv[]) {
     c->addPacketCallback(PACKET_FIND_SERVER, RAKNET_CALLBACK_1(Callbacker::pingCallback, call));
     c->startServer(SERVER_PORT);
     
+    c->setServerName("Debug Server v0.1", sizeof("Debug Server v0.1"));
+    
     LOG("type whatever to exit\n");
     char ch;
     std::cin >> ch;
