@@ -17,25 +17,21 @@ class callback{
 
     void pingCallback(RakNet::Packet * p) {
         
-        /*
         // Peer or client. Response from a ping for an unconnected system.
-        RakNet::TimeMS packetTime, dataLength;
+        // Ping response has this format: MessageType(1B)+TimeMS(4B)+ServerName(the rest of Bytes)
+        RakNet::TimeMS packetTime;
         RakNet::TimeMS curTime = RakNet::GetTimeMS();
-        RakNet::BitStream bsIn(packet->data,packet->length,false);
+        RakNet::BitStream bsIn(p->data,p->length,false);
         bsIn.IgnoreBytes(1);
         bsIn.Read(packetTime);
-        dataLength = packet->length - sizeof( unsigned char ) - sizeof( RakNet::TimeMS );
-         */
         
-        //TODO: osetrit format paketu (idealne na strane Connectoru
+        // osetrit format paketu na strane Connectoru?
         
-        LOG("Received data length in bytes: %d\n", p->length);
-        LOG("Data: %s\n", p->data+5);
+        LOG("New server: %s (%dms)\n", p->data + sizeof(unsigned char) + sizeof(RakNet::TimeMS), curTime );
+        
         Connector::getInstance()->addPacketCallback(PACKET_SERVER_NAME, RAKNET_CALLBACK_1(callback::serverNameCallback, this));
         
-        //Connector::getInstance()->FindServerName(p->systemAddress);
-        
-        //exit(0);
+        exit(0);
     }
     
     void serverNameCallback(RakNet::Packet * p){

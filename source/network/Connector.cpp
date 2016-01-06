@@ -1,18 +1,20 @@
 #include "Connector.h"
 #include "Definitions.h"
 
-#include "raknet/MessageIdentifiers.h"
-#include "raknet/RakPeerInterface.h"
-#include "raknet/RakPeerInterface.h"
-#include "raknet/RakNetTypes.h"
-#include "raknet/GetTime.h"
-#include "raknet/BitStream.h"
-#include "raknet/RakSleep.h"
+#include "MessageIdentifiers.h"
+#include "RakPeerInterface.h"
+#include "RakNetTypes.h"
+#include "GetTime.h"
+#include "BitStream.h"
+#include "RakSleep.h"
 
 #include <assert.h>
 #include <cstdio>
 #include <cstring>
 #include <stdlib.h>
+
+//DEBUG
+#include "cocos2d.h"
 
 // initialize static variable
 Connector * Connector::instance = nullptr;
@@ -137,7 +139,7 @@ void Connector::stopClient(){
     }
 }
 
-void Connector::PingServers(int timeoutMS){
+void Connector::FindServers(){
     if(client==nullptr){
         LOG("Client is not started!");
         return;
@@ -163,10 +165,12 @@ void Connector::infiniteReceiveLoop(){
         // receive packet
         if (server){
             p = server->Receive();
-        } else {
+        } else if(client) {
             p = client->Receive();
+        } else {
+            return;
         }
-        
+                
         if (p==0)
         {
             RakSleep(RAKNET_SLEEP);
@@ -176,7 +180,6 @@ void Connector::infiniteReceiveLoop(){
         // call appropriate callback function, if exists
         auto found = callbackMap.find(p->data[0]);
         if( found != callbackMap.end() ){
-            //callbackMap[p->data[0]](p->data+1,p->bitSize/8-1);
             callbackMap[p->data[0]](p);
         }
         
@@ -202,9 +205,7 @@ void Connector::stopPacketProcessor(){
 }
 
 void Connector::addPacketCallback(int packetType, const CALLBACK_TYPE& callback ){
-    
     callbackMap[packetType] = callback;
-    
 }
 
 
@@ -214,4 +215,3 @@ void Connector::removePacketCallback(int packetType){
     
     
 }
-

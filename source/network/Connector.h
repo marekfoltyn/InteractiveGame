@@ -1,9 +1,12 @@
 #ifndef  _CONNECTOR_H_
 #define  _CONNECTOR_H_
 
-#include "raknet/MessageIdentifiers.h"
-#include "raknet/RakPeerInterface.h"
-#include "raknet/RakSleep.h"
+#include "MessageIdentifiers.h"
+#include "RakPeerInterface.h"
+#include "RakSleep.h"
+#include "GetTime.h"
+#include "BitStream.h"
+
 #include <thread>
 #include <map>
 
@@ -34,16 +37,22 @@ public:
     void addPacketCallback(int packetType, const CALLBACK_TYPE& callback );
     void removePacketCallback(int packetType);
     
-    //// Client ////
+    //////////// Client ////////////
     
     // callback -> void 
-    void PingServers(int timeoutMS);
+    void FindServers();
     void FindServerName(RakNet::SystemAddress serverAddress);
     
-    //// Server ////
+    //////////// Server ////////////
     void setServerName(char * name, int len);
     void getServerName(char ** name, int * len); // saves return values to pointers
     
+    //////////// Other ////////////
+    
+    // PacketProcessor control
+    void startPacketProcessor();
+    void stopPacketProcessor();
+
 private:
     
     // Hidden singleton constructor
@@ -51,10 +60,6 @@ private:
     
     // Packet processing runnable for packetProcessor thread
     void infiniteReceiveLoop();
-    
-    // PacketProcessor control
-    void startPacketProcessor();
-    void stopPacketProcessor();
     
     // RakNet interfaces
     RakNet::RakPeerInterface * server = nullptr;

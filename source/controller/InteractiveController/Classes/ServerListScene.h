@@ -17,6 +17,8 @@ public:
     CREATE_FUNC(ServerListScene);
     
     void serverFound(RakNet::Packet*);
+    
+    void findServers();
 };
 
 #endif // __SERVERLIST_SCENE_H__

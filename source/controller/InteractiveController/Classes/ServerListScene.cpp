@@ -43,14 +43,28 @@ bool ServerListScene::init()
     auto c = Connector::getInstance();
     c->startClient(44444);
     
-    //TODO: zprovoznit tohle
-    c->addPacketCallback(PACKET_PING_REPLY, RAKNET_CALLBACK_1(ServerListScene::serverFound, this));
+    // search for servers every second
+    auto foundCallback = CallFunc::create(CC_CALLBACK_0(ServerListScene::findServers, this));
+    auto delay = DelayTime::create(FIND_SERVER_REPEAT_TIME);
+    auto sequence = Sequence::create(delay, foundCallback, nullptr);
+    auto infiniteSearch = RepeatForever::create(sequence);
+    this->runAction(infiniteSearch);
     
-    c->PingServers(10000);
+    CCLOG("Searching for servers");
+    c->addPacketCallback(PACKET_SERVER_FOUND, RAKNET_CALLBACK_1(ServerListScene::serverFound, this));
     
     return true;
 }
 
-void ServerListScene::serverFound(RakNet::Packet*p){
-    CCLOG("Server found!");
+void ServerListScene::findServers(){
+    CCLOG("Searching for servers...");
+    Connector::getInstance()->FindServers();
+}
+
+void ServerListScene::serverFound(RakNet::Packet * p){
+    
+    char * serverName = (char *) p->data + sizeof(unsigned char) + sizeof(RakNet::TimeMS); // skip message type and response time
+    
+    CCLOG("%s (%s) in %dms", serverName, p->systemAddress.ToString(), (RakNet::TimeMS) *p->data+1);
+    
 }

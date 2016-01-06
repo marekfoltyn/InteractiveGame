@@ -21,6 +21,8 @@
 // sleep time between receiving packets
 #define RAKNET_SLEEP 30
 
+// find servers repeat time (in seconds)
+#define FIND_SERVER_REPEAT_TIME 1
 
 
 /////////////////// Message types  ///////////////////
