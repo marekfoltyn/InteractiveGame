@@ -16,6 +16,9 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(ServerListScene);
     
+    // load and set up cocos nodes and graphics
+    void initGraphics();
+    
     void serverFound(RakNet::Packet*);
     
     void findServers();

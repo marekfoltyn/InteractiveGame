@@ -36,12 +36,10 @@ bool ServerListScene::init()
         return false;
     }
     
-    auto rootNode = CSLoader::createNode("MainScene.csb");
-
-    addChild(rootNode);
+    //auto rootNode = CSLoader::createNode("MainScene.csb");
+    //addChild(rootNode);
     
     auto c = Connector::getInstance();
-    c->startClient(44444);
     
     // search for servers every second
     auto foundCallback = CallFunc::create(CC_CALLBACK_0(ServerListScene::findServers, this));
@@ -50,10 +48,40 @@ bool ServerListScene::init()
     auto infiniteSearch = RepeatForever::create(sequence);
     this->runAction(infiniteSearch);
     
+    initGraphics();
+    
     CCLOG("Searching for servers");
     c->addPacketCallback(PACKET_SERVER_FOUND, RAKNET_CALLBACK_1(ServerListScene::serverFound, this));
     
     return true;
+}
+
+void ServerListScene::initGraphics(){
+    
+    auto visibleSize = Director::getInstance()->getVisibleSize();
+    auto origin = Director::getInstance()->getVisibleOrigin();
+    
+    // background
+    auto background = Sprite::create("Background.png");
+    //background->set( cocos2d::Size( visibleSize.width, visibleSize.height ) );
+    background->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
+    background->setScaleX((visibleSize.width / background->getContentSize().width));
+    background->setScaleY((visibleSize.height / background->getContentSize().height));
+    this->addChild(background);
+    
+    // monitor
+    auto monitor = Sprite::create("monitor.png");
+    monitor->setAnchorPoint(Vec2(0.5, 0.5));
+    monitor->setPosition(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2);
+    this->addChild(monitor);
+    
+    // exit button
+    auto btnExit = MenuItemImage::create("exit_button.png", "exit_button_pressed.png");
+    btnExit->setAnchorPoint(Vec2(0.5, 0.5));
+    //btnExit->setScale( visibleSize.height / background->getContentSize().height * 0.5);
+    btnExit->setPosition( origin.x + visibleSize.width - btnExit->getContentSize().width, origin.y + visibleSize.height - btnExit->getContentSize().height );
+    this->addChild(btnExit);
+    
 }
 
 void ServerListScene::findServers(){
