@@ -22,7 +22,7 @@ source/network/Server/Build/*
 source/network/Server/Server.xcodeproj/project.xcworkspace/xcuserdatad/*
 
 source/network/Client/Build/*
-
+source/network/Client/Client.xcodeproj/project.xcworkspace/xcuserdata/*
 *.o
 *.d
 *.so
