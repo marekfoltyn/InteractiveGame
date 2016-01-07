@@ -28,7 +28,8 @@
 /////////////////// Message types  ///////////////////
 
 #define PACKET_FIND_SERVER                 ID_UNCONNECTED_PING
-#define PACKET_SERVER_FOUND                ID_UNCONNECTED_PONG
-#define PACKET_SERVER_NAME                 ID_ADVERTISE_SYSTEM
+#define PACKET_SERVER_NAME                 ID_UNCONNECTED_PONG
+
+//#define PACKET_CUSTOM                      ID_USER_PACKET_ENUM+1 // +2, +3 and so on
 
 #endif // _DEFINITIONS_H_

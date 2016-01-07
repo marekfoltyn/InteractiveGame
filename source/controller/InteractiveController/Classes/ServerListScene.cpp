@@ -51,7 +51,7 @@ bool ServerListScene::init()
     initGraphics();
     
     CCLOG("Searching for servers");
-    c->addPacketCallback(PACKET_SERVER_FOUND, RAKNET_CALLBACK_1(ServerListScene::serverFound, this));
+    c->addPacketCallback(PACKET_SERVER_NAME, RAKNET_CALLBACK_1(ServerListScene::serverFound, this));
     
     return true;
 }
