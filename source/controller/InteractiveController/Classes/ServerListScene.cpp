@@ -108,7 +108,7 @@ void ServerListScene::initGraphics(){
     this->runAction(infinite);
     
     // Server name
-    lblServerName = Label::createWithTTF("", "8-Bit-Madness.ttf", visibleSize.height/12);
+    lblServerName = Label::createWithTTF("", "8-Bit-Madness.ttf", visibleSize.height/12*1.5);
     lblServerName->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
     this->addChild(lblServerName);
 }

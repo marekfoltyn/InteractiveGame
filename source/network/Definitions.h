@@ -27,8 +27,9 @@
 
 /////////////////// Message types  ///////////////////
 
-#define PACKET_FIND_SERVER                 ID_UNCONNECTED_PING
-#define PACKET_SERVER_NAME                 ID_UNCONNECTED_PONG
+#define P_FIND_SERVER                 ID_UNCONNECTED_PING
+#define P_SERVER_NAME                 ID_UNCONNECTED_PONG
+#define P_NEW_INCOMING_CONNECTION     ID_NEW_INCOMING_CONNECTION
 
 //#define PACKET_CUSTOM                      ID_USER_PACKET_ENUM+1 // +2, +3 and so on
 
