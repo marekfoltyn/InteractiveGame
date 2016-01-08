@@ -14,6 +14,16 @@ public:
 
     // implement the "static create()" method manually
     CREATE_FUNC(LobbyScene);
+    
+private:
+    
+    // start the server stuff
+    void initServer();
+    
+    // start the graphics stuff
+    void initGUI();
+    
+    void setDebugOutputEnabled(bool enabled);
 };
 
 #endif // __LOBBY_SCENE_H__

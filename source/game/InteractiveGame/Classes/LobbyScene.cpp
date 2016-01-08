@@ -1,7 +1,11 @@
+#include <string>
+
 #include "LobbyScene.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 #include "MessageIdentifiers.h"
+#include "Definitions.h"
+#include "Connector.h"
 
 USING_NS_CC;
 
@@ -32,11 +36,41 @@ bool LobbyScene::init()
         return false;
     }
     
-    auto rootNode = CSLoader::createNode("MainScene.csb");
-    addChild(rootNode);
+    initServer();
     
-    // run async Connector (as a server)
-    // Connector::getInstance()->startServer(SERVER_PORT)
+    initGUI();
+    
+    //auto rootNode = CSLoader::createNode("MainScene.csb");
+    //addChild(rootNode);
     
     return true;
+}
+
+void LobbyScene::initServer(){
+    
+    // run async Connector (as a server)
+    bool started = Connector::getInstance()->startServer(SERVER_PORT);
+    
+    if(!started){
+        CCLOG("Server not started!");
+        // handle?
+        return;
+    }
+    
+    Connector::getInstance()->setServerName("InteractiveGame", strlen("InteractiveGame"));
+    
+}
+
+void LobbyScene::initGUI(){
+    
+    auto visibleSize = Director::getInstance()->getVisibleSize();
+    auto origin = Director::getInstance()->getVisibleOrigin();
+    auto c = Connector::getInstance();
+    
+    auto * txtServerName = TextFieldTTF::createWithTTF(c->getServerName(), "8-Bit-Madness.ttf", 64);
+    txtServerName->setAnchorPoint(Vec2(0.5, 0.5));
+    txtServerName->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height - txtServerName->getContentSize().height ));
+    
+    this->addChild(txtServerName);
+    
 }

@@ -11,6 +11,7 @@
 #include <assert.h>
 #include <cstdio>
 #include <cstring>
+#include <string>
 #include <stdlib.h>
 
 // initialize static variable
@@ -50,7 +51,7 @@ bool Connector::startServer(int port){
     RakNet::SocketDescriptor socketDescriptors[1];
     socketDescriptors[0].port = port;
     socketDescriptors[0].socketFamily=AF_INET; // IPV4
-    bool b = server->Startup(4, socketDescriptors, 1 )==RakNet::RAKNET_STARTED;
+    bool b = server->Startup(MAX_PLAYERS, socketDescriptors, 1 )==RakNet::RAKNET_STARTED;
     server->SetMaximumIncomingConnections(4);
     if (!b)
     {
@@ -62,7 +63,7 @@ bool Connector::startServer(int port){
     LOG("\n");
     
     server->SetOccasionalPing(true);
-    server->SetUnreliableTimeout(1000);
+    server->SetUnreliableTimeout(CONNECTION_LOST_TIMEOUT);
     
     DataStructures::List< RakNet::RakNetSocket2* > sockets;
     server->GetSockets(sockets);
@@ -105,7 +106,17 @@ void Connector::setServerName(const char * name, int len){
     
     server->SetOfflinePingResponse(name, len);
 }
-void Connector::getServerName(char ** name, int * len){
+std::string Connector::getServerName(){
+    if(server == nullptr){
+        LOG("Server not started - no name!");
+        return "";
+    }
+    
+    char * name;
+    unsigned int len;
+    server->GetOfflinePingResponse(&name, &len);
+    
+    return name;
     
 }
 
@@ -156,10 +167,6 @@ void Connector::FindServers(){
     
     client->Ping("255.255.255.255", SERVER_PORT, false);
     LOG("Pinging\n");
-    
-}
-
-void Connector::FindServerName(RakNet::SystemAddress serverAddress){
     
 }
 

@@ -18,6 +18,9 @@
 // client port used for all communication
 #define CLIENT_PORT 54023
 
+// maximum players connected to server
+#define MAX_PLAYERS 8
+
 // sleep time between receiving packets
 #define RAKNET_SLEEP 30
 

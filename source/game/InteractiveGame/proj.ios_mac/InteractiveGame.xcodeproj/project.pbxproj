@@ -23,14 +23,10 @@
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
 		B41F41C0B96371BB9588626F /* res in Resources */ = {isa = PBXBuildFile; fileRef = 55014BDBA322584F88CF3D18 /* res */; };
 		C1304BE0A531567F64D85B7A /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D77407C86C4E7570AC0EFF9 /* libcocos2d Mac.a */; };
-		EA4186AF1C32D74F004B8934 /* raknetx86_64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA76BC891C32CFA100F2531F /* raknetx86_64.a */; };
-		EA4189191C33C2E6004B8934 /* Connector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA4189161C33C2E6004B8934 /* Connector.cpp */; };
 		EA41892A1C342867004B8934 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 503AE0F617EB97AB00D1A890 /* Icon.icns */; };
 		EA41892B1C342867004B8934 /* res in Resources */ = {isa = PBXBuildFile; fileRef = 55014BDBA322584F88CF3D18 /* res */; };
-		EA41892E1C342867004B8934 /* Connector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA4189161C33C2E6004B8934 /* Connector.cpp */; };
 		EA4189301C342867004B8934 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 503AE10317EB98FF00D1A890 /* main.cpp */; };
 		EA4189311C342867004B8934 /* LobbyScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8619C43A87006E1F66 /* LobbyScene.cpp */; };
-		EA4189331C342867004B8934 /* raknetx86_64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA76BC891C32CFA100F2531F /* raknetx86_64.a */; };
 		EA4189341C342867004B8934 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
 		EA4189351C342867004B8934 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		EA4189361C342867004B8934 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
@@ -46,6 +42,10 @@
 		EA41894C1C342C4B004B8934 /* TestDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA4189481C342C4B004B8934 /* TestDelegate.cpp */; };
 		EA41894D1C342C4B004B8934 /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA41894A1C342C4B004B8934 /* TestScene.cpp */; };
 		EA4189501C342CEF004B8934 /* Catch.h in Sources */ = {isa = PBXBuildFile; fileRef = EA41894F1C342CEF004B8934 /* Catch.h */; };
+		EA5CA2C41C3FC724003437FF /* Connector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5CA2C11C3FC724003437FF /* Connector.cpp */; };
+		EA5CA2C51C3FC724003437FF /* Connector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5CA2C11C3FC724003437FF /* Connector.cpp */; };
+		EA5CA2CA1C3FC90D003437FF /* raknetx86_64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5CA2C91C3FC90D003437FF /* raknetx86_64.a */; };
+		EA5CA2CB1C3FC933003437FF /* raknetx86_64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5CA2C91C3FC90D003437FF /* raknetx86_64.a */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
 /* End PBXBuildFile section */
 
@@ -78,8 +78,6 @@
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
-		EA4189161C33C2E6004B8934 /* Connector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Connector.cpp; path = ../../../network/Connector.cpp; sourceTree = "<group>"; };
-		EA4189171C33C2E6004B8934 /* Connector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Connector.h; path = ../../../network/Connector.h; sourceTree = "<group>"; };
 		EA4189431C342867004B8934 /* InteractiveGame-unit-testing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "InteractiveGame-unit-testing.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA4189441C342867004B8934 /* InteractiveGame-desktop copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "InteractiveGame-desktop copy-Info.plist"; path = "/Users/marek/Documents/git/InteractiveGame/source/game/InteractiveGame/proj.ios_mac/InteractiveGame-desktop copy-Info.plist"; sourceTree = "<absolute>"; };
 		EA4189481C342C4B004B8934 /* TestDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestDelegate.cpp; sourceTree = "<group>"; };
@@ -87,8 +85,11 @@
 		EA41894A1C342C4B004B8934 /* TestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestScene.cpp; sourceTree = "<group>"; };
 		EA41894B1C342C4B004B8934 /* TestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestScene.h; sourceTree = "<group>"; };
 		EA41894F1C342CEF004B8934 /* Catch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Catch.h; sourceTree = "<group>"; };
-		EA76BC881C32CCA900F2531F /* Definitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Definitions.h; sourceTree = "<group>"; };
-		EA76BC891C32CFA100F2531F /* raknetx86_64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = raknetx86_64.a; path = ../../../network/raknet/raknetx86_64.a; sourceTree = "<group>"; };
+		EA5CA2C11C3FC724003437FF /* Connector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Connector.cpp; path = ../../../shared/network/Connector.cpp; sourceTree = "<group>"; };
+		EA5CA2C21C3FC724003437FF /* Connector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Connector.h; path = ../../../shared/network/Connector.h; sourceTree = "<group>"; };
+		EA5CA2C31C3FC724003437FF /* Definitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Definitions.h; path = ../../../shared/network/Definitions.h; sourceTree = "<group>"; };
+		EA5CA2C91C3FC90D003437FF /* raknetx86_64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = raknetx86_64.a; path = ../../../shared/network/raknet/raknetx86_64.a; sourceTree = "<group>"; };
+		EA76BC881C32CCA900F2531F /* GameDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDefinitions.h; sourceTree = "<group>"; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -98,7 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA4186AF1C32D74F004B8934 /* raknetx86_64.a in Frameworks */,
+				EA5CA2CA1C3FC90D003437FF /* raknetx86_64.a in Frameworks */,
 				ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */,
 				5087E76717EB910900C73F5D /* libz.dylib in Frameworks */,
 				8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */,
@@ -118,7 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA4189331C342867004B8934 /* raknetx86_64.a in Frameworks */,
+				EA5CA2CB1C3FC933003437FF /* raknetx86_64.a in Frameworks */,
 				EA4189341C342867004B8934 /* libiconv.dylib in Frameworks */,
 				EA4189351C342867004B8934 /* libz.dylib in Frameworks */,
 				EA4189361C342867004B8934 /* Security.framework in Frameworks */,
@@ -163,6 +164,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EA5CA2C91C3FC90D003437FF /* raknetx86_64.a */,
 				ED545A7D1B68A1FA00C3958E /* libiconv.dylib */,
 				ED545A7B1B68A1F400C3958E /* libiconv.dylib */,
 				8262943D1AAF051F00CB7CF7 /* Security.framework */,
@@ -201,7 +203,7 @@
 				EA41891F1C33D2E5004B8934 /* Testing */,
 				EA4189151C33C2C9004B8934 /* Network */,
 				EA76BC8B1C32D07F00F2531F /* Scenes */,
-				EA76BC881C32CCA900F2531F /* Definitions.h */,
+				EA76BC881C32CCA900F2531F /* GameDefinitions.h */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
 			);
@@ -232,7 +234,6 @@
 		7722448299D115D24F40A470 /* mac-libs */ = {
 			isa = PBXGroup;
 			children = (
-				EA76BC891C32CFA100F2531F /* raknetx86_64.a */,
 				3D77407C86C4E7570AC0EFF9 /* libcocos2d Mac.a */,
 			);
 			name = "mac-libs";
@@ -241,8 +242,9 @@
 		EA4189151C33C2C9004B8934 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				EA4189161C33C2E6004B8934 /* Connector.cpp */,
-				EA4189171C33C2E6004B8934 /* Connector.h */,
+				EA5CA2C11C3FC724003437FF /* Connector.cpp */,
+				EA5CA2C21C3FC724003437FF /* Connector.h */,
+				EA5CA2C31C3FC724003437FF /* Definitions.h */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -360,7 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
-				EA4189191C33C2E6004B8934 /* Connector.cpp in Sources */,
+				EA5CA2C41C3FC724003437FF /* Connector.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				46880B8B19C43A87006E1F66 /* LobbyScene.cpp in Sources */,
 			);
@@ -371,11 +373,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA41894C1C342C4B004B8934 /* TestDelegate.cpp in Sources */,
-				EA41892E1C342867004B8934 /* Connector.cpp in Sources */,
 				EA41894D1C342C4B004B8934 /* TestScene.cpp in Sources */,
 				EA4189301C342867004B8934 /* main.cpp in Sources */,
 				EA4189311C342867004B8934 /* LobbyScene.cpp in Sources */,
 				EA4189501C342CEF004B8934 /* Catch.h in Sources */,
+				EA5CA2C51C3FC724003437FF /* Connector.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,7 +474,7 @@
 					"/Applications/Cocos/frameworks/cocos2d-x-3.9/extensions",
 					"/Applications/Cocos/frameworks/cocos2d-x-3.9/external",
 					"/Applications/Cocos/frameworks/cocos2d-x-3.9/external/chipmunk/include/chipmunk",
-					"$(SRCROOT)/../../../network/raknet",
+					"$(SRCROOT)/../../../shared/network/raknet",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "";
@@ -504,7 +506,7 @@
 					"/Applications/Cocos/frameworks/cocos2d-x-3.9/extensions",
 					"/Applications/Cocos/frameworks/cocos2d-x-3.9/external",
 					"/Applications/Cocos/frameworks/cocos2d-x-3.9/external/chipmunk/include/chipmunk",
-					"$(SRCROOT)/../../../network/raknet",
+					"$(SRCROOT)/../../../shared/network/raknet",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "";

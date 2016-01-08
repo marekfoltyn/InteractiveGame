@@ -40,6 +40,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setAnimationInterval(1.0 / 60);
 
     FileUtils::getInstance()->addSearchPath("res");
+//    FileUtils::getInstance()->addSearchPath("../../../shared/resources");
 
     // create a scene. it's an autorelease object
     auto scene = LobbyScene::createScene();
