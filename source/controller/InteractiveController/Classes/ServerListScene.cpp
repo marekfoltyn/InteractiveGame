@@ -144,6 +144,7 @@ void ServerListScene::serverFound(RakNet::Packet * p){
     }
     
     CCLOG("%s (%s) in %dms", name->getCString(), p->systemAddress.ToString(), (RakNet::TimeMS) *p->data+1);
+
     
 }
 

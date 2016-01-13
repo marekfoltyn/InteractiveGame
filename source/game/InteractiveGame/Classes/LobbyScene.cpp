@@ -57,7 +57,7 @@ void LobbyScene::initServer(){
         return;
     }
     
-    Connector::getInstance()->setServerName("InteractiveGame", strlen("InteractiveGame"));
+    Connector::getInstance()->setServerName("InteractiveGame", strlen("InteractiveGame")+1); // +1 ... C string ending
     
 }
 
