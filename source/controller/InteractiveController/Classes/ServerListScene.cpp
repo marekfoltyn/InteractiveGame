@@ -107,10 +107,14 @@ void ServerListScene::initGraphics(){
     auto infinite = RepeatForever::create(sequence);
     this->runAction(infinite);
     
-    // Server name
-    lblServerName = Label::createWithTTF("", "8-Bit-Madness.ttf", visibleSize.height/12*1.5);
-    lblServerName->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
-    this->addChild(lblServerName);
+    // Server names menu
+    serversView = ui::ScrollView::create();
+    serversView->setDirection( ui::ScrollView::Direction::VERTICAL );
+    serversView->setContentSize( cocos2d::Size(monitor->getContentSize().width, monitor->getContentSize().width - 100) );
+    serversView->setInnerContainerSize( cocos2d::Size(monitor->getContentSize().width, 800) );
+    
+    
+
 }
 
 void ServerListScene::searchLabelNoDot(){
@@ -134,17 +138,29 @@ void ServerListScene::findServers(){
 void ServerListScene::serverFound(RakNet::Packet * p){
     
     int overhead = sizeof(unsigned char) + sizeof(RakNet::TimeMS);
-    
     const char * serverNameInPacket = (char *) p->data + overhead; // skip message type and response time
-    
     auto name = __String::create(serverNameInPacket);
     
-    if(lblServerName != nullptr){
+    /*if(lblServerName != nullptr){
         lblServerName->setString(name->getCString());
-    }
+    }*/
+    
+    //TODO: addServerToMenu(name, p->systemAddress);
     
     CCLOG("%s (%s) in %dms", name->getCString(), p->systemAddress.ToString(), (RakNet::TimeMS) *p->data+1);
+    
+}
 
+void ServerListScene::btnServerClicked(Ref * pSender){
+    
+    //CCLOG("Trying to connect...");
+    //Connector::getInstance()->connect(address);
+    
+}
+
+void ServerListScene::addOrUpdateServer(cocos2d::__String serverName, RakNet::SystemAddress * address){
+    
+    
     
 }
 

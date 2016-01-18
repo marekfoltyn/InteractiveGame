@@ -39,6 +39,10 @@ public:
     
     //////////// Client ////////////
     
+    // connect to server
+    void connect(RakNet::SystemAddress serverAddress);
+    
+    
     // callback -> void 
     void FindServers();
     

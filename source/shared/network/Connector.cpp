@@ -159,6 +159,19 @@ void Connector::stopClient(){
     }
 }
 
+void Connector::connect(RakNet::SystemAddress serverAddress){
+    if(client==nullptr){
+        LOG("Client is not started!");
+        return;
+    }
+    
+    char ip[4];
+    serverAddress.ToString(false, ip);
+    
+    client->Connect(ip, serverAddress.GetPort(), NULL, 0);
+}
+
+
 void Connector::FindServers(){
     if(client==nullptr){
         LOG("Client is not started!");
