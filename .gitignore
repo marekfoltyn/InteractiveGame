@@ -9,6 +9,7 @@ thesis/bakalarska_prace.synctex.gz
 thesis/bakalarska_prace.toc
 
 source/game/InteractiveGame/proj.ios_mac/Build/*
+source/game/InteractiveGame/proj.win32/Debug.win32/*
 
 source/controller/InteractiveController/proj.ios_mac/Build/*
 source/controller/InteractiveController/proj.ios_mac/InteractiveController.xcodeproj/project.xcworkspace/xcuserdata
@@ -32,3 +33,4 @@ source/network/Client/Client.xcodeproj/xcuserdata
 
 
 ~$packet_database.xlsx
+*.obj
