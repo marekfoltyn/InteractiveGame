@@ -39,6 +39,9 @@ public:
     // connect to server
     void btnServerClicked(Ref * pSender);
     
+    // Succesfully connected to a server
+    void onConnected(RakNet::Packet * p);
+    
     void exitGame(Ref * pSender);
     
     void searchLabelNoDot();
@@ -49,6 +52,8 @@ public:
 private:
     cocos2d::Label * lblSearching;
     cocos2d::ui::ScrollView * serversView;
+    cocos2d::RepeatForever * searchServersAction;
+    cocos2d::RepeatForever * searchTextLoop;
     
     // map of available servers
     // key - hash of the system address

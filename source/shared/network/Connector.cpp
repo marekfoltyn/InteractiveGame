@@ -94,8 +94,8 @@ bool Connector::startServer(int port){
 void Connector::stopServer(){
     if(server != nullptr){
         stopPacketProcessor();
-        server->Shutdown(1);
-        RakNet::RakPeerInterface::DestroyInstance(server);
+        //server->Shutdown(1);
+        //RakNet::RakPeerInterface::DestroyInstance(server);
         server = nullptr;
     }
 }
@@ -155,8 +155,8 @@ bool Connector::startClient(int port){
 void Connector::stopClient(){
     if(client != nullptr){
         stopPacketProcessor();
-        client->Shutdown(1); // unsigned int blockDuration ... ?
-        RakNet::RakPeerInterface::DestroyInstance(client);
+        //client->Shutdown(1); // causes EXC_BAD_INSTRUCTION (code=EXC_I386_INVOP, subcode=0x0) on assembler command ud2
+        //RakNet::RakPeerInterface::DestroyInstance(client);
         client = nullptr;
     }
 }
@@ -182,7 +182,7 @@ void Connector::FindServers(){
         return;
     }
     
-    client->Ping("255.255.255.255", SERVER_PORT, false);
+    client->Ping("255.255.255.255", SERVER_PORT, true); // true ... reply only if server is not full
     LOG("Pinging\n");
     
 }

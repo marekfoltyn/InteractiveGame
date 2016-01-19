@@ -45,13 +45,14 @@ bool ServerListScene::init()
     auto foundCallback = CallFunc::create(CC_CALLBACK_0(ServerListScene::findServers, this));
     auto delay = DelayTime::create(FIND_SERVER_REPEAT_TIME);
     auto sequence = Sequence::create(delay, foundCallback, nullptr);
-    auto infiniteSearch = RepeatForever::create(sequence);
-    this->runAction(infiniteSearch);
+    searchServersAction = RepeatForever::create(sequence);
+    this->runAction(searchServersAction);
     
     initGraphics();
     
     CCLOG("Searching for servers");
     c->addPacketCallback(P_SERVER_NAME, RAKNET_CALLBACK_1(ServerListScene::serverFound, this));
+    c->addPacketCallback(P_CONNECTED, RAKNET_CALLBACK_1(ServerListScene::onConnected, this));
     
     return true;
 }
@@ -104,8 +105,8 @@ void ServerListScene::initGraphics(){
         CallFunc::create(CC_CALLBACK_0(ServerListScene::searchLabelThreeDots,this)),
         delay->clone(),
         nullptr );
-    auto infinite = RepeatForever::create(sequence);
-    this->runAction(infinite);
+    searchTextLoop = RepeatForever::create(sequence);
+    this->runAction(searchTextLoop);
     
     // Server names menu
     serversView = ui::ScrollView::create();
@@ -161,6 +162,16 @@ void ServerListScene::addOrUpdateServer(cocos2d::__String serverName, RakNet::Sy
     
     
     
+}
+
+void ServerListScene::onConnected(RakNet::Packet * p){
+    CCLOG("Connected to %s", p->systemAddress.ToString());
+    this->stopAction(searchServersAction);
+    this->stopAction(searchTextLoop);
+    
+    lblSearching->setString("Connected.");
+    
+    //TODO: show lobby scene
 }
 
 void ServerListScene::exitGame(Ref * pSender){
