@@ -52,7 +52,7 @@ bool Connector::startServer(int port){
     socketDescriptors[0].port = port;
     socketDescriptors[0].socketFamily=AF_INET; // IPV4
     bool b = server->Startup(MAX_PLAYERS, socketDescriptors, 1 )==RakNet::RAKNET_STARTED;
-    server->SetMaximumIncomingConnections(4);
+    server->SetMaximumIncomingConnections(MAX_PLAYERS);
     if (!b)
     {
         LOG("Server failed to start.");
@@ -94,6 +94,7 @@ bool Connector::startServer(int port){
 void Connector::stopServer(){
     if(server != nullptr){
         stopPacketProcessor();
+        server->Shutdown(1);
         RakNet::RakPeerInterface::DestroyInstance(server);
         server = nullptr;
     }
@@ -154,6 +155,7 @@ bool Connector::startClient(int port){
 void Connector::stopClient(){
     if(client != nullptr){
         stopPacketProcessor();
+        client->Shutdown(1); // unsigned int blockDuration ... ?
         RakNet::RakPeerInterface::DestroyInstance(client);
         client = nullptr;
     }
@@ -168,7 +170,9 @@ void Connector::connect(RakNet::SystemAddress serverAddress){
     char ip[4];
     serverAddress.ToString(false, ip);
     
-    client->Connect(ip, serverAddress.GetPort(), NULL, 0);
+    LOG("Server address: %s:%d\n", ip, serverAddress.GetPort());
+    
+    client->Connect(ip, serverAddress.GetPort(), INCOMING_PASSWORD, strlen(INCOMING_PASSWORD));
 }
 
 
@@ -204,6 +208,10 @@ void Connector::infiniteReceiveLoop(){
         {
             RakSleep(RAKNET_SLEEP);
             continue;
+        }
+        
+        if(server != nullptr){
+            LOG("Packet %d received\n", (char) p->data[0] );
         }
         
         // call appropriate callback function, if exists

@@ -73,4 +73,19 @@ void LobbyScene::initGUI(){
     
     this->addChild(txtServerName);
     
+    addPacketCallbacks();
+}
+
+void LobbyScene::addPacketCallbacks(){
+    
+    auto c = Connector::getInstance();
+
+    c->addPacketCallback(P_NEW_INCOMING_CONNECTION, RAKNET_CALLBACK_1(LobbyScene::onNewConnection, this));
+    
+}
+
+void LobbyScene::onNewConnection(RakNet::Packet * p){
+    
+    LOG("%s connected.\n", p->systemAddress.ToString());
+    
 }

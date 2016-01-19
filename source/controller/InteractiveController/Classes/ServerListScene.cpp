@@ -112,8 +112,6 @@ void ServerListScene::initGraphics(){
     serversView->setDirection( ui::ScrollView::Direction::VERTICAL );
     serversView->setContentSize( cocos2d::Size(monitor->getContentSize().width, monitor->getContentSize().width - 100) );
     serversView->setInnerContainerSize( cocos2d::Size(monitor->getContentSize().width, 800) );
-    
-    
 
 }
 
@@ -148,7 +146,8 @@ void ServerListScene::serverFound(RakNet::Packet * p){
     //TODO: addServerToMenu(name, p->systemAddress);
     
     CCLOG("%s (%s) in %dms", name->getCString(), p->systemAddress.ToString(), (RakNet::TimeMS) *p->data+1);
-    
+    CCLOG("Connecting...");
+    Connector::getInstance()->connect(p->systemAddress);
 }
 
 void ServerListScene::btnServerClicked(Ref * pSender){

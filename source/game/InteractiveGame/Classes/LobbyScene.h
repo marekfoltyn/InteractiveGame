@@ -2,6 +2,7 @@
 #define __LOBBY_SCENE_H__
 
 #include "cocos2d.h"
+#include "RakPeerInterface.h"
 
 class LobbyScene : public cocos2d::Layer
 {
@@ -15,6 +16,9 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(LobbyScene);
     
+    // New incoming connection
+    void onNewConnection(RakNet::Packet * p);
+    
 private:
     
     // start the server stuff
@@ -22,6 +26,9 @@ private:
     
     // start the graphics stuff
     void initGUI();
+    
+    // Set up callback function to process packets
+    void addPacketCallbacks();
     
     void setDebugOutputEnabled(bool enabled);
 };
