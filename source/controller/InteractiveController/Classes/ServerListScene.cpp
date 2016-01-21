@@ -7,6 +7,8 @@
 #include "Connector.h"
 #include "Definitions.h"
 
+#include <map>
+
 USING_NS_CC;
 
 using namespace cocostudio::timeline;
@@ -130,8 +132,42 @@ void ServerListScene::searchLabelThreeDots(){
 }
 
 void ServerListScene::findServers(){
+    
+    decreaseServerLifetimes();
+    
     CCLOG("Searching for servers...");
     Connector::getInstance()->FindServers();
+    
+}
+
+void ServerListScene::decreaseServerLifetimes(){
+    
+    for(std::map<int, ServerMapEntry*>::iterator i = serverMap.begin(); i != serverMap.end(); i++) {
+        // iterator->first = key
+        // iterator->second = value
+
+        i->second->inactiveSeconds++;
+        
+        CCLOG("%s lifetime set to %d", i->second->address->ToString(), (int) i->second->inactiveSeconds);
+        
+        if( i->second->inactiveSeconds >= SERVER_MENU_LIFETIME){
+
+            //delete
+            //CCLOG("%s removed for inactivity.",i->second->address->ToString());
+            serverMap.erase(i->first);
+            
+            
+            //TODO: delete menu entry
+            
+            
+            if(serverMap.size() == 0){
+                // Stop iterating
+                return;
+            }
+        }
+        
+    }
+    
 }
 
 void ServerListScene::serverFound(RakNet::Packet * p){
@@ -144,23 +180,39 @@ void ServerListScene::serverFound(RakNet::Packet * p){
         lblServerName->setString(name->getCString());
     }*/
     
-    //TODO: addServerToMenu(name, p->systemAddress);
+    addOrUpdateServer(name, &p->systemAddress);
     
     CCLOG("%s (%s) in %dms", name->getCString(), p->systemAddress.ToString(), (RakNet::TimeMS) *p->data+1);
-    CCLOG("Connecting...");
-    Connector::getInstance()->connect(p->systemAddress);
 }
 
 void ServerListScene::btnServerClicked(Ref * pSender){
     
-    //CCLOG("Trying to connect...");
-    //Connector::getInstance()->connect(address);
+    //CCLOG("Connecting...");
+    //Connector::getInstance()->connect(p->systemAddress);
     
 }
 
-void ServerListScene::addOrUpdateServer(cocos2d::__String serverName, RakNet::SystemAddress * address){
+void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::SystemAddress * address){
     
+    int hash = (int) RakNet::SystemAddress::ToInteger( *address );
     
+    if( serverMap.count( hash ) == 0 ){
+
+        // create new entry
+        ServerMapEntry * s = new ServerMapEntry();
+        s->inactiveSeconds = 0;
+        s->address = new RakNet::SystemAddress(*address); // copy adress (packet will be deallocated)
+        
+        serverMap[hash] = s;
+        CCLOG("%s added.", serverName->getCString());
+        
+        //TODO: add to menu
+        
+    } else {
+        // server already exists - refresh server lifetime
+        auto s = serverMap[hash];
+        s->inactiveSeconds = 0;
+    }
     
 }
 

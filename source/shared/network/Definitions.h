@@ -27,6 +27,9 @@
 // find servers repeat time (in seconds)
 #define FIND_SERVER_REPEAT_TIME 1
 
+// server lifetime - time to disappear from menu after not responsing to ping (in seconds)
+#define SERVER_MENU_LIFETIME 3
+
 
 /////////////////// Message types  ///////////////////
 

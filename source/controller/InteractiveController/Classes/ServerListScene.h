@@ -60,9 +60,10 @@ private:
     std::map<int, ServerMapEntry*> serverMap;
     
     // add new menu item to scroll view, updates if exists
-    void addOrUpdateServer(cocos2d::__String serverName, RakNet::SystemAddress * address);
+    void addOrUpdateServer(cocos2d::__String * serverName, RakNet::SystemAddress * address);
     
-    
+    // every "server search" decreases servers lifetimes (when not responding -> delete from menu)
+    void decreaseServerLifetimes();
 };
 
 #endif // __SERVERLIST_SCENE_H__
