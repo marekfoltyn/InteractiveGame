@@ -51,7 +51,8 @@ public:
     
 private:
     cocos2d::Label * lblSearching;
-    cocos2d::ui::ScrollView * serversView;
+    cocos2d::Menu * menu;
+    cocos2d::Menu * serverMenu;
     cocos2d::RepeatForever * searchServersAction;
     cocos2d::RepeatForever * searchTextLoop;
     

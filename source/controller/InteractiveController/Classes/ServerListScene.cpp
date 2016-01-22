@@ -86,7 +86,7 @@ void ServerListScene::initGraphics(){
     //this->addChild(btnExit); // no, because it will be part of menu
     
     // menu
-    auto menu = Menu::create(btnExit, nullptr);
+    menu = Menu::create(btnExit, nullptr);
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu);
     
@@ -111,14 +111,26 @@ void ServerListScene::initGraphics(){
     this->runAction(searchTextLoop);
     
     // Server names menu
-    serversView = ui::ScrollView::create();
+    /*serversView = ui::ScrollView::create();
     serversView->setDirection( ui::ScrollView::Direction::VERTICAL );
     serversView->setContentSize( cocos2d::Size(visibleSize.height, visibleSize.height) );
     serversView->setInnerContainerSize( cocos2d::Size(visibleSize.height, visibleSize.height) );
     serversView->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
     serversView->setAnchorPoint(Vec2(0.5, 0.5));
-    serversView->setBounceEnabled(true);
-    this->addChild(serversView);
+    serversView->setBounceEnabled(true);*/
+    
+    //serversView->addChild(serverMenu);
+    //this->addChild(serversView);
+    
+    
+/*    auto label = Label::createWithTTF("Ahojky", "8-Bit-Madness.ttf", visibleSize.height/12);
+    //auto item = MenuItemFont::create(name, CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
+    auto item = MenuItemLabel::create(label, CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
+    item->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
+    
+    auto menu = Menu::create(item, NULL);
+    menu->setPosition(Vec2::ZERO);
+    this->addChild(menu);*/
 
 }
 
@@ -158,17 +170,14 @@ void ServerListScene::decreaseServerLifetimes(){
 
             //delete
             //CCLOG("%s removed for inactivity.",i->second->address->ToString());
-            serverMap.erase(i->first);
             
             //TODO: delete menu entry
-            auto label = (Label *) serversView->getChildByTag( (int) RakNet::SystemAddress::ToInteger( * (i->second->address) ));
-            if(label==nullptr){
-                continue;
-            }
-            serversView->removeChild(label);
+            //auto label = (MenuItemLabel *) serverMenu->getChildByTag( (int) RakNet::SystemAddress::ToInteger( * (i->second->address) ));
+            //serverMenu->removeChild(label, true);
+            //serverMap.erase(i->first);
             
-            if(serverMap.size() == 0){
-                // Stop iterating
+            // if missing this, when only one server, app breaks
+            if( serverMap.size() == 0 || i == serverMap.end() ){
                 return;
             }
         }
@@ -194,7 +203,7 @@ void ServerListScene::serverFound(RakNet::Packet * p){
 
 void ServerListScene::btnServerClicked(Ref * pSender){
     
-    //CCLOG("Connecting...");
+    CCLOG("Connecting...");
     //Connector::getInstance()->connect(p->systemAddress);
     
 }
@@ -215,12 +224,28 @@ void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::
         serverMap[hash] = s;
         CCLOG("%s added.", serverName->getCString());
         
-        // add to menu
-        std::string name(serverName->getCString());
-        auto lblServer = Label::createWithTTF(name, "8-Bit-Madness.ttf", visibleSize.height/12);
-        lblServer->setTag( (int) RakNet::SystemAddress::ToInteger( *address ) );
-        lblServer->setPosition(Vec2( serversView->getInnerContainerSize().width/2, serversView->getInnerContainerSize().height - (serverMap.size()+2) * visibleSize.height/12 ));
-        serversView->addChild(lblServer);
+        /*std::string name(serverName->getCString());
+        int tag = (int) RakNet::SystemAddress::ToInteger( *address );
+        
+        auto label = Label::createWithTTF(name, "8-Bit-Madness.ttf", visibleSize.height/12);
+        //auto item = MenuItemFont::create(name, CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
+        auto item = MenuItemLabel::create(label, CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
+        item->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
+        
+        auto menu = Menu::create(item, NULL);
+        menu->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
+        this->addChild(menu);*/
+        
+        
+        auto label = Label::createWithTTF("Ahojky", "8-Bit-Madness.ttf", visibleSize.height/12);
+        //auto item = MenuItemFont::create(name, CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
+        auto item = MenuItemLabel::create(label, CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
+        item->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
+        
+        auto menu = Menu::create(item, NULL);
+        menu->setPosition(Vec2::ZERO);
+        this->addChild(menu);
+        
         
     } else {
         // server already exists - refresh server lifetime
