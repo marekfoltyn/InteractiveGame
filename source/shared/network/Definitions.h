@@ -25,7 +25,7 @@
 #define RAKNET_SLEEP 30
 
 // find servers repeat time (in seconds)
-#define FIND_SERVER_REPEAT_TIME 1
+#define FIND_SERVER_REPEAT_TIME 0.5
 
 // server lifetime - time to disappear from menu after not responsing to ping (in seconds)
 #define SERVER_MENU_LIFETIME 3

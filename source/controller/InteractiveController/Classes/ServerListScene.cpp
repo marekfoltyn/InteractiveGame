@@ -113,8 +113,12 @@ void ServerListScene::initGraphics(){
     // Server names menu
     serversView = ui::ScrollView::create();
     serversView->setDirection( ui::ScrollView::Direction::VERTICAL );
-    serversView->setContentSize( cocos2d::Size(monitor->getContentSize().width, monitor->getContentSize().width - 100) );
-    serversView->setInnerContainerSize( cocos2d::Size(monitor->getContentSize().width, 800) );
+    serversView->setContentSize( cocos2d::Size(visibleSize.height, visibleSize.height) );
+    serversView->setInnerContainerSize( cocos2d::Size(visibleSize.height, visibleSize.height) );
+    serversView->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
+    serversView->setAnchorPoint(Vec2(0.5, 0.5));
+    serversView->setBounceEnabled(true);
+    this->addChild(serversView);
 
 }
 
@@ -156,9 +160,12 @@ void ServerListScene::decreaseServerLifetimes(){
             //CCLOG("%s removed for inactivity.",i->second->address->ToString());
             serverMap.erase(i->first);
             
-            
             //TODO: delete menu entry
-            
+            auto label = (Label *) serversView->getChildByTag( (int) RakNet::SystemAddress::ToInteger( * (i->second->address) ));
+            if(label==nullptr){
+                continue;
+            }
+            serversView->removeChild(label);
             
             if(serverMap.size() == 0){
                 // Stop iterating
@@ -193,7 +200,9 @@ void ServerListScene::btnServerClicked(Ref * pSender){
 }
 
 void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::SystemAddress * address){
-    
+
+    auto visibleSize = Director::getInstance()->getVisibleSize();
+    auto origin = Director::getInstance()->getVisibleOrigin();
     int hash = (int) RakNet::SystemAddress::ToInteger( *address );
     
     if( serverMap.count( hash ) == 0 ){
@@ -206,7 +215,12 @@ void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::
         serverMap[hash] = s;
         CCLOG("%s added.", serverName->getCString());
         
-        //TODO: add to menu
+        // add to menu
+        std::string name(serverName->getCString());
+        auto lblServer = Label::createWithTTF(name, "8-Bit-Madness.ttf", visibleSize.height/12);
+        lblServer->setTag( (int) RakNet::SystemAddress::ToInteger( *address ) );
+        lblServer->setPosition(Vec2( serversView->getInnerContainerSize().width/2, serversView->getInnerContainerSize().height - (serverMap.size()+2) * visibleSize.height/12 ));
+        serversView->addChild(lblServer);
         
     } else {
         // server already exists - refresh server lifetime
