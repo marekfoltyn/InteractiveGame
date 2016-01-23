@@ -60,6 +60,15 @@ private:
     // key - hash of the system address
     std::map<int, ServerMapEntry*> serverMap;
     
+    // periodically send broadcast ping to find servers
+    void startPing();
+    
+    // one ping send
+    void ping();
+    
+    // stop pinging action
+    void stopPing();
+    
     // add new menu item to scroll view, updates if exists
     void addOrUpdateServer(cocos2d::__String * serverName, RakNet::SystemAddress * address);
     

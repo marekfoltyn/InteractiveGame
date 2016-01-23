@@ -31,33 +31,17 @@ Scene * ServerListScene::createScene()
 // on "init" you need to initialize your instance
 bool ServerListScene::init()
 {
-    //////////////////////////////
     // 1. super init first
-    if ( !Layer::init() )
-    {
+    if( Layer::init() == false ){
         return false;
     }
     
-    //auto rootNode = CSLoader::createNode("MainScene.csb");
-    //addChild(rootNode);
-    
-    auto c = Connector::getInstance();
-    
-    // search for servers every second
-    auto foundCallback = CallFunc::create(CC_CALLBACK_0(ServerListScene::findServers, this));
-    auto delay = DelayTime::create(FIND_SERVER_REPEAT_TIME);
-    auto sequence = Sequence::create(delay, foundCallback, nullptr);
-    searchServersAction = RepeatForever::create(sequence);
-    this->runAction(searchServersAction);
-    
     initGraphics();
-    
-    CCLOG("Searching for servers");
-    c->addPacketCallback(P_SERVER_NAME, RAKNET_CALLBACK_1(ServerListScene::serverFound, this));
-    c->addPacketCallback(P_CONNECTED, RAKNET_CALLBACK_1(ServerListScene::onConnected, this));
+    startPing();
     
     return true;
 }
+
 
 void ServerListScene::initGraphics(){
     
@@ -78,7 +62,6 @@ void ServerListScene::initGraphics(){
     monitor->setPosition(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2);
     this->addChild(monitor);
     
-    
     // exit button
     auto btnExit = MenuItemImage::create("exit_button.png", "exit_button_pressed.png", CC_CALLBACK_1(ServerListScene::exitGame, this));
     btnExit->setScale(2);
@@ -98,41 +81,57 @@ void ServerListScene::initGraphics(){
     // dots changing
     auto delay = DelayTime::create(0.5);
     auto sequence = Sequence::create(
-        CallFunc::create(CC_CALLBACK_0(ServerListScene::searchLabelNoDot,this)),
-        delay,
-        CallFunc::create(CC_CALLBACK_0(ServerListScene::searchLabelOneDot,this)),
-        delay->clone(),
-        CallFunc::create(CC_CALLBACK_0(ServerListScene::searchLabelTwoDots,this)),
-        delay->clone(),
-        CallFunc::create(CC_CALLBACK_0(ServerListScene::searchLabelThreeDots,this)),
-        delay->clone(),
-        nullptr );
+                                     CallFunc::create(CC_CALLBACK_0(ServerListScene::searchLabelNoDot,this)),
+                                     delay,
+                                     CallFunc::create(CC_CALLBACK_0(ServerListScene::searchLabelOneDot,this)),
+                                     delay->clone(),
+                                     CallFunc::create(CC_CALLBACK_0(ServerListScene::searchLabelTwoDots,this)),
+                                     delay->clone(),
+                                     CallFunc::create(CC_CALLBACK_0(ServerListScene::searchLabelThreeDots,this)),
+                                     delay->clone(),
+                                     nullptr );
     searchTextLoop = RepeatForever::create(sequence);
     this->runAction(searchTextLoop);
     
     // Server names menu
     /*serversView = ui::ScrollView::create();
-    serversView->setDirection( ui::ScrollView::Direction::VERTICAL );
-    serversView->setContentSize( cocos2d::Size(visibleSize.height, visibleSize.height) );
-    serversView->setInnerContainerSize( cocos2d::Size(visibleSize.height, visibleSize.height) );
-    serversView->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
-    serversView->setAnchorPoint(Vec2(0.5, 0.5));
-    serversView->setBounceEnabled(true);*/
+     serversView->setDirection( ui::ScrollView::Direction::VERTICAL );
+     serversView->setContentSize( cocos2d::Size(visibleSize.height, visibleSize.height) );
+     serversView->setInnerContainerSize( cocos2d::Size(visibleSize.height, visibleSize.height) );
+     serversView->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
+     serversView->setAnchorPoint(Vec2(0.5, 0.5));
+     serversView->setBounceEnabled(true);*/
     
     //serversView->addChild(serverMenu);
     //this->addChild(serversView);
     
     
-/*    auto label = Label::createWithTTF("Ahojky", "8-Bit-Madness.ttf", visibleSize.height/12);
-    //auto item = MenuItemFont::create(name, CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
-    auto item = MenuItemLabel::create(label, CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
-    item->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
+    /*    auto label = Label::createWithTTF("Ahojky", "8-Bit-Madness.ttf", visibleSize.height/12);
+     //auto item = MenuItemFont::create(name, CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
+     auto item = MenuItemLabel::create(label, CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
+     item->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
+     
+     auto menu = Menu::create(item, NULL);
+     menu->setPosition(Vec2::ZERO);
+     this->addChild(menu);*/
     
-    auto menu = Menu::create(item, NULL);
-    menu->setPosition(Vec2::ZERO);
-    this->addChild(menu);*/
-
 }
+
+
+void ServerListScene::startPing(){
+    
+    auto findCallback = CallFunc::create(CC_CALLBACK_0(ServerListScene::findServers, this));
+    auto delay = DelayTime::create(FIND_SERVER_REPEAT_TIME);
+    auto sequence = Sequence::create(findCallback, delay, nullptr);
+    searchServersAction = RepeatForever::create(sequence);
+    this->runAction(searchServersAction);
+}
+
+void ServerListScene::stopPing(){
+    
+    this->stopAction(searchServersAction);
+}
+
 
 void ServerListScene::searchLabelNoDot(){
     lblSearching->setString("Searching servers");
@@ -147,13 +146,13 @@ void ServerListScene::searchLabelThreeDots(){
     lblSearching->setString("Searching servers...");
 }
 
+
 void ServerListScene::findServers(){
     
-    decreaseServerLifetimes();
+    Connector::getInstance()->ping();
+    decreaseServerLifetimes(); // refresh actually found servers
     
     CCLOG("Searching for servers...");
-    Connector::getInstance()->FindServers();
-    
 }
 
 void ServerListScene::decreaseServerLifetimes(){
@@ -266,7 +265,7 @@ void ServerListScene::onConnected(RakNet::Packet * p){
 }
 
 void ServerListScene::exitGame(Ref * pSender){
-    Connector::getInstance()->stopClient();
+    Connector::getInstance()->stop();
     Director::getInstance()->end();
     exit(0);
 }
