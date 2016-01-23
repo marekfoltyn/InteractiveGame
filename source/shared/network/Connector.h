@@ -3,12 +3,6 @@
 
 #include "MessageIdentifiers.h"
 #include "RakPeerInterface.h"
-#include "RakSleep.h"
-#include "GetTime.h"
-#include "BitStream.h"
-
-#include <thread>
-#include <map>
 
 /**
  * @brief     Singleton class responsible for entire network communication.
@@ -74,7 +68,7 @@ public:
 private:
     
     // Hidden singleton constructor
-    Connector();
+    Connector(){};
     
     // RakNet interface
     RakNet::RakPeerInterface * interface = nullptr;

@@ -49,7 +49,7 @@ bool LobbyScene::init()
 void LobbyScene::initServer(){
     
     // run async Connector (as a server)
-    bool started = Connector::getInstance()->startServer(SERVER_PORT);
+    bool started = Connector::getInstance()->startAsServer(MAX_PLAYERS);
     
     if(!started){
         CCLOG("Server not started!");
@@ -57,7 +57,7 @@ void LobbyScene::initServer(){
         return;
     }
     
-    Connector::getInstance()->setServerName("InteractiveGame", strlen("InteractiveGame")+1); // +1 ... C string ending
+    Connector::getInstance()->setServerName("InteractiveGame");
     
 }
 
@@ -78,9 +78,9 @@ void LobbyScene::initGUI(){
 
 void LobbyScene::addPacketCallbacks(){
     
-    auto c = Connector::getInstance();
+    //auto c = Connector::getInstance();
 
-    c->addPacketCallback(P_NEW_INCOMING_CONNECTION, RAKNET_CALLBACK_1(LobbyScene::onNewConnection, this));
+    //c->addPacketCallback(P_NEW_INCOMING_CONNECTION, RAKNET_CALLBACK_1(LobbyScene::onNewConnection, this));
     
 }
 

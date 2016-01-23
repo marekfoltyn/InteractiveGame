@@ -46,6 +46,8 @@
 		EA5CA2C51C3FC724003437FF /* Connector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5CA2C11C3FC724003437FF /* Connector.cpp */; };
 		EA5CA2CA1C3FC90D003437FF /* raknetx86_64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5CA2C91C3FC90D003437FF /* raknetx86_64.a */; };
 		EA5CA2CB1C3FC933003437FF /* raknetx86_64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5CA2C91C3FC90D003437FF /* raknetx86_64.a */; };
+		EA6D036E1C53D6D8003A08BE /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA6D036C1C53D6D8003A08BE /* Block.cpp */; };
+		EA6D036F1C53D6D8003A08BE /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA6D036C1C53D6D8003A08BE /* Block.cpp */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +91,8 @@
 		EA5CA2C21C3FC724003437FF /* Connector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Connector.h; path = ../../../shared/network/Connector.h; sourceTree = "<group>"; };
 		EA5CA2C31C3FC724003437FF /* Definitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Definitions.h; path = ../../../shared/network/Definitions.h; sourceTree = "<group>"; };
 		EA5CA2C91C3FC90D003437FF /* raknetx86_64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = raknetx86_64.a; path = ../../../shared/network/raknet/raknetx86_64.a; sourceTree = "<group>"; };
+		EA6D036C1C53D6D8003A08BE /* Block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Block.cpp; path = ../../../shared/network/Block.cpp; sourceTree = "<group>"; };
+		EA6D036D1C53D6D8003A08BE /* Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Block.h; path = ../../../shared/network/Block.h; sourceTree = "<group>"; };
 		EA76BC881C32CCA900F2531F /* GameDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDefinitions.h; sourceTree = "<group>"; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
@@ -242,9 +246,11 @@
 		EA4189151C33C2C9004B8934 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				EA5CA2C11C3FC724003437FF /* Connector.cpp */,
 				EA5CA2C21C3FC724003437FF /* Connector.h */,
+				EA5CA2C11C3FC724003437FF /* Connector.cpp */,
 				EA5CA2C31C3FC724003437FF /* Definitions.h */,
+				EA6D036D1C53D6D8003A08BE /* Block.h */,
+				EA6D036C1C53D6D8003A08BE /* Block.cpp */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -365,6 +371,7 @@
 				EA5CA2C41C3FC724003437FF /* Connector.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				46880B8B19C43A87006E1F66 /* LobbyScene.cpp in Sources */,
+				EA6D036E1C53D6D8003A08BE /* Block.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +380,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA41894C1C342C4B004B8934 /* TestDelegate.cpp in Sources */,
+				EA6D036F1C53D6D8003A08BE /* Block.cpp in Sources */,
 				EA41894D1C342C4B004B8934 /* TestScene.cpp in Sources */,
 				EA4189301C342867004B8934 /* main.cpp in Sources */,
 				EA4189311C342867004B8934 /* LobbyScene.cpp in Sources */,

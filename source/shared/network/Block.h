@@ -3,12 +3,9 @@
 
 #include "MessageIdentifiers.h"
 #include "RakPeerInterface.h"
-#include "RakSleep.h"
-#include "GetTime.h"
-#include "BitStream.h"
-
-#include <thread>
-#include <map>
+//#include "RakSleep.h"
+//#include "GetTime.h"
+//#include "BitStream.h"
 
 /**
  * Representation of game message to be sent to network.

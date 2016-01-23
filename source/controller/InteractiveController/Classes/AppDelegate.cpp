@@ -1,12 +1,11 @@
 #include "AppDelegate.h"
 #include "ServerListScene.h"
-#include "Connector.h"
-#include "Definitions.h"
+//#include "Connector.h"
+//#include "Definitions.h"
 
 USING_NS_CC;
 
 AppDelegate::AppDelegate() {
-
 }
 
 AppDelegate::~AppDelegate() 
@@ -47,7 +46,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto scene = ServerListScene::createScene();
 
     // start networking
-    Connector::getInstance()->startClient(CLIENT_PORT);
+    //Connector::getInstance()->start();
     
     
     // run
@@ -60,9 +59,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
 void AppDelegate::applicationDidEnterBackground() {
     Director::getInstance()->stopAnimation();
     
-    // in Android, packet thread is runnning even when app exited via home button (and swiped away)
-    Connector::getInstance()->stopPacketProcessor();
-    
     // if you use SimpleAudioEngine, it must be pause
     // SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
 }
@@ -70,8 +66,6 @@ void AppDelegate::applicationDidEnterBackground() {
 // this function will be called when the app is active again
 void AppDelegate::applicationWillEnterForeground() {
     Director::getInstance()->startAnimation();
-    
-    Connector::getInstance()->startPacketProcessor();
 
     // if you use SimpleAudioEngine, it must resume here
     // SimpleAudioEngine::getInstance()->resumeBackgroundMusic();

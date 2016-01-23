@@ -7,7 +7,7 @@
 #include "cocos2d.h"
 #include "extensions/cocos-ext.h"
 #include "ui/CocosGUI.h"
-#include "RakPeerInterface.h"
+//#include "RakPeerInterface.h"
 
 class LobbyScene : public cocos2d::Layer
 {

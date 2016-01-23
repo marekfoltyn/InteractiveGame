@@ -7,6 +7,8 @@
 //
 
 #include "Block.h"
+#include "MessageIdentifiers.h"
+#include "RakPeerInterface.h"
 
 Block::Block(const char * d, unsigned int len ){
     
@@ -39,7 +41,7 @@ unsigned char Block::getType(){
 
 
 void Block::setReliability( PacketReliability r ){
-
+    
     reliability = r;
 }
 
@@ -51,7 +53,7 @@ PacketReliability Block::getReliability(){
 
 
 void Block::setPriority( PacketPriority p ){
-
+    
     priority = p;
 }
 
@@ -97,7 +99,7 @@ const int Block::getPacketLength(){
 
 
 void Block::dealloc(){
-
+    
     delete [] data;
 }
 

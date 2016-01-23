@@ -4,10 +4,6 @@
 
 #include "MessageIdentifiers.h"
 #include "RakPeerInterface.h"
-#include "RakNetTypes.h"
-#include "GetTime.h"
-#include "BitStream.h"
-#include "RakSleep.h"
 
 #include <assert.h>
 #include <cstdio>
@@ -24,9 +20,6 @@ Connector * Connector::getInstance(){
     }
     return instance;
 }
-
-
-Connector::Connector(){}
 
 
 bool Connector::start(){
@@ -57,13 +50,15 @@ bool Connector::startAsServer(unsigned short maxPlayers){
     }
     
     // logging used socket addresses
+    
     DataStructures::List< RakNet::RakNetSocket2* > sockets;
     interface->GetSockets(sockets);
-    LOG("Socket addresses used by Connector:\n==========================\n");
+    
+    /*LOG("Socket addresses used by Connector:\n==========================\n");
     for (unsigned int i=0; i < sockets.Size(); i++)
     {
         LOG("%i. %s\n", i+1, sockets[i]->GetBoundAddress().ToString(true));
-    }
+    }*/
     
     LOG("\nMy IP addresses:\n");
     for (unsigned int i=0; i < interface->GetNumberOfAddresses(); i++)
