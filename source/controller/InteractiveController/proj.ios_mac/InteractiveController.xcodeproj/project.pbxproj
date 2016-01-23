@@ -171,6 +171,7 @@
 		EA651EFE1C46DD68003EE325 /* VariadicSQLParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA651E901C46DD68003EE325 /* VariadicSQLParser.cpp */; };
 		EA651EFF1C46DD68003EE325 /* VitaIncludes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA651E911C46DD68003EE325 /* VitaIncludes.cpp */; };
 		EA651F001C46DD68003EE325 /* WSAStartupSingleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA651E921C46DD68003EE325 /* WSAStartupSingleton.cpp */; };
+		EA6D036B1C53A3D2003A08BE /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA6D03691C53A3D2003A08BE /* Block.cpp */; };
 		EADD22BC1C4EAEFA00A939CB /* LobbyScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EADD22BA1C4EAEFA00A939CB /* LobbyScene.cpp */; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
@@ -500,6 +501,8 @@
 		EA651E901C46DD68003EE325 /* VariadicSQLParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VariadicSQLParser.cpp; path = ../../../shared/network/raknet/VariadicSQLParser.cpp; sourceTree = "<group>"; };
 		EA651E911C46DD68003EE325 /* VitaIncludes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VitaIncludes.cpp; path = ../../../shared/network/raknet/VitaIncludes.cpp; sourceTree = "<group>"; };
 		EA651E921C46DD68003EE325 /* WSAStartupSingleton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WSAStartupSingleton.cpp; path = ../../../shared/network/raknet/WSAStartupSingleton.cpp; sourceTree = "<group>"; };
+		EA6D03691C53A3D2003A08BE /* Block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Block.cpp; path = ../../../shared/network/Block.cpp; sourceTree = "<group>"; };
+		EA6D036A1C53A3D2003A08BE /* Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Block.h; path = ../../../shared/network/Block.h; sourceTree = "<group>"; };
 		EADD22BA1C4EAEFA00A939CB /* LobbyScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LobbyScene.cpp; sourceTree = "<group>"; };
 		EADD22BB1C4EAEFA00A939CB /* LobbyScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LobbyScene.h; sourceTree = "<group>"; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
@@ -976,8 +979,10 @@
 		EA41891A1C33C309004B8934 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				EA651D851C46DB5B003EE325 /* Connector.cpp */,
 				EA651D861C46DB5B003EE325 /* Connector.h */,
+				EA651D851C46DB5B003EE325 /* Connector.cpp */,
+				EA6D036A1C53A3D2003A08BE /* Block.h */,
+				EA6D03691C53A3D2003A08BE /* Block.cpp */,
 				EA651D871C46DB5B003EE325 /* Definitions.h */,
 			);
 			name = Network;
@@ -1144,6 +1149,7 @@
 				EA651EFA1C46DD68003EE325 /* UDPProxyCoordinator.cpp in Sources */,
 				EA651EA01C46DD68003EE325 /* DR_SHA1.cpp in Sources */,
 				EA651EE31C46DD68003EE325 /* RelayPlugin.cpp in Sources */,
+				EA6D036B1C53A3D2003A08BE /* Block.cpp in Sources */,
 				EA651EA51C46DD68003EE325 /* DynDNS.cpp in Sources */,
 				EA651E9D1C46DD68003EE325 /* ConsoleServer.cpp in Sources */,
 				EA651EC51C46DD68003EE325 /* PacketLogger.cpp in Sources */,

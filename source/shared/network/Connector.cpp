@@ -1,5 +1,6 @@
 #include "Connector.h"
 #include "Definitions.h"
+#include "Block.h"
 
 #include "MessageIdentifiers.h"
 #include "RakPeerInterface.h"
@@ -14,241 +15,150 @@
 #include <string>
 #include <stdlib.h>
 
-// initialize static variable
 Connector * Connector::instance = nullptr;
 
-// getting singleton instance
-Connector * Connector::getInstance(){
 
+Connector * Connector::getInstance(){
     if(instance == nullptr) {
         instance = new Connector();
     }
     return instance;
 }
 
-/**
- *  Constructor, now does nothing
- */
-Connector::Connector(){
-    loopIsActive = false;
+
+Connector::Connector(){}
+
+
+bool Connector::start(){
+    return startAsServer(1);
 }
 
-/**
- *  Starts a server
- */
-bool Connector::startServer(int port){
 
-    server = RakNet::RakPeerInterface::GetInstance();
-    server->SetTimeoutTime(CONNECTION_LOST_TIMEOUT, RakNet::UNASSIGNED_SYSTEM_ADDRESS);
-    server->SetIncomingPassword(INCOMING_PASSWORD, strlen(INCOMING_PASSWORD));
+bool Connector::startAsServer(unsigned short maxPlayers){
+
+    // raknet interface configuration
+    interface = RakNet::RakPeerInterface::GetInstance();
+    interface->SetTimeoutTime(CONNECTION_LOST_TIMEOUT, RakNet::UNASSIGNED_SYSTEM_ADDRESS);
+    interface->SetIncomingPassword(0,0); // nullptr, pass length
+    interface->SetOccasionalPing(true);
+    interface->SetUnreliableTimeout(CONNECTION_LOST_TIMEOUT);
     
-    LOG("Starting server.\n");
-    
-    // Starting the server is very simple.
-    // 0 means we don't care about a connectionValidationInteger, and false
-    // for low priority threads.
-    
+    // socket descriptor settings
     RakNet::SocketDescriptor socketDescriptors[1];
-    socketDescriptors[0].port = port;
+    socketDescriptors[0].port = (maxPlayers>1) ? SERVER_PORT : CLIENT_PORT;
     socketDescriptors[0].socketFamily=AF_INET; // IPV4
-    bool b = server->Startup(MAX_PLAYERS, socketDescriptors, 1 )==RakNet::RAKNET_STARTED;
-    server->SetMaximumIncomingConnections(MAX_PLAYERS);
-    if (!b)
-    {
-        LOG("Server failed to start.");
-        RakNet::RakPeerInterface::DestroyInstance(server);
-        server = nullptr;
+    bool result = interface->Startup(maxPlayers, socketDescriptors, 1 ) == RakNet::RAKNET_STARTED; // last arg is socketDescriptor count
+    interface->SetMaximumIncomingConnections(maxPlayers);
+    if (result == false){
+        LOG("Server failed to start.\n");
+        RakNet::RakPeerInterface::DestroyInstance(interface);
+        interface = nullptr;
         return false;
     }
-    LOG("\n");
     
-    server->SetOccasionalPing(true);
-    server->SetUnreliableTimeout(CONNECTION_LOST_TIMEOUT);
-    
+    // logging used socket addresses
     DataStructures::List< RakNet::RakNetSocket2* > sockets;
-    server->GetSockets(sockets);
-    LOG("Socket addresses used by RakNet:\n");
+    interface->GetSockets(sockets);
+    LOG("Socket addresses used by Connector:\n==========================\n");
     for (unsigned int i=0; i < sockets.Size(); i++)
     {
         LOG("%i. %s\n", i+1, sockets[i]->GetBoundAddress().ToString(true));
     }
     
     LOG("\nMy IP addresses:\n");
-    for (unsigned int i=0; i < server->GetNumberOfAddresses(); i++)
+    for (unsigned int i=0; i < interface->GetNumberOfAddresses(); i++)
     {
-        RakNet::SystemAddress sa = server->GetInternalID(RakNet::UNASSIGNED_SYSTEM_ADDRESS, i);
+        RakNet::SystemAddress sa = interface->GetInternalID(RakNet::UNASSIGNED_SYSTEM_ADDRESS, i);
         LOG("%i. %s:%i\n", i+1, sa.ToString(false), sa.GetPort());
     }
     
+    // server name
+    if(maxPlayers>1){
+        interface->SetOfflinePingResponse("Unnamed Server", strlen("Unnamed Server")+1); // '\0' is automatically added in "hello"
+    }
     
-    server->SetOfflinePingResponse("Unnamed Server", strlen("Unnamed Server")+1);
-    
-    startPacketProcessor();
-
     return true;
 }
 
-/**
- * Stops the client
- */
-void Connector::stopServer(){
-    if(server != nullptr){
-        stopPacketProcessor();
-        //server->Shutdown(1);
-        //RakNet::RakPeerInterface::DestroyInstance(server);
-        server = nullptr;
-    }
-}
 
-void Connector::setServerName(const char * name, int len){
-    if(server == nullptr){
+void Connector::stop(){
+    
+    if (interface == nullptr) {
         return;
     }
     
-    server->SetOfflinePingResponse(name, len);
+    interface->Shutdown(0); // 0 ... dont wait for stopping connections
+    RakNet::RakPeerInterface::DestroyInstance(interface);
+    interface = nullptr;
 }
+
+
+void Connector::connect( RakNet::SystemAddress server ){
+   
+    if(interface==nullptr){
+        LOG("Client is not started!");
+        return;
+    }
+    
+    char ip[4];
+    server.ToString(false, ip);
+    interface->Connect(ip, server.GetPort(), nullptr, 0); // no password -> nullptr, 0
+}
+
+
+void Connector::disconnect( RakNet::SystemAddress address ){
+    if (nullptr) {
+        return;
+    }
+    interface->CloseConnection(address, true); // true ... send disconnection notification
+}
+
+
+void Connector::send(Block * b){
+    if(interface == nullptr){
+        return;
+    }
+    
+    interface->Send( b->getPacketData(), b->getPacketLength(), b->getPriority(), b->getReliability(), 0, b->getAddress(), false);
+}
+
+
+RakNet::Packet * Connector::receive(){
+    
+    if(interface == nullptr) {
+        return 0;
+    }
+    
+    return interface->Receive();
+}
+
+
+void Connector::setServerName(std::string name){
+    if(interface == nullptr){
+        return;
+    }
+    
+    interface->SetOfflinePingResponse(name.c_str(), (unsigned int) name.length()+1 );
+}
+
+
 std::string Connector::getServerName(){
-    if(server == nullptr){
+    if(interface == nullptr){
         LOG("Server not started - no name!");
         return "";
     }
     
     char * name;
     unsigned int len;
-    server->GetOfflinePingResponse(&name, &len);
-    
+    interface->GetOfflinePingResponse(&name, &len);
     return name;
-    
 }
 
+void Connector::ping(){
 
-/**
- *  Starts a client
- */
-bool Connector::startClient(int port){
-    
-    client = RakNet::RakPeerInterface::GetInstance();
-    RakNet::SocketDescriptor socketDescriptor( port, 0 );
-    socketDescriptor.socketFamily = AF_INET; // Only IPV4 supports broadcast on 255.255.255.255
-    auto b = client->Startup(1, &socketDescriptor, 1);
-    if(b != RakNet::RAKNET_STARTED){
-        LOG("Client start failed.");
-        return false;
-    }
-    
-    LOG("\nMy IP addresses:\n");
-    
-    unsigned int i;
-    for (i=0; i < client->GetNumberOfAddresses(); i++)
-    {
-        LOG("%i. %s\n", i+1, client->GetLocalIP(i));
-    }
-    
-    startPacketProcessor();
-    
-    return true;
-}
-
-/**
- *  Stops the client
- */
-void Connector::stopClient(){
-    if(client != nullptr){
-        stopPacketProcessor();
-        //client->Shutdown(1); // causes EXC_BAD_INSTRUCTION (code=EXC_I386_INVOP, subcode=0x0) on assembler command ud2
-        //RakNet::RakPeerInterface::DestroyInstance(client);
-        client = nullptr;
-    }
-}
-
-void Connector::connect(RakNet::SystemAddress serverAddress){
-    if(client==nullptr){
-        LOG("Client is not started!");
+    if(interface==nullptr){
         return;
     }
     
-    char ip[4];
-    serverAddress.ToString(false, ip);
-    
-    LOG("Server address: %s:%d\n", ip, serverAddress.GetPort());
-    
-    client->Connect(ip, serverAddress.GetPort(), INCOMING_PASSWORD, strlen(INCOMING_PASSWORD));
-}
-
-
-void Connector::FindServers(){
-    if(client==nullptr){
-        LOG("Client is not started!");
-        return;
-    }
-    
-    client->Ping("255.255.255.255", SERVER_PORT, true); // true ... reply only if server is not full
-    LOG("Pinging\n");
-    
-}
-
-void Connector::infiniteReceiveLoop(){
-    
-    LOG("infiniteReceiveLoop started!\n");
-    
-    while (loopIsActive){
-        
-        RakNet::Packet * p;
-        
-        // receive packet
-        if (server){
-            p = server->Receive();
-        } else if(client) {
-            p = client->Receive();
-        } else {
-            return;
-        }
-                
-        if (p==0)
-        {
-            RakSleep(RAKNET_SLEEP);
-            continue;
-        }
-        
-        if(server != nullptr){
-            LOG("Packet %d received\n", (char) p->data[0] );
-        }
-        
-        // call appropriate callback function, if exists
-        auto found = callbackMap.find(p->data[0]);
-        if( found != callbackMap.end() ){
-            callbackMap[p->data[0]](p);
-        }
-        
-        if(client == nullptr){
-            server->DeallocatePacket(p);
-        } else {
-            client->DeallocatePacket(p);
-        }
-        
-        RakSleep(30);
-    }
-    
-}
-
-void Connector::startPacketProcessor(){
-    loopIsActive = true;
-    packetProcessorThread = std::thread(&Connector::infiniteReceiveLoop,this);
-    packetProcessorThread.detach();
-}
-
-void Connector::stopPacketProcessor(){
-    loopIsActive = false;
-}
-
-void Connector::addPacketCallback(int packetType, const CALLBACK_TYPE& callback ){
-    callbackMap[packetType] = callback;
-}
-
-
-void Connector::removePacketCallback(int packetType){
-    
-    callbackMap.erase(packetType);
-    
-    
+    interface->Ping("255.255.255.255", SERVER_PORT, true); // true ... reply only if server is not full
 }

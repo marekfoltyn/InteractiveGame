@@ -4,15 +4,12 @@
 #include "MessageIdentifiers.h"
 
 // time (ms) during when reliable packet was not able to be received -> connection lost
-#define CONNECTION_LOST_TIMEOUT 5000
+#define CONNECTION_LOST_TIMEOUT 10000
 
 // logging function
 #define LOG(...) printf(__VA_ARGS__)
 
-// password needed for connection
-#define INCOMING_PASSWORD "ahojkamo"
-
-// server port used for all communication
+// port used for all communication
 #define SERVER_PORT 54027
 
 // client port used for all communication
