@@ -28,7 +28,7 @@ public:
      * create a Block and copies data so the data has to be freed manually
      * @param byteSize size of the data
      */
-    static Block * create(char * data, unsigned int len );
+    static Block * create(const char * data, unsigned int len );
 
     /**
      * set packet type (defined in Definitions.h)
@@ -70,6 +70,15 @@ public:
      */
     RakNet::SystemAddress getAddress();
 
+    /**
+     * get custom char data of packet (without packet type)
+     */
+    const char * getData();
+    
+    /**
+     * get custom char data length (without packet type)
+     */
+    const int getLength();
     
     /**
      * get char data of packet (packet type + custom data)
@@ -89,9 +98,21 @@ public:
 private:
     
     /**
+     * private constructor
+     * creating Blocks (similar as creating objects in Cocos2dx):
+     * Block::create(...)
+     */
+    Block(const char * data, unsigned int length );
+    
+    /**
+     * empty constructor
+     */
+    Block(){};
+    
+    /**
      * custom packet data (first byte is RakNet message type)
      */
-    const char * data;
+    char * data;
 
     /**
      * length of the data (including first byte)
