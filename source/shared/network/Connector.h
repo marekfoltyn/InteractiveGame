@@ -3,6 +3,7 @@
 
 #include "MessageIdentifiers.h"
 #include "RakPeerInterface.h"
+#include "Definitions.h"
 
 /**
  * @brief     Singleton class responsible for entire network communication.
@@ -25,7 +26,7 @@ public:
     /** starts a server network session
      * @return true if started, false otherwise
      */
-    bool startAsServer(unsigned short maxPlayers);
+    bool startAsServer(unsigned short maxPlayers=MAX_PLAYERS);
     
     /**
      * stop networking (app exit)

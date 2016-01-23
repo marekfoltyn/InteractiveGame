@@ -5,8 +5,6 @@
 #include "MessageIdentifiers.h"
 #include "RakPeerInterface.h"
 
-#include <assert.h>
-#include <cstdio>
 #include <cstring>
 #include <string>
 #include <stdlib.h>

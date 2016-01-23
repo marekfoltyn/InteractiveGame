@@ -2,11 +2,6 @@
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 
-//#include "MessageIdentifiers.h"
-//#include "RakPeerInterface.h"
-//#include "Connector.h"
-//#include "Definitions.h"
-
 USING_NS_CC;
 
 using namespace cocostudio::timeline;

@@ -9,13 +9,14 @@
 #include "ui/CocosGUI.h"
 
 #include "Block.h"
+#include "Connector.h"
 
 //#include "RakPeerInterface.h"
 
-/*struct ServerMapEntry{
+struct ServerMapEntry{
     RakNet::SystemAddress * address;
     std::atomic<int> inactiveSeconds;
-};*/
+};
 
 class ServerListScene : public cocos2d::Layer
 {
@@ -34,7 +35,7 @@ public:
     void initGraphics();
     
     // process packet with server name
-    //void serverFound(RakNet::Packet*);
+    void serverFound(RakNet::Packet*);
     
     // send broadcast packet to find servers
     void findServers();
@@ -43,7 +44,7 @@ public:
     void btnServerClicked(Ref * pSender);
     
     // Succesfully connected to a server
-    //void onConnected(RakNet::Packet * p);
+    void onConnected(RakNet::Packet * p);
     
     void exitGame(Ref * pSender);
     
@@ -61,7 +62,7 @@ private:
     
     // map of available servers
     // key - hash of the system address
-    //std::map<int, ServerMapEntry*> serverMap;
+    std::map<int, ServerMapEntry*> serverMap;
     
     // periodically send broadcast ping to find servers
     void startPing();
@@ -73,7 +74,7 @@ private:
     void stopPing();
     
     // add new menu item to scroll view, updates if exists
-    //void addOrUpdateServer(cocos2d::__String * serverName, RakNet::SystemAddress * address);
+    void addOrUpdateServer(cocos2d::__String * serverName, RakNet::SystemAddress * address);
     
     // every "server search" decreases servers lifetimes (when not responding -> delete from menu)
     void decreaseServerLifetimes();

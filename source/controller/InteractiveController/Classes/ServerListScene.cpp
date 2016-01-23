@@ -2,10 +2,12 @@
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 
-//#include "MessageIdentifiers.h"
-//#include "RakPeerInterface.h"
-//#include "Connector.h"
-//#include "Definitions.h"
+#include "MessageIdentifiers.h"
+#include "RakPeerInterface.h"
+
+#include "Block.h"
+#include "Connector.h"
+#include "Definitions.h"
 
 #include <map>
 
@@ -120,17 +122,17 @@ void ServerListScene::initGraphics(){
 
 void ServerListScene::startPing(){
     
-    /*auto findCallback = CallFunc::create(CC_CALLBACK_0(ServerListScene::findServers, this));
+    auto findCallback = CallFunc::create(CC_CALLBACK_0(ServerListScene::findServers, this));
     auto delay = DelayTime::create(FIND_SERVER_REPEAT_TIME);
     auto sequence = Sequence::create(findCallback, delay, nullptr);
     searchServersAction = RepeatForever::create(sequence);
     this->runAction(searchServersAction);
-     */
+
 }
 
 void ServerListScene::stopPing(){
     
-    //this->stopAction(searchServersAction);
+    this->stopAction(searchServersAction);
 }
 
 
@@ -150,7 +152,7 @@ void ServerListScene::searchLabelThreeDots(){
 
 void ServerListScene::findServers(){
     
-    //Connector::getInstance()->ping();
+    Connector::getInstance()->ping();
     decreaseServerLifetimes(); // refresh actually found servers
     
     CCLOG("Searching for servers...");
@@ -158,7 +160,7 @@ void ServerListScene::findServers(){
 
 void ServerListScene::decreaseServerLifetimes(){
     
-    /*for(std::map<int, ServerMapEntry*>::iterator i = serverMap.begin(); i != serverMap.end(); i++) {
+    for(std::map<int, ServerMapEntry*>::iterator i = serverMap.begin(); i != serverMap.end(); i++) {
         // iterator->first = key
         // iterator->second = value
 
@@ -183,11 +185,10 @@ void ServerListScene::decreaseServerLifetimes(){
         }
         
     }
-     */
     
 }
 
-/*void ServerListScene::serverFound(RakNet::Packet * p){
+void ServerListScene::serverFound(RakNet::Packet * p){
     
     int overhead = sizeof(unsigned char) + sizeof(RakNet::TimeMS);
     const char * serverNameInPacket = (char *) p->data + overhead; // skip message type and response time
@@ -197,10 +198,10 @@ void ServerListScene::decreaseServerLifetimes(){
         lblServerName->setString(name->getCString());
     }*/
     
-    /*addOrUpdateServer(name, &p->systemAddress);
+    addOrUpdateServer(name, &p->systemAddress);
     
     CCLOG("%s (%s) in %dms", name->getCString(), p->systemAddress.ToString(), (RakNet::TimeMS) *p->data+1);
-}*/
+}
 
 void ServerListScene::btnServerClicked(Ref * pSender){
     
@@ -209,7 +210,7 @@ void ServerListScene::btnServerClicked(Ref * pSender){
     
 }
 
-/*void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::SystemAddress * address){
+void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::SystemAddress * address){
 
     auto visibleSize = Director::getInstance()->getVisibleSize();
     auto origin = Director::getInstance()->getVisibleOrigin();
@@ -225,19 +226,8 @@ void ServerListScene::btnServerClicked(Ref * pSender){
         serverMap[hash] = s;
         CCLOG("%s added.", serverName->getCString());
         
-        /*std::string name(serverName->getCString());
-        int tag = (int) RakNet::SystemAddress::ToInteger( *address );
-        
-        auto label = Label::createWithTTF(name, "8-Bit-Madness.ttf", visibleSize.height/12);
-        //auto item = MenuItemFont::create(name, CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
-        auto item = MenuItemLabel::create(label, CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
-        item->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
-        
-        auto menu = Menu::create(item, NULL);
-        menu->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
-        this->addChild(menu);*/
-
-    /*
+        std::string name(serverName->getCString());
+        //int tag = (int) RakNet::SystemAddress::ToInteger( *address );
         
         auto label = Label::createWithTTF("Ahojky", "8-Bit-Madness.ttf", visibleSize.height/12);
         //auto item = MenuItemFont::create(name, CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
@@ -255,16 +245,16 @@ void ServerListScene::btnServerClicked(Ref * pSender){
         s->inactiveSeconds = 0;
     }
     
-}*/
+}
 
-/*void ServerListScene::onConnected(RakNet::Packet * p){
+void ServerListScene::onConnected(RakNet::Packet * p){
     CCLOG("Connected to %s", p->systemAddress.ToString());
     this->stopAction(searchTextLoop);
     
     lblSearching->setString("Connected.");
     
     //TODO: show lobby scene
-}*/
+}
 
 void ServerListScene::exitGame(Ref * pSender){
     //Connector::getInstance()->stop();

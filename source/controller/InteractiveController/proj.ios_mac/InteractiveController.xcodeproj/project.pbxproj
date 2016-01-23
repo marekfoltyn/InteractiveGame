@@ -709,9 +709,9 @@
 				EA6D04F21C53DCD0003A08BE /* RakNet */,
 				EA6D06691C53DF60003A08BE /* Block.h */,
 				EA6D066A1C53DF60003A08BE /* Block.cpp */,
-				EA6D066C1C53E138003A08BE /* Definitions.h */,
 				EA6D066D1C53E15A003A08BE /* Connector.h */,
 				EA6D066E1C53E15A003A08BE /* Connector.cpp */,
+				EA6D066C1C53E138003A08BE /* Definitions.h */,
 			);
 			name = Network;
 			sourceTree = "<group>";
