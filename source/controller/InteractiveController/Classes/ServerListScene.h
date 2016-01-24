@@ -53,6 +53,9 @@ public:
     void searchLabelTwoDots();
     void searchLabelThreeDots();
     
+    // receive packet processing loop
+    void packetAction();
+    
 private:
     cocos2d::Label * lblSearching;
     cocos2d::Menu * menu;

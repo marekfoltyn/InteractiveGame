@@ -30,9 +30,9 @@
 
 /////////////////// Message types  ///////////////////
 
-#define P_FIND_SERVER                 ID_UNCONNECTED_PING
+#define P_PING                        ID_UNCONNECTED_PING
 #define P_SERVER_NAME                 ID_UNCONNECTED_PONG
-#define P_NEW_INCOMING_CONNECTION     ID_NEW_INCOMING_CONNECTION
+#define P_NEW_CONNECTION              ID_NEW_INCOMING_CONNECTION
 #define P_CONNECTED                   ID_CONNECTION_REQUEST_ACCEPTED
 
 //#define PACKET_CUSTOM                      ID_USER_PACKET_ENUM+1 // +2, +3 and so on

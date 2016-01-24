@@ -7,6 +7,7 @@
 /**
  * Representation of game message to be sent to network.
  * Block also includes information about packet - type, reliability, priority, ordering, address, ...
+ * It is used as a wrapper for data to be sent to network and also for received data
  * Example:
  *
  * Block * b;
@@ -23,6 +24,12 @@ public:
      * @param byteSize size of the data
      */
     static Block * create(const char * data, unsigned int len );
+    
+    /**
+     * create a Block from received packet
+     * reliability and priority will be undefined
+     */
+    static Block * create(RakNet::Packet * p);
 
     /**
      * set packet type (defined in Definitions.h)
@@ -87,7 +94,7 @@ public:
     /**
      * deallocates the Block including its data
      */
-    void dealloc();
+    void deallocate();
     
 private:
     
@@ -99,9 +106,21 @@ private:
     Block(const char * data, unsigned int length );
     
     /**
+     * private constructor
+     * creating Blocks from received packet
+     * Block::create(...)
+     */
+    Block(RakNet::Packet * packet);
+    
+    /**
      * empty constructor
      */
     Block(){};
+    
+    /**
+     * pointer to a RakNet packet (used if Block was created from received packet)
+     */
+    RakNet::Packet * packet;
     
     /**
      * custom packet data (first byte is RakNet message type)

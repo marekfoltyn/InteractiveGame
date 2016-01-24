@@ -50,10 +50,10 @@ public:
     void send(Block * b);
     
     /**
-     * receive a packet from received packet queue (non-blocking way)
-     * @return: pointer to  packet (need to deallocate when done with it), 0 if no packet is the queue
+     * receive a packet from received packet queue (non-blocking way) and create a Block
+     * @return: pointer to Block (need to deallocate when done with it), 0 if no packet is the queue
      */
-    RakNet::Packet * receive();
+    Block * receive();
     
     /**
      * get/set server name (if startAsServer() was called before)
@@ -65,6 +65,12 @@ public:
      * Ping all servers that are not full
      */
     void ping();
+    
+    /**
+     * get RakNet interface
+     * only for Connector framework purposes, shouldn't be used in game
+     */
+    RakNet::RakPeerInterface * getInterface(){return interface;};
         
 private:
     

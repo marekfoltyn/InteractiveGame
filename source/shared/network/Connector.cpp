@@ -26,7 +26,7 @@ bool Connector::start(){
 
 
 bool Connector::startAsServer(unsigned short maxPlayers){
-
+    
     // raknet interface configuration
     interface = RakNet::RakPeerInterface::GetInstance();
     interface->SetTimeoutTime(CONNECTION_LOST_TIMEOUT, RakNet::UNASSIGNED_SYSTEM_ADDRESS);
@@ -116,13 +116,22 @@ void Connector::send(Block * b){
 }
 
 
-RakNet::Packet * Connector::receive(){
+Block * Connector::receive(){
     
     if(interface == nullptr) {
         return 0;
     }
     
-    return interface->Receive();
+    RakNet::Packet * p = interface->Receive();
+    
+    if(p == nullptr)
+    {
+        return nullptr;
+    }
+    else
+    {
+        return Block::create(p);
+    }
 }
 
 

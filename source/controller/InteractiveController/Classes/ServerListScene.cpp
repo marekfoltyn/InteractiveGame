@@ -247,6 +247,33 @@ void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::
     
 }
 
+void ServerListScene::packetAction(){
+    
+    Connector * c = Connector::getInstance();
+    Block * block;
+    
+    // c->receive() returns 0, if no received packet is in the queue
+    while( (block = c->receive()) != nullptr )
+    {
+        switch ( block->getType() )
+        {
+            case P_SERVER_NAME:
+                
+            break;
+            
+            
+            
+            default:
+                // packet ignored
+            break;
+        }
+        
+        block->deallocate();
+    }
+    
+    
+}
+
 void ServerListScene::onConnected(RakNet::Packet * p){
     CCLOG("Connected to %s", p->systemAddress.ToString());
     this->stopAction(searchTextLoop);
