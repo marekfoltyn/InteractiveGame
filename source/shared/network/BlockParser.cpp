@@ -10,9 +10,18 @@
 #include "BlockParser.h"
 #include "Definitions.h"
 
+/**
+ * Packet P_SERVER_NAME format:
+ * 1                      ... packet type
+ * sizeof(RakNet::TimeMS) ... timestamp
+ *   (the rest of data)   ... server name
+ */
 std::string BlockParser::ServerName(Block * block)
 {
-    const char * name = block->getData();
-    LOG("Parsing server name: %c", name[5] );
-    return (char *) name;
+    const char * data = (char *) block->getPacketData();
+    int overhead = sizeof(unsigned char) + sizeof(RakNet::TimeMS);
+    const char * name = (char *) data + overhead; // skip message type and response time
+    
+    //LOG("Parsing server name: %s\n", serverNameInPacket );
+    return std::string( name );
 }

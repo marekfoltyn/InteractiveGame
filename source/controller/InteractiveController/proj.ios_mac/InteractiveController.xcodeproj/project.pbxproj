@@ -713,9 +713,9 @@
 				EAF3C1571C560ACC008010D0 /* Block.h */,
 				EAF3C1581C560ACC008010D0 /* BlockParser.h */,
 				EAF3C1591C560ACC008010D0 /* Connector.h */,
+				EAF3C15C1C560ACC008010D0 /* Connector.cpp */,
 				EAF3C15A1C560ACC008010D0 /* Block.cpp */,
 				EAF3C15B1C560ACC008010D0 /* BlockParser.cpp */,
-				EAF3C15C1C560ACC008010D0 /* Connector.cpp */,
 				EA6D04F21C53DCD0003A08BE /* RakNet */,
 			);
 			name = Network;

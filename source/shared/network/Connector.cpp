@@ -123,13 +123,23 @@ Block * Connector::receive(){
     }
     
     RakNet::Packet * p = interface->Receive();
-    
+
     if(p == nullptr)
     {
         return nullptr;
     }
     else
     {
+        /*/debug
+        LOG("Packet:\n=======\n");
+        LOG("type: %d\n", p->data[0]);
+        LOG("length: %d\n", p->length);
+        LOG("data: ");
+        for(int i=1; i < p->length; i++) {
+            LOG("[%c]", p->data[i]);
+        }
+        LOG("\n");*/
+        
         return Block::create(p);
     }
 }

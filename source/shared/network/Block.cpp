@@ -9,6 +9,7 @@
 #include "RakPeerInterface.h"
 #include "Connector.h"
 #include "Block.h"
+#include "string.h"
 
 Block::Block(const char * d, unsigned int len )
 {
@@ -16,13 +17,13 @@ Block::Block(const char * d, unsigned int len )
     
     length = len+1;
     data = new char[length];
-    memccpy((data+1), d, length, sizeof(char));
+    memcpy(data+1, d, len*sizeof(char));
+    data[0] = d[0];
     
     // default values
     priority = PacketPriority::LOW_PRIORITY;
     reliability = PacketReliability::UNRELIABLE;
     address = RakNet::UNASSIGNED_SYSTEM_ADDRESS;
-    
     packet=nullptr;
 }
 
@@ -33,7 +34,6 @@ Block::Block(RakNet::Packet * packet)
 {
     setAddress( packet->systemAddress );
     setType( packet->data[0] );
-    length = packet->length;
     this->packet = packet;
 }
 
