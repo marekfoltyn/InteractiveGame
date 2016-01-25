@@ -93,7 +93,7 @@ void Connector::connect( RakNet::SystemAddress server ){
         return;
     }
     
-    char ip[4];
+    char * ip = new char[4]; // must be new char[]! Not char ip[4], BAD_ACCESS!!
     server.ToString(false, ip);
     interface->Connect(ip, server.GetPort(), nullptr, 0); // no password -> nullptr, 0
 }

@@ -103,6 +103,18 @@ void LobbyScene::processBlock(){
                 break;
             }
                 
+            case P_NEW_CONNECTION:
+            {
+                CCLOG("%s connected.", block->getAddress().ToString() );
+                break;
+            }
+                
+            case P_CONNECTION_LOST:
+            {
+                CCLOG("%s has lost connection.", block->getAddress().ToString() );
+                break;
+            }
+                
             default:
             {
                 CCLOG("Packet type %c was ignored.", block->getType());

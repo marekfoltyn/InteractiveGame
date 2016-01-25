@@ -35,7 +35,7 @@ public:
     void initGraphics();
     
     // process packet with server name
-    void serverFound(RakNet::Packet*);
+    void serverFound(Block * block);
     
     // send broadcast packet to find servers
     void findServers();
@@ -44,7 +44,7 @@ public:
     void btnServerClicked(Ref * pSender);
     
     // Succesfully connected to a server
-    void onConnected(RakNet::Packet * p);
+    void onConnected(Block * block);
     
     void exitGame(Ref * pSender);
     
@@ -84,7 +84,7 @@ private:
     void stopPing();
     
     // add new menu item to scroll view, updates if exists
-    void addOrUpdateServer(cocos2d::__String * serverName, RakNet::SystemAddress * address);
+    void addOrUpdateServer(cocos2d::__String * serverName, RakNet::SystemAddress address);
     
     // every "server search" decreases servers lifetimes (when not responding -> delete from menu)
     void decreaseServerLifetimes();

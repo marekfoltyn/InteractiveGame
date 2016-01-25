@@ -36,6 +36,7 @@
 #define P_SERVER_NAME                 ID_UNCONNECTED_PONG
 #define P_NEW_CONNECTION              ID_NEW_INCOMING_CONNECTION
 #define P_CONNECTED                   ID_CONNECTION_REQUEST_ACCEPTED
+#define P_CONNECTION_LOST             ID_CONNECTION_LOST
 
 //#define PACKET_CUSTOM                      ID_USER_PACKET_ENUM+1 // +2, +3 and so on
 
