@@ -16,8 +16,7 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(LobbyScene);
     
-    // New incoming connection
-    void onNewConnection(RakNet::Packet * p);
+    void processBlock();
     
 private:
     
@@ -26,9 +25,6 @@ private:
     
     // start the graphics stuff
     void initGUI();
-    
-    // Set up callback function to process packets
-    void addPacketCallbacks();
     
     void setDebugOutputEnabled(bool enabled);
 };

@@ -30,7 +30,7 @@ public:
      * reliability and priority will be undefined
      */
     static Block * create(RakNet::Packet * p);
-
+    
     /**
      * set packet type (defined in Definitions.h)
      */
@@ -60,7 +60,7 @@ public:
      * get RakNet packet send priority
      */
     PacketPriority getPriority();
-
+    
     /**
      * set RakNet system address the Block should be sent
      */
@@ -70,7 +70,7 @@ public:
      * get RakNet system address
      */
     RakNet::SystemAddress getAddress();
-
+    
     /**
      * get custom char data of packet (without packet type)
      */
@@ -90,7 +90,7 @@ public:
      * get length of packet data (packet type + custom data)
      */
     const int getPacketLength();
-        
+    
     /**
      * deallocates the Block including its data
      */
@@ -110,7 +110,7 @@ private:
      * creating Blocks from received packet
      * Block::create(...)
      */
-    Block(RakNet::Packet * packet);
+    Block( RakNet::Packet * packet );
     
     /**
      * empty constructor
@@ -126,12 +126,12 @@ private:
      * custom packet data (first byte is RakNet message type)
      */
     char * data;
-
+    
     /**
      * length of the data (including first byte)
      */
     unsigned int length;
-
+    
     /**
      * RakNet packet priority:
      *
@@ -160,7 +160,7 @@ private:
      * RakNet address, where the block will be sent
      */
     RakNet::SystemAddress address;
-
+    
 };
 
 #endif // _BLOCK_H_

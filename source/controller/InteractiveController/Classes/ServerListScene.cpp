@@ -6,6 +6,7 @@
 #include "RakPeerInterface.h"
 
 #include "Block.h"
+#include "BlockParser.h"
 #include "Connector.h"
 #include "Definitions.h"
 
@@ -39,6 +40,7 @@ bool ServerListScene::init()
     }
     
     initGraphics();
+    startPacketAction();
     startPing();
     
     return true;
@@ -247,8 +249,24 @@ void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::
     
 }
 
-void ServerListScene::packetAction(){
-    
+void ServerListScene::startPacketAction()
+{
+    auto callback = CallFunc::create(CC_CALLBACK_0(ServerListScene::packetAction, this));
+    auto delay = DelayTime::create(RECEIVE_TIMEOUT);
+    auto sequence = Sequence::create(callback, delay, nullptr);
+    receivePacketAction = RepeatForever::create(sequence);
+    this->runAction(receivePacketAction);
+}
+
+
+void ServerListScene::stopPacketAction()
+{
+    this->stopAction(receivePacketAction);
+}
+
+
+void ServerListScene::packetAction()
+{
     Connector * c = Connector::getInstance();
     Block * block;
     
@@ -258,14 +276,17 @@ void ServerListScene::packetAction(){
         switch ( block->getType() )
         {
             case P_SERVER_NAME:
-                
-            break;
-            
-            
+            {
+                auto name = __String::create( BlockParser::ServerName(block) );
+                CCLOG("Server response: %s", name->getCString() );
+                break;
+            }
             
             default:
+            {
                 // packet ignored
-            break;
+                break;
+            }
         }
         
         block->deallocate();

@@ -27,10 +27,12 @@
 // server lifetime - time to disappear from menu after not responsing to ping (in seconds)
 #define SERVER_MENU_LIFETIME 3
 
+// how often to run packet receive loop (in seconds)
+#define RECEIVE_TIMEOUT 0.03
 
 /////////////////// Message types  ///////////////////
 
-#define P_PING                        ID_UNCONNECTED_PING
+#define P_PING                        ID_UNCONNECTED_PING_OPEN_CONNECTIONS
 #define P_SERVER_NAME                 ID_UNCONNECTED_PONG
 #define P_NEW_CONNECTION              ID_NEW_INCOMING_CONNECTION
 #define P_CONNECTED                   ID_CONNECTION_REQUEST_ACCEPTED

@@ -11,7 +11,7 @@
 #include "Block.h"
 #include "Connector.h"
 
-//#include "RakPeerInterface.h"
+#include "RakPeerInterface.h"
 
 struct ServerMapEntry{
     RakNet::SystemAddress * address;
@@ -53,6 +53,12 @@ public:
     void searchLabelTwoDots();
     void searchLabelThreeDots();
     
+    // start receiving packets
+    void startPacketAction();
+    
+    // stop receiving packets
+    void stopPacketAction();
+    
     // receive packet processing loop
     void packetAction();
     
@@ -61,6 +67,7 @@ private:
     cocos2d::Menu * menu;
     cocos2d::Menu * serverMenu;
     cocos2d::RepeatForever * searchServersAction;
+    cocos2d::RepeatForever * receivePacketAction;
     cocos2d::RepeatForever * searchTextLoop;
     
     // map of available servers

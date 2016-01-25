@@ -12,9 +12,11 @@
 
 Block::Block(const char * d, unsigned int len )
 {
+    //TODO: vyresit konstruktory (neduplikovat kod)
+    
     length = len+1;
     data = new char[length];
-    memccpy(data, d, length, sizeof(char));
+    memccpy((data+1), d, length, sizeof(char));
     
     // default values
     priority = PacketPriority::LOW_PRIORITY;
@@ -25,9 +27,13 @@ Block::Block(const char * d, unsigned int len )
 }
 
 Block::Block(RakNet::Packet * packet)
+
+// calling no-packet constructor
+: Block( (const char *) packet->data+1, packet->length-1) // skip first byte
 {
-    Block( (const char *) packet->data+1, packet->length-1); // skip first byte
     setAddress( packet->systemAddress );
+    setType( packet->data[0] );
+    length = packet->length;
     this->packet = packet;
 }
 

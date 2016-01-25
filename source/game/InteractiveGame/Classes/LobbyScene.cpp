@@ -3,9 +3,13 @@
 #include "LobbyScene.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
+
 #include "MessageIdentifiers.h"
 #include "Definitions.h"
 #include "Connector.h"
+#include "Block.h"
+#include "BlockParser.h"
+
 
 USING_NS_CC;
 
@@ -40,6 +44,9 @@ bool LobbyScene::init()
     
     initGUI();
     
+    CCLOG("P_PING = %d", P_PING);
+    CCLOG("P_SERVER_NAME = %d", P_SERVER_NAME);
+    
     //auto rootNode = CSLoader::createNode("MainScene.csb");
     //addChild(rootNode);
     
@@ -50,6 +57,7 @@ void LobbyScene::initServer(){
     
     // run async Connector (as a server)
     bool started = Connector::getInstance()->startAsServer(MAX_PLAYERS);
+    Connector::getInstance()->setServerName("InteractiveGame");
     
     if(!started){
         CCLOG("Server not started!");
@@ -57,7 +65,11 @@ void LobbyScene::initServer(){
         return;
     }
     
-    Connector::getInstance()->setServerName("InteractiveGame");
+    auto callback = CallFunc::create(CC_CALLBACK_0(LobbyScene::processBlock, this));
+    auto delay = DelayTime::create(RECEIVE_TIMEOUT);
+    auto sequence = Sequence::create(callback, delay, nullptr);
+    auto receivePacketAction = RepeatForever::create(sequence);
+    this->runAction(receivePacketAction);
     
 }
 
@@ -73,19 +85,31 @@ void LobbyScene::initGUI(){
     
     this->addChild(txtServerName);
     
-    addPacketCallbacks();
 }
 
-void LobbyScene::addPacketCallbacks(){
+void LobbyScene::processBlock(){
     
-    //auto c = Connector::getInstance();
-
-    //c->addPacketCallback(P_NEW_INCOMING_CONNECTION, RAKNET_CALLBACK_1(LobbyScene::onNewConnection, this));
+    Connector * c = Connector::getInstance();
+    Block * block;
     
-}
-
-void LobbyScene::onNewConnection(RakNet::Packet * p){
-    
-    LOG("%s connected.\n", p->systemAddress.ToString());
-    
+    // c->receive() returns 0, if no received packet is in the queue
+    while( (block = c->receive()) != nullptr )
+    {
+        switch ( block->getType() )
+        {
+            case P_PING:
+            {
+                CCLOG("Client %s has pinged.", block->getAddress().ToString() );
+                break;
+            }
+                
+            default:
+            {
+                CCLOG("Packet type %c was ignored.", block->getType());
+                break;
+            }
+        }
+        
+        block->deallocate();
+    }
 }

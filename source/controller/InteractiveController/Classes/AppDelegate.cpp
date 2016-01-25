@@ -1,7 +1,7 @@
 #include "AppDelegate.h"
 #include "ServerListScene.h"
-//#include "Connector.h"
-//#include "Definitions.h"
+#include "Connector.h"
+#include "Definitions.h"
 
 USING_NS_CC;
 
@@ -46,7 +46,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto scene = ServerListScene::createScene();
 
     // start networking
-    //Connector::getInstance()->start();
+    Connector::getInstance()->start();
     
     
     // run
