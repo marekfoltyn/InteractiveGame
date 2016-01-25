@@ -62,8 +62,14 @@ public:
     // receive packet processing loop
     void packetAction();
     
+    // acceleration event
+    void onAcceleration(cocos2d::Acceleration* acc, cocos2d::Event* unused_event);
+    
 private:
     cocos2d::Label * lblSearching;
+    cocos2d::Label * lblX;
+    cocos2d::Label * lblY;
+    cocos2d::Label * lblZ;
     cocos2d::Menu * menu;
     cocos2d::Menu * serverMenu;
     cocos2d::RepeatForever * searchServersAction;

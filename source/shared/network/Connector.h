@@ -4,6 +4,9 @@
 #include "MessageIdentifiers.h"
 #include "RakPeerInterface.h"
 #include "Definitions.h"
+#include "Block.h"
+
+#include <string>
 
 /**
  * @brief     Singleton class responsible for entire network communication.

@@ -20,6 +20,8 @@ public:
     
 private:
     
+    cocos2d::Sprite * point;
+    
     // start the server stuff
     void initServer();
     

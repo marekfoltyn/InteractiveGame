@@ -43,6 +43,11 @@ bool ServerListScene::init()
     startPacketAction();
     startPing();
     
+    // start accelerometer
+    auto listener = EventListenerAcceleration::create(CC_CALLBACK_2(ServerListScene::onAcceleration, this));
+    Device::setAccelerometerEnabled(true);
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+    
     return true;
 }
 
@@ -97,6 +102,22 @@ void ServerListScene::initGraphics(){
     searchTextLoop = RepeatForever::create(sequence);
     this->runAction(searchTextLoop);
     
+    // coordinates
+    lblX = Label::createWithTTF("X: ???", "8-Bit-Madness.ttf", visibleSize.height/18);
+    lblX->setAnchorPoint(Vec2(0,0));
+    lblX->setPosition(Vec2( origin.x + visibleSize.width/2 -160, origin.y + 3*lblX->getContentSize().height ));
+    this->addChild(lblX);
+
+    lblY = Label::createWithTTF("Y: ???", "8-Bit-Madness.ttf", visibleSize.height/18);
+    lblY->setAnchorPoint(Vec2(0,0));
+    lblY->setPosition(Vec2( origin.x + visibleSize.width/2 -160, origin.y + 2*lblX->getContentSize().height ));
+    this->addChild(lblY);
+    
+    lblZ = Label::createWithTTF("Z: ???", "8-Bit-Madness.ttf", visibleSize.height/18);
+    lblZ->setAnchorPoint(Vec2(0,0));
+    lblZ->setPosition(Vec2( origin.x + visibleSize.width/2 -160, origin.y + 1*lblX->getContentSize().height ));
+    this->addChild(lblZ);
+
     // Server names menu
     /*serversView = ui::ScrollView::create();
      serversView->setDirection( ui::ScrollView::Direction::VERTICAL );
@@ -215,7 +236,10 @@ void ServerListScene::btnServerClicked(Ref * pSender){
     
     RakNet::SystemAddress * address = serverMap[tag]->address;
     
-    lblSearching->setString("Connecting...");
+    //this->stopAction(searchServersAction);
+    //this->stopAction(searchTextLoop);
+    //lblSearching->setString("Connecting...");
+    
     Connector::getInstance()->connect(*address);
     
 }
@@ -308,10 +332,20 @@ void ServerListScene::packetAction()
     
 }
 
+void ServerListScene::onAcceleration(Acceleration* acc, Event* unused_event){
+    auto x = __String::createWithFormat("X: %f", acc->x);
+    auto y = __String::createWithFormat("Y: %f", acc->y);
+    auto z = __String::createWithFormat("Z: %f", acc->z);
+    lblX->setString(x->getCString());
+    lblY->setString(y->getCString());
+    lblZ->setString(z->getCString());
+}
+
 void ServerListScene::onConnected(Block * block){
     
     CCLOG("Connected to %s", block->getAddress().ToString());
     this->stopAction(searchTextLoop);
+    this->stopAction(searchServersAction);
     lblSearching->setString("Connected.");
     
     //TODO: show lobby scene

@@ -82,9 +82,11 @@ void LobbyScene::initGUI(){
     auto * txtServerName = TextFieldTTF::createWithTTF(c->getServerName(), "8-Bit-Madness.ttf", 64);
     txtServerName->setAnchorPoint(Vec2(0.5, 0.5));
     txtServerName->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height - txtServerName->getContentSize().height ));
-    
     this->addChild(txtServerName);
     
+    point = Sprite::create("exit_button_pressed.png");
+    point->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
+    this->addChild(point);
 }
 
 void LobbyScene::processBlock(){

@@ -2,12 +2,13 @@
 #define  _DEFINITIONS_H_
 
 #include "MessageIdentifiers.h"
+#include "cocos2d.h"
 
 // time (ms) during when reliable packet was not able to be received -> connection lost
 #define CONNECTION_LOST_TIMEOUT 10000
 
 // logging function
-#define LOG(...) printf(__VA_ARGS__)
+#define LOG(...) CCLOG(__VA_ARGS__)
 
 // port used for all communication
 #define SERVER_PORT 54027

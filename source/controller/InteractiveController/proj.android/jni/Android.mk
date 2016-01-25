@@ -11,9 +11,13 @@ LOCAL_MODULE := cocos2dcpp_shared
 LOCAL_MODULE_FILENAME := libcocos2dcpp
 
 LOCAL_SRC_FILES := hellocpp/main.cpp \
-	   ../../../../shared/network/Connector.cpp \
-                   ../../Classes/AppDelegate.cpp \
-                   ../../Classes/ServerListScene.cpp
+		../../../../shared/network/Connector.cpp \
+		../../../../shared/network/Block.cpp \
+		../../../../shared/network/BlockParser.cpp \
+		../../Classes/AppDelegate.cpp \
+		../../Classes/ServerListScene.cpp \
+		../../Classes/LobbyScene.cpp
+				   
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../../shared/network
