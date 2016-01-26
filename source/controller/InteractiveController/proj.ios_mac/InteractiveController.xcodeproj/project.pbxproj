@@ -170,7 +170,7 @@
 		EAF3C1551C560A81008010D0 /* VitaIncludes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAF3C0E71C560A81008010D0 /* VitaIncludes.cpp */; };
 		EAF3C1561C560A81008010D0 /* WSAStartupSingleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAF3C0E81C560A81008010D0 /* WSAStartupSingleton.cpp */; };
 		EAF3C15D1C560ACC008010D0 /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAF3C15A1C560ACC008010D0 /* Block.cpp */; };
-		EAF3C15E1C560ACC008010D0 /* BlockParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAF3C15B1C560ACC008010D0 /* BlockParser.cpp */; };
+		EAF3C15E1C560ACC008010D0 /* BlockManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAF3C15B1C560ACC008010D0 /* BlockManager.cpp */; };
 		EAF3C15F1C560ACC008010D0 /* Connector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAF3C15C1C560ACC008010D0 /* Connector.cpp */; };
 		EAF3C1621C560AF5008010D0 /* ServerListScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAF3C1611C560AF5008010D0 /* ServerListScene.cpp */; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
@@ -500,10 +500,10 @@
 		EAF3C0E71C560A81008010D0 /* VitaIncludes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VitaIncludes.cpp; path = ../../../shared/network/raknet/VitaIncludes.cpp; sourceTree = "<group>"; };
 		EAF3C0E81C560A81008010D0 /* WSAStartupSingleton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WSAStartupSingleton.cpp; path = ../../../shared/network/raknet/WSAStartupSingleton.cpp; sourceTree = "<group>"; };
 		EAF3C1571C560ACC008010D0 /* Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Block.h; path = ../../../shared/network/Block.h; sourceTree = "<group>"; };
-		EAF3C1581C560ACC008010D0 /* BlockParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlockParser.h; path = ../../../shared/network/BlockParser.h; sourceTree = "<group>"; };
+		EAF3C1581C560ACC008010D0 /* BlockManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlockManager.h; path = ../../../shared/network/BlockManager.h; sourceTree = "<group>"; };
 		EAF3C1591C560ACC008010D0 /* Connector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Connector.h; path = ../../../shared/network/Connector.h; sourceTree = "<group>"; };
 		EAF3C15A1C560ACC008010D0 /* Block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Block.cpp; path = ../../../shared/network/Block.cpp; sourceTree = "<group>"; };
-		EAF3C15B1C560ACC008010D0 /* BlockParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BlockParser.cpp; path = ../../../shared/network/BlockParser.cpp; sourceTree = "<group>"; };
+		EAF3C15B1C560ACC008010D0 /* BlockManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BlockManager.cpp; path = ../../../shared/network/BlockManager.cpp; sourceTree = "<group>"; };
 		EAF3C15C1C560ACC008010D0 /* Connector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Connector.cpp; path = ../../../shared/network/Connector.cpp; sourceTree = "<group>"; };
 		EAF3C1601C560AF5008010D0 /* ServerListScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerListScene.h; sourceTree = "<group>"; };
 		EAF3C1611C560AF5008010D0 /* ServerListScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServerListScene.cpp; sourceTree = "<group>"; };
@@ -711,11 +711,11 @@
 			children = (
 				EAF3BFE01C5609CC008010D0 /* Definitions.h */,
 				EAF3C1571C560ACC008010D0 /* Block.h */,
-				EAF3C1581C560ACC008010D0 /* BlockParser.h */,
 				EAF3C1591C560ACC008010D0 /* Connector.h */,
 				EAF3C15C1C560ACC008010D0 /* Connector.cpp */,
 				EAF3C15A1C560ACC008010D0 /* Block.cpp */,
-				EAF3C15B1C560ACC008010D0 /* BlockParser.cpp */,
+				EAF3C1581C560ACC008010D0 /* BlockManager.h */,
+				EAF3C15B1C560ACC008010D0 /* BlockManager.cpp */,
 				EA6D04F21C53DCD0003A08BE /* RakNet */,
 			);
 			name = Network;
@@ -1002,8 +1002,8 @@
 		EADD22BD1C4EAEFE00A939CB /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				EADD22BA1C4EAEFA00A939CB /* LobbyScene.cpp */,
 				EADD22BB1C4EAEFA00A939CB /* LobbyScene.h */,
+				EADD22BA1C4EAEFA00A939CB /* LobbyScene.cpp */,
 				EAF3C1601C560AF5008010D0 /* ServerListScene.h */,
 				EAF3C1611C560AF5008010D0 /* ServerListScene.cpp */,
 			);
@@ -1147,7 +1147,7 @@
 				EAF3C1061C560A81008010D0 /* gettimeofday.cpp in Sources */,
 				EAF3C1021C560A81008010D0 /* FullyConnectedMesh2.cpp in Sources */,
 				EAF3C1461C560A81008010D0 /* SuperFastHash.cpp in Sources */,
-				EAF3C15E1C560ACC008010D0 /* BlockParser.cpp in Sources */,
+				EAF3C15E1C560ACC008010D0 /* BlockManager.cpp in Sources */,
 				EAF3C1071C560A81008010D0 /* GridSectorizer.cpp in Sources */,
 				EAF3C1141C560A81008010D0 /* NatTypeDetectionCommon.cpp in Sources */,
 				EAF3C1421C560A81008010D0 /* SocketLayer.cpp in Sources */,

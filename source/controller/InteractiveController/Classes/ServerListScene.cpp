@@ -1,3 +1,4 @@
+#include "LobbyScene.h"
 #include "ServerListScene.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
@@ -6,7 +7,7 @@
 #include "RakPeerInterface.h"
 
 #include "Block.h"
-#include "BlockParser.h"
+#include "BlockManager.h"
 #include "Connector.h"
 #include "Definitions.h"
 
@@ -214,7 +215,7 @@ void ServerListScene::decreaseServerLifetimes(){
 
 void ServerListScene::serverFound(Block * block){
     
-    auto name = __String::create( BlockParser::ServerName(block) );
+    auto name = __String::create( BlockManager::parseServerName(block) );
     CCLOG("Server response: %s", name->getCString() );
     
     /*if(lblServerName != nullptr){
@@ -349,6 +350,8 @@ void ServerListScene::onConnected(Block * block){
     lblSearching->setString("Connected.");
     
     //TODO: show lobby scene
+    auto scene = LobbyScene::createScene();
+    Director::getInstance()->replaceScene(scene);
 }
 
 void ServerListScene::exitGame(Ref * pSender){

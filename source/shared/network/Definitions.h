@@ -39,6 +39,8 @@
 #define P_CONNECTED                   ID_CONNECTION_REQUEST_ACCEPTED
 #define P_CONNECTION_LOST             ID_CONNECTION_LOST
 
+#define P_ACCELERATION                ID_USER_PACKET_ENUM+1
+
 //#define PACKET_CUSTOM                      ID_USER_PACKET_ENUM+1 // +2, +3 and so on
 
 #endif // _DEFINITIONS_H_

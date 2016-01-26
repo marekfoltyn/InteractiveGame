@@ -25,7 +25,9 @@ public:
     // load and set up cocos nodes and graphics
     void initGraphics();
     
-private:
+    // send information to server
+    void onAcceleration(cocos2d::Acceleration* acc, cocos2d::Event* unused_event);
+    
 };
 
 #endif // __LOBBY_SCENE_H__

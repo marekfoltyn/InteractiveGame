@@ -1,6 +1,10 @@
-#include "LobbyScene.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
+
+#include "LobbyScene.h"
+
+#include "Block.h"
+#include "BlockManager.h"
 
 USING_NS_CC;
 
@@ -36,6 +40,12 @@ bool LobbyScene::init()
          
     initGraphics();
     
+    
+    auto listener = EventListenerAcceleration::create(CC_CALLBACK_2(LobbyScene::onAcceleration, this));
+    Device::setAccelerometerEnabled(true);
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+    
+    
     return true;
 }
 
@@ -52,6 +62,13 @@ void LobbyScene::initGraphics(){
     background->setScaleY((visibleSize.height / background->getContentSize().height));
     this->addChild(background);
     
- 
+    
+}
+
+void LobbyScene::onAcceleration(cocos2d::Acceleration* acc, cocos2d::Event* unused_event)
+{
+    Block * block = BlockManager::createAcceleration(acc);
+    
+    
 }
 
