@@ -49,7 +49,7 @@ void LobbyScene::initGraphics(){
     auto origin = Director::getInstance()->getVisibleOrigin();
     
     // background
-    auto background = Sprite::create("Background.png");
+    auto background = Sprite::create("bg_dummy.png");
     //background->set( cocos2d::Size( visibleSize.width, visibleSize.height ) );
     background->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
     background->setScaleX((visibleSize.width / background->getContentSize().width));

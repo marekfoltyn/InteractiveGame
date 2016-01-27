@@ -9,57 +9,75 @@
 #include "ui/CocosGUI.h"
 #include "Connector.h"
 
+/**
+ * Simple structure for storing information about servers in LAN
+ */
 struct ServerMapEntry{
     RakNet::SystemAddress * address;
     std::atomic<int> inactiveSeconds;
 };
 
+/**
+ * First scene - showing the main menu with the list of servers in LAN
+ */
 class ServerListScene : public cocos2d::Layer
 {
 public:
     
-    // there's no 'id' in cpp, so we recommend returning the class instance pointer
+    /**
+     * Cocos2d-x:
+     * there's no 'id' in cpp, so we recommend returning the class instance pointer
+     */
     static cocos2d::Scene * createScene();
 
-    // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
+    /**
+     * Cocos2d-x:
+     * Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
+     */
     virtual bool init();
 
-    // implement the "static create()" method manually
+    /**
+     * Cocos2d-x:
+     * implement the "static create()" method manually
+     */
     CREATE_FUNC(ServerListScene);
     
-    // load and set up cocos nodes and graphics
+    /**
+     * load and set up cocos nodes and graphics in init()
+     */
     void initGraphics();
+
+    /**
+     * receive Block processing loop
+     * receives until RakNet returns 0 (empty packet queue)
+     */
+    void receiveAllBlocks();
     
-    // process packet with server name
-    void serverFound(Block * block);
+    /**
+     * decrease lifetime of found servers and find more servers
+     */
+    void findServersStep();
     
-    // send broadcast packet to find servers
-    void findServers();
-    
-    // connect to server
+    /**
+     * connect to server
+     */
     void btnServerClicked(Ref * pSender);
     
-    // Succesfully connected to a server
+    /**
+     * process packet with server name
+     */
+    void serverFound(Block * block);
+    
+    /**
+     * Succesfully connected to a server (go to lobby)
+     */
     void onConnected(Block * block);
     
-    void exitGame(Ref * pSender);
+    /**
+     * Exit game
+     */
+    void btnLeaveClicked(Ref * pSender);
     
-    void searchLabelNoDot();
-    void searchLabelOneDot();
-    void searchLabelTwoDots();
-    void searchLabelThreeDots();
-    
-    // start receiving packets
-    void startPacketAction();
-    
-    // stop receiving packets
-    void stopPacketAction();
-    
-    // receive packet processing loop
-    void packetAction();
-    
-    // acceleration event
-    void onAcceleration(cocos2d::Acceleration* acc, cocos2d::Event* unused_event);
     
 private:
     cocos2d::Label * lblSearching;
@@ -68,7 +86,7 @@ private:
     cocos2d::Label * lblZ;
     cocos2d::Menu * menu;
     cocos2d::Menu * serverMenu;
-    cocos2d::RepeatForever * searchServersAction;
+    cocos2d::RepeatForever * findServersAction;
     cocos2d::RepeatForever * receivePacketAction;
     cocos2d::RepeatForever * searchTextLoop;
     
@@ -76,14 +94,27 @@ private:
     // key - hash of the system address
     std::map<int, ServerMapEntry*> serverMap;
     
+    /**
+     * start receiving blocks
+     */
+    void startReceiveBlocks();
+    
+    /**
+     * stop receiving packets
+     */
+    void stopReceiveBlocks();
+
+    
     // periodically send broadcast ping to find servers
-    void startPing();
+    void startFindServers();
     
-    // one ping send
-    void ping();
+    /**
+     * send a ping broadcast message to find servers
+     */
+    void pingServers();
     
-    // stop pinging action
-    void stopPing();
+    // stop server action
+    void stopFindServers();
     
     // add new menu item to scroll view, updates if exists
     void addOrUpdateServer(cocos2d::__String * serverName, RakNet::SystemAddress address);

@@ -27,14 +27,14 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
     if(!glview) {
-        glview = GLViewImpl::createWithRect("InteractiveController", cocos2d::Rect(0, 0, 640, 360));
+        glview = GLViewImpl::createWithRect("InteractiveController", cocos2d::Rect(0, 0, 1680, 1050));
         director->setOpenGLView(glview);
     }
 
-    director->getOpenGLView()->setDesignResolutionSize(640, 360, ResolutionPolicy::FIXED_HEIGHT);
+    director->getOpenGLView()->setDesignResolutionSize(1680, 1050, ResolutionPolicy::NO_BORDER);
 
-    // turn on display FPS
-    //director->setDisplayStats(true);
+    // gitturn on display FPS
+    director->setDisplayStats(true);
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
@@ -42,7 +42,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
     FileUtils::getInstance()->addSearchPath("res");
 
     // create a scene. it's an autorelease object
-    //auto scene = ServerListScene::createScene();
     auto scene = ServerListScene::createScene();
 
     // start networking
