@@ -7,11 +7,7 @@
 #include "cocos2d.h"
 #include "extensions/cocos-ext.h"
 #include "ui/CocosGUI.h"
-
-#include "Block.h"
 #include "Connector.h"
-
-#include "RakPeerInterface.h"
 
 struct ServerMapEntry{
     RakNet::SystemAddress * address;

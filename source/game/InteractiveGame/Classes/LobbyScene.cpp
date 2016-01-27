@@ -8,8 +8,7 @@
 #include "Definitions.h"
 #include "Connector.h"
 #include "Block.h"
-#include "BlockParser.h"
-
+#include "AccelerationBlock.h"
 
 USING_NS_CC;
 
@@ -117,6 +116,12 @@ void LobbyScene::processBlock(){
                 break;
             }
                 
+            case P_ACCELERATION:
+            {
+                onAccelerationBlock(block);
+                break;
+            }
+                
             default:
             {
                 CCLOG("Packet type %c was ignored.", block->getType());
@@ -126,4 +131,20 @@ void LobbyScene::processBlock(){
         
         block->deallocate();
     }
+}
+
+void LobbyScene::onAccelerationBlock(Block * block)
+{
+    auto visibleSize = Director::getInstance()->getVisibleSize();
+    auto origin = Director::getInstance()->getVisibleOrigin();
+    
+    auto acc = AccelerationBlock::Parse(block);
+    float x = (float) acc->x;
+    float y = (float) acc->y;
+
+    point->setPositionX( origin.x + (visibleSize.width/2) + (visibleSize.width/2) * x   );
+    point->setPositionY( origin.y + (visibleSize.height/2) + (visibleSize.height/2) * y   );
+
+    
+    
 }

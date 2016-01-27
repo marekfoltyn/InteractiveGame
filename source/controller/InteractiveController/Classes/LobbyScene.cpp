@@ -1,14 +1,8 @@
-#include "cocostudio/CocoStudio.h"
-#include "ui/CocosGUI.h"
-
 #include "LobbyScene.h"
-
-#include "Block.h"
-#include "BlockManager.h"
+#include "Connector.h"
+#include "AccelerationBlock.h"
 
 USING_NS_CC;
-
-using namespace cocostudio::timeline;
 
 Scene * LobbyScene::createScene()
 {
@@ -67,8 +61,7 @@ void LobbyScene::initGraphics(){
 
 void LobbyScene::onAcceleration(cocos2d::Acceleration* acc, cocos2d::Event* unused_event)
 {
-    Block * block = BlockManager::createAcceleration(acc);
-    
-    
+    Block * block = AccelerationBlock::Create(acc);
+    Connector::getInstance()->send(block);
 }
 

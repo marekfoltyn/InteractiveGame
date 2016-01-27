@@ -8,17 +8,16 @@
 #include "MessageIdentifiers.h"
 #include "RakPeerInterface.h"
 #include "Connector.h"
-#include "Block.h"
+
 #include "string.h"
 
 Block::Block(const char * d, unsigned int len )
 {
-    //TODO: vyresit konstruktory (neduplikovat kod)
     
-    length = len+1;
+    length = len+1; // +1 ... message type byte
     data = new char[length];
     memcpy(data+1, d, len*sizeof(char));
-    data[0] = d[0];
+    data[0] = 0; // unknown type yet
     
     // default values
     priority = PacketPriority::LOW_PRIORITY;
@@ -29,7 +28,7 @@ Block::Block(const char * d, unsigned int len )
 
 Block::Block(RakNet::Packet * packet)
 
-// calling no-packet constructor
+// calling default constructor before
 : Block( (const char *) packet->data+1, packet->length-1) // skip first byte
 {
     setAddress( packet->systemAddress );

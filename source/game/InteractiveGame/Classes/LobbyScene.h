@@ -18,6 +18,8 @@ public:
     
     void processBlock();
     
+    void onAccelerationBlock(Block * block);
+    
 private:
     
     cocos2d::Sprite * point;

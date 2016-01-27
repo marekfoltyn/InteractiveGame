@@ -68,6 +68,13 @@ public:
      * Ping all servers that are not full
      */
     void ping();
+
+    
+    /**
+     * If the instance of Connector is a client, returns the address
+     * of the server, otherwise returns RakNet::UNASSIGNED_SYSTEM_ADDRESS
+     */
+    RakNet::SystemAddress getServer();
     
     /**
      * get RakNet interface
@@ -85,6 +92,9 @@ private:
     
     // Singleton instance pointer
     static Connector * instance;
+    
+    // server address
+    RakNet::SystemAddress server;
     
 };
 

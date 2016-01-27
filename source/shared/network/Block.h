@@ -139,6 +139,8 @@ private:
      * PacketPriority::MEDIUM_PRIORITY
      * PacketPriority::HIGH_PRIORITY
      * PacketPriority::IMMEDIATE_PRIORITY
+     *
+     * More info in RakNet documentation
      */
     PacketPriority priority;
     
@@ -153,6 +155,8 @@ private:
      * PacketReliability::UNRELIABLE
      * PacketReliability::UNRELIABLE_SEQUENCED
      * PacketReliability::UNRELIABLE_WITH_ACK_RECEIPT
+     
+     * More info in RakNet documentation
      */
     PacketReliability reliability;
     

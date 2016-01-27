@@ -1,7 +1,6 @@
 #include "AppDelegate.h"
-#include "ServerListScene.h"
 #include "Connector.h"
-#include "Definitions.h"
+#include "ServerListScene.h"
 
 USING_NS_CC;
 
@@ -43,10 +42,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
     FileUtils::getInstance()->addSearchPath("res");
 
     // create a scene. it's an autorelease object
+    //auto scene = ServerListScene::createScene();
     auto scene = ServerListScene::createScene();
 
     // start networking
-    Connector::getInstance()->start();
+    Connector::getInstance()-> start();
     
     
     // run

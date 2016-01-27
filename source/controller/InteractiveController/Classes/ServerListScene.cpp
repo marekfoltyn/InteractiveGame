@@ -1,21 +1,10 @@
-#include "LobbyScene.h"
 #include "ServerListScene.h"
-#include "cocostudio/CocoStudio.h"
-#include "ui/CocosGUI.h"
+#include "LobbyScene.h"
 
-#include "MessageIdentifiers.h"
-#include "RakPeerInterface.h"
-
-#include "Block.h"
-#include "BlockManager.h"
 #include "Connector.h"
-#include "Definitions.h"
-
-#include <map>
+#include "ServerNameBlock.h"
 
 USING_NS_CC;
-
-using namespace cocostudio::timeline;
 
 Scene * ServerListScene::createScene()
 {
@@ -174,114 +163,6 @@ void ServerListScene::searchLabelThreeDots(){
 }
 
 
-void ServerListScene::findServers(){
-    
-    Connector::getInstance()->ping();
-    decreaseServerLifetimes(); // refresh actually found servers
-    
-    CCLOG("Searching for servers...");
-}
-
-void ServerListScene::decreaseServerLifetimes(){
-    
-    for(std::map<int, ServerMapEntry*>::iterator i = serverMap.begin(); i != serverMap.end(); i++) {
-        // iterator->first = key
-        // iterator->second = value
-
-        i->second->inactiveSeconds++;
-        
-        CCLOG("%s lifetime set to %d", i->second->address->ToString(), (int) i->second->inactiveSeconds);
-        
-        if( i->second->inactiveSeconds >= SERVER_MENU_LIFETIME){
-
-            //delete
-            CCLOG("%s removed for inactivity.",i->second->address->ToString());
-            
-            //TODO: delete menu entry
-            //auto label = (MenuItemLabel *) serverMenu->getChildByTag( (int) RakNet::SystemAddress::ToInteger( * (i->second->address) ));
-            //serverMenu->removeChild(label, true);
-            
-            serverMap.erase(i->first);
-            
-            // if missing this, when only one server, app breaks (iterator is behind the end)
-            if( serverMap.size() == 0 || i == serverMap.end() ){
-                return;
-            }
-        }
-        
-    }
-    
-}
-
-void ServerListScene::serverFound(Block * block){
-    
-    auto name = __String::create( BlockManager::parseServerName(block) );
-    CCLOG("Server response: %s", name->getCString() );
-    
-    /*if(lblServerName != nullptr){
-        lblServerName->setString(name->getCString());
-    }*/
-    
-    addOrUpdateServer(name, block->getAddress());
-}
-
-void ServerListScene::btnServerClicked(Ref * pSender){
-
-    int tag = ((cocos2d::MenuItemLabel *) pSender)->getTag();
-
-    if(tag == -1)
-    {
-        CCLOG("Tag not found. Can't connect.");
-        return;
-    }
-    
-    RakNet::SystemAddress * address = serverMap[tag]->address;
-    
-    //this->stopAction(searchServersAction);
-    //this->stopAction(searchTextLoop);
-    //lblSearching->setString("Connecting...");
-    
-    Connector::getInstance()->connect(*address);
-    
-}
-
-void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::SystemAddress address){
-
-    auto visibleSize = Director::getInstance()->getVisibleSize();
-    auto origin = Director::getInstance()->getVisibleOrigin();
-    int hash = (int) RakNet::SystemAddress::ToInteger( address );
-    
-    if( serverMap.count( hash ) == 0 ){
-
-        // create new entry
-        ServerMapEntry * s = new ServerMapEntry();
-        s->inactiveSeconds = 0;
-        s->address = new RakNet::SystemAddress(address); // copy adress (packet will be deallocated)
-        
-        serverMap[hash] = s;
-        CCLOG("%s added (hash: %d).", serverName->getCString(), hash);
-        
-        std::string name(serverName->getCString());
-        
-        auto label = Label::createWithTTF(name, "8-Bit-Madness.ttf", visibleSize.height/12);
-        
-        auto item = MenuItemLabel::create(label, CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
-        item->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
-        item->setTag(hash); // SystemAddress will be found by tag (in hashmap)
-        
-        auto menu = Menu::create(item, NULL);
-        menu->setPosition(Vec2::ZERO);
-        this->addChild(menu);
-        
-        
-    } else {
-        // server already exists - refresh server lifetime
-        auto s = serverMap[hash];
-        s->inactiveSeconds = 0;
-    }
-    
-}
-
 void ServerListScene::startPacketAction()
 {
     auto callback = CallFunc::create(CC_CALLBACK_0(ServerListScene::packetAction, this));
@@ -333,6 +214,115 @@ void ServerListScene::packetAction()
     
 }
 
+void ServerListScene::findServers(){
+    
+    Connector::getInstance()->ping();
+    decreaseServerLifetimes(); // refresh actually found servers
+    
+    CCLOG("Searching for servers...");
+}
+
+void ServerListScene::decreaseServerLifetimes(){
+    
+    for(std::map<int, ServerMapEntry*>::iterator i = serverMap.begin(); i != serverMap.end(); i++) {
+        // iterator->first = key
+        // iterator->second = value
+        
+        i->second->inactiveSeconds++;
+        
+        CCLOG("%s lifetime set to %d", i->second->address->ToString(), (int) i->second->inactiveSeconds);
+        
+        if( i->second->inactiveSeconds >= SERVER_MENU_LIFETIME){
+            
+            //delete
+            CCLOG("%s removed for inactivity.",i->second->address->ToString());
+            
+            //TODO: delete menu entry
+            //auto label = (MenuItemLabel *) serverMenu->getChildByTag( (int) RakNet::SystemAddress::ToInteger( * (i->second->address) ));
+            //serverMenu->removeChild(label, true);
+            
+            serverMap.erase(i->first);
+            
+            // if missing this, when only one server, app breaks (iterator is behind the end)
+            if( serverMap.size() == 0 || i == serverMap.end() ){
+                return;
+            }
+        }
+        
+    }
+    
+}
+
+void ServerListScene::serverFound(Block * block){
+    
+    auto name = __String::create( ServerNameBlock::ServerName(block) );
+    CCLOG("Server response: %s", name->getCString() );
+    
+    /*if(lblServerName != nullptr){
+     lblServerName->setString(name->getCString());
+     }*/
+    
+    addOrUpdateServer(name, block->getAddress());
+}
+
+void ServerListScene::btnServerClicked(Ref * pSender){
+    
+    int tag = ((cocos2d::MenuItemLabel *) pSender)->getTag();
+    
+    if(tag == -1)
+    {
+        CCLOG("Tag not found. Can't connect.");
+        return;
+    }
+    
+    RakNet::SystemAddress address = *(serverMap[tag]->address);
+    
+    //this->stopAction(searchServersAction);
+    //this->stopAction(searchTextLoop);
+    //lblSearching->setString("Connecting...");
+    
+    CCLOG("[ServerListScene] Connecting to %s", address.ToString());
+    Connector::getInstance()->connect(address);
+    
+}
+
+void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::SystemAddress address){
+    
+    auto visibleSize = Director::getInstance()->getVisibleSize();
+    auto origin = Director::getInstance()->getVisibleOrigin();
+    int hash = (int) RakNet::SystemAddress::ToInteger( address );
+    
+    if( serverMap.count( hash ) == 0 ){
+        
+        // create new entry
+        ServerMapEntry * s = new ServerMapEntry();
+        s->inactiveSeconds = 0;
+        s->address = new RakNet::SystemAddress(address); // copy adress (packet will be deallocated)
+        
+        serverMap[hash] = s;
+        CCLOG("%s added (hash: %d).", serverName->getCString(), hash);
+        
+        std::string name(serverName->getCString());
+        
+        auto label = Label::createWithTTF(name, "8-Bit-Madness.ttf", visibleSize.height/12);
+        
+        auto item = MenuItemLabel::create(label, CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
+        item->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
+        item->setTag(hash); // SystemAddress will be found by tag (in hashmap)
+        
+        auto menu = Menu::create(item, NULL);
+        menu->setPosition(Vec2::ZERO);
+        this->addChild(menu);
+        
+        
+    } else {
+        // server already exists - refresh server lifetime
+        auto s = serverMap[hash];
+        s->inactiveSeconds = 0;
+    }
+    
+}
+
 void ServerListScene::onAcceleration(Acceleration* acc, Event* unused_event){
     auto x = __String::createWithFormat("X: %f", acc->x);
     auto y = __String::createWithFormat("Y: %f", acc->y);
@@ -355,7 +345,7 @@ void ServerListScene::onConnected(Block * block){
 }
 
 void ServerListScene::exitGame(Ref * pSender){
-    //Connector::getInstance()->stop();
+    Connector::getInstance()->stop();
     Director::getInstance()->end();
     exit(0);
 }

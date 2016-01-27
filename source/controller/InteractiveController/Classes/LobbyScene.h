@@ -1,13 +1,7 @@
 #ifndef __LOBBY_SCENE_H__
 #define __LOBBY_SCENE_H__
 
-#include <map>
-#include <atomic>
-
 #include "cocos2d.h"
-#include "extensions/cocos-ext.h"
-#include "ui/CocosGUI.h"
-//#include "RakPeerInterface.h"
 
 class LobbyScene : public cocos2d::Layer
 {

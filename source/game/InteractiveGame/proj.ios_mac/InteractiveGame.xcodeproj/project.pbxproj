@@ -48,8 +48,10 @@
 		EA5CA2CB1C3FC933003437FF /* raknetx86_64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5CA2C91C3FC90D003437FF /* raknetx86_64.a */; };
 		EA6D036E1C53D6D8003A08BE /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA6D036C1C53D6D8003A08BE /* Block.cpp */; };
 		EA6D036F1C53D6D8003A08BE /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA6D036C1C53D6D8003A08BE /* Block.cpp */; };
-		EA6D06771C558CC7003A08BE /* BlockParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA6D06761C558CC7003A08BE /* BlockParser.cpp */; };
-		EA6D06781C558CC7003A08BE /* BlockParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA6D06761C558CC7003A08BE /* BlockParser.cpp */; };
+		EA888B901C58B0B200534275 /* AccelerationBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888B8E1C58B0B200534275 /* AccelerationBlock.cpp */; };
+		EA888B911C58B0B200534275 /* AccelerationBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888B8E1C58B0B200534275 /* AccelerationBlock.cpp */; };
+		EA888B921C58B0B200534275 /* ServerNameBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888B8F1C58B0B200534275 /* ServerNameBlock.cpp */; };
+		EA888B931C58B0B200534275 /* ServerNameBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888B8F1C58B0B200534275 /* ServerNameBlock.cpp */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
 /* End PBXBuildFile section */
 
@@ -95,9 +97,11 @@
 		EA5CA2C91C3FC90D003437FF /* raknetx86_64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = raknetx86_64.a; path = ../../../shared/network/raknet/raknetx86_64.a; sourceTree = "<group>"; };
 		EA6D036C1C53D6D8003A08BE /* Block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Block.cpp; path = ../../../shared/network/Block.cpp; sourceTree = "<group>"; };
 		EA6D036D1C53D6D8003A08BE /* Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Block.h; path = ../../../shared/network/Block.h; sourceTree = "<group>"; };
-		EA6D06751C558CC7003A08BE /* BlockParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlockParser.h; path = ../../../shared/network/BlockParser.h; sourceTree = "<group>"; };
-		EA6D06761C558CC7003A08BE /* BlockParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BlockParser.cpp; path = ../../../shared/network/BlockParser.cpp; sourceTree = "<group>"; };
 		EA76BC881C32CCA900F2531F /* GameDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDefinitions.h; sourceTree = "<group>"; };
+		EA888B8C1C58B0B200534275 /* AccelerationBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccelerationBlock.h; path = ../../../shared/blocks/AccelerationBlock.h; sourceTree = "<group>"; };
+		EA888B8D1C58B0B200534275 /* ServerNameBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerNameBlock.h; path = ../../../shared/blocks/ServerNameBlock.h; sourceTree = "<group>"; };
+		EA888B8E1C58B0B200534275 /* AccelerationBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AccelerationBlock.cpp; path = ../../../shared/blocks/AccelerationBlock.cpp; sourceTree = "<group>"; };
+		EA888B8F1C58B0B200534275 /* ServerNameBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ServerNameBlock.cpp; path = ../../../shared/blocks/ServerNameBlock.cpp; sourceTree = "<group>"; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -250,13 +254,12 @@
 		EA4189151C33C2C9004B8934 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				EA888B8B1C58B09A00534275 /* Blocks */,
 				EA5CA2C21C3FC724003437FF /* Connector.h */,
 				EA5CA2C11C3FC724003437FF /* Connector.cpp */,
 				EA5CA2C31C3FC724003437FF /* Definitions.h */,
 				EA6D036D1C53D6D8003A08BE /* Block.h */,
 				EA6D036C1C53D6D8003A08BE /* Block.cpp */,
-				EA6D06751C558CC7003A08BE /* BlockParser.h */,
-				EA6D06761C558CC7003A08BE /* BlockParser.cpp */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -280,6 +283,17 @@
 				46880B8719C43A87006E1F66 /* LobbyScene.h */,
 			);
 			name = Scenes;
+			sourceTree = "<group>";
+		};
+		EA888B8B1C58B09A00534275 /* Blocks */ = {
+			isa = PBXGroup;
+			children = (
+				EA888B8C1C58B0B200534275 /* AccelerationBlock.h */,
+				EA888B8D1C58B0B200534275 /* ServerNameBlock.h */,
+				EA888B8E1C58B0B200534275 /* AccelerationBlock.cpp */,
+				EA888B8F1C58B0B200534275 /* ServerNameBlock.cpp */,
+			);
+			name = Blocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -374,8 +388,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
+				EA888B921C58B0B200534275 /* ServerNameBlock.cpp in Sources */,
+				EA888B901C58B0B200534275 /* AccelerationBlock.cpp in Sources */,
 				EA5CA2C41C3FC724003437FF /* Connector.cpp in Sources */,
-				EA6D06771C558CC7003A08BE /* BlockParser.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				46880B8B19C43A87006E1F66 /* LobbyScene.cpp in Sources */,
 				EA6D036E1C53D6D8003A08BE /* Block.cpp in Sources */,
@@ -386,10 +401,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA6D06781C558CC7003A08BE /* BlockParser.cpp in Sources */,
 				EA41894C1C342C4B004B8934 /* TestDelegate.cpp in Sources */,
 				EA6D036F1C53D6D8003A08BE /* Block.cpp in Sources */,
 				EA41894D1C342C4B004B8934 /* TestScene.cpp in Sources */,
+				EA888B911C58B0B200534275 /* AccelerationBlock.cpp in Sources */,
+				EA888B931C58B0B200534275 /* ServerNameBlock.cpp in Sources */,
 				EA4189301C342867004B8934 /* main.cpp in Sources */,
 				EA4189311C342867004B8934 /* LobbyScene.cpp in Sources */,
 				EA4189501C342CEF004B8934 /* Catch.h in Sources */,

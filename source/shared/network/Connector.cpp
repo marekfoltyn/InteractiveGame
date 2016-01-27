@@ -1,9 +1,4 @@
 #include "Connector.h"
-#include "Definitions.h"
-#include "Block.h"
-
-#include "MessageIdentifiers.h"
-#include "RakPeerInterface.h"
 
 #include <cstring>
 #include <string>
@@ -25,7 +20,9 @@ bool Connector::start(){
 }
 
 
-bool Connector::startAsServer(unsigned short maxPlayers){
+bool Connector::startAsServer(unsigned short maxPlayers)
+{    
+    server = RakNet::UNASSIGNED_SYSTEM_ADDRESS;
     
     // raknet interface configuration
     interface = RakNet::RakPeerInterface::GetInstance();
@@ -95,8 +92,11 @@ void Connector::connect( RakNet::SystemAddress server ){
     
     char * ip = new char[64]; // must be new char[]! Not char ip[], BAD_ACCESS!!
     server.ToString(false, ip);
-    LOG("Connecting to %s", ip);
-    interface->Connect(ip, server.GetPort(), nullptr, 0); // no password -> nullptr, 0
+
+    int result = interface->Connect(ip, server.GetPort(), nullptr, 0); // no password -> nullptr, 0
+    if(result == RakNet::CONNECTION_ATTEMPT_STARTED){
+        LOG("[Connector] Connecting to %s", ip);
+    }
 }
 
 
@@ -105,6 +105,7 @@ void Connector::disconnect( RakNet::SystemAddress address ){
         return;
     }
     interface->CloseConnection(address, true); // true ... send disconnection notification
+    server = RakNet::UNASSIGNED_SYSTEM_ADDRESS;
 }
 
 
@@ -140,6 +141,15 @@ Block * Connector::receive(){
             LOG("[%c]", p->data[i]);
         }
         LOG("\n");*/
+
+        // set server to Connector
+        if(p->data[0] == P_CONNECTED){
+            server = p->systemAddress;
+        }
+        
+        if(p->data[0] == P_CONNECTION_LOST){
+            server = RakNet::UNASSIGNED_SYSTEM_ADDRESS;
+        }
         
         return Block::create(p);
     }
@@ -174,4 +184,8 @@ void Connector::ping(){
     }
     
     interface->Ping("255.255.255.255", SERVER_PORT, true); // true ... reply only if server is not full
+}
+
+RakNet::SystemAddress Connector::getServer(){
+    return server;
 }
