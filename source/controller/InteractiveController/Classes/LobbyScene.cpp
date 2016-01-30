@@ -1,6 +1,6 @@
 #include "LobbyScene.h"
 #include "Connector.h"
-#include "AccelerationBlock.h"
+#include "AccelerationBlok.h"
 
 USING_NS_CC;
 
@@ -48,20 +48,15 @@ void LobbyScene::initGraphics(){
     auto visibleSize = Director::getInstance()->getVisibleSize();
     auto origin = Director::getInstance()->getVisibleOrigin();
     
-    // background
-    auto background = Sprite::create("bg_dummy.png");
-    //background->set( cocos2d::Size( visibleSize.width, visibleSize.height ) );
-    background->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
-    background->setScaleX((visibleSize.width / background->getContentSize().width));
-    background->setScaleY((visibleSize.height / background->getContentSize().height));
+    // background color
+    auto background = cocos2d::LayerColor::create(Color4B(54, 72, 99, 255));
     this->addChild(background);
-    
     
 }
 
 void LobbyScene::onAcceleration(cocos2d::Acceleration* acc, cocos2d::Event* unused_event)
 {
-    Block * block = AccelerationBlock::Create(acc);
-    Connector::getInstance()->send(block);
+    Blok * blok = AccelerationBlok::Create(acc);
+    Connector::getInstance()->send(blok);
 }
 

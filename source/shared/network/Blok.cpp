@@ -1,17 +1,15 @@
 //
-//  Block.cpp
+//  Blok.cpp
 //  InteractiveController
 //
 //  Created by Marek Foltýn on 23.01.16.
 //
 
-#include "MessageIdentifiers.h"
-#include "RakPeerInterface.h"
+#include "Blok.h"
 #include "Connector.h"
 
-#include "string.h"
 
-Block::Block(const char * d, unsigned int len )
+Blok::Blok(const char * d, unsigned int len )
 {
     
     length = len+1; // +1 ... message type byte
@@ -26,10 +24,10 @@ Block::Block(const char * d, unsigned int len )
     packet=nullptr;
 }
 
-Block::Block(RakNet::Packet * packet)
+Blok::Blok(RakNet::Packet * packet)
 
 // calling default constructor before
-: Block( (const char *) packet->data+1, packet->length-1) // skip first byte
+: Blok( (const char *) packet->data+1, packet->length-1) // skip first byte
 {
     setAddress( packet->systemAddress );
     setType( packet->data[0] );
@@ -37,91 +35,91 @@ Block::Block(RakNet::Packet * packet)
 }
 
 
-Block * Block::create(const char * data, unsigned int len )
+Blok * Blok::create(const char * data, unsigned int len )
 {
-    return new Block(data, len);
+    return new Blok(data, len);
 }
 
 
-Block * Block::create(RakNet::Packet * p)
+Blok * Blok::create(RakNet::Packet * p)
 {
-    return new Block(p);
+    return new Blok(p);
 }
 
 
-void Block::setType(unsigned char type)
+void Blok::setType(unsigned char type)
 {
     data[0] = type;
 }
 
 
-unsigned char Block::getType()
+unsigned char Blok::getType()
 {
     return data[0];
 }
 
 
-void Block::setReliability( PacketReliability r )
+void Blok::setReliability( PacketReliability r )
 {
     reliability = r;
 }
 
 
-PacketReliability Block::getReliability()
+PacketReliability Blok::getReliability()
 {
     return reliability;
 }
 
 
-void Block::setPriority( PacketPriority p )
+void Blok::setPriority( PacketPriority p )
 {
     priority = p;
 }
 
 
-PacketPriority Block::getPriority()
+PacketPriority Blok::getPriority()
 {
     return priority;
 }
 
 
-void Block::setAddress( RakNet::SystemAddress addr )
+void Blok::setAddress( RakNet::SystemAddress addr )
 {
     address = addr;
 }
 
 
-RakNet::SystemAddress Block::getAddress()
+RakNet::SystemAddress Blok::getAddress()
 {
     return address;
 }
 
 
-const char * Block::getData()
+const char * Blok::getData()
 {
     return data+1; // skip the packet type
 }
 
 
-const int Block::getLength()
+const int Blok::getLength()
 {
     return length-1; // skip the packet type
 }
 
 
-const char * Block::getPacketData()
+const char * Blok::getPacketData()
 {
     return data;
 }
 
 
-const int Block::getPacketLength()
+const int Blok::getPacketLength()
 {
     return length;
 }
 
 
-void Block::deallocate()
+void Blok::deallocate()
 {
     if(packet == nullptr)
     {

@@ -109,7 +109,7 @@ void Connector::disconnect( RakNet::SystemAddress address ){
 }
 
 
-void Connector::send(Block * b){
+void Connector::send(Blok* b){
     if(interface == nullptr){
         return;
     }
@@ -118,7 +118,7 @@ void Connector::send(Block * b){
 }
 
 
-Block * Connector::receive(){
+Blok * Connector::receive(){
     
     if(interface == nullptr) {
         return 0;
@@ -151,7 +151,7 @@ Block * Connector::receive(){
             server = RakNet::UNASSIGNED_SYSTEM_ADDRESS;
         }
         
-        return Block::create(p);
+        return Blok::create(p);
     }
 }
 

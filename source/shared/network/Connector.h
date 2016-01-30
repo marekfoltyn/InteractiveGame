@@ -4,7 +4,7 @@
 #include "MessageIdentifiers.h"
 #include "RakPeerInterface.h"
 #include "Definitions.h"
-#include "Block.h"
+#include "Blok.h"
 
 #include <string>
 
@@ -13,6 +13,7 @@
  * Represents network interface (both server and client)
  * usage: Connector::getInstance()-> ...
  */
+
 class Connector {
 public:
     
@@ -50,13 +51,13 @@ public:
     /**
      * send a Block (It is a wrapped RakNet::Packet with some additional data)
      */
-    void send(Block * b);
+    void send(Blok * b);
     
     /**
      * receive a packet from received packet queue (non-blocking way) and create a Block
      * @return: pointer to Block (need to deallocate when done with it), 0 if no packet is the queue
      */
-    Block * receive();
+    Blok * receive();
     
     /**
      * get/set server name (if startAsServer() was called before)
@@ -97,5 +98,6 @@ private:
     RakNet::SystemAddress server;
     
 };
-
+    
+    
 #endif // _CONNECTOR_H_

@@ -12,9 +12,9 @@ LOCAL_MODULE_FILENAME := libcocos2dcpp
 
 LOCAL_SRC_FILES := hellocpp/main.cpp \
 		../../../../shared/network/Connector.cpp \
-		../../../../shared/network/Block.cpp \
-		../../../../shared/blocks/AccelerationBlock.cpp \
-		../../../../shared/blocks/ServerNameBlock.cpp \
+		../../../../shared/network/Blok.cpp \
+		../../../../shared/bloks/AccelerationBlok.cpp \
+		../../../../shared/bloks/ServerNameBlok.cpp \
 		../../Classes/AppDelegate.cpp \
 		../../Classes/ServerListScene.cpp \
 		../../Classes/LobbyScene.cpp
@@ -22,7 +22,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../../shared/network
-LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../../shared/blocks
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../../shared/bloks
 
 # _COCOS_HEADER_ANDROID_BEGIN
 # _COCOS_HEADER_ANDROID_END

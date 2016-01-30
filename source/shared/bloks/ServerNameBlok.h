@@ -1,21 +1,21 @@
 //
-//  ServerNameBlock.h
+//  ServerNameBlok.h
 //  InteractiveController
 //
 //  Created by Marek Foltýn on 26.01.16.
 //
 //
 
-#ifndef ServerNameBlock_h
-#define ServerNameBlock_h
+#ifndef ServerNameBlok_h
+#define ServerNameBlok_h
 
 #include <string>
 #include "Connector.h"
 
 /**
- * Block with the server name (used when phone is not connected)
+ * Blok with the server name (used when phone is not connected)
  * Server creates this packet automatically, so we don't have to
- * implement ServerNameBlock::create()
+ * implement ServerNameBlok::create()
  *
  * Type:
  * ==============================================
@@ -25,13 +25,13 @@
  * ==============================================
  * server name (const char *)
  */
-class ServerNameBlock{
+class ServerNameBlok{
 public:
     
     /**
      * parse the server name
      */
-    static std::string ServerName(Block * block);
+    static std::string ServerName(Blok * blok);
 
 };
 

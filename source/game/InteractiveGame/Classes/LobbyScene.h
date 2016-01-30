@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "RakPeerInterface.h"
+#include "Blok.h"
 
 class LobbyScene : public cocos2d::Layer
 {
@@ -18,7 +19,7 @@ public:
     
     void processBlock();
     
-    void onAccelerationBlock(Block * block);
+    void onAccelerationBlok(Blok * blok);
     
 private:
     

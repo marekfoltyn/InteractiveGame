@@ -7,8 +7,8 @@
 #include "MessageIdentifiers.h"
 #include "Definitions.h"
 #include "Connector.h"
-#include "Block.h"
-#include "AccelerationBlock.h"
+#include "Blok.h"
+#include "AccelerationBlok.h"
 
 USING_NS_CC;
 
@@ -91,54 +91,54 @@ void LobbyScene::initGUI(){
 void LobbyScene::processBlock(){
     
     Connector * c = Connector::getInstance();
-    Block * block;
+    Blok * blok;
     
     // c->receive() returns 0, if no received packet is in the queue
-    while( (block = c->receive()) != nullptr )
+    while( (blok = c->receive()) != nullptr )
     {
-        switch ( block->getType() )
+        switch ( blok->getType() )
         {
             case P_PING:
             {
-                CCLOG("Client %s has pinged.", block->getAddress().ToString() );
+                CCLOG("Client %s has pinged.", blok->getAddress().ToString() );
                 break;
             }
                 
             case P_NEW_CONNECTION:
             {
-                CCLOG("%s connected.", block->getAddress().ToString() );
+                CCLOG("%s connected.", blok->getAddress().ToString() );
                 break;
             }
                 
             case P_CONNECTION_LOST:
             {
-                CCLOG("%s has lost connection.", block->getAddress().ToString() );
+                CCLOG("%s has lost connection.", blok->getAddress().ToString() );
                 break;
             }
                 
             case P_ACCELERATION:
             {
-                onAccelerationBlock(block);
+                onAccelerationBlok(blok);
                 break;
             }
                 
             default:
             {
-                CCLOG("Packet type %c was ignored.", block->getType());
+                CCLOG("Packet type %c was ignored.", blok->getType());
                 break;
             }
         }
         
-        block->deallocate();
+        blok->deallocate();
     }
 }
 
-void LobbyScene::onAccelerationBlock(Block * block)
+void LobbyScene::onAccelerationBlok(Blok * blok)
 {
     auto visibleSize = Director::getInstance()->getVisibleSize();
     auto origin = Director::getInstance()->getVisibleOrigin();
     
-    auto acc = AccelerationBlock::Parse(block);
+    auto acc = AccelerationBlok::Parse(blok);
     float x = (float) acc->x;
     float y = (float) acc->y;
 

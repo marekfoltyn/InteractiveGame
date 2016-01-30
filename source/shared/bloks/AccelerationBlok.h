@@ -1,13 +1,13 @@
 //
-//  AccelerationBlock.h
+//  AccelerationBlok.h
 //  InteractiveController
 //
 //  Created by Marek Foltýn on 26.01.16.
 //
 //
 
-#ifndef AccelerationBlock_h
-#define AccelerationBlock_h
+#ifndef AccelerationBlok_h
+#define AccelerationBlok_h
 
 #include "cocos2d.h"
 #include "Connector.h"
@@ -27,18 +27,18 @@
  z (double)
  
 */
-class AccelerationBlock{
+class AccelerationBlok{
 public:
 
     /**
      * Create Block from acceleration object
      */
-    static Block * Create(cocos2d::Acceleration * acc);
+    static Blok * Create(cocos2d::Acceleration * acc);
     
     /**
      * Parse to the cocos2d acc object
      */
-    static cocos2d::Acceleration * Parse(Block * block);
+    static cocos2d::Acceleration * Parse(Blok * block);
     
 private:
     

@@ -64,14 +64,16 @@ public:
     void btnServerClicked(Ref * pSender);
     
     /**
-     * process packet with server name
+     * a server has responded to the ping
+     * if the controller knows about it, resfresh its lifetime
+     * if not, add this server to the server list
      */
-    void serverFound(Block * block);
+    void refreshServer(Blok * blok);
     
     /**
      * Succesfully connected to a server (go to lobby)
      */
-    void onConnected(Block * block);
+    void onConnected(Blok * blok);
     
     /**
      * Exit game
@@ -95,7 +97,7 @@ private:
     std::map<int, ServerMapEntry*> serverMap;
     
     /**
-     * start receiving blocks
+     * start receiving bloks
      */
     void startReceiveBlocks();
     

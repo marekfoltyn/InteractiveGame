@@ -1,35 +1,38 @@
-#ifndef  _BLOCK_H_
-#define  _BLOCK_H_
+#ifndef  _Blok_H_
+#define  _Blok_H_
 
 #include "MessageIdentifiers.h"
 #include "RakPeerInterface.h"
 
+#include "string.h"
+
+
 /**
  * Representation of game message to be sent to network.
- * Block also includes information about packet - type, reliability, priority, ordering, address, ...
+ * Blok also includes information about packet - type, reliability, priority, ordering, address, ...
  * It is used as a wrapper for data to be sent to network and also for received data
  * Example:
  *
- * Block * b;
+ * Blok * b;
  *
  * ... // init, fill with data, adress and so on...
  *
  * Connector::getInstance()->send(b);
  */
-class Block {
+class Blok {
 public:
     
     /**
-     * create a Block and copies data so the data has to be freed manually
+     * create a Blok and copies data so the data has to be freed manually
      * @param byteSize size of the data
      */
-    static Block * create(const char * data, unsigned int len );
+    static Blok * create(const char * data, unsigned int len );
     
     /**
-     * create a Block from received packet
+     * create a Blok from received packet
      * reliability and priority will be undefined
      */
-    static Block * create(RakNet::Packet * p);
+    static Blok * create(RakNet::Packet * p);
     
     /**
      * set packet type (defined in Definitions.h)
@@ -62,7 +65,7 @@ public:
     PacketPriority getPriority();
     
     /**
-     * set RakNet system address the Block should be sent
+     * set RakNet system address the Blok should be sent
      */
     void setAddress( RakNet::SystemAddress addr );
     
@@ -92,7 +95,7 @@ public:
     const int getPacketLength();
     
     /**
-     * deallocates the Block including its data
+     * deallocates the Blok including its data
      */
     void deallocate();
     
@@ -100,25 +103,25 @@ private:
     
     /**
      * private constructor
-     * creating Blocks (similar as creating objects in Cocos2dx):
-     * Block::create(...)
+     * creating Bloks (similar as creating objects in Cocos2dx):
+     * Blok::create(...)
      */
-    Block(const char * data, unsigned int length );
+    Blok(const char * data, unsigned int length );
     
     /**
      * private constructor
-     * creating Blocks from received packet
-     * Block::create(...)
+     * creating Bloks from received packet
+     * Blok::create(...)
      */
-    Block( RakNet::Packet * packet );
+    Blok( RakNet::Packet * packet );
     
     /**
      * empty constructor
      */
-    Block(){};
+    Blok(){};
     
     /**
-     * pointer to a RakNet packet (used if Block was created from received packet)
+     * pointer to a RakNet packet (used if Blok was created from received packet)
      */
     RakNet::Packet * packet;
     
@@ -161,10 +164,10 @@ private:
     PacketReliability reliability;
     
     /**
-     * RakNet address, where the block will be sent
+     * RakNet address, where the Blok will be sent
      */
     RakNet::SystemAddress address;
     
 };
 
-#endif // _BLOCK_H_
+#endif // _Blok_H_

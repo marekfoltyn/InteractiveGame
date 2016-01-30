@@ -2,7 +2,7 @@
 #include "LobbyScene.h"
 
 #include "Connector.h"
-#include "ServerNameBlock.h"
+#include "ServerNameBlok.h"
 
 USING_NS_CC;
 
@@ -41,17 +41,26 @@ void ServerListScene::initGraphics()
     auto visibleSize = Director::getInstance()->getVisibleSize();
     auto origin = Director::getInstance()->getVisibleOrigin();
     
-    // background
+    // background color
     auto background = cocos2d::LayerColor::create(Color4B(54, 72, 99, 255));
-    //auto background = Sprite::create("bg_dummy.png");
-    //background->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
     this->addChild(background);
     
-    // monitor
-    auto monitor = Sprite::create("monitor.png");
-    monitor->setAnchorPoint(Vec2(0.5, 0.5));
-    monitor->setPosition(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2);
-    this->addChild(monitor);
+    // background top triangle
+    auto top = Sprite::create("bg_triangle_top.png");
+    float scaleWidth = (0.6 * visibleSize.width) / top->getContentSize().width; // top triangle will have width 60% of the screen width
+    float scaleHeight = (1.0/12) * visibleSize.height / top->getContentSize().height; // 1/12 of the visible height
+    top->setScale(scaleWidth, scaleHeight);
+    top->setAnchorPoint(Vec2(0,1));
+    top->setPosition(Vec2( origin.x, origin.y + visibleSize.height ));
+    this->addChild(top);
+    
+    // background bottom triangle
+    auto bottom = Sprite::create("bg_triangle_top.png");
+    bottom->setScale(scaleWidth, scaleHeight);
+    bottom->setAnchorPoint(Vec2(0,1));
+    bottom->setRotation(180);
+    bottom->setPosition(Vec2( origin.x + visibleSize.width, origin.y));
+    this->addChild(bottom);
     
     // exit button
     auto btnExit = MenuItemImage::create("exit_button.png", "exit_button_pressed.png", CC_CALLBACK_1(ServerListScene::btnLeaveClicked, this));
@@ -73,17 +82,17 @@ void ServerListScene::initGraphics()
     // coordinates
     lblX = Label::createWithTTF("X: ???", "8-Bit-Madness.ttf", visibleSize.height/18);
     lblX->setAnchorPoint(Vec2(0,0));
-    lblX->setPosition(Vec2( origin.x + visibleSize.width/2 -160, origin.y + 3*lblX->getContentSize().height ));
+    lblX->setPosition(Vec2( origin.x, origin.y + 5*lblX->getContentSize().height ));
     this->addChild(lblX);
 
     lblY = Label::createWithTTF("Y: ???", "8-Bit-Madness.ttf", visibleSize.height/18);
     lblY->setAnchorPoint(Vec2(0,0));
-    lblY->setPosition(Vec2( origin.x + visibleSize.width/2 -160, origin.y + 2*lblX->getContentSize().height ));
+    lblY->setPosition(Vec2( origin.x, origin.y + 4*lblX->getContentSize().height ));
     this->addChild(lblY);
     
     lblZ = Label::createWithTTF("Z: ???", "8-Bit-Madness.ttf", visibleSize.height/18);
     lblZ->setAnchorPoint(Vec2(0,0));
-    lblZ->setPosition(Vec2( origin.x + visibleSize.width/2 -160, origin.y + 1*lblX->getContentSize().height ));
+    lblZ->setPosition(Vec2( origin.x, origin.y + 3*lblX->getContentSize().height ));
     this->addChild(lblZ);
 
     // Server names menu
@@ -144,22 +153,22 @@ void ServerListScene::stopReceiveBlocks()
 void ServerListScene::receiveAllBlocks()
 {
     Connector * c = Connector::getInstance();
-    Block * block;
+    Blok * blok;
     
     // c->receive() returns 0, if no received packet is in the queue
-    while( (block = c->receive()) != nullptr )
+    while( (blok = c->receive()) != nullptr )
     {
-        switch ( block->getType() )
+        switch ( blok->getType() )
         {
             case P_SERVER_NAME:
             {
-                serverFound(block);
+                refreshServer(blok);
                 break;
             }
                 
             case P_CONNECTED:
             {
-                onConnected(block);
+                onConnected(blok);
                 break;
             }
             
@@ -170,7 +179,7 @@ void ServerListScene::receiveAllBlocks()
             }
         }
         
-        block->deallocate();
+        blok->deallocate();
     }
 }
 
@@ -213,16 +222,16 @@ void ServerListScene::decreaseServerLifetimes(){
     
 }
 
-void ServerListScene::serverFound(Block * block){
+void ServerListScene::refreshServer(Blok * blok){
     
-    auto name = __String::create( ServerNameBlock::ServerName(block) );
+    auto name = __String::create( ServerNameBlok::ServerName(blok) );
     CCLOG("Server response: %s", name->getCString() );
     
     /*if(lblServerName != nullptr){
      lblServerName->setString(name->getCString());
      }*/
     
-    addOrUpdateServer(name, block->getAddress());
+    addOrUpdateServer(name, blok->getAddress());
 }
 
 void ServerListScene::btnServerClicked(Ref * pSender){
@@ -283,9 +292,9 @@ void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::
     
 }
 
-void ServerListScene::onConnected(Block * block){
+void ServerListScene::onConnected(Blok * blok){
     
-    CCLOG("Connected to %s", block->getAddress().ToString());
+    CCLOG("Connected to %s", blok->getAddress().ToString());
     this->stopAction(searchTextLoop);
     lblSearching->setString("Connected.");
     

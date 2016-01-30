@@ -168,11 +168,11 @@
 		EA888B771C58A6B200534275 /* VariadicSQLParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888B091C58A6B200534275 /* VariadicSQLParser.cpp */; };
 		EA888B781C58A6B200534275 /* VitaIncludes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888B0A1C58A6B200534275 /* VitaIncludes.cpp */; };
 		EA888B791C58A6B200534275 /* WSAStartupSingleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888B0B1C58A6B200534275 /* WSAStartupSingleton.cpp */; };
-		EA888B7F1C58A6FC00534275 /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888B7D1C58A6FC00534275 /* Block.cpp */; };
-		EA888B801C58A6FC00534275 /* Connector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888B7E1C58A6FC00534275 /* Connector.cpp */; };
-		EA888B861C58A73100534275 /* AccelerationBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888B841C58A73100534275 /* AccelerationBlock.cpp */; };
-		EA888B871C58A73100534275 /* ServerNameBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888B851C58A73100534275 /* ServerNameBlock.cpp */; };
-		EA888B8A1C58A7FF00534275 /* ServerListScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888B891C58A7FF00534275 /* ServerListScene.cpp */; };
+		EAAB6A591C59F21E00171969 /* Connector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A581C59F21E00171969 /* Connector.cpp */; };
+		EAAB6A5C1C59F27000171969 /* Blok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A5B1C59F27000171969 /* Blok.cpp */; };
+		EAAB6A611C59F6C900171969 /* AccelerationBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A5F1C59F6C900171969 /* AccelerationBlok.cpp */; };
+		EAAB6A621C59F6C900171969 /* ServerNameBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A601C59F6C900171969 /* ServerNameBlok.cpp */; };
+		EAAB6A651C59F77D00171969 /* ServerListScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A641C59F77D00171969 /* ServerListScene.cpp */; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
 /* End PBXBuildFile section */
@@ -498,18 +498,17 @@
 		EA888B091C58A6B200534275 /* VariadicSQLParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VariadicSQLParser.cpp; path = ../../../shared/network/raknet/VariadicSQLParser.cpp; sourceTree = "<group>"; };
 		EA888B0A1C58A6B200534275 /* VitaIncludes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VitaIncludes.cpp; path = ../../../shared/network/raknet/VitaIncludes.cpp; sourceTree = "<group>"; };
 		EA888B0B1C58A6B200534275 /* WSAStartupSingleton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WSAStartupSingleton.cpp; path = ../../../shared/network/raknet/WSAStartupSingleton.cpp; sourceTree = "<group>"; };
-		EA888B7A1C58A6FC00534275 /* Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Block.h; path = ../../../shared/network/Block.h; sourceTree = "<group>"; };
-		EA888B7B1C58A6FC00534275 /* Connector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Connector.h; path = ../../../shared/network/Connector.h; sourceTree = "<group>"; };
 		EA888B7C1C58A6FC00534275 /* Definitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Definitions.h; path = ../../../shared/network/Definitions.h; sourceTree = "<group>"; };
-		EA888B7D1C58A6FC00534275 /* Block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Block.cpp; path = ../../../shared/network/Block.cpp; sourceTree = "<group>"; };
-		EA888B7E1C58A6FC00534275 /* Connector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Connector.cpp; path = ../../../shared/network/Connector.cpp; sourceTree = "<group>"; };
-		EA888B811C58A72300534275 /* DummyBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DummyBlock.h; path = ../../../shared/network/DummyBlock.h; sourceTree = "<group>"; };
-		EA888B821C58A73100534275 /* AccelerationBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccelerationBlock.h; path = ../../../shared/blocks/AccelerationBlock.h; sourceTree = "<group>"; };
-		EA888B831C58A73100534275 /* ServerNameBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerNameBlock.h; path = ../../../shared/blocks/ServerNameBlock.h; sourceTree = "<group>"; };
-		EA888B841C58A73100534275 /* AccelerationBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AccelerationBlock.cpp; path = ../../../shared/blocks/AccelerationBlock.cpp; sourceTree = "<group>"; };
-		EA888B851C58A73100534275 /* ServerNameBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ServerNameBlock.cpp; path = ../../../shared/blocks/ServerNameBlock.cpp; sourceTree = "<group>"; };
-		EA888B881C58A7FF00534275 /* ServerListScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerListScene.h; sourceTree = "<group>"; };
-		EA888B891C58A7FF00534275 /* ServerListScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServerListScene.cpp; sourceTree = "<group>"; };
+		EAAB6A571C59F21E00171969 /* Connector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Connector.h; path = ../../../shared/network/Connector.h; sourceTree = "<group>"; };
+		EAAB6A581C59F21E00171969 /* Connector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Connector.cpp; path = ../../../shared/network/Connector.cpp; sourceTree = "<group>"; };
+		EAAB6A5A1C59F27000171969 /* Blok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Blok.h; path = ../../../shared/network/Blok.h; sourceTree = "<group>"; };
+		EAAB6A5B1C59F27000171969 /* Blok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Blok.cpp; path = ../../../shared/network/Blok.cpp; sourceTree = "<group>"; };
+		EAAB6A5D1C59F6C900171969 /* AccelerationBlok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccelerationBlok.h; path = ../../../shared/bloks/AccelerationBlok.h; sourceTree = "<group>"; };
+		EAAB6A5E1C59F6C900171969 /* ServerNameBlok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerNameBlok.h; path = ../../../shared/bloks/ServerNameBlok.h; sourceTree = "<group>"; };
+		EAAB6A5F1C59F6C900171969 /* AccelerationBlok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AccelerationBlok.cpp; path = ../../../shared/bloks/AccelerationBlok.cpp; sourceTree = "<group>"; };
+		EAAB6A601C59F6C900171969 /* ServerNameBlok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ServerNameBlok.cpp; path = ../../../shared/bloks/ServerNameBlok.cpp; sourceTree = "<group>"; };
+		EAAB6A631C59F77D00171969 /* ServerListScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerListScene.h; sourceTree = "<group>"; };
+		EAAB6A641C59F77D00171969 /* ServerListScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServerListScene.cpp; sourceTree = "<group>"; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -713,11 +712,11 @@
 			children = (
 				EA6D04F21C53DCD0003A08BE /* RakNet */,
 				EA8888731C58031400534275 /* Blocks */,
-				EA888B7A1C58A6FC00534275 /* Block.h */,
-				EA888B7B1C58A6FC00534275 /* Connector.h */,
 				EA888B7C1C58A6FC00534275 /* Definitions.h */,
-				EA888B7D1C58A6FC00534275 /* Block.cpp */,
-				EA888B7E1C58A6FC00534275 /* Connector.cpp */,
+				EAAB6A571C59F21E00171969 /* Connector.h */,
+				EAAB6A581C59F21E00171969 /* Connector.cpp */,
+				EAAB6A5A1C59F27000171969 /* Blok.h */,
+				EAAB6A5B1C59F27000171969 /* Blok.cpp */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -1003,11 +1002,10 @@
 		EA8888731C58031400534275 /* Blocks */ = {
 			isa = PBXGroup;
 			children = (
-				EA888B811C58A72300534275 /* DummyBlock.h */,
-				EA888B831C58A73100534275 /* ServerNameBlock.h */,
-				EA888B851C58A73100534275 /* ServerNameBlock.cpp */,
-				EA888B821C58A73100534275 /* AccelerationBlock.h */,
-				EA888B841C58A73100534275 /* AccelerationBlock.cpp */,
+				EAAB6A5D1C59F6C900171969 /* AccelerationBlok.h */,
+				EAAB6A5E1C59F6C900171969 /* ServerNameBlok.h */,
+				EAAB6A5F1C59F6C900171969 /* AccelerationBlok.cpp */,
+				EAAB6A601C59F6C900171969 /* ServerNameBlok.cpp */,
 			);
 			name = Blocks;
 			sourceTree = "<group>";
@@ -1015,8 +1013,8 @@
 		EADD22BD1C4EAEFE00A939CB /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				EA888B881C58A7FF00534275 /* ServerListScene.h */,
-				EA888B891C58A7FF00534275 /* ServerListScene.cpp */,
+				EAAB6A631C59F77D00171969 /* ServerListScene.h */,
+				EAAB6A641C59F77D00171969 /* ServerListScene.cpp */,
 				EA8889FE1C58A18F00534275 /* LobbyScene.h */,
 				EA888A001C58A18F00534275 /* LobbyScene.cpp */,
 			);
@@ -1167,6 +1165,7 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				EA888B1B1C58A6B200534275 /* DS_ByteQueue.cpp in Sources */,
 				EA888B361C58A6B200534275 /* NatTypeDetectionClient.cpp in Sources */,
+				EAAB6A5C1C59F27000171969 /* Blok.cpp in Sources */,
 				EA888B3B1C58A6B200534275 /* PacketConsoleLogger.cpp in Sources */,
 				EA888B171C58A6B200534275 /* DataCompressor.cpp in Sources */,
 				EA888A021C58A18F00534275 /* LobbyScene.cpp in Sources */,
@@ -1187,12 +1186,13 @@
 				EA888B231C58A6B200534275 /* FileOperations.cpp in Sources */,
 				EA888B511C58A6B200534275 /* RakNetStatistics.cpp in Sources */,
 				EA888B1C1C58A6B200534275 /* DS_HuffmanEncodingTree.cpp in Sources */,
+				EAAB6A621C59F6C900171969 /* ServerNameBlok.cpp in Sources */,
 				EA888B611C58A6B200534275 /* SecureHandshake.cpp in Sources */,
-				EA888B871C58A73100534275 /* ServerNameBlock.cpp in Sources */,
 				EA888B631C58A6B200534275 /* SignaledEvent.cpp in Sources */,
 				EA888B4C1C58A6B200534275 /* RakNetSocket2_Vita.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				EA888B591C58A6B200534275 /* Rand.cpp in Sources */,
+				EAAB6A591C59F21E00171969 /* Connector.cpp in Sources */,
 				EA888B501C58A6B200534275 /* RakNetSocket2.cpp in Sources */,
 				EA888B5F1C58A6B200534275 /* Router2.cpp in Sources */,
 				EA888B131C58A6B200534275 /* CloudServer.cpp in Sources */,
@@ -1206,11 +1206,10 @@
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				EA888B6E1C58A6B200534275 /* TelnetTransport.cpp in Sources */,
 				EA888B751C58A6B200534275 /* VariableDeltaSerializer.cpp in Sources */,
+				EAAB6A651C59F77D00171969 /* ServerListScene.cpp in Sources */,
 				EA888B241C58A6B200534275 /* FormatString.cpp in Sources */,
 				EA888B5A1C58A6B200534275 /* RandSync.cpp in Sources */,
-				EA888B8A1C58A7FF00534275 /* ServerListScene.cpp in Sources */,
 				EA888B211C58A6B200534275 /* FileList.cpp in Sources */,
-				EA888B7F1C58A6FC00534275 /* Block.cpp in Sources */,
 				EA888B401C58A6B200534275 /* PluginInterface2.cpp in Sources */,
 				EA888B711C58A6B200534275 /* UDPForwarder.cpp in Sources */,
 				EA888B4E1C58A6B200534275 /* RakNetSocket2_Windows_Linux.cpp in Sources */,
@@ -1223,10 +1222,9 @@
 				EA888B761C58A6B200534275 /* VariableListDeltaTracker.cpp in Sources */,
 				EA888B521C58A6B200534275 /* RakNetTransport2.cpp in Sources */,
 				EA888B441C58A6B200534275 /* RakNetCommandParser.cpp in Sources */,
+				EAAB6A611C59F6C900171969 /* AccelerationBlok.cpp in Sources */,
 				EA888B281C58A6B200534275 /* GetTime.cpp in Sources */,
-				EA888B861C58A73100534275 /* AccelerationBlock.cpp in Sources */,
 				EA888B5B1C58A6B200534275 /* ReadyEvent.cpp in Sources */,
-				EA888B801C58A6FC00534275 /* Connector.cpp in Sources */,
 				EA888B381C58A6B200534275 /* NatTypeDetectionServer.cpp in Sources */,
 				EA888B791C58A6B200534275 /* WSAStartupSingleton.cpp in Sources */,
 				EA888B1D1C58A6B200534275 /* DS_Table.cpp in Sources */,
