@@ -13,8 +13,10 @@
  * Simple structure for storing information about servers in LAN
  */
 struct ServerMapEntry{
+    
     RakNet::SystemAddress * address;
     std::atomic<int> inactiveSeconds;
+    int position; // position in menu
 };
 
 /**

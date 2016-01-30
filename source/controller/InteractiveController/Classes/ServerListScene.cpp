@@ -207,8 +207,8 @@ void ServerListScene::decreaseServerLifetimes(){
             CCLOG("%s removed for inactivity.",i->second->address->ToString());
             
             //TODO: delete menu entry
-            //auto label = (MenuItemLabel *) serverMenu->getChildByTag( (int) RakNet::SystemAddress::ToInteger( * (i->second->address) ));
-            //serverMenu->removeChild(label, true);
+            auto menu = (Menu *) this->getChildByTag( (int) RakNet::SystemAddress::ToInteger( * (i->second->address) ));
+            this->removeChild(menu);
             
             serverMap.erase(i->first);
             
@@ -277,10 +277,11 @@ void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::
         
         auto item = MenuItemLabel::create(label, CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
         item->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
-        item->setTag(hash); // SystemAddress will be found by tag (in hashmap)
+        item->setPosition(Vec2::ZERO);
         
         auto menu = Menu::create(item, NULL);
-        menu->setPosition(Vec2::ZERO);
+        menu->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
+        menu->setTag(hash); // SystemAddress will be found by tag (in hashmap)
         this->addChild(menu);
         
         
