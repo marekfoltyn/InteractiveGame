@@ -74,35 +74,24 @@ void ServerListScene::initGraphics()
     this->addChild(menu);
     
     // Searching for servers... label
-    lblSearching = Label::createWithTTF("", "8-Bit-Madness.ttf", visibleSize.height/12);
+    lblSearching = Label::createWithTTF("ahojky", "8-Bit-Madness.ttf", visibleSize.height/12);
     lblSearching->setAnchorPoint(Vec2(0,1));
     lblSearching->setPosition(Vec2(origin.x + visibleSize.width/2 - 160, origin.y + visibleSize.height - 20));
-    this->addChild(lblSearching);
+    //this->addChild(lblSearching);
 
-    // coordinates
-    lblX = Label::createWithTTF("X: ???", "8-Bit-Madness.ttf", visibleSize.height/18);
-    lblX->setAnchorPoint(Vec2(0,0));
-    lblX->setPosition(Vec2( origin.x, origin.y + 5*lblX->getContentSize().height ));
-    this->addChild(lblX);
-
-    lblY = Label::createWithTTF("Y: ???", "8-Bit-Madness.ttf", visibleSize.height/18);
-    lblY->setAnchorPoint(Vec2(0,0));
-    lblY->setPosition(Vec2( origin.x, origin.y + 4*lblX->getContentSize().height ));
-    this->addChild(lblY);
-    
-    lblZ = Label::createWithTTF("Z: ???", "8-Bit-Madness.ttf", visibleSize.height/18);
-    lblZ->setAnchorPoint(Vec2(0,0));
-    lblZ->setPosition(Vec2( origin.x, origin.y + 3*lblX->getContentSize().height ));
-    this->addChild(lblZ);
 
     // Server names menu
-    /*serversView = ui::ScrollView::create();
-     serversView->setDirection( ui::ScrollView::Direction::VERTICAL );
-     serversView->setContentSize( cocos2d::Size(visibleSize.height, visibleSize.height) );
-     serversView->setInnerContainerSize( cocos2d::Size(visibleSize.height, visibleSize.height) );
-     serversView->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
-     serversView->setAnchorPoint(Vec2(0.5, 0.5));
-     serversView->setBounceEnabled(true);*/
+    menuView = ui::ListView::create();
+    menuView->setDirection( ui::ScrollView::Direction::VERTICAL );
+    menuView->setClippingEnabled(false);
+    menuView->setPosition(Vec2(origin.x, origin.y + visibleSize.height/2));
+    menuView->setBounceEnabled(true);
+    
+    //menuView->pushBackCustomItem(lblSearching);
+    
+    this->addChild(menuView);
+    
+    
     
     //serversView->addChild(serverMenu);
     //this->addChild(serversView);
@@ -183,6 +172,62 @@ void ServerListScene::receiveAllBlocks()
     }
 }
 
+void ServerListScene::refreshServer(Blok * blok){
+    
+    auto name = __String::create( ServerNameBlok::ServerName(blok) );
+    CCLOG("Server response: %s", name->getCString() );
+    
+    /*if(lblServerName != nullptr){
+     lblServerName->setString(name->getCString());
+     }*/
+    
+    addOrUpdateServer(name, blok->getAddress());
+}
+void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::SystemAddress address){
+    
+    auto visibleSize = Director::getInstance()->getVisibleSize();
+    auto origin = Director::getInstance()->getVisibleOrigin();
+    int hash = (int) RakNet::SystemAddress::ToInteger( address );
+    
+    if( serverMap.count( hash ) == 0 ){
+        
+        // create new entry
+        ServerMapEntry * s = new ServerMapEntry();
+        s->inactiveSeconds = 0;
+        s->address = new RakNet::SystemAddress(address); // copy adress (packet will be deallocated)
+        
+        serverMap[hash] = s;
+        CCLOG("%s added (hash: %d).", serverName->getCString(), hash);
+        int count = serverMap.size();
+        
+        std::string name(serverName->getCString());
+        
+        auto label = Label::createWithTTF(name, "8-Bit-Madness.ttf", visibleSize.height/12);
+        
+        auto item = MenuItemLabel::create(label, CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
+        //item->setPosition(Vec2( origin.x /*+ visibleSize.width/2*/, origin.y + visibleSize.height/2 ));
+        item->setPosition(Vec2::ZERO);
+        item->setTag(hash);
+        item->setAnchorPoint(Vec2(0, 0));
+        
+        auto menu = Menu::create(item, NULL);
+        menu->setPosition(Vec2( origin.x /*+ visibleSize.width/2*/, origin.y + 100 ));
+        menu->setTag(hash); // SystemAddress will be found by tag (in hashmap)
+        
+        this->addChild(menu);
+        
+        //menuView->setInnerContainerSize(cocos2d::Size(300, 500));
+        //menuView->setContentSize(cocos2d::Size( menu->getContentSize().width, count * (menu->getContentSize().height) ));
+        //menuView->ad
+        
+        
+    } else {
+        // server already exists - refresh server lifetime
+        auto s = serverMap[hash];
+        s->inactiveSeconds = 0;
+    }
+}
+
 void ServerListScene::findServersStep(){
     
     Connector::getInstance()->ping();
@@ -206,32 +251,32 @@ void ServerListScene::decreaseServerLifetimes(){
             //delete
             CCLOG("%s removed for inactivity.",i->second->address->ToString());
             
-            //TODO: delete menu entry
+            /*//TODO: delete menu entry
             auto menu = (Menu *) this->getChildByTag( (int) RakNet::SystemAddress::ToInteger( * (i->second->address) ));
             this->removeChild(menu);
             
+            delete i->second->address;
             serverMap.erase(i->first);
             
             // if missing this, when only one server, app breaks (iterator is behind the end)
             if( serverMap.size() == 0 || i == serverMap.end() ){
                 return;
-            }
+            }*/
         }
         
     }
     
 }
 
-void ServerListScene::refreshServer(Blok * blok){
+void ServerListScene::onConnected(Blok * blok){
     
-    auto name = __String::create( ServerNameBlok::ServerName(blok) );
-    CCLOG("Server response: %s", name->getCString() );
+    CCLOG("Connected to %s", blok->getAddress().ToString());
+    //this->stopAction(searchTextLoop);
+    //lblSearching->setString("Connected.");
     
-    /*if(lblServerName != nullptr){
-     lblServerName->setString(name->getCString());
-     }*/
-    
-    addOrUpdateServer(name, blok->getAddress());
+    //TODO: show lobby scene
+    auto scene = LobbyScene::createScene();
+    Director::getInstance()->replaceScene(scene);
 }
 
 void ServerListScene::btnServerClicked(Ref * pSender){
@@ -253,55 +298,6 @@ void ServerListScene::btnServerClicked(Ref * pSender){
     CCLOG("[ServerListScene] Connecting to %s", address.ToString());
     Connector::getInstance()->connect(address);
     
-}
-
-void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::SystemAddress address){
-    
-    auto visibleSize = Director::getInstance()->getVisibleSize();
-    auto origin = Director::getInstance()->getVisibleOrigin();
-    int hash = (int) RakNet::SystemAddress::ToInteger( address );
-    
-    if( serverMap.count( hash ) == 0 ){
-        
-        // create new entry
-        ServerMapEntry * s = new ServerMapEntry();
-        s->inactiveSeconds = 0;
-        s->address = new RakNet::SystemAddress(address); // copy adress (packet will be deallocated)
-        
-        serverMap[hash] = s;
-        CCLOG("%s added (hash: %d).", serverName->getCString(), hash);
-        
-        std::string name(serverName->getCString());
-        
-        auto label = Label::createWithTTF(name, "8-Bit-Madness.ttf", visibleSize.height/12);
-        
-        auto item = MenuItemLabel::create(label, CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
-        item->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
-        item->setPosition(Vec2::ZERO);
-        
-        auto menu = Menu::create(item, NULL);
-        menu->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
-        menu->setTag(hash); // SystemAddress will be found by tag (in hashmap)
-        this->addChild(menu);
-        
-        
-    } else {
-        // server already exists - refresh server lifetime
-        auto s = serverMap[hash];
-        s->inactiveSeconds = 0;
-    }
-    
-}
-
-void ServerListScene::onConnected(Blok * blok){
-    
-    CCLOG("Connected to %s", blok->getAddress().ToString());
-    this->stopAction(searchTextLoop);
-    lblSearching->setString("Connected.");
-    
-    //TODO: show lobby scene
-    auto scene = LobbyScene::createScene();
-    Director::getInstance()->replaceScene(scene);
 }
 
 void ServerListScene::btnLeaveClicked(Ref * pSender){

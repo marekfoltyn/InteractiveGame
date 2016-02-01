@@ -85,11 +85,8 @@ public:
     
 private:
     cocos2d::Label * lblSearching;
-    cocos2d::Label * lblX;
-    cocos2d::Label * lblY;
-    cocos2d::Label * lblZ;
     cocos2d::Menu * menu;
-    cocos2d::Menu * serverMenu;
+    cocos2d::ui::ListView * menuView;
     cocos2d::RepeatForever * findServersAction;
     cocos2d::RepeatForever * receivePacketAction;
     cocos2d::RepeatForever * searchTextLoop;

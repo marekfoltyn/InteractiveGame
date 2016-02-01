@@ -1,6 +1,8 @@
 #include "LobbyScene.h"
+
 #include "Connector.h"
 #include "AccelerationBlok.h"
+#include "ServerListScene.h"
 
 USING_NS_CC;
 
@@ -34,6 +36,12 @@ bool LobbyScene::init()
          
     initGraphics();
     
+    auto callback = CallFunc::create(CC_CALLBACK_0(LobbyScene::receiveAllBlocks, this));
+    auto delay = DelayTime::create(RECEIVE_TIMEOUT);
+    auto sequence = Sequence::create(callback, delay, nullptr);
+    auto receivePacketAction = RepeatForever::create(sequence);
+    this->runAction(receivePacketAction);
+
     
     auto listener = EventListenerAcceleration::create(CC_CALLBACK_2(LobbyScene::onAcceleration, this));
     Device::setAccelerometerEnabled(true);
@@ -52,11 +60,66 @@ void LobbyScene::initGraphics(){
     auto background = cocos2d::LayerColor::create(Color4B(54, 72, 99, 255));
     this->addChild(background);
     
+    // coordinates
+    lblX = Label::createWithTTF("X: ???", "8-Bit-Madness.ttf", visibleSize.height/18);
+    lblX->setAnchorPoint(Vec2(0,0));
+    lblX->setPosition(Vec2( origin.x, origin.y + 5*lblX->getContentSize().height ));
+    this->addChild(lblX);
+    
+    lblY = Label::createWithTTF("Y: ???", "8-Bit-Madness.ttf", visibleSize.height/18);
+    lblY->setAnchorPoint(Vec2(0,0));
+    lblY->setPosition(Vec2( origin.x, origin.y + 4*lblX->getContentSize().height ));
+    this->addChild(lblY);
+    
+    lblZ = Label::createWithTTF("Z: ???", "8-Bit-Madness.ttf", visibleSize.height/18);
+    lblZ->setAnchorPoint(Vec2(0,0));
+    lblZ->setPosition(Vec2( origin.x, origin.y + 3*lblX->getContentSize().height ));
+    this->addChild(lblZ);
+    
+}
+
+void LobbyScene::receiveAllBlocks()
+{
+    Connector * c = Connector::getInstance();
+    Blok * blok;
+    
+    // c->receive() returns 0, if no received packet is in the queue
+    while( (blok = c->receive()) != nullptr )
+    {
+        switch ( blok->getType() )
+        {
+            case P_CONNECTION_LOST:
+            {
+                CCLOG("Connection lost.");
+                onConnectionLost(blok);
+                break;
+            }
+                
+            default:
+            {
+                // packet ignored
+                CCLOG("Packet %d ignored.", blok->getType() );
+                break;
+            }
+        }
+        
+        blok->deallocate();
+    }
+}
+
+void LobbyScene::onConnectionLost(Blok * block)
+{
+    Scene * main = ServerListScene::createScene();
+    Director::getInstance()->replaceScene(main);
 }
 
 void LobbyScene::onAcceleration(cocos2d::Acceleration* acc, cocos2d::Event* unused_event)
 {
     Blok * blok = AccelerationBlok::Create(acc);
     Connector::getInstance()->send(blok);
+    
+    lblX->setString( __String::createWithFormat("X: %f", acc->x)->getCString() );
+    lblY->setString( __String::createWithFormat("Y: %f", acc->y)->getCString() );
+    lblZ->setString( __String::createWithFormat("Z: %f", acc->z)->getCString() );
 }
 
