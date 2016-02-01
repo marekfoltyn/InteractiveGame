@@ -17,10 +17,13 @@ using namespace cocostudio::timeline;
 Scene* LobbyScene::createScene()
 {
     // 'scene' is an autorelease object
-    auto scene = Scene::create();
+    auto scene = Scene::createWithPhysics();
+    scene->getPhysicsWorld()->setDebugDrawMask( PhysicsWorld::DEBUGDRAW_ALL );
+    scene->getPhysicsWorld()->setGravity(Vec2::ZERO);
     
     // 'layer' is an autorelease object
     auto layer = LobbyScene::create();
+    layer->setPhysicsWorld( scene->getPhysicsWorld() );
 
     // add layer as a child to scene
     scene->addChild(layer);
@@ -78,13 +81,28 @@ void LobbyScene::initGUI(){
     auto origin = Director::getInstance()->getVisibleOrigin();
     auto c = Connector::getInstance();
     
+    // background color
+    auto background = cocos2d::LayerColor::create(Color4B(54, 72, 99, 255));
+    this->addChild(background);
+    
+    // physics boundary
+    auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PhysicsMaterial(1, 0.5, 0.5), 3);
+    auto edgeNode = Node::create();
+    edgeNode->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
+    edgeNode->setPhysicsBody(edgeBody);
+    this->addChild(edgeNode);
+    
+    
     auto * txtServerName = TextFieldTTF::createWithTTF(c->getServerName(), "8-Bit-Madness.ttf", 64);
     txtServerName->setAnchorPoint(Vec2(0.5, 0.5));
     txtServerName->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height - txtServerName->getContentSize().height ));
     this->addChild(txtServerName);
     
+    // physics sprite
     point = Sprite::create("exit_button_pressed.png");
     point->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
+    auto spriteBody = PhysicsBody::createCircle( point->getContentSize().width/2, PhysicsMaterial(0.5, 1, 0) );
+    point->setPhysicsBody(spriteBody);
     this->addChild(point);
 }
 
@@ -142,9 +160,12 @@ void LobbyScene::onAccelerationBlok(Blok * blok)
     float x = (float) acc->x;
     float y = (float) acc->y;
 
-    point->setPositionX( origin.x + (visibleSize.width/2) + (visibleSize.width/2) * x   );
-    point->setPositionY( origin.y + (visibleSize.height/2) + (visibleSize.height/2) * y   );
-
+    //point->setPositionX( origin.x + (visibleSize.width/2) + (visibleSize.width/2) * x   );
+    //point->setPositionY( origin.y + (visibleSize.height/2) + (visibleSize.height/2) * y   );
+    Vec2 force = Vec2(500*x, 500*y);
+    point->getPhysicsBody()->setVelocity(force);
+    //point->getPhysicsBody()->applyForce(force);
+//    point->getPhysicsBody()->setVelocityLimit(40);
     
     
 }

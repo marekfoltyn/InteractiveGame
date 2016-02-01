@@ -23,6 +23,10 @@ public:
     
 private:
     
+    cocos2d::PhysicsWorld * sceneWorld;
+    
+    void setPhysicsWorld( cocos2d::PhysicsWorld * world ) { sceneWorld = world; };
+    
     cocos2d::Sprite * point;
     
     // start the server stuff
