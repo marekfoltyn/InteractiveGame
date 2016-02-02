@@ -19,7 +19,7 @@
 // maximum players connected to server
 #define MAX_PLAYERS 8
 
-// sleep time between receiving packets
+// sleep time between receiving packets (ms)
 #define RAKNET_SLEEP 30
 
 // find servers repeat time (in seconds)

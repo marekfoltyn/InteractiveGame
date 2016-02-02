@@ -29,7 +29,8 @@ bool Connector::startAsServer(unsigned short maxPlayers)
     interface->SetTimeoutTime(CONNECTION_LOST_TIMEOUT, RakNet::UNASSIGNED_SYSTEM_ADDRESS);
     interface->SetIncomingPassword(0,0); // nullptr, pass length
     interface->SetOccasionalPing(true);
-    interface->SetUnreliableTimeout(CONNECTION_LOST_TIMEOUT);
+    interface->SetIncomingPassword("abc", strlen("abc"));
+    //interface->SetUnreliableTimeout(CONNECTION_LOST_TIMEOUT);
     
     // socket descriptor settings
     RakNet::SocketDescriptor socketDescriptors[1];
@@ -91,12 +92,18 @@ void Connector::connect( RakNet::SystemAddress server ){
     }
     
     char * ip = new char[64]; // must be new char[]! Not char ip[], BAD_ACCESS!!
+    for(int i=0; i<64; i++){ ip[i] = 0; }
+        
     server.ToString(false, ip);
 
-    int result = interface->Connect(ip, server.GetPort(), nullptr, 0); // no password -> nullptr, 0
+    int result = interface->Connect(ip, server.GetPort(), "abc", (int) strlen("abc") );
     if(result == RakNet::CONNECTION_ATTEMPT_STARTED){
         LOG("[Connector] Connecting to %s", ip);
+    } else {
+        LOG("[Connector] connecting atempt failed!!!");
     }
+    
+    delete [] ip;
 }
 
 

@@ -24,8 +24,7 @@ Scene * LobbyScene::createScene()
 // on "init" you need to initialize your instance
 bool LobbyScene::init()
 {
-    //////////////////////////////
-    // 1. super init first
+    // cocos2d: 1. super init first
     if ( !Layer::init() )
     {
         return false;
@@ -36,17 +35,17 @@ bool LobbyScene::init()
          
     initGraphics();
     
+    // start receiving bloks
     auto callback = CallFunc::create(CC_CALLBACK_0(LobbyScene::receiveAllBlocks, this));
     auto delay = DelayTime::create(RECEIVE_TIMEOUT);
     auto sequence = Sequence::create(callback, delay, nullptr);
     auto receivePacketAction = RepeatForever::create(sequence);
     this->runAction(receivePacketAction);
 
-    
+    // init accelerometer
     auto listener = EventListenerAcceleration::create(CC_CALLBACK_2(LobbyScene::onAcceleration, this));
     Device::setAccelerometerEnabled(true);
     Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
-    
     
     return true;
 }
@@ -109,6 +108,7 @@ void LobbyScene::receiveAllBlocks()
 
 void LobbyScene::onConnectionLost(Blok * block)
 {
+    CCLOG("Connection lost. Returning to main menu.");
     Scene * main = ServerListScene::createScene();
     Director::getInstance()->replaceScene(main);
 }

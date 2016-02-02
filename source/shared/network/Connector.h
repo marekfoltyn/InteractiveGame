@@ -33,7 +33,7 @@ public:
     bool startAsServer(unsigned short maxPlayers=MAX_PLAYERS);
     
     /**
-     * stop networking (app exit)
+     * stop networking (on app exit)
      */
     void stop();
     
@@ -85,16 +85,24 @@ public:
         
 private:
     
-    // Hidden singleton constructor
+    /**
+     * Hidden singleton constructor
+     */
     Connector(){};
     
-    // RakNet interface
+    /**
+     * RakNet interface
+     */
     RakNet::RakPeerInterface * interface = nullptr;
     
-    // Singleton instance pointer
+    /**
+     * Singleton instance pointer
+     */
     static Connector * instance;
     
-    // server address
+    /**
+     * server address (used only by a client?)
+     */
     RakNet::SystemAddress server;
     
 };

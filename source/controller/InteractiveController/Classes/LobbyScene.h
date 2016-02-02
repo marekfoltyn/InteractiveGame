@@ -4,24 +4,34 @@
 #include "cocos2d.h"
 #include "Connector.h"
 
+/**
+ * The phone is connected to the server so the lobby scene is displayed.
+ * This class represents the lobby, players can prepare for the game (they choose the color)
+ * The lobby is represented by an empty game room - players can move freely, but they can't shoot etc.
+ */
 class LobbyScene : public cocos2d::Layer
 {
 public:
     
-    // there's no 'id' in cpp, so we recommend returning the class instance pointer
+    /**
+     * cocos2d: there's no 'id' in cpp, so we recommend returning the class instance pointer
+     */
     static cocos2d::Scene * createScene();
-
-    // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
+    
+    /**
+     * Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
+     */
     virtual bool init();
 
-    // implement the "static create()" method manually
+    /**
+     * implement the "static create()" method manually
+     */
     CREATE_FUNC(LobbyScene);
     
-    // load and set up cocos nodes and graphics
+    /**
+     * load and set up cocos nodes and static graphics
+     */
     void initGraphics();
-    
-    // send information to server
-    void onAcceleration(cocos2d::Acceleration* acc, cocos2d::Event* unused_event);
     
     /**
      * receive Block processing loop
@@ -29,16 +39,23 @@ public:
      */
     void receiveAllBlocks();
     
+    /**
+     * send movement information to the server
+     */
+    void onAcceleration(cocos2d::Acceleration* acc, cocos2d::Event* unused_event);
+    
+    /**
+     * connection was lost - (show the dialog? and) return to the server list scene
+     */
     void onConnectionLost(Blok * block);
     
 private:
-    
+        
+    // temp - axis values
     cocos2d::Label * lblX;
     cocos2d::Label * lblY;
     cocos2d::Label * lblZ;
     
-    cocos2d::RepeatForever * receivePacketAction;
-
 };
 
 #endif // __LOBBY_SCENE_H__

@@ -57,11 +57,12 @@ public:
     
     /**
      * decrease lifetime of found servers and find more servers
+     * this method is called periodically
      */
     void findServersStep();
     
     /**
-     * connect to server
+     * try to connect to server
      */
     void btnServerClicked(Ref * pSender);
     
@@ -87,9 +88,6 @@ private:
     cocos2d::Label * lblSearching;
     cocos2d::Menu * menu;
     cocos2d::ui::ListView * menuView;
-    cocos2d::RepeatForever * findServersAction;
-    cocos2d::RepeatForever * receivePacketAction;
-    cocos2d::RepeatForever * searchTextLoop;
     
     // map of available servers
     // key - hash of the system address

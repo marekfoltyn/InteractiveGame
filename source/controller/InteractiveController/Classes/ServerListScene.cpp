@@ -114,28 +114,18 @@ void ServerListScene::startFindServers()
     auto step = CallFunc::create(CC_CALLBACK_0(ServerListScene::findServersStep, this));
     auto delay = DelayTime::create(FIND_SERVER_REPEAT_TIME);
     auto sequence = Sequence::create(step, delay, nullptr);
-    findServersAction = RepeatForever::create(sequence);
+    auto findServersAction = RepeatForever::create(sequence);
     this->runAction(findServersAction);
 }
 
-void ServerListScene::stopFindServers()
-{
-    this->stopAction(findServersAction);
-}
 
 void ServerListScene::startReceiveBlocks()
 {
     auto callback = CallFunc::create(CC_CALLBACK_0(ServerListScene::receiveAllBlocks, this));
     auto delay = DelayTime::create(RECEIVE_TIMEOUT);
     auto sequence = Sequence::create(callback, delay, nullptr);
-    receivePacketAction = RepeatForever::create(sequence);
+    auto receivePacketAction = RepeatForever::create(sequence);
     this->runAction(receivePacketAction);
-}
-
-
-void ServerListScene::stopReceiveBlocks()
-{
-    this->stopAction(receivePacketAction);
 }
 
 
@@ -164,6 +154,7 @@ void ServerListScene::receiveAllBlocks()
             default:
             {
                 // packet ignored
+                CCLOG("Packet %d ignored.", blok->getType());
                 break;
             }
         }
@@ -172,87 +163,84 @@ void ServerListScene::receiveAllBlocks()
     }
 }
 
-void ServerListScene::refreshServer(Blok * blok){
-    
+
+void ServerListScene::refreshServer(Blok * blok)
+{
+    // parse Blok
     auto name = __String::create( ServerNameBlok::ServerName(blok) );
     CCLOG("Server response: %s", name->getCString() );
     
-    /*if(lblServerName != nullptr){
-     lblServerName->setString(name->getCString());
-     }*/
-    
     addOrUpdateServer(name, blok->getAddress());
 }
-void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::SystemAddress address){
-    
+
+
+void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::SystemAddress address)
+{
     auto visibleSize = Director::getInstance()->getVisibleSize();
     auto origin = Director::getInstance()->getVisibleOrigin();
     int hash = (int) RakNet::SystemAddress::ToInteger( address );
     
-    if( serverMap.count( hash ) == 0 ){
-        
+    if( serverMap.count( hash ) == 0 )
+    {
         // create new entry
         ServerMapEntry * s = new ServerMapEntry();
         s->inactiveSeconds = 0;
         s->address = new RakNet::SystemAddress(address); // copy adress (packet will be deallocated)
-        
         serverMap[hash] = s;
+
         CCLOG("%s added (hash: %d).", serverName->getCString(), hash);
         int count = serverMap.size();
         
+        // add to the menu
         std::string name(serverName->getCString());
-        
         auto label = Label::createWithTTF(name, "8-Bit-Madness.ttf", visibleSize.height/12);
-        
         auto item = MenuItemLabel::create(label, CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
         //item->setPosition(Vec2( origin.x /*+ visibleSize.width/2*/, origin.y + visibleSize.height/2 ));
         item->setPosition(Vec2::ZERO);
         item->setTag(hash);
         item->setAnchorPoint(Vec2(0, 0));
-        
         auto menu = Menu::create(item, NULL);
         menu->setPosition(Vec2( origin.x /*+ visibleSize.width/2*/, origin.y + 100 ));
         menu->setTag(hash); // SystemAddress will be found by tag (in hashmap)
-        
         this->addChild(menu);
         
         //menuView->setInnerContainerSize(cocos2d::Size(300, 500));
         //menuView->setContentSize(cocos2d::Size( menu->getContentSize().width, count * (menu->getContentSize().height) ));
         //menuView->ad
         
-        
-    } else {
+    } else
+    {
         // server already exists - refresh server lifetime
         auto s = serverMap[hash];
         s->inactiveSeconds = 0;
     }
 }
 
-void ServerListScene::findServersStep(){
-    
+void ServerListScene::findServersStep()
+{
     Connector::getInstance()->ping();
     decreaseServerLifetimes(); // refresh actually found servers
-    
     CCLOG("[ServerListScene] Searching servers...");
 }
 
-void ServerListScene::decreaseServerLifetimes(){
-    
-    for(std::map<int, ServerMapEntry*>::iterator i = serverMap.begin(); i != serverMap.end(); i++) {
+void ServerListScene::decreaseServerLifetimes()
+{
+    for(std::map<int, ServerMapEntry*>::iterator i = serverMap.begin(); i != serverMap.end(); i++)
+    {
         // iterator->first = key
         // iterator->second = value
         
         i->second->inactiveSeconds++;
-        
         CCLOG("%s lifetime set to %d", i->second->address->ToString(), (int) i->second->inactiveSeconds);
         
-        if( i->second->inactiveSeconds >= SERVER_MENU_LIFETIME){
-            
+        if( i->second->inactiveSeconds >= SERVER_MENU_LIFETIME)
+        {
             //delete
             CCLOG("%s removed for inactivity.",i->second->address->ToString());
             
-            /*//TODO: delete menu entry
-            auto menu = (Menu *) this->getChildByTag( (int) RakNet::SystemAddress::ToInteger( * (i->second->address) ));
+            //TODO: delete menu entry
+            
+            /*auto menu = (Menu *) this->getChildByTag( (int) RakNet::SystemAddress::ToInteger( * (i->second->address) ));
             this->removeChild(menu);
             
             delete i->second->address;
@@ -268,20 +256,18 @@ void ServerListScene::decreaseServerLifetimes(){
     
 }
 
-void ServerListScene::onConnected(Blok * blok){
-    
+
+void ServerListScene::onConnected(Blok * blok)
+{
     CCLOG("Connected to %s", blok->getAddress().ToString());
-    //this->stopAction(searchTextLoop);
-    //lblSearching->setString("Connected.");
-    
-    //TODO: show lobby scene
     auto scene = LobbyScene::createScene();
     Director::getInstance()->replaceScene(scene);
 }
 
-void ServerListScene::btnServerClicked(Ref * pSender){
-    
-    int tag = ((cocos2d::MenuItemLabel *) pSender)->getTag();
+
+void ServerListScene::btnServerClicked(Ref * pSender)
+{
+    int tag = ((cocos2d::MenuItemLabel *) pSender)->getTag(); // tag value is the key in serverMap
     
     if(tag == -1)
     {
@@ -290,17 +276,13 @@ void ServerListScene::btnServerClicked(Ref * pSender){
     }
     
     RakNet::SystemAddress address = *(serverMap[tag]->address);
-    
-    //this->stopAction(searchServersAction);
-    //this->stopAction(searchTextLoop);
-    //lblSearching->setString("Connecting...");
-    
-    CCLOG("[ServerListScene] Connecting to %s", address.ToString());
     Connector::getInstance()->connect(address);
-    
+    CCLOG("[ServerListScene] Connecting to %s", address.ToString());
 }
 
-void ServerListScene::btnLeaveClicked(Ref * pSender){
+
+void ServerListScene::btnLeaveClicked(Ref * pSender)
+{
     Connector::getInstance()->stop();
     Director::getInstance()->end();
     exit(0);
