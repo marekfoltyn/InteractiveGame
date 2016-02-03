@@ -27,7 +27,6 @@ bool Connector::startAsServer(unsigned short maxPlayers)
     // raknet interface configuration
     interface = RakNet::RakPeerInterface::GetInstance();
     interface->SetTimeoutTime(CONNECTION_LOST_TIMEOUT, RakNet::UNASSIGNED_SYSTEM_ADDRESS);
-    interface->SetIncomingPassword(0,0); // nullptr, pass length
     interface->SetOccasionalPing(true);
     interface->SetIncomingPassword("abc", strlen("abc"));
     //interface->SetUnreliableTimeout(CONNECTION_LOST_TIMEOUT);
@@ -97,10 +96,36 @@ void Connector::connect( RakNet::SystemAddress server ){
     server.ToString(false, ip);
 
     int result = interface->Connect(ip, server.GetPort(), "abc", (int) strlen("abc") );
-    if(result == RakNet::CONNECTION_ATTEMPT_STARTED){
-        LOG("[Connector] Connecting to %s", ip);
-    } else {
-        LOG("[Connector] connecting atempt failed!!!");
+    LOG("[Connector] Connecting to %s", ip);
+    if(result == RakNet::CONNECTION_ATTEMPT_STARTED)
+    {
+        LOG("[Connector] Connecting to %s started.", ip);
+    }
+    else if (result == RakNet::INVALID_PARAMETER)
+    {
+        LOG("[Connector] INVALID_PARAMETER");
+    }
+    else if (result == RakNet::CANNOT_RESOLVE_DOMAIN_NAME)
+    {
+        LOG("[Connector] CANNOT_RESOLVE_DOMAIN_NAME");
+    }
+
+    else if (result == RakNet::ALREADY_CONNECTED_TO_ENDPOINT)
+    {
+        LOG("[Connector] ALREADY_CONNECTED_TO_ENDPOINT");
+    }
+
+    else if (result == RakNet::CONNECTION_ATTEMPT_ALREADY_IN_PROGRESS)
+    {
+        LOG("[Connector] CONNECTION_ATTEMPT_ALREADY_IN_PROGRESS");
+    }
+
+    else if (result == RakNet::SECURITY_INITIALIZATION_FAILED)
+    {
+        LOG("[Connector] SECURITY_INITIALIZATION_FAILED");
+    }
+    else{
+        LOG("[Connector] connecting atempt failed for unknown reason!!!");
     }
     
     delete [] ip;

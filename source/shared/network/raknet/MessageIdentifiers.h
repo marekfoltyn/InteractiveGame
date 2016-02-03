@@ -140,7 +140,7 @@ enum DefaultMessageIDTypes
     /// RakPeer - Pong from an unconnected system.  First byte is ID_UNCONNECTED_PONG, second sizeof(RakNet::TimeMS) bytes is the ping,
 	/// following bytes is system specific enumeration data.
 	/// Read using bitstreams
-	ID_UNCONNECTED_PONG,
+	ID_UNCONNECTED_PONG, //M: 28
 	/// RakPeer - Inform a remote system of our IP/Port. On the recipient, all data past ID_ADVERTISE_SYSTEM is whatever was passed to
 	/// the data parameter
 	ID_ADVERTISE_SYSTEM,

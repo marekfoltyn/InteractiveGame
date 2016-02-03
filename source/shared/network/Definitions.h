@@ -5,7 +5,7 @@
 #include "cocos2d.h"
 
 // time (ms) during when reliable packet was not able to be received -> connection lost
-#define CONNECTION_LOST_TIMEOUT 10000
+#define CONNECTION_LOST_TIMEOUT 5000
 
 // logging function
 #define LOG(...) CCLOG(__VA_ARGS__)
@@ -37,6 +37,7 @@
 #define P_SERVER_NAME                 ID_UNCONNECTED_PONG
 #define P_NEW_CONNECTION              ID_NEW_INCOMING_CONNECTION
 #define P_CONNECTED                   ID_CONNECTION_REQUEST_ACCEPTED
+#define P_CONNECTION_FAILED           ID_CONNECTION_ATTEMPT_FAILED
 #define P_CONNECTION_LOST             ID_CONNECTION_LOST
 
 #define P_ACCELERATION                ID_USER_PACKET_ENUM+1
