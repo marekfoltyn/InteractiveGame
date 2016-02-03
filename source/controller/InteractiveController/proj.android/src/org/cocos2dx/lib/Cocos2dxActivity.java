@@ -447,6 +447,7 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
 
         Cocos2dxEGLConfigChooser chooser = new Cocos2dxEGLConfigChooser(this.mGLContextAttrs);
         glSurfaceView.setEGLConfigChooser(chooser);
+        glSurfaceView.setKeepScreenOn(true);
 
         return glSurfaceView;
     }
