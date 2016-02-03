@@ -63,13 +63,30 @@ void ServerListScene::initGraphics()
     this->addChild(bottom);
     
     // exit button
-    auto btnExit = MenuItemImage::create("exit_button.png", "exit_button_pressed.png", CC_CALLBACK_1(ServerListScene::btnLeaveClicked, this));
-    btnExit->setScale(2);
-    btnExit->setPosition( origin.x + visibleSize.height + 7*(visibleSize.width - visibleSize.height)/8 - btnExit->getContentSize().width, origin.y + visibleSize.height - btnExit->getContentSize().height );
+    auto btnExit = MenuItemImage::create("exit.png", "exit_clicked.png", CC_CALLBACK_1(ServerListScene::btnLeaveClicked, this));
+    btnExit->setPosition( origin.x + visibleSize.width/2 + 455, origin.y + visibleSize.height - 308 );
     //this->addChild(btnExit); // no, because it will be part of menu
     
+    // about button
+    auto btnAbout = MenuItemImage::create("about.png", "about_clicked.png" /*, CC_CALLBACK_1(ServerListScene::btnLeaveClicked, this)*/ );
+    btnAbout->setPosition( origin.x + visibleSize.width/2 + 485, origin.y + visibleSize.height - 183 );
+
+    // help button
+    auto btnHelp = MenuItemImage::create("help.png", "help_clicked.png" /*, CC_CALLBACK_1(ServerListScene::btnLeaveClicked, this)*/ );
+    btnHelp->setPosition( origin.x + visibleSize.width/2 + 385, origin.y + visibleSize.height - 413 );
+    
+    // game logo
+    auto logo = MenuItemImage::create("logo.png", "logo.png");
+    logo->setPosition(Vec2( origin.x + visibleSize.width/2 + 210, origin.y + visibleSize.height - 257 ));
+    //this->addChild(logo);
+    
+    // player name background
+    auto nameBackground = Sprite::create("name_bg.png");
+    nameBackground->setPosition(Vec2( origin.x + visibleSize.width/2 - 265, origin.y + visibleSize.height - 257 ));
+    this->addChild(nameBackground);
+    
     // menu
-    menu = Menu::create(btnExit, nullptr);
+    menu = Menu::create(btnExit, btnAbout, btnHelp, logo, nullptr);
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu);
     
@@ -148,6 +165,12 @@ void ServerListScene::receiveAllBlocks()
             case P_CONNECTED:
             {
                 onConnected(blok);
+                break;
+            }
+                
+            case P_CONNECTION_FAILED:
+            {
+                connectionFailed(blok);
                 break;
             }
             
@@ -264,6 +287,9 @@ void ServerListScene::onConnected(Blok * blok)
     Director::getInstance()->replaceScene(scene);
 }
 
+void ServerListScene::connectionFailed(Blok * blok){
+    Device::vibrate(0.5);
+}
 
 void ServerListScene::btnServerClicked(Ref * pSender)
 {

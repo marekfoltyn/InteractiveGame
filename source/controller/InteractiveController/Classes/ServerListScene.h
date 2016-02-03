@@ -79,6 +79,11 @@ public:
     void onConnected(Blok * blok);
     
     /**
+     * Connection to server failed
+     */
+    void connectionFailed(Blok * blok);
+    
+    /**
      * Exit game
      */
     void btnLeaveClicked(Ref * pSender);
