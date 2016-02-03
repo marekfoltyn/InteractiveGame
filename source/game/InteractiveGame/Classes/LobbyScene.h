@@ -36,6 +36,10 @@ private:
     void initGUI();
     
     void setDebugOutputEnabled(bool enabled);
+    
+    bool onContactBegin( cocos2d::PhysicsContact &contact );
+    
+    cocos2d::Vec2 prevForce;
 };
 
 #endif // __LOBBY_SCENE_H__

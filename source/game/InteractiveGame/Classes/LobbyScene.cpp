@@ -86,7 +86,10 @@ void LobbyScene::initGUI(){
     this->addChild(background);
     
     // physics boundary
-    auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PhysicsMaterial(1, 0.5, 0.5), 3);
+    auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PhysicsMaterial(1, 0, 0), 3);
+    edgeBody->setDynamic(false);
+    edgeBody->setCollisionBitmask(1);
+    edgeBody->setContactTestBitmask(true);
     auto edgeNode = Node::create();
     edgeNode->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
     edgeNode->setPhysicsBody(edgeBody);
@@ -101,9 +104,27 @@ void LobbyScene::initGUI(){
     // physics sprite
     point = Sprite::create("exit_button_pressed.png");
     point->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
-    auto spriteBody = PhysicsBody::createCircle( point->getContentSize().width/2, PhysicsMaterial(0.5, 1, 0) );
+    auto spriteBody = PhysicsBody::createCircle( point->getContentSize().width/2, PhysicsMaterial(1, 1, 1) );
+    spriteBody->setMass(1);
+    spriteBody->setCollisionBitmask(2);
+    spriteBody->setContactTestBitmask(true);
     point->setPhysicsBody(spriteBody);
     this->addChild(point);
+    prevForce = Vec2(0,0);
+
+    auto point2 = Sprite::create("exit_button_pressed.png");
+    point2->setPosition(Vec2( origin.x + visibleSize.width/4, origin.y + visibleSize.height/4 ));
+    auto spriteBody2 = PhysicsBody::createBox(cocos2d::Size( 50,50 ));
+    spriteBody2->setCollisionBitmask(2);
+    spriteBody2->setContactTestBitmask(true);
+    point2->setPhysicsBody(spriteBody2);
+    this->addChild(point2);
+
+    
+    // collision listener
+    //auto contactListener = EventListenerPhysicsContact::create();
+    //contactListener->onContactBegin = CC_CALLBACK_1(LobbyScene::onContactBegin, this);
+    //this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
 }
 
 void LobbyScene::processBlock(){
@@ -151,6 +172,20 @@ void LobbyScene::processBlock(){
     }
 }
 
+bool LobbyScene::onContactBegin( cocos2d::PhysicsContact &contact )
+{
+    PhysicsBody * a = contact.getShapeA()->getBody();
+    PhysicsBody * b = contact.getShapeB()->getBody();
+    
+    if( ( 1 == a->getCollisionBitmask() && 2 == b->getCollisionBitmask() ) ||
+        ( 2 == a->getCollisionBitmask() && 1 == b->getCollisionBitmask() ) )
+    {
+        CCLOG("Collision has occured.");
+    }
+    
+    return true;
+}
+
 void LobbyScene::onAccelerationBlok(Blok * blok)
 {
     auto visibleSize = Director::getInstance()->getVisibleSize();
@@ -159,13 +194,18 @@ void LobbyScene::onAccelerationBlok(Blok * blok)
     auto acc = AccelerationBlok::Parse(blok);
     float x = (float) acc->x;
     float y = (float) acc->y;
+    float forceSize = sqrtf( x*x + y*y );
 
-    //point->setPositionX( origin.x + (visibleSize.width/2) + (visibleSize.width/2) * x   );
-    //point->setPositionY( origin.y + (visibleSize.height/2) + (visibleSize.height/2) * y   );
-    Vec2 force = Vec2(500*x, 500*y);
-    point->getPhysicsBody()->setVelocity(force);
-    //point->getPhysicsBody()->applyForce(force);
-//    point->getPhysicsBody()->setVelocityLimit(40);
+    // coord clean
+    if( fabs(x) < 0.08 ) x = 0;
+    if( fabs(y) < 0.08 ) y = 0;
     
+    Vec2 force = Vec2(100000*x, 100000*y);
+    Vec2 oppositePrevForce = Vec2( - prevForce.x, - prevForce.y );
     
+    point->getPhysicsBody()->applyForce(force);
+    point->getPhysicsBody()->applyForce(oppositePrevForce);
+    point->getPhysicsBody()->setVelocityLimit(300*forceSize);
+    
+    prevForce = force;
 }
