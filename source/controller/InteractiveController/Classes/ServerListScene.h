@@ -9,6 +9,9 @@
 #include "ui/CocosGUI.h"
 #include "Connector.h"
 
+USING_NS_CC;
+USING_NS_CC_EXT;
+
 /**
  * Simple structure for storing information about servers in LAN
  */
@@ -60,6 +63,12 @@ public:
      * this method is called periodically
      */
     void findServersStep();
+    
+    
+    /**
+     * This method is called when user interacts with the player name textfield
+     */
+    void txtNameEvent(Ref * sender, ui::TextField::EventType type);
     
     /**
      * try to connect to server

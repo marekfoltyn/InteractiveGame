@@ -21,6 +21,8 @@ Scene * ServerListScene::createScene()
     return scene;
 }
 
+
+
 bool ServerListScene::init()
 {
     // 1. super init first
@@ -34,6 +36,7 @@ bool ServerListScene::init()
         
     return true;
 }
+
 
 
 void ServerListScene::initGraphics()
@@ -81,22 +84,38 @@ void ServerListScene::initGraphics()
     //this->addChild(logo);
     
     // player name background
-    auto nameBackground = Sprite::create("name_bg.png");
-    nameBackground->setPosition(Vec2( origin.x + visibleSize.width/2 - 265, origin.y + visibleSize.height - 257 ));
-    this->addChild(nameBackground);
+    //auto nameBackground = Sprite::create("name_bg.png");
+    //nameBackground->setPosition(Vec2( origin.x + visibleSize.width/2 - 265, origin.y + visibleSize.height - 257 ));
+    //this->addChild(nameBackground);
+    
+    // background behind text field
+    auto bgName = ui::ImageView::create("name_bg.png");
+    bgName->setPosition(Vec2( origin.x + visibleSize.width/2 - 265, origin.y + visibleSize.height - 257 ));
+    this->addChild(bgName);
+    
+    // player name - text field
+    auto txtName = ui::TextField::create("<player name>", "Monda-Bold.ttf", 80);
+    txtName->setMaxLength(12);
+    txtName->setMaxLengthEnabled(true);
+    txtName->setAnchorPoint(Vec2(0,0));
+    txtName->setPosition(Vec2( origin.x + visibleSize.width/2 - 635, origin.y + visibleSize.height - 252 - txtName->getContentSize().height/2 ));
+    txtName->setColor(Color3B(54, 72, 99));
+    txtName->setPlaceHolderColor(Color4B(54, 72, 99, 172));
+    txtName->addEventListener(CC_CALLBACK_2(ServerListScene::txtNameEvent, this));
+    this->addChild(txtName);
+    
+    // load the name
+    UserDefault * def = UserDefault::getInstance();
+    std::string name = def->getStringForKey("player_name", "");
+    txtName->setString(name);
+
     
     // menu
     menu = Menu::create(btnExit, btnAbout, btnHelp, logo, nullptr);
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu);
     
-    // Searching for servers... label
-    lblSearching = Label::createWithTTF("ahojky", "8-Bit-Madness.ttf", visibleSize.height/12);
-    lblSearching->setAnchorPoint(Vec2(0,1));
-    lblSearching->setPosition(Vec2(origin.x + visibleSize.width/2 - 160, origin.y + visibleSize.height - 20));
-    //this->addChild(lblSearching);
-
-
+    
     // Server names menu
     menuView = ui::ListView::create();
     menuView->setDirection( ui::ScrollView::Direction::VERTICAL );
@@ -126,6 +145,7 @@ void ServerListScene::initGraphics()
 }
 
 
+
 void ServerListScene::startFindServers()
 {
     auto step = CallFunc::create(CC_CALLBACK_0(ServerListScene::findServersStep, this));
@@ -136,6 +156,7 @@ void ServerListScene::startFindServers()
 }
 
 
+
 void ServerListScene::startReceiveBlocks()
 {
     auto callback = CallFunc::create(CC_CALLBACK_0(ServerListScene::receiveAllBlocks, this));
@@ -144,6 +165,7 @@ void ServerListScene::startReceiveBlocks()
     auto receivePacketAction = RepeatForever::create(sequence);
     this->runAction(receivePacketAction);
 }
+
 
 
 void ServerListScene::receiveAllBlocks()
@@ -187,6 +209,7 @@ void ServerListScene::receiveAllBlocks()
 }
 
 
+
 void ServerListScene::refreshServer(Blok * blok)
 {
     // parse Blok
@@ -195,6 +218,7 @@ void ServerListScene::refreshServer(Blok * blok)
     
     addOrUpdateServer(name, blok->getAddress());
 }
+
 
 
 void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::SystemAddress address)
@@ -212,18 +236,30 @@ void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::
         serverMap[hash] = s;
 
         CCLOG("%s added (hash: %d).", serverName->getCString(), hash);
+        std::string name(serverName->getCString());
         int count = serverMap.size();
         
-        // add to the menu
-        std::string name(serverName->getCString());
-        auto label = Label::createWithTTF(name, "8-Bit-Madness.ttf", visibleSize.height/12);
-        auto item = MenuItemLabel::create(label, CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
-        //item->setPosition(Vec2( origin.x /*+ visibleSize.width/2*/, origin.y + visibleSize.height/2 ));
-        item->setPosition(Vec2::ZERO);
-        item->setTag(hash);
-        item->setAnchorPoint(Vec2(0, 0));
-        auto menu = Menu::create(item, NULL);
-        menu->setPosition(Vec2( origin.x /*+ visibleSize.width/2*/, origin.y + 100 ));
+        // add to the menu (img, background, label)
+        auto btn = ui::Button::create("servername_bg.png", "servername_bg_clicked.png");
+        btn->setAnchorPoint(Vec2(0, 0.5));
+        btn->setPosition(Vec2( origin.x + visibleSize.width/2 - 505, origin.y + visibleSize.height - 452 ));
+        btn->setScale9Enabled(true);
+        btn->setTitleText(name);
+        btn->setTitleFontName("Monda-Bold.ttf");
+        btn->setTitleFontSize(50);
+        btn->setTitleColor(Color3B(54, 72, 99));
+        
+        auto lblSize = btn->getTitleRenderer()->getContentSize();
+        auto lblPosition = btn->getTitleRenderer()->getPosition();
+        btn->setContentSize(cocos2d::Size( 90 + lblSize.width, 10 + lblSize.height ));
+        
+        this->addChild(btn);
+        
+        auto img = MenuItemImage::create("connect.png", "connect_clicked.png");
+        img->setPosition(Vec2( origin.x + visibleSize.width/2 - 555, origin.y + visibleSize.height - 452 ));
+        
+        auto menu = Menu::create(img, NULL);
+        menu->setPosition(Vec2::ZERO);
         menu->setTag(hash); // SystemAddress will be found by tag (in hashmap)
         this->addChild(menu);
         
@@ -239,12 +275,16 @@ void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::
     }
 }
 
+
+
 void ServerListScene::findServersStep()
 {
     Connector::getInstance()->ping();
     decreaseServerLifetimes(); // refresh actually found servers
     CCLOG("[ServerListScene] Searching servers...");
 }
+
+
 
 void ServerListScene::decreaseServerLifetimes()
 {
@@ -280,6 +320,7 @@ void ServerListScene::decreaseServerLifetimes()
 }
 
 
+
 void ServerListScene::onConnected(Blok * blok)
 {
     CCLOG("Connected to %s", blok->getAddress().ToString());
@@ -287,9 +328,52 @@ void ServerListScene::onConnected(Blok * blok)
     Director::getInstance()->replaceScene(scene);
 }
 
-void ServerListScene::connectionFailed(Blok * blok){
+
+
+void ServerListScene::connectionFailed(Blok * blok)
+{
     Device::vibrate(0.5);
 }
+
+
+
+void ServerListScene::txtNameEvent(Ref * sender, ui::TextField::EventType type)
+{
+    ui::TextField * txtField = dynamic_cast<ui::TextField *>( sender );
+    
+    switch (type)
+    {
+        case ui::TextField::EventType::ATTACH_WITH_IME:
+        {
+            break;
+        }
+
+        case ui::TextField::EventType::DETACH_WITH_IME:
+        {
+            break;
+        }
+        
+        case ui::TextField::EventType::INSERT_TEXT:
+        {
+            // save the new name
+            UserDefault * def = UserDefault::getInstance();
+            std::string name = txtField->getString();
+            def->setStringForKey("player_name", name);
+            break;
+        }
+
+        case ui::TextField::EventType::DELETE_BACKWARD:
+        {
+            // save the new name
+            UserDefault * def = UserDefault::getInstance();
+            std::string name = txtField->getString();
+            def->setStringForKey("player_name", name);
+            break;
+        }
+    }
+}
+
+
 
 void ServerListScene::btnServerClicked(Ref * pSender)
 {
@@ -305,6 +389,7 @@ void ServerListScene::btnServerClicked(Ref * pSender)
     Connector::getInstance()->connect(address);
     CCLOG("[ServerListScene] Connecting to %s", address.ToString());
 }
+
 
 
 void ServerListScene::btnLeaveClicked(Ref * pSender)

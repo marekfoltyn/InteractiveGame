@@ -59,7 +59,7 @@ void LobbyScene::initServer(){
     
     // run async Connector (as a server)
     bool started = Connector::getInstance()->startAsServer(MAX_PLAYERS);
-    Connector::getInstance()->setServerName("InteractiveGame");
+    Connector::getInstance()->setServerName("Game");
     
     if(!started){
         CCLOG("Server not started!");
@@ -86,7 +86,7 @@ void LobbyScene::initGUI(){
     this->addChild(background);
     
     // physics boundary
-    auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PhysicsMaterial(1, 0, 0), 3);
+    auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 3);
     edgeBody->setDynamic(false);
     edgeBody->setCollisionBitmask(1);
     edgeBody->setContactTestBitmask(true);
@@ -104,8 +104,7 @@ void LobbyScene::initGUI(){
     // physics sprite
     point = Sprite::create("exit_button_pressed.png");
     point->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
-    auto spriteBody = PhysicsBody::createCircle( point->getContentSize().width/2, PhysicsMaterial(1, 1, 1) );
-    spriteBody->setMass(1);
+    auto spriteBody = PhysicsBody::createCircle( point->getContentSize().width/2, PHYSICSBODY_MATERIAL_DEFAULT );
     spriteBody->setCollisionBitmask(2);
     spriteBody->setContactTestBitmask(true);
     point->setPhysicsBody(spriteBody);
