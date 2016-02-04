@@ -26,11 +26,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7"
-     inkscape:cx="468.02341"
-     inkscape:cy="524.56615"
+     inkscape:zoom="0.35"
+     inkscape:cx="1009.1364"
+     inkscape:cy="799.59764"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g3881"
      showgrid="false"
      inkscape:showpageshadow="false"
      inkscape:window-width="1680"
@@ -54,7 +54,7 @@
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="Raster BG"
-     style="display:inline"
+     style="display:none"
      sodipodi:insensitive="true">
     <image
        style="display:inline"
@@ -70,7 +70,7 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-2.362183)"
-     style="display:inline">
+     style="display:none">
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:none"
        id="rect3025"
@@ -109,14 +109,16 @@
      inkscape:groupmode="layer"
      id="layer3"
      inkscape:label="exported"
-     style="display:none"
-     sodipodi:insensitive="true">
+     style="display:inline">
     <g
-       transform="matrix(0.86410347,0.5033142,-0.5033142,0.86410347,256.28155,-526.09885)"
+       transform="matrix(0.96492716,0.26251775,-0.26251775,0.96492716,151.78077,-272.30619)"
        style="display:inline"
-       id="g3881">
+       id="g3881"
+       inkscape:export-filename="C:\DOKUMENTY-Marek\git\InteractiveGame\source\shared\resources\exit.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <rect
-         style="fill:#9aa1ac;fill-opacity:1;stroke:none;display:inline"
+         style="fill:#ffffff;fill-opacity:1;stroke:none;display:inline"
          id="rect3851"
          width="416.47977"
          height="154.00157"
@@ -133,7 +135,10 @@
          x="1267.6368"
          style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#354764;fill-opacity:1;stroke:none;display:inline;font-family:Sans"
          xml:space="preserve"
-         transform="matrix(0.96274175,-0.2704225,0.2704225,0.96274175,0,0)"><tspan
+         transform="matrix(0.96274175,-0.2704225,0.2704225,0.96274175,0,0)"
+         inkscape:export-filename="C:\DOKUMENTY-Marek\git\InteractiveGame\source\shared\resources\exit_clicked.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90"><tspan
            style="font-size:90px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#354764;fill-opacity:1;font-family:Monda;-inkscape-font-specification:Monda Bold"
            y="606.67316"
            x="1267.6368"
@@ -141,7 +146,7 @@
            sodipodi:role="line">Exit</tspan></text>
     </g>
     <g
-       transform="translate(0,-2.362183)"
+       transform="matrix(0.96592583,0.25881905,-0.25881905,0.96592583,128.5618,-442.60227)"
        style="display:inline"
        id="g3838"
        inkscape:export-filename="C:\DOKUMENTY-Marek\git\InteractiveGame\source\shared\resources\about.png"
@@ -151,30 +156,33 @@
          transform="matrix(0.96532393,-0.26105498,0.26200165,0.96506743,0,0)"
          inkscape:export-ydpi="90"
          inkscape:export-xdpi="90"
-         inkscape:export-filename="C:\DOKUMENTY-Marek\git\InteractiveGame\source\shared\resources\about_clicked.png"
+         inkscape:export-filename="C:\DOKUMENTY-Marek\git\InteractiveGame\source\shared\resources\about.png"
          y="487.07349"
          x="1050.108"
          height="154.00157"
          width="416.47977"
          id="rect3025-5"
-         style="fill:#ffffff;fill-opacity:1;stroke:none;display:inline" />
+         style="fill:#f9f9f9;fill-opacity:1;stroke:none;display:inline" />
       <text
          transform="matrix(0.96274175,-0.2704225,0.2704225,0.96274175,0,0)"
          xml:space="preserve"
          style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#354764;fill-opacity:1;stroke:none;display:inline;font-family:Sans"
-         x="1174.0901"
-         y="602.35126"
+         x="1174.0214"
+         y="608.06512"
          id="text2992-1"
-         sodipodi:linespacing="125%"><tspan
+         sodipodi:linespacing="125%"
+         inkscape:export-filename="C:\DOKUMENTY-Marek\git\InteractiveGame\source\shared\resources\about.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90"><tspan
            sodipodi:role="line"
            id="tspan2994-7"
-           x="1174.0901"
-           y="602.35126"
+           x="1174.0214"
+           y="608.06512"
            style="font-size:90px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#354764;fill-opacity:1;font-family:Monda;-inkscape-font-specification:Monda Bold">About</tspan></text>
     </g>
     <g
        style="display:inline"
-       transform="matrix(0.51796367,0.85540262,-0.85540262,0.51796367,735.71828,-836.64887)"
+       transform="matrix(0.87627101,0.48181856,-0.48181856,0.87627101,163.76142,-405.50671)"
        id="g3866"
        inkscape:export-filename="C:\DOKUMENTY-Marek\git\InteractiveGame\source\shared\resources\help.png"
        inkscape:export-xdpi="90"
@@ -183,7 +191,7 @@
          inkscape:export-ydpi="90"
          inkscape:export-xdpi="90"
          inkscape:export-filename="C:\DOKUMENTY-Marek\git\InteractiveGame\source\shared\resources\help.png"
-         transform="matrix(0.99844166,-0.05580539,0.05580539,0.99844166,-6.4791481,81.409284)"
+         transform="matrix(0.97219678,-0.23416534,0.23416534,0.97219678,140.28214,275.69118)"
          id="g3868">
         <rect
            style="fill:#ffffff;fill-opacity:1;stroke:none;display:inline"
@@ -203,7 +211,10 @@
            x="1228.4154"
            style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#354764;fill-opacity:1;stroke:none;display:inline;font-family:Sans"
            xml:space="preserve"
-           transform="matrix(0.96274175,-0.2704225,0.2704225,0.96274175,0,0)"><tspan
+           transform="matrix(0.96274175,-0.2704225,0.2704225,0.96274175,0,0)"
+           inkscape:export-filename="C:\DOKUMENTY-Marek\git\InteractiveGame\source\shared\resources\help_clicked.png"
+           inkscape:export-xdpi="90"
+           inkscape:export-ydpi="90"><tspan
              style="font-size:90px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#354764;fill-opacity:1;font-family:Monda;-inkscape-font-specification:Monda Bold"
              y="604.31616"
              x="1228.4154"
@@ -212,7 +223,7 @@
       </g>
     </g>
     <g
-       transform="translate(0,-2.362183)"
+       transform="translate(-280.82241,-14.484014)"
        style="display:inline"
        id="g2996"
        inkscape:export-filename="C:\DOKUMENTY-Marek\git\InteractiveGame\source\shared\resources\logo.png"
@@ -226,11 +237,11 @@
          sodipodi:cy="291.42856"
          sodipodi:rx="127.14286"
          sodipodi:ry="127.14286"
-         d="m 1224.2857,291.42856 a 127.14286,127.14286 0 1 1 -254.28574,0 127.14286,127.14286 0 1 1 254.28574,0 z"
+         d="m 1224.2857,291.42856 c 0,70.21906 -56.9238,127.14286 -127.1429,127.14286 -70.219,0 -127.14284,-56.9238 -127.14284,-127.14286 0,-70.21906 56.92384,-127.14286 127.14284,-127.14286 70.2191,0 127.1429,56.9238 127.1429,127.14286 z"
          transform="matrix(1.4157304,0,0,1.4157304,-466.11554,-122.22208)" />
       <path
          transform="matrix(1.1123596,0,0,1.1123596,-133.27447,-33.81117)"
-         d="m 1224.2857,291.42856 a 127.14286,127.14286 0 1 1 -254.28574,0 127.14286,127.14286 0 1 1 254.28574,0 z"
+         d="m 1224.2857,291.42856 c 0,70.21906 -56.9238,127.14286 -127.1429,127.14286 -70.219,0 -127.14284,-56.9238 -127.14284,-127.14286 0,-70.21906 56.92384,-127.14286 127.14284,-127.14286 70.2191,0 127.1429,56.9238 127.1429,127.14286 z"
          sodipodi:ry="127.14286"
          sodipodi:rx="127.14286"
          sodipodi:cy="291.42856"
