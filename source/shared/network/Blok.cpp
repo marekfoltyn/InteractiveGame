@@ -14,8 +14,12 @@ Blok::Blok(const char * d, unsigned int len )
     
     length = len+1; // +1 ... message type byte
     data = new char[length];
-    memcpy(data+1, d, len*sizeof(char));
     data[0] = 0; // unknown type yet
+    
+    if(d != nullptr && len > 0)
+    {
+        memcpy(data+1, d, len*sizeof(char));
+    }
     
     // default values
     priority = PacketPriority::LOW_PRIORITY;
@@ -121,11 +125,9 @@ const int Blok::getPacketLength()
 
 void Blok::deallocate()
 {
-    if(packet == nullptr)
-    {
-        delete [] data;
-    }
-    else
+    delete [] data;
+    
+    if(packet != nullptr)
     {
         Connector::getInstance()->getInterface()->DeallocatePacket(packet);
     }

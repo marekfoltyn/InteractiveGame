@@ -9,6 +9,7 @@
 #include "Connector.h"
 #include "Blok.h"
 #include "AccelerationBlok.h"
+#include "CollisionBlok.h"
 
 USING_NS_CC;
 
@@ -107,7 +108,7 @@ void LobbyScene::initGUI(){
     point = Sprite::create("exit_button_pressed.png");
     point->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
     auto spriteBody = PhysicsBody::createCircle( point->getContentSize().width/2, PhysicsMaterial(0.5, 0.5, 0.5) );
-    spriteBody->setCollisionBitmask(2);
+    spriteBody->setCollisionBitmask(1);
     spriteBody->setContactTestBitmask(true);
     point->setPhysicsBody(spriteBody);
     this->addChild(point);
@@ -116,16 +117,16 @@ void LobbyScene::initGUI(){
     auto point2 = Sprite::create("exit_button_pressed.png");
     point2->setPosition(Vec2( origin.x + visibleSize.width/4, origin.y + visibleSize.height/4 ));
     auto spriteBody2 = PhysicsBody::createBox(cocos2d::Size( 50,50 ));
-    spriteBody2->setCollisionBitmask(2);
+    spriteBody2->setCollisionBitmask(1);
     spriteBody2->setContactTestBitmask(true);
     point2->setPhysicsBody(spriteBody2);
     this->addChild(point2);
 
     
     // collision listener
-    //auto contactListener = EventListenerPhysicsContact::create();
-    //contactListener->onContactBegin = CC_CALLBACK_1(LobbyScene::onContactBegin, this);
-    //this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
+    auto contactListener = EventListenerPhysicsContact::create();
+    contactListener->onContactBegin = CC_CALLBACK_1(LobbyScene::onContactBegin, this);
+    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
 }
 
 void LobbyScene::processBlock(){
@@ -162,13 +163,14 @@ void LobbyScene::processBlock(){
                 auto spriteBody = PhysicsBody::createCircle( sprite->getContentSize().width/2, PhysicsMaterial(0.5, 0.5, 0.5) );
                 spriteBody->setCollisionBitmask(2);
                 spriteBody->setContactTestBitmask(true);
+                spriteBody->setTag(id);
                 sprite->setPhysicsBody(spriteBody);
 
                 this->addChild(sprite);
                 
                 break;
             }
-                
+            case P_CONNECTION_LOST:
             case P_DISCONNECTED:
             {
                 CCLOG("%s disconnected.", blok->getAddress().ToString());
@@ -179,13 +181,7 @@ void LobbyScene::processBlock(){
                 
                 break;
             }
-                
-            case P_CONNECTION_LOST:
-            {
-                CCLOG("%s has lost connection.", blok->getAddress().ToString() );
-                break;
-            }
-                
+                                
             case P_ACCELERATION:
             {
                 onAccelerationBlok(blok);
@@ -205,13 +201,21 @@ void LobbyScene::processBlock(){
 
 bool LobbyScene::onContactBegin( cocos2d::PhysicsContact &contact )
 {
-    PhysicsBody * a = contact.getShapeA()->getBody();
-    PhysicsBody * b = contact.getShapeB()->getBody();
-    
-    if( ( 1 == a->getCollisionBitmask() && 2 == b->getCollisionBitmask() ) ||
-        ( 2 == a->getCollisionBitmask() && 1 == b->getCollisionBitmask() ) )
+    PhysicsBody * a[2];
+    a[0] = contact.getShapeA()->getBody();
+    a[1] = contact.getShapeB()->getBody();
+
+    for(int i=0; i<2; i++)
     {
-        CCLOG("Collision has occured.");
+        if( a[i]->getCollisionBitmask() == 2  ) // it is a plaer
+        {
+            int id = a[i]->getTag();
+            Player * player = players[id];
+            CCLOG("Player %s collided.", player->getAddress().ToString() );
+            auto blok = CollisionBlok::create();
+            blok->setAddress( player->getAddress() );
+            Connector::getInstance()->send(blok);
+        }
     }
     
     return true;

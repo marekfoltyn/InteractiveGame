@@ -25,6 +25,8 @@
 		C1304BE0A531567F64D85B7A /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D77407C86C4E7570AC0EFF9 /* libcocos2d Mac.a */; };
 		EA2400621C6490C400906235 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2400601C6490C400906235 /* Player.cpp */; };
 		EA2400631C6490C400906235 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2400601C6490C400906235 /* Player.cpp */; };
+		EA2400661C64E38B00906235 /* CollisionBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2400641C64E38B00906235 /* CollisionBlok.cpp */; };
+		EA2400671C64E38B00906235 /* CollisionBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2400641C64E38B00906235 /* CollisionBlok.cpp */; };
 		EA41892A1C342867004B8934 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 503AE0F617EB97AB00D1A890 /* Icon.icns */; };
 		EA41892B1C342867004B8934 /* res in Resources */ = {isa = PBXBuildFile; fileRef = 55014BDBA322584F88CF3D18 /* res */; };
 		EA4189301C342867004B8934 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 503AE10317EB98FF00D1A890 /* main.cpp */; };
@@ -88,6 +90,8 @@
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		EA2400601C6490C400906235 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		EA2400611C6490C400906235 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		EA2400641C64E38B00906235 /* CollisionBlok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CollisionBlok.cpp; path = ../../../shared/bloks/CollisionBlok.cpp; sourceTree = "<group>"; };
+		EA2400651C64E38B00906235 /* CollisionBlok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollisionBlok.h; path = ../../../shared/bloks/CollisionBlok.h; sourceTree = "<group>"; };
 		EA4189431C342867004B8934 /* InteractiveGame-unit-testing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "InteractiveGame-unit-testing.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA4189441C342867004B8934 /* InteractiveGame-desktop copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "InteractiveGame-desktop copy-Info.plist"; path = "/Users/marek/Documents/git/InteractiveGame/source/game/InteractiveGame/proj.ios_mac/InteractiveGame-desktop copy-Info.plist"; sourceTree = "<absolute>"; };
 		EA4189481C342C4B004B8934 /* TestDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestDelegate.cpp; sourceTree = "<group>"; };
@@ -303,9 +307,11 @@
 			isa = PBXGroup;
 			children = (
 				EAAB6A6A1C59FF7200171969 /* AccelerationBlok.h */,
-				EAAB6A6B1C59FF7200171969 /* ServerNameBlok.h */,
 				EAAB6A6C1C59FF7200171969 /* AccelerationBlok.cpp */,
+				EAAB6A6B1C59FF7200171969 /* ServerNameBlok.h */,
 				EAAB6A6D1C59FF7200171969 /* ServerNameBlok.cpp */,
+				EA2400651C64E38B00906235 /* CollisionBlok.h */,
+				EA2400641C64E38B00906235 /* CollisionBlok.cpp */,
 			);
 			name = Blocks;
 			sourceTree = "<group>";
@@ -406,6 +412,7 @@
 				EAAB6A701C59FF7200171969 /* ServerNameBlok.cpp in Sources */,
 				EA5CA2C41C3FC724003437FF /* Connector.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
+				EA2400661C64E38B00906235 /* CollisionBlok.cpp in Sources */,
 				46880B8B19C43A87006E1F66 /* LobbyScene.cpp in Sources */,
 				EAAB6A681C59FF6500171969 /* Blok.cpp in Sources */,
 				EAAB6A6E1C59FF7200171969 /* AccelerationBlok.cpp in Sources */,
@@ -426,6 +433,7 @@
 				EA5CA2C51C3FC724003437FF /* Connector.cpp in Sources */,
 				EAAB6A6F1C59FF7200171969 /* AccelerationBlok.cpp in Sources */,
 				EAAB6A711C59FF7200171969 /* ServerNameBlok.cpp in Sources */,
+				EA2400671C64E38B00906235 /* CollisionBlok.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

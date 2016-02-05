@@ -41,8 +41,9 @@
 #define P_CONNECTION_FAILED           ID_CONNECTION_ATTEMPT_FAILED
 #define P_CONNECTION_LOST             ID_CONNECTION_LOST
 
-#define P_ACCELERATION                ID_USER_PACKET_ENUM+1
-
 //#define PACKET_CUSTOM                      ID_USER_PACKET_ENUM+1 // +2, +3 and so on
+
+#define P_ACCELERATION                ID_USER_PACKET_ENUM+1
+#define P_COLLISION                   ID_USER_PACKET_ENUM+2
 
 #endif // _DEFINITIONS_H_

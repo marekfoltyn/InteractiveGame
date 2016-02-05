@@ -13,6 +13,7 @@
 Player::Player(RakNet::SystemAddress address)
 {
     sprite = Sprite::create();
+    this->address = address;
     previousForce = Vec2(0,0);
 }
 

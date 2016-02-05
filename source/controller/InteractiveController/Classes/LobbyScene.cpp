@@ -2,6 +2,7 @@
 
 #include "Connector.h"
 #include "AccelerationBlok.h"
+#include "CollisionBlok.h"
 #include "ServerListScene.h"
 
 USING_NS_CC;
@@ -77,7 +78,8 @@ void LobbyScene::initGraphics(){
     
     auto disconnect = ui::Button::create("exit.png","exit_clicked.png");
     disconnect->addTouchEventListener( CC_CALLBACK_2(LobbyScene::btnOnDisconnect, this) );
-    disconnect->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
+    disconnect->setAnchorPoint(Vec2(1, 1));
+    disconnect->setPosition(Vec2(origin.x + visibleSize.width, origin.y + visibleSize.height));
     this->addChild(disconnect);
 }
 
@@ -95,6 +97,13 @@ void LobbyScene::receiveAllBlocks()
             {
                 CCLOG("Connection lost.");
                 onConnectionLost(blok);
+                break;
+            }
+                
+            case P_COLLISION:
+            {
+                Device::vibrate(0.05);
+                CCLOG("Collision!");
                 break;
             }
                 
