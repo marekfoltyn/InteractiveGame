@@ -120,13 +120,13 @@ void ServerListScene::initGraphics()
     
     
     // Server names menu
-    menuView = ui::ListView::create();
+    menuView = ui::ScrollView::create();
     menuView->setDirection( ui::ScrollView::Direction::VERTICAL );
-    menuView->setClippingEnabled(false);
-    menuView->setPosition(Vec2(origin.x, origin.y + visibleSize.height/2));
+    menuView->setContentSize(cocos2d::Size(685, 540));
+    menuView->setInnerContainerSize(cocos2d::Size(485, 540));
+    menuView->setAnchorPoint(Vec2( 0, 1));
+    menuView->setPosition(Vec2( origin.x + visibleSize.width/2 - 645, origin.y + visibleSize.height - 352 ));
     menuView->setBounceEnabled(true);
-    
-    //menuView->pushBackCustomItem(lblSearching);
     
     this->addChild(menuView);
     
@@ -241,10 +241,17 @@ void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::
         CCLOG("%s added (hash: %d).", serverName->getCString(), hash);
         std::string name(serverName->getCString());
         
+        auto img = ui::Button::create("connect.png", "connect_clicked.png");
+        //img->setPosition(Vec2( origin.x + visibleSize.width/2 - 565, origin.y + visibleSize.height - 452 ));
+        img->setPosition(Vec2(img->getContentSize().width/2, menuView->getInnerContainerSize().height - img->getContentSize().height/2));
+        img->addClickEventListener(CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
+        img->setTag(hash);
+        
         // add to the menu (img, background, label)
         auto btn = ui::Button::create("servername_bg.png", "servername_bg.png");
         btn->setAnchorPoint(Vec2(0, 0.5));
-        btn->setPosition(Vec2( origin.x + visibleSize.width/2 - 525, origin.y + visibleSize.height - 452 ));
+        //btn->setPosition(Vec2( origin.x + visibleSize.width/2 - 525, origin.y + visibleSize.height - 452 ));
+        btn->setPosition(Vec2(130,menuView->getInnerContainerSize().height - img->getContentSize().height/2));
         btn->setContentSize(cocos2d::Size( 800, btn->getContentSize().height ));
         btn->setScale9Enabled(true);
         btn->setTitleText(name);
@@ -254,14 +261,10 @@ void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::
         auto lblSize = btn->getTitleRenderer()->getContentSize();
         btn->setContentSize(cocos2d::Size( 520, 10 + lblSize.height ));
         
-        auto img = ui::Button::create("connect.png", "connect_clicked.png");
-        img->setPosition(Vec2( origin.x + visibleSize.width/2 - 565, origin.y + visibleSize.height - 452 ));
-        img->addClickEventListener(CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
-        img->setTag(hash);
         img->setUserData(btn); // set reference to the label
         
-        this->addChild(btn);
-        this->addChild(img);
+        menuView->addChild(btn);
+        menuView->addChild(img);
         
         
         //menuView->setInnerContainerSize(cocos2d::Size(300, 500));
@@ -304,12 +307,12 @@ void ServerListScene::decreaseServerLifetimes()
             
             // delete menu entry
             int hash = i->first;
-            auto img = (ui::Button * ) this->getChildByTag(hash);
+            auto img = (ui::Button * ) menuView->getChildByTag(hash);
             if(img != nullptr)
             {
                 auto lbl = (ui::Button *) img->getUserData();
-                this->removeChild(lbl);
-                this->removeChild(img);
+                menuView->removeChild(lbl);
+                menuView->removeChild(img);
             }
             
             delete i->second->address;
@@ -343,10 +346,13 @@ void ServerListScene::onConnected(Blok * blok)
 void ServerListScene::connectionFailed(Blok * blok)
 {
     int hash = (int) RakNet::SystemAddress::ToInteger( blok->getAddress());
-    auto btn = (ui::Button *) this->getChildByTag(hash);
-    btn->stopAllActions();
-    btn->loadTextures("connect.png", "connect_clicked.png");
-    btn->setRotation(0);
+    auto btn = (ui::Button *) menuView->getChildByTag(hash);
+    if(btn != nullptr) // during connecting can be the server stopped -> btn would disappear
+    {
+        btn->stopAllActions();
+        btn->loadTextures("connect.png", "connect_clicked.png");
+        btn->setRotation(0);
+    }
     
     Device::vibrate(0.5);
 }

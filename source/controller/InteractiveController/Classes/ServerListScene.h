@@ -101,7 +101,7 @@ public:
 private:
     cocos2d::Label * lblSearching;
     cocos2d::Menu * menu;
-    cocos2d::ui::ListView * menuView;
+    cocos2d::ui::ScrollView * menuView;
     
     // map of available servers
     // key - hash of the system address
