@@ -86,7 +86,7 @@ void LobbyScene::initGUI(){
     this->addChild(background);
     
     // physics boundary
-    auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 3);
+    auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PhysicsMaterial(0.5, 0.5, 0.5), 3);
     edgeBody->setDynamic(false);
     edgeBody->setCollisionBitmask(1);
     edgeBody->setContactTestBitmask(true);
@@ -104,7 +104,7 @@ void LobbyScene::initGUI(){
     // physics sprite
     point = Sprite::create("exit_button_pressed.png");
     point->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
-    auto spriteBody = PhysicsBody::createCircle( point->getContentSize().width/2, PHYSICSBODY_MATERIAL_DEFAULT );
+    auto spriteBody = PhysicsBody::createCircle( point->getContentSize().width/2, PhysicsMaterial(0.5, 0.5, 0.5) );
     spriteBody->setCollisionBitmask(2);
     spriteBody->setContactTestBitmask(true);
     point->setPhysicsBody(spriteBody);
@@ -199,12 +199,13 @@ void LobbyScene::onAccelerationBlok(Blok * blok)
     if( fabs(x) < 0.08 ) x = 0;
     if( fabs(y) < 0.08 ) y = 0;
     
-    Vec2 force = Vec2(100000*x, 100000*y);
+    Vec2 force = Vec2(10000000*x, 10000000*y);
     Vec2 oppositePrevForce = Vec2( - prevForce.x, - prevForce.y );
+    prevForce = force;
     
     point->getPhysicsBody()->applyForce(force);
     point->getPhysicsBody()->applyForce(oppositePrevForce);
-    point->getPhysicsBody()->setVelocityLimit(300*forceSize);
+    point->getPhysicsBody()->setVelocityLimit(350*forceSize);
     
     prevForce = force;
 }

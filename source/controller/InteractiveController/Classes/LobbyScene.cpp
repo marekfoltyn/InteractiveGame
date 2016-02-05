@@ -75,6 +75,10 @@ void LobbyScene::initGraphics(){
     lblZ->setPosition(Vec2( origin.x, origin.y + 3*lblX->getContentSize().height ));
     this->addChild(lblZ);
     
+    auto disconnect = ui::Button::create("exit.png","exit_clicked.png");
+    disconnect->addTouchEventListener( CC_CALLBACK_2(LobbyScene::btnOnDisconnect, this) );
+    disconnect->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
+    this->addChild(disconnect);
 }
 
 void LobbyScene::receiveAllBlocks()
@@ -104,6 +108,25 @@ void LobbyScene::receiveAllBlocks()
         
         blok->deallocate();
     }
+}
+
+void LobbyScene::btnOnDisconnect(Ref * sender, ui::Widget::TouchEventType type)
+{
+    if( type != ui::Widget::TouchEventType::ENDED)
+    {
+        // we want only sucessfull click
+        return;
+    }
+    
+    auto c = Connector::getInstance();
+    auto server = c->getServer();
+    if( server != RakNet::UNASSIGNED_SYSTEM_ADDRESS )
+    {
+        c->disconnect(server);
+    }
+    CCLOG("User disconnected. Returning to main menu.");
+    Scene * main = ServerListScene::createScene();
+    Director::getInstance()->replaceScene(main);
 }
 
 void LobbyScene::onConnectionLost(Blok * block)

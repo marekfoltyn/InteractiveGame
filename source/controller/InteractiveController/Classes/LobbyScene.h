@@ -2,7 +2,13 @@
 #define __LOBBY_SCENE_H__
 
 #include "cocos2d.h"
+#include "extensions/cocos-ext.h"
+#include "ui/CocosGUI.h"
+
 #include "Connector.h"
+
+USING_NS_CC;
+USING_NS_CC_EXT;
 
 /**
  * The phone is connected to the server so the lobby scene is displayed.
@@ -43,6 +49,11 @@ public:
      * send movement information to the server
      */
     void onAcceleration(cocos2d::Acceleration* acc, cocos2d::Event* unused_event);
+    
+    /**
+     * user clicked on the disconnect button
+     */
+    void btnOnDisconnect(Ref * sender, ui::Widget::TouchEventType type);
     
     /**
      * connection was lost - (show the dialog? and) return to the server list scene

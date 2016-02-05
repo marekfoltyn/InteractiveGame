@@ -68,15 +68,18 @@ void ServerListScene::initGraphics()
     // exit button
     auto btnExit = MenuItemImage::create("exit.png", "exit_clicked.png", CC_CALLBACK_1(ServerListScene::btnLeaveClicked, this));
     btnExit->setPosition( origin.x + visibleSize.width/2 + 455, origin.y + visibleSize.height - 308 );
+    btnExit->setRotation(15);
     //this->addChild(btnExit); // no, because it will be part of menu
     
     // about button
     auto btnAbout = MenuItemImage::create("about.png", "about_clicked.png" /*, CC_CALLBACK_1(ServerListScene::btnLeaveClicked, this)*/ );
     btnAbout->setPosition( origin.x + visibleSize.width/2 + 485, origin.y + visibleSize.height - 183 );
+    btnAbout->setRotation(-15);
 
     // help button
     auto btnHelp = MenuItemImage::create("help.png", "help_clicked.png" /*, CC_CALLBACK_1(ServerListScene::btnLeaveClicked, this)*/ );
     btnHelp->setPosition( origin.x + visibleSize.width/2 + 385, origin.y + visibleSize.height - 413 );
+    btnHelp->setRotation(41);
     
     // game logo
     auto logo = MenuItemImage::create("logo.png", "logo.png");
@@ -237,31 +240,30 @@ void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::
 
         CCLOG("%s added (hash: %d).", serverName->getCString(), hash);
         std::string name(serverName->getCString());
-        int count = serverMap.size();
+        
+        auto img = ui::Button::create("connect.png", "connect_clicked.png");
+        img->setPosition(Vec2( origin.x + visibleSize.width/2 - 565, origin.y + visibleSize.height - 452 ));
+        img->addClickEventListener(CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
+        img->setTag(hash);
         
         // add to the menu (img, background, label)
-        auto btn = ui::Button::create("servername_bg.png", "servername_bg_clicked.png");
+        auto btn = ui::Button::create("servername_bg.png", "servername_bg.png");
         btn->setAnchorPoint(Vec2(0, 0.5));
-        btn->setPosition(Vec2( origin.x + visibleSize.width/2 - 505, origin.y + visibleSize.height - 452 ));
+        btn->setPosition(Vec2( origin.x + visibleSize.width/2 - 525, origin.y + visibleSize.height - 452 ));
+        btn->setContentSize(cocos2d::Size( 800, btn->getContentSize().height ));
         btn->setScale9Enabled(true);
         btn->setTitleText(name);
         btn->setTitleFontName("Monda-Bold.ttf");
         btn->setTitleFontSize(50);
         btn->setTitleColor(Color3B(54, 72, 99));
-        
         auto lblSize = btn->getTitleRenderer()->getContentSize();
         auto lblPosition = btn->getTitleRenderer()->getPosition();
-        btn->setContentSize(cocos2d::Size( 90 + lblSize.width, 10 + lblSize.height ));
-        
+        btn->setContentSize(cocos2d::Size( 520, 10 + lblSize.height ));
+        //btn->addClickEventListener(CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
+        //btn->setTag(hash);
         this->addChild(btn);
+        this->addChild(img);
         
-        auto img = MenuItemImage::create("connect.png", "connect_clicked.png");
-        img->setPosition(Vec2( origin.x + visibleSize.width/2 - 555, origin.y + visibleSize.height - 452 ));
-        
-        auto menu = Menu::create(img, NULL);
-        menu->setPosition(Vec2::ZERO);
-        menu->setTag(hash); // SystemAddress will be found by tag (in hashmap)
-        this->addChild(menu);
         
         //menuView->setInnerContainerSize(cocos2d::Size(300, 500));
         //menuView->setContentSize(cocos2d::Size( menu->getContentSize().width, count * (menu->getContentSize().height) ));
@@ -332,6 +334,11 @@ void ServerListScene::onConnected(Blok * blok)
 
 void ServerListScene::connectionFailed(Blok * blok)
 {
+    int hash = (int) RakNet::SystemAddress::ToInteger( blok->getAddress());
+    auto btn = (ui::Button *) this->getChildByTag(hash);
+    btn->stopAllActions();
+    btn->loadTextures("connect.png", "connect_clicked.png");
+    
     Device::vibrate(0.5);
 }
 
@@ -377,7 +384,10 @@ void ServerListScene::txtNameEvent(Ref * sender, ui::TextField::EventType type)
 
 void ServerListScene::btnServerClicked(Ref * pSender)
 {
-    int tag = ((cocos2d::MenuItemLabel *) pSender)->getTag(); // tag value is the key in serverMap
+    auto btn = (cocos2d::ui::Button *) pSender;
+    int tag = btn->getTag(); // tag value is the key in serverMap
+    btn->loadTextures("connecting.png", "connecting.png");
+    btn->runAction( RepeatForever::create( RotateBy::create(1, 360) ) );
     
     if(tag == -1)
     {

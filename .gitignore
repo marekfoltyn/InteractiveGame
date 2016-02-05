@@ -18,6 +18,8 @@ source/controller/InteractiveController/proj.android/bin/*
 source/controller/InteractiveController/proj.android/obj/*
 source/controller/InteractiveController/proj.android/.idea/*
 source/controller/InteractiveController/proj.android/gen/*
+source/controller/InteractiveController/proj.android/assets/*
+source/controller/InteractiveController/proj.android/assets/res/*
 source/controller/InteractiveController/bin/*
 
 source/network/Server/Build/*
