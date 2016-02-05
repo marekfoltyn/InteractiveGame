@@ -19,7 +19,6 @@ Blok * AccelerationBlok::Create(cocos2d::Acceleration * acc)
     blok->setType(P_ACCELERATION);
     blok->setPriority(HIGH_PRIORITY);
     blok->setReliability(PacketReliability::UNRELIABLE);
-    blok->setAddress( Connector::getInstance()->getServer() );
     
     return blok;
 }

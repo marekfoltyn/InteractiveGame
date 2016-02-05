@@ -58,6 +58,7 @@
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 		EA24006A1C64E6BB00906235 /* CollisionBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2400681C64E6BB00906235 /* CollisionBlok.cpp */; };
+		EA2400791C65192F00906235 /* ServerNameBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2400771C65192F00906235 /* ServerNameBlok.cpp */; };
 		EA888A021C58A18F00534275 /* LobbyScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888A001C58A18F00534275 /* LobbyScene.cpp */; };
 		EA888B0C1C58A6B200534275 /* _FindFirst.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888A9E1C58A6B100534275 /* _FindFirst.cpp */; };
 		EA888B0D1C58A6B200534275 /* Base64Encoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888A9F1C58A6B100534275 /* Base64Encoder.cpp */; };
@@ -172,7 +173,7 @@
 		EAAB6A591C59F21E00171969 /* Connector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A581C59F21E00171969 /* Connector.cpp */; };
 		EAAB6A5C1C59F27000171969 /* Blok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A5B1C59F27000171969 /* Blok.cpp */; };
 		EAAB6A611C59F6C900171969 /* AccelerationBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A5F1C59F6C900171969 /* AccelerationBlok.cpp */; };
-		EAAB6A621C59F6C900171969 /* ServerNameBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A601C59F6C900171969 /* ServerNameBlok.cpp */; };
+		EAAB6A621C59F6C900171969 /* StringBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A601C59F6C900171969 /* StringBlok.cpp */; };
 		EAAB6A651C59F77D00171969 /* ServerListScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A641C59F77D00171969 /* ServerListScene.cpp */; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
@@ -234,6 +235,8 @@
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		EA2400681C64E6BB00906235 /* CollisionBlok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CollisionBlok.cpp; path = ../../../shared/bloks/CollisionBlok.cpp; sourceTree = "<group>"; };
 		EA2400691C64E6BB00906235 /* CollisionBlok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollisionBlok.h; path = ../../../shared/bloks/CollisionBlok.h; sourceTree = "<group>"; };
+		EA2400771C65192F00906235 /* ServerNameBlok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ServerNameBlok.cpp; path = ../../../shared/bloks/ServerNameBlok.cpp; sourceTree = "<group>"; };
+		EA2400781C65192F00906235 /* ServerNameBlok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerNameBlok.h; path = ../../../shared/bloks/ServerNameBlok.h; sourceTree = "<group>"; };
 		EA651D891C46DC02003EE325 /* raknetx86_64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = raknetx86_64.a; path = ../../../shared/network/raknet/raknetx86_64.a; sourceTree = "<group>"; };
 		EA8889FE1C58A18F00534275 /* LobbyScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LobbyScene.h; sourceTree = "<group>"; };
 		EA888A001C58A18F00534275 /* LobbyScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LobbyScene.cpp; sourceTree = "<group>"; };
@@ -507,9 +510,9 @@
 		EAAB6A5A1C59F27000171969 /* Blok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Blok.h; path = ../../../shared/network/Blok.h; sourceTree = "<group>"; };
 		EAAB6A5B1C59F27000171969 /* Blok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Blok.cpp; path = ../../../shared/network/Blok.cpp; sourceTree = "<group>"; };
 		EAAB6A5D1C59F6C900171969 /* AccelerationBlok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccelerationBlok.h; path = ../../../shared/bloks/AccelerationBlok.h; sourceTree = "<group>"; };
-		EAAB6A5E1C59F6C900171969 /* ServerNameBlok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerNameBlok.h; path = ../../../shared/bloks/ServerNameBlok.h; sourceTree = "<group>"; };
+		EAAB6A5E1C59F6C900171969 /* StringBlok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StringBlok.h; path = ../../../shared/bloks/StringBlok.h; sourceTree = "<group>"; };
 		EAAB6A5F1C59F6C900171969 /* AccelerationBlok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AccelerationBlok.cpp; path = ../../../shared/bloks/AccelerationBlok.cpp; sourceTree = "<group>"; };
-		EAAB6A601C59F6C900171969 /* ServerNameBlok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ServerNameBlok.cpp; path = ../../../shared/bloks/ServerNameBlok.cpp; sourceTree = "<group>"; };
+		EAAB6A601C59F6C900171969 /* StringBlok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StringBlok.cpp; path = ../../../shared/bloks/StringBlok.cpp; sourceTree = "<group>"; };
 		EAAB6A631C59F77D00171969 /* ServerListScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerListScene.h; sourceTree = "<group>"; };
 		EAAB6A641C59F77D00171969 /* ServerListScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServerListScene.cpp; sourceTree = "<group>"; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
@@ -1005,12 +1008,14 @@
 		EA8888731C58031400534275 /* Blocks */ = {
 			isa = PBXGroup;
 			children = (
+				EA2400781C65192F00906235 /* ServerNameBlok.h */,
+				EA2400771C65192F00906235 /* ServerNameBlok.cpp */,
 				EA2400681C64E6BB00906235 /* CollisionBlok.cpp */,
 				EA2400691C64E6BB00906235 /* CollisionBlok.h */,
 				EAAB6A5D1C59F6C900171969 /* AccelerationBlok.h */,
-				EAAB6A5E1C59F6C900171969 /* ServerNameBlok.h */,
 				EAAB6A5F1C59F6C900171969 /* AccelerationBlok.cpp */,
-				EAAB6A601C59F6C900171969 /* ServerNameBlok.cpp */,
+				EAAB6A5E1C59F6C900171969 /* StringBlok.h */,
+				EAAB6A601C59F6C900171969 /* StringBlok.cpp */,
 			);
 			name = Blocks;
 			sourceTree = "<group>";
@@ -1143,6 +1148,7 @@
 				EA888B121C58A6B200534275 /* CloudCommon.cpp in Sources */,
 				EA888B3D1C58A6B200534275 /* PacketizedTCP.cpp in Sources */,
 				EA888B471C58A6B200534275 /* RakNetSocket2_Berkley_NativeClient.cpp in Sources */,
+				EA2400791C65192F00906235 /* ServerNameBlok.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				EA888B2C1C58A6B200534275 /* HTTPConnection2.cpp in Sources */,
 				EA888B551C58A6B200534275 /* RakSleep.cpp in Sources */,
@@ -1191,7 +1197,7 @@
 				EA888B231C58A6B200534275 /* FileOperations.cpp in Sources */,
 				EA888B511C58A6B200534275 /* RakNetStatistics.cpp in Sources */,
 				EA888B1C1C58A6B200534275 /* DS_HuffmanEncodingTree.cpp in Sources */,
-				EAAB6A621C59F6C900171969 /* ServerNameBlok.cpp in Sources */,
+				EAAB6A621C59F6C900171969 /* StringBlok.cpp in Sources */,
 				EA888B611C58A6B200534275 /* SecureHandshake.cpp in Sources */,
 				EA888B631C58A6B200534275 /* SignaledEvent.cpp in Sources */,
 				EA888B4C1C58A6B200534275 /* RakNetSocket2_Vita.cpp in Sources */,

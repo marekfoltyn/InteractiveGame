@@ -10,7 +10,7 @@
 
 
 
-std::string ServerNameBlok::ServerName(Blok * blok)
+std::string ServerNameBlok::parseServerName(Blok * blok)
 {
     return std::string( blok->getData()+sizeof(RakNet::TimeMS) ); // skip ping timestamp
 }

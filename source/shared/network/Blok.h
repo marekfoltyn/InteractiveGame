@@ -95,6 +95,11 @@ public:
     const int getPacketLength();
     
     /**
+     * send the packet to the address
+     */
+    void send();
+    
+    /**
      * deallocates the Blok including its data
      */
     void deallocate();

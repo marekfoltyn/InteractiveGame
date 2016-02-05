@@ -22,9 +22,9 @@ Blok::Blok(const char * d, unsigned int len )
     }
     
     // default values
-    priority = PacketPriority::LOW_PRIORITY;
-    reliability = PacketReliability::UNRELIABLE;
-    address = RakNet::UNASSIGNED_SYSTEM_ADDRESS;
+    priority = PacketPriority::HIGH_PRIORITY;
+    reliability = PacketReliability::RELIABLE;
+    address = Connector::getInstance()->getServer();
     packet=nullptr;
 }
 
@@ -122,6 +122,10 @@ const int Blok::getPacketLength()
     return length;
 }
 
+void Blok::send()
+{
+    Connector::getInstance()->send(this);
+}
 
 void Blok::deallocate()
 {

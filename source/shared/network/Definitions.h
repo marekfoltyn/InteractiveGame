@@ -45,5 +45,6 @@
 
 #define P_ACCELERATION                ID_USER_PACKET_ENUM+1
 #define P_COLLISION                   ID_USER_PACKET_ENUM+2
+#define P_PLAYER_NAME                 ID_USER_PACKET_ENUM+3
 
 #endif // _DEFINITIONS_H_

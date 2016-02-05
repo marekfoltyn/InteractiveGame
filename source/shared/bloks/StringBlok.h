@@ -1,32 +1,32 @@
 //
-//  ServerNameBlok.h
+//  StringBlok.h
 //  InteractiveController
 //
 //  Created by Marek Foltýn on 26.01.16.
 //
 //
 
-#ifndef ServerNameBlok_h
-#define ServerNameBlok_h
+#ifndef StringBlok_h
+#define StringBlok_h
 
 #include <string>
 #include "Connector.h"
 
 
-class ServerNameBlok{
+class StringBlok{
 public:
     
     /**
      * parse the string
      */
-    static std::string parseServerName(Blok * blok);
+    static std::string parseString(Blok * blok);
     
     /**
-     * create ServerNameBlok from string
+     * create StringBlok from string
      */
     static Blok * create(std::string str);
     
 };
 
 
-#endif /* ServerNameBlok_h */
+#endif /* StringBlock_h */

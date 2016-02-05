@@ -10,6 +10,7 @@
 #include "Blok.h"
 #include "AccelerationBlok.h"
 #include "CollisionBlok.h"
+#include "StringBlok.h"
 
 USING_NS_CC;
 
@@ -148,26 +149,6 @@ void LobbyScene::processBlock(){
             case P_NEW_CONNECTION:
             {
                 CCLOG("%s connected.", blok->getAddress().ToString() );
-                
-                int id = RakNet::SystemAddress::ToInteger( blok->getAddress());
-                auto player = Player::create( blok->getAddress() );
-                players[id] = player;
-                
-                auto visibleSize = Director::getInstance()->getVisibleSize();
-                auto origin = Director::getInstance()->getVisibleOrigin();
-
-                auto sprite = player->getSprite();
-                sprite->setTexture("player_no_color.png");
-                sprite->setScale(0.5);
-                sprite->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
-                auto spriteBody = PhysicsBody::createCircle( sprite->getContentSize().width/2, PhysicsMaterial(0.5, 0.5, 0.5) );
-                spriteBody->setCollisionBitmask(2);
-                spriteBody->setContactTestBitmask(true);
-                spriteBody->setTag(id);
-                sprite->setPhysicsBody(spriteBody);
-
-                this->addChild(sprite);
-                
                 break;
             }
             case P_CONNECTION_LOST:
@@ -186,6 +167,38 @@ void LobbyScene::processBlock(){
             {
                 onAccelerationBlok(blok);
                 break;
+            }
+                
+            case P_PLAYER_NAME:
+            {
+                std::string name = StringBlok::parseString(blok);
+                CCLOG("Player name: %s", name.c_str() );
+                
+                int id = RakNet::SystemAddress::ToInteger( blok->getAddress());
+                auto player = Player::create( blok->getAddress() );
+                players[id] = player;
+                
+                auto visibleSize = Director::getInstance()->getVisibleSize();
+                auto origin = Director::getInstance()->getVisibleOrigin();
+                
+                auto sprite = player->getSprite();
+                sprite->setTexture("player_no_color.png");
+                sprite->setScale(0.5);
+                sprite->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
+                auto spriteBody = PhysicsBody::createCircle( sprite->getContentSize().width/2, PhysicsMaterial(0.5, 0.5, 0.5) );
+                spriteBody->setCollisionBitmask(2);
+                spriteBody->setContactTestBitmask(true);
+                spriteBody->setTag(id);
+                spriteBody->setRotationEnable(false);
+                sprite->setPhysicsBody(spriteBody);
+                auto lblName = Label::createWithTTF(name, "Monda-Bold.ttf", sprite->getContentSize().height/2);
+                lblName->setPosition(Vec2( sprite->getContentSize().width/2, sprite->getContentSize().height  ));
+                lblName->setAnchorPoint(Vec2( 0.5, 0 ));
+                lblName->setColor(Color3B::GRAY);
+                sprite->addChild(lblName);
+                
+                
+                this->addChild(sprite);
             }
                 
             default:

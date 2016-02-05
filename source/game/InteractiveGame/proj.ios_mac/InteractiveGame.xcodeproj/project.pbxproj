@@ -27,6 +27,10 @@
 		EA2400631C6490C400906235 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2400601C6490C400906235 /* Player.cpp */; };
 		EA2400661C64E38B00906235 /* CollisionBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2400641C64E38B00906235 /* CollisionBlok.cpp */; };
 		EA2400671C64E38B00906235 /* CollisionBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2400641C64E38B00906235 /* CollisionBlok.cpp */; };
+		EA2400711C6513F900906235 /* StringBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA24006F1C6513F900906235 /* StringBlok.cpp */; };
+		EA2400721C6513F900906235 /* StringBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA24006F1C6513F900906235 /* StringBlok.cpp */; };
+		EA2400751C6518A900906235 /* ServerNameBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2400731C6518A900906235 /* ServerNameBlok.cpp */; };
+		EA2400761C6518A900906235 /* ServerNameBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2400731C6518A900906235 /* ServerNameBlok.cpp */; };
 		EA41892A1C342867004B8934 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 503AE0F617EB97AB00D1A890 /* Icon.icns */; };
 		EA41892B1C342867004B8934 /* res in Resources */ = {isa = PBXBuildFile; fileRef = 55014BDBA322584F88CF3D18 /* res */; };
 		EA4189301C342867004B8934 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 503AE10317EB98FF00D1A890 /* main.cpp */; };
@@ -54,8 +58,6 @@
 		EAAB6A691C59FF6500171969 /* Blok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A671C59FF6500171969 /* Blok.cpp */; };
 		EAAB6A6E1C59FF7200171969 /* AccelerationBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A6C1C59FF7200171969 /* AccelerationBlok.cpp */; };
 		EAAB6A6F1C59FF7200171969 /* AccelerationBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A6C1C59FF7200171969 /* AccelerationBlok.cpp */; };
-		EAAB6A701C59FF7200171969 /* ServerNameBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A6D1C59FF7200171969 /* ServerNameBlok.cpp */; };
-		EAAB6A711C59FF7200171969 /* ServerNameBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A6D1C59FF7200171969 /* ServerNameBlok.cpp */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +94,10 @@
 		EA2400611C6490C400906235 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		EA2400641C64E38B00906235 /* CollisionBlok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CollisionBlok.cpp; path = ../../../shared/bloks/CollisionBlok.cpp; sourceTree = "<group>"; };
 		EA2400651C64E38B00906235 /* CollisionBlok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollisionBlok.h; path = ../../../shared/bloks/CollisionBlok.h; sourceTree = "<group>"; };
+		EA24006F1C6513F900906235 /* StringBlok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StringBlok.cpp; path = ../../../shared/bloks/StringBlok.cpp; sourceTree = "<group>"; };
+		EA2400701C6513F900906235 /* StringBlok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StringBlok.h; path = ../../../shared/bloks/StringBlok.h; sourceTree = "<group>"; };
+		EA2400731C6518A900906235 /* ServerNameBlok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ServerNameBlok.cpp; path = ../../../shared/bloks/ServerNameBlok.cpp; sourceTree = "<group>"; };
+		EA2400741C6518A900906235 /* ServerNameBlok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerNameBlok.h; path = ../../../shared/bloks/ServerNameBlok.h; sourceTree = "<group>"; };
 		EA4189431C342867004B8934 /* InteractiveGame-unit-testing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "InteractiveGame-unit-testing.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA4189441C342867004B8934 /* InteractiveGame-desktop copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "InteractiveGame-desktop copy-Info.plist"; path = "/Users/marek/Documents/git/InteractiveGame/source/game/InteractiveGame/proj.ios_mac/InteractiveGame-desktop copy-Info.plist"; sourceTree = "<absolute>"; };
 		EA4189481C342C4B004B8934 /* TestDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestDelegate.cpp; sourceTree = "<group>"; };
@@ -107,9 +113,7 @@
 		EAAB6A661C59FF6500171969 /* Blok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Blok.h; path = ../../../shared/network/Blok.h; sourceTree = "<group>"; };
 		EAAB6A671C59FF6500171969 /* Blok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Blok.cpp; path = ../../../shared/network/Blok.cpp; sourceTree = "<group>"; };
 		EAAB6A6A1C59FF7200171969 /* AccelerationBlok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccelerationBlok.h; path = ../../../shared/bloks/AccelerationBlok.h; sourceTree = "<group>"; };
-		EAAB6A6B1C59FF7200171969 /* ServerNameBlok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerNameBlok.h; path = ../../../shared/bloks/ServerNameBlok.h; sourceTree = "<group>"; };
 		EAAB6A6C1C59FF7200171969 /* AccelerationBlok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AccelerationBlok.cpp; path = ../../../shared/bloks/AccelerationBlok.cpp; sourceTree = "<group>"; };
-		EAAB6A6D1C59FF7200171969 /* ServerNameBlok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ServerNameBlok.cpp; path = ../../../shared/bloks/ServerNameBlok.cpp; sourceTree = "<group>"; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -308,10 +312,12 @@
 			children = (
 				EAAB6A6A1C59FF7200171969 /* AccelerationBlok.h */,
 				EAAB6A6C1C59FF7200171969 /* AccelerationBlok.cpp */,
-				EAAB6A6B1C59FF7200171969 /* ServerNameBlok.h */,
-				EAAB6A6D1C59FF7200171969 /* ServerNameBlok.cpp */,
 				EA2400651C64E38B00906235 /* CollisionBlok.h */,
 				EA2400641C64E38B00906235 /* CollisionBlok.cpp */,
+				EA2400731C6518A900906235 /* ServerNameBlok.cpp */,
+				EA2400741C6518A900906235 /* ServerNameBlok.h */,
+				EA24006F1C6513F900906235 /* StringBlok.cpp */,
+				EA2400701C6513F900906235 /* StringBlok.h */,
 			);
 			name = Blocks;
 			sourceTree = "<group>";
@@ -409,13 +415,14 @@
 			files = (
 				EA2400621C6490C400906235 /* Player.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
-				EAAB6A701C59FF7200171969 /* ServerNameBlok.cpp in Sources */,
 				EA5CA2C41C3FC724003437FF /* Connector.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				EA2400661C64E38B00906235 /* CollisionBlok.cpp in Sources */,
+				EA2400751C6518A900906235 /* ServerNameBlok.cpp in Sources */,
 				46880B8B19C43A87006E1F66 /* LobbyScene.cpp in Sources */,
 				EAAB6A681C59FF6500171969 /* Blok.cpp in Sources */,
 				EAAB6A6E1C59FF7200171969 /* AccelerationBlok.cpp in Sources */,
+				EA2400711C6513F900906235 /* StringBlok.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,11 +436,12 @@
 				EA4189301C342867004B8934 /* main.cpp in Sources */,
 				EA2400631C6490C400906235 /* Player.cpp in Sources */,
 				EA4189311C342867004B8934 /* LobbyScene.cpp in Sources */,
+				EA2400721C6513F900906235 /* StringBlok.cpp in Sources */,
 				EA4189501C342CEF004B8934 /* Catch.h in Sources */,
 				EA5CA2C51C3FC724003437FF /* Connector.cpp in Sources */,
 				EAAB6A6F1C59FF7200171969 /* AccelerationBlok.cpp in Sources */,
-				EAAB6A711C59FF7200171969 /* ServerNameBlok.cpp in Sources */,
 				EA2400671C64E38B00906235 /* CollisionBlok.cpp in Sources */,
+				EA2400761C6518A900906235 /* ServerNameBlok.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

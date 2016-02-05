@@ -3,6 +3,7 @@
 
 #include "Connector.h"
 #include "ServerNameBlok.h"
+#include "StringBlok.h"
 
 USING_NS_CC;
 
@@ -218,7 +219,7 @@ void ServerListScene::receiveAllBlocks()
 void ServerListScene::refreshServer(Blok * blok)
 {
     // parse Blok
-    auto name = __String::create( ServerNameBlok::ServerName(blok) );
+    auto name = __String::create( ServerNameBlok::parseServerName(blok) );
     CCLOG("Server response: %s", name->getCString() );
     
     addOrUpdateServer(name, blok->getAddress());
@@ -362,6 +363,17 @@ void ServerListScene::decreaseServerLifetimes()
 
 void ServerListScene::onConnected(Blok * blok)
 {
+    // send player's name
+    UserDefault * def = UserDefault::getInstance();
+    std::string name = def->getStringForKey("player_name", "");
+    if(name.length() == 0)
+    {
+        name = "noname";
+    }
+    auto nameBlok = StringBlok::create( name );
+    nameBlok->setType(P_PLAYER_NAME);
+    nameBlok->send();
+    
     CCLOG("Connected to %s", blok->getAddress().ToString());
     auto scene = LobbyScene::createScene();
     Director::getInstance()->replaceScene(scene);
