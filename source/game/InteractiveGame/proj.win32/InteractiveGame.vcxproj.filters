@@ -16,15 +16,18 @@
     <Filter Include="src\network">
       <UniqueIdentifier>{76f23755-a0ed-4e0c-b091-1d0105ba6c9d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\scenes">
+      <UniqueIdentifier>{c06e34de-5ce2-4e19-a118-08f7cb05a149}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\bloks">
+      <UniqueIdentifier>{31a97541-833d-4c4b-bbd2-cf96e75d8f7a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>win32</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\LobbyScene.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\shared\network\raknet\TableSerializer.cpp">
@@ -360,6 +363,18 @@
     <ClCompile Include="..\..\..\shared\network\Connector.cpp">
       <Filter>src\network</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\LobbyScene.cpp">
+      <Filter>src\scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\shared\bloks\AccelerationBlok.cpp">
+      <Filter>src\bloks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\shared\bloks\ServerNameBlok.cpp">
+      <Filter>src\bloks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\shared\network\Blok.cpp">
+      <Filter>src\network</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -369,9 +384,6 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\GameDefinitions.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\LobbyScene.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\shared\network\raknet\_FindFirst.h">
@@ -840,6 +852,18 @@
       <Filter>src\network</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\shared\network\Definitions.h">
+      <Filter>src\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\LobbyScene.h">
+      <Filter>src\scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\shared\bloks\AccelerationBlok.h">
+      <Filter>src\bloks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\shared\bloks\ServerNameBlok.h">
+      <Filter>src\bloks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\shared\network\Blok.h">
       <Filter>src\network</Filter>
     </ClInclude>
   </ItemGroup>

@@ -71,7 +71,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\DOKUMENTY-Marek\git\InteractiveGame\source\shared\network;C:\DOKUMENTY-Marek\git\InteractiveGame\source\shared\network\raknet;$(COCOS_FRAMEWORKS)\cocos2d-x-3.9\cocos\audio\include;$(COCOS_FRAMEWORKS)\cocos2d-x-3.9\external;$(COCOS_FRAMEWORKS)\cocos2d-x-3.9\external\chipmunk\include\chipmunk;$(COCOS_FRAMEWORKS)\cocos2d-x-3.9\extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\DOKUMENTY-Marek\git\InteractiveGame\source\shared\bloks;C:\DOKUMENTY-Marek\git\InteractiveGame\source\shared\network;C:\DOKUMENTY-Marek\git\InteractiveGame\source\shared\network\raknet;$(COCOS_FRAMEWORKS)\cocos2d-x-3.9\cocos\audio\include;$(COCOS_FRAMEWORKS)\cocos2d-x-3.9\external;$(COCOS_FRAMEWORKS)\cocos2d-x-3.9\external\chipmunk\include\chipmunk;$(COCOS_FRAMEWORKS)\cocos2d-x-3.9\extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -146,6 +146,9 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.9\prebuilt\win32\*.*" "$(OutDir)"
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\shared\bloks\AccelerationBlok.cpp" />
+    <ClCompile Include="..\..\..\shared\bloks\ServerNameBlok.cpp" />
+    <ClCompile Include="..\..\..\shared\network\Blok.cpp" />
     <ClCompile Include="..\..\..\shared\network\Connector.cpp" />
     <ClCompile Include="..\..\..\shared\network\raknet\Base64Encoder.cpp" />
     <ClCompile Include="..\..\..\shared\network\raknet\BitStream.cpp" />
@@ -262,6 +265,9 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.9\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\shared\bloks\AccelerationBlok.h" />
+    <ClInclude Include="..\..\..\shared\bloks\ServerNameBlok.h" />
+    <ClInclude Include="..\..\..\shared\network\Blok.h" />
     <ClInclude Include="..\..\..\shared\network\Connector.h" />
     <ClInclude Include="..\..\..\shared\network\Definitions.h" />
     <ClInclude Include="..\..\..\shared\network\raknet\AutopatcherPatchContext.h" />
@@ -425,6 +431,14 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.9\prebuilt\win32\*.*" "$(OutDir)"
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\..\cocos2d-x-3.9\cocos\editor-support\spine\proj.win32\libSpine.vcxproj">
+      <Project>{b7c2a162-dec9-4418-972e-240ab3cbfcae}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\..\cocos2d-x-3.9\external\Box2D\proj.win32\libbox2d.vcxproj">
+      <Project>{929480e7-23c0-4df6-8456-096d71547116}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

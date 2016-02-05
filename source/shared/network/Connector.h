@@ -81,7 +81,7 @@ public:
      * get RakNet interface
      * only for Connector framework purposes, shouldn't be used in game
      */
-    RakNet::RakPeerInterface * getInterface(){return interface;};
+    RakNet::RakPeerInterface * getInterface(){return raknetInterface;};
         
 private:
     
@@ -93,7 +93,7 @@ private:
     /**
      * RakNet interface
      */
-    RakNet::RakPeerInterface * interface = nullptr;
+    RakNet::RakPeerInterface * raknetInterface = nullptr;
     
     /**
      * Singleton instance pointer
