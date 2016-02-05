@@ -82,7 +82,8 @@ void LobbyScene::initGUI(){
     auto c = Connector::getInstance();
     
     // background color
-    auto background = cocos2d::LayerColor::create(Color4B(54, 72, 99, 255));
+    //auto background = cocos2d::LayerColor::create(Color4B(54, 72, 99, 255));
+    auto background = cocos2d::LayerColor::create(Color4B::WHITE);
     this->addChild(background);
     
     // physics boundary
@@ -96,7 +97,8 @@ void LobbyScene::initGUI(){
     this->addChild(edgeNode);
     
     
-    auto * txtServerName = TextFieldTTF::createWithTTF(c->getServerName(), "8-Bit-Madness.ttf", 64);
+    auto * txtServerName = TextFieldTTF::createWithTTF(c->getServerName(), "Monda-Bold.ttf", 64);
+    txtServerName->setColor(Color3B(54, 72, 99));
     txtServerName->setAnchorPoint(Vec2(0.5, 0.5));
     txtServerName->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height - txtServerName->getContentSize().height ));
     this->addChild(txtServerName);
@@ -145,6 +147,36 @@ void LobbyScene::processBlock(){
             case P_NEW_CONNECTION:
             {
                 CCLOG("%s connected.", blok->getAddress().ToString() );
+                
+                int id = RakNet::SystemAddress::ToInteger( blok->getAddress());
+                auto player = Player::create( blok->getAddress() );
+                players[id] = player;
+                
+                auto visibleSize = Director::getInstance()->getVisibleSize();
+                auto origin = Director::getInstance()->getVisibleOrigin();
+
+                auto sprite = player->getSprite();
+                sprite->setTexture("player_no_color.png");
+                sprite->setScale(0.5);
+                sprite->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
+                auto spriteBody = PhysicsBody::createCircle( sprite->getContentSize().width/2, PhysicsMaterial(0.5, 0.5, 0.5) );
+                spriteBody->setCollisionBitmask(2);
+                spriteBody->setContactTestBitmask(true);
+                sprite->setPhysicsBody(spriteBody);
+
+                this->addChild(sprite);
+                
+                break;
+            }
+                
+            case P_DISCONNECTED:
+            {
+                CCLOG("%s disconnected.", blok->getAddress().ToString());
+                
+                int id = RakNet::SystemAddress::ToInteger( blok->getAddress());
+                this->removeChild( players[id]->getSprite() );
+                players.erase(id);
+                
                 break;
             }
                 
@@ -162,7 +194,7 @@ void LobbyScene::processBlock(){
                 
             default:
             {
-                CCLOG("Packet type %c was ignored.", blok->getType());
+                CCLOG("Packet type %d was ignored.", blok->getType());
                 break;
             }
         }
@@ -187,25 +219,33 @@ bool LobbyScene::onContactBegin( cocos2d::PhysicsContact &contact )
 
 void LobbyScene::onAccelerationBlok(Blok * blok)
 {
-    auto visibleSize = Director::getInstance()->getVisibleSize();
-    auto origin = Director::getInstance()->getVisibleOrigin();
+    int id = RakNet::SystemAddress::ToInteger( blok->getAddress() );
     
     auto acc = AccelerationBlok::Parse(blok);
     float x = (float) acc->x;
     float y = (float) acc->y;
     float forceSize = sqrtf( x*x + y*y );
-
+    
     // coord clean
     if( fabs(x) < 0.08 ) x = 0;
     if( fabs(y) < 0.08 ) y = 0;
     
-    Vec2 force = Vec2(10000000*x, 10000000*y);
-    Vec2 oppositePrevForce = Vec2( - prevForce.x, - prevForce.y );
-    prevForce = force;
+    if( players.count(id) == 0 )
+    {
+        // player not found, ignore packet
+        CCLOG("player not found, acc packet ignored");
+        return;
+    }
+    auto sprite = players[id]->getSprite();
     
-    point->getPhysicsBody()->applyForce(force);
-    point->getPhysicsBody()->applyForce(oppositePrevForce);
-    point->getPhysicsBody()->setVelocityLimit(350*forceSize);
+    Vec2 force = Vec2(1000000000*x, 1000000000*y);
+    Vec2 prevForce = players[id]->getPreviousForce();
+    Vec2 oppositePrevForce = Vec2( - prevForce.x, - prevForce.y );
+    players[id]->setAppliedForce(force);
+    
+    sprite->getPhysicsBody()->applyForce(force);
+    sprite->getPhysicsBody()->applyForce(oppositePrevForce);
+    sprite->getPhysicsBody()->setVelocityLimit(400*forceSize);
     
     prevForce = force;
 }

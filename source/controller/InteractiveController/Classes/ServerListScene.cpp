@@ -241,11 +241,6 @@ void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::
         CCLOG("%s added (hash: %d).", serverName->getCString(), hash);
         std::string name(serverName->getCString());
         
-        auto img = ui::Button::create("connect.png", "connect_clicked.png");
-        img->setPosition(Vec2( origin.x + visibleSize.width/2 - 565, origin.y + visibleSize.height - 452 ));
-        img->addClickEventListener(CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
-        img->setTag(hash);
-        
         // add to the menu (img, background, label)
         auto btn = ui::Button::create("servername_bg.png", "servername_bg.png");
         btn->setAnchorPoint(Vec2(0, 0.5));
@@ -257,10 +252,14 @@ void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::
         btn->setTitleFontSize(50);
         btn->setTitleColor(Color3B(54, 72, 99));
         auto lblSize = btn->getTitleRenderer()->getContentSize();
-        auto lblPosition = btn->getTitleRenderer()->getPosition();
         btn->setContentSize(cocos2d::Size( 520, 10 + lblSize.height ));
-        //btn->addClickEventListener(CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
-        //btn->setTag(hash);
+        
+        auto img = ui::Button::create("connect.png", "connect_clicked.png");
+        img->setPosition(Vec2( origin.x + visibleSize.width/2 - 565, origin.y + visibleSize.height - 452 ));
+        img->addClickEventListener(CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
+        img->setTag(hash);
+        img->setUserData(btn); // set reference to the label
+        
         this->addChild(btn);
         this->addChild(img);
         
@@ -303,18 +302,27 @@ void ServerListScene::decreaseServerLifetimes()
             //delete
             CCLOG("%s removed for inactivity.",i->second->address->ToString());
             
-            //TODO: delete menu entry
-            
-            /*auto menu = (Menu *) this->getChildByTag( (int) RakNet::SystemAddress::ToInteger( * (i->second->address) ));
-            this->removeChild(menu);
+            // delete menu entry
+            int hash = i->first;
+            auto img = (ui::Button * ) this->getChildByTag(hash);
+            if(img != nullptr)
+            {
+                auto lbl = (ui::Button *) img->getUserData();
+                this->removeChild(lbl);
+                this->removeChild(img);
+            }
             
             delete i->second->address;
             serverMap.erase(i->first);
             
+            
+            /*auto menu = (Menu *) this->getChildByTag( (int) RakNet::SystemAddress::ToInteger( * (i->second->address) ));
+            this->removeChild(menu);*/
+            
             // if missing this, when only one server, app breaks (iterator is behind the end)
             if( serverMap.size() == 0 || i == serverMap.end() ){
                 return;
-            }*/
+            }
         }
         
     }
@@ -338,6 +346,7 @@ void ServerListScene::connectionFailed(Blok * blok)
     auto btn = (ui::Button *) this->getChildByTag(hash);
     btn->stopAllActions();
     btn->loadTextures("connect.png", "connect_clicked.png");
+    btn->setRotation(0);
     
     Device::vibrate(0.5);
 }

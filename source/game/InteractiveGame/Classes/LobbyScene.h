@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "RakPeerInterface.h"
 #include "Blok.h"
+#include "Player.h"
 
 class LobbyScene : public cocos2d::Layer
 {
@@ -25,9 +26,11 @@ private:
     
     cocos2d::PhysicsWorld * sceneWorld;
     
-    void setPhysicsWorld( cocos2d::PhysicsWorld * world ) { sceneWorld = world; };
+    std::map<int, Player * > players;
     
     cocos2d::Sprite * point;
+
+    void setPhysicsWorld(cocos2d::PhysicsWorld * world){ sceneWorld = world; }
     
     // start the server stuff
     void initServer();
