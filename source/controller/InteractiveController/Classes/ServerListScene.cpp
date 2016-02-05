@@ -162,6 +162,8 @@ void ServerListScene::startFindServers()
 
 void ServerListScene::startReceiveBlocks()
 {
+    serverCount = 0;
+    
     auto callback = CallFunc::create(CC_CALLBACK_0(ServerListScene::receiveAllBlocks, this));
     auto delay = DelayTime::create(RECEIVE_TIMEOUT);
     auto sequence = Sequence::create(callback, delay, nullptr);
@@ -230,10 +232,11 @@ void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::
     auto origin = Director::getInstance()->getVisibleOrigin();
     int hash = (int) RakNet::SystemAddress::ToInteger( address );
     
-    if( serverMap.count( hash ) == 0 )
+    if( serverMap.count( hash ) != 1 || serverMap[hash] == nullptr ) // when deleted, set to nullptr (node is not deleted, bad memory acces during map loop)
     {
         // create new entry
         ServerMapEntry * s = new ServerMapEntry();
+        s->position = serverCount;
         s->inactiveSeconds = 0;
         s->address = new RakNet::SystemAddress(address); // copy adress (packet will be deallocated)
         serverMap[hash] = s;
@@ -243,7 +246,7 @@ void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::
         
         auto img = ui::Button::create("connect.png", "connect_clicked.png");
         //img->setPosition(Vec2( origin.x + visibleSize.width/2 - 565, origin.y + visibleSize.height - 452 ));
-        img->setPosition(Vec2(img->getContentSize().width/2, menuView->getInnerContainerSize().height - img->getContentSize().height/2));
+        img->setPosition(Vec2(img->getContentSize().width/2, menuView->getInnerContainerSize().height - (2*serverCount + 1) * img->getContentSize().height/2));
         img->addClickEventListener(CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
         img->setTag(hash);
         
@@ -251,7 +254,7 @@ void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::
         auto btn = ui::Button::create("servername_bg.png", "servername_bg.png");
         btn->setAnchorPoint(Vec2(0, 0.5));
         //btn->setPosition(Vec2( origin.x + visibleSize.width/2 - 525, origin.y + visibleSize.height - 452 ));
-        btn->setPosition(Vec2(130,menuView->getInnerContainerSize().height - img->getContentSize().height/2));
+        btn->setPosition(Vec2(130,menuView->getInnerContainerSize().height - (2*serverCount + 1) * img->getContentSize().height/2));
         btn->setContentSize(cocos2d::Size( 800, btn->getContentSize().height ));
         btn->setScale9Enabled(true);
         btn->setTitleText(name);
@@ -266,10 +269,9 @@ void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::
         menuView->addChild(btn);
         menuView->addChild(img);
         
+        serverCount++;
         
-        //menuView->setInnerContainerSize(cocos2d::Size(300, 500));
-        //menuView->setContentSize(cocos2d::Size( menu->getContentSize().width, count * (menu->getContentSize().height) ));
-        //menuView->ad
+        menuView->setInnerContainerSize(cocos2d::Size( menuView->getInnerContainerSize().width, serverCount * img->getContentSize().height ));
         
     } else
     {
@@ -292,10 +294,15 @@ void ServerListScene::findServersStep()
 
 void ServerListScene::decreaseServerLifetimes()
 {
+    
     for(std::map<int, ServerMapEntry*>::iterator i = serverMap.begin(); i != serverMap.end(); i++)
     {
         // iterator->first = key
         // iterator->second = value
+        if(i->second == nullptr)
+        {
+            continue;
+        }
         
         i->second->inactiveSeconds++;
         CCLOG("%s lifetime set to %d", i->second->address->ToString(), (int) i->second->inactiveSeconds);
@@ -311,21 +318,40 @@ void ServerListScene::decreaseServerLifetimes()
             if(img != nullptr)
             {
                 auto lbl = (ui::Button *) img->getUserData();
+                cocos2d::Size imgSize = img->getContentSize();
                 menuView->removeChild(lbl);
                 menuView->removeChild(img);
+                
+                // move other servers up
+                for(std::map<int, ServerMapEntry*>::iterator j = serverMap.begin(); j != serverMap.end(); j++)
+                {
+                    if(j->second == nullptr) return;
+                    
+                    if(j->second->position > i->second->position){
+                        
+                        auto entry = (ui::Button * ) menuView->getChildByTag( j->first );
+                        auto entryLbl = (ui::Button * ) entry->getUserData();
+                        entry->setPosition(Vec2( entry->getPosition().x, entry->getPosition().y + entry->getContentSize().height ));
+                        entryLbl->setPosition(Vec2( entryLbl->getPosition().x, entryLbl->getPosition().y + entry->getContentSize().height ));
+                        
+                        j->second->position--;
+                    }
+                }
             }
             
             delete i->second->address;
-            serverMap.erase(i->first);
+            serverMap[i->first] = nullptr;
+            serverCount--;
+            //serverMap.erase(i.first);
             
             
             /*auto menu = (Menu *) this->getChildByTag( (int) RakNet::SystemAddress::ToInteger( * (i->second->address) ));
             this->removeChild(menu);*/
             
             // if missing this, when only one server, app breaks (iterator is behind the end)
-            if( serverMap.size() == 0 || i == serverMap.end() ){
-                return;
-            }
+            //if( serverMap.size() == 0 || i == serverMap.end() ){
+            //    return;
+            //}
         }
         
     }

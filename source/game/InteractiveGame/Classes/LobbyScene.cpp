@@ -59,7 +59,7 @@ void LobbyScene::initServer(){
     
     // run async Connector (as a server)
     bool started = Connector::getInstance()->startAsServer(MAX_PLAYERS);
-    Connector::getInstance()->setServerName("Game");
+    Connector::getInstance()->setServerName("Mac");
     
     if(!started){
         CCLOG("Server not started!");

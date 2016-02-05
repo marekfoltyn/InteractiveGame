@@ -26,7 +26,7 @@
 #define FIND_SERVER_REPEAT_TIME 0.5
 
 // server lifetime - time to disappear from menu after not responsing to ping (in seconds)
-#define SERVER_MENU_LIFETIME 3
+#define SERVER_MENU_LIFETIME 5
 
 // how often to run packet receive loop (in seconds)
 #define RECEIVE_TIMEOUT 0.03

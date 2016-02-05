@@ -103,9 +103,16 @@ private:
     cocos2d::Menu * menu;
     cocos2d::ui::ScrollView * menuView;
     
-    // map of available servers
-    // key - hash of the system address
+    /**
+     * map of available servers
+     * key - hash of the system address
+     */
     std::map<int, ServerMapEntry*> serverMap;
+    
+    /**
+     * count of active servers (serverMap.size() doesn't work, because inactive servers items are not deleted due to memory issues)
+     */
+    int serverCount;
     
     /**
      * start receiving bloks
