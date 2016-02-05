@@ -27,10 +27,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.35"
-     inkscape:cx="1009.1364"
+     inkscape:cx="680.56497"
      inkscape:cy="799.59764"
      inkscape:document-units="px"
-     inkscape:current-layer="g3881"
+     inkscape:current-layer="g3027"
      showgrid="false"
      inkscape:showpageshadow="false"
      inkscape:window-width="1680"
@@ -286,11 +286,11 @@
                sodipodi:cy="291.42856"
                sodipodi:rx="127.14286"
                sodipodi:ry="127.14286"
-               d="m 1224.2857,291.42856 a 127.14286,127.14286 0 1 1 -254.28574,0 127.14286,127.14286 0 1 1 254.28574,0 z"
+               d="m 1224.2857,291.42856 c 0,70.21906 -56.9238,127.14286 -127.1429,127.14286 -70.219,0 -127.14284,-56.9238 -127.14284,-127.14286 0,-70.21906 56.92384,-127.14286 127.14284,-127.14286 70.2191,0 127.1429,56.9238 127.1429,127.14286 z"
                transform="matrix(1.4157304,0,0,1.4157304,-466.11554,-122.22208)" />
             <path
                transform="matrix(1.1123596,0,0,1.1123596,-133.27447,-33.81117)"
-               d="m 1224.2857,291.42856 a 127.14286,127.14286 0 1 1 -254.28574,0 127.14286,127.14286 0 1 1 254.28574,0 z"
+               d="m 1224.2857,291.42856 c 0,70.21906 -56.9238,127.14286 -127.1429,127.14286 -70.219,0 -127.14284,-56.9238 -127.14284,-127.14286 0,-70.21906 56.92384,-127.14286 127.14284,-127.14286 70.2191,0 127.1429,56.9238 127.1429,127.14286 z"
                sodipodi:ry="127.14286"
                sodipodi:rx="127.14286"
                sodipodi:cy="291.42856"
@@ -305,6 +305,36 @@
              id="rect3918"
              inkscape:connector-curvature="0"
              sodipodi:nodetypes="cccc" />
+        </g>
+      </g>
+    </g>
+    <g
+       transform="translate(17.142851,510.49496)"
+       style="display:inline"
+       id="g3021"
+       inkscape:export-filename="C:\DOKUMENTY-Marek\git\InteractiveGame\source\shared\resources\connect_clicked.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         id="g3025"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90">
+        <g
+           id="g3027"
+           transform="matrix(0.50000003,0,0,0.50000003,217.85714,116.60965)">
+          <path
+             sodipodi:type="arc"
+             style="fill:#b3b3b3;fill-opacity:1;stroke:none"
+             id="path3029"
+             sodipodi:cx="1097.1428"
+             sodipodi:cy="291.42856"
+             sodipodi:rx="127.14286"
+             sodipodi:ry="127.14286"
+             d="m 1224.2857,291.42856 a 127.14286,127.14286 0 1 1 -254.28574,0 127.14286,127.14286 0 1 1 254.28574,0 z"
+             transform="matrix(0.78651697,0,0,0.78651697,144.22146,141.14868)"
+             inkscape:export-filename="C:\DOKUMENTY-Marek\git\InteractiveGame\source\game\InteractiveGame\Resources\res\player_no_color.png"
+             inkscape:export-xdpi="90"
+             inkscape:export-ydpi="90" />
         </g>
       </g>
     </g>
