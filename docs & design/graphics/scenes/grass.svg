@@ -16,7 +16,10 @@
    inkscape:label="Pozadí"
    version="1.1"
    inkscape:version="0.48.5 r10040"
-   sodipodi:docname="grass.svg">
+   sodipodi:docname="grass.svg"
+   inkscape:export-filename="C:\DOKUMENTY-Marek\git\InteractiveGame\source\game\InteractiveGame\Resources\res\borders.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <defs
      id="defs3" />
   <sodipodi:namedview
@@ -26,9 +29,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="181.99354"
-     inkscape:cy="799.59764"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="947.28706"
+     inkscape:cy="620.88133"
      inkscape:document-units="px"
      inkscape:current-layer="g3027"
      showgrid="false"
@@ -46,7 +49,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -125,54 +128,104 @@
            id="g3027"
            transform="matrix(0.50000003,0,0,0.50000003,217.85714,116.60965)">
           <g
-             id="g3924">
-            <rect
-               y="-1254.2091"
-               x="-469.99994"
-               height="2099.9998"
-               width="3359.9998"
-               id="rect3018"
-               style="fill:#0b700e;fill-opacity:1;stroke:none" />
+             id="g3971">
             <g
-               style="fill:#0b5d0e;fill-opacity:1"
-               id="g3863">
+               id="g3924">
               <rect
-                 style="fill:#0b5d0e;fill-opacity:1;stroke:none;display:inline"
-                 id="rect3018-1"
-                 width="335.99997"
+                 style="fill:#0b700e;fill-opacity:1;stroke:none"
+                 id="rect3018"
+                 width="3359.9998"
                  height="2099.9998"
-                 x="-133.99997"
-                 y="-1254.209" />
-              <rect
-                 style="fill:#0b5d0e;fill-opacity:1;stroke:none;display:inline"
-                 id="rect3018-1-7"
-                 width="335.99997"
-                 height="2099.9998"
-                 x="538"
-                 y="-1254.209" />
-              <rect
-                 style="fill:#0b5d0e;fill-opacity:1;stroke:none;display:inline"
-                 id="rect3018-1-4"
-                 width="335.99997"
-                 height="2099.9998"
-                 x="1210"
-                 y="-1254.209" />
-              <rect
-                 style="fill:#0b5d0e;fill-opacity:1;stroke:none;display:inline"
-                 id="rect3018-1-7-0"
-                 width="335.99997"
-                 height="2099.9998"
-                 x="1882"
-                 y="-1254.209" />
-              <rect
-                 style="fill:#0b5d0e;fill-opacity:1;stroke:none;display:inline"
-                 id="rect3018-1-7-0-9"
-                 width="335.99997"
-                 height="2099.9998"
-                 x="2553.9998"
-                 y="-1254.209" />
+                 x="-469.99994"
+                 y="-1254.2091" />
+              <g
+                 id="g3863"
+                 style="fill:#0b5d0e;fill-opacity:1">
+                <rect
+                   y="-1254.209"
+                   x="-133.99997"
+                   height="2099.9998"
+                   width="335.99997"
+                   id="rect3018-1"
+                   style="fill:#0b5d0e;fill-opacity:1;stroke:none;display:inline" />
+                <rect
+                   y="-1254.209"
+                   x="538"
+                   height="2099.9998"
+                   width="335.99997"
+                   id="rect3018-1-7"
+                   style="fill:#0b5d0e;fill-opacity:1;stroke:none;display:inline" />
+                <rect
+                   y="-1254.209"
+                   x="1210"
+                   height="2099.9998"
+                   width="335.99997"
+                   id="rect3018-1-4"
+                   style="fill:#0b5d0e;fill-opacity:1;stroke:none;display:inline" />
+                <rect
+                   y="-1254.209"
+                   x="1882"
+                   height="2099.9998"
+                   width="335.99997"
+                   id="rect3018-1-7-0"
+                   style="fill:#0b5d0e;fill-opacity:1;stroke:none;display:inline" />
+                <rect
+                   y="-1254.209"
+                   x="2553.9998"
+                   height="2099.9998"
+                   width="335.99997"
+                   id="rect3018-1-7-0-9"
+                   style="fill:#0b5d0e;fill-opacity:1;stroke:none;display:inline" />
+              </g>
             </g>
+            <path
+               inkscape:export-ydpi="90"
+               inkscape:export-xdpi="90"
+               inkscape:export-filename="C:\DOKUMENTY-Marek\git\InteractiveGame\source\game\InteractiveGame\Resources\res\center_line.png"
+               transform="matrix(1.2005182,0,0,1.2005182,309.89626,-850.77401)"
+               d="m 1027.1429,538.57141 a 275.71429,275.71429 0 1 1 -551.42861,0 275.71429,275.71429 0 1 1 551.42861,0 z"
+               sodipodi:ry="275.71429"
+               sodipodi:rx="275.71429"
+               sodipodi:cy="538.57141"
+               sodipodi:cx="751.42859"
+               id="path3933"
+               style="fill:none;stroke:#ffffff;stroke-width:8.32966423;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+               sodipodi:type="arc" />
+            <rect
+               inkscape:export-ydpi="90"
+               inkscape:export-xdpi="90"
+               inkscape:export-filename="C:\DOKUMENTY-Marek\git\InteractiveGame\source\game\InteractiveGame\Resources\res\center_line.png"
+               transform="matrix(0,1,-1,0,0,0)"
+               y="-1215"
+               x="-1254.2091"
+               height="9.999999"
+               width="2099.9998"
+               id="rect3947"
+               style="fill:#ffffff;fill-opacity:1;stroke:none" />
           </g>
+          <rect
+             style="fill:none;stroke:#ffffff;stroke-width:10.31511688;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             id="rect3949"
+             width="3269.6848"
+             height="2009.6848"
+             x="-424.84241"
+             y="-1209.0515" />
+          <rect
+             style="fill:none;stroke:#ffffff;stroke-width:9.99999905;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             id="rect3951"
+             width="393.52039"
+             height="1113.8499"
+             x="2450.9998"
+             y="-761.13416"
+             ry="0" />
+          <rect
+             style="fill:none;stroke:#ffffff;stroke-width:9.99999905;stroke-linecap:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline"
+             id="rect3951-5"
+             width="393.52039"
+             height="1113.8499"
+             x="-424.99997"
+             y="-761.13416"
+             ry="0" />
         </g>
       </g>
     </g>
