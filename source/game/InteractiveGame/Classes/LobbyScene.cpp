@@ -14,6 +14,7 @@
 
 USING_NS_CC;
 
+#define NODE_BALL "sprBall"
 #define COLOR_GREEN Color4B(11, 112, 14, 255)
 
 using namespace cocostudio::timeline;
@@ -111,6 +112,7 @@ void LobbyScene::initGUI(){
     point = Sprite::create("ball.png");
     point->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
     point->setScale(0.8);
+    point->setName(NODE_BALL);
     auto spriteBody = PhysicsBody::createCircle( point->getContentSize().width/2, PhysicsMaterial(0.5, 0.5, 0.5) );
     spriteBody->setCollisionBitmask(1);
     spriteBody->setContactTestBitmask(true);
@@ -194,6 +196,13 @@ void LobbyScene::processBlock(){
                 
                 
                 this->addChild(sprite);
+                break;
+            }
+                
+            case P_KICK:
+            {
+                onPlayerKick(blok);
+                break;
             }
                 
             default:
@@ -229,6 +238,8 @@ bool LobbyScene::onContactBegin( cocos2d::PhysicsContact &contact )
     return true;
 }
 
+
+
 void LobbyScene::onAccelerationBlok(Blok * blok)
 {
     int id = RakNet::SystemAddress::ToInteger( blok->getAddress() );
@@ -261,3 +272,41 @@ void LobbyScene::onAccelerationBlok(Blok * blok)
     
     prevForce = force;
 }
+
+
+
+void LobbyScene::onPlayerKick(Blok * blok)
+{
+    int id = RakNet::SystemAddress::ToInteger( blok->getAddress() );
+    auto player = players[id]->getSprite();
+    auto ball = this->getChildByName<Sprite *>(NODE_BALL);
+    
+    float distance = ball->getPosition().distance( player->getPosition() );
+    
+    if( distance < player->getContentSize().width/2 )
+    {
+        auto direction = ball->getPosition() - player->getPosition();
+        direction.normalize();
+        int kickForce = 300000;
+        auto impulse = direction * kickForce;
+        
+        ball->getPhysicsBody()->applyImpulse(impulse);
+        CCLOG("Ball kicked.");
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -22,6 +22,8 @@ public:
     
     void onAccelerationBlok(Blok * blok);
     
+    void onPlayerKick(Blok * blok);
+    
 private:
     
     cocos2d::PhysicsWorld * sceneWorld;

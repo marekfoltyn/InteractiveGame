@@ -8,6 +8,7 @@
 USING_NS_CC;
 
 #define NODE_SERVERS "menuView"
+#define COLOR_GREEN Color4B(11, 112, 14, 255)
 
 Scene * ServerListScene::createScene()
 {
@@ -48,7 +49,7 @@ void ServerListScene::initGraphics()
     auto origin = Director::getInstance()->getVisibleOrigin();
     
     // background color
-    auto background = cocos2d::LayerColor::create(Color4B(54, 72, 99, 255));
+    auto background = cocos2d::LayerColor::create(COLOR_GREEN);
     this->addChild(background);
     
     // background top triangle

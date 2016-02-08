@@ -1,9 +1,11 @@
 #include "LobbyScene.h"
 
 #include "Connector.h"
+#include "ServerListScene.h"
+
 #include "AccelerationBlok.h"
 #include "CollisionBlok.h"
-#include "ServerListScene.h"
+#include "KickBlok.h"
 
 USING_NS_CC;
 
@@ -179,14 +181,15 @@ void LobbyScene::btnKickClick(Ref * sender, ui::Widget::TouchEventType type)
     {
         case ui::Widget::TouchEventType::BEGAN:
         {
-            
+         
+            KickBlok::create()->send(); // send to server
+            Device::vibrate(0.1);
             break;
         }
         
         case ui::Widget::TouchEventType::CANCELED:
         case ui::Widget::TouchEventType::ENDED:
         {
-            Device::vibrate(0.1);
             break;
         }
             
