@@ -14,10 +14,28 @@
 
 USING_NS_CC;
 
-#define NODE_BALL "sprBall"
 #define COLOR_GREEN Color4B(11, 112, 14, 255)
-#define BALL_DAMPING 0.6
+#define COLOR_FONT_TRANSPARENT Color4B(255,255,255,44)
+
+#define NODE_BALL "sprBall"
+#define BALL_DAMPING 0.7
 #define BORDER 20
+
+#define BITMASK_SOLID  1 // 0000 0001
+#define BITMASK_BALL   2 // 0000 0010
+#define BITMASK_PLAYER 4 // 0000 0100
+#define BITMASK_SCORE 8 // 0000 1000
+
+#define SCALE_GOAL 0.7
+#define SCALE_BALL 0.8
+#define MATERIAL_SOLID PhysicsMaterial(0.5, 1, 0.5)
+#define MATERIAL_BALL PhysicsMaterial(0.5, 0.5, 0.5)
+
+#define LEFT  0
+#define RIGHT 1
+
+#define LABEL_SCORE_LEFT "lblScoreLeft"
+#define LABEL_SCORE_RIGHT "lblScoreRight"
 
 using namespace cocostudio::timeline;
 
@@ -178,24 +196,63 @@ void LobbyScene::initGUI(){
     line->setPosition(Vec2( origin.x + visibleSize.width - BORDER - scaleX*100, origin.y + visibleSize.height/2 + scaleY*100/2 ));
     this->addChild(line);
     
-    // goals
+    // left goal
     auto goal = Sprite::create("goal.png");
-    goal->setScale(0.7);
+    goal->setScale(SCALE_GOAL);
     goal->setPosition(Vec2( origin.x, origin.y + visibleSize.height/2));
     this->addChild(goal, 2);
+    
     goal = Sprite::create("goal.png");
     goal->setRotation(180);
     goal->setScale(0.7);
     goal->setPosition(Vec2( origin.x + visibleSize.width, origin.y + visibleSize.height/2));
     this->addChild(goal, 2);
     
-    
+    // goal physics
+    // 4 horizontal lines (each goal has two lines - top and down)
+    for(int i=0; i<4; i++)
+    {
+        auto top = Node::create();
+        auto body = PhysicsBody::createBox(cocos2d::Size( SCALE_GOAL*goal->getContentSize().width/2, 1), MATERIAL_SOLID);
+        body->setDynamic(false);
+        body->setCategoryBitmask(BITMASK_SOLID);
+        body->setCollisionBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER);
+        body->setContactTestBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER);
+        top->setPhysicsBody(body);
+        top->setPosition(Vec2(
+                              origin.x + (i>1)*(visibleSize.width) + (1-(i>1)*2)*0.25*SCALE_GOAL*goal->getContentSize().width,
+                              origin.y + visibleSize.height/2 + (1 - 2*(i%2)) * SCALE_GOAL*(goal->getContentSize().height/2
+        )));
+        this->addChild(top);
+    }
+    // score point detectors
+    for(int i=0; i<2; i++)
+    {
+        auto top = Node::create();
+        auto body = PhysicsBody::createBox(cocos2d::Size(
+            SCALE_GOAL*goal->getContentSize().width - 2*Sprite::create("ball.png")->getContentSize().width*SCALE_BALL,
+            SCALE_GOAL*goal->getContentSize().height));
+        body->setDynamic(false);
+        body->setCategoryBitmask(BITMASK_SCORE);
+        body->setCollisionBitmask(0);
+        body->setContactTestBitmask(BITMASK_BALL);
+        top->setAnchorPoint(Vec2( i, 0.5 ));
+        top->setPhysicsBody(body);
+        top->setTag(i); // LEFT and RIGHT (#defined)
+        top->setPosition(Vec2(
+                              origin.x + (i%2)*(visibleSize.width),
+                              origin.y + visibleSize.height/2
+        ));
+        this->addChild(top);
+    }
+
     
     // physics boundary
-    auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PhysicsMaterial(0.5, 1, 0.5), 3);
+    auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, MATERIAL_SOLID, 3);
     edgeBody->setDynamic(false);
-    edgeBody->setCollisionBitmask(1);
-    edgeBody->setContactTestBitmask(true);
+    edgeBody->setCategoryBitmask(BITMASK_SOLID);
+    edgeBody->setCollisionBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER);
+    edgeBody->setContactTestBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER);
     auto edgeNode = Node::create();
     edgeNode->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
     edgeNode->setPhysicsBody(edgeBody);
@@ -211,16 +268,31 @@ void LobbyScene::initGUI(){
     // ball sprite
     point = Sprite::create("ball.png");
     point->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
-    point->setScale(0.8);
+    point->setScale(SCALE_BALL);
     point->setName(NODE_BALL);
-    auto spriteBody = PhysicsBody::createCircle( point->getContentSize().width/2, PhysicsMaterial(0.5, 0.5, 0.5) );
-    spriteBody->setCollisionBitmask(1);
-    spriteBody->setContactTestBitmask(true);
+    auto spriteBody = PhysicsBody::createCircle( point->getContentSize().width/2, MATERIAL_BALL );
+    spriteBody->setCategoryBitmask(BITMASK_BALL);
+    spriteBody->setCollisionBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER);
+    spriteBody->setContactTestBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER | BITMASK_SCORE);
     spriteBody->setLinearDamping(BALL_DAMPING);
     spriteBody->setAngularDamping(BALL_DAMPING);
     point->setPhysicsBody(spriteBody);
     this->addChild(point);
     prevForce = Vec2(0,0);
+    
+    // score labels
+    auto left = Label::createWithTTF("0", "Monda-Bold.ttf", 100);
+    float circle = Sprite::create("center.png")->getContentSize().width/4;
+    left->setPosition(Vec2( - circle + origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
+    left->setTextColor(COLOR_FONT_TRANSPARENT);
+    left->setName(LABEL_SCORE_LEFT);
+    this->addChild(left);
+    auto right = Label::createWithTTF("0", "Monda-Bold.ttf", 100);
+    right->setPosition(Vec2( circle + origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
+    right->setTextColor(COLOR_FONT_TRANSPARENT);
+    right->setName(LABEL_SCORE_RIGHT);
+    this->addChild(right);
+
     
     // collision listener
     auto contactListener = EventListenerPhysicsContact::create();
@@ -281,11 +353,12 @@ void LobbyScene::processBlock(){
                 
                 auto sprite = player->getSprite();
                 sprite->setTexture("player_no_color.png");
-                sprite->setScale(0.5);
+                sprite->setScale(SCALE_BALL);
                 sprite->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
                 auto spriteBody = PhysicsBody::createCircle( sprite->getContentSize().width/2, PhysicsMaterial(0.5, 00, 0.5) );
-                spriteBody->setCollisionBitmask(2);
-                spriteBody->setContactTestBitmask(true);
+                spriteBody->setCategoryBitmask(BITMASK_PLAYER);
+                spriteBody->setCollisionBitmask(BITMASK_PLAYER | BITMASK_BALL | BITMASK_SOLID);
+                spriteBody->setContactTestBitmask(BITMASK_PLAYER | BITMASK_BALL | BITMASK_SOLID);
                 spriteBody->setTag(id);
                 spriteBody->setRotationEnable(false);
                 sprite->setPhysicsBody(spriteBody);
@@ -294,8 +367,7 @@ void LobbyScene::processBlock(){
                 lblName->setAnchorPoint(Vec2( 0.5, 0 ));
                 lblName->setTextColor(Color4B(255,255,255,44));
                 sprite->addChild(lblName);
-                
-                
+            
                 this->addChild(sprite);
                 break;
             }
@@ -329,16 +401,37 @@ bool LobbyScene::onContactBegin( cocos2d::PhysicsContact &contact )
     a[0] = contact.getShapeA()->getBody();
     a[1] = contact.getShapeB()->getBody();
 
+    // player collisions
     for(int i=0; i<2; i++)
     {
-        if( a[i]->getCollisionBitmask() == 2  ) // it is a plaer
+        if( a[i]->getCategoryBitmask() & BITMASK_PLAYER ) // it is a player
         {
             int id = a[i]->getTag();
             Player * player = players[id];
             CCLOG("Player %s collided.", player->getAddress().ToString() );
             auto blok = CollisionBlok::create();
             blok->setAddress( player->getAddress() );
-            Connector::getInstance()->send(blok);
+            blok->send();
+            return true;
+        }
+    }
+    
+    // score detection
+    for(int i=0; i<2; i++)
+    {
+        if( a[i]->getCategoryBitmask() & BITMASK_SCORE ) // the ball in the goal
+        {
+            int goalSide = a[i]->getNode()->getTag();
+            CCLOG("GOOAAAALLL to %s", (goalSide==LEFT) ?  "left" : "right" );
+            
+            // add points
+            Label * lbl = static_cast<Label*>( this->getChildByName( (goalSide == LEFT) ? LABEL_SCORE_LEFT : LABEL_SCORE_RIGHT ) );
+            int score = __String::create( lbl->getString() )->intValue();
+            score++;
+            lbl->setString( __String::createWithFormat("%d", score)->getCString() );
+
+            
+            return true;
         }
     }
     
@@ -391,7 +484,7 @@ void LobbyScene::onPlayerKick(Blok * blok)
     float distance = ball->getPosition().distance( player->getPosition() );
     
     // kick to the ball
-    if( distance < player->getContentSize().width * 0.7 )
+    if( distance < ((player->getContentSize().width * SCALE_BALL + ball->getContentSize().width * SCALE_BALL )) )
     {
         auto direction = ball->getPosition() - player->getPosition();
         direction.normalize();
@@ -399,7 +492,7 @@ void LobbyScene::onPlayerKick(Blok * blok)
         auto impulse = direction * kickForce;
         
         ball->getPhysicsBody()->applyImpulse(impulse);
-        CCLOG("Ball kicked.");
+        CCLOG("Ball kick.");
     }
     
 }
@@ -412,8 +505,8 @@ void LobbyScene::onPlayerTackle(Blok * blok)
     
     float distance = ball->getPosition().distance( player->getPosition() );
     
-    // kick to the ball
-    if( distance < (player->getContentSize().width ) )
+    // pass ball
+    if( distance < ((player->getContentSize().width * SCALE_BALL + ball->getContentSize().width * SCALE_BALL )) )
     {
         auto direction = ball->getPosition() - player->getPosition();
         direction.normalize();
@@ -422,7 +515,7 @@ void LobbyScene::onPlayerTackle(Blok * blok)
         //impulse.negate();
         
         ball->getPhysicsBody()->applyImpulse( impulse );
-        CCLOG("Ball kicked.");
+        CCLOG("Ball pass.");
     }
     
 }
