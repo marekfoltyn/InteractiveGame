@@ -56,17 +56,15 @@ public:
     void btnOnDisconnect(Ref * sender, ui::Widget::TouchEventType type);
     
     /**
+     * kick button click
+     */
+    void btnKickClick(Ref * sender, ui::Widget::TouchEventType type);
+    
+    /**
      * connection was lost - (show the dialog? and) return to the server list scene
      */
     void onConnectionLost(Blok * block);
-    
-private:
         
-    // temp - axis values
-    cocos2d::Label * lblX;
-    cocos2d::Label * lblY;
-    cocos2d::Label * lblZ;
-    
 };
 
 #endif // __LOBBY_SCENE_H__

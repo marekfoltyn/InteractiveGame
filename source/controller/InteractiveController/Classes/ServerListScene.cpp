@@ -7,6 +7,8 @@
 
 USING_NS_CC;
 
+#define NODE_SERVERS "menuView"
+
 Scene * ServerListScene::createScene()
 {
     // 'scene' is an autorelease object
@@ -115,13 +117,14 @@ void ServerListScene::initGraphics()
 
     
     // menu
-    menu = Menu::create(btnExit, btnAbout, btnHelp, logo, nullptr);
+    auto menu = Menu::create(btnExit, btnAbout, btnHelp, logo, nullptr);
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu);
     
     
     // Server names menu
-    menuView = ui::ScrollView::create();
+    auto menuView = ui::ScrollView::create();
+    menuView->setName(NODE_SERVERS);
     menuView->setDirection( ui::ScrollView::Direction::VERTICAL );
     menuView->setContentSize(cocos2d::Size(685, 540));
     menuView->setInnerContainerSize(cocos2d::Size(485, 540));
@@ -229,7 +232,7 @@ void ServerListScene::refreshServer(Blok * blok)
 
 void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::SystemAddress address)
 {
-    auto visibleSize = Director::getInstance()->getVisibleSize();
+    auto menuView = (ui::ScrollView *) this->getChildByName(NODE_SERVERS);
     auto origin = Director::getInstance()->getVisibleOrigin();
     int hash = (int) RakNet::SystemAddress::ToInteger( address );
     
@@ -287,13 +290,13 @@ void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::
 void ServerListScene::findServersStep()
 {
     Connector::getInstance()->ping();
-    decreaseServerLifetimes(); // refresh actually found servers
+    decreaseServersLifetime(); // refresh actually found servers
     CCLOG("[ServerListScene] Searching servers...");
 }
 
 
 
-void ServerListScene::decreaseServerLifetimes()
+void ServerListScene::decreaseServersLifetime()
 {
     
     for(std::map<int, ServerMapEntry*>::iterator i = serverMap.begin(); i != serverMap.end(); i++)
@@ -310,6 +313,8 @@ void ServerListScene::decreaseServerLifetimes()
         
         if( i->second->inactiveSeconds >= SERVER_MENU_LIFETIME)
         {
+            auto menuView = (ui::ScrollView *) this->getChildByName(NODE_SERVERS);
+            
             //delete
             CCLOG("%s removed for inactivity.",i->second->address->ToString());
             
@@ -343,16 +348,6 @@ void ServerListScene::decreaseServerLifetimes()
             delete i->second->address;
             serverMap[i->first] = nullptr;
             serverCount--;
-            //serverMap.erase(i.first);
-            
-            
-            /*auto menu = (Menu *) this->getChildByTag( (int) RakNet::SystemAddress::ToInteger( * (i->second->address) ));
-            this->removeChild(menu);*/
-            
-            // if missing this, when only one server, app breaks (iterator is behind the end)
-            //if( serverMap.size() == 0 || i == serverMap.end() ){
-            //    return;
-            //}
         }
         
     }
@@ -383,6 +378,7 @@ void ServerListScene::onConnected(Blok * blok)
 
 void ServerListScene::connectionFailed(Blok * blok)
 {
+    auto menuView = (ui::ScrollView *) this->getChildByName(NODE_SERVERS);
     int hash = (int) RakNet::SystemAddress::ToInteger( blok->getAddress());
     auto btn = (ui::Button *) menuView->getChildByTag(hash);
     if(btn != nullptr) // during connecting can be the server stopped -> btn would disappear

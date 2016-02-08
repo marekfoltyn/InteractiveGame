@@ -14,13 +14,15 @@
 
 USING_NS_CC;
 
+#define COLOR_GREEN Color4B(11, 112, 14, 255)
+
 using namespace cocostudio::timeline;
 
 Scene* LobbyScene::createScene()
 {
     // 'scene' is an autorelease object
     auto scene = Scene::createWithPhysics();
-    scene->getPhysicsWorld()->setDebugDrawMask( PhysicsWorld::DEBUGDRAW_ALL );
+    scene->getPhysicsWorld()->setDebugDrawMask( PhysicsWorld::DEBUGDRAW_CONTACT );
     scene->getPhysicsWorld()->setGravity(Vec2::ZERO);
     
     // 'layer' is an autorelease object
@@ -85,11 +87,11 @@ void LobbyScene::initGUI(){
     
     // background color
     //auto background = cocos2d::LayerColor::create(Color4B(54, 72, 99, 255));
-    auto background = cocos2d::LayerColor::create(Color4B::WHITE);
+    auto background = cocos2d::LayerColor::create(COLOR_GREEN);
     this->addChild(background);
     
     // physics boundary
-    auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PhysicsMaterial(0.5, 0.5, 0.5), 3);
+    auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PhysicsMaterial(0.5, 1, 0.5), 3);
     edgeBody->setDynamic(false);
     edgeBody->setCollisionBitmask(1);
     edgeBody->setContactTestBitmask(true);
@@ -103,26 +105,19 @@ void LobbyScene::initGUI(){
     txtServerName->setColor(Color3B(54, 72, 99));
     txtServerName->setAnchorPoint(Vec2(0.5, 0.5));
     txtServerName->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height - txtServerName->getContentSize().height ));
-    this->addChild(txtServerName);
+    //this->addChild(txtServerName);
     
-    // physics sprite
-    point = Sprite::create("exit_button_pressed.png");
+    // ball sprite
+    point = Sprite::create("ball.png");
     point->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
+    point->setScale(0.8);
     auto spriteBody = PhysicsBody::createCircle( point->getContentSize().width/2, PhysicsMaterial(0.5, 0.5, 0.5) );
     spriteBody->setCollisionBitmask(1);
     spriteBody->setContactTestBitmask(true);
+    spriteBody->setLinearDamping(0.4);
     point->setPhysicsBody(spriteBody);
     this->addChild(point);
     prevForce = Vec2(0,0);
-
-    auto point2 = Sprite::create("exit_button_pressed.png");
-    point2->setPosition(Vec2( origin.x + visibleSize.width/4, origin.y + visibleSize.height/4 ));
-    auto spriteBody2 = PhysicsBody::createBox(cocos2d::Size( 50,50 ));
-    spriteBody2->setCollisionBitmask(1);
-    spriteBody2->setContactTestBitmask(true);
-    point2->setPhysicsBody(spriteBody2);
-    this->addChild(point2);
-
     
     // collision listener
     auto contactListener = EventListenerPhysicsContact::create();
@@ -194,7 +189,7 @@ void LobbyScene::processBlock(){
                 auto lblName = Label::createWithTTF(name, "Monda-Bold.ttf", sprite->getContentSize().height/2);
                 lblName->setPosition(Vec2( sprite->getContentSize().width/2, sprite->getContentSize().height  ));
                 lblName->setAnchorPoint(Vec2( 0.5, 0 ));
-                lblName->setColor(Color3B::GRAY);
+                lblName->setTextColor(Color4B(255,255,255,44));
                 sprite->addChild(lblName);
                 
                 

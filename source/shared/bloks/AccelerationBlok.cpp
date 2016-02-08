@@ -17,11 +17,13 @@ Blok * AccelerationBlok::Create(cocos2d::Acceleration * acc)
     
     Blok * blok = Blok::create( (const char *) &str, sizeof(AccStruct) );
     blok->setType(P_ACCELERATION);
-    blok->setPriority(HIGH_PRIORITY);
+    blok->setPriority(PacketPriority::HIGH_PRIORITY);
     blok->setReliability(PacketReliability::UNRELIABLE);
     
     return blok;
 }
+
+
 
 cocos2d::Acceleration * AccelerationBlok::Parse(Blok * blok)
 {

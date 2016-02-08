@@ -17,9 +17,23 @@ USING_NS_CC_EXT;
  */
 struct ServerMapEntry{
     
+    /**
+     * server address (IP and port)
+     */
     RakNet::SystemAddress * address;
+
+    /**
+     * how many second the server did not responed
+     * after SERVER_MENU_LIFETIME seconds the server entry
+     * will be deleted
+     */
     std::atomic<int> inactiveSeconds;
-    int position; // position in menu
+
+    /**
+     * position in scrollview
+     * necessary for item position (when deleted)
+     */
+    int position;
 };
 
 /**
@@ -77,13 +91,13 @@ public:
     
     /**
      * a server has responded to the ping
-     * if the controller knows about it, resfresh its lifetime
+     * if the controller knows about it, resets its lifetime
      * if not, add this server to the server list
      */
     void refreshServer(Blok * blok);
     
     /**
-     * Succesfully connected to a server (go to lobby)
+     * Succesfully connected to a server (send player name and go to lobby)
      */
     void onConnected(Blok * blok);
     
@@ -99,9 +113,6 @@ public:
     
     
 private:
-    cocos2d::Label * lblSearching;
-    cocos2d::Menu * menu;
-    cocos2d::ui::ScrollView * menuView;
     
     /**
      * map of available servers
@@ -118,29 +129,26 @@ private:
      * start receiving bloks
      */
     void startReceiveBlocks();
-    
+        
     /**
-     * stop receiving packets
+     * periodically send broadcast ping to find servers
      */
-    void stopReceiveBlocks();
-
-    
-    // periodically send broadcast ping to find servers
     void startFindServers();
     
     /**
      * send a ping broadcast message to find servers
      */
     void pingServers();
-    
-    // stop server action
-    void stopFindServers();
-    
-    // add new menu item to scroll view, updates if exists
+        
+    /**
+     * add new menu item to scroll view or updates if exists
+     */
     void addOrUpdateServer(cocos2d::__String * serverName, RakNet::SystemAddress address);
     
-    // every "server search" decreases servers lifetimes (when not responding -> delete from menu)
-    void decreaseServerLifetimes();
+    /**
+     * every "server search" decreases servers lifetimes (when not responding -> delete from menu)
+     */
+    void decreaseServersLifetime();
 };
 
 #endif // __SERVERLIST_SCENE_H__
