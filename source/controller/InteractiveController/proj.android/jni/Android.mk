@@ -18,6 +18,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
 		../../../../shared/bloks/StringBlok.cpp \
 		../../../../shared/bloks/CollisionBlok.cpp \
 		../../../../shared/bloks/KickBlok.cpp \
+		../../../../shared/bloks/TackleBlok.cpp \
 		../../Classes/AppDelegate.cpp \
 		../../Classes/ServerListScene.cpp \
 		../../Classes/LobbyScene.cpp

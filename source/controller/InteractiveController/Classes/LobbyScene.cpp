@@ -6,6 +6,7 @@
 #include "AccelerationBlok.h"
 #include "CollisionBlok.h"
 #include "KickBlok.h"
+#include "TackleBlok.h"
 
 USING_NS_CC;
 
@@ -73,35 +74,61 @@ void LobbyScene::initGraphics()
     this->addChild(background);
     
     // coordinates
-    auto lblX = Label::createWithTTF("X: ???", "8-Bit-Madness.ttf", visibleSize.height/18);
+    auto lblX = Label::createWithTTF("X: ???", "Monda-Bold.ttf", 30);
     lblX->setName(NODE_AXIS_X);
     lblX->setAnchorPoint(Vec2(0,0));
-    lblX->setPosition(Vec2( origin.x, origin.y + 5*lblX->getContentSize().height ));
+    lblX->setPosition(Vec2( origin.x, origin.y + 3*lblX->getContentSize().height ));
     this->addChild(lblX);
     
-    auto lblY = Label::createWithTTF("Y: ???", "8-Bit-Madness.ttf", visibleSize.height/18);
+    auto lblY = Label::createWithTTF("Y: ???", "Monda-Bold.ttf", 30);
     lblY->setName(NODE_AXIS_Y);
     lblY->setAnchorPoint(Vec2(0,0));
-    lblY->setPosition(Vec2( origin.x, origin.y + 4*lblX->getContentSize().height ));
+    lblY->setPosition(Vec2( origin.x, origin.y + 2*lblX->getContentSize().height ));
     this->addChild(lblY);
     
-    auto lblZ = Label::createWithTTF("Z: ???", "8-Bit-Madness.ttf", visibleSize.height/18);
+    auto lblZ = Label::createWithTTF("Z: ???", "Monda-Bold.ttf", 30);
     lblZ->setName(NODE_AXIS_Z);
     lblZ->setAnchorPoint(Vec2(0,0));
-    lblZ->setPosition(Vec2( origin.x, origin.y + 3*lblX->getContentSize().height ));
+    lblZ->setPosition(Vec2( origin.x, origin.y + 1*lblX->getContentSize().height ));
     this->addChild(lblZ);
-    
-    auto disconnect = ui::Button::create("exit.png","exit_clicked.png");
-    disconnect->addTouchEventListener( CC_CALLBACK_2(LobbyScene::btnOnDisconnect, this) );
-    disconnect->setAnchorPoint(Vec2(0, 1));
-    disconnect->setPosition(Vec2(origin.x, origin.y + visibleSize.height));
-    this->addChild(disconnect);
     
     // kick button
     auto btnKick = ui::Button::create("ball_big.png");
+    btnKick->setAnchorPoint(Vec2(0.5, 0.5));
     btnKick->setPosition(Vec2(origin.x + visibleSize.width - btnKick->getContentSize().width/2, origin.y + visibleSize.height/2));
     btnKick->addTouchEventListener(CC_CALLBACK_2(LobbyScene::btnKickClick, this));
     this->addChild(btnKick);
+    
+    // kick label
+    auto lblKick = Label::createWithTTF("Kick", "Monda-Bold.ttf", 300);
+    lblKick->setTextColor(Color4B(124, 124, 124, 110));
+    lblKick->setPosition( btnKick->getPosition() );
+    this->addChild(lblKick);
+
+    // tackle button
+    auto btnTackle = ui::Button::create("ball_big.png");
+    btnTackle->setAnchorPoint(Vec2(0.5, 0.5));
+    btnTackle->setPosition(Vec2(origin.x + btnTackle->getContentSize().width*0.25, origin.y + visibleSize.height/2));
+    btnTackle->setScale(0.5);
+    btnTackle->addTouchEventListener(CC_CALLBACK_2(LobbyScene::btnTackleClick, this));
+    this->addChild(btnTackle);
+
+    // tackle label
+    auto lblTackle = Label::createWithTTF("Pass", "Monda-Bold.ttf", 150);
+    lblTackle->setTextColor(Color4B(124, 124, 124, 110));
+    lblTackle->setPosition( btnTackle->getPosition() );
+    this->addChild(lblTackle);
+    
+    auto disconnect = ui::Button::create();
+    disconnect->setTitleText("leave");
+    disconnect->setTitleFontName("Monda-Bold.ttf");
+    disconnect->setTitleAlignment(TextHAlignment::CENTER);
+    disconnect->setTitleColor(Color3B(51, 152, 54));
+    disconnect->setTitleFontSize(100);
+    disconnect->addTouchEventListener( CC_CALLBACK_2(LobbyScene::btnOnDisconnect, this) );
+    disconnect->setAnchorPoint(Vec2(0, 1));
+    disconnect->setPosition(Vec2( origin.x + visibleSize.width * 0.3, origin.y + visibleSize.height ));
+    this->addChild(disconnect);
     
 }
 
@@ -200,7 +227,30 @@ void LobbyScene::btnKickClick(Ref * sender, ui::Widget::TouchEventType type)
     }
 }
 
-
+void LobbyScene::btnTackleClick(Ref * sender, ui::Widget::TouchEventType type)
+{
+    switch (type)
+    {
+        case ui::Widget::TouchEventType::BEGAN:
+        {
+            
+            TackleBlok::create()->send(); // send to server
+            Device::vibrate(0.1);
+            break;
+        }
+            
+        case ui::Widget::TouchEventType::CANCELED:
+        case ui::Widget::TouchEventType::ENDED:
+        {
+            break;
+        }
+            
+        default:
+        {
+            break;
+        }
+    }
+}
 
 void LobbyScene::onAcceleration(cocos2d::Acceleration* acc, cocos2d::Event* unused_event)
 {

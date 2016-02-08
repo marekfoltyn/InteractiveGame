@@ -16,6 +16,7 @@ USING_NS_CC;
 
 #define NODE_BALL "sprBall"
 #define COLOR_GREEN Color4B(11, 112, 14, 255)
+#define BALL_DAMPING 0.6
 
 using namespace cocostudio::timeline;
 
@@ -116,7 +117,8 @@ void LobbyScene::initGUI(){
     auto spriteBody = PhysicsBody::createCircle( point->getContentSize().width/2, PhysicsMaterial(0.5, 0.5, 0.5) );
     spriteBody->setCollisionBitmask(1);
     spriteBody->setContactTestBitmask(true);
-    spriteBody->setLinearDamping(0.4);
+    spriteBody->setLinearDamping(BALL_DAMPING);
+    spriteBody->setAngularDamping(BALL_DAMPING);
     point->setPhysicsBody(spriteBody);
     this->addChild(point);
     prevForce = Vec2(0,0);
@@ -182,7 +184,7 @@ void LobbyScene::processBlock(){
                 sprite->setTexture("player_no_color.png");
                 sprite->setScale(0.5);
                 sprite->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
-                auto spriteBody = PhysicsBody::createCircle( sprite->getContentSize().width/2, PhysicsMaterial(0.5, 0.5, 0.5) );
+                auto spriteBody = PhysicsBody::createCircle( sprite->getContentSize().width/2, PhysicsMaterial(0.5, 00, 0.5) );
                 spriteBody->setCollisionBitmask(2);
                 spriteBody->setContactTestBitmask(true);
                 spriteBody->setTag(id);
@@ -202,6 +204,12 @@ void LobbyScene::processBlock(){
             case P_KICK:
             {
                 onPlayerKick(blok);
+                break;
+            }
+                
+            case P_TACKLE:
+            {
+                onPlayerTackle(blok);
                 break;
             }
                 
@@ -283,14 +291,38 @@ void LobbyScene::onPlayerKick(Blok * blok)
     
     float distance = ball->getPosition().distance( player->getPosition() );
     
-    if( distance < player->getContentSize().width/2 )
+    // kick to the ball
+    if( distance < player->getContentSize().width * 0.7 )
+    {
+        auto direction = ball->getPosition() - player->getPosition();
+        direction.normalize();
+        int kickForce = 600000;
+        auto impulse = direction * kickForce;
+        
+        ball->getPhysicsBody()->applyImpulse(impulse);
+        CCLOG("Ball kicked.");
+    }
+    
+}
+
+void LobbyScene::onPlayerTackle(Blok * blok)
+{
+    int id = RakNet::SystemAddress::ToInteger( blok->getAddress() );
+    auto player = players[id]->getSprite();
+    auto ball = this->getChildByName<Sprite *>(NODE_BALL);
+    
+    float distance = ball->getPosition().distance( player->getPosition() );
+    
+    // kick to the ball
+    if( distance < (player->getContentSize().width ) )
     {
         auto direction = ball->getPosition() - player->getPosition();
         direction.normalize();
         int kickForce = 300000;
         auto impulse = direction * kickForce;
+        //impulse.negate();
         
-        ball->getPhysicsBody()->applyImpulse(impulse);
+        ball->getPhysicsBody()->applyImpulse( impulse );
         CCLOG("Ball kicked.");
     }
     

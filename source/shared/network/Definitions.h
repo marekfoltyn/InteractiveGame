@@ -49,5 +49,6 @@
 #define P_COLLISION                   ID_USER_PACKET_ENUM+2
 #define P_PLAYER_NAME                 ID_USER_PACKET_ENUM+3
 #define P_KICK                        ID_USER_PACKET_ENUM+4
+#define P_TACKLE                      ID_USER_PACKET_ENUM+5
 
 #endif // _DEFINITIONS_H_

@@ -24,6 +24,8 @@ public:
     
     void onPlayerKick(Blok * blok);
     
+    void onPlayerTackle(Blok * blok);
+    
 private:
     
     cocos2d::PhysicsWorld * sceneWorld;

@@ -59,6 +59,12 @@ public:
      * kick button click
      */
     void btnKickClick(Ref * sender, ui::Widget::TouchEventType type);
+
+    /**
+     * tackle button click
+     */
+    void btnTackleClick(Ref * sender, ui::Widget::TouchEventType type);
+
     
     /**
      * connection was lost - (show the dialog? and) return to the server list scene
