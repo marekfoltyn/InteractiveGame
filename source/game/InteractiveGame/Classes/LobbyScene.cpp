@@ -17,6 +17,7 @@ USING_NS_CC;
 #define NODE_BALL "sprBall"
 #define COLOR_GREEN Color4B(11, 112, 14, 255)
 #define BALL_DAMPING 0.6
+#define BORDER 20
 
 using namespace cocostudio::timeline;
 
@@ -24,7 +25,7 @@ Scene* LobbyScene::createScene()
 {
     // 'scene' is an autorelease object
     auto scene = Scene::createWithPhysics();
-    scene->getPhysicsWorld()->setDebugDrawMask( PhysicsWorld::DEBUGDRAW_CONTACT );
+    scene->getPhysicsWorld()->setDebugDrawMask( PhysicsWorld::DEBUGDRAW_ALL );
     scene->getPhysicsWorld()->setGravity(Vec2::ZERO);
     
     // 'layer' is an autorelease object
@@ -88,9 +89,107 @@ void LobbyScene::initGUI(){
     auto c = Connector::getInstance();
     
     // background color
-    //auto background = cocos2d::LayerColor::create(Color4B(54, 72, 99, 255));
-    auto background = cocos2d::LayerColor::create(COLOR_GREEN);
+    //auto background = cocos2d::LayerColor::create(COLOR_GREEN);
+    auto background = Sprite::create("grass.png");
+    background->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
     this->addChild(background);
+    
+    // center circle
+    auto line = Sprite::create("center.png");
+    line->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
+    this->addChild(line);
+    
+    float scaleY = visibleSize.height / 100.0 - 2.0*BORDER/100.0;
+    
+    // center line
+    line = Sprite::create("line.png");
+    line->setScaleX(scaleY);
+    line->setRotation(90);
+    line->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
+    this->addChild(line);
+
+    
+    // top line
+    line = Sprite::create("line.png");
+    line->setScaleX(16.4);
+    line->setAnchorPoint(Vec2(0,1));
+    line->setPosition(Vec2( origin.x + BORDER, origin.y + visibleSize.height - BORDER));
+    this->addChild(line);
+    
+    // bottom line
+    line = Sprite::create("line.png");
+    line->setScaleX(16.4);
+    line->setAnchorPoint(Vec2(0,0));
+    line->setPosition(Vec2( origin.x + BORDER, origin.y + BORDER));
+    this->addChild(line);
+    
+    // left line
+    line = Sprite::create("line.png");
+    line->setScaleX(scaleY);
+    line->setRotation(90);
+    line->setAnchorPoint(Vec2(0,0));
+    line->setPosition(Vec2( origin.x + BORDER, origin.y + visibleSize.height - BORDER));
+    this->addChild(line);
+    
+    // right line
+    line = Sprite::create("line.png");
+    line->setScaleX(scaleY);
+    line->setRotation(90);
+    line->setAnchorPoint(Vec2(0,1));
+    line->setPosition(Vec2( origin.x + visibleSize.width - BORDER, origin.y + visibleSize.height - BORDER ));
+    this->addChild(line);
+    
+    float scaleX = visibleSize.width/800; // line.jpg is 100px wide
+    scaleY *= 0.5;
+    
+    // left lines near the goal
+    line = Sprite::create("line.png");
+    line->setScaleX(scaleX);
+    line->setAnchorPoint(Vec2(0,1));
+    line->setPosition(Vec2( origin.x + BORDER, origin.y + visibleSize.height/2 + scaleY*100/2 ));
+    this->addChild(line);
+    line = Sprite::create("line.png");
+    line->setScaleX(scaleX);
+    line->setAnchorPoint(Vec2(0,1));
+    line->setPosition(Vec2( origin.x + BORDER, origin.y + visibleSize.height/2 - scaleY*100/2 ));
+    this->addChild(line);
+    line = Sprite::create("line.png");
+    line->setScaleX(scaleY);
+    line->setRotation(90);
+    line->setAnchorPoint(Vec2(0,1));
+    line->setPosition(Vec2( origin.x + BORDER + scaleX*100, origin.y + visibleSize.height/2 + scaleY*100/2 ));
+    this->addChild(line);
+    
+    // right lines near the goal
+    line = Sprite::create("line.png");
+    line->setScaleX(scaleX);
+    line->setAnchorPoint(Vec2(0,1));
+    line->setPosition(Vec2( origin.x + visibleSize.width - BORDER - scaleX*100, origin.y + visibleSize.height/2 + scaleY*100/2 ));
+    this->addChild(line);
+    line = Sprite::create("line.png");
+    line->setScaleX(scaleX);
+    line->setAnchorPoint(Vec2(0,1));
+    line->setPosition(Vec2( origin.x + visibleSize.width - BORDER - scaleX*100, origin.y + visibleSize.height/2 - scaleY*100/2 ));
+    this->addChild(line);
+    line = Sprite::create("line.png");
+    line->setScaleX(scaleY);
+    line->setRotation(90);
+    line->setAnchorPoint(Vec2(0,0));
+    line->setPosition(Vec2( origin.x + visibleSize.width - BORDER - scaleX*100, origin.y + visibleSize.height/2 + scaleY*100/2 ));
+    this->addChild(line);
+    
+    // goals
+    auto goal = Sprite::create("goal.png");
+    goal->setScale(0.7);
+    goal->setPosition(Vec2( origin.x, origin.y + visibleSize.height/2));
+    this->addChild(goal, 2);
+    goal = Sprite::create("goal.png");
+    goal->setRotation(180);
+    goal->setScale(0.7);
+    goal->setPosition(Vec2( origin.x + visibleSize.width, origin.y + visibleSize.height/2));
+    this->addChild(goal, 2);
+    
+    
     
     // physics boundary
     auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PhysicsMaterial(0.5, 1, 0.5), 3);

@@ -31,6 +31,9 @@
 // how often to run packet receive loop (in seconds)
 #define RECEIVE_TIMEOUT 0.03
 
+// scene transition speed (in seconds)
+#define SCENE_TRANSITION 0.2
+
 /////////////////// Message types  ///////////////////
 
 #define P_PING                        ID_UNCONNECTED_PING_OPEN_CONNECTIONS

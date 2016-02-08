@@ -49,25 +49,10 @@ void ServerListScene::initGraphics()
     auto origin = Director::getInstance()->getVisibleOrigin();
     
     // background color
-    auto background = cocos2d::LayerColor::create(COLOR_GREEN);
+    //auto background = cocos2d::LayerColor::create(COLOR_GREEN);
+    auto background = Sprite::create("grass.png");
+    background->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
     this->addChild(background);
-    
-    // background top triangle
-    auto top = Sprite::create("bg_triangle_top.png");
-    float scaleWidth = (0.6 * visibleSize.width) / top->getContentSize().width; // top triangle will have width 60% of the screen width
-    float scaleHeight = (1.0/12) * visibleSize.height / top->getContentSize().height; // 1/12 of the visible height
-    top->setScale(scaleWidth, scaleHeight);
-    top->setAnchorPoint(Vec2(0,1));
-    top->setPosition(Vec2( origin.x, origin.y + visibleSize.height ));
-    this->addChild(top);
-    
-    // background bottom triangle
-    auto bottom = Sprite::create("bg_triangle_top.png");
-    bottom->setScale(scaleWidth, scaleHeight);
-    bottom->setAnchorPoint(Vec2(0,1));
-    bottom->setRotation(180);
-    bottom->setPosition(Vec2( origin.x + visibleSize.width, origin.y));
-    this->addChild(bottom);
     
     // exit button
     auto btnExit = MenuItemImage::create("exit.png", "exit_clicked.png", CC_CALLBACK_1(ServerListScene::btnLeaveClicked, this));
@@ -86,7 +71,7 @@ void ServerListScene::initGraphics()
     btnHelp->setRotation(41);
     
     // game logo
-    auto logo = MenuItemImage::create("logo.png", "logo.png");
+    auto logo = MenuItemImage::create("ball_logo.png", "ball_logo.png");
     logo->setPosition(Vec2( origin.x + visibleSize.width/2 + 210, origin.y + visibleSize.height - 257 ));
     //this->addChild(logo);
     
@@ -372,7 +357,7 @@ void ServerListScene::onConnected(Blok * blok)
     
     CCLOG("Connected to %s", blok->getAddress().ToString());
     auto scene = LobbyScene::createScene();
-    Director::getInstance()->replaceScene(scene);
+    Director::getInstance()->replaceScene( TransitionSlideInB::create(SCENE_TRANSITION, scene) );
 }
 
 

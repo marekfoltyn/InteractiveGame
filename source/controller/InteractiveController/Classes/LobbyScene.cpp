@@ -10,10 +10,6 @@
 
 USING_NS_CC;
 
-#define NODE_AXIS_X "lblX"
-#define NODE_AXIS_Y "lblY"
-#define NODE_AXIS_Z "lblZ"
-
 #define COLOR_GREEN Color4B(11, 112, 14, 255)
 
 Scene * LobbyScene::createScene()
@@ -70,27 +66,10 @@ void LobbyScene::initGraphics()
     auto origin = Director::getInstance()->getVisibleOrigin();
     
     // background color
-    auto background = cocos2d::LayerColor::create(COLOR_GREEN);
+    //auto background = cocos2d::LayerColor::create(COLOR_GREEN);
+    auto background = Sprite::create("grass.png");
+    background->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
     this->addChild(background);
-    
-    // coordinates
-    auto lblX = Label::createWithTTF("X: ???", "Monda-Bold.ttf", 30);
-    lblX->setName(NODE_AXIS_X);
-    lblX->setAnchorPoint(Vec2(0,0));
-    lblX->setPosition(Vec2( origin.x, origin.y + 3*lblX->getContentSize().height ));
-    this->addChild(lblX);
-    
-    auto lblY = Label::createWithTTF("Y: ???", "Monda-Bold.ttf", 30);
-    lblY->setName(NODE_AXIS_Y);
-    lblY->setAnchorPoint(Vec2(0,0));
-    lblY->setPosition(Vec2( origin.x, origin.y + 2*lblX->getContentSize().height ));
-    this->addChild(lblY);
-    
-    auto lblZ = Label::createWithTTF("Z: ???", "Monda-Bold.ttf", 30);
-    lblZ->setName(NODE_AXIS_Z);
-    lblZ->setAnchorPoint(Vec2(0,0));
-    lblZ->setPosition(Vec2( origin.x, origin.y + 1*lblX->getContentSize().height ));
-    this->addChild(lblZ);
     
     // kick button
     auto btnKick = ui::Button::create("ball_big.png");
@@ -127,7 +106,7 @@ void LobbyScene::initGraphics()
     disconnect->setTitleFontSize(100);
     disconnect->addTouchEventListener( CC_CALLBACK_2(LobbyScene::btnOnDisconnect, this) );
     disconnect->setAnchorPoint(Vec2(0, 1));
-    disconnect->setPosition(Vec2( origin.x + visibleSize.width * 0.3, origin.y + visibleSize.height ));
+    disconnect->setPosition(Vec2( origin.x + visibleSize.width * 0.275, origin.y + visibleSize.height ));
     this->addChild(disconnect);
     
 }
@@ -188,7 +167,7 @@ void LobbyScene::btnOnDisconnect(Ref * sender, ui::Widget::TouchEventType type)
     }
     CCLOG("User disconnected. Returning to main menu.");
     Scene * main = ServerListScene::createScene();
-    Director::getInstance()->replaceScene(main);
+    Director::getInstance()->replaceScene( TransitionSlideInT::create(SCENE_TRANSITION, main) );
 }
 
 
@@ -256,13 +235,5 @@ void LobbyScene::onAcceleration(cocos2d::Acceleration* acc, cocos2d::Event* unus
 {
     Blok * blok = AccelerationBlok::Create(acc);
     Connector::getInstance()->send(blok);
-    
-    auto lblX = static_cast<Label*>( this->getChildByName(NODE_AXIS_X));
-    auto lblY = static_cast<Label*>( this->getChildByName(NODE_AXIS_Y));
-    auto lblZ = static_cast<Label*>( this->getChildByName(NODE_AXIS_Z));
-    
-    lblX->setString( __String::createWithFormat("X: %f", acc->x)->getCString() );
-    lblY->setString( __String::createWithFormat("Y: %f", acc->y)->getCString() );
-    lblZ->setString( __String::createWithFormat("Z: %f", acc->z)->getCString() );
 }
 
