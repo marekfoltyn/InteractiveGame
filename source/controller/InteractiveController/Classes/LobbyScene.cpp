@@ -7,6 +7,7 @@
 #include "CollisionBlok.h"
 #include "KickBlok.h"
 #include "TackleBlok.h"
+#include "ResetScoreBlok.h"
 
 USING_NS_CC;
 
@@ -138,6 +139,12 @@ void LobbyScene::receiveAllBlocks()
                 break;
             }
                 
+            case P_ADMIN:
+            {
+                setAsAdmin();
+                break;
+            }
+                
             default:
             {
                 // packet ignored
@@ -238,3 +245,28 @@ void LobbyScene::onAcceleration(cocos2d::Acceleration* acc, cocos2d::Event* unus
     Connector::getInstance()->send(blok);
 }
 
+void LobbyScene::setAsAdmin()
+{
+    CCLOG("I am the admin!");
+    
+    auto visibleSize = Director::getInstance()->getVisibleSize();
+    auto origin = Director::getInstance()->getVisibleOrigin();
+    
+    // leave button
+    auto reset = ui::Button::create();
+    reset->setTitleText("reset");
+    reset->setTitleFontName("Monda-Bold.ttf");
+    reset->setTitleAlignment(TextHAlignment::CENTER);
+    reset->setTitleColor(Color3B(51, 152, 54));
+    reset->setTitleFontSize(100);
+    reset->addTouchEventListener( [&] (cocos2d::Ref *pSender, ui::Widget::TouchEventType type) // definition of lambda function
+    {
+        if(type == ui::Widget::TouchEventType::ENDED){
+            CCLOG("Reseting score...");
+            ResetScoreBlok::create()->send();
+        }
+    });
+    reset->setAnchorPoint(Vec2(0, 0));
+    reset->setPosition(Vec2( origin.x + visibleSize.width * 0.275, origin.y ));
+    this->addChild(reset);
+}

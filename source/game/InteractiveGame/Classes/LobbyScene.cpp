@@ -43,7 +43,8 @@ Scene* LobbyScene::createScene()
 {
     // 'scene' is an autorelease object
     auto scene = Scene::createWithPhysics();
-    scene->getPhysicsWorld()->setDebugDrawMask( PhysicsWorld::DEBUGDRAW_ALL );
+    //scene->getPhysicsWorld()->setDebugDrawMask( PhysicsWorld::DEBUGDRAW_ALL );
+    scene->getPhysicsWorld()->setDebugDrawMask( PhysicsWorld::DEBUGDRAW_NONE );
     scene->getPhysicsWorld()->setGravity(Vec2::ZERO);
     
     // 'layer' is an autorelease object
@@ -94,7 +95,6 @@ void LobbyScene::initServer()
     auto sequence = Sequence::create(callback, delay, nullptr);
     auto receivePacketAction = RepeatForever::create(sequence);
     this->runAction(receivePacketAction);
-    
 }
 
 void LobbyScene::initGUI()
@@ -335,8 +335,17 @@ void LobbyScene::processBlock()
                 CCLOG("%s disconnected.", blok->getAddress().ToString());
                 
                 int id = RakNet::SystemAddress::ToInteger( blok->getAddress());
+                
                 this->removeChild( players[id]->getSprite() );
-                players.erase(id);
+                
+                // set new admin
+                if( players[id]->isAdmin() && players.size() >= 2 )
+                {
+                    players.erase(id);
+                    players.begin()->second->setAsAdmin();
+                } else {
+                    players.erase(id);
+                }
                 
                 break;
             }
@@ -375,8 +384,14 @@ void LobbyScene::processBlock()
                 lblName->setAnchorPoint(Vec2( 0.5, 0 ));
                 lblName->setTextColor(Color4B(255,255,255,44));
                 sprite->addChild(lblName);
-            
                 this->addChild(sprite);
+                
+                // is there an admin?
+                if( players.size() == 1 ) // only this new player
+                {
+                    players[id]->setAsAdmin();
+                }
+                
                 break;
             }
                 
@@ -389,6 +404,17 @@ void LobbyScene::processBlock()
             case P_TACKLE:
             {
                 onPlayerTackle(blok);
+                break;
+            }
+                
+            case P_RESET_SCORE:
+            {
+                auto left = static_cast<Label*>( this->getChildByName(LABEL_SCORE_LEFT) );
+                auto right = static_cast<Label*>( this->getChildByName(LABEL_SCORE_RIGHT) );
+                
+                left->setString("0");
+                right->setString("0");
+                
                 break;
             }
                 
@@ -492,7 +518,7 @@ void LobbyScene::onPlayerKick(Blok * blok)
     float distance = ball->getPosition().distance( player->getPosition() );
     
     // kick to the ball
-    if( distance < ((player->getContentSize().width * SCALE_BALL + ball->getContentSize().width * SCALE_BALL )) )
+    if( distance < 2.0/3 * ((player->getContentSize().width * SCALE_BALL + ball->getContentSize().width * SCALE_BALL )) )
     {
         auto direction = ball->getPosition() - player->getPosition();
         direction.normalize();
@@ -514,7 +540,7 @@ void LobbyScene::onPlayerTackle(Blok * blok)
     float distance = ball->getPosition().distance( player->getPosition() );
     
     // pass ball
-    if( distance < ((player->getContentSize().width * SCALE_BALL + ball->getContentSize().width * SCALE_BALL )) )
+    if( distance < 2.5/3 * ((player->getContentSize().width * SCALE_BALL + ball->getContentSize().width * SCALE_BALL )) )
     {
         auto direction = ball->getPosition() - player->getPosition();
         direction.normalize();

@@ -61,6 +61,8 @@
 		EA2400791C65192F00906235 /* ServerNameBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2400771C65192F00906235 /* ServerNameBlok.cpp */; };
 		EA2F6DF71C689AB0009E3F1A /* KickBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F6DF51C689AB0009E3F1A /* KickBlok.cpp */; };
 		EA2F6E021C68A983009E3F1A /* TackleBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F6E001C68A983009E3F1A /* TackleBlok.cpp */; };
+		EA5F25F51C6A87A7004E2A79 /* AdminBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5F25F31C6A87A7004E2A79 /* AdminBlok.cpp */; };
+		EA5F25FC1C6A88FD004E2A79 /* ResetScoreBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5F25FA1C6A88FD004E2A79 /* ResetScoreBlok.cpp */; };
 		EA888A021C58A18F00534275 /* LobbyScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888A001C58A18F00534275 /* LobbyScene.cpp */; };
 		EA888B0C1C58A6B200534275 /* _FindFirst.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888A9E1C58A6B100534275 /* _FindFirst.cpp */; };
 		EA888B0D1C58A6B200534275 /* Base64Encoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888A9F1C58A6B100534275 /* Base64Encoder.cpp */; };
@@ -243,6 +245,10 @@
 		EA2F6DF61C689AB0009E3F1A /* KickBlok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KickBlok.h; path = ../../../shared/bloks/KickBlok.h; sourceTree = "<group>"; };
 		EA2F6E001C68A983009E3F1A /* TackleBlok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TackleBlok.cpp; path = ../../../shared/bloks/TackleBlok.cpp; sourceTree = "<group>"; };
 		EA2F6E011C68A983009E3F1A /* TackleBlok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TackleBlok.h; path = ../../../shared/bloks/TackleBlok.h; sourceTree = "<group>"; };
+		EA5F25F31C6A87A7004E2A79 /* AdminBlok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AdminBlok.cpp; path = ../../../shared/bloks/AdminBlok.cpp; sourceTree = "<group>"; };
+		EA5F25F41C6A87A7004E2A79 /* AdminBlok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AdminBlok.h; path = ../../../shared/bloks/AdminBlok.h; sourceTree = "<group>"; };
+		EA5F25FA1C6A88FD004E2A79 /* ResetScoreBlok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ResetScoreBlok.cpp; path = ../../../shared/bloks/ResetScoreBlok.cpp; sourceTree = "<group>"; };
+		EA5F25FB1C6A88FD004E2A79 /* ResetScoreBlok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResetScoreBlok.h; path = ../../../shared/bloks/ResetScoreBlok.h; sourceTree = "<group>"; };
 		EA651D891C46DC02003EE325 /* raknetx86_64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = raknetx86_64.a; path = ../../../shared/network/raknet/raknetx86_64.a; sourceTree = "<group>"; };
 		EA8889FE1C58A18F00534275 /* LobbyScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LobbyScene.h; sourceTree = "<group>"; };
 		EA888A001C58A18F00534275 /* LobbyScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LobbyScene.cpp; sourceTree = "<group>"; };
@@ -1014,6 +1020,8 @@
 		EA8888731C58031400534275 /* Bloks */ = {
 			isa = PBXGroup;
 			children = (
+				EA5F25F41C6A87A7004E2A79 /* AdminBlok.h */,
+				EA5F25F31C6A87A7004E2A79 /* AdminBlok.cpp */,
 				EA2F6DF61C689AB0009E3F1A /* KickBlok.h */,
 				EA2F6DF51C689AB0009E3F1A /* KickBlok.cpp */,
 				EA2400781C65192F00906235 /* ServerNameBlok.h */,
@@ -1022,6 +1030,8 @@
 				EA2400691C64E6BB00906235 /* CollisionBlok.h */,
 				EAAB6A5D1C59F6C900171969 /* AccelerationBlok.h */,
 				EAAB6A5F1C59F6C900171969 /* AccelerationBlok.cpp */,
+				EA5F25FB1C6A88FD004E2A79 /* ResetScoreBlok.h */,
+				EA5F25FA1C6A88FD004E2A79 /* ResetScoreBlok.cpp */,
 				EAD614361C66098B001F3478 /* StringBlok.cpp */,
 				EAD614371C66098B001F3478 /* StringBlok.h */,
 				EA2F6E001C68A983009E3F1A /* TackleBlok.cpp */,
@@ -1249,11 +1259,13 @@
 				EA888B281C58A6B200534275 /* GetTime.cpp in Sources */,
 				EA888B5B1C58A6B200534275 /* ReadyEvent.cpp in Sources */,
 				EA888B381C58A6B200534275 /* NatTypeDetectionServer.cpp in Sources */,
+				EA5F25F51C6A87A7004E2A79 /* AdminBlok.cpp in Sources */,
 				EA888B791C58A6B200534275 /* WSAStartupSingleton.cpp in Sources */,
 				EA24006A1C64E6BB00906235 /* CollisionBlok.cpp in Sources */,
 				EA888B1D1C58A6B200534275 /* DS_Table.cpp in Sources */,
 				EA888B421C58A6B200534275 /* Rackspace.cpp in Sources */,
 				EA888B2F1C58A6B200534275 /* Itoa.cpp in Sources */,
+				EA5F25FC1C6A88FD004E2A79 /* ResetScoreBlok.cpp in Sources */,
 				EA888B561C58A6B200534275 /* RakString.cpp in Sources */,
 				EA888B571C58A6B200534275 /* RakThread.cpp in Sources */,
 				EA888B341C58A6B200534275 /* NatPunchthroughClient.cpp in Sources */,

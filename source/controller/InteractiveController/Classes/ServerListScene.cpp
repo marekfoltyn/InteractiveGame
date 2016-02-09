@@ -10,6 +10,8 @@ USING_NS_CC;
 #define NODE_SERVERS "menuView"
 #define COLOR_GREEN Color4B(11, 112, 14, 255)
 
+#define ACTION_RECEIVE_BLOKS 100
+
 Scene * ServerListScene::createScene()
 {
     // 'scene' is an autorelease object
@@ -158,6 +160,7 @@ void ServerListScene::startReceiveBlocks()
     auto delay = DelayTime::create(RECEIVE_TIMEOUT);
     auto sequence = Sequence::create(callback, delay, nullptr);
     auto receivePacketAction = RepeatForever::create(sequence);
+    receivePacketAction->setTag(ACTION_RECEIVE_BLOKS);
     this->runAction(receivePacketAction);
 }
 
@@ -182,7 +185,8 @@ void ServerListScene::receiveAllBlocks()
             case P_CONNECTED:
             {
                 onConnected(blok);
-                break;
+                blok->deallocate();
+                return;
             }
                 
             case P_CONNECTION_FAILED:
@@ -194,7 +198,7 @@ void ServerListScene::receiveAllBlocks()
             default:
             {
                 // packet ignored
-                CCLOG("Packet %d ignored.", blok->getType());
+                CCLOG("ServerListScene: Packet %d ignored.", blok->getType());
                 break;
             }
         }
@@ -356,6 +360,7 @@ void ServerListScene::onConnected(Blok * blok)
     nameBlok->send();
     
     CCLOG("Connected to %s", blok->getAddress().ToString());
+    this->stopActionByTag(ACTION_RECEIVE_BLOKS); // stop receiving bloks
     auto scene = LobbyScene::createScene();
     Director::getInstance()->replaceScene( TransitionSlideInB::create(SCENE_TRANSITION, scene) );
 }

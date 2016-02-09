@@ -65,6 +65,10 @@ public:
      */
     void btnTackleClick(Ref * sender, ui::Widget::TouchEventType type);
 
+    /**
+     * set this controller as admin
+     */
+    void setAsAdmin();
     
     /**
      * connection was lost - (show the dialog? and) return to the server list scene

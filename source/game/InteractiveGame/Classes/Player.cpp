@@ -7,7 +7,7 @@
 //
 
 #include "Player.h"
-
+#include "AdminBlok.h"
 
 
 Player::Player(RakNet::SystemAddress address)
@@ -37,4 +37,12 @@ void Player::destroy()
 void Player::setAppliedForce(Vec2 force)
 {
     previousForce = force;
+}
+
+void Player::setAsAdmin()
+{
+    admin = true;
+    auto blok = AdminBlok::create();
+    blok->setAddress( getAddress() );
+    blok->send();
 }

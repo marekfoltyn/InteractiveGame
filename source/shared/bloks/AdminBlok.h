@@ -1,24 +1,23 @@
 //
-//  KickBlok.h
+//  AdminBlok.h
 //  InteractiveController
 //
 //  Created by Marek Foltýn on 26.01.16.
 //
 //
 
-#ifndef KickBlok_h
-#define KickBlok_h
+#ifndef AdminBlok_h
+#define AdminBlok_h
 
 #include "Connector.h"
 
 /**
- * Empty Blok signaling that player has kicked the ball
- * Type:
+ * Empty Blok signaling that player is Admin *
  * ==============================================
- * P_KICK
+ * type: P_ADMIN
  *
  */
-class KickBlok{
+class AdminBlok{
 public:
     
     static Blok * create();
@@ -26,4 +25,4 @@ public:
 };
 
 
-#endif /* KickBlok_h */
+#endif /* AdminBlok_h */

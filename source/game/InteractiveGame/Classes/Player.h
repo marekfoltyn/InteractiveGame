@@ -51,11 +51,39 @@ public:
      */
     void setAppliedForce(Vec2 force);
     
+    /**
+     * set this player as admin
+     */
+    void setAsAdmin();
+    
+    /**
+     * returns true, if the player is admin
+     */
+    bool isAdmin(){ return admin; }
+    
 private:
     
+    /**
+     * cocos2dx sprite
+     */
     Sprite * sprite;
+    
+    /**
+     * RakNet address
+     */
     RakNet::SystemAddress address;
+    
+    /**
+     * force applied in previously received AccelerationBlok
+     * necessary for player's direction change
+     */
     Vec2 previousForce;
+    
+    /**
+     * indicates if the players is admin
+     * (can control the stadium)
+     */
+    bool admin;
     
     /**
      * private constructor - use Player::create()
