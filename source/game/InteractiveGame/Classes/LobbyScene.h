@@ -2,6 +2,9 @@
 #define __LOBBY_SCENE_H__
 
 #include "cocos2d.h"
+#include "extensions/cocos-ext.h"
+#include "ui/CocosGUI.h"
+
 #include "RakPeerInterface.h"
 #include "Blok.h"
 #include "Player.h"
@@ -25,6 +28,12 @@ public:
     void onPlayerKick(Blok * blok);
     
     void onPlayerTackle(Blok * blok);
+    
+    /**
+     * Exit game
+     */
+    void btnExitClicked(Ref * sender);
+
     
 private:
     

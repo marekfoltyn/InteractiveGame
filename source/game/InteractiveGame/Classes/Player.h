@@ -55,7 +55,7 @@ private:
     
     Sprite * sprite;
     RakNet::SystemAddress address;
-        Vec2 previousForce;
+    Vec2 previousForce;
     
     /**
      * private constructor - use Player::create()

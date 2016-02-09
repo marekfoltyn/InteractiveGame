@@ -98,6 +98,7 @@ void LobbyScene::initGraphics()
     lblTackle->setPosition( btnTackle->getPosition() );
     this->addChild(lblTackle);
     
+    // leave button
     auto disconnect = ui::Button::create();
     disconnect->setTitleText("leave");
     disconnect->setTitleFontName("Monda-Bold.ttf");

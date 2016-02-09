@@ -24,7 +24,7 @@ USING_NS_CC;
 #define BITMASK_SOLID  1 // 0000 0001
 #define BITMASK_BALL   2 // 0000 0010
 #define BITMASK_PLAYER 4 // 0000 0100
-#define BITMASK_SCORE 8 // 0000 1000
+#define BITMASK_SCORE  8 // 0000 1000
 
 #define SCALE_GOAL 0.7
 #define SCALE_BALL 0.8
@@ -71,17 +71,14 @@ bool LobbyScene::init()
     
     initGUI();
     
-    CCLOG("P_PING = %d", P_PING);
-    CCLOG("P_SERVER_NAME = %d", P_SERVER_NAME);
-    
     //auto rootNode = CSLoader::createNode("MainScene.csb");
     //addChild(rootNode);
     
     return true;
 }
 
-void LobbyScene::initServer(){
-    
+void LobbyScene::initServer()
+{
     // run async Connector (as a server)
     bool started = Connector::getInstance()->startAsServer(MAX_PLAYERS);
     Connector::getInstance()->setServerName("Mac");
@@ -100,8 +97,8 @@ void LobbyScene::initServer(){
     
 }
 
-void LobbyScene::initGUI(){
-    
+void LobbyScene::initGUI()
+{
     auto visibleSize = Director::getInstance()->getVisibleSize();
     auto origin = Director::getInstance()->getVisibleOrigin();
     auto c = Connector::getInstance();
@@ -116,7 +113,8 @@ void LobbyScene::initGUI(){
     auto line = Sprite::create("center.png");
     line->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
     this->addChild(line);
-    
+ 
+    float scaleX = visibleSize.width  / 100.0 - 2.0*BORDER/100.0;
     float scaleY = visibleSize.height / 100.0 - 2.0*BORDER/100.0;
     
     // center line
@@ -129,14 +127,14 @@ void LobbyScene::initGUI(){
     
     // top line
     line = Sprite::create("line.png");
-    line->setScaleX(16.4);
+    line->setScaleX(scaleX);
     line->setAnchorPoint(Vec2(0,1));
     line->setPosition(Vec2( origin.x + BORDER, origin.y + visibleSize.height - BORDER));
     this->addChild(line);
     
     // bottom line
     line = Sprite::create("line.png");
-    line->setScaleX(16.4);
+    line->setScaleX(scaleX);
     line->setAnchorPoint(Vec2(0,0));
     line->setPosition(Vec2( origin.x + BORDER, origin.y + BORDER));
     this->addChild(line);
@@ -157,7 +155,7 @@ void LobbyScene::initGUI(){
     line->setPosition(Vec2( origin.x + visibleSize.width - BORDER, origin.y + visibleSize.height - BORDER ));
     this->addChild(line);
     
-    float scaleX = visibleSize.width/800; // line.jpg is 100px wide
+    scaleX = visibleSize.width/800; // line.jpg is 100px wide
     scaleY *= 0.5;
     
     // left lines near the goal
@@ -213,7 +211,7 @@ void LobbyScene::initGUI(){
     for(int i=0; i<4; i++)
     {
         auto top = Node::create();
-        auto body = PhysicsBody::createBox(cocos2d::Size( SCALE_GOAL*goal->getContentSize().width/2, 1), MATERIAL_SOLID);
+        auto body = PhysicsBody::createBox(cocos2d::Size( SCALE_GOAL*goal->getContentSize().width/2, 10), MATERIAL_SOLID);
         body->setDynamic(false);
         body->setCategoryBitmask(BITMASK_SOLID);
         body->setCollisionBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER);
@@ -231,7 +229,7 @@ void LobbyScene::initGUI(){
         auto top = Node::create();
         auto body = PhysicsBody::createBox(cocos2d::Size(
             SCALE_GOAL*goal->getContentSize().width - 2*Sprite::create("ball.png")->getContentSize().width*SCALE_BALL,
-            SCALE_GOAL*goal->getContentSize().height));
+            SCALE_GOAL*goal->getContentSize().height - Sprite::create("ball.png")->getContentSize().width*SCALE_BALL));
         body->setDynamic(false);
         body->setCategoryBitmask(BITMASK_SCORE);
         body->setCollisionBitmask(0);
@@ -248,7 +246,7 @@ void LobbyScene::initGUI(){
 
     
     // physics boundary
-    auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, MATERIAL_SOLID, 3);
+    auto edgeBody = PhysicsBody::createEdgeBox(cocos2d::Size(visibleSize.width + 2*BORDER, visibleSize.height + 2*BORDER), MATERIAL_SOLID, BORDER);
     edgeBody->setDynamic(false);
     edgeBody->setCategoryBitmask(BITMASK_SOLID);
     edgeBody->setCollisionBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER);
@@ -265,6 +263,30 @@ void LobbyScene::initGUI(){
     txtServerName->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height - txtServerName->getContentSize().height ));
     //this->addChild(txtServerName);
     
+    // score labels
+    auto left = Label::createWithTTF("0", "Monda-Bold.ttf", 100);
+    float circle = Sprite::create("center.png")->getContentSize().width/4;
+    left->setPosition(Vec2( - circle + origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
+    left->setTextColor(COLOR_FONT_TRANSPARENT);
+    left->setName(LABEL_SCORE_LEFT);
+    this->addChild(left);
+    auto right = Label::createWithTTF("0", "Monda-Bold.ttf", 100);
+    right->setPosition(Vec2( circle + origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
+    right->setTextColor(COLOR_FONT_TRANSPARENT);
+    right->setName(LABEL_SCORE_RIGHT);
+    this->addChild(right);
+
+    // leave button
+    auto disconnect = Label::createWithTTF("Exit", "Monda-Bold.ttf", 50);
+    disconnect->setAlignment(TextHAlignment::CENTER);
+    disconnect->setTextColor(COLOR_FONT_TRANSPARENT);
+    auto item = MenuItemLabel::create(disconnect, CC_CALLBACK_1(LobbyScene::btnExitClicked, this));
+    item->setAnchorPoint(Vec2(0.5, 1));
+    item->setPosition(Vec2( circle + origin.x + visibleSize.width/2, origin.y + visibleSize.height - BORDER ));
+    auto menu = Menu::create(item, NULL);
+    menu->setPosition(Vec2::ZERO);
+    this->addChild(menu);
+    
     // ball sprite
     point = Sprite::create("ball.png");
     point->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
@@ -279,29 +301,15 @@ void LobbyScene::initGUI(){
     point->setPhysicsBody(spriteBody);
     this->addChild(point);
     prevForce = Vec2(0,0);
-    
-    // score labels
-    auto left = Label::createWithTTF("0", "Monda-Bold.ttf", 100);
-    float circle = Sprite::create("center.png")->getContentSize().width/4;
-    left->setPosition(Vec2( - circle + origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
-    left->setTextColor(COLOR_FONT_TRANSPARENT);
-    left->setName(LABEL_SCORE_LEFT);
-    this->addChild(left);
-    auto right = Label::createWithTTF("0", "Monda-Bold.ttf", 100);
-    right->setPosition(Vec2( circle + origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
-    right->setTextColor(COLOR_FONT_TRANSPARENT);
-    right->setName(LABEL_SCORE_RIGHT);
-    this->addChild(right);
 
-    
     // collision listener
     auto contactListener = EventListenerPhysicsContact::create();
     contactListener->onContactBegin = CC_CALLBACK_1(LobbyScene::onContactBegin, this);
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
 }
 
-void LobbyScene::processBlock(){
-    
+void LobbyScene::processBlock()
+{
     Connector * c = Connector::getInstance();
     Blok * blok;
     
@@ -522,7 +530,12 @@ void LobbyScene::onPlayerTackle(Blok * blok)
 
 
 
-
+void LobbyScene::btnExitClicked(Ref * sender)
+{
+    Connector::getInstance()->stop();
+    Director::getInstance()->end();
+    exit(0);
+}
 
 
 

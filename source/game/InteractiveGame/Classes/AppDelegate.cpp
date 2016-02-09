@@ -28,7 +28,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     if(!glview) {
         //glview = GLViewImpl::createWithRect("InteractiveGame", cocos2d::Rect(0, 0, 1024, 576));
         //glview = GLViewImpl::createWithRect("InteractiveGame", cocos2d::Rect(0, 0, 1024, 768));
-        glview = GLViewImpl::createWithFullScreen("InteractiveGame");
+        glview = GLViewImpl::createWithRect("InteractiveGame", cocos2d::Rect(0, 0, 1400, 900));
+        //glview = GLViewImpl::createWithFullScreen("InteractiveGame");
         director->setOpenGLView(glview);
     }
 
