@@ -791,8 +791,7 @@ void NatPunchthroughClient::SendTTL(const SystemAddress &sa)
 	// TTL of 1 doesn't get past the router, 2 might hit the other system on a LAN
 	rakPeerInterface->SendTTL(ipAddressString,sa.GetPort(), 2);
 }
-
-char *TestModeToString(NatPunchthroughClient::SendPing::TestMode tm)
+char const *TestModeToString(NatPunchthroughClient::SendPing::TestMode tm)
 {
 	switch (tm)
 	{

@@ -56,7 +56,6 @@
 		EA4189501C342CEF004B8934 /* Catch.h in Sources */ = {isa = PBXBuildFile; fileRef = EA41894F1C342CEF004B8934 /* Catch.h */; };
 		EA5CA2C41C3FC724003437FF /* Connector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5CA2C11C3FC724003437FF /* Connector.cpp */; };
 		EA5CA2C51C3FC724003437FF /* Connector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5CA2C11C3FC724003437FF /* Connector.cpp */; };
-		EA5CA2CA1C3FC90D003437FF /* raknetx86_64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5CA2C91C3FC90D003437FF /* raknetx86_64.a */; };
 		EA5CA2CB1C3FC933003437FF /* raknetx86_64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5CA2C91C3FC90D003437FF /* raknetx86_64.a */; };
 		EA5F25F11C6A879B004E2A79 /* AdminBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5F25EF1C6A879B004E2A79 /* AdminBlok.cpp */; };
 		EA5F25F21C6A879B004E2A79 /* AdminBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5F25EF1C6A879B004E2A79 /* AdminBlok.cpp */; };
@@ -66,6 +65,226 @@
 		EAAB6A691C59FF6500171969 /* Blok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A671C59FF6500171969 /* Blok.cpp */; };
 		EAAB6A6E1C59FF7200171969 /* AccelerationBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A6C1C59FF7200171969 /* AccelerationBlok.cpp */; };
 		EAAB6A6F1C59FF7200171969 /* AccelerationBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A6C1C59FF7200171969 /* AccelerationBlok.cpp */; };
+		EACC71881C6B54A80036DB3D /* _FindFirst.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70801C6B54A70036DB3D /* _FindFirst.cpp */; };
+		EACC71891C6B54A80036DB3D /* _FindFirst.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70801C6B54A70036DB3D /* _FindFirst.cpp */; };
+		EACC718A1C6B54A80036DB3D /* Base64Encoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70841C6B54A70036DB3D /* Base64Encoder.cpp */; };
+		EACC718B1C6B54A80036DB3D /* Base64Encoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70841C6B54A70036DB3D /* Base64Encoder.cpp */; };
+		EACC718C1C6B54A80036DB3D /* BitStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70861C6B54A70036DB3D /* BitStream.cpp */; };
+		EACC718D1C6B54A80036DB3D /* BitStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70861C6B54A70036DB3D /* BitStream.cpp */; };
+		EACC718E1C6B54A80036DB3D /* CCRakNetSlidingWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70881C6B54A70036DB3D /* CCRakNetSlidingWindow.cpp */; };
+		EACC718F1C6B54A80036DB3D /* CCRakNetSlidingWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70881C6B54A70036DB3D /* CCRakNetSlidingWindow.cpp */; };
+		EACC71901C6B54A80036DB3D /* CCRakNetUDT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC708A1C6B54A70036DB3D /* CCRakNetUDT.cpp */; };
+		EACC71911C6B54A80036DB3D /* CCRakNetUDT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC708A1C6B54A70036DB3D /* CCRakNetUDT.cpp */; };
+		EACC71921C6B54A80036DB3D /* CloudClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC708C1C6B54A70036DB3D /* CloudClient.cpp */; };
+		EACC71931C6B54A80036DB3D /* CloudClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC708C1C6B54A70036DB3D /* CloudClient.cpp */; };
+		EACC71941C6B54A80036DB3D /* CloudCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC708E1C6B54A70036DB3D /* CloudCommon.cpp */; };
+		EACC71951C6B54A80036DB3D /* CloudCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC708E1C6B54A70036DB3D /* CloudCommon.cpp */; };
+		EACC71961C6B54A80036DB3D /* CloudServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70901C6B54A70036DB3D /* CloudServer.cpp */; };
+		EACC71971C6B54A80036DB3D /* CloudServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70901C6B54A70036DB3D /* CloudServer.cpp */; };
+		EACC71981C6B54A80036DB3D /* CommandParserInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70921C6B54A70036DB3D /* CommandParserInterface.cpp */; };
+		EACC71991C6B54A80036DB3D /* CommandParserInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70921C6B54A70036DB3D /* CommandParserInterface.cpp */; };
+		EACC719A1C6B54A80036DB3D /* ConnectionGraph2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70941C6B54A70036DB3D /* ConnectionGraph2.cpp */; };
+		EACC719B1C6B54A80036DB3D /* ConnectionGraph2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70941C6B54A70036DB3D /* ConnectionGraph2.cpp */; };
+		EACC719C1C6B54A80036DB3D /* ConsoleServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70961C6B54A70036DB3D /* ConsoleServer.cpp */; };
+		EACC719D1C6B54A80036DB3D /* ConsoleServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70961C6B54A70036DB3D /* ConsoleServer.cpp */; };
+		EACC719E1C6B54A80036DB3D /* DataCompressor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70981C6B54A70036DB3D /* DataCompressor.cpp */; };
+		EACC719F1C6B54A80036DB3D /* DataCompressor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70981C6B54A70036DB3D /* DataCompressor.cpp */; };
+		EACC71A01C6B54A80036DB3D /* DirectoryDeltaTransfer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC709A1C6B54A70036DB3D /* DirectoryDeltaTransfer.cpp */; };
+		EACC71A11C6B54A80036DB3D /* DirectoryDeltaTransfer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC709A1C6B54A70036DB3D /* DirectoryDeltaTransfer.cpp */; };
+		EACC71A21C6B54A80036DB3D /* DR_SHA1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC709C1C6B54A70036DB3D /* DR_SHA1.cpp */; };
+		EACC71A31C6B54A80036DB3D /* DR_SHA1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC709C1C6B54A70036DB3D /* DR_SHA1.cpp */; };
+		EACC71A41C6B54A80036DB3D /* DS_BytePool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70A01C6B54A70036DB3D /* DS_BytePool.cpp */; };
+		EACC71A51C6B54A80036DB3D /* DS_BytePool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70A01C6B54A70036DB3D /* DS_BytePool.cpp */; };
+		EACC71A61C6B54A80036DB3D /* DS_ByteQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70A21C6B54A70036DB3D /* DS_ByteQueue.cpp */; };
+		EACC71A71C6B54A80036DB3D /* DS_ByteQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70A21C6B54A70036DB3D /* DS_ByteQueue.cpp */; };
+		EACC71A81C6B54A80036DB3D /* DS_HuffmanEncodingTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70A61C6B54A70036DB3D /* DS_HuffmanEncodingTree.cpp */; };
+		EACC71A91C6B54A80036DB3D /* DS_HuffmanEncodingTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70A61C6B54A70036DB3D /* DS_HuffmanEncodingTree.cpp */; };
+		EACC71AA1C6B54A80036DB3D /* DS_Table.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70B41C6B54A70036DB3D /* DS_Table.cpp */; };
+		EACC71AB1C6B54A80036DB3D /* DS_Table.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70B41C6B54A70036DB3D /* DS_Table.cpp */; };
+		EACC71AC1C6B54A80036DB3D /* DynDNS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70B91C6B54A80036DB3D /* DynDNS.cpp */; };
+		EACC71AD1C6B54A80036DB3D /* DynDNS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70B91C6B54A80036DB3D /* DynDNS.cpp */; };
+		EACC71AE1C6B54A80036DB3D /* EmailSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70BB1C6B54A80036DB3D /* EmailSender.cpp */; };
+		EACC71AF1C6B54A80036DB3D /* EmailSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70BB1C6B54A80036DB3D /* EmailSender.cpp */; };
+		EACC71B01C6B54A80036DB3D /* EpochTimeToString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70BE1C6B54A80036DB3D /* EpochTimeToString.cpp */; };
+		EACC71B11C6B54A80036DB3D /* EpochTimeToString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70BE1C6B54A80036DB3D /* EpochTimeToString.cpp */; };
+		EACC71B21C6B54A80036DB3D /* FileList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70C11C6B54A80036DB3D /* FileList.cpp */; };
+		EACC71B31C6B54A80036DB3D /* FileList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70C11C6B54A80036DB3D /* FileList.cpp */; };
+		EACC71B41C6B54A80036DB3D /* FileListTransfer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70C41C6B54A80036DB3D /* FileListTransfer.cpp */; };
+		EACC71B51C6B54A80036DB3D /* FileListTransfer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70C41C6B54A80036DB3D /* FileListTransfer.cpp */; };
+		EACC71B61C6B54A80036DB3D /* FileOperations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70C71C6B54A80036DB3D /* FileOperations.cpp */; };
+		EACC71B71C6B54A80036DB3D /* FileOperations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70C71C6B54A80036DB3D /* FileOperations.cpp */; };
+		EACC71B81C6B54A80036DB3D /* FormatString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70C91C6B54A80036DB3D /* FormatString.cpp */; };
+		EACC71B91C6B54A80036DB3D /* FormatString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70C91C6B54A80036DB3D /* FormatString.cpp */; };
+		EACC71BA1C6B54A80036DB3D /* FullyConnectedMesh2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70CB1C6B54A80036DB3D /* FullyConnectedMesh2.cpp */; };
+		EACC71BB1C6B54A80036DB3D /* FullyConnectedMesh2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70CB1C6B54A80036DB3D /* FullyConnectedMesh2.cpp */; };
+		EACC71BC1C6B54A80036DB3D /* Getche.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70CD1C6B54A80036DB3D /* Getche.cpp */; };
+		EACC71BD1C6B54A80036DB3D /* Getche.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70CD1C6B54A80036DB3D /* Getche.cpp */; };
+		EACC71BE1C6B54A80036DB3D /* Gets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70CF1C6B54A80036DB3D /* Gets.cpp */; };
+		EACC71BF1C6B54A80036DB3D /* Gets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70CF1C6B54A80036DB3D /* Gets.cpp */; };
+		EACC71C01C6B54A80036DB3D /* GetTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70D11C6B54A80036DB3D /* GetTime.cpp */; };
+		EACC71C11C6B54A80036DB3D /* GetTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70D11C6B54A80036DB3D /* GetTime.cpp */; };
+		EACC71C21C6B54A80036DB3D /* gettimeofday.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70D31C6B54A80036DB3D /* gettimeofday.cpp */; };
+		EACC71C31C6B54A80036DB3D /* gettimeofday.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70D31C6B54A80036DB3D /* gettimeofday.cpp */; };
+		EACC71C41C6B54A80036DB3D /* GridSectorizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70D51C6B54A80036DB3D /* GridSectorizer.cpp */; };
+		EACC71C51C6B54A80036DB3D /* GridSectorizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70D51C6B54A80036DB3D /* GridSectorizer.cpp */; };
+		EACC71C61C6B54A80036DB3D /* HTTPConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70D71C6B54A80036DB3D /* HTTPConnection.cpp */; };
+		EACC71C71C6B54A80036DB3D /* HTTPConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70D71C6B54A80036DB3D /* HTTPConnection.cpp */; };
+		EACC71C81C6B54A80036DB3D /* HTTPConnection2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70D91C6B54A80036DB3D /* HTTPConnection2.cpp */; };
+		EACC71C91C6B54A80036DB3D /* HTTPConnection2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70D91C6B54A80036DB3D /* HTTPConnection2.cpp */; };
+		EACC71CA1C6B54A80036DB3D /* CheckSum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70DB1C6B54A80036DB3D /* CheckSum.cpp */; };
+		EACC71CB1C6B54A80036DB3D /* CheckSum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70DB1C6B54A80036DB3D /* CheckSum.cpp */; };
+		EACC71CC1C6B54A80036DB3D /* IncrementalReadInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70DD1C6B54A80036DB3D /* IncrementalReadInterface.cpp */; };
+		EACC71CD1C6B54A80036DB3D /* IncrementalReadInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70DD1C6B54A80036DB3D /* IncrementalReadInterface.cpp */; };
+		EACC71CE1C6B54A80036DB3D /* Itoa.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70E01C6B54A80036DB3D /* Itoa.cpp */; };
+		EACC71CF1C6B54A80036DB3D /* Itoa.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70E01C6B54A80036DB3D /* Itoa.cpp */; };
+		EACC71D01C6B54A80036DB3D /* LinuxStrings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70E31C6B54A80036DB3D /* LinuxStrings.cpp */; };
+		EACC71D11C6B54A80036DB3D /* LinuxStrings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70E31C6B54A80036DB3D /* LinuxStrings.cpp */; };
+		EACC71D21C6B54A80036DB3D /* LocklessTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70E51C6B54A80036DB3D /* LocklessTypes.cpp */; };
+		EACC71D31C6B54A80036DB3D /* LocklessTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70E51C6B54A80036DB3D /* LocklessTypes.cpp */; };
+		EACC71D41C6B54A80036DB3D /* LogCommandParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70E71C6B54A80036DB3D /* LogCommandParser.cpp */; };
+		EACC71D51C6B54A80036DB3D /* LogCommandParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70E71C6B54A80036DB3D /* LogCommandParser.cpp */; };
+		EACC71D61C6B54A80036DB3D /* MessageFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70E91C6B54A80036DB3D /* MessageFilter.cpp */; };
+		EACC71D71C6B54A80036DB3D /* MessageFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70E91C6B54A80036DB3D /* MessageFilter.cpp */; };
+		EACC71D81C6B54A80036DB3D /* NatPunchthroughClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70F01C6B54A80036DB3D /* NatPunchthroughClient.cpp */; };
+		EACC71D91C6B54A80036DB3D /* NatPunchthroughClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70F01C6B54A80036DB3D /* NatPunchthroughClient.cpp */; };
+		EACC71DA1C6B54A80036DB3D /* NatPunchthroughServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70F21C6B54A80036DB3D /* NatPunchthroughServer.cpp */; };
+		EACC71DB1C6B54A80036DB3D /* NatPunchthroughServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70F21C6B54A80036DB3D /* NatPunchthroughServer.cpp */; };
+		EACC71DC1C6B54A80036DB3D /* NatTypeDetectionClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70F41C6B54A80036DB3D /* NatTypeDetectionClient.cpp */; };
+		EACC71DD1C6B54A80036DB3D /* NatTypeDetectionClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70F41C6B54A80036DB3D /* NatTypeDetectionClient.cpp */; };
+		EACC71DE1C6B54A80036DB3D /* NatTypeDetectionCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70F61C6B54A80036DB3D /* NatTypeDetectionCommon.cpp */; };
+		EACC71DF1C6B54A80036DB3D /* NatTypeDetectionCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70F61C6B54A80036DB3D /* NatTypeDetectionCommon.cpp */; };
+		EACC71E01C6B54A80036DB3D /* NatTypeDetectionServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70F81C6B54A80036DB3D /* NatTypeDetectionServer.cpp */; };
+		EACC71E11C6B54A80036DB3D /* NatTypeDetectionServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70F81C6B54A80036DB3D /* NatTypeDetectionServer.cpp */; };
+		EACC71E21C6B54A80036DB3D /* NetworkIDManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70FA1C6B54A80036DB3D /* NetworkIDManager.cpp */; };
+		EACC71E31C6B54A80036DB3D /* NetworkIDManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70FA1C6B54A80036DB3D /* NetworkIDManager.cpp */; };
+		EACC71E41C6B54A80036DB3D /* NetworkIDObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70FC1C6B54A80036DB3D /* NetworkIDObject.cpp */; };
+		EACC71E51C6B54A80036DB3D /* NetworkIDObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70FC1C6B54A80036DB3D /* NetworkIDObject.cpp */; };
+		EACC71E61C6B54A80036DB3D /* PacketConsoleLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70FE1C6B54A80036DB3D /* PacketConsoleLogger.cpp */; };
+		EACC71E71C6B54A80036DB3D /* PacketConsoleLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70FE1C6B54A80036DB3D /* PacketConsoleLogger.cpp */; };
+		EACC71E81C6B54A80036DB3D /* PacketFileLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71001C6B54A80036DB3D /* PacketFileLogger.cpp */; };
+		EACC71E91C6B54A80036DB3D /* PacketFileLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71001C6B54A80036DB3D /* PacketFileLogger.cpp */; };
+		EACC71EA1C6B54A80036DB3D /* PacketizedTCP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71021C6B54A80036DB3D /* PacketizedTCP.cpp */; };
+		EACC71EB1C6B54A80036DB3D /* PacketizedTCP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71021C6B54A80036DB3D /* PacketizedTCP.cpp */; };
+		EACC71EC1C6B54A80036DB3D /* PacketLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71041C6B54A80036DB3D /* PacketLogger.cpp */; };
+		EACC71ED1C6B54A80036DB3D /* PacketLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71041C6B54A80036DB3D /* PacketLogger.cpp */; };
+		EACC71EE1C6B54A80036DB3D /* PacketOutputWindowLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71061C6B54A80036DB3D /* PacketOutputWindowLogger.cpp */; };
+		EACC71EF1C6B54A80036DB3D /* PacketOutputWindowLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71061C6B54A80036DB3D /* PacketOutputWindowLogger.cpp */; };
+		EACC71F01C6B54A80036DB3D /* PluginInterface2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC710A1C6B54A80036DB3D /* PluginInterface2.cpp */; };
+		EACC71F11C6B54A80036DB3D /* PluginInterface2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC710A1C6B54A80036DB3D /* PluginInterface2.cpp */; };
+		EACC71F21C6B54A80036DB3D /* PS4Includes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC710D1C6B54A80036DB3D /* PS4Includes.cpp */; };
+		EACC71F31C6B54A80036DB3D /* PS4Includes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC710D1C6B54A80036DB3D /* PS4Includes.cpp */; };
+		EACC71F41C6B54A80036DB3D /* Rackspace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC710F1C6B54A80036DB3D /* Rackspace.cpp */; };
+		EACC71F51C6B54A80036DB3D /* Rackspace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC710F1C6B54A80036DB3D /* Rackspace.cpp */; };
+		EACC71F61C6B54A80036DB3D /* RakMemoryOverride.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71131C6B54A80036DB3D /* RakMemoryOverride.cpp */; };
+		EACC71F71C6B54A80036DB3D /* RakMemoryOverride.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71131C6B54A80036DB3D /* RakMemoryOverride.cpp */; };
+		EACC71F81C6B54A80036DB3D /* RakNetCommandParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71151C6B54A80036DB3D /* RakNetCommandParser.cpp */; };
+		EACC71F91C6B54A80036DB3D /* RakNetCommandParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71151C6B54A80036DB3D /* RakNetCommandParser.cpp */; };
+		EACC71FA1C6B54A80036DB3D /* RakNetSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC711A1C6B54A80036DB3D /* RakNetSocket.cpp */; };
+		EACC71FB1C6B54A80036DB3D /* RakNetSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC711A1C6B54A80036DB3D /* RakNetSocket.cpp */; };
+		EACC71FC1C6B54A80036DB3D /* RakNetSocket2_360_720.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC711C1C6B54A80036DB3D /* RakNetSocket2_360_720.cpp */; };
+		EACC71FD1C6B54A80036DB3D /* RakNetSocket2_360_720.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC711C1C6B54A80036DB3D /* RakNetSocket2_360_720.cpp */; };
+		EACC71FE1C6B54A80036DB3D /* RakNetSocket2_Berkley_NativeClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC711D1C6B54A80036DB3D /* RakNetSocket2_Berkley_NativeClient.cpp */; };
+		EACC71FF1C6B54A80036DB3D /* RakNetSocket2_Berkley_NativeClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC711D1C6B54A80036DB3D /* RakNetSocket2_Berkley_NativeClient.cpp */; };
+		EACC72001C6B54A80036DB3D /* RakNetSocket2_Berkley.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC711E1C6B54A80036DB3D /* RakNetSocket2_Berkley.cpp */; };
+		EACC72011C6B54A80036DB3D /* RakNetSocket2_Berkley.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC711E1C6B54A80036DB3D /* RakNetSocket2_Berkley.cpp */; };
+		EACC72021C6B54A80036DB3D /* RakNetSocket2_NativeClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC711F1C6B54A80036DB3D /* RakNetSocket2_NativeClient.cpp */; };
+		EACC72031C6B54A80036DB3D /* RakNetSocket2_NativeClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC711F1C6B54A80036DB3D /* RakNetSocket2_NativeClient.cpp */; };
+		EACC72041C6B54A80036DB3D /* RakNetSocket2_PS3_PS4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71201C6B54A80036DB3D /* RakNetSocket2_PS3_PS4.cpp */; };
+		EACC72051C6B54A80036DB3D /* RakNetSocket2_PS3_PS4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71201C6B54A80036DB3D /* RakNetSocket2_PS3_PS4.cpp */; };
+		EACC72061C6B54A80036DB3D /* RakNetSocket2_PS4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71211C6B54A80036DB3D /* RakNetSocket2_PS4.cpp */; };
+		EACC72071C6B54A80036DB3D /* RakNetSocket2_PS4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71211C6B54A80036DB3D /* RakNetSocket2_PS4.cpp */; };
+		EACC72081C6B54A80036DB3D /* RakNetSocket2_Vita.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71221C6B54A80036DB3D /* RakNetSocket2_Vita.cpp */; };
+		EACC72091C6B54A80036DB3D /* RakNetSocket2_Vita.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71221C6B54A80036DB3D /* RakNetSocket2_Vita.cpp */; };
+		EACC720A1C6B54A80036DB3D /* RakNetSocket2_Windows_Linux_360.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71231C6B54A80036DB3D /* RakNetSocket2_Windows_Linux_360.cpp */; };
+		EACC720B1C6B54A80036DB3D /* RakNetSocket2_Windows_Linux_360.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71231C6B54A80036DB3D /* RakNetSocket2_Windows_Linux_360.cpp */; };
+		EACC720C1C6B54A80036DB3D /* RakNetSocket2_Windows_Linux.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71241C6B54A80036DB3D /* RakNetSocket2_Windows_Linux.cpp */; };
+		EACC720D1C6B54A80036DB3D /* RakNetSocket2_Windows_Linux.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71241C6B54A80036DB3D /* RakNetSocket2_Windows_Linux.cpp */; };
+		EACC720E1C6B54A80036DB3D /* RakNetSocket2_WindowsStore8.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71251C6B54A80036DB3D /* RakNetSocket2_WindowsStore8.cpp */; };
+		EACC720F1C6B54A80036DB3D /* RakNetSocket2_WindowsStore8.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71251C6B54A80036DB3D /* RakNetSocket2_WindowsStore8.cpp */; };
+		EACC72101C6B54A80036DB3D /* RakNetSocket2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71261C6B54A80036DB3D /* RakNetSocket2.cpp */; };
+		EACC72111C6B54A80036DB3D /* RakNetSocket2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71261C6B54A80036DB3D /* RakNetSocket2.cpp */; };
+		EACC72121C6B54A80036DB3D /* RakNetStatistics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71281C6B54A80036DB3D /* RakNetStatistics.cpp */; };
+		EACC72131C6B54A80036DB3D /* RakNetStatistics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71281C6B54A80036DB3D /* RakNetStatistics.cpp */; };
+		EACC72141C6B54A80036DB3D /* RakNetTransport2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC712B1C6B54A80036DB3D /* RakNetTransport2.cpp */; };
+		EACC72151C6B54A80036DB3D /* RakNetTransport2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC712B1C6B54A80036DB3D /* RakNetTransport2.cpp */; };
+		EACC72161C6B54A80036DB3D /* RakNetTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC712D1C6B54A80036DB3D /* RakNetTypes.cpp */; };
+		EACC72171C6B54A80036DB3D /* RakNetTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC712D1C6B54A80036DB3D /* RakNetTypes.cpp */; };
+		EACC72181C6B54A80036DB3D /* RakPeer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71301C6B54A80036DB3D /* RakPeer.cpp */; };
+		EACC72191C6B54A80036DB3D /* RakPeer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71301C6B54A80036DB3D /* RakPeer.cpp */; };
+		EACC721A1C6B54A80036DB3D /* RakSleep.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71331C6B54A80036DB3D /* RakSleep.cpp */; };
+		EACC721B1C6B54A80036DB3D /* RakSleep.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71331C6B54A80036DB3D /* RakSleep.cpp */; };
+		EACC721C1C6B54A80036DB3D /* RakString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71351C6B54A80036DB3D /* RakString.cpp */; };
+		EACC721D1C6B54A80036DB3D /* RakString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71351C6B54A80036DB3D /* RakString.cpp */; };
+		EACC721E1C6B54A80036DB3D /* RakThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71371C6B54A80036DB3D /* RakThread.cpp */; };
+		EACC721F1C6B54A80036DB3D /* RakThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71371C6B54A80036DB3D /* RakThread.cpp */; };
+		EACC72201C6B54A80036DB3D /* RakWString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71391C6B54A80036DB3D /* RakWString.cpp */; };
+		EACC72211C6B54A80036DB3D /* RakWString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71391C6B54A80036DB3D /* RakWString.cpp */; };
+		EACC72221C6B54A80036DB3D /* Rand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC713B1C6B54A80036DB3D /* Rand.cpp */; };
+		EACC72231C6B54A80036DB3D /* Rand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC713B1C6B54A80036DB3D /* Rand.cpp */; };
+		EACC72241C6B54A80036DB3D /* RandSync.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC713D1C6B54A80036DB3D /* RandSync.cpp */; };
+		EACC72251C6B54A80036DB3D /* RandSync.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC713D1C6B54A80036DB3D /* RandSync.cpp */; };
+		EACC72261C6B54A80036DB3D /* ReadyEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC713F1C6B54A80036DB3D /* ReadyEvent.cpp */; };
+		EACC72271C6B54A80036DB3D /* ReadyEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC713F1C6B54A80036DB3D /* ReadyEvent.cpp */; };
+		EACC72281C6B54A80036DB3D /* RelayPlugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71421C6B54A80036DB3D /* RelayPlugin.cpp */; };
+		EACC72291C6B54A80036DB3D /* RelayPlugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71421C6B54A80036DB3D /* RelayPlugin.cpp */; };
+		EACC722A1C6B54A80036DB3D /* ReliabilityLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71441C6B54A80036DB3D /* ReliabilityLayer.cpp */; };
+		EACC722B1C6B54A80036DB3D /* ReliabilityLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71441C6B54A80036DB3D /* ReliabilityLayer.cpp */; };
+		EACC722C1C6B54A80036DB3D /* ReplicaManager3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71471C6B54A80036DB3D /* ReplicaManager3.cpp */; };
+		EACC722D1C6B54A80036DB3D /* ReplicaManager3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71471C6B54A80036DB3D /* ReplicaManager3.cpp */; };
+		EACC722E1C6B54A80036DB3D /* Router2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71491C6B54A80036DB3D /* Router2.cpp */; };
+		EACC722F1C6B54A80036DB3D /* Router2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71491C6B54A80036DB3D /* Router2.cpp */; };
+		EACC72301C6B54A80036DB3D /* RPC4Plugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC714B1C6B54A80036DB3D /* RPC4Plugin.cpp */; };
+		EACC72311C6B54A80036DB3D /* RPC4Plugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC714B1C6B54A80036DB3D /* RPC4Plugin.cpp */; };
+		EACC72321C6B54A80036DB3D /* SecureHandshake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC714D1C6B54A80036DB3D /* SecureHandshake.cpp */; };
+		EACC72331C6B54A80036DB3D /* SecureHandshake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC714D1C6B54A80036DB3D /* SecureHandshake.cpp */; };
+		EACC72341C6B54A80036DB3D /* SendToThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC714F1C6B54A80036DB3D /* SendToThread.cpp */; };
+		EACC72351C6B54A80036DB3D /* SendToThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC714F1C6B54A80036DB3D /* SendToThread.cpp */; };
+		EACC72361C6B54A80036DB3D /* SignaledEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71511C6B54A80036DB3D /* SignaledEvent.cpp */; };
+		EACC72371C6B54A80036DB3D /* SignaledEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71511C6B54A80036DB3D /* SignaledEvent.cpp */; };
+		EACC72381C6B54A80036DB3D /* SimpleMutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71531C6B54A80036DB3D /* SimpleMutex.cpp */; };
+		EACC72391C6B54A80036DB3D /* SimpleMutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71531C6B54A80036DB3D /* SimpleMutex.cpp */; };
+		EACC723A1C6B54A80036DB3D /* SocketLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71591C6B54A80036DB3D /* SocketLayer.cpp */; };
+		EACC723B1C6B54A80036DB3D /* SocketLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71591C6B54A80036DB3D /* SocketLayer.cpp */; };
+		EACC723C1C6B54A80036DB3D /* StatisticsHistory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC715B1C6B54A80036DB3D /* StatisticsHistory.cpp */; };
+		EACC723D1C6B54A80036DB3D /* StatisticsHistory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC715B1C6B54A80036DB3D /* StatisticsHistory.cpp */; };
+		EACC723E1C6B54A80036DB3D /* StringCompressor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC715D1C6B54A80036DB3D /* StringCompressor.cpp */; };
+		EACC723F1C6B54A80036DB3D /* StringCompressor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC715D1C6B54A80036DB3D /* StringCompressor.cpp */; };
+		EACC72401C6B54A80036DB3D /* StringTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC715F1C6B54A80036DB3D /* StringTable.cpp */; };
+		EACC72411C6B54A80036DB3D /* StringTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC715F1C6B54A80036DB3D /* StringTable.cpp */; };
+		EACC72421C6B54A80036DB3D /* SuperFastHash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71611C6B54A80036DB3D /* SuperFastHash.cpp */; };
+		EACC72431C6B54A80036DB3D /* SuperFastHash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71611C6B54A80036DB3D /* SuperFastHash.cpp */; };
+		EACC72441C6B54A80036DB3D /* TableSerializer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71631C6B54A80036DB3D /* TableSerializer.cpp */; };
+		EACC72451C6B54A80036DB3D /* TableSerializer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71631C6B54A80036DB3D /* TableSerializer.cpp */; };
+		EACC72461C6B54A80036DB3D /* TCPInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71651C6B54A80036DB3D /* TCPInterface.cpp */; };
+		EACC72471C6B54A80036DB3D /* TCPInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71651C6B54A80036DB3D /* TCPInterface.cpp */; };
+		EACC72481C6B54A80036DB3D /* TeamBalancer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71671C6B54A80036DB3D /* TeamBalancer.cpp */; };
+		EACC72491C6B54A80036DB3D /* TeamBalancer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71671C6B54A80036DB3D /* TeamBalancer.cpp */; };
+		EACC724A1C6B54A80036DB3D /* TeamManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71691C6B54A80036DB3D /* TeamManager.cpp */; };
+		EACC724B1C6B54A80036DB3D /* TeamManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71691C6B54A80036DB3D /* TeamManager.cpp */; };
+		EACC724C1C6B54A80036DB3D /* TelnetTransport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC716B1C6B54A80036DB3D /* TelnetTransport.cpp */; };
+		EACC724D1C6B54A80036DB3D /* TelnetTransport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC716B1C6B54A80036DB3D /* TelnetTransport.cpp */; };
+		EACC724E1C6B54A80036DB3D /* ThreadsafePacketLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC716E1C6B54A80036DB3D /* ThreadsafePacketLogger.cpp */; };
+		EACC724F1C6B54A80036DB3D /* ThreadsafePacketLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC716E1C6B54A80036DB3D /* ThreadsafePacketLogger.cpp */; };
+		EACC72501C6B54A80036DB3D /* TwoWayAuthentication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71711C6B54A80036DB3D /* TwoWayAuthentication.cpp */; };
+		EACC72511C6B54A80036DB3D /* TwoWayAuthentication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71711C6B54A80036DB3D /* TwoWayAuthentication.cpp */; };
+		EACC72521C6B54A80036DB3D /* UDPForwarder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71731C6B54A80036DB3D /* UDPForwarder.cpp */; };
+		EACC72531C6B54A80036DB3D /* UDPForwarder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71731C6B54A80036DB3D /* UDPForwarder.cpp */; };
+		EACC72541C6B54A80036DB3D /* UDPProxyClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71751C6B54A80036DB3D /* UDPProxyClient.cpp */; };
+		EACC72551C6B54A80036DB3D /* UDPProxyClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71751C6B54A80036DB3D /* UDPProxyClient.cpp */; };
+		EACC72561C6B54A80036DB3D /* UDPProxyCoordinator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71781C6B54A80036DB3D /* UDPProxyCoordinator.cpp */; };
+		EACC72571C6B54A80036DB3D /* UDPProxyCoordinator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71781C6B54A80036DB3D /* UDPProxyCoordinator.cpp */; };
+		EACC72581C6B54A80036DB3D /* UDPProxyServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC717A1C6B54A80036DB3D /* UDPProxyServer.cpp */; };
+		EACC72591C6B54A80036DB3D /* UDPProxyServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC717A1C6B54A80036DB3D /* UDPProxyServer.cpp */; };
+		EACC725A1C6B54A80036DB3D /* VariableDeltaSerializer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC717C1C6B54A80036DB3D /* VariableDeltaSerializer.cpp */; };
+		EACC725B1C6B54A80036DB3D /* VariableDeltaSerializer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC717C1C6B54A80036DB3D /* VariableDeltaSerializer.cpp */; };
+		EACC725C1C6B54A80036DB3D /* VariableListDeltaTracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC717E1C6B54A80036DB3D /* VariableListDeltaTracker.cpp */; };
+		EACC725D1C6B54A80036DB3D /* VariableListDeltaTracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC717E1C6B54A80036DB3D /* VariableListDeltaTracker.cpp */; };
+		EACC725E1C6B54A80036DB3D /* VariadicSQLParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71801C6B54A80036DB3D /* VariadicSQLParser.cpp */; };
+		EACC725F1C6B54A80036DB3D /* VariadicSQLParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71801C6B54A80036DB3D /* VariadicSQLParser.cpp */; };
+		EACC72601C6B54A80036DB3D /* VitaIncludes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71821C6B54A80036DB3D /* VitaIncludes.cpp */; };
+		EACC72611C6B54A80036DB3D /* VitaIncludes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71821C6B54A80036DB3D /* VitaIncludes.cpp */; };
+		EACC72621C6B54A80036DB3D /* WSAStartupSingleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71851C6B54A80036DB3D /* WSAStartupSingleton.cpp */; };
+		EACC72631C6B54A80036DB3D /* WSAStartupSingleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71851C6B54A80036DB3D /* WSAStartupSingleton.cpp */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
 /* End PBXBuildFile section */
 
@@ -130,6 +349,270 @@
 		EAAB6A671C59FF6500171969 /* Blok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Blok.cpp; path = ../../../shared/network/Blok.cpp; sourceTree = "<group>"; };
 		EAAB6A6A1C59FF7200171969 /* AccelerationBlok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccelerationBlok.h; path = ../../../shared/bloks/AccelerationBlok.h; sourceTree = "<group>"; };
 		EAAB6A6C1C59FF7200171969 /* AccelerationBlok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AccelerationBlok.cpp; path = ../../../shared/bloks/AccelerationBlok.cpp; sourceTree = "<group>"; };
+		EACC70801C6B54A70036DB3D /* _FindFirst.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = _FindFirst.cpp; path = ../../../shared/network/raknet/_FindFirst.cpp; sourceTree = "<group>"; };
+		EACC70811C6B54A70036DB3D /* _FindFirst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _FindFirst.h; path = ../../../shared/network/raknet/_FindFirst.h; sourceTree = "<group>"; };
+		EACC70821C6B54A70036DB3D /* AutopatcherPatchContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AutopatcherPatchContext.h; path = ../../../shared/network/raknet/AutopatcherPatchContext.h; sourceTree = "<group>"; };
+		EACC70831C6B54A70036DB3D /* AutopatcherRepositoryInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AutopatcherRepositoryInterface.h; path = ../../../shared/network/raknet/AutopatcherRepositoryInterface.h; sourceTree = "<group>"; };
+		EACC70841C6B54A70036DB3D /* Base64Encoder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Base64Encoder.cpp; path = ../../../shared/network/raknet/Base64Encoder.cpp; sourceTree = "<group>"; };
+		EACC70851C6B54A70036DB3D /* Base64Encoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base64Encoder.h; path = ../../../shared/network/raknet/Base64Encoder.h; sourceTree = "<group>"; };
+		EACC70861C6B54A70036DB3D /* BitStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BitStream.cpp; path = ../../../shared/network/raknet/BitStream.cpp; sourceTree = "<group>"; };
+		EACC70871C6B54A70036DB3D /* BitStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BitStream.h; path = ../../../shared/network/raknet/BitStream.h; sourceTree = "<group>"; };
+		EACC70881C6B54A70036DB3D /* CCRakNetSlidingWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CCRakNetSlidingWindow.cpp; path = ../../../shared/network/raknet/CCRakNetSlidingWindow.cpp; sourceTree = "<group>"; };
+		EACC70891C6B54A70036DB3D /* CCRakNetSlidingWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCRakNetSlidingWindow.h; path = ../../../shared/network/raknet/CCRakNetSlidingWindow.h; sourceTree = "<group>"; };
+		EACC708A1C6B54A70036DB3D /* CCRakNetUDT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CCRakNetUDT.cpp; path = ../../../shared/network/raknet/CCRakNetUDT.cpp; sourceTree = "<group>"; };
+		EACC708B1C6B54A70036DB3D /* CCRakNetUDT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCRakNetUDT.h; path = ../../../shared/network/raknet/CCRakNetUDT.h; sourceTree = "<group>"; };
+		EACC708C1C6B54A70036DB3D /* CloudClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudClient.cpp; path = ../../../shared/network/raknet/CloudClient.cpp; sourceTree = "<group>"; };
+		EACC708D1C6B54A70036DB3D /* CloudClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudClient.h; path = ../../../shared/network/raknet/CloudClient.h; sourceTree = "<group>"; };
+		EACC708E1C6B54A70036DB3D /* CloudCommon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudCommon.cpp; path = ../../../shared/network/raknet/CloudCommon.cpp; sourceTree = "<group>"; };
+		EACC708F1C6B54A70036DB3D /* CloudCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudCommon.h; path = ../../../shared/network/raknet/CloudCommon.h; sourceTree = "<group>"; };
+		EACC70901C6B54A70036DB3D /* CloudServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CloudServer.cpp; path = ../../../shared/network/raknet/CloudServer.cpp; sourceTree = "<group>"; };
+		EACC70911C6B54A70036DB3D /* CloudServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudServer.h; path = ../../../shared/network/raknet/CloudServer.h; sourceTree = "<group>"; };
+		EACC70921C6B54A70036DB3D /* CommandParserInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CommandParserInterface.cpp; path = ../../../shared/network/raknet/CommandParserInterface.cpp; sourceTree = "<group>"; };
+		EACC70931C6B54A70036DB3D /* CommandParserInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommandParserInterface.h; path = ../../../shared/network/raknet/CommandParserInterface.h; sourceTree = "<group>"; };
+		EACC70941C6B54A70036DB3D /* ConnectionGraph2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ConnectionGraph2.cpp; path = ../../../shared/network/raknet/ConnectionGraph2.cpp; sourceTree = "<group>"; };
+		EACC70951C6B54A70036DB3D /* ConnectionGraph2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConnectionGraph2.h; path = ../../../shared/network/raknet/ConnectionGraph2.h; sourceTree = "<group>"; };
+		EACC70961C6B54A70036DB3D /* ConsoleServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ConsoleServer.cpp; path = ../../../shared/network/raknet/ConsoleServer.cpp; sourceTree = "<group>"; };
+		EACC70971C6B54A70036DB3D /* ConsoleServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConsoleServer.h; path = ../../../shared/network/raknet/ConsoleServer.h; sourceTree = "<group>"; };
+		EACC70981C6B54A70036DB3D /* DataCompressor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DataCompressor.cpp; path = ../../../shared/network/raknet/DataCompressor.cpp; sourceTree = "<group>"; };
+		EACC70991C6B54A70036DB3D /* DataCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataCompressor.h; path = ../../../shared/network/raknet/DataCompressor.h; sourceTree = "<group>"; };
+		EACC709A1C6B54A70036DB3D /* DirectoryDeltaTransfer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DirectoryDeltaTransfer.cpp; path = ../../../shared/network/raknet/DirectoryDeltaTransfer.cpp; sourceTree = "<group>"; };
+		EACC709B1C6B54A70036DB3D /* DirectoryDeltaTransfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DirectoryDeltaTransfer.h; path = ../../../shared/network/raknet/DirectoryDeltaTransfer.h; sourceTree = "<group>"; };
+		EACC709C1C6B54A70036DB3D /* DR_SHA1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DR_SHA1.cpp; path = ../../../shared/network/raknet/DR_SHA1.cpp; sourceTree = "<group>"; };
+		EACC709D1C6B54A70036DB3D /* DR_SHA1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DR_SHA1.h; path = ../../../shared/network/raknet/DR_SHA1.h; sourceTree = "<group>"; };
+		EACC709E1C6B54A70036DB3D /* DS_BinarySearchTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_BinarySearchTree.h; path = ../../../shared/network/raknet/DS_BinarySearchTree.h; sourceTree = "<group>"; };
+		EACC709F1C6B54A70036DB3D /* DS_BPlusTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_BPlusTree.h; path = ../../../shared/network/raknet/DS_BPlusTree.h; sourceTree = "<group>"; };
+		EACC70A01C6B54A70036DB3D /* DS_BytePool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DS_BytePool.cpp; path = ../../../shared/network/raknet/DS_BytePool.cpp; sourceTree = "<group>"; };
+		EACC70A11C6B54A70036DB3D /* DS_BytePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_BytePool.h; path = ../../../shared/network/raknet/DS_BytePool.h; sourceTree = "<group>"; };
+		EACC70A21C6B54A70036DB3D /* DS_ByteQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DS_ByteQueue.cpp; path = ../../../shared/network/raknet/DS_ByteQueue.cpp; sourceTree = "<group>"; };
+		EACC70A31C6B54A70036DB3D /* DS_ByteQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_ByteQueue.h; path = ../../../shared/network/raknet/DS_ByteQueue.h; sourceTree = "<group>"; };
+		EACC70A41C6B54A70036DB3D /* DS_Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_Hash.h; path = ../../../shared/network/raknet/DS_Hash.h; sourceTree = "<group>"; };
+		EACC70A51C6B54A70036DB3D /* DS_Heap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_Heap.h; path = ../../../shared/network/raknet/DS_Heap.h; sourceTree = "<group>"; };
+		EACC70A61C6B54A70036DB3D /* DS_HuffmanEncodingTree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DS_HuffmanEncodingTree.cpp; path = ../../../shared/network/raknet/DS_HuffmanEncodingTree.cpp; sourceTree = "<group>"; };
+		EACC70A71C6B54A70036DB3D /* DS_HuffmanEncodingTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_HuffmanEncodingTree.h; path = ../../../shared/network/raknet/DS_HuffmanEncodingTree.h; sourceTree = "<group>"; };
+		EACC70A81C6B54A70036DB3D /* DS_HuffmanEncodingTreeFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_HuffmanEncodingTreeFactory.h; path = ../../../shared/network/raknet/DS_HuffmanEncodingTreeFactory.h; sourceTree = "<group>"; };
+		EACC70A91C6B54A70036DB3D /* DS_HuffmanEncodingTreeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_HuffmanEncodingTreeNode.h; path = ../../../shared/network/raknet/DS_HuffmanEncodingTreeNode.h; sourceTree = "<group>"; };
+		EACC70AA1C6B54A70036DB3D /* DS_LinkedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_LinkedList.h; path = ../../../shared/network/raknet/DS_LinkedList.h; sourceTree = "<group>"; };
+		EACC70AB1C6B54A70036DB3D /* DS_List.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_List.h; path = ../../../shared/network/raknet/DS_List.h; sourceTree = "<group>"; };
+		EACC70AC1C6B54A70036DB3D /* DS_Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_Map.h; path = ../../../shared/network/raknet/DS_Map.h; sourceTree = "<group>"; };
+		EACC70AD1C6B54A70036DB3D /* DS_MemoryPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_MemoryPool.h; path = ../../../shared/network/raknet/DS_MemoryPool.h; sourceTree = "<group>"; };
+		EACC70AE1C6B54A70036DB3D /* DS_Multilist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_Multilist.h; path = ../../../shared/network/raknet/DS_Multilist.h; sourceTree = "<group>"; };
+		EACC70AF1C6B54A70036DB3D /* DS_OrderedChannelHeap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_OrderedChannelHeap.h; path = ../../../shared/network/raknet/DS_OrderedChannelHeap.h; sourceTree = "<group>"; };
+		EACC70B01C6B54A70036DB3D /* DS_OrderedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_OrderedList.h; path = ../../../shared/network/raknet/DS_OrderedList.h; sourceTree = "<group>"; };
+		EACC70B11C6B54A70036DB3D /* DS_Queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_Queue.h; path = ../../../shared/network/raknet/DS_Queue.h; sourceTree = "<group>"; };
+		EACC70B21C6B54A70036DB3D /* DS_QueueLinkedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_QueueLinkedList.h; path = ../../../shared/network/raknet/DS_QueueLinkedList.h; sourceTree = "<group>"; };
+		EACC70B31C6B54A70036DB3D /* DS_RangeList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_RangeList.h; path = ../../../shared/network/raknet/DS_RangeList.h; sourceTree = "<group>"; };
+		EACC70B41C6B54A70036DB3D /* DS_Table.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DS_Table.cpp; path = ../../../shared/network/raknet/DS_Table.cpp; sourceTree = "<group>"; };
+		EACC70B51C6B54A70036DB3D /* DS_Table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_Table.h; path = ../../../shared/network/raknet/DS_Table.h; sourceTree = "<group>"; };
+		EACC70B61C6B54A80036DB3D /* DS_ThreadsafeAllocatingQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_ThreadsafeAllocatingQueue.h; path = ../../../shared/network/raknet/DS_ThreadsafeAllocatingQueue.h; sourceTree = "<group>"; };
+		EACC70B71C6B54A80036DB3D /* DS_Tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_Tree.h; path = ../../../shared/network/raknet/DS_Tree.h; sourceTree = "<group>"; };
+		EACC70B81C6B54A80036DB3D /* DS_WeightedGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DS_WeightedGraph.h; path = ../../../shared/network/raknet/DS_WeightedGraph.h; sourceTree = "<group>"; };
+		EACC70B91C6B54A80036DB3D /* DynDNS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DynDNS.cpp; path = ../../../shared/network/raknet/DynDNS.cpp; sourceTree = "<group>"; };
+		EACC70BA1C6B54A80036DB3D /* DynDNS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DynDNS.h; path = ../../../shared/network/raknet/DynDNS.h; sourceTree = "<group>"; };
+		EACC70BB1C6B54A80036DB3D /* EmailSender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EmailSender.cpp; path = ../../../shared/network/raknet/EmailSender.cpp; sourceTree = "<group>"; };
+		EACC70BC1C6B54A80036DB3D /* EmailSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmailSender.h; path = ../../../shared/network/raknet/EmailSender.h; sourceTree = "<group>"; };
+		EACC70BD1C6B54A80036DB3D /* EmptyHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmptyHeader.h; path = ../../../shared/network/raknet/EmptyHeader.h; sourceTree = "<group>"; };
+		EACC70BE1C6B54A80036DB3D /* EpochTimeToString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EpochTimeToString.cpp; path = ../../../shared/network/raknet/EpochTimeToString.cpp; sourceTree = "<group>"; };
+		EACC70BF1C6B54A80036DB3D /* EpochTimeToString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EpochTimeToString.h; path = ../../../shared/network/raknet/EpochTimeToString.h; sourceTree = "<group>"; };
+		EACC70C01C6B54A80036DB3D /* Export.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Export.h; path = ../../../shared/network/raknet/Export.h; sourceTree = "<group>"; };
+		EACC70C11C6B54A80036DB3D /* FileList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FileList.cpp; path = ../../../shared/network/raknet/FileList.cpp; sourceTree = "<group>"; };
+		EACC70C21C6B54A80036DB3D /* FileList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileList.h; path = ../../../shared/network/raknet/FileList.h; sourceTree = "<group>"; };
+		EACC70C31C6B54A80036DB3D /* FileListNodeContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileListNodeContext.h; path = ../../../shared/network/raknet/FileListNodeContext.h; sourceTree = "<group>"; };
+		EACC70C41C6B54A80036DB3D /* FileListTransfer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FileListTransfer.cpp; path = ../../../shared/network/raknet/FileListTransfer.cpp; sourceTree = "<group>"; };
+		EACC70C51C6B54A80036DB3D /* FileListTransfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileListTransfer.h; path = ../../../shared/network/raknet/FileListTransfer.h; sourceTree = "<group>"; };
+		EACC70C61C6B54A80036DB3D /* FileListTransferCBInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileListTransferCBInterface.h; path = ../../../shared/network/raknet/FileListTransferCBInterface.h; sourceTree = "<group>"; };
+		EACC70C71C6B54A80036DB3D /* FileOperations.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FileOperations.cpp; path = ../../../shared/network/raknet/FileOperations.cpp; sourceTree = "<group>"; };
+		EACC70C81C6B54A80036DB3D /* FileOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileOperations.h; path = ../../../shared/network/raknet/FileOperations.h; sourceTree = "<group>"; };
+		EACC70C91C6B54A80036DB3D /* FormatString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FormatString.cpp; path = ../../../shared/network/raknet/FormatString.cpp; sourceTree = "<group>"; };
+		EACC70CA1C6B54A80036DB3D /* FormatString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FormatString.h; path = ../../../shared/network/raknet/FormatString.h; sourceTree = "<group>"; };
+		EACC70CB1C6B54A80036DB3D /* FullyConnectedMesh2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FullyConnectedMesh2.cpp; path = ../../../shared/network/raknet/FullyConnectedMesh2.cpp; sourceTree = "<group>"; };
+		EACC70CC1C6B54A80036DB3D /* FullyConnectedMesh2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FullyConnectedMesh2.h; path = ../../../shared/network/raknet/FullyConnectedMesh2.h; sourceTree = "<group>"; };
+		EACC70CD1C6B54A80036DB3D /* Getche.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Getche.cpp; path = ../../../shared/network/raknet/Getche.cpp; sourceTree = "<group>"; };
+		EACC70CE1C6B54A80036DB3D /* Getche.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Getche.h; path = ../../../shared/network/raknet/Getche.h; sourceTree = "<group>"; };
+		EACC70CF1C6B54A80036DB3D /* Gets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Gets.cpp; path = ../../../shared/network/raknet/Gets.cpp; sourceTree = "<group>"; };
+		EACC70D01C6B54A80036DB3D /* Gets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Gets.h; path = ../../../shared/network/raknet/Gets.h; sourceTree = "<group>"; };
+		EACC70D11C6B54A80036DB3D /* GetTime.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GetTime.cpp; path = ../../../shared/network/raknet/GetTime.cpp; sourceTree = "<group>"; };
+		EACC70D21C6B54A80036DB3D /* GetTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetTime.h; path = ../../../shared/network/raknet/GetTime.h; sourceTree = "<group>"; };
+		EACC70D31C6B54A80036DB3D /* gettimeofday.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gettimeofday.cpp; path = ../../../shared/network/raknet/gettimeofday.cpp; sourceTree = "<group>"; };
+		EACC70D41C6B54A80036DB3D /* gettimeofday.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gettimeofday.h; path = ../../../shared/network/raknet/gettimeofday.h; sourceTree = "<group>"; };
+		EACC70D51C6B54A80036DB3D /* GridSectorizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GridSectorizer.cpp; path = ../../../shared/network/raknet/GridSectorizer.cpp; sourceTree = "<group>"; };
+		EACC70D61C6B54A80036DB3D /* GridSectorizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GridSectorizer.h; path = ../../../shared/network/raknet/GridSectorizer.h; sourceTree = "<group>"; };
+		EACC70D71C6B54A80036DB3D /* HTTPConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HTTPConnection.cpp; path = ../../../shared/network/raknet/HTTPConnection.cpp; sourceTree = "<group>"; };
+		EACC70D81C6B54A80036DB3D /* HTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPConnection.h; path = ../../../shared/network/raknet/HTTPConnection.h; sourceTree = "<group>"; };
+		EACC70D91C6B54A80036DB3D /* HTTPConnection2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HTTPConnection2.cpp; path = ../../../shared/network/raknet/HTTPConnection2.cpp; sourceTree = "<group>"; };
+		EACC70DA1C6B54A80036DB3D /* HTTPConnection2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPConnection2.h; path = ../../../shared/network/raknet/HTTPConnection2.h; sourceTree = "<group>"; };
+		EACC70DB1C6B54A80036DB3D /* CheckSum.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CheckSum.cpp; path = ../../../shared/network/raknet/CheckSum.cpp; sourceTree = "<group>"; };
+		EACC70DC1C6B54A80036DB3D /* CheckSum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckSum.h; path = ../../../shared/network/raknet/CheckSum.h; sourceTree = "<group>"; };
+		EACC70DD1C6B54A80036DB3D /* IncrementalReadInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IncrementalReadInterface.cpp; path = ../../../shared/network/raknet/IncrementalReadInterface.cpp; sourceTree = "<group>"; };
+		EACC70DE1C6B54A80036DB3D /* IncrementalReadInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IncrementalReadInterface.h; path = ../../../shared/network/raknet/IncrementalReadInterface.h; sourceTree = "<group>"; };
+		EACC70DF1C6B54A80036DB3D /* InternalPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InternalPacket.h; path = ../../../shared/network/raknet/InternalPacket.h; sourceTree = "<group>"; };
+		EACC70E01C6B54A80036DB3D /* Itoa.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Itoa.cpp; path = ../../../shared/network/raknet/Itoa.cpp; sourceTree = "<group>"; };
+		EACC70E11C6B54A80036DB3D /* Itoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Itoa.h; path = ../../../shared/network/raknet/Itoa.h; sourceTree = "<group>"; };
+		EACC70E21C6B54A80036DB3D /* Kbhit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Kbhit.h; path = ../../../shared/network/raknet/Kbhit.h; sourceTree = "<group>"; };
+		EACC70E31C6B54A80036DB3D /* LinuxStrings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LinuxStrings.cpp; path = ../../../shared/network/raknet/LinuxStrings.cpp; sourceTree = "<group>"; };
+		EACC70E41C6B54A80036DB3D /* LinuxStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LinuxStrings.h; path = ../../../shared/network/raknet/LinuxStrings.h; sourceTree = "<group>"; };
+		EACC70E51C6B54A80036DB3D /* LocklessTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LocklessTypes.cpp; path = ../../../shared/network/raknet/LocklessTypes.cpp; sourceTree = "<group>"; };
+		EACC70E61C6B54A80036DB3D /* LocklessTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocklessTypes.h; path = ../../../shared/network/raknet/LocklessTypes.h; sourceTree = "<group>"; };
+		EACC70E71C6B54A80036DB3D /* LogCommandParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LogCommandParser.cpp; path = ../../../shared/network/raknet/LogCommandParser.cpp; sourceTree = "<group>"; };
+		EACC70E81C6B54A80036DB3D /* LogCommandParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogCommandParser.h; path = ../../../shared/network/raknet/LogCommandParser.h; sourceTree = "<group>"; };
+		EACC70E91C6B54A80036DB3D /* MessageFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MessageFilter.cpp; path = ../../../shared/network/raknet/MessageFilter.cpp; sourceTree = "<group>"; };
+		EACC70EA1C6B54A80036DB3D /* MessageFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageFilter.h; path = ../../../shared/network/raknet/MessageFilter.h; sourceTree = "<group>"; };
+		EACC70EB1C6B54A80036DB3D /* MessageIdentifiers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageIdentifiers.h; path = ../../../shared/network/raknet/MessageIdentifiers.h; sourceTree = "<group>"; };
+		EACC70EC1C6B54A80036DB3D /* MTUSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTUSize.h; path = ../../../shared/network/raknet/MTUSize.h; sourceTree = "<group>"; };
+		EACC70ED1C6B54A80036DB3D /* NativeFeatureIncludes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NativeFeatureIncludes.h; path = ../../../shared/network/raknet/NativeFeatureIncludes.h; sourceTree = "<group>"; };
+		EACC70EE1C6B54A80036DB3D /* NativeFeatureIncludesOverrides.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NativeFeatureIncludesOverrides.h; path = ../../../shared/network/raknet/NativeFeatureIncludesOverrides.h; sourceTree = "<group>"; };
+		EACC70EF1C6B54A80036DB3D /* NativeTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NativeTypes.h; path = ../../../shared/network/raknet/NativeTypes.h; sourceTree = "<group>"; };
+		EACC70F01C6B54A80036DB3D /* NatPunchthroughClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NatPunchthroughClient.cpp; path = ../../../shared/network/raknet/NatPunchthroughClient.cpp; sourceTree = "<group>"; };
+		EACC70F11C6B54A80036DB3D /* NatPunchthroughClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NatPunchthroughClient.h; path = ../../../shared/network/raknet/NatPunchthroughClient.h; sourceTree = "<group>"; };
+		EACC70F21C6B54A80036DB3D /* NatPunchthroughServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NatPunchthroughServer.cpp; path = ../../../shared/network/raknet/NatPunchthroughServer.cpp; sourceTree = "<group>"; };
+		EACC70F31C6B54A80036DB3D /* NatPunchthroughServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NatPunchthroughServer.h; path = ../../../shared/network/raknet/NatPunchthroughServer.h; sourceTree = "<group>"; };
+		EACC70F41C6B54A80036DB3D /* NatTypeDetectionClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NatTypeDetectionClient.cpp; path = ../../../shared/network/raknet/NatTypeDetectionClient.cpp; sourceTree = "<group>"; };
+		EACC70F51C6B54A80036DB3D /* NatTypeDetectionClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NatTypeDetectionClient.h; path = ../../../shared/network/raknet/NatTypeDetectionClient.h; sourceTree = "<group>"; };
+		EACC70F61C6B54A80036DB3D /* NatTypeDetectionCommon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NatTypeDetectionCommon.cpp; path = ../../../shared/network/raknet/NatTypeDetectionCommon.cpp; sourceTree = "<group>"; };
+		EACC70F71C6B54A80036DB3D /* NatTypeDetectionCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NatTypeDetectionCommon.h; path = ../../../shared/network/raknet/NatTypeDetectionCommon.h; sourceTree = "<group>"; };
+		EACC70F81C6B54A80036DB3D /* NatTypeDetectionServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NatTypeDetectionServer.cpp; path = ../../../shared/network/raknet/NatTypeDetectionServer.cpp; sourceTree = "<group>"; };
+		EACC70F91C6B54A80036DB3D /* NatTypeDetectionServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NatTypeDetectionServer.h; path = ../../../shared/network/raknet/NatTypeDetectionServer.h; sourceTree = "<group>"; };
+		EACC70FA1C6B54A80036DB3D /* NetworkIDManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NetworkIDManager.cpp; path = ../../../shared/network/raknet/NetworkIDManager.cpp; sourceTree = "<group>"; };
+		EACC70FB1C6B54A80036DB3D /* NetworkIDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkIDManager.h; path = ../../../shared/network/raknet/NetworkIDManager.h; sourceTree = "<group>"; };
+		EACC70FC1C6B54A80036DB3D /* NetworkIDObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NetworkIDObject.cpp; path = ../../../shared/network/raknet/NetworkIDObject.cpp; sourceTree = "<group>"; };
+		EACC70FD1C6B54A80036DB3D /* NetworkIDObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkIDObject.h; path = ../../../shared/network/raknet/NetworkIDObject.h; sourceTree = "<group>"; };
+		EACC70FE1C6B54A80036DB3D /* PacketConsoleLogger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PacketConsoleLogger.cpp; path = ../../../shared/network/raknet/PacketConsoleLogger.cpp; sourceTree = "<group>"; };
+		EACC70FF1C6B54A80036DB3D /* PacketConsoleLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PacketConsoleLogger.h; path = ../../../shared/network/raknet/PacketConsoleLogger.h; sourceTree = "<group>"; };
+		EACC71001C6B54A80036DB3D /* PacketFileLogger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PacketFileLogger.cpp; path = ../../../shared/network/raknet/PacketFileLogger.cpp; sourceTree = "<group>"; };
+		EACC71011C6B54A80036DB3D /* PacketFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PacketFileLogger.h; path = ../../../shared/network/raknet/PacketFileLogger.h; sourceTree = "<group>"; };
+		EACC71021C6B54A80036DB3D /* PacketizedTCP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PacketizedTCP.cpp; path = ../../../shared/network/raknet/PacketizedTCP.cpp; sourceTree = "<group>"; };
+		EACC71031C6B54A80036DB3D /* PacketizedTCP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PacketizedTCP.h; path = ../../../shared/network/raknet/PacketizedTCP.h; sourceTree = "<group>"; };
+		EACC71041C6B54A80036DB3D /* PacketLogger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PacketLogger.cpp; path = ../../../shared/network/raknet/PacketLogger.cpp; sourceTree = "<group>"; };
+		EACC71051C6B54A80036DB3D /* PacketLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PacketLogger.h; path = ../../../shared/network/raknet/PacketLogger.h; sourceTree = "<group>"; };
+		EACC71061C6B54A80036DB3D /* PacketOutputWindowLogger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PacketOutputWindowLogger.cpp; path = ../../../shared/network/raknet/PacketOutputWindowLogger.cpp; sourceTree = "<group>"; };
+		EACC71071C6B54A80036DB3D /* PacketOutputWindowLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PacketOutputWindowLogger.h; path = ../../../shared/network/raknet/PacketOutputWindowLogger.h; sourceTree = "<group>"; };
+		EACC71081C6B54A80036DB3D /* PacketPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PacketPool.h; path = ../../../shared/network/raknet/PacketPool.h; sourceTree = "<group>"; };
+		EACC71091C6B54A80036DB3D /* PacketPriority.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PacketPriority.h; path = ../../../shared/network/raknet/PacketPriority.h; sourceTree = "<group>"; };
+		EACC710A1C6B54A80036DB3D /* PluginInterface2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PluginInterface2.cpp; path = ../../../shared/network/raknet/PluginInterface2.cpp; sourceTree = "<group>"; };
+		EACC710B1C6B54A80036DB3D /* PluginInterface2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PluginInterface2.h; path = ../../../shared/network/raknet/PluginInterface2.h; sourceTree = "<group>"; };
+		EACC710C1C6B54A80036DB3D /* PS3Includes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PS3Includes.h; path = ../../../shared/network/raknet/PS3Includes.h; sourceTree = "<group>"; };
+		EACC710D1C6B54A80036DB3D /* PS4Includes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PS4Includes.cpp; path = ../../../shared/network/raknet/PS4Includes.cpp; sourceTree = "<group>"; };
+		EACC710E1C6B54A80036DB3D /* PS4Includes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PS4Includes.h; path = ../../../shared/network/raknet/PS4Includes.h; sourceTree = "<group>"; };
+		EACC710F1C6B54A80036DB3D /* Rackspace.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Rackspace.cpp; path = ../../../shared/network/raknet/Rackspace.cpp; sourceTree = "<group>"; };
+		EACC71101C6B54A80036DB3D /* Rackspace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rackspace.h; path = ../../../shared/network/raknet/Rackspace.h; sourceTree = "<group>"; };
+		EACC71111C6B54A80036DB3D /* RakAlloca.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakAlloca.h; path = ../../../shared/network/raknet/RakAlloca.h; sourceTree = "<group>"; };
+		EACC71121C6B54A80036DB3D /* RakAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakAssert.h; path = ../../../shared/network/raknet/RakAssert.h; sourceTree = "<group>"; };
+		EACC71131C6B54A80036DB3D /* RakMemoryOverride.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RakMemoryOverride.cpp; path = ../../../shared/network/raknet/RakMemoryOverride.cpp; sourceTree = "<group>"; };
+		EACC71141C6B54A80036DB3D /* RakMemoryOverride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakMemoryOverride.h; path = ../../../shared/network/raknet/RakMemoryOverride.h; sourceTree = "<group>"; };
+		EACC71151C6B54A80036DB3D /* RakNetCommandParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RakNetCommandParser.cpp; path = ../../../shared/network/raknet/RakNetCommandParser.cpp; sourceTree = "<group>"; };
+		EACC71161C6B54A80036DB3D /* RakNetCommandParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakNetCommandParser.h; path = ../../../shared/network/raknet/RakNetCommandParser.h; sourceTree = "<group>"; };
+		EACC71171C6B54A80036DB3D /* RakNetDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakNetDefines.h; path = ../../../shared/network/raknet/RakNetDefines.h; sourceTree = "<group>"; };
+		EACC71181C6B54A80036DB3D /* RakNetDefinesOverrides.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakNetDefinesOverrides.h; path = ../../../shared/network/raknet/RakNetDefinesOverrides.h; sourceTree = "<group>"; };
+		EACC71191C6B54A80036DB3D /* RakNetSmartPtr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakNetSmartPtr.h; path = ../../../shared/network/raknet/RakNetSmartPtr.h; sourceTree = "<group>"; };
+		EACC711A1C6B54A80036DB3D /* RakNetSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RakNetSocket.cpp; path = ../../../shared/network/raknet/RakNetSocket.cpp; sourceTree = "<group>"; };
+		EACC711B1C6B54A80036DB3D /* RakNetSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakNetSocket.h; path = ../../../shared/network/raknet/RakNetSocket.h; sourceTree = "<group>"; };
+		EACC711C1C6B54A80036DB3D /* RakNetSocket2_360_720.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RakNetSocket2_360_720.cpp; path = ../../../shared/network/raknet/RakNetSocket2_360_720.cpp; sourceTree = "<group>"; };
+		EACC711D1C6B54A80036DB3D /* RakNetSocket2_Berkley_NativeClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RakNetSocket2_Berkley_NativeClient.cpp; path = ../../../shared/network/raknet/RakNetSocket2_Berkley_NativeClient.cpp; sourceTree = "<group>"; };
+		EACC711E1C6B54A80036DB3D /* RakNetSocket2_Berkley.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RakNetSocket2_Berkley.cpp; path = ../../../shared/network/raknet/RakNetSocket2_Berkley.cpp; sourceTree = "<group>"; };
+		EACC711F1C6B54A80036DB3D /* RakNetSocket2_NativeClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RakNetSocket2_NativeClient.cpp; path = ../../../shared/network/raknet/RakNetSocket2_NativeClient.cpp; sourceTree = "<group>"; };
+		EACC71201C6B54A80036DB3D /* RakNetSocket2_PS3_PS4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RakNetSocket2_PS3_PS4.cpp; path = ../../../shared/network/raknet/RakNetSocket2_PS3_PS4.cpp; sourceTree = "<group>"; };
+		EACC71211C6B54A80036DB3D /* RakNetSocket2_PS4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RakNetSocket2_PS4.cpp; path = ../../../shared/network/raknet/RakNetSocket2_PS4.cpp; sourceTree = "<group>"; };
+		EACC71221C6B54A80036DB3D /* RakNetSocket2_Vita.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RakNetSocket2_Vita.cpp; path = ../../../shared/network/raknet/RakNetSocket2_Vita.cpp; sourceTree = "<group>"; };
+		EACC71231C6B54A80036DB3D /* RakNetSocket2_Windows_Linux_360.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RakNetSocket2_Windows_Linux_360.cpp; path = ../../../shared/network/raknet/RakNetSocket2_Windows_Linux_360.cpp; sourceTree = "<group>"; };
+		EACC71241C6B54A80036DB3D /* RakNetSocket2_Windows_Linux.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RakNetSocket2_Windows_Linux.cpp; path = ../../../shared/network/raknet/RakNetSocket2_Windows_Linux.cpp; sourceTree = "<group>"; };
+		EACC71251C6B54A80036DB3D /* RakNetSocket2_WindowsStore8.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RakNetSocket2_WindowsStore8.cpp; path = ../../../shared/network/raknet/RakNetSocket2_WindowsStore8.cpp; sourceTree = "<group>"; };
+		EACC71261C6B54A80036DB3D /* RakNetSocket2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RakNetSocket2.cpp; path = ../../../shared/network/raknet/RakNetSocket2.cpp; sourceTree = "<group>"; };
+		EACC71271C6B54A80036DB3D /* RakNetSocket2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakNetSocket2.h; path = ../../../shared/network/raknet/RakNetSocket2.h; sourceTree = "<group>"; };
+		EACC71281C6B54A80036DB3D /* RakNetStatistics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RakNetStatistics.cpp; path = ../../../shared/network/raknet/RakNetStatistics.cpp; sourceTree = "<group>"; };
+		EACC71291C6B54A80036DB3D /* RakNetStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakNetStatistics.h; path = ../../../shared/network/raknet/RakNetStatistics.h; sourceTree = "<group>"; };
+		EACC712A1C6B54A80036DB3D /* RakNetTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakNetTime.h; path = ../../../shared/network/raknet/RakNetTime.h; sourceTree = "<group>"; };
+		EACC712B1C6B54A80036DB3D /* RakNetTransport2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RakNetTransport2.cpp; path = ../../../shared/network/raknet/RakNetTransport2.cpp; sourceTree = "<group>"; };
+		EACC712C1C6B54A80036DB3D /* RakNetTransport2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakNetTransport2.h; path = ../../../shared/network/raknet/RakNetTransport2.h; sourceTree = "<group>"; };
+		EACC712D1C6B54A80036DB3D /* RakNetTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RakNetTypes.cpp; path = ../../../shared/network/raknet/RakNetTypes.cpp; sourceTree = "<group>"; };
+		EACC712E1C6B54A80036DB3D /* RakNetTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakNetTypes.h; path = ../../../shared/network/raknet/RakNetTypes.h; sourceTree = "<group>"; };
+		EACC712F1C6B54A80036DB3D /* RakNetVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakNetVersion.h; path = ../../../shared/network/raknet/RakNetVersion.h; sourceTree = "<group>"; };
+		EACC71301C6B54A80036DB3D /* RakPeer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RakPeer.cpp; path = ../../../shared/network/raknet/RakPeer.cpp; sourceTree = "<group>"; };
+		EACC71311C6B54A80036DB3D /* RakPeer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakPeer.h; path = ../../../shared/network/raknet/RakPeer.h; sourceTree = "<group>"; };
+		EACC71321C6B54A80036DB3D /* RakPeerInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakPeerInterface.h; path = ../../../shared/network/raknet/RakPeerInterface.h; sourceTree = "<group>"; };
+		EACC71331C6B54A80036DB3D /* RakSleep.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RakSleep.cpp; path = ../../../shared/network/raknet/RakSleep.cpp; sourceTree = "<group>"; };
+		EACC71341C6B54A80036DB3D /* RakSleep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakSleep.h; path = ../../../shared/network/raknet/RakSleep.h; sourceTree = "<group>"; };
+		EACC71351C6B54A80036DB3D /* RakString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RakString.cpp; path = ../../../shared/network/raknet/RakString.cpp; sourceTree = "<group>"; };
+		EACC71361C6B54A80036DB3D /* RakString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakString.h; path = ../../../shared/network/raknet/RakString.h; sourceTree = "<group>"; };
+		EACC71371C6B54A80036DB3D /* RakThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RakThread.cpp; path = ../../../shared/network/raknet/RakThread.cpp; sourceTree = "<group>"; };
+		EACC71381C6B54A80036DB3D /* RakThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakThread.h; path = ../../../shared/network/raknet/RakThread.h; sourceTree = "<group>"; };
+		EACC71391C6B54A80036DB3D /* RakWString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RakWString.cpp; path = ../../../shared/network/raknet/RakWString.cpp; sourceTree = "<group>"; };
+		EACC713A1C6B54A80036DB3D /* RakWString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RakWString.h; path = ../../../shared/network/raknet/RakWString.h; sourceTree = "<group>"; };
+		EACC713B1C6B54A80036DB3D /* Rand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Rand.cpp; path = ../../../shared/network/raknet/Rand.cpp; sourceTree = "<group>"; };
+		EACC713C1C6B54A80036DB3D /* Rand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rand.h; path = ../../../shared/network/raknet/Rand.h; sourceTree = "<group>"; };
+		EACC713D1C6B54A80036DB3D /* RandSync.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RandSync.cpp; path = ../../../shared/network/raknet/RandSync.cpp; sourceTree = "<group>"; };
+		EACC713E1C6B54A80036DB3D /* RandSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RandSync.h; path = ../../../shared/network/raknet/RandSync.h; sourceTree = "<group>"; };
+		EACC713F1C6B54A80036DB3D /* ReadyEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ReadyEvent.cpp; path = ../../../shared/network/raknet/ReadyEvent.cpp; sourceTree = "<group>"; };
+		EACC71401C6B54A80036DB3D /* ReadyEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReadyEvent.h; path = ../../../shared/network/raknet/ReadyEvent.h; sourceTree = "<group>"; };
+		EACC71411C6B54A80036DB3D /* RefCountedObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RefCountedObj.h; path = ../../../shared/network/raknet/RefCountedObj.h; sourceTree = "<group>"; };
+		EACC71421C6B54A80036DB3D /* RelayPlugin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RelayPlugin.cpp; path = ../../../shared/network/raknet/RelayPlugin.cpp; sourceTree = "<group>"; };
+		EACC71431C6B54A80036DB3D /* RelayPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RelayPlugin.h; path = ../../../shared/network/raknet/RelayPlugin.h; sourceTree = "<group>"; };
+		EACC71441C6B54A80036DB3D /* ReliabilityLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ReliabilityLayer.cpp; path = ../../../shared/network/raknet/ReliabilityLayer.cpp; sourceTree = "<group>"; };
+		EACC71451C6B54A80036DB3D /* ReliabilityLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReliabilityLayer.h; path = ../../../shared/network/raknet/ReliabilityLayer.h; sourceTree = "<group>"; };
+		EACC71461C6B54A80036DB3D /* ReplicaEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReplicaEnums.h; path = ../../../shared/network/raknet/ReplicaEnums.h; sourceTree = "<group>"; };
+		EACC71471C6B54A80036DB3D /* ReplicaManager3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ReplicaManager3.cpp; path = ../../../shared/network/raknet/ReplicaManager3.cpp; sourceTree = "<group>"; };
+		EACC71481C6B54A80036DB3D /* ReplicaManager3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReplicaManager3.h; path = ../../../shared/network/raknet/ReplicaManager3.h; sourceTree = "<group>"; };
+		EACC71491C6B54A80036DB3D /* Router2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Router2.cpp; path = ../../../shared/network/raknet/Router2.cpp; sourceTree = "<group>"; };
+		EACC714A1C6B54A80036DB3D /* Router2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Router2.h; path = ../../../shared/network/raknet/Router2.h; sourceTree = "<group>"; };
+		EACC714B1C6B54A80036DB3D /* RPC4Plugin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RPC4Plugin.cpp; path = ../../../shared/network/raknet/RPC4Plugin.cpp; sourceTree = "<group>"; };
+		EACC714C1C6B54A80036DB3D /* RPC4Plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RPC4Plugin.h; path = ../../../shared/network/raknet/RPC4Plugin.h; sourceTree = "<group>"; };
+		EACC714D1C6B54A80036DB3D /* SecureHandshake.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SecureHandshake.cpp; path = ../../../shared/network/raknet/SecureHandshake.cpp; sourceTree = "<group>"; };
+		EACC714E1C6B54A80036DB3D /* SecureHandshake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecureHandshake.h; path = ../../../shared/network/raknet/SecureHandshake.h; sourceTree = "<group>"; };
+		EACC714F1C6B54A80036DB3D /* SendToThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SendToThread.cpp; path = ../../../shared/network/raknet/SendToThread.cpp; sourceTree = "<group>"; };
+		EACC71501C6B54A80036DB3D /* SendToThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendToThread.h; path = ../../../shared/network/raknet/SendToThread.h; sourceTree = "<group>"; };
+		EACC71511C6B54A80036DB3D /* SignaledEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SignaledEvent.cpp; path = ../../../shared/network/raknet/SignaledEvent.cpp; sourceTree = "<group>"; };
+		EACC71521C6B54A80036DB3D /* SignaledEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignaledEvent.h; path = ../../../shared/network/raknet/SignaledEvent.h; sourceTree = "<group>"; };
+		EACC71531C6B54A80036DB3D /* SimpleMutex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SimpleMutex.cpp; path = ../../../shared/network/raknet/SimpleMutex.cpp; sourceTree = "<group>"; };
+		EACC71541C6B54A80036DB3D /* SimpleMutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleMutex.h; path = ../../../shared/network/raknet/SimpleMutex.h; sourceTree = "<group>"; };
+		EACC71551C6B54A80036DB3D /* SimpleTCPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleTCPServer.h; path = ../../../shared/network/raknet/SimpleTCPServer.h; sourceTree = "<group>"; };
+		EACC71561C6B54A80036DB3D /* SingleProducerConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SingleProducerConsumer.h; path = ../../../shared/network/raknet/SingleProducerConsumer.h; sourceTree = "<group>"; };
+		EACC71571C6B54A80036DB3D /* SocketDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocketDefines.h; path = ../../../shared/network/raknet/SocketDefines.h; sourceTree = "<group>"; };
+		EACC71581C6B54A80036DB3D /* SocketIncludes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocketIncludes.h; path = ../../../shared/network/raknet/SocketIncludes.h; sourceTree = "<group>"; };
+		EACC71591C6B54A80036DB3D /* SocketLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SocketLayer.cpp; path = ../../../shared/network/raknet/SocketLayer.cpp; sourceTree = "<group>"; };
+		EACC715A1C6B54A80036DB3D /* SocketLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocketLayer.h; path = ../../../shared/network/raknet/SocketLayer.h; sourceTree = "<group>"; };
+		EACC715B1C6B54A80036DB3D /* StatisticsHistory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StatisticsHistory.cpp; path = ../../../shared/network/raknet/StatisticsHistory.cpp; sourceTree = "<group>"; };
+		EACC715C1C6B54A80036DB3D /* StatisticsHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatisticsHistory.h; path = ../../../shared/network/raknet/StatisticsHistory.h; sourceTree = "<group>"; };
+		EACC715D1C6B54A80036DB3D /* StringCompressor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StringCompressor.cpp; path = ../../../shared/network/raknet/StringCompressor.cpp; sourceTree = "<group>"; };
+		EACC715E1C6B54A80036DB3D /* StringCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StringCompressor.h; path = ../../../shared/network/raknet/StringCompressor.h; sourceTree = "<group>"; };
+		EACC715F1C6B54A80036DB3D /* StringTable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StringTable.cpp; path = ../../../shared/network/raknet/StringTable.cpp; sourceTree = "<group>"; };
+		EACC71601C6B54A80036DB3D /* StringTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StringTable.h; path = ../../../shared/network/raknet/StringTable.h; sourceTree = "<group>"; };
+		EACC71611C6B54A80036DB3D /* SuperFastHash.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SuperFastHash.cpp; path = ../../../shared/network/raknet/SuperFastHash.cpp; sourceTree = "<group>"; };
+		EACC71621C6B54A80036DB3D /* SuperFastHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuperFastHash.h; path = ../../../shared/network/raknet/SuperFastHash.h; sourceTree = "<group>"; };
+		EACC71631C6B54A80036DB3D /* TableSerializer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TableSerializer.cpp; path = ../../../shared/network/raknet/TableSerializer.cpp; sourceTree = "<group>"; };
+		EACC71641C6B54A80036DB3D /* TableSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableSerializer.h; path = ../../../shared/network/raknet/TableSerializer.h; sourceTree = "<group>"; };
+		EACC71651C6B54A80036DB3D /* TCPInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TCPInterface.cpp; path = ../../../shared/network/raknet/TCPInterface.cpp; sourceTree = "<group>"; };
+		EACC71661C6B54A80036DB3D /* TCPInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCPInterface.h; path = ../../../shared/network/raknet/TCPInterface.h; sourceTree = "<group>"; };
+		EACC71671C6B54A80036DB3D /* TeamBalancer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TeamBalancer.cpp; path = ../../../shared/network/raknet/TeamBalancer.cpp; sourceTree = "<group>"; };
+		EACC71681C6B54A80036DB3D /* TeamBalancer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TeamBalancer.h; path = ../../../shared/network/raknet/TeamBalancer.h; sourceTree = "<group>"; };
+		EACC71691C6B54A80036DB3D /* TeamManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TeamManager.cpp; path = ../../../shared/network/raknet/TeamManager.cpp; sourceTree = "<group>"; };
+		EACC716A1C6B54A80036DB3D /* TeamManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TeamManager.h; path = ../../../shared/network/raknet/TeamManager.h; sourceTree = "<group>"; };
+		EACC716B1C6B54A80036DB3D /* TelnetTransport.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TelnetTransport.cpp; path = ../../../shared/network/raknet/TelnetTransport.cpp; sourceTree = "<group>"; };
+		EACC716C1C6B54A80036DB3D /* TelnetTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TelnetTransport.h; path = ../../../shared/network/raknet/TelnetTransport.h; sourceTree = "<group>"; };
+		EACC716D1C6B54A80036DB3D /* ThreadPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThreadPool.h; path = ../../../shared/network/raknet/ThreadPool.h; sourceTree = "<group>"; };
+		EACC716E1C6B54A80036DB3D /* ThreadsafePacketLogger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ThreadsafePacketLogger.cpp; path = ../../../shared/network/raknet/ThreadsafePacketLogger.cpp; sourceTree = "<group>"; };
+		EACC716F1C6B54A80036DB3D /* ThreadsafePacketLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThreadsafePacketLogger.h; path = ../../../shared/network/raknet/ThreadsafePacketLogger.h; sourceTree = "<group>"; };
+		EACC71701C6B54A80036DB3D /* TransportInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransportInterface.h; path = ../../../shared/network/raknet/TransportInterface.h; sourceTree = "<group>"; };
+		EACC71711C6B54A80036DB3D /* TwoWayAuthentication.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TwoWayAuthentication.cpp; path = ../../../shared/network/raknet/TwoWayAuthentication.cpp; sourceTree = "<group>"; };
+		EACC71721C6B54A80036DB3D /* TwoWayAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwoWayAuthentication.h; path = ../../../shared/network/raknet/TwoWayAuthentication.h; sourceTree = "<group>"; };
+		EACC71731C6B54A80036DB3D /* UDPForwarder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UDPForwarder.cpp; path = ../../../shared/network/raknet/UDPForwarder.cpp; sourceTree = "<group>"; };
+		EACC71741C6B54A80036DB3D /* UDPForwarder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UDPForwarder.h; path = ../../../shared/network/raknet/UDPForwarder.h; sourceTree = "<group>"; };
+		EACC71751C6B54A80036DB3D /* UDPProxyClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UDPProxyClient.cpp; path = ../../../shared/network/raknet/UDPProxyClient.cpp; sourceTree = "<group>"; };
+		EACC71761C6B54A80036DB3D /* UDPProxyClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UDPProxyClient.h; path = ../../../shared/network/raknet/UDPProxyClient.h; sourceTree = "<group>"; };
+		EACC71771C6B54A80036DB3D /* UDPProxyCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UDPProxyCommon.h; path = ../../../shared/network/raknet/UDPProxyCommon.h; sourceTree = "<group>"; };
+		EACC71781C6B54A80036DB3D /* UDPProxyCoordinator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UDPProxyCoordinator.cpp; path = ../../../shared/network/raknet/UDPProxyCoordinator.cpp; sourceTree = "<group>"; };
+		EACC71791C6B54A80036DB3D /* UDPProxyCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UDPProxyCoordinator.h; path = ../../../shared/network/raknet/UDPProxyCoordinator.h; sourceTree = "<group>"; };
+		EACC717A1C6B54A80036DB3D /* UDPProxyServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UDPProxyServer.cpp; path = ../../../shared/network/raknet/UDPProxyServer.cpp; sourceTree = "<group>"; };
+		EACC717B1C6B54A80036DB3D /* UDPProxyServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UDPProxyServer.h; path = ../../../shared/network/raknet/UDPProxyServer.h; sourceTree = "<group>"; };
+		EACC717C1C6B54A80036DB3D /* VariableDeltaSerializer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VariableDeltaSerializer.cpp; path = ../../../shared/network/raknet/VariableDeltaSerializer.cpp; sourceTree = "<group>"; };
+		EACC717D1C6B54A80036DB3D /* VariableDeltaSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VariableDeltaSerializer.h; path = ../../../shared/network/raknet/VariableDeltaSerializer.h; sourceTree = "<group>"; };
+		EACC717E1C6B54A80036DB3D /* VariableListDeltaTracker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VariableListDeltaTracker.cpp; path = ../../../shared/network/raknet/VariableListDeltaTracker.cpp; sourceTree = "<group>"; };
+		EACC717F1C6B54A80036DB3D /* VariableListDeltaTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VariableListDeltaTracker.h; path = ../../../shared/network/raknet/VariableListDeltaTracker.h; sourceTree = "<group>"; };
+		EACC71801C6B54A80036DB3D /* VariadicSQLParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VariadicSQLParser.cpp; path = ../../../shared/network/raknet/VariadicSQLParser.cpp; sourceTree = "<group>"; };
+		EACC71811C6B54A80036DB3D /* VariadicSQLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VariadicSQLParser.h; path = ../../../shared/network/raknet/VariadicSQLParser.h; sourceTree = "<group>"; };
+		EACC71821C6B54A80036DB3D /* VitaIncludes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VitaIncludes.cpp; path = ../../../shared/network/raknet/VitaIncludes.cpp; sourceTree = "<group>"; };
+		EACC71831C6B54A80036DB3D /* VitaIncludes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VitaIncludes.h; path = ../../../shared/network/raknet/VitaIncludes.h; sourceTree = "<group>"; };
+		EACC71841C6B54A80036DB3D /* WindowsIncludes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WindowsIncludes.h; path = ../../../shared/network/raknet/WindowsIncludes.h; sourceTree = "<group>"; };
+		EACC71851C6B54A80036DB3D /* WSAStartupSingleton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WSAStartupSingleton.cpp; path = ../../../shared/network/raknet/WSAStartupSingleton.cpp; sourceTree = "<group>"; };
+		EACC71861C6B54A80036DB3D /* WSAStartupSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WSAStartupSingleton.h; path = ../../../shared/network/raknet/WSAStartupSingleton.h; sourceTree = "<group>"; };
+		EACC71871C6B54A80036DB3D /* XBox360Includes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XBox360Includes.h; path = ../../../shared/network/raknet/XBox360Includes.h; sourceTree = "<group>"; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -139,7 +622,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA5CA2CA1C3FC90D003437FF /* raknetx86_64.a in Frameworks */,
 				ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */,
 				5087E76717EB910900C73F5D /* libz.dylib in Frameworks */,
 				8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */,
@@ -292,6 +774,7 @@
 		EA4189151C33C2C9004B8934 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				EACC707F1C6B547A0036DB3D /* RakNet */,
 				EA888B8B1C58B09A00534275 /* Blocks */,
 				EA5CA2C21C3FC724003437FF /* Connector.h */,
 				EA5CA2C11C3FC724003437FF /* Connector.cpp */,
@@ -344,6 +827,277 @@
 				EA2F6DFD1C68A979009E3F1A /* TackleBlok.h */,
 			);
 			name = Blocks;
+			sourceTree = "<group>";
+		};
+		EACC707F1C6B547A0036DB3D /* RakNet */ = {
+			isa = PBXGroup;
+			children = (
+				EACC70801C6B54A70036DB3D /* _FindFirst.cpp */,
+				EACC70811C6B54A70036DB3D /* _FindFirst.h */,
+				EACC70821C6B54A70036DB3D /* AutopatcherPatchContext.h */,
+				EACC70831C6B54A70036DB3D /* AutopatcherRepositoryInterface.h */,
+				EACC70841C6B54A70036DB3D /* Base64Encoder.cpp */,
+				EACC70851C6B54A70036DB3D /* Base64Encoder.h */,
+				EACC70861C6B54A70036DB3D /* BitStream.cpp */,
+				EACC70871C6B54A70036DB3D /* BitStream.h */,
+				EACC70881C6B54A70036DB3D /* CCRakNetSlidingWindow.cpp */,
+				EACC70891C6B54A70036DB3D /* CCRakNetSlidingWindow.h */,
+				EACC708A1C6B54A70036DB3D /* CCRakNetUDT.cpp */,
+				EACC708B1C6B54A70036DB3D /* CCRakNetUDT.h */,
+				EACC708C1C6B54A70036DB3D /* CloudClient.cpp */,
+				EACC708D1C6B54A70036DB3D /* CloudClient.h */,
+				EACC708E1C6B54A70036DB3D /* CloudCommon.cpp */,
+				EACC708F1C6B54A70036DB3D /* CloudCommon.h */,
+				EACC70901C6B54A70036DB3D /* CloudServer.cpp */,
+				EACC70911C6B54A70036DB3D /* CloudServer.h */,
+				EACC70921C6B54A70036DB3D /* CommandParserInterface.cpp */,
+				EACC70931C6B54A70036DB3D /* CommandParserInterface.h */,
+				EACC70941C6B54A70036DB3D /* ConnectionGraph2.cpp */,
+				EACC70951C6B54A70036DB3D /* ConnectionGraph2.h */,
+				EACC70961C6B54A70036DB3D /* ConsoleServer.cpp */,
+				EACC70971C6B54A70036DB3D /* ConsoleServer.h */,
+				EACC70981C6B54A70036DB3D /* DataCompressor.cpp */,
+				EACC70991C6B54A70036DB3D /* DataCompressor.h */,
+				EACC709A1C6B54A70036DB3D /* DirectoryDeltaTransfer.cpp */,
+				EACC709B1C6B54A70036DB3D /* DirectoryDeltaTransfer.h */,
+				EACC709C1C6B54A70036DB3D /* DR_SHA1.cpp */,
+				EACC709D1C6B54A70036DB3D /* DR_SHA1.h */,
+				EACC709E1C6B54A70036DB3D /* DS_BinarySearchTree.h */,
+				EACC709F1C6B54A70036DB3D /* DS_BPlusTree.h */,
+				EACC70A01C6B54A70036DB3D /* DS_BytePool.cpp */,
+				EACC70A11C6B54A70036DB3D /* DS_BytePool.h */,
+				EACC70A21C6B54A70036DB3D /* DS_ByteQueue.cpp */,
+				EACC70A31C6B54A70036DB3D /* DS_ByteQueue.h */,
+				EACC70A41C6B54A70036DB3D /* DS_Hash.h */,
+				EACC70A51C6B54A70036DB3D /* DS_Heap.h */,
+				EACC70A61C6B54A70036DB3D /* DS_HuffmanEncodingTree.cpp */,
+				EACC70A71C6B54A70036DB3D /* DS_HuffmanEncodingTree.h */,
+				EACC70A81C6B54A70036DB3D /* DS_HuffmanEncodingTreeFactory.h */,
+				EACC70A91C6B54A70036DB3D /* DS_HuffmanEncodingTreeNode.h */,
+				EACC70AA1C6B54A70036DB3D /* DS_LinkedList.h */,
+				EACC70AB1C6B54A70036DB3D /* DS_List.h */,
+				EACC70AC1C6B54A70036DB3D /* DS_Map.h */,
+				EACC70AD1C6B54A70036DB3D /* DS_MemoryPool.h */,
+				EACC70AE1C6B54A70036DB3D /* DS_Multilist.h */,
+				EACC70AF1C6B54A70036DB3D /* DS_OrderedChannelHeap.h */,
+				EACC70B01C6B54A70036DB3D /* DS_OrderedList.h */,
+				EACC70B11C6B54A70036DB3D /* DS_Queue.h */,
+				EACC70B21C6B54A70036DB3D /* DS_QueueLinkedList.h */,
+				EACC70B31C6B54A70036DB3D /* DS_RangeList.h */,
+				EACC70B41C6B54A70036DB3D /* DS_Table.cpp */,
+				EACC70B51C6B54A70036DB3D /* DS_Table.h */,
+				EACC70B61C6B54A80036DB3D /* DS_ThreadsafeAllocatingQueue.h */,
+				EACC70B71C6B54A80036DB3D /* DS_Tree.h */,
+				EACC70B81C6B54A80036DB3D /* DS_WeightedGraph.h */,
+				EACC70B91C6B54A80036DB3D /* DynDNS.cpp */,
+				EACC70BA1C6B54A80036DB3D /* DynDNS.h */,
+				EACC70BB1C6B54A80036DB3D /* EmailSender.cpp */,
+				EACC70BC1C6B54A80036DB3D /* EmailSender.h */,
+				EACC70BD1C6B54A80036DB3D /* EmptyHeader.h */,
+				EACC70BE1C6B54A80036DB3D /* EpochTimeToString.cpp */,
+				EACC70BF1C6B54A80036DB3D /* EpochTimeToString.h */,
+				EACC70C01C6B54A80036DB3D /* Export.h */,
+				EACC70C11C6B54A80036DB3D /* FileList.cpp */,
+				EACC70C21C6B54A80036DB3D /* FileList.h */,
+				EACC70C31C6B54A80036DB3D /* FileListNodeContext.h */,
+				EACC70C41C6B54A80036DB3D /* FileListTransfer.cpp */,
+				EACC70C51C6B54A80036DB3D /* FileListTransfer.h */,
+				EACC70C61C6B54A80036DB3D /* FileListTransferCBInterface.h */,
+				EACC70C71C6B54A80036DB3D /* FileOperations.cpp */,
+				EACC70C81C6B54A80036DB3D /* FileOperations.h */,
+				EACC70C91C6B54A80036DB3D /* FormatString.cpp */,
+				EACC70CA1C6B54A80036DB3D /* FormatString.h */,
+				EACC70CB1C6B54A80036DB3D /* FullyConnectedMesh2.cpp */,
+				EACC70CC1C6B54A80036DB3D /* FullyConnectedMesh2.h */,
+				EACC70CD1C6B54A80036DB3D /* Getche.cpp */,
+				EACC70CE1C6B54A80036DB3D /* Getche.h */,
+				EACC70CF1C6B54A80036DB3D /* Gets.cpp */,
+				EACC70D01C6B54A80036DB3D /* Gets.h */,
+				EACC70D11C6B54A80036DB3D /* GetTime.cpp */,
+				EACC70D21C6B54A80036DB3D /* GetTime.h */,
+				EACC70D31C6B54A80036DB3D /* gettimeofday.cpp */,
+				EACC70D41C6B54A80036DB3D /* gettimeofday.h */,
+				EACC70D51C6B54A80036DB3D /* GridSectorizer.cpp */,
+				EACC70D61C6B54A80036DB3D /* GridSectorizer.h */,
+				EACC70D71C6B54A80036DB3D /* HTTPConnection.cpp */,
+				EACC70D81C6B54A80036DB3D /* HTTPConnection.h */,
+				EACC70D91C6B54A80036DB3D /* HTTPConnection2.cpp */,
+				EACC70DA1C6B54A80036DB3D /* HTTPConnection2.h */,
+				EACC70DB1C6B54A80036DB3D /* CheckSum.cpp */,
+				EACC70DC1C6B54A80036DB3D /* CheckSum.h */,
+				EACC70DD1C6B54A80036DB3D /* IncrementalReadInterface.cpp */,
+				EACC70DE1C6B54A80036DB3D /* IncrementalReadInterface.h */,
+				EACC70DF1C6B54A80036DB3D /* InternalPacket.h */,
+				EACC70E01C6B54A80036DB3D /* Itoa.cpp */,
+				EACC70E11C6B54A80036DB3D /* Itoa.h */,
+				EACC70E21C6B54A80036DB3D /* Kbhit.h */,
+				EACC70E31C6B54A80036DB3D /* LinuxStrings.cpp */,
+				EACC70E41C6B54A80036DB3D /* LinuxStrings.h */,
+				EACC70E51C6B54A80036DB3D /* LocklessTypes.cpp */,
+				EACC70E61C6B54A80036DB3D /* LocklessTypes.h */,
+				EACC70E71C6B54A80036DB3D /* LogCommandParser.cpp */,
+				EACC70E81C6B54A80036DB3D /* LogCommandParser.h */,
+				EACC70E91C6B54A80036DB3D /* MessageFilter.cpp */,
+				EACC70EA1C6B54A80036DB3D /* MessageFilter.h */,
+				EACC70EB1C6B54A80036DB3D /* MessageIdentifiers.h */,
+				EACC70EC1C6B54A80036DB3D /* MTUSize.h */,
+				EACC70ED1C6B54A80036DB3D /* NativeFeatureIncludes.h */,
+				EACC70EE1C6B54A80036DB3D /* NativeFeatureIncludesOverrides.h */,
+				EACC70EF1C6B54A80036DB3D /* NativeTypes.h */,
+				EACC70F01C6B54A80036DB3D /* NatPunchthroughClient.cpp */,
+				EACC70F11C6B54A80036DB3D /* NatPunchthroughClient.h */,
+				EACC70F21C6B54A80036DB3D /* NatPunchthroughServer.cpp */,
+				EACC70F31C6B54A80036DB3D /* NatPunchthroughServer.h */,
+				EACC70F41C6B54A80036DB3D /* NatTypeDetectionClient.cpp */,
+				EACC70F51C6B54A80036DB3D /* NatTypeDetectionClient.h */,
+				EACC70F61C6B54A80036DB3D /* NatTypeDetectionCommon.cpp */,
+				EACC70F71C6B54A80036DB3D /* NatTypeDetectionCommon.h */,
+				EACC70F81C6B54A80036DB3D /* NatTypeDetectionServer.cpp */,
+				EACC70F91C6B54A80036DB3D /* NatTypeDetectionServer.h */,
+				EACC70FA1C6B54A80036DB3D /* NetworkIDManager.cpp */,
+				EACC70FB1C6B54A80036DB3D /* NetworkIDManager.h */,
+				EACC70FC1C6B54A80036DB3D /* NetworkIDObject.cpp */,
+				EACC70FD1C6B54A80036DB3D /* NetworkIDObject.h */,
+				EACC70FE1C6B54A80036DB3D /* PacketConsoleLogger.cpp */,
+				EACC70FF1C6B54A80036DB3D /* PacketConsoleLogger.h */,
+				EACC71001C6B54A80036DB3D /* PacketFileLogger.cpp */,
+				EACC71011C6B54A80036DB3D /* PacketFileLogger.h */,
+				EACC71021C6B54A80036DB3D /* PacketizedTCP.cpp */,
+				EACC71031C6B54A80036DB3D /* PacketizedTCP.h */,
+				EACC71041C6B54A80036DB3D /* PacketLogger.cpp */,
+				EACC71051C6B54A80036DB3D /* PacketLogger.h */,
+				EACC71061C6B54A80036DB3D /* PacketOutputWindowLogger.cpp */,
+				EACC71071C6B54A80036DB3D /* PacketOutputWindowLogger.h */,
+				EACC71081C6B54A80036DB3D /* PacketPool.h */,
+				EACC71091C6B54A80036DB3D /* PacketPriority.h */,
+				EACC710A1C6B54A80036DB3D /* PluginInterface2.cpp */,
+				EACC710B1C6B54A80036DB3D /* PluginInterface2.h */,
+				EACC710C1C6B54A80036DB3D /* PS3Includes.h */,
+				EACC710D1C6B54A80036DB3D /* PS4Includes.cpp */,
+				EACC710E1C6B54A80036DB3D /* PS4Includes.h */,
+				EACC710F1C6B54A80036DB3D /* Rackspace.cpp */,
+				EACC71101C6B54A80036DB3D /* Rackspace.h */,
+				EACC71111C6B54A80036DB3D /* RakAlloca.h */,
+				EACC71121C6B54A80036DB3D /* RakAssert.h */,
+				EACC71131C6B54A80036DB3D /* RakMemoryOverride.cpp */,
+				EACC71141C6B54A80036DB3D /* RakMemoryOverride.h */,
+				EACC71151C6B54A80036DB3D /* RakNetCommandParser.cpp */,
+				EACC71161C6B54A80036DB3D /* RakNetCommandParser.h */,
+				EACC71171C6B54A80036DB3D /* RakNetDefines.h */,
+				EACC71181C6B54A80036DB3D /* RakNetDefinesOverrides.h */,
+				EACC71191C6B54A80036DB3D /* RakNetSmartPtr.h */,
+				EACC711A1C6B54A80036DB3D /* RakNetSocket.cpp */,
+				EACC711B1C6B54A80036DB3D /* RakNetSocket.h */,
+				EACC711C1C6B54A80036DB3D /* RakNetSocket2_360_720.cpp */,
+				EACC711D1C6B54A80036DB3D /* RakNetSocket2_Berkley_NativeClient.cpp */,
+				EACC711E1C6B54A80036DB3D /* RakNetSocket2_Berkley.cpp */,
+				EACC711F1C6B54A80036DB3D /* RakNetSocket2_NativeClient.cpp */,
+				EACC71201C6B54A80036DB3D /* RakNetSocket2_PS3_PS4.cpp */,
+				EACC71211C6B54A80036DB3D /* RakNetSocket2_PS4.cpp */,
+				EACC71221C6B54A80036DB3D /* RakNetSocket2_Vita.cpp */,
+				EACC71231C6B54A80036DB3D /* RakNetSocket2_Windows_Linux_360.cpp */,
+				EACC71241C6B54A80036DB3D /* RakNetSocket2_Windows_Linux.cpp */,
+				EACC71251C6B54A80036DB3D /* RakNetSocket2_WindowsStore8.cpp */,
+				EACC71261C6B54A80036DB3D /* RakNetSocket2.cpp */,
+				EACC71271C6B54A80036DB3D /* RakNetSocket2.h */,
+				EACC71281C6B54A80036DB3D /* RakNetStatistics.cpp */,
+				EACC71291C6B54A80036DB3D /* RakNetStatistics.h */,
+				EACC712A1C6B54A80036DB3D /* RakNetTime.h */,
+				EACC712B1C6B54A80036DB3D /* RakNetTransport2.cpp */,
+				EACC712C1C6B54A80036DB3D /* RakNetTransport2.h */,
+				EACC712D1C6B54A80036DB3D /* RakNetTypes.cpp */,
+				EACC712E1C6B54A80036DB3D /* RakNetTypes.h */,
+				EACC712F1C6B54A80036DB3D /* RakNetVersion.h */,
+				EACC71301C6B54A80036DB3D /* RakPeer.cpp */,
+				EACC71311C6B54A80036DB3D /* RakPeer.h */,
+				EACC71321C6B54A80036DB3D /* RakPeerInterface.h */,
+				EACC71331C6B54A80036DB3D /* RakSleep.cpp */,
+				EACC71341C6B54A80036DB3D /* RakSleep.h */,
+				EACC71351C6B54A80036DB3D /* RakString.cpp */,
+				EACC71361C6B54A80036DB3D /* RakString.h */,
+				EACC71371C6B54A80036DB3D /* RakThread.cpp */,
+				EACC71381C6B54A80036DB3D /* RakThread.h */,
+				EACC71391C6B54A80036DB3D /* RakWString.cpp */,
+				EACC713A1C6B54A80036DB3D /* RakWString.h */,
+				EACC713B1C6B54A80036DB3D /* Rand.cpp */,
+				EACC713C1C6B54A80036DB3D /* Rand.h */,
+				EACC713D1C6B54A80036DB3D /* RandSync.cpp */,
+				EACC713E1C6B54A80036DB3D /* RandSync.h */,
+				EACC713F1C6B54A80036DB3D /* ReadyEvent.cpp */,
+				EACC71401C6B54A80036DB3D /* ReadyEvent.h */,
+				EACC71411C6B54A80036DB3D /* RefCountedObj.h */,
+				EACC71421C6B54A80036DB3D /* RelayPlugin.cpp */,
+				EACC71431C6B54A80036DB3D /* RelayPlugin.h */,
+				EACC71441C6B54A80036DB3D /* ReliabilityLayer.cpp */,
+				EACC71451C6B54A80036DB3D /* ReliabilityLayer.h */,
+				EACC71461C6B54A80036DB3D /* ReplicaEnums.h */,
+				EACC71471C6B54A80036DB3D /* ReplicaManager3.cpp */,
+				EACC71481C6B54A80036DB3D /* ReplicaManager3.h */,
+				EACC71491C6B54A80036DB3D /* Router2.cpp */,
+				EACC714A1C6B54A80036DB3D /* Router2.h */,
+				EACC714B1C6B54A80036DB3D /* RPC4Plugin.cpp */,
+				EACC714C1C6B54A80036DB3D /* RPC4Plugin.h */,
+				EACC714D1C6B54A80036DB3D /* SecureHandshake.cpp */,
+				EACC714E1C6B54A80036DB3D /* SecureHandshake.h */,
+				EACC714F1C6B54A80036DB3D /* SendToThread.cpp */,
+				EACC71501C6B54A80036DB3D /* SendToThread.h */,
+				EACC71511C6B54A80036DB3D /* SignaledEvent.cpp */,
+				EACC71521C6B54A80036DB3D /* SignaledEvent.h */,
+				EACC71531C6B54A80036DB3D /* SimpleMutex.cpp */,
+				EACC71541C6B54A80036DB3D /* SimpleMutex.h */,
+				EACC71551C6B54A80036DB3D /* SimpleTCPServer.h */,
+				EACC71561C6B54A80036DB3D /* SingleProducerConsumer.h */,
+				EACC71571C6B54A80036DB3D /* SocketDefines.h */,
+				EACC71581C6B54A80036DB3D /* SocketIncludes.h */,
+				EACC71591C6B54A80036DB3D /* SocketLayer.cpp */,
+				EACC715A1C6B54A80036DB3D /* SocketLayer.h */,
+				EACC715B1C6B54A80036DB3D /* StatisticsHistory.cpp */,
+				EACC715C1C6B54A80036DB3D /* StatisticsHistory.h */,
+				EACC715D1C6B54A80036DB3D /* StringCompressor.cpp */,
+				EACC715E1C6B54A80036DB3D /* StringCompressor.h */,
+				EACC715F1C6B54A80036DB3D /* StringTable.cpp */,
+				EACC71601C6B54A80036DB3D /* StringTable.h */,
+				EACC71611C6B54A80036DB3D /* SuperFastHash.cpp */,
+				EACC71621C6B54A80036DB3D /* SuperFastHash.h */,
+				EACC71631C6B54A80036DB3D /* TableSerializer.cpp */,
+				EACC71641C6B54A80036DB3D /* TableSerializer.h */,
+				EACC71651C6B54A80036DB3D /* TCPInterface.cpp */,
+				EACC71661C6B54A80036DB3D /* TCPInterface.h */,
+				EACC71671C6B54A80036DB3D /* TeamBalancer.cpp */,
+				EACC71681C6B54A80036DB3D /* TeamBalancer.h */,
+				EACC71691C6B54A80036DB3D /* TeamManager.cpp */,
+				EACC716A1C6B54A80036DB3D /* TeamManager.h */,
+				EACC716B1C6B54A80036DB3D /* TelnetTransport.cpp */,
+				EACC716C1C6B54A80036DB3D /* TelnetTransport.h */,
+				EACC716D1C6B54A80036DB3D /* ThreadPool.h */,
+				EACC716E1C6B54A80036DB3D /* ThreadsafePacketLogger.cpp */,
+				EACC716F1C6B54A80036DB3D /* ThreadsafePacketLogger.h */,
+				EACC71701C6B54A80036DB3D /* TransportInterface.h */,
+				EACC71711C6B54A80036DB3D /* TwoWayAuthentication.cpp */,
+				EACC71721C6B54A80036DB3D /* TwoWayAuthentication.h */,
+				EACC71731C6B54A80036DB3D /* UDPForwarder.cpp */,
+				EACC71741C6B54A80036DB3D /* UDPForwarder.h */,
+				EACC71751C6B54A80036DB3D /* UDPProxyClient.cpp */,
+				EACC71761C6B54A80036DB3D /* UDPProxyClient.h */,
+				EACC71771C6B54A80036DB3D /* UDPProxyCommon.h */,
+				EACC71781C6B54A80036DB3D /* UDPProxyCoordinator.cpp */,
+				EACC71791C6B54A80036DB3D /* UDPProxyCoordinator.h */,
+				EACC717A1C6B54A80036DB3D /* UDPProxyServer.cpp */,
+				EACC717B1C6B54A80036DB3D /* UDPProxyServer.h */,
+				EACC717C1C6B54A80036DB3D /* VariableDeltaSerializer.cpp */,
+				EACC717D1C6B54A80036DB3D /* VariableDeltaSerializer.h */,
+				EACC717E1C6B54A80036DB3D /* VariableListDeltaTracker.cpp */,
+				EACC717F1C6B54A80036DB3D /* VariableListDeltaTracker.h */,
+				EACC71801C6B54A80036DB3D /* VariadicSQLParser.cpp */,
+				EACC71811C6B54A80036DB3D /* VariadicSQLParser.h */,
+				EACC71821C6B54A80036DB3D /* VitaIncludes.cpp */,
+				EACC71831C6B54A80036DB3D /* VitaIncludes.h */,
+				EACC71841C6B54A80036DB3D /* WindowsIncludes.h */,
+				EACC71851C6B54A80036DB3D /* WSAStartupSingleton.cpp */,
+				EACC71861C6B54A80036DB3D /* WSAStartupSingleton.h */,
+				EACC71871C6B54A80036DB3D /* XBox360Includes.h */,
+			);
+			name = RakNet;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -437,20 +1191,130 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EACC71BE1C6B54A80036DB3D /* Gets.cpp in Sources */,
 				EA2400621C6490C400906235 /* Player.cpp in Sources */,
+				EACC71B81C6B54A80036DB3D /* FormatString.cpp in Sources */,
+				EACC722E1C6B54A80036DB3D /* Router2.cpp in Sources */,
+				EACC71E61C6B54A80036DB3D /* PacketConsoleLogger.cpp in Sources */,
+				EACC718E1C6B54A80036DB3D /* CCRakNetSlidingWindow.cpp in Sources */,
+				EACC71CE1C6B54A80036DB3D /* Itoa.cpp in Sources */,
+				EACC71CC1C6B54A80036DB3D /* IncrementalReadInterface.cpp in Sources */,
+				EACC71E41C6B54A80036DB3D /* NetworkIDObject.cpp in Sources */,
+				EACC71D81C6B54A80036DB3D /* NatPunchthroughClient.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
+				EACC72361C6B54A80036DB3D /* SignaledEvent.cpp in Sources */,
+				EACC71F81C6B54A80036DB3D /* RakNetCommandParser.cpp in Sources */,
+				EACC720E1C6B54A80036DB3D /* RakNetSocket2_WindowsStore8.cpp in Sources */,
+				EACC723A1C6B54A80036DB3D /* SocketLayer.cpp in Sources */,
+				EACC71D21C6B54A80036DB3D /* LocklessTypes.cpp in Sources */,
+				EACC71F41C6B54A80036DB3D /* Rackspace.cpp in Sources */,
+				EACC72221C6B54A80036DB3D /* Rand.cpp in Sources */,
+				EACC71981C6B54A80036DB3D /* CommandParserInterface.cpp in Sources */,
+				EACC71E01C6B54A80036DB3D /* NatTypeDetectionServer.cpp in Sources */,
+				EACC71881C6B54A80036DB3D /* _FindFirst.cpp in Sources */,
+				EACC72581C6B54A80036DB3D /* UDPProxyServer.cpp in Sources */,
+				EACC72121C6B54A80036DB3D /* RakNetStatistics.cpp in Sources */,
+				EACC71DA1C6B54A80036DB3D /* NatPunchthroughServer.cpp in Sources */,
+				EACC72421C6B54A80036DB3D /* SuperFastHash.cpp in Sources */,
+				EACC71961C6B54A80036DB3D /* CloudServer.cpp in Sources */,
+				EACC721A1C6B54A80036DB3D /* RakSleep.cpp in Sources */,
+				EACC71F01C6B54A80036DB3D /* PluginInterface2.cpp in Sources */,
+				EACC71C01C6B54A80036DB3D /* GetTime.cpp in Sources */,
+				EACC72501C6B54A80036DB3D /* TwoWayAuthentication.cpp in Sources */,
+				EACC71A21C6B54A80036DB3D /* DR_SHA1.cpp in Sources */,
 				EA5CA2C41C3FC724003437FF /* Connector.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
+				EACC72101C6B54A80036DB3D /* RakNetSocket2.cpp in Sources */,
+				EACC72261C6B54A80036DB3D /* ReadyEvent.cpp in Sources */,
+				EACC72321C6B54A80036DB3D /* SecureHandshake.cpp in Sources */,
+				EACC724A1C6B54A80036DB3D /* TeamManager.cpp in Sources */,
+				EACC71B21C6B54A80036DB3D /* FileList.cpp in Sources */,
+				EACC719C1C6B54A80036DB3D /* ConsoleServer.cpp in Sources */,
+				EACC72521C6B54A80036DB3D /* UDPForwarder.cpp in Sources */,
+				EACC72161C6B54A80036DB3D /* RakNetTypes.cpp in Sources */,
+				EACC72461C6B54A80036DB3D /* TCPInterface.cpp in Sources */,
+				EACC71D61C6B54A80036DB3D /* MessageFilter.cpp in Sources */,
+				EACC71FC1C6B54A80036DB3D /* RakNetSocket2_360_720.cpp in Sources */,
+				EACC721E1C6B54A80036DB3D /* RakThread.cpp in Sources */,
+				EACC71941C6B54A80036DB3D /* CloudCommon.cpp in Sources */,
 				EA2400661C64E38B00906235 /* CollisionBlok.cpp in Sources */,
+				EACC720A1C6B54A80036DB3D /* RakNetSocket2_Windows_Linux_360.cpp in Sources */,
+				EACC718C1C6B54A80036DB3D /* BitStream.cpp in Sources */,
+				EACC71DC1C6B54A80036DB3D /* NatTypeDetectionClient.cpp in Sources */,
 				EA2400751C6518A900906235 /* ServerNameBlok.cpp in Sources */,
+				EACC72141C6B54A80036DB3D /* RakNetTransport2.cpp in Sources */,
+				EACC71A81C6B54A80036DB3D /* DS_HuffmanEncodingTree.cpp in Sources */,
+				EACC718A1C6B54A80036DB3D /* Base64Encoder.cpp in Sources */,
+				EACC725E1C6B54A80036DB3D /* VariadicSQLParser.cpp in Sources */,
+				EACC725C1C6B54A80036DB3D /* VariableListDeltaTracker.cpp in Sources */,
+				EACC725A1C6B54A80036DB3D /* VariableDeltaSerializer.cpp in Sources */,
+				EACC71D41C6B54A80036DB3D /* LogCommandParser.cpp in Sources */,
+				EACC71921C6B54A80036DB3D /* CloudClient.cpp in Sources */,
+				EACC71A61C6B54A80036DB3D /* DS_ByteQueue.cpp in Sources */,
+				EACC723E1C6B54A80036DB3D /* StringCompressor.cpp in Sources */,
 				46880B8B19C43A87006E1F66 /* LobbyScene.cpp in Sources */,
 				EA2F6DFA1C689ABA009E3F1A /* KickBlok.cpp in Sources */,
+				EACC71D01C6B54A80036DB3D /* LinuxStrings.cpp in Sources */,
+				EACC71EE1C6B54A80036DB3D /* PacketOutputWindowLogger.cpp in Sources */,
+				EACC72001C6B54A80036DB3D /* RakNetSocket2_Berkley.cpp in Sources */,
+				EACC72061C6B54A80036DB3D /* RakNetSocket2_PS4.cpp in Sources */,
+				EACC72241C6B54A80036DB3D /* RandSync.cpp in Sources */,
+				EACC71EC1C6B54A80036DB3D /* PacketLogger.cpp in Sources */,
+				EACC71A01C6B54A80036DB3D /* DirectoryDeltaTransfer.cpp in Sources */,
+				EACC72041C6B54A80036DB3D /* RakNetSocket2_PS3_PS4.cpp in Sources */,
+				EACC71C41C6B54A80036DB3D /* GridSectorizer.cpp in Sources */,
 				EA5F25F81C6A88F1004E2A79 /* ResetScoreBlok.cpp in Sources */,
+				EACC72621C6B54A80036DB3D /* WSAStartupSingleton.cpp in Sources */,
+				EACC72301C6B54A80036DB3D /* RPC4Plugin.cpp in Sources */,
+				EACC719E1C6B54A80036DB3D /* DataCompressor.cpp in Sources */,
+				EACC72401C6B54A80036DB3D /* StringTable.cpp in Sources */,
+				EACC722A1C6B54A80036DB3D /* ReliabilityLayer.cpp in Sources */,
+				EACC72381C6B54A80036DB3D /* SimpleMutex.cpp in Sources */,
+				EACC71E81C6B54A80036DB3D /* PacketFileLogger.cpp in Sources */,
+				EACC719A1C6B54A80036DB3D /* ConnectionGraph2.cpp in Sources */,
+				EACC72281C6B54A80036DB3D /* RelayPlugin.cpp in Sources */,
+				EACC71BC1C6B54A80036DB3D /* Getche.cpp in Sources */,
 				EA5F25F11C6A879B004E2A79 /* AdminBlok.cpp in Sources */,
+				EACC71DE1C6B54A80036DB3D /* NatTypeDetectionCommon.cpp in Sources */,
+				EACC72201C6B54A80036DB3D /* RakWString.cpp in Sources */,
+				EACC71EA1C6B54A80036DB3D /* PacketizedTCP.cpp in Sources */,
+				EACC71C81C6B54A80036DB3D /* HTTPConnection2.cpp in Sources */,
+				EACC72081C6B54A80036DB3D /* RakNetSocket2_Vita.cpp in Sources */,
+				EACC71CA1C6B54A80036DB3D /* CheckSum.cpp in Sources */,
+				EACC71AE1C6B54A80036DB3D /* EmailSender.cpp in Sources */,
+				EACC72541C6B54A80036DB3D /* UDPProxyClient.cpp in Sources */,
+				EACC71AC1C6B54A80036DB3D /* DynDNS.cpp in Sources */,
+				EACC721C1C6B54A80036DB3D /* RakString.cpp in Sources */,
 				EAAB6A681C59FF6500171969 /* Blok.cpp in Sources */,
+				EACC722C1C6B54A80036DB3D /* ReplicaManager3.cpp in Sources */,
+				EACC71B61C6B54A80036DB3D /* FileOperations.cpp in Sources */,
+				EACC72181C6B54A80036DB3D /* RakPeer.cpp in Sources */,
+				EACC724E1C6B54A80036DB3D /* ThreadsafePacketLogger.cpp in Sources */,
 				EAAB6A6E1C59FF7200171969 /* AccelerationBlok.cpp in Sources */,
+				EACC723C1C6B54A80036DB3D /* StatisticsHistory.cpp in Sources */,
+				EACC72441C6B54A80036DB3D /* TableSerializer.cpp in Sources */,
+				EACC71AA1C6B54A80036DB3D /* DS_Table.cpp in Sources */,
+				EACC71901C6B54A80036DB3D /* CCRakNetUDT.cpp in Sources */,
+				EACC71F61C6B54A80036DB3D /* RakMemoryOverride.cpp in Sources */,
+				EACC724C1C6B54A80036DB3D /* TelnetTransport.cpp in Sources */,
+				EACC720C1C6B54A80036DB3D /* RakNetSocket2_Windows_Linux.cpp in Sources */,
+				EACC71E21C6B54A80036DB3D /* NetworkIDManager.cpp in Sources */,
+				EACC71A41C6B54A80036DB3D /* DS_BytePool.cpp in Sources */,
+				EACC71FA1C6B54A80036DB3D /* RakNetSocket.cpp in Sources */,
+				EACC71B41C6B54A80036DB3D /* FileListTransfer.cpp in Sources */,
 				EA2400711C6513F900906235 /* StringBlok.cpp in Sources */,
+				EACC72341C6B54A80036DB3D /* SendToThread.cpp in Sources */,
+				EACC72481C6B54A80036DB3D /* TeamBalancer.cpp in Sources */,
 				EA2F6DFE1C68A979009E3F1A /* TackleBlok.cpp in Sources */,
+				EACC71BA1C6B54A80036DB3D /* FullyConnectedMesh2.cpp in Sources */,
+				EACC72561C6B54A80036DB3D /* UDPProxyCoordinator.cpp in Sources */,
+				EACC71B01C6B54A80036DB3D /* EpochTimeToString.cpp in Sources */,
+				EACC71C21C6B54A80036DB3D /* gettimeofday.cpp in Sources */,
+				EACC72601C6B54A80036DB3D /* VitaIncludes.cpp in Sources */,
+				EACC72021C6B54A80036DB3D /* RakNetSocket2_NativeClient.cpp in Sources */,
+				EACC71F21C6B54A80036DB3D /* PS4Includes.cpp in Sources */,
+				EACC71C61C6B54A80036DB3D /* HTTPConnection.cpp in Sources */,
+				EACC71FE1C6B54A80036DB3D /* RakNetSocket2_Berkley_NativeClient.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,21 +1323,131 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAAB6A691C59FF6500171969 /* Blok.cpp in Sources */,
+				EACC72291C6B54A80036DB3D /* RelayPlugin.cpp in Sources */,
+				EACC71F51C6B54A80036DB3D /* Rackspace.cpp in Sources */,
+				EACC71951C6B54A80036DB3D /* CloudCommon.cpp in Sources */,
+				EACC724B1C6B54A80036DB3D /* TeamManager.cpp in Sources */,
+				EACC72111C6B54A80036DB3D /* RakNetSocket2.cpp in Sources */,
 				EA2F6DFF1C68A979009E3F1A /* TackleBlok.cpp in Sources */,
+				EACC72451C6B54A80036DB3D /* TableSerializer.cpp in Sources */,
+				EACC71DD1C6B54A80036DB3D /* NatTypeDetectionClient.cpp in Sources */,
+				EACC71F91C6B54A80036DB3D /* RakNetCommandParser.cpp in Sources */,
+				EACC71C71C6B54A80036DB3D /* HTTPConnection.cpp in Sources */,
 				EA41894C1C342C4B004B8934 /* TestDelegate.cpp in Sources */,
+				EACC725D1C6B54A80036DB3D /* VariableListDeltaTracker.cpp in Sources */,
+				EACC71AD1C6B54A80036DB3D /* DynDNS.cpp in Sources */,
+				EACC72351C6B54A80036DB3D /* SendToThread.cpp in Sources */,
+				EACC72251C6B54A80036DB3D /* RandSync.cpp in Sources */,
+				EACC722B1C6B54A80036DB3D /* ReliabilityLayer.cpp in Sources */,
+				EACC71AF1C6B54A80036DB3D /* EmailSender.cpp in Sources */,
+				EACC71B91C6B54A80036DB3D /* FormatString.cpp in Sources */,
+				EACC72011C6B54A80036DB3D /* RakNetSocket2_Berkley.cpp in Sources */,
+				EACC72031C6B54A80036DB3D /* RakNetSocket2_NativeClient.cpp in Sources */,
+				EACC72051C6B54A80036DB3D /* RakNetSocket2_PS3_PS4.cpp in Sources */,
+				EACC72131C6B54A80036DB3D /* RakNetStatistics.cpp in Sources */,
+				EACC71991C6B54A80036DB3D /* CommandParserInterface.cpp in Sources */,
+				EACC718D1C6B54A80036DB3D /* BitStream.cpp in Sources */,
 				EA41894D1C342C4B004B8934 /* TestScene.cpp in Sources */,
+				EACC71DF1C6B54A80036DB3D /* NatTypeDetectionCommon.cpp in Sources */,
+				EACC71EB1C6B54A80036DB3D /* PacketizedTCP.cpp in Sources */,
+				EACC72311C6B54A80036DB3D /* RPC4Plugin.cpp in Sources */,
+				EACC725B1C6B54A80036DB3D /* VariableDeltaSerializer.cpp in Sources */,
+				EACC71D31C6B54A80036DB3D /* LocklessTypes.cpp in Sources */,
+				EACC72551C6B54A80036DB3D /* UDPProxyClient.cpp in Sources */,
+				EACC721B1C6B54A80036DB3D /* RakSleep.cpp in Sources */,
+				EACC71CD1C6B54A80036DB3D /* IncrementalReadInterface.cpp in Sources */,
+				EACC71891C6B54A80036DB3D /* _FindFirst.cpp in Sources */,
+				EACC71A11C6B54A80036DB3D /* DirectoryDeltaTransfer.cpp in Sources */,
+				EACC720F1C6B54A80036DB3D /* RakNetSocket2_WindowsStore8.cpp in Sources */,
+				EACC72531C6B54A80036DB3D /* UDPForwarder.cpp in Sources */,
+				EACC71BF1C6B54A80036DB3D /* Gets.cpp in Sources */,
+				EACC72591C6B54A80036DB3D /* UDPProxyServer.cpp in Sources */,
+				EACC71FF1C6B54A80036DB3D /* RakNetSocket2_Berkley_NativeClient.cpp in Sources */,
 				EA4189301C342867004B8934 /* main.cpp in Sources */,
+				EACC71F71C6B54A80036DB3D /* RakMemoryOverride.cpp in Sources */,
+				EACC72631C6B54A80036DB3D /* WSAStartupSingleton.cpp in Sources */,
+				EACC71E71C6B54A80036DB3D /* PacketConsoleLogger.cpp in Sources */,
 				EA5F25F21C6A879B004E2A79 /* AdminBlok.cpp in Sources */,
 				EA2F6DFB1C689ABA009E3F1A /* KickBlok.cpp in Sources */,
+				EACC71E51C6B54A80036DB3D /* NetworkIDObject.cpp in Sources */,
 				EA2400631C6490C400906235 /* Player.cpp in Sources */,
+				EACC71B31C6B54A80036DB3D /* FileList.cpp in Sources */,
+				EACC718B1C6B54A80036DB3D /* Base64Encoder.cpp in Sources */,
+				EACC72371C6B54A80036DB3D /* SignaledEvent.cpp in Sources */,
+				EACC72511C6B54A80036DB3D /* TwoWayAuthentication.cpp in Sources */,
+				EACC719B1C6B54A80036DB3D /* ConnectionGraph2.cpp in Sources */,
+				EACC72431C6B54A80036DB3D /* SuperFastHash.cpp in Sources */,
+				EACC71CF1C6B54A80036DB3D /* Itoa.cpp in Sources */,
+				EACC719D1C6B54A80036DB3D /* ConsoleServer.cpp in Sources */,
+				EACC71C11C6B54A80036DB3D /* GetTime.cpp in Sources */,
+				EACC71A71C6B54A80036DB3D /* DS_ByteQueue.cpp in Sources */,
+				EACC72171C6B54A80036DB3D /* RakNetTypes.cpp in Sources */,
+				EACC71E31C6B54A80036DB3D /* NetworkIDManager.cpp in Sources */,
+				EACC72491C6B54A80036DB3D /* TeamBalancer.cpp in Sources */,
+				EACC71DB1C6B54A80036DB3D /* NatPunchthroughServer.cpp in Sources */,
+				EACC71AB1C6B54A80036DB3D /* DS_Table.cpp in Sources */,
+				EACC718F1C6B54A80036DB3D /* CCRakNetSlidingWindow.cpp in Sources */,
+				EACC71931C6B54A80036DB3D /* CloudClient.cpp in Sources */,
+				EACC72471C6B54A80036DB3D /* TCPInterface.cpp in Sources */,
+				EACC71BB1C6B54A80036DB3D /* FullyConnectedMesh2.cpp in Sources */,
+				EACC71F11C6B54A80036DB3D /* PluginInterface2.cpp in Sources */,
+				EACC71EF1C6B54A80036DB3D /* PacketOutputWindowLogger.cpp in Sources */,
+				EACC71911C6B54A80036DB3D /* CCRakNetUDT.cpp in Sources */,
 				EA4189311C342867004B8934 /* LobbyScene.cpp in Sources */,
 				EA2400721C6513F900906235 /* StringBlok.cpp in Sources */,
+				EACC71A91C6B54A80036DB3D /* DS_HuffmanEncodingTree.cpp in Sources */,
+				EACC72331C6B54A80036DB3D /* SecureHandshake.cpp in Sources */,
+				EACC72231C6B54A80036DB3D /* Rand.cpp in Sources */,
+				EACC71B51C6B54A80036DB3D /* FileListTransfer.cpp in Sources */,
+				EACC723D1C6B54A80036DB3D /* StatisticsHistory.cpp in Sources */,
 				EA5F25F91C6A88F1004E2A79 /* ResetScoreBlok.cpp in Sources */,
+				EACC71F31C6B54A80036DB3D /* PS4Includes.cpp in Sources */,
+				EACC71C31C6B54A80036DB3D /* gettimeofday.cpp in Sources */,
+				EACC72211C6B54A80036DB3D /* RakWString.cpp in Sources */,
 				EA4189501C342CEF004B8934 /* Catch.h in Sources */,
+				EACC719F1C6B54A80036DB3D /* DataCompressor.cpp in Sources */,
+				EACC71B71C6B54A80036DB3D /* FileOperations.cpp in Sources */,
+				EACC721D1C6B54A80036DB3D /* RakString.cpp in Sources */,
 				EA5CA2C51C3FC724003437FF /* Connector.cpp in Sources */,
+				EACC71FD1C6B54A80036DB3D /* RakNetSocket2_360_720.cpp in Sources */,
+				EACC71A51C6B54A80036DB3D /* DS_BytePool.cpp in Sources */,
 				EAAB6A6F1C59FF7200171969 /* AccelerationBlok.cpp in Sources */,
+				EACC71D11C6B54A80036DB3D /* LinuxStrings.cpp in Sources */,
+				EACC724D1C6B54A80036DB3D /* TelnetTransport.cpp in Sources */,
+				EACC71E11C6B54A80036DB3D /* NatTypeDetectionServer.cpp in Sources */,
+				EACC71FB1C6B54A80036DB3D /* RakNetSocket.cpp in Sources */,
+				EACC722D1C6B54A80036DB3D /* ReplicaManager3.cpp in Sources */,
+				EACC71D71C6B54A80036DB3D /* MessageFilter.cpp in Sources */,
+				EACC71A31C6B54A80036DB3D /* DR_SHA1.cpp in Sources */,
+				EACC72391C6B54A80036DB3D /* SimpleMutex.cpp in Sources */,
+				EACC723F1C6B54A80036DB3D /* StringCompressor.cpp in Sources */,
+				EACC722F1C6B54A80036DB3D /* Router2.cpp in Sources */,
+				EACC72411C6B54A80036DB3D /* StringTable.cpp in Sources */,
+				EACC720B1C6B54A80036DB3D /* RakNetSocket2_Windows_Linux_360.cpp in Sources */,
+				EACC71CB1C6B54A80036DB3D /* CheckSum.cpp in Sources */,
+				EACC725F1C6B54A80036DB3D /* VariadicSQLParser.cpp in Sources */,
+				EACC72091C6B54A80036DB3D /* RakNetSocket2_Vita.cpp in Sources */,
+				EACC723B1C6B54A80036DB3D /* SocketLayer.cpp in Sources */,
+				EACC71C91C6B54A80036DB3D /* HTTPConnection2.cpp in Sources */,
+				EACC71D91C6B54A80036DB3D /* NatPunchthroughClient.cpp in Sources */,
+				EACC71BD1C6B54A80036DB3D /* Getche.cpp in Sources */,
+				EACC720D1C6B54A80036DB3D /* RakNetSocket2_Windows_Linux.cpp in Sources */,
+				EACC71E91C6B54A80036DB3D /* PacketFileLogger.cpp in Sources */,
+				EACC72611C6B54A80036DB3D /* VitaIncludes.cpp in Sources */,
 				EA2400671C64E38B00906235 /* CollisionBlok.cpp in Sources */,
+				EACC71ED1C6B54A80036DB3D /* PacketLogger.cpp in Sources */,
+				EACC72271C6B54A80036DB3D /* ReadyEvent.cpp in Sources */,
+				EACC71D51C6B54A80036DB3D /* LogCommandParser.cpp in Sources */,
+				EACC721F1C6B54A80036DB3D /* RakThread.cpp in Sources */,
+				EACC72571C6B54A80036DB3D /* UDPProxyCoordinator.cpp in Sources */,
+				EACC72191C6B54A80036DB3D /* RakPeer.cpp in Sources */,
+				EACC71971C6B54A80036DB3D /* CloudServer.cpp in Sources */,
+				EACC724F1C6B54A80036DB3D /* ThreadsafePacketLogger.cpp in Sources */,
+				EACC72071C6B54A80036DB3D /* RakNetSocket2_PS4.cpp in Sources */,
+				EACC71C51C6B54A80036DB3D /* GridSectorizer.cpp in Sources */,
+				EACC71B11C6B54A80036DB3D /* EpochTimeToString.cpp in Sources */,
 				EA2400761C6518A900906235 /* ServerNameBlok.cpp in Sources */,
+				EACC72151C6B54A80036DB3D /* RakNetTransport2.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
