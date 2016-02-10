@@ -12,7 +12,7 @@
 #include "Connector.h"
 
 /**
- * Empty Blok signaling that player has Tackleed *
+ * Empty Blok signaling that player has Tackled *
  * Type:
  * ==============================================
  * P_Tackle

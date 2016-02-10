@@ -58,19 +58,8 @@ void ServerListScene::initGraphics()
     
     // exit button
     auto btnExit = MenuItemImage::create("exit.png", "exit_clicked.png", CC_CALLBACK_1(ServerListScene::btnLeaveClicked, this));
-    btnExit->setPosition( origin.x + visibleSize.width/2 + 455, origin.y + visibleSize.height - 308 );
-    btnExit->setRotation(15);
+    btnExit->setPosition( origin.x + visibleSize.width/2 + 455, origin.y + visibleSize.height - 257 );
     //this->addChild(btnExit); // no, because it will be part of menu
-    
-    // about button
-    auto btnAbout = MenuItemImage::create("about.png", "about_clicked.png" /*, CC_CALLBACK_1(ServerListScene::btnLeaveClicked, this)*/ );
-    btnAbout->setPosition( origin.x + visibleSize.width/2 + 485, origin.y + visibleSize.height - 183 );
-    btnAbout->setRotation(-15);
-
-    // help button
-    auto btnHelp = MenuItemImage::create("help.png", "help_clicked.png" /*, CC_CALLBACK_1(ServerListScene::btnLeaveClicked, this)*/ );
-    btnHelp->setPosition( origin.x + visibleSize.width/2 + 385, origin.y + visibleSize.height - 413 );
-    btnHelp->setRotation(41);
     
     // game logo
     auto logo = MenuItemImage::create("ball_logo.png", "ball_logo.png");
@@ -105,7 +94,7 @@ void ServerListScene::initGraphics()
 
     
     // menu
-    auto menu = Menu::create(btnExit, btnAbout, btnHelp, logo, nullptr);
+    auto menu = Menu::create(btnExit, logo, nullptr);
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu);
     

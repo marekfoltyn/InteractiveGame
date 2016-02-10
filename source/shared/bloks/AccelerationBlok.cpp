@@ -25,15 +25,15 @@ Blok * AccelerationBlok::Create(cocos2d::Acceleration * acc)
 
 
 
-cocos2d::Acceleration * AccelerationBlok::Parse(Blok * blok)
+cocos2d::Acceleration AccelerationBlok::Parse(Blok * blok)
 {
     double * x = (double *) blok->getData();
     double * y = (double *) ( blok->getData() + sizeof(double) );
     double * z = (double *) ( blok->getData() + 2 * sizeof(double) );
     
-    cocos2d::Acceleration * acc = new cocos2d::Acceleration();
-    acc->x = *x;
-    acc->y = *y;
-    acc->z = *z;
+    cocos2d::Acceleration acc = cocos2d::Acceleration();
+    acc.x = *x;
+    acc.y = *y;
+    acc.z = *z;
     return acc;
 }

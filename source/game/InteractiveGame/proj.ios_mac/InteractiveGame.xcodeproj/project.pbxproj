@@ -775,7 +775,7 @@
 			isa = PBXGroup;
 			children = (
 				EACC707F1C6B547A0036DB3D /* RakNet */,
-				EA888B8B1C58B09A00534275 /* Blocks */,
+				EA888B8B1C58B09A00534275 /* Bloks */,
 				EA5CA2C21C3FC724003437FF /* Connector.h */,
 				EA5CA2C11C3FC724003437FF /* Connector.cpp */,
 				EA5CA2C31C3FC724003437FF /* Definitions.h */,
@@ -806,7 +806,7 @@
 			name = Scenes;
 			sourceTree = "<group>";
 		};
-		EA888B8B1C58B09A00534275 /* Blocks */ = {
+		EA888B8B1C58B09A00534275 /* Bloks */ = {
 			isa = PBXGroup;
 			children = (
 				EA5F25F01C6A879B004E2A79 /* AdminBlok.h */,
@@ -826,7 +826,7 @@
 				EA2F6DFC1C68A979009E3F1A /* TackleBlok.cpp */,
 				EA2F6DFD1C68A979009E3F1A /* TackleBlok.h */,
 			);
-			name = Blocks;
+			name = Bloks;
 			sourceTree = "<group>";
 		};
 		EACC707F1C6B547A0036DB3D /* RakNet */ = {

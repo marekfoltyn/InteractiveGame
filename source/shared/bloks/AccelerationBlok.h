@@ -38,7 +38,7 @@ public:
     /**
      * Parse to the cocos2d acc object
      */
-    static cocos2d::Acceleration * Parse(Blok * block);
+    static cocos2d::Acceleration Parse(Blok * block);
     
 private:
     

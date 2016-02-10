@@ -478,8 +478,8 @@ void LobbyScene::onAccelerationBlok(Blok * blok)
     int id = RakNet::SystemAddress::ToInteger( blok->getAddress() );
     
     auto acc = AccelerationBlok::Parse(blok);
-    float x = (float) acc->x;
-    float y = (float) acc->y;
+    float x = (float) acc.x;
+    float y = (float) acc.y;
     float forceSize = sqrtf( x*x + y*y );
     
     // coord clean
@@ -504,7 +504,6 @@ void LobbyScene::onAccelerationBlok(Blok * blok)
     sprite->getPhysicsBody()->setVelocityLimit(400*forceSize);
     
     prevForce = force;
-    delete acc; // memory leak if this deleted
 }
 
 
