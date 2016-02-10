@@ -95,7 +95,7 @@ public:
     const int getPacketLength();
     
     /**
-     * send the packet to the address
+     * send the packet to the address (and deallocates itself)
      */
     void send();
     
@@ -105,6 +105,12 @@ public:
     void deallocate();
     
 private:
+    
+    /**
+     * internal method
+     * load raw data to memory
+     */
+    void loadData(const char * data, unsigned int length);
     
     /**
      * private constructor

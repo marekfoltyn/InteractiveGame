@@ -504,6 +504,7 @@ void LobbyScene::onAccelerationBlok(Blok * blok)
     sprite->getPhysicsBody()->setVelocityLimit(400*forceSize);
     
     prevForce = force;
+    delete acc; // memory leak if this deleted
 }
 
 

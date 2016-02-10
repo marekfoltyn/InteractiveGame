@@ -12,14 +12,7 @@
 Blok::Blok(const char * d, unsigned int len )
 {
     
-    length = len+1; // +1 ... message type byte
-    data = new char[length];
-    data[0] = 0; // unknown type yet
-    
-    if(d != nullptr && len > 0)
-    {
-        memcpy(data+1, d, len*sizeof(char));
-    }
+    loadData(d, len);
     
     // default values
     priority = PacketPriority::HIGH_PRIORITY;
@@ -29,10 +22,11 @@ Blok::Blok(const char * d, unsigned int len )
 }
 
 Blok::Blok(RakNet::Packet * packet)
-
-// calling default constructor before
-: Blok( (const char *) packet->data+1, packet->length-1) // skip first byte
 {
+    const char * data = (char *) packet->data + 1; // skip first byte
+    unsigned int len = packet->length - 1;
+    loadData(data, len);
+    
     setAddress( packet->systemAddress );
     setType( packet->data[0] );
     this->packet = packet;
@@ -125,6 +119,7 @@ const int Blok::getPacketLength()
 void Blok::send()
 {
     Connector::getInstance()->send(this);
+    this->deallocate();
 }
 
 void Blok::deallocate()
@@ -135,5 +130,20 @@ void Blok::deallocate()
     {
         Connector::getInstance()->getInterface()->DeallocatePacket(packet);
     }
+    
+    delete this;
 }
 
+
+
+void Blok::loadData(const char * d, unsigned int len)
+{
+    length = len+1; // +1 ... message type byte
+    data = new char[length];
+    data[0] = 0; // unknown type yet
+    
+    if(d != nullptr && len > 0)
+    {
+        memcpy(data+1, d, len*sizeof(char));
+    }
+}
