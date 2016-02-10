@@ -459,12 +459,11 @@ bool LobbyScene::onContactBegin( cocos2d::PhysicsContact &contact )
             CCLOG("GOOAAAALLL to %s", (goalSide==LEFT) ?  "left" : "right" );
             
             // add points
-            Label * lbl = static_cast<Label*>( this->getChildByName( (goalSide == LEFT) ? LABEL_SCORE_LEFT : LABEL_SCORE_RIGHT ) );
+            Label * lbl = static_cast<Label*>( this->getChildByName( (goalSide == LEFT) ? LABEL_SCORE_RIGHT : LABEL_SCORE_LEFT ) );
             int score = __String::create( lbl->getString() )->intValue();
             score++;
             lbl->setString( __String::createWithFormat("%d", score)->getCString() );
 
-            
             return true;
         }
     }
