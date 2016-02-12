@@ -14,7 +14,7 @@
 #define SERVER_PORT 54027
 
 // client port used for all communication
-#define CLIENT_PORT 54023
+#define CLIENT_PORT 53027
 
 // maximum players connected to server
 #define MAX_PLAYERS 8

@@ -29,18 +29,33 @@ bool Connector::startAsServer(unsigned short maxPlayers)
 	raknetInterface->SetTimeoutTime(CONNECTION_LOST_TIMEOUT, RakNet::UNASSIGNED_SYSTEM_ADDRESS);
 	raknetInterface->SetOccasionalPing(true);
 	raknetInterface->SetIncomingPassword("abc", strlen("abc"));
+    raknetInterface->SetMaximumIncomingConnections(maxPlayers);
     //interface->SetUnreliableTimeout(CONNECTION_LOST_TIMEOUT);
     
     // socket descriptor settings
     RakNet::SocketDescriptor socketDescriptors[1];
     socketDescriptors[0].port = (maxPlayers>1) ? SERVER_PORT : CLIENT_PORT;
     socketDescriptors[0].socketFamily=AF_INET; // IPV4
-	bool result = raknetInterface->Startup(maxPlayers, socketDescriptors, 1) == RakNet::RAKNET_STARTED; // last arg is socketDescriptor count
-	raknetInterface->SetMaximumIncomingConnections(maxPlayers);
+    
+    // try 10 ports
+    bool result = false;
+    for(int i=0; i<10; i++)
+    {
+        result = raknetInterface->Startup(maxPlayers, socketDescriptors, 1) == RakNet::RAKNET_STARTED; // last arg is socketDescriptor count
+        if(result == true) {
+            LOG("Servers started on port %d.\n", socketDescriptors[0].port);
+            break;
+        } else {
+            LOG("Server failed to start on port %d. Trying next...\n", socketDescriptors[0].port);
+            socketDescriptors[0].port++;
+            continue;
+        }
+    }
+    
     if (result == false){
-        LOG("Server failed to start.\n");
-		RakNet::RakPeerInterface::DestroyInstance(raknetInterface);
-		raknetInterface = nullptr;
+        LOG("Server failed to start on EACH PORT!!.\n");
+        RakNet::RakPeerInterface::DestroyInstance(raknetInterface);
+        raknetInterface = nullptr;
         return false;
     }
     
@@ -215,7 +230,9 @@ void Connector::ping(){
         return;
     }
     
-	raknetInterface->Ping("255.255.255.255", SERVER_PORT, true); // true ... reply only if server is not full
+    for(int i=0; i<10; i++){
+        raknetInterface->Ping("255.255.255.255", SERVER_PORT+i, true); // true ... reply only if server is not full
+    }
 }
 
 RakNet::SystemAddress Connector::getServer(){
