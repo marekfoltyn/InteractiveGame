@@ -75,7 +75,7 @@ void ServerListScene::initGraphics()
     
     // game name
     auto gameName = Label::createWithTTF("P h o n e B a l l", "Vanilla.ttf", FONT_SIZE_DEFAULT);
-    gameName->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height - 1.5*BORDER_DEFAULT ));
+    gameName->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height - 1.3*BORDER_DEFAULT ));
     gameName->setColor(Color3B::WHITE);
     gameName->setOpacity(FONT_OPACITY_HALF);
     this->addChild(gameName);
@@ -385,7 +385,7 @@ void ServerListScene::connectionFailed(Blok * blok)
 {
     auto logo = (ui::ImageView *) this->getChildByName(NODE_LOGO);
     logo->stopAllActions();
-    logo->setRotation(0);
+    //logo->setRotation(0);
     
     Device::vibrate(0.5);
 }

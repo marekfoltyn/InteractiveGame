@@ -256,32 +256,32 @@ void LobbyScene::initGUI()
     this->addChild(edgeNode);
     
     
-    auto * txtServerName = TextFieldTTF::createWithTTF(c->getServerName(), "Monda-Bold.ttf", 64);
+    auto * txtServerName = TextFieldTTF::createWithTTF(c->getServerName(), "Vanilla.ttf", 64);
     txtServerName->setColor(Color3B(54, 72, 99));
     txtServerName->setAnchorPoint(Vec2(0.5, 0.5));
     txtServerName->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height - txtServerName->getContentSize().height ));
     //this->addChild(txtServerName);
     
     // score labels
-    auto left = Label::createWithTTF("0", "Monda-Bold.ttf", 100);
+    auto left = Label::createWithTTF("0", "Vanilla.ttf", 100);
     float circle = Sprite::create("center.png")->getContentSize().width/4;
     left->setPosition(Vec2( - circle + origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
     left->setTextColor(COLOR_FONT_TRANSPARENT);
     left->setName(LABEL_SCORE_LEFT);
     this->addChild(left);
-    auto right = Label::createWithTTF("0", "Monda-Bold.ttf", 100);
+    auto right = Label::createWithTTF("0", "Vanilla.ttf", 100);
     right->setPosition(Vec2( circle + origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
     right->setTextColor(COLOR_FONT_TRANSPARENT);
     right->setName(LABEL_SCORE_RIGHT);
     this->addChild(right);
 
     // leave button
-    auto disconnect = Label::createWithTTF("Exit", "Monda-Bold.ttf", 50);
+    auto disconnect = Label::createWithTTF("Exit", "Vanilla.ttf", 50);
     disconnect->setAlignment(TextHAlignment::CENTER);
     disconnect->setTextColor(COLOR_FONT_TRANSPARENT);
     auto item = MenuItemLabel::create(disconnect, CC_CALLBACK_1(LobbyScene::btnExitClicked, this));
     item->setAnchorPoint(Vec2(0.5, 1));
-    item->setPosition(Vec2( circle + origin.x + visibleSize.width/2, origin.y + visibleSize.height - BORDER ));
+    item->setPosition(Vec2( circle + origin.x + visibleSize.width/2, origin.y + visibleSize.height - 2*BORDER ));
     auto menu = Menu::create(item, NULL);
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu);
@@ -378,7 +378,7 @@ void LobbyScene::processBlock()
                 spriteBody->setTag(id);
                 spriteBody->setRotationEnable(false);
                 sprite->setPhysicsBody(spriteBody);
-                auto lblName = Label::createWithTTF(name, "Monda-Bold.ttf", sprite->getContentSize().height/2);
+                auto lblName = Label::createWithTTF(name, "Vanilla.ttf", sprite->getContentSize().height/2);
                 lblName->setPosition(Vec2( sprite->getContentSize().width/2, sprite->getContentSize().height  ));
                 lblName->setAnchorPoint(Vec2( 0.5, 0 ));
                 lblName->setTextColor(Color4B(255,255,255,44));

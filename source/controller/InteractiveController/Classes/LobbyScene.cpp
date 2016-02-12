@@ -80,7 +80,7 @@ void LobbyScene::initGraphics()
     this->addChild(btnKick);
     
     // kick label
-    auto lblKick = Label::createWithTTF("Kick", "Monda-Bold.ttf", 300);
+    auto lblKick = Label::createWithTTF("Kick", "Vanilla.ttf", 250);
     lblKick->setTextColor(Color4B(124, 124, 124, 110));
     lblKick->setPosition( btnKick->getPosition() );
     this->addChild(lblKick);
@@ -94,7 +94,7 @@ void LobbyScene::initGraphics()
     this->addChild(btnTackle);
 
     // tackle label
-    auto lblTackle = Label::createWithTTF("Pass", "Monda-Bold.ttf", 150);
+    auto lblTackle = Label::createWithTTF("Pass", "Vanilla.ttf", 125);
     lblTackle->setTextColor(Color4B(124, 124, 124, 110));
     lblTackle->setPosition( btnTackle->getPosition() );
     this->addChild(lblTackle);
@@ -102,7 +102,7 @@ void LobbyScene::initGraphics()
     // leave button
     auto disconnect = ui::Button::create();
     disconnect->setTitleText("leave");
-    disconnect->setTitleFontName("Monda-Bold.ttf");
+    disconnect->setTitleFontName("Vanilla.ttf");
     disconnect->setTitleAlignment(TextHAlignment::CENTER);
     disconnect->setTitleColor(Color3B(51, 152, 54));
     disconnect->setTitleFontSize(100);
@@ -131,14 +131,15 @@ void LobbyScene::receiveAllBlocks()
                 onConnectionLost(blok);
                 break;
             }
-                
+              
+#ifndef CC_PLATFORM_IOS
             case P_COLLISION:
             {
                 Device::vibrate(0.05);
                 CCLOG("Collision!");
                 break;
             }
-                
+#endif
             case P_ADMIN:
             {
                 setAsAdmin();
@@ -255,7 +256,7 @@ void LobbyScene::setAsAdmin()
     // leave button
     auto reset = ui::Button::create();
     reset->setTitleText("reset");
-    reset->setTitleFontName("Monda-Bold.ttf");
+    reset->setTitleFontName("Vanilla.ttf");
     reset->setTitleAlignment(TextHAlignment::CENTER);
     reset->setTitleColor(Color3B(51, 152, 54));
     reset->setTitleFontSize(100);
