@@ -14,7 +14,6 @@
 
 USING_NS_CC;
 
-#define COLOR_GREEN Color4B(11, 112, 14, 255)
 #define COLOR_FONT_TRANSPARENT Color4B(255,255,255,44)
 
 #define NODE_BALL "sprBall"

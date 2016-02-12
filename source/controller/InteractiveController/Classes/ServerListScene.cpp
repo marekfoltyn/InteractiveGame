@@ -7,8 +7,19 @@
 
 USING_NS_CC;
 
+#define Z_INDEX_BG -100
+#define Z_INDEX_BG_NAME -99
+#define Z_INDEX_LOADING 100
+
+#define FONT_SIZE_DEFAULT 70
+#define FONT_OPACITY_HALF 100
+
 #define NODE_SERVERS "menuView"
+#define NODE_LOGO    "logo"
 #define COLOR_GREEN Color4B(11, 112, 14, 255)
+#define COLOR_BG_TRANSPARENT Color4B(255,255,255,24)
+
+#define BORDER_DEFAULT 50
 
 #define ACTION_RECEIVE_BLOKS 100
 
@@ -51,41 +62,83 @@ void ServerListScene::initGraphics()
     auto origin = Director::getInstance()->getVisibleOrigin();
     
     // background color
-    //auto background = cocos2d::LayerColor::create(COLOR_GREEN);
     auto background = Sprite::create("grass.png");
     background->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
-    this->addChild(background);
+    this->addChild(background, Z_INDEX_BG);
     
-    // exit button
-    auto btnExit = MenuItemImage::create("exit.png", "exit_clicked.png", CC_CALLBACK_1(ServerListScene::btnLeaveClicked, this));
-    btnExit->setPosition( origin.x + visibleSize.width/2 + 455, origin.y + visibleSize.height - 257 );
-    //this->addChild(btnExit); // no, because it will be part of menu
+    // background game name
+    auto phoneball = Label::createWithTTF("Phoneball", "Vanilla.ttf", 260);
+    phoneball->setTextColor(COLOR_BG_TRANSPARENT);
+    phoneball->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height * 2.0/5 ));
+    phoneball->setRotation(-10);
+    //this->addChild(phoneball, Z_INDEX_BG_NAME);
     
-    // game logo
-    auto logo = MenuItemImage::create("ball_logo.png", "ball_logo.png");
-    logo->setPosition(Vec2( origin.x + visibleSize.width/2 + 210, origin.y + visibleSize.height - 257 ));
-    //this->addChild(logo);
+    // game name
+    auto gameName = Label::createWithTTF("P h o n e B a l l", "Vanilla.ttf", FONT_SIZE_DEFAULT);
+    gameName->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height - 1.5*BORDER_DEFAULT ));
+    gameName->setColor(Color3B::WHITE);
+    gameName->setOpacity(FONT_OPACITY_HALF);
+    this->addChild(gameName);
     
-    // player name background
-    //auto nameBackground = Sprite::create("name_bg.png");
-    //nameBackground->setPosition(Vec2( origin.x + visibleSize.width/2 - 265, origin.y + visibleSize.height - 257 ));
-    //this->addChild(nameBackground);
     
-    // background behind text field
-    auto bgName = ui::ImageView::create("name_bg.png");
-    bgName->setPosition(Vec2( origin.x + visibleSize.width/2 - 265, origin.y + visibleSize.height - 257 ));
-    this->addChild(bgName);
+    // ball logo
+    auto logo = ui::ImageView::create("ball_medium_small.png");
+    logo->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height - 2*BORDER_DEFAULT - logo->getContentSize().height/2 ));
+    logo->setName(NODE_LOGO);
+    this->addChild(logo);
+    
+    // exit
+    auto lblExit = Label::createWithTTF("Exit", "Vanilla.ttf", FONT_SIZE_DEFAULT);
+    auto exit = MenuItemLabel::create(lblExit, CC_CALLBACK_1(ServerListScene::btnLeaveClicked, this));
+    exit->setAnchorPoint(Vec2(0.5,0));
+    exit->setPosition( origin.x + visibleSize.width * 7.0/8, origin.y + BORDER_DEFAULT );
+    auto menu = Menu::create(exit, nullptr);
+    menu->setPosition(Vec2::ZERO);
+    this->addChild(menu);
+    
+    // stadiums label
+    auto stadiums = Label::createWithTTF("Stadiums:", "Vanilla.ttf", FONT_SIZE_DEFAULT);
+    //stadiums->setAnchorPoint(Vec2(0.5, 1));
+    stadiums->setPosition(Vec2( origin.x + visibleSize.width * 1.0/4, origin.y + visibleSize.height - 2*BORDER_DEFAULT - logo->getContentSize().height/2 ));
+    //stadiums->setOpacity(FONT_OPACITY_HALF);
+    stadiums->setTextColor(COLOR_GREEN);
+    this->addChild(stadiums);
+    
+    // player name label
+    auto lblName = Label::createWithTTF("Player info:", "Vanilla.ttf", FONT_SIZE_DEFAULT);
+    //lblName->setAnchorPoint(Vec2(0.5, 1));
+    lblName->setPosition(Vec2( origin.x + visibleSize.width * 3.0/4, origin.y + visibleSize.height - 2*BORDER_DEFAULT - logo->getContentSize().height/2 ));
+    //lblName->setOpacity(FONT_OPACITY_HALF);
+    lblName->setTextColor(COLOR_GREEN);
+    this->addChild(lblName);
+    
+    // logo background
+    auto logo_bg = ui::ImageView::create("line.png");
+    logo_bg->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height - 2*BORDER_DEFAULT - logo->getContentSize().height/2 ));
+    logo_bg->cocos2d::Node::setScale( (visibleSize.width - 2*BORDER_DEFAULT) / 100, 2*stadiums->getContentSize().height / 5);
+    this->addChild(logo_bg, Z_INDEX_BG);
     
     // player name - text field
-    auto txtName = ui::TextField::create("<player name>", "Monda-Bold.ttf", 80);
+    auto txtName = ui::TextField::create("<your name>", "Vanilla.ttf", FONT_SIZE_DEFAULT);
     txtName->setMaxLength(12);
     txtName->setMaxLengthEnabled(true);
-    txtName->setAnchorPoint(Vec2(0,0));
-    txtName->setPosition(Vec2( origin.x + visibleSize.width/2 - 635, origin.y + visibleSize.height - 252 - txtName->getContentSize().height/2 ));
-    txtName->setColor(Color3B(54, 72, 99));
-    txtName->setPlaceHolderColor(Color4B(54, 72, 99, 172));
+    txtName->setAnchorPoint(Vec2(0.5,1));
+    txtName->setPosition(Vec2( origin.x + visibleSize.width * 3.0/4, lblName->getPosition().y - lblName->getContentSize().height - BORDER_DEFAULT));
+    txtName->setColor(Color3B::WHITE);
+    txtName->setPlaceHolderColor(Color4B(255, 255, 255, 124));
     txtName->addEventListener(CC_CALLBACK_2(ServerListScene::txtNameEvent, this));
     this->addChild(txtName);
+    
+    // background behind text field
+    auto bgName = ui::Button::create("name_bg.png");
+    bgName->setScale9Enabled(true);
+    bgName->setScaleY(0.1);
+    bgName->setAnchorPoint(Vec2(0.5,0.5));
+    bgName->setContentSize(cocos2d::Size( visibleSize.width * 1.0/2 - 4*BORDER_DEFAULT, 5  ));
+    bgName->setPosition(Vec2( origin.x + visibleSize.width * 3.0/4, lblName->getPosition().y - 3*lblName->getContentSize().height - 2*bgName->getContentSize().height ));
+    bgName->setOpacity(124);
+    //this->addChild(bgName);
+
     
     // load the name
     UserDefault * def = UserDefault::getInstance();
@@ -93,29 +146,17 @@ void ServerListScene::initGraphics()
     txtName->setString(name);
 
     
-    // menu
-    auto menu = Menu::create(btnExit, logo, nullptr);
-    menu->setPosition(Vec2::ZERO);
-    this->addChild(menu);
-    
-    
     // Server names menu
     auto menuView = ui::ScrollView::create();
     menuView->setName(NODE_SERVERS);
+    menuView->setPosition(Vec2( origin.x + visibleSize.width * 1.0/4, lblName->getPosition().y - lblName->getContentSize().height - BORDER_DEFAULT ));
     menuView->setDirection( ui::ScrollView::Direction::VERTICAL );
-    menuView->setContentSize(cocos2d::Size(685, 540));
-    menuView->setInnerContainerSize(cocos2d::Size(485, 540));
-    menuView->setAnchorPoint(Vec2( 0, 1));
-    menuView->setPosition(Vec2( origin.x + visibleSize.width/2 - 645, origin.y + visibleSize.height - 352 ));
+    menuView->setContentSize(cocos2d::Size(visibleSize.width/2 - 2*BORDER_DEFAULT, menuView->getPosition().y - origin.y));
+    menuView->setInnerContainerSize( menuView->getContentSize() );
+    menuView->setAnchorPoint(Vec2( 0.5, 1));
     menuView->setBounceEnabled(true);
-    
+    menuView->setScrollBarEnabled(false);
     this->addChild(menuView);
-    
-    
-    
-    //serversView->addChild(serverMenu);
-    //this->addChild(serversView);
-    
     
     /*    auto label = Label::createWithTTF("Ahojky", "8-Bit-Madness.ttf", visibleSize.height/12);
      //auto item = MenuItemFont::create(name, CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
@@ -227,34 +268,23 @@ void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::
         CCLOG("%s added (hash: %d).", serverName->getCString(), hash);
         std::string name(serverName->getCString());
         
-        auto img = ui::Button::create("connect.png", "connect_clicked.png");
-        //img->setPosition(Vec2( origin.x + visibleSize.width/2 - 565, origin.y + visibleSize.height - 452 ));
-        img->setPosition(Vec2(img->getContentSize().width/2, menuView->getInnerContainerSize().height - (2*serverCount + 1) * img->getContentSize().height/2));
-        img->addClickEventListener(CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
-        img->setTag(hash);
-        
         // add to the menu (img, background, label)
-        auto btn = ui::Button::create("servername_bg.png", "servername_bg.png");
-        btn->setAnchorPoint(Vec2(0, 0.5));
-        //btn->setPosition(Vec2( origin.x + visibleSize.width/2 - 525, origin.y + visibleSize.height - 452 ));
-        btn->setPosition(Vec2(130,menuView->getInnerContainerSize().height - (2*serverCount + 1) * img->getContentSize().height/2));
-        btn->setContentSize(cocos2d::Size( 800, btn->getContentSize().height ));
-        btn->setScale9Enabled(true);
+        auto btn = ui::Button::create(/*"servername_bg.png", "servername_bg.png"*/);
+        btn->setTag(hash);
+        btn->setAnchorPoint(Vec2(0.5, 1));
         btn->setTitleText(name);
-        btn->setTitleFontName("Monda-Bold.ttf");
-        btn->setTitleFontSize(50);
-        btn->setTitleColor(Color3B(54, 72, 99));
-        auto lblSize = btn->getTitleRenderer()->getContentSize();
-        btn->setContentSize(cocos2d::Size( 520, 10 + lblSize.height ));
+        btn->setTitleFontName("Vanilla.ttf");
+        btn->setTitleFontSize(FONT_SIZE_DEFAULT);
+        btn->setTitleColor(Color3B::WHITE);
+        btn->addClickEventListener(CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
+        btn->setPosition(Vec2(menuView->getInnerContainerSize().width/2,menuView->getInnerContainerSize().height - serverCount * 1.5 * btn->getContentSize().height ));
         
-        img->setUserData(btn); // set reference to the label
-        
+        menuView->setInnerContainerSize(cocos2d::Size( menuView->getInnerContainerSize().width, (serverCount+1) * 1.5 * btn->getContentSize().height ));
         menuView->addChild(btn);
-        menuView->addChild(img);
         
         serverCount++;
         
-        menuView->setInnerContainerSize(cocos2d::Size( menuView->getInnerContainerSize().width, serverCount * img->getContentSize().height ));
+        //repositionServers();
         
     } else
     {
@@ -299,26 +329,21 @@ void ServerListScene::decreaseServersLifetime()
             
             // delete menu entry
             int hash = i->first;
-            auto img = (ui::Button * ) menuView->getChildByTag(hash);
-            if(img != nullptr)
+            auto btn = (ui::Button * ) menuView->getChildByTag(hash);
+            if(btn != nullptr)
             {
-                auto lbl = (ui::Button *) img->getUserData();
-                cocos2d::Size imgSize = img->getContentSize();
-                menuView->removeChild(lbl);
-                menuView->removeChild(img);
+                cocos2d::Size lblSize = btn->getContentSize();
+                menuView->removeChild(btn);
                 
                 // move other servers up
                 for(std::map<int, ServerMapEntry*>::iterator j = serverMap.begin(); j != serverMap.end(); j++)
                 {
                     if(j->second == nullptr) return;
                     
-                    if(j->second->position > i->second->position){
-                        
+                    if(j->second->position > i->second->position)
+                    {
                         auto entry = (ui::Button * ) menuView->getChildByTag( j->first );
-                        auto entryLbl = (ui::Button * ) entry->getUserData();
                         entry->setPosition(Vec2( entry->getPosition().x, entry->getPosition().y + entry->getContentSize().height ));
-                        entryLbl->setPosition(Vec2( entryLbl->getPosition().x, entryLbl->getPosition().y + entry->getContentSize().height ));
-                        
                         j->second->position--;
                     }
                 }
@@ -358,15 +383,9 @@ void ServerListScene::onConnected(Blok * blok)
 
 void ServerListScene::connectionFailed(Blok * blok)
 {
-    auto menuView = (ui::ScrollView *) this->getChildByName(NODE_SERVERS);
-    int hash = (int) RakNet::SystemAddress::ToInteger( blok->getAddress());
-    auto btn = (ui::Button *) menuView->getChildByTag(hash);
-    if(btn != nullptr) // during connecting can be the server stopped -> btn would disappear
-    {
-        btn->stopAllActions();
-        btn->loadTextures("connect.png", "connect_clicked.png");
-        btn->setRotation(0);
-    }
+    auto logo = (ui::ImageView *) this->getChildByName(NODE_LOGO);
+    logo->stopAllActions();
+    logo->setRotation(0);
     
     Device::vibrate(0.5);
 }
@@ -415,8 +434,9 @@ void ServerListScene::btnServerClicked(Ref * pSender)
 {
     auto btn = (cocos2d::ui::Button *) pSender;
     int tag = btn->getTag(); // tag value is the key in serverMap
-    btn->loadTextures("connecting.png", "connecting.png");
-    btn->runAction( RepeatForever::create( RotateBy::create(1, 360) ) );
+    
+    auto logo = (ui::ImageView *) this->getChildByName(NODE_LOGO);
+    logo->runAction( RepeatForever::create( RotateBy::create(1, 360) ) );
     
     if(tag == -1)
     {
