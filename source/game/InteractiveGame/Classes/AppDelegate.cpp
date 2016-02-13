@@ -6,7 +6,8 @@ USING_NS_CC;
 AppDelegate::AppDelegate(){}
 AppDelegate::~AppDelegate(){}
 
-
+// toggle debug
+#define DEBUG
 
 //if you want a different context,just modify the value of glContextAttrs
 //it will takes effect on all platforms
@@ -26,18 +27,25 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
     if(!glview) {
-        //glview = GLViewImpl::createWithRect("InteractiveGame", cocos2d::Rect(0, 0, 1024, 576));
-        //glview = GLViewImpl::createWithRect("InteractiveGame", cocos2d::Rect(0, 0, 1024, 768));
-        //glview = GLViewImpl::createWithRect("InteractiveGame", cocos2d::Rect(0, 0, 1400, 900));
-        glview = GLViewImpl::createWithFullScreen("InteractiveGame");
+        
+        #ifdef DEBUG
+            glview = GLViewImpl::createWithRect("InteractiveGame", cocos2d::Rect(0, 0, 1024, 576));
+            //glview = GLViewImpl::createWithRect("InteractiveGame", cocos2d::Rect(0, 0, 1024, 768));
+            //glview = GLViewImpl::createWithRect("InteractiveGame", cocos2d::Rect(0, 0, 1400, 900));
+        #else
+            glview = GLViewImpl::createWithFullScreen("InteractiveGame");
+        #endif
+        
         director->setOpenGLView(glview);
     }
 
     director->getOpenGLView()->setDesignResolutionSize(1680, 1050, ResolutionPolicy::NO_BORDER);
 
+#ifdef DEBUG
     // turn on display FPS
-    //director->setDisplayStats(true);
-
+    director->setDisplayStats(true);
+#endif
+    
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
 

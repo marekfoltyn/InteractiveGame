@@ -20,12 +20,13 @@ USING_NS_CC;
 #define BALL_DAMPING 0.7
 #define BORDER 20
 
-#define BITMASK_SOLID  1 // 0000 0001
-#define BITMASK_BALL   2 // 0000 0010
-#define BITMASK_PLAYER 4 // 0000 0100
-#define BITMASK_SCORE  8 // 0000 1000
+#define BITMASK_SOLID            1 // 0000 0001
+#define BITMASK_BALL             2 // 0000 0010
+#define BITMASK_PLAYER           4 // 0000 0100
+#define BITMASK_SCORE            8 // 0000 1000
+#define BITMASK_BALL_BOUNDARY   16 // 0001 0000
 
-#define SCALE_GOAL 0.7
+#define SCALE_GOAL 0.8
 #define SCALE_BALL 0.8
 #define MATERIAL_SOLID PhysicsMaterial(0.5, 1, 0.5)
 #define MATERIAL_BALL PhysicsMaterial(0.5, 0.5, 0.5)
@@ -42,8 +43,8 @@ Scene* LobbyScene::createScene()
 {
     // 'scene' is an autorelease object
     auto scene = Scene::createWithPhysics();
-    //scene->getPhysicsWorld()->setDebugDrawMask( PhysicsWorld::DEBUGDRAW_ALL );
-    scene->getPhysicsWorld()->setDebugDrawMask( PhysicsWorld::DEBUGDRAW_NONE );
+    scene->getPhysicsWorld()->setDebugDrawMask( PhysicsWorld::DEBUGDRAW_ALL );
+    //scene->getPhysicsWorld()->setDebugDrawMask( PhysicsWorld::DEBUGDRAW_NONE );
     scene->getPhysicsWorld()->setGravity(Vec2::ZERO);
     
     // 'layer' is an autorelease object
@@ -199,9 +200,10 @@ void LobbyScene::initGUI()
     goal->setPosition(Vec2( origin.x, origin.y + visibleSize.height/2));
     this->addChild(goal, 2);
     
+    // right goal
     goal = Sprite::create("goal.png");
     goal->setRotation(180);
-    goal->setScale(0.7);
+    goal->setScale(SCALE_GOAL);
     goal->setPosition(Vec2( origin.x + visibleSize.width, origin.y + visibleSize.height/2));
     this->addChild(goal, 2);
     
@@ -254,7 +256,48 @@ void LobbyScene::initGUI()
     edgeNode->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
     edgeNode->setPhysicsBody(edgeBody);
     this->addChild(edgeNode);
+
+    // ball-only physics boundary
+    edgeBody = PhysicsBody::createEdgeBox(cocos2d::Size(visibleSize.width, visibleSize.height), MATERIAL_SOLID, BORDER);
+    edgeBody->setDynamic(false);
+    edgeBody->setCategoryBitmask(BITMASK_BALL_BOUNDARY);
+    edgeBody->setCollisionBitmask(BITMASK_BALL);
+    edgeBody->setContactTestBitmask(BITMASK_BALL);
+    edgeNode = Node::create();
+    edgeNode->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
+    edgeNode->setPhysicsBody(edgeBody);
+    this->addChild(edgeNode);
     
+    // 4 anti-corner boxes
+    for(int i=0; i<4; i++)
+    {
+        auto box = PhysicsBody::createBox(cocos2d::Size( 90, 90 ));
+        box->setDynamic(false);
+        box->setCategoryBitmask(BITMASK_BALL_BOUNDARY);
+        box->setCollisionBitmask(BITMASK_BALL);
+        box->setContactTestBitmask(BITMASK_BALL);
+        edgeNode = Node::create();
+        edgeNode->setPosition(Vec2( origin.x + (i%2) * visibleSize.width, origin.y + (i>=2) * visibleSize.height ));
+        edgeNode->setPhysicsBody(box);
+        edgeNode->setRotation(45);
+        this->addChild(edgeNode);
+    }
+    
+    // 4 anti corner boxes near goals
+    for(int i=0; i<4; i++)
+    {
+        auto box = PhysicsBody::createBox(cocos2d::Size( 70, 70 ));
+        box->setDynamic(false);
+        box->setCategoryBitmask(BITMASK_BALL_BOUNDARY);
+        box->setCollisionBitmask(BITMASK_BALL);
+        box->setContactTestBitmask(BITMASK_BALL);
+        edgeNode = Node::create();
+        edgeNode->setPosition(Vec2( origin.x + (i%2) * visibleSize.width, origin.y + visibleSize.height/2 + (((i>=2)*2)-1) * goal->getContentSize().height*SCALE_GOAL/2 ));
+        edgeNode->setPhysicsBody(box);
+        edgeNode->setRotation(45);
+        this->addChild(edgeNode);
+    }
+
     
     auto * txtServerName = TextFieldTTF::createWithTTF(c->getServerName(), "Vanilla.ttf", 64);
     txtServerName->setColor(Color3B(54, 72, 99));
@@ -293,8 +336,8 @@ void LobbyScene::initGUI()
     point->setName(NODE_BALL);
     auto spriteBody = PhysicsBody::createCircle( point->getContentSize().width/2, MATERIAL_BALL );
     spriteBody->setCategoryBitmask(BITMASK_BALL);
-    spriteBody->setCollisionBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER);
-    spriteBody->setContactTestBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER | BITMASK_SCORE);
+    spriteBody->setCollisionBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER | BITMASK_BALL_BOUNDARY);
+    spriteBody->setContactTestBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER | BITMASK_SCORE | BITMASK_BALL_BOUNDARY);
     spriteBody->setLinearDamping(BALL_DAMPING);
     spriteBody->setAngularDamping(BALL_DAMPING);
     point->setPhysicsBody(spriteBody);
