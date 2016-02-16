@@ -10,6 +10,7 @@ thesis/bakalarska_prace.toc
 
 source/game/InteractiveGame/proj.ios_mac/Build/*
 source/game/InteractiveGame/proj.win32/Debug.win32/*
+source/game/InteractiveGame/bin/*
 
 source/controller/InteractiveController/proj.ios_mac/Build/*
 source/controller/InteractiveController/proj.ios_mac/InteractiveController.xcodeproj/project.xcworkspace/xcuserdata

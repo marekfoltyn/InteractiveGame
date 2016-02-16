@@ -1,3 +1,4 @@
+#include "cocos2d.h"
 #include "LobbyScene.h"
 
 #include "Connector.h"
@@ -132,14 +133,15 @@ void LobbyScene::receiveAllBlocks()
                 break;
             }
               
-#ifndef CC_PLATFORM_IOS
             case P_COLLISION:
             {
+#if ( CC_TARGET_PLATFORM != CC_PLATFORM_IOS ) // iOS ingores vibrate duration - too long vibrations
                 Device::vibrate(0.05);
+#endif
                 CCLOG("Collision!");
                 break;
             }
-#endif
+                
             case P_ADMIN:
             {
                 setAsAdmin();
