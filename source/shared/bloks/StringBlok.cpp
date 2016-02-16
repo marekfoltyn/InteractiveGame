@@ -18,6 +18,7 @@ std::string StringBlok::parseString(Blok * blok)
 
 Blok * StringBlok::create(std::string str)
 {
-    auto blok = Blok::create(str.c_str(), (unsigned int) str.length() );
+    std::string s = str;
+    auto blok = Blok::create(s.c_str(), static_cast<unsigned int>(s.length() + 1) ); // empty char
     return blok;
 }

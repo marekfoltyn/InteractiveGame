@@ -61,6 +61,8 @@
 		EA5F25F21C6A879B004E2A79 /* AdminBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5F25EF1C6A879B004E2A79 /* AdminBlok.cpp */; };
 		EA5F25F81C6A88F1004E2A79 /* ResetScoreBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5F25F61C6A88F1004E2A79 /* ResetScoreBlok.cpp */; };
 		EA5F25F91C6A88F1004E2A79 /* ResetScoreBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5F25F61C6A88F1004E2A79 /* ResetScoreBlok.cpp */; };
+		EA6058AD1C6F89D500D89D46 /* StadiumManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA6058AB1C6F89D500D89D46 /* StadiumManager.cpp */; };
+		EA6058AE1C6F89D500D89D46 /* StadiumManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA6058AB1C6F89D500D89D46 /* StadiumManager.cpp */; };
 		EAAB6A681C59FF6500171969 /* Blok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A671C59FF6500171969 /* Blok.cpp */; };
 		EAAB6A691C59FF6500171969 /* Blok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A671C59FF6500171969 /* Blok.cpp */; };
 		EAAB6A6E1C59FF7200171969 /* AccelerationBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A6C1C59FF7200171969 /* AccelerationBlok.cpp */; };
@@ -344,6 +346,8 @@
 		EA5F25F01C6A879B004E2A79 /* AdminBlok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AdminBlok.h; path = ../../../shared/bloks/AdminBlok.h; sourceTree = "<group>"; };
 		EA5F25F61C6A88F1004E2A79 /* ResetScoreBlok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ResetScoreBlok.cpp; path = ../../../shared/bloks/ResetScoreBlok.cpp; sourceTree = "<group>"; };
 		EA5F25F71C6A88F1004E2A79 /* ResetScoreBlok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResetScoreBlok.h; path = ../../../shared/bloks/ResetScoreBlok.h; sourceTree = "<group>"; };
+		EA6058AB1C6F89D500D89D46 /* StadiumManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StadiumManager.cpp; sourceTree = "<group>"; };
+		EA6058AC1C6F89D500D89D46 /* StadiumManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StadiumManager.h; sourceTree = "<group>"; };
 		EA76BC881C32CCA900F2531F /* GameDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDefinitions.h; sourceTree = "<group>"; };
 		EAAB6A661C59FF6500171969 /* Blok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Blok.h; path = ../../../shared/network/Blok.h; sourceTree = "<group>"; };
 		EAAB6A671C59FF6500171969 /* Blok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Blok.cpp; path = ../../../shared/network/Blok.cpp; sourceTree = "<group>"; };
@@ -765,6 +769,8 @@
 		EA24005F1C648D2500906235 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				EA6058AC1C6F89D500D89D46 /* StadiumManager.h */,
+				EA6058AB1C6F89D500D89D46 /* StadiumManager.cpp */,
 				EA2400601C6490C400906235 /* Player.cpp */,
 				EA2400611C6490C400906235 /* Player.h */,
 			);
@@ -1261,6 +1267,7 @@
 				EACC72241C6B54A80036DB3D /* RandSync.cpp in Sources */,
 				EACC71EC1C6B54A80036DB3D /* PacketLogger.cpp in Sources */,
 				EACC71A01C6B54A80036DB3D /* DirectoryDeltaTransfer.cpp in Sources */,
+				EA6058AD1C6F89D500D89D46 /* StadiumManager.cpp in Sources */,
 				EACC72041C6B54A80036DB3D /* RakNetSocket2_PS3_PS4.cpp in Sources */,
 				EACC71C41C6B54A80036DB3D /* GridSectorizer.cpp in Sources */,
 				EA5F25F81C6A88F1004E2A79 /* ResetScoreBlok.cpp in Sources */,
@@ -1414,6 +1421,7 @@
 				EAAB6A6F1C59FF7200171969 /* AccelerationBlok.cpp in Sources */,
 				EACC71D11C6B54A80036DB3D /* LinuxStrings.cpp in Sources */,
 				EACC724D1C6B54A80036DB3D /* TelnetTransport.cpp in Sources */,
+				EA6058AE1C6F89D500D89D46 /* StadiumManager.cpp in Sources */,
 				EACC71E11C6B54A80036DB3D /* NatTypeDetectionServer.cpp in Sources */,
 				EACC71FB1C6B54A80036DB3D /* RakNetSocket.cpp in Sources */,
 				EACC722D1C6B54A80036DB3D /* ReplicaManager3.cpp in Sources */,

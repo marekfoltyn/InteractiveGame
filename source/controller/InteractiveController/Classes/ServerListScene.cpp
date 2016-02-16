@@ -105,7 +105,7 @@ void ServerListScene::initGraphics()
     this->addChild(stadiums);
     
     // player name label
-    auto lblName = Label::createWithTTF("Player info:", "Vanilla.ttf", FONT_SIZE_DEFAULT);
+    auto lblName = Label::createWithTTF("Player name:", "Vanilla.ttf", FONT_SIZE_DEFAULT);
     //lblName->setAnchorPoint(Vec2(0.5, 1));
     lblName->setPosition(Vec2( origin.x + visibleSize.width * 3.0/4, origin.y + visibleSize.height - 2*BORDER_DEFAULT - logo->getContentSize().height/2 ));
     //lblName->setOpacity(FONT_OPACITY_HALF);
@@ -364,11 +364,7 @@ void ServerListScene::onConnected(Blok * blok)
 {
     // send player's name
     UserDefault * def = UserDefault::getInstance();
-    std::string name = def->getStringForKey("player_name", "");
-    if(name.length() == 0)
-    {
-        name = "noname";
-    }
+    std::string name = def->getStringForKey("player_name", "noname");
     auto nameBlok = StringBlok::create( name );
     nameBlok->setType(P_PLAYER_NAME);
     nameBlok->send();

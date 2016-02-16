@@ -43,8 +43,13 @@ Scene* LobbyScene::createScene()
 {
     // 'scene' is an autorelease object
     auto scene = Scene::createWithPhysics();
+
+#ifdef DEBUG
     scene->getPhysicsWorld()->setDebugDrawMask( PhysicsWorld::DEBUGDRAW_ALL );
-    //scene->getPhysicsWorld()->setDebugDrawMask( PhysicsWorld::DEBUGDRAW_NONE );
+#else
+    scene->getPhysicsWorld()->setDebugDrawMask( PhysicsWorld::DEBUGDRAW_NONE );
+#endif
+    
     scene->getPhysicsWorld()->setGravity(Vec2::ZERO);
     
     // 'layer' is an autorelease object
@@ -400,8 +405,8 @@ void LobbyScene::processBlock()
                 
             case P_PLAYER_NAME:
             {
-                std::string name = StringBlok::parseString(blok);
-                CCLOG("Player name: %s", name.c_str() );
+                __String name = StringBlok::parseString(blok);
+                CCLOG("Player name: %s", name.getCString() );
                 
                 int id = RakNet::SystemAddress::ToInteger( blok->getAddress());
                 auto player = Player::create( blok->getAddress() );
@@ -421,12 +426,12 @@ void LobbyScene::processBlock()
                 spriteBody->setTag(id);
                 spriteBody->setRotationEnable(false);
                 sprite->setPhysicsBody(spriteBody);
-                auto lblName = Label::createWithTTF(name, "Vanilla.ttf", sprite->getContentSize().height/2);
+                auto lblName = Label::createWithTTF(name.getCString(), "Vanilla.ttf", sprite->getContentSize().height/2);
                 lblName->setPosition(Vec2( sprite->getContentSize().width/2, sprite->getContentSize().height  ));
                 lblName->setAnchorPoint(Vec2( 0.5, 0 ));
                 lblName->setTextColor(Color4B(255,255,255,44));
-                sprite->addChild(lblName);
-                this->addChild(sprite);
+                sprite->addChild(lblName,1);
+                this->addChild(sprite,1);
                 
                 // is there an admin?
                 if( players.size() == 1 ) // only this new player
@@ -488,7 +493,6 @@ bool LobbyScene::onContactBegin( cocos2d::PhysicsContact &contact )
             auto blok = CollisionBlok::create();
             blok->setAddress( player->getAddress() );
             blok->send();
-            return true;
         }
     }
     
@@ -505,8 +509,6 @@ bool LobbyScene::onContactBegin( cocos2d::PhysicsContact &contact )
             int score = __String::create( lbl->getString() )->intValue();
             score++;
             lbl->setString( __String::createWithFormat("%d", score)->getCString() );
-
-            return true;
         }
     }
     
