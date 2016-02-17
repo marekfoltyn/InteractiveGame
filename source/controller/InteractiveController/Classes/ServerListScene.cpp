@@ -2,8 +2,8 @@
 #include "LobbyScene.h"
 
 #include "Connector.h"
-#include "ServerNameBlok.h"
-#include "StringBlok.h"
+#include "ServerNameBox.h"
+#include "StringBox.h"
 
 USING_NS_CC;
 
@@ -21,7 +21,7 @@ USING_NS_CC;
 
 #define BORDER_DEFAULT 50
 
-#define ACTION_RECEIVE_BLOKS 100
+#define ACTION_RECEIVE_BOXES 100
 
 Scene * ServerListScene::createScene()
 {
@@ -48,7 +48,7 @@ bool ServerListScene::init()
     }
     
     initGraphics();
-    startReceiveBlocks();
+    startReceiveBoxes();
     startFindServers();
         
     return true;
@@ -182,70 +182,70 @@ void ServerListScene::startFindServers()
 
 
 
-void ServerListScene::startReceiveBlocks()
+void ServerListScene::startReceiveBoxes()
 {
     serverCount = 0;
     
-    auto callback = CallFunc::create(CC_CALLBACK_0(ServerListScene::receiveAllBlocks, this));
+    auto callback = CallFunc::create(CC_CALLBACK_0(ServerListScene::receiveAllBoxes, this));
     auto delay = DelayTime::create(RECEIVE_TIMEOUT);
     auto sequence = Sequence::create(callback, delay, nullptr);
     auto receivePacketAction = RepeatForever::create(sequence);
-    receivePacketAction->setTag(ACTION_RECEIVE_BLOKS);
+    receivePacketAction->setTag(ACTION_RECEIVE_BOXES);
     this->runAction(receivePacketAction);
 }
 
 
 
-void ServerListScene::receiveAllBlocks()
+void ServerListScene::receiveAllBoxes()
 {
     Connector * c = Connector::getInstance();
-    Blok * blok;
+    Box * box;
     
     // c->receive() returns 0, if no received packet is in the queue
-    while( (blok = c->receive()) != nullptr )
+    while( (box = c->receive()) != nullptr )
     {
-        switch ( blok->getType() )
+        switch ( box->getType() )
         {
             case P_SERVER_NAME:
             {
-                refreshServer(blok);
+                refreshServer(box);
                 break;
             }
                 
             case P_CONNECTED:
             {
-                onConnected(blok);
-                blok->deallocate();
+                onConnected(box);
+                box->deallocate();
                 return;
             }
                 
             case P_CONNECTION_FAILED:
             {
-                connectionFailed(blok);
+                connectionFailed(box);
                 break;
             }
             
             default:
             {
                 // packet ignored
-                CCLOG("ServerListScene: Packet %d ignored.", blok->getType());
+                CCLOG("ServerListScene: Packet %d ignored.", box->getType());
                 break;
             }
         }
         
-        blok->deallocate();
+        box->deallocate();
     }
 }
 
 
 
-void ServerListScene::refreshServer(Blok * blok)
+void ServerListScene::refreshServer(Box * box)
 {
-    // parse Blok
-    auto name = __String::create( ServerNameBlok::parseServerName(blok) );
+    // parse Box
+    auto name = __String::create( ServerNameBox::parseServerName(box) );
     CCLOG("Server response: %s", name->getCString() );
     
-    addOrUpdateServer(name, blok->getAddress());
+    addOrUpdateServer(name, box->getAddress());
 }
 
 
@@ -360,24 +360,24 @@ void ServerListScene::decreaseServersLifetime()
 
 
 
-void ServerListScene::onConnected(Blok * blok)
+void ServerListScene::onConnected(Box * box)
 {
     // send player's name
     UserDefault * def = UserDefault::getInstance();
     std::string name = def->getStringForKey("player_name", "noname");
-    auto nameBlok = StringBlok::create( name );
-    nameBlok->setType(P_PLAYER_NAME);
-    nameBlok->send();
+    auto nameBox = StringBox::create( name );
+    nameBox->setType(P_PLAYER_NAME);
+    nameBox->send();
     
-    CCLOG("Connected to %s", blok->getAddress().ToString());
-    this->stopActionByTag(ACTION_RECEIVE_BLOKS); // stop receiving bloks
+    CCLOG("Connected to %s", box->getAddress().ToString());
+    this->stopActionByTag(ACTION_RECEIVE_BOXES); // stop receiving boxs
     auto scene = LobbyScene::createScene();
     Director::getInstance()->replaceScene( TransitionSlideInB::create(SCENE_TRANSITION, scene) );
 }
 
 
 
-void ServerListScene::connectionFailed(Blok * blok)
+void ServerListScene::connectionFailed(Box * box)
 {
     auto logo = (ui::ImageView *) this->getChildByName(NODE_LOGO);
     logo->stopAllActions();

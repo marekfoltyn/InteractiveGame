@@ -4,13 +4,14 @@
 #include "Connector.h"
 #include "ServerListScene.h"
 
-#include "AccelerationBlok.h"
-#include "CollisionBlok.h"
-#include "KickBlok.h"
-#include "TackleBlok.h"
-#include "ResetScoreBlok.h"
+#include "AccelerationBox.h"
+#include "CollisionBox.h"
+#include "KickBox.h"
+#include "TackleBox.h"
+#include "ResetScoreBox.h"
 
 USING_NS_CC;
+using namespace GameNet;
 
 #define COLOR_GREEN Color4B(11, 112, 14, 255)
 
@@ -46,7 +47,7 @@ bool LobbyScene::init()
     initGraphics();
     
     // start receiving bloks
-    auto callback = CallFunc::create(CC_CALLBACK_0(LobbyScene::receiveAllBlocks, this));
+    auto callback = CallFunc::create(CC_CALLBACK_0(LobbyScene::receiveAllBoxes, this));
     auto delay = DelayTime::create(RECEIVE_TIMEOUT);
     auto sequence = Sequence::create(callback, delay, nullptr);
     auto receivePacketAction = RepeatForever::create(sequence);
@@ -116,20 +117,20 @@ void LobbyScene::initGraphics()
 
 
 
-void LobbyScene::receiveAllBlocks()
+void LobbyScene::receiveAllBoxes()
 {
     Connector * c = Connector::getInstance();
-    Blok * blok;
+    Box * box;
     
     // c->receive() returns 0, if no received packet is in the queue
-    while( (blok = c->receive()) != nullptr )
+    while( (box = c->receive()) != nullptr )
     {
-        switch ( blok->getType() )
+        switch ( box->getType() )
         {
             case P_CONNECTION_LOST:
             {
                 CCLOG("Connection lost.");
-                onConnectionLost(blok);
+                onConnectionLost(box);
                 break;
             }
               
@@ -151,12 +152,12 @@ void LobbyScene::receiveAllBlocks()
             default:
             {
                 // packet ignored
-                CCLOG("Packet %d ignored.", blok->getType() );
+                CCLOG("Packet %d ignored.", box->getType() );
                 break;
             }
         }
         
-        blok->deallocate();
+        box->deallocate();
     }
 }
 
@@ -183,7 +184,7 @@ void LobbyScene::btnOnDisconnect(Ref * sender, ui::Widget::TouchEventType type)
 
 
 
-void LobbyScene::onConnectionLost(Blok * block)
+void LobbyScene::onConnectionLost(Box * box)
 {
     CCLOG("Connection lost. Returning to main menu.");
     Scene * main = ServerListScene::createScene();
@@ -199,7 +200,7 @@ void LobbyScene::btnKickClick(Ref * sender, ui::Widget::TouchEventType type)
         case ui::Widget::TouchEventType::BEGAN:
         {
          
-            KickBlok::create()->send(); // send to server
+            KickBox::create()->send(); // send to server
             Device::vibrate(0.1);
             break;
         }
@@ -224,7 +225,7 @@ void LobbyScene::btnTackleClick(Ref * sender, ui::Widget::TouchEventType type)
         case ui::Widget::TouchEventType::BEGAN:
         {
             
-            TackleBlok::create()->send(); // send to server
+            TackleBox::create()->send(); // send to server
             Device::vibrate(0.1);
             break;
         }
@@ -244,8 +245,8 @@ void LobbyScene::btnTackleClick(Ref * sender, ui::Widget::TouchEventType type)
 
 void LobbyScene::onAcceleration(cocos2d::Acceleration* acc, cocos2d::Event* unused_event)
 {
-    Blok * blok = AccelerationBlok::Create(acc);
-    Connector::getInstance()->send(blok);
+    Box * box = AccelerationBox::Create(acc);
+    Connector::getInstance()->send(box);
 }
 
 void LobbyScene::setAsAdmin()
@@ -266,7 +267,7 @@ void LobbyScene::setAsAdmin()
     {
         if(type == ui::Widget::TouchEventType::ENDED){
             CCLOG("Reseting score...");
-            ResetScoreBlok::create()->send();
+            ResetScoreBox::create()->send();
         }
     });
     reset->setAnchorPoint(Vec2(0, 0));

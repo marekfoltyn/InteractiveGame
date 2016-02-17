@@ -6,8 +6,10 @@
 #include "ui/CocosGUI.h"
 
 #include "RakPeerInterface.h"
-#include "Blok.h"
+#include "Box.h"
 #include "Player.h"
+
+using namespace GameNet;
 
 class LobbyScene : public cocos2d::Layer
 {
@@ -23,11 +25,11 @@ public:
     
     void processBlock();
     
-    void onAccelerationBlok(Blok * blok);
+    void onAccelerationBox(Box * box);
     
-    void onPlayerKick(Blok * blok);
+    void onPlayerKick(Box * box);
     
-    void onPlayerTackle(Blok * blok);
+    void onPlayerTackle(Box * box);
     
     /**
      * Exit game

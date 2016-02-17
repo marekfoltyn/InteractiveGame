@@ -4,16 +4,19 @@
 #include "MessageIdentifiers.h"
 #include "RakPeerInterface.h"
 #include "Definitions.h"
-#include "Blok.h"
-
+#include "Box.h"
 #include <string>
+
+/**
+ * Networking library for client-server game connection
+ */
+namespace GameNet{
 
 /**
  * @brief     Singleton class responsible for entire network communication.
  * Represents network interface (both server and client)
  * usage: Connector::getInstance()-> ...
  */
-
 class Connector {
 public:
     
@@ -49,15 +52,15 @@ public:
     void disconnect( RakNet::SystemAddress address );
     
     /**
-     * send a Block (It is a wrapped RakNet::Packet with some additional data)
+     * send a Box (It is a wrapped RakNet::Packet with some additional data)
      */
-    void send(Blok * b);
+    void send(Box * b);
     
     /**
-     * receive a packet from received packet queue (non-blocking way) and create a Block
-     * @return: pointer to Block (need to deallocate when done with it), 0 if no packet is the queue
+     * receive a packet from received packet queue (non-boxing way) and create a Box
+     * @return: pointer to Box (need to deallocate when done with it), 0 if no packet is the queue
      */
-    Blok * receive();
+    Box * receive();
     
     /**
      * get/set server name (if startAsServer() was called before)
@@ -107,5 +110,5 @@ private:
     
 };
     
-    
+}
 #endif // _CONNECTOR_H_

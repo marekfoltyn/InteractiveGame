@@ -1,29 +1,31 @@
 //
-//  TackleBlok.h
+//  TackleBox.h
 //  InteractiveController
 //
 //  Created by Marek Foltýn on 26.01.16.
 //
 //
 
-#ifndef TackleBlok_h
-#define TackleBlok_h
+#ifndef TackleBox_h
+#define TackleBox_h
 
 #include "Connector.h"
 
+using namespace GameNet;
+
 /**
- * Empty Blok signaling that player has Tackled *
+ * Empty Box signaling that player has Tackled *
  * Type:
  * ==============================================
  * P_Tackle
  *
  */
-class TackleBlok{
+class TackleBox{
 public:
     
-    static Blok * create();
+    static Box * create();
     
 };
 
 
-#endif /* TackleBlok_h */
+#endif /* TackleBox_h */

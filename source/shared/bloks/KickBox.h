@@ -1,29 +1,31 @@
 //
-//  KickBlok.h
+//  KickBox.h
 //  InteractiveController
 //
 //  Created by Marek Foltýn on 26.01.16.
 //
 //
 
-#ifndef KickBlok_h
-#define KickBlok_h
+#ifndef KickBox_h
+#define KickBox_h
 
 #include "Connector.h"
 
+using namespace GameNet;
+
 /**
- * Empty Blok signaling that player has kicked the ball
+ * Empty Box signaling that player has kicked the ball
  * Type:
  * ==============================================
  * P_KICK
  *
  */
-class KickBlok{
+class KickBox{
 public:
     
-    static Blok * create();
+    static Box * create();
     
 };
 
 
-#endif /* KickBlok_h */
+#endif /* KickBox_h */

@@ -11,6 +11,7 @@
 
 USING_NS_CC;
 USING_NS_CC_EXT;
+using namespace GameNet;
 
 /**
  * Simple structure for storing information about servers in LAN
@@ -67,10 +68,10 @@ public:
     void initGraphics();
 
     /**
-     * receive Block processing loop
+     * receive Box processing loop
      * receives until RakNet returns 0 (empty packet queue)
      */
-    void receiveAllBlocks();
+    void receiveAllBoxes();
     
     /**
      * decrease lifetime of found servers and find more servers
@@ -94,17 +95,17 @@ public:
      * if the controller knows about it, resets its lifetime
      * if not, add this server to the server list
      */
-    void refreshServer(Blok * blok);
+    void refreshServer(Box * box);
     
     /**
      * Succesfully connected to a server (send player name and go to lobby)
      */
-    void onConnected(Blok * blok);
+    void onConnected(Box * box);
     
     /**
      * Connection to server failed
      */
-    void connectionFailed(Blok * blok);
+    void connectionFailed(Box * box);
     
     /**
      * Exit game
@@ -126,9 +127,9 @@ private:
     int serverCount;
     
     /**
-     * start receiving bloks
+     * start receiving boxs
      */
-    void startReceiveBlocks();
+    void startReceiveBoxes();
         
     /**
      * periodically send broadcast ping to find servers

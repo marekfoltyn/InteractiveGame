@@ -1,28 +1,30 @@
 //
-//  AdminBlok.h
+//  AdminBox.h
 //  InteractiveController
 //
 //  Created by Marek Foltýn on 26.01.16.
 //
 //
 
-#ifndef AdminBlok_h
-#define AdminBlok_h
+#ifndef AdminBox_h
+#define AdminBox_h
 
 #include "Connector.h"
 
+using namespace GameNet;
+
 /**
- * Empty Blok signaling that player is Admin *
+ * Empty Box signaling that player is Admin *
  * ==============================================
  * type: P_ADMIN
  *
  */
-class AdminBlok{
+class AdminBox{
 public:
     
-    static Blok * create();
+    static Box * create();
     
 };
 
 
-#endif /* AdminBlok_h */
+#endif /* AdminBox_h */

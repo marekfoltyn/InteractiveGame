@@ -1,38 +1,39 @@
-#ifndef  _Blok_H_
-#define  _Blok_H_
+#ifndef  _Box_H_
+#define  _Box_H_
 
 #include "MessageIdentifiers.h"
 #include "RakPeerInterface.h"
 
 #include "string.h"
 
+namespace GameNet {
 
 /**
  * Representation of game message to be sent to network.
- * Blok also includes information about packet - type, reliability, priority, ordering, address, ...
+ * Box also includes information about packet - type, reliability, priority, ordering, address, ...
  * It is used as a wrapper for data to be sent to network and also for received data
  * Example:
  *
- * Blok * b;
+ * Box * b;
  *
  * ... // init, fill with data, adress and so on...
  *
  * Connector::getInstance()->send(b);
  */
-class Blok {
+class Box {
 public:
     
     /**
-     * create a Blok and copies data so the data has to be freed manually
+     * create a Box and copies data so the data has to be freed manually
      * @param byteSize size of the data
      */
-    static Blok * create(const char * data, unsigned int len );
+    static Box * create(const char * data, unsigned int len );
     
     /**
-     * create a Blok from received packet
+     * create a Box from received packet
      * reliability and priority will be undefined
      */
-    static Blok * create(RakNet::Packet * p);
+    static Box * create(RakNet::Packet * p);
     
     /**
      * set packet type (defined in Definitions.h)
@@ -65,7 +66,7 @@ public:
     PacketPriority getPriority();
     
     /**
-     * set RakNet system address the Blok should be sent
+     * set RakNet system address the Box should be sent
      */
     void setAddress( RakNet::SystemAddress addr );
     
@@ -100,7 +101,7 @@ public:
     void send();
     
     /**
-     * deallocates the Blok including its data
+     * deallocates the Box including its data
      */
     void deallocate();
     
@@ -114,25 +115,25 @@ private:
     
     /**
      * private constructor
-     * creating Bloks (similar as creating objects in Cocos2dx):
-     * Blok::create(...)
+     * creating Boxs (similar as creating objects in Cocos2dx):
+     * Box::create(...)
      */
-    Blok(const char * data, unsigned int length );
+    Box(const char * data, unsigned int length );
     
     /**
      * private constructor
-     * creating Bloks from received packet
-     * Blok::create(...)
+     * creating Boxs from received packet
+     * Box::create(...)
      */
-    Blok( RakNet::Packet * packet );
+    Box( RakNet::Packet * packet );
     
     /**
      * empty constructor
      */
-    Blok(){};
+    Box(){};
     
     /**
-     * pointer to a RakNet packet (used if Blok was created from received packet)
+     * pointer to a RakNet packet (used if Box was created from received packet)
      */
     RakNet::Packet * packet;
     
@@ -175,10 +176,12 @@ private:
     PacketReliability reliability;
     
     /**
-     * RakNet address, where the Blok will be sent
+     * RakNet address, where the Box will be sent
      */
     RakNet::SystemAddress address;
     
 };
+    
+}
 
-#endif // _Blok_H_
+#endif // _Box_H_

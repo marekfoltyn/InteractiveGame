@@ -57,12 +57,12 @@
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
-		EA24006A1C64E6BB00906235 /* CollisionBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2400681C64E6BB00906235 /* CollisionBlok.cpp */; };
-		EA2400791C65192F00906235 /* ServerNameBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2400771C65192F00906235 /* ServerNameBlok.cpp */; };
-		EA2F6DF71C689AB0009E3F1A /* KickBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F6DF51C689AB0009E3F1A /* KickBlok.cpp */; };
-		EA2F6E021C68A983009E3F1A /* TackleBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F6E001C68A983009E3F1A /* TackleBlok.cpp */; };
-		EA5F25F51C6A87A7004E2A79 /* AdminBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5F25F31C6A87A7004E2A79 /* AdminBlok.cpp */; };
-		EA5F25FC1C6A88FD004E2A79 /* ResetScoreBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5F25FA1C6A88FD004E2A79 /* ResetScoreBlok.cpp */; };
+		EA24006A1C64E6BB00906235 /* CollisionBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2400681C64E6BB00906235 /* CollisionBox.cpp */; };
+		EA2400791C65192F00906235 /* ServerNameBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2400771C65192F00906235 /* ServerNameBox.cpp */; };
+		EA2F6DF71C689AB0009E3F1A /* KickBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F6DF51C689AB0009E3F1A /* KickBox.cpp */; };
+		EA2F6E021C68A983009E3F1A /* TackleBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2F6E001C68A983009E3F1A /* TackleBox.cpp */; };
+		EA5F25F51C6A87A7004E2A79 /* AdminBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5F25F31C6A87A7004E2A79 /* AdminBox.cpp */; };
+		EA5F25FC1C6A88FD004E2A79 /* ResetScoreBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5F25FA1C6A88FD004E2A79 /* ResetScoreBox.cpp */; };
 		EA888A021C58A18F00534275 /* LobbyScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888A001C58A18F00534275 /* LobbyScene.cpp */; };
 		EA888B0C1C58A6B200534275 /* _FindFirst.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888A9E1C58A6B100534275 /* _FindFirst.cpp */; };
 		EA888B0D1C58A6B200534275 /* Base64Encoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888A9F1C58A6B100534275 /* Base64Encoder.cpp */; };
@@ -175,10 +175,10 @@
 		EA888B781C58A6B200534275 /* VitaIncludes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888B0A1C58A6B200534275 /* VitaIncludes.cpp */; };
 		EA888B791C58A6B200534275 /* WSAStartupSingleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888B0B1C58A6B200534275 /* WSAStartupSingleton.cpp */; };
 		EAAB6A591C59F21E00171969 /* Connector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A581C59F21E00171969 /* Connector.cpp */; };
-		EAAB6A5C1C59F27000171969 /* Blok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A5B1C59F27000171969 /* Blok.cpp */; };
-		EAAB6A611C59F6C900171969 /* AccelerationBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A5F1C59F6C900171969 /* AccelerationBlok.cpp */; };
+		EAAB6A5C1C59F27000171969 /* Box.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A5B1C59F27000171969 /* Box.cpp */; };
+		EAAB6A611C59F6C900171969 /* AccelerationBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A5F1C59F6C900171969 /* AccelerationBox.cpp */; };
 		EAAB6A651C59F77D00171969 /* ServerListScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A641C59F77D00171969 /* ServerListScene.cpp */; };
-		EAD614381C66098B001F3478 /* StringBlok.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD614361C66098B001F3478 /* StringBlok.cpp */; };
+		EAD614381C66098B001F3478 /* StringBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD614361C66098B001F3478 /* StringBox.cpp */; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
 /* End PBXBuildFile section */
@@ -237,18 +237,18 @@
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
-		EA2400681C64E6BB00906235 /* CollisionBlok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CollisionBlok.cpp; path = ../../../shared/bloks/CollisionBlok.cpp; sourceTree = "<group>"; };
-		EA2400691C64E6BB00906235 /* CollisionBlok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollisionBlok.h; path = ../../../shared/bloks/CollisionBlok.h; sourceTree = "<group>"; };
-		EA2400771C65192F00906235 /* ServerNameBlok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ServerNameBlok.cpp; path = ../../../shared/bloks/ServerNameBlok.cpp; sourceTree = "<group>"; };
-		EA2400781C65192F00906235 /* ServerNameBlok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerNameBlok.h; path = ../../../shared/bloks/ServerNameBlok.h; sourceTree = "<group>"; };
-		EA2F6DF51C689AB0009E3F1A /* KickBlok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KickBlok.cpp; path = ../../../shared/bloks/KickBlok.cpp; sourceTree = "<group>"; };
-		EA2F6DF61C689AB0009E3F1A /* KickBlok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KickBlok.h; path = ../../../shared/bloks/KickBlok.h; sourceTree = "<group>"; };
-		EA2F6E001C68A983009E3F1A /* TackleBlok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TackleBlok.cpp; path = ../../../shared/bloks/TackleBlok.cpp; sourceTree = "<group>"; };
-		EA2F6E011C68A983009E3F1A /* TackleBlok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TackleBlok.h; path = ../../../shared/bloks/TackleBlok.h; sourceTree = "<group>"; };
-		EA5F25F31C6A87A7004E2A79 /* AdminBlok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AdminBlok.cpp; path = ../../../shared/bloks/AdminBlok.cpp; sourceTree = "<group>"; };
-		EA5F25F41C6A87A7004E2A79 /* AdminBlok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AdminBlok.h; path = ../../../shared/bloks/AdminBlok.h; sourceTree = "<group>"; };
-		EA5F25FA1C6A88FD004E2A79 /* ResetScoreBlok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ResetScoreBlok.cpp; path = ../../../shared/bloks/ResetScoreBlok.cpp; sourceTree = "<group>"; };
-		EA5F25FB1C6A88FD004E2A79 /* ResetScoreBlok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResetScoreBlok.h; path = ../../../shared/bloks/ResetScoreBlok.h; sourceTree = "<group>"; };
+		EA2400681C64E6BB00906235 /* CollisionBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CollisionBox.cpp; path = ../../../shared/bloks/CollisionBox.cpp; sourceTree = "<group>"; };
+		EA2400691C64E6BB00906235 /* CollisionBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollisionBox.h; path = ../../../shared/bloks/CollisionBox.h; sourceTree = "<group>"; };
+		EA2400771C65192F00906235 /* ServerNameBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ServerNameBox.cpp; path = ../../../shared/bloks/ServerNameBox.cpp; sourceTree = "<group>"; };
+		EA2400781C65192F00906235 /* ServerNameBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerNameBox.h; path = ../../../shared/bloks/ServerNameBox.h; sourceTree = "<group>"; };
+		EA2F6DF51C689AB0009E3F1A /* KickBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KickBox.cpp; path = ../../../shared/bloks/KickBox.cpp; sourceTree = "<group>"; };
+		EA2F6DF61C689AB0009E3F1A /* KickBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KickBox.h; path = ../../../shared/bloks/KickBox.h; sourceTree = "<group>"; };
+		EA2F6E001C68A983009E3F1A /* TackleBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TackleBox.cpp; path = ../../../shared/bloks/TackleBox.cpp; sourceTree = "<group>"; };
+		EA2F6E011C68A983009E3F1A /* TackleBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TackleBox.h; path = ../../../shared/bloks/TackleBox.h; sourceTree = "<group>"; };
+		EA5F25F31C6A87A7004E2A79 /* AdminBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AdminBox.cpp; path = ../../../shared/bloks/AdminBox.cpp; sourceTree = "<group>"; };
+		EA5F25F41C6A87A7004E2A79 /* AdminBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AdminBox.h; path = ../../../shared/bloks/AdminBox.h; sourceTree = "<group>"; };
+		EA5F25FA1C6A88FD004E2A79 /* ResetScoreBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ResetScoreBox.cpp; path = ../../../shared/bloks/ResetScoreBox.cpp; sourceTree = "<group>"; };
+		EA5F25FB1C6A88FD004E2A79 /* ResetScoreBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResetScoreBox.h; path = ../../../shared/bloks/ResetScoreBox.h; sourceTree = "<group>"; };
 		EA651D891C46DC02003EE325 /* raknetx86_64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = raknetx86_64.a; path = ../../../shared/network/raknet/raknetx86_64.a; sourceTree = "<group>"; };
 		EA8889FE1C58A18F00534275 /* LobbyScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LobbyScene.h; sourceTree = "<group>"; };
 		EA888A001C58A18F00534275 /* LobbyScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LobbyScene.cpp; sourceTree = "<group>"; };
@@ -519,14 +519,14 @@
 		EA888B7C1C58A6FC00534275 /* Definitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Definitions.h; path = ../../../shared/network/Definitions.h; sourceTree = "<group>"; };
 		EAAB6A571C59F21E00171969 /* Connector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Connector.h; path = ../../../shared/network/Connector.h; sourceTree = "<group>"; };
 		EAAB6A581C59F21E00171969 /* Connector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Connector.cpp; path = ../../../shared/network/Connector.cpp; sourceTree = "<group>"; };
-		EAAB6A5A1C59F27000171969 /* Blok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Blok.h; path = ../../../shared/network/Blok.h; sourceTree = "<group>"; };
-		EAAB6A5B1C59F27000171969 /* Blok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Blok.cpp; path = ../../../shared/network/Blok.cpp; sourceTree = "<group>"; };
-		EAAB6A5D1C59F6C900171969 /* AccelerationBlok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccelerationBlok.h; path = ../../../shared/bloks/AccelerationBlok.h; sourceTree = "<group>"; };
-		EAAB6A5F1C59F6C900171969 /* AccelerationBlok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AccelerationBlok.cpp; path = ../../../shared/bloks/AccelerationBlok.cpp; sourceTree = "<group>"; };
+		EAAB6A5A1C59F27000171969 /* Box.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Box.h; path = ../../../shared/network/Box.h; sourceTree = "<group>"; };
+		EAAB6A5B1C59F27000171969 /* Box.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Box.cpp; path = ../../../shared/network/Box.cpp; sourceTree = "<group>"; };
+		EAAB6A5D1C59F6C900171969 /* AccelerationBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccelerationBox.h; path = ../../../shared/bloks/AccelerationBox.h; sourceTree = "<group>"; };
+		EAAB6A5F1C59F6C900171969 /* AccelerationBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AccelerationBox.cpp; path = ../../../shared/bloks/AccelerationBox.cpp; sourceTree = "<group>"; };
 		EAAB6A631C59F77D00171969 /* ServerListScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerListScene.h; sourceTree = "<group>"; };
 		EAAB6A641C59F77D00171969 /* ServerListScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServerListScene.cpp; sourceTree = "<group>"; };
-		EAD614361C66098B001F3478 /* StringBlok.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StringBlok.cpp; path = ../../../shared/bloks/StringBlok.cpp; sourceTree = "<group>"; };
-		EAD614371C66098B001F3478 /* StringBlok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StringBlok.h; path = ../../../shared/bloks/StringBlok.h; sourceTree = "<group>"; };
+		EAD614361C66098B001F3478 /* StringBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StringBox.cpp; path = ../../../shared/bloks/StringBox.cpp; sourceTree = "<group>"; };
+		EAD614371C66098B001F3478 /* StringBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StringBox.h; path = ../../../shared/bloks/StringBox.h; sourceTree = "<group>"; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -654,7 +654,7 @@
 			children = (
 				EAC5EBD81C6DF5930002B645 /* Util */,
 				EA4189211C33D31D004B8934 /* Testing */,
-				EA41891A1C33C309004B8934 /* Network */,
+				EA41891A1C33C309004B8934 /* GameNet */,
 				EADD22BD1C4EAEFE00A939CB /* Scenes */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
@@ -726,18 +726,18 @@
 			name = "ios-libs";
 			sourceTree = "<group>";
 		};
-		EA41891A1C33C309004B8934 /* Network */ = {
+		EA41891A1C33C309004B8934 /* GameNet */ = {
 			isa = PBXGroup;
 			children = (
 				EA6D04F21C53DCD0003A08BE /* RakNet */,
-				EA8888731C58031400534275 /* Bloks */,
+				EA8888731C58031400534275 /* Blocks */,
 				EA888B7C1C58A6FC00534275 /* Definitions.h */,
 				EAAB6A571C59F21E00171969 /* Connector.h */,
 				EAAB6A581C59F21E00171969 /* Connector.cpp */,
-				EAAB6A5A1C59F27000171969 /* Blok.h */,
-				EAAB6A5B1C59F27000171969 /* Blok.cpp */,
+				EAAB6A5A1C59F27000171969 /* Box.h */,
+				EAAB6A5B1C59F27000171969 /* Box.cpp */,
 			);
-			name = Network;
+			name = GameNet;
 			sourceTree = "<group>";
 		};
 		EA4189211C33D31D004B8934 /* Testing */ = {
@@ -1018,27 +1018,27 @@
 			name = RakNet;
 			sourceTree = "<group>";
 		};
-		EA8888731C58031400534275 /* Bloks */ = {
+		EA8888731C58031400534275 /* Blocks */ = {
 			isa = PBXGroup;
 			children = (
-				EA5F25F41C6A87A7004E2A79 /* AdminBlok.h */,
-				EA5F25F31C6A87A7004E2A79 /* AdminBlok.cpp */,
-				EA2F6DF61C689AB0009E3F1A /* KickBlok.h */,
-				EA2F6DF51C689AB0009E3F1A /* KickBlok.cpp */,
-				EA2400781C65192F00906235 /* ServerNameBlok.h */,
-				EA2400771C65192F00906235 /* ServerNameBlok.cpp */,
-				EA2400681C64E6BB00906235 /* CollisionBlok.cpp */,
-				EA2400691C64E6BB00906235 /* CollisionBlok.h */,
-				EAAB6A5D1C59F6C900171969 /* AccelerationBlok.h */,
-				EAAB6A5F1C59F6C900171969 /* AccelerationBlok.cpp */,
-				EA5F25FB1C6A88FD004E2A79 /* ResetScoreBlok.h */,
-				EA5F25FA1C6A88FD004E2A79 /* ResetScoreBlok.cpp */,
-				EAD614361C66098B001F3478 /* StringBlok.cpp */,
-				EAD614371C66098B001F3478 /* StringBlok.h */,
-				EA2F6E001C68A983009E3F1A /* TackleBlok.cpp */,
-				EA2F6E011C68A983009E3F1A /* TackleBlok.h */,
+				EA5F25F41C6A87A7004E2A79 /* AdminBox.h */,
+				EA5F25F31C6A87A7004E2A79 /* AdminBox.cpp */,
+				EA2F6DF61C689AB0009E3F1A /* KickBox.h */,
+				EA2F6DF51C689AB0009E3F1A /* KickBox.cpp */,
+				EA2400781C65192F00906235 /* ServerNameBox.h */,
+				EA2400771C65192F00906235 /* ServerNameBox.cpp */,
+				EA2400691C64E6BB00906235 /* CollisionBox.h */,
+				EA2400681C64E6BB00906235 /* CollisionBox.cpp */,
+				EAAB6A5D1C59F6C900171969 /* AccelerationBox.h */,
+				EAAB6A5F1C59F6C900171969 /* AccelerationBox.cpp */,
+				EA5F25FB1C6A88FD004E2A79 /* ResetScoreBox.h */,
+				EA5F25FA1C6A88FD004E2A79 /* ResetScoreBox.cpp */,
+				EAD614371C66098B001F3478 /* StringBox.h */,
+				EAD614361C66098B001F3478 /* StringBox.cpp */,
+				EA2F6E011C68A983009E3F1A /* TackleBox.h */,
+				EA2F6E001C68A983009E3F1A /* TackleBox.cpp */,
 			);
-			name = Bloks;
+			name = Blocks;
 			sourceTree = "<group>";
 		};
 		EAC5EBD81C6DF5930002B645 /* Util */ = {
@@ -1181,7 +1181,7 @@
 				EA888B121C58A6B200534275 /* CloudCommon.cpp in Sources */,
 				EA888B3D1C58A6B200534275 /* PacketizedTCP.cpp in Sources */,
 				EA888B471C58A6B200534275 /* RakNetSocket2_Berkley_NativeClient.cpp in Sources */,
-				EA2400791C65192F00906235 /* ServerNameBlok.cpp in Sources */,
+				EA2400791C65192F00906235 /* ServerNameBox.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				EA888B2C1C58A6B200534275 /* HTTPConnection2.cpp in Sources */,
 				EA888B551C58A6B200534275 /* RakSleep.cpp in Sources */,
@@ -1209,12 +1209,12 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				EA888B1B1C58A6B200534275 /* DS_ByteQueue.cpp in Sources */,
 				EA888B361C58A6B200534275 /* NatTypeDetectionClient.cpp in Sources */,
-				EAAB6A5C1C59F27000171969 /* Blok.cpp in Sources */,
+				EAAB6A5C1C59F27000171969 /* Box.cpp in Sources */,
 				EA888B3B1C58A6B200534275 /* PacketConsoleLogger.cpp in Sources */,
 				EA888B171C58A6B200534275 /* DataCompressor.cpp in Sources */,
 				EA888A021C58A18F00534275 /* LobbyScene.cpp in Sources */,
 				EA888B3F1C58A6B200534275 /* PacketOutputWindowLogger.cpp in Sources */,
-				EAD614381C66098B001F3478 /* StringBlok.cpp in Sources */,
+				EAD614381C66098B001F3478 /* StringBox.cpp in Sources */,
 				EA888B6C1C58A6B200534275 /* TeamBalancer.cpp in Sources */,
 				EA888B3A1C58A6B200534275 /* NetworkIDObject.cpp in Sources */,
 				EA888B4D1C58A6B200534275 /* RakNetSocket2_Windows_Linux_360.cpp in Sources */,
@@ -1247,10 +1247,10 @@
 				EA888B3C1C58A6B200534275 /* PacketFileLogger.cpp in Sources */,
 				EA888B2B1C58A6B200534275 /* HTTPConnection.cpp in Sources */,
 				EA888B431C58A6B200534275 /* RakMemoryOverride.cpp in Sources */,
-				EA2F6E021C68A983009E3F1A /* TackleBlok.cpp in Sources */,
+				EA2F6E021C68A983009E3F1A /* TackleBox.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				EA888B6E1C58A6B200534275 /* TelnetTransport.cpp in Sources */,
-				EA2F6DF71C689AB0009E3F1A /* KickBlok.cpp in Sources */,
+				EA2F6DF71C689AB0009E3F1A /* KickBox.cpp in Sources */,
 				EA888B751C58A6B200534275 /* VariableDeltaSerializer.cpp in Sources */,
 				EAAB6A651C59F77D00171969 /* ServerListScene.cpp in Sources */,
 				EA888B241C58A6B200534275 /* FormatString.cpp in Sources */,
@@ -1268,17 +1268,17 @@
 				EA888B761C58A6B200534275 /* VariableListDeltaTracker.cpp in Sources */,
 				EA888B521C58A6B200534275 /* RakNetTransport2.cpp in Sources */,
 				EA888B441C58A6B200534275 /* RakNetCommandParser.cpp in Sources */,
-				EAAB6A611C59F6C900171969 /* AccelerationBlok.cpp in Sources */,
+				EAAB6A611C59F6C900171969 /* AccelerationBox.cpp in Sources */,
 				EA888B281C58A6B200534275 /* GetTime.cpp in Sources */,
 				EA888B5B1C58A6B200534275 /* ReadyEvent.cpp in Sources */,
 				EA888B381C58A6B200534275 /* NatTypeDetectionServer.cpp in Sources */,
-				EA5F25F51C6A87A7004E2A79 /* AdminBlok.cpp in Sources */,
+				EA5F25F51C6A87A7004E2A79 /* AdminBox.cpp in Sources */,
 				EA888B791C58A6B200534275 /* WSAStartupSingleton.cpp in Sources */,
-				EA24006A1C64E6BB00906235 /* CollisionBlok.cpp in Sources */,
+				EA24006A1C64E6BB00906235 /* CollisionBox.cpp in Sources */,
 				EA888B1D1C58A6B200534275 /* DS_Table.cpp in Sources */,
 				EA888B421C58A6B200534275 /* Rackspace.cpp in Sources */,
 				EA888B2F1C58A6B200534275 /* Itoa.cpp in Sources */,
-				EA5F25FC1C6A88FD004E2A79 /* ResetScoreBlok.cpp in Sources */,
+				EA5F25FC1C6A88FD004E2A79 /* ResetScoreBox.cpp in Sources */,
 				EA888B561C58A6B200534275 /* RakString.cpp in Sources */,
 				EA888B571C58A6B200534275 /* RakThread.cpp in Sources */,
 				EA888B341C58A6B200534275 /* NatPunchthroughClient.cpp in Sources */,

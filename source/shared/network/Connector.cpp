@@ -4,6 +4,8 @@
 #include <string>
 #include <stdlib.h>
 
+using namespace GameNet;
+
 Connector * Connector::instance = nullptr;
 
 
@@ -156,7 +158,7 @@ void Connector::disconnect( RakNet::SystemAddress address ){
 }
 
 
-void Connector::send(Blok* b){
+void Connector::send(Box* b){
 	if (raknetInterface == nullptr){
         return;
     }
@@ -165,7 +167,7 @@ void Connector::send(Blok* b){
 }
 
 
-Blok * Connector::receive(){
+Box * Connector::receive(){
     
 	if (raknetInterface == nullptr) {
         return 0;
@@ -198,7 +200,7 @@ Blok * Connector::receive(){
             server = RakNet::UNASSIGNED_SYSTEM_ADDRESS;
         }
         
-        return Blok::create(p);
+        return Box::create(p);
     }
 }
 

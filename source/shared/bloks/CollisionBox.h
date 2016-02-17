@@ -1,31 +1,33 @@
 //
-//  ServerNameBlok.h
+//  ServerNameBox.h
 //  InteractiveController
 //
 //  Created by Marek Foltýn on 26.01.16.
 //
 //
 
-#ifndef CollisionBlok_h
-#define CollisionBlok_h
+#ifndef CollisionBox_h
+#define CollisionBox_h
 
 #include <string>
 #include "Connector.h"
 
+using namespace GameNet;
+
 /**
- * Empty Blok signaling player's collision with whatever
+ * Empty Box signaling player's collision with whatever
  *
  * Type:
  * ==============================================
  * P_COLLISION
  *
  */
-class CollisionBlok{
+class CollisionBox{
 public:
     
-    static Blok * create();
+    static Box * create();
     
 };
 
 
-#endif /* CollisionBlok_h */
+#endif /* CollisionBox_h */

@@ -10,6 +10,8 @@
 USING_NS_CC;
 USING_NS_CC_EXT;
 
+using namespace GameNet;
+
 /**
  * The phone is connected to the server so the lobby scene is displayed.
  * This class represents the lobby, players can prepare for the game (they choose the color)
@@ -43,7 +45,7 @@ public:
      * receive Block processing loop
      * receives until RakNet returns 0 (empty packet queue)
      */
-    void receiveAllBlocks();
+    void receiveAllBoxes();
     
     /**
      * send movement information to the server
@@ -73,7 +75,7 @@ public:
     /**
      * connection was lost - (show the dialog? and) return to the server list scene
      */
-    void onConnectionLost(Blok * block);
+    void onConnectionLost(Box * box);
         
 };
 

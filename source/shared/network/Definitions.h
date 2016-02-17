@@ -1,8 +1,8 @@
 #ifndef  _DEFINITIONS_H_
 #define  _DEFINITIONS_H_
 
-#include "MessageIdentifiers.h"
-#include "cocos2d.h"
+#include "MessageIdentifiers.h" // packet types
+#include "cocos2d.h" // CCLOG
 
 // time (ms) during when reliable packet was not able to be received -> connection lost
 #define CONNECTION_LOST_TIMEOUT 5000

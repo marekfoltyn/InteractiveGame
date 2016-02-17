@@ -7,12 +7,13 @@
 #include "MessageIdentifiers.h"
 #include "Definitions.h"
 #include "Connector.h"
-#include "Blok.h"
-#include "AccelerationBlok.h"
-#include "CollisionBlok.h"
-#include "StringBlok.h"
+#include "Box.h"
+#include "AccelerationBox.h"
+#include "CollisionBox.h"
+#include "StringBox.h"
 
 USING_NS_CC;
+using namespace GameNet;
 
 #define COLOR_FONT_TRANSPARENT Color4B(255,255,255,44)
 
@@ -358,30 +359,30 @@ void LobbyScene::initGUI()
 void LobbyScene::processBlock()
 {
     Connector * c = Connector::getInstance();
-    Blok * blok;
+    Box * box;
     
     // c->receive() returns 0, if no received packet is in the queue
-    while( (blok = c->receive()) != nullptr )
+    while( (box = c->receive()) != nullptr )
     {
-        switch ( blok->getType() )
+        switch ( box->getType() )
         {
             case P_PING:
             {
-                CCLOG("Client %s has pinged.", blok->getAddress().ToString() );
+                CCLOG("Client %s has pinged.", box->getAddress().ToString() );
                 break;
             }
                 
             case P_NEW_CONNECTION:
             {
-                CCLOG("%s connected.", blok->getAddress().ToString() );
+                CCLOG("%s connected.", box->getAddress().ToString() );
                 break;
             }
             case P_CONNECTION_LOST:
             case P_DISCONNECTED:
             {
-                CCLOG("%s disconnected.", blok->getAddress().ToString());
+                CCLOG("%s disconnected.", box->getAddress().ToString());
                 
-                int id = RakNet::SystemAddress::ToInteger( blok->getAddress());
+                int id = RakNet::SystemAddress::ToInteger( box->getAddress());
                 
                 this->removeChild( players[id]->getSprite() );
                 
@@ -399,17 +400,17 @@ void LobbyScene::processBlock()
                                 
             case P_ACCELERATION:
             {
-                onAccelerationBlok(blok);
+                onAccelerationBox(box);
                 break;
             }
                 
             case P_PLAYER_NAME:
             {
-                __String name = StringBlok::parseString(blok);
+                __String name = StringBox::parseString(box);
                 CCLOG("Player name: %s", name.getCString() );
                 
-                int id = RakNet::SystemAddress::ToInteger( blok->getAddress());
-                auto player = Player::create( blok->getAddress() );
+                int id = RakNet::SystemAddress::ToInteger( box->getAddress());
+                auto player = Player::create( box->getAddress() );
                 players[id] = player;
                 
                 auto visibleSize = Director::getInstance()->getVisibleSize();
@@ -444,13 +445,13 @@ void LobbyScene::processBlock()
                 
             case P_KICK:
             {
-                onPlayerKick(blok);
+                onPlayerKick(box);
                 break;
             }
                 
             case P_TACKLE:
             {
-                onPlayerTackle(blok);
+                onPlayerTackle(box);
                 break;
             }
                 
@@ -467,12 +468,12 @@ void LobbyScene::processBlock()
                 
             default:
             {
-                CCLOG("Packet type %d was ignored.", blok->getType());
+                CCLOG("Packet type %d was ignored.", box->getType());
                 break;
             }
         }
         
-        blok->deallocate();
+        box->deallocate();
     }
 }
 
@@ -490,9 +491,9 @@ bool LobbyScene::onContactBegin( cocos2d::PhysicsContact &contact )
             int id = a[i]->getTag();
             Player * player = players[id];
             CCLOG("Player %s collided.", player->getAddress().ToString() );
-            auto blok = CollisionBlok::create();
-            blok->setAddress( player->getAddress() );
-            blok->send();
+            auto box = CollisionBox::create();
+            box->setAddress( player->getAddress() );
+            box->send();
         }
     }
     
@@ -517,11 +518,11 @@ bool LobbyScene::onContactBegin( cocos2d::PhysicsContact &contact )
 
 
 
-void LobbyScene::onAccelerationBlok(Blok * blok)
+void LobbyScene::onAccelerationBox(Box * box)
 {
-    int id = RakNet::SystemAddress::ToInteger( blok->getAddress() );
+    int id = RakNet::SystemAddress::ToInteger( box->getAddress() );
     
-    auto acc = AccelerationBlok::Parse(blok);
+    auto acc = AccelerationBox::Parse(box);
     float x = (float) acc.x;
     float y = (float) acc.y;
     float forceSize = sqrtf( x*x + y*y );
@@ -552,9 +553,9 @@ void LobbyScene::onAccelerationBlok(Blok * blok)
 
 
 
-void LobbyScene::onPlayerKick(Blok * blok)
+void LobbyScene::onPlayerKick(Box * box)
 {
-    int id = RakNet::SystemAddress::ToInteger( blok->getAddress() );
+    int id = RakNet::SystemAddress::ToInteger( box->getAddress() );
     auto player = players[id]->getSprite();
     auto ball = this->getChildByName<Sprite *>(NODE_BALL);
     
@@ -574,9 +575,9 @@ void LobbyScene::onPlayerKick(Blok * blok)
     
 }
 
-void LobbyScene::onPlayerTackle(Blok * blok)
+void LobbyScene::onPlayerTackle(Box * box)
 {
-    int id = RakNet::SystemAddress::ToInteger( blok->getAddress() );
+    int id = RakNet::SystemAddress::ToInteger( box->getAddress() );
     auto player = players[id]->getSprite();
     auto ball = this->getChildByName<Sprite *>(NODE_BALL);
     
@@ -605,14 +606,3 @@ void LobbyScene::btnExitClicked(Ref * sender)
     Director::getInstance()->end();
     exit(0);
 }
-
-
-
-
-
-
-
-
-
-
-
