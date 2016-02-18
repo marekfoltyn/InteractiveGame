@@ -4,7 +4,7 @@
 #include "MessageIdentifiers.h"
 #include "RakPeerInterface.h"
 
-#include "string.h"
+#include <string>
 
 namespace GameNet {
 
@@ -80,18 +80,20 @@ public:
      */
     RakNet::SystemAddress getAddress();
     
+    
     /**
      * get custom char data of packet (without packet type)
      */
-    const char * getData();
+    std::string getData();
     
     /**
      * get custom char data length (without packet type)
      */
     const int getLength();
-    
+        
     /**
      * get char data of packet (packet type + custom data)
+     * don't use - internal
      */
     const char * getPacketData();
     

@@ -99,10 +99,22 @@ RakNet::SystemAddress Box::getAddress()
 }
 
 
-const char * Box::getData()
+std::string Box::getData()
 {
-    return data+1; // skip the packet type
+    // return data+1 not working
+    // implicit cast to std:string works
+    // but the data are terminated after first null byte
+    // e.g.: timestamp has four bytes, but usually the first three bytes
+    // are null, so it would return an empty string
+    return std::string(data+1, getLength()); // skip the packet type
 }
+
+/*template <typename T>
+T * Box::getMessage()
+{
+    // deserialize() returns Message* (so cast to WhateverMessage*)
+    return dynamic_cast<T*>(T::deserialize( getData() ));
+}*/
 
 
 const int Box::getLength()
@@ -111,10 +123,12 @@ const int Box::getLength()
 }
 
 
+
 const char * Box::getPacketData()
 {
     return data;
 }
+
 
 
 const int Box::getPacketLength()
@@ -122,11 +136,15 @@ const int Box::getPacketLength()
     return length;
 }
 
+
+
 void Box::send()
 {
     Connector::getInstance()->send(this);
     this->deallocate();
 }
+
+
 
 void Box::deallocate()
 {

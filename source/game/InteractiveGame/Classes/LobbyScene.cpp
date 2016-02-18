@@ -8,9 +8,9 @@
 #include "Definitions.h"
 #include "Connector.h"
 #include "Box.h"
-#include "AccelerationBox.h"
-#include "CollisionBox.h"
-#include "StringBox.h"
+
+#include "BoxFactory.h"
+#include "AccelerationMessage.h"
 
 USING_NS_CC;
 using namespace GameNet;
@@ -406,7 +406,7 @@ void LobbyScene::processBlock()
                 
             case P_PLAYER_NAME:
             {
-                __String name = StringBox::parseString(box);
+                __String name = box->getData(); // simple string, no need to deserialize
                 CCLOG("Player name: %s", name.getCString() );
                 
                 int id = RakNet::SystemAddress::ToInteger( box->getAddress());
@@ -491,9 +491,8 @@ bool LobbyScene::onContactBegin( cocos2d::PhysicsContact &contact )
             int id = a[i]->getTag();
             Player * player = players[id];
             CCLOG("Player %s collided.", player->getAddress().ToString() );
-            auto box = CollisionBox::create();
-            box->setAddress( player->getAddress() );
-            box->send();
+            
+            BoxFactory::collision(player->getAddress())->send();
         }
     }
     
@@ -522,9 +521,16 @@ void LobbyScene::onAccelerationBox(Box * box)
 {
     int id = RakNet::SystemAddress::ToInteger( box->getAddress() );
     
-    auto acc = AccelerationBox::Parse(box);
-    float x = (float) acc.x;
-    float y = (float) acc.y;
+    auto msg = AccelerationMessage();
+    bool res = msg.deserialize(box->getData());
+    if(res == false)
+    {
+        CCLOG("AccelerationMessage deserialization failed.");
+        return;
+    }
+    
+    float x = (float) msg.getX();
+    float y = (float) msg.getY();
     float forceSize = sqrtf( x*x + y*y );
     
     // coord clean

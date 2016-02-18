@@ -4,11 +4,7 @@
 #include "Connector.h"
 #include "ServerListScene.h"
 
-#include "AccelerationBox.h"
-#include "CollisionBox.h"
-#include "KickBox.h"
-#include "TackleBox.h"
-#include "ResetScoreBox.h"
+#include "BoxFactory.h"
 
 USING_NS_CC;
 using namespace GameNet;
@@ -200,7 +196,7 @@ void LobbyScene::btnKickClick(Ref * sender, ui::Widget::TouchEventType type)
         case ui::Widget::TouchEventType::BEGAN:
         {
          
-            KickBox::create()->send(); // send to server
+            BoxFactory::kick()->send(); // send to server
             Device::vibrate(0.1);
             break;
         }
@@ -225,7 +221,7 @@ void LobbyScene::btnTackleClick(Ref * sender, ui::Widget::TouchEventType type)
         case ui::Widget::TouchEventType::BEGAN:
         {
             
-            TackleBox::create()->send(); // send to server
+            BoxFactory::tackle()->send(); // send to server
             Device::vibrate(0.1);
             break;
         }
@@ -245,8 +241,8 @@ void LobbyScene::btnTackleClick(Ref * sender, ui::Widget::TouchEventType type)
 
 void LobbyScene::onAcceleration(cocos2d::Acceleration* acc, cocos2d::Event* unused_event)
 {
-    Box * box = AccelerationBox::Create(acc);
-    Connector::getInstance()->send(box);
+    Box * box = BoxFactory::acceleration(acc->x, acc->y, acc->z);
+    box->send();
 }
 
 void LobbyScene::setAsAdmin()
@@ -267,7 +263,7 @@ void LobbyScene::setAsAdmin()
     {
         if(type == ui::Widget::TouchEventType::ENDED){
             CCLOG("Reseting score...");
-            ResetScoreBox::create()->send();
+            BoxFactory::resetScore()->send();
         }
     });
     reset->setAnchorPoint(Vec2(0, 0));

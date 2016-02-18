@@ -7,7 +7,9 @@
 //
 
 #include "Player.h"
-#include "AdminBox.h"
+#include "BoxFactory.h"
+
+using namespace GameNet;
 
 
 Player::Player(RakNet::SystemAddress address)
@@ -42,7 +44,6 @@ void Player::setAppliedForce(Vec2 force)
 void Player::setAsAdmin()
 {
     admin = true;
-    auto box = AdminBox::create();
-    box->setAddress( this->getAddress() );
+    auto box = BoxFactory::admin( this->getAddress() );
     box->send();
 }

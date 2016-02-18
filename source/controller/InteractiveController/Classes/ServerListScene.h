@@ -144,7 +144,7 @@ private:
     /**
      * add new menu item to scroll view or updates if exists
      */
-    void addOrUpdateServer(cocos2d::__String * serverName, RakNet::SystemAddress address);
+    void addOrUpdateServer(std::string serverName, RakNet::SystemAddress address);
     
     /**
      * every "server search" decreases servers lifetimes (when not responding -> delete from menu)

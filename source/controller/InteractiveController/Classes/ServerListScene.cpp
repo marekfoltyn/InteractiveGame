@@ -2,8 +2,8 @@
 #include "LobbyScene.h"
 
 #include "Connector.h"
-#include "ServerNameBox.h"
-#include "StringBox.h"
+#include "ServerNameMessage.h"
+#include "BoxFactory.h"
 
 USING_NS_CC;
 
@@ -242,15 +242,24 @@ void ServerListScene::receiveAllBoxes()
 void ServerListScene::refreshServer(Box * box)
 {
     // parse Box
-    auto name = __String::create( ServerNameBox::parseServerName(box) );
-    CCLOG("Server response: %s", name->getCString() );
+    ServerNameMessage msg = ServerNameMessage();
+    bool res = msg.deserialize( box->getData() );
+    if( res == false){
+        CCLOG("ServerNameMessage deserialization FAILED!");
+        return;
+    }
+    
+    auto name = msg.getServerName();
+    
+    CCLOG("Server response: %s", name.c_str() );
     
     addOrUpdateServer(name, box->getAddress());
+    
 }
 
 
 
-void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::SystemAddress address)
+void ServerListScene::addOrUpdateServer(std::string serverName, RakNet::SystemAddress address)
 {
     auto menuView = (ui::ScrollView *) this->getChildByName(NODE_SERVERS);
     auto origin = Director::getInstance()->getVisibleOrigin();
@@ -265,8 +274,8 @@ void ServerListScene::addOrUpdateServer(cocos2d::__String * serverName, RakNet::
         s->address = new RakNet::SystemAddress(address); // copy adress (packet will be deallocated)
         serverMap[hash] = s;
 
-        CCLOG("%s added (hash: %d).", serverName->getCString(), hash);
-        std::string name(serverName->getCString());
+        CCLOG("%s added (hash: %d).", serverName.c_str(), hash);
+        std::string name(serverName.c_str());
         
         // add to the menu (img, background, label)
         auto btn = ui::Button::create(/*"servername_bg.png", "servername_bg.png"*/);
@@ -365,9 +374,8 @@ void ServerListScene::onConnected(Box * box)
     // send player's name
     UserDefault * def = UserDefault::getInstance();
     std::string name = def->getStringForKey("player_name", "noname");
-    auto nameBox = StringBox::create( name );
-    nameBox->setType(P_PLAYER_NAME);
-    nameBox->send();
+    
+    BoxFactory::playerName(name)->send();
     
     CCLOG("Connected to %s", box->getAddress().ToString());
     this->stopActionByTag(ACTION_RECEIVE_BOXES); // stop receiving boxs

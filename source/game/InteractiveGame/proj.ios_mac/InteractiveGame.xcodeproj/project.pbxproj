@@ -271,22 +271,12 @@
 		EACC72631C6B54A80036DB3D /* WSAStartupSingleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC71851C6B54A80036DB3D /* WSAStartupSingleton.cpp */; };
 		EAD0D4801C7527FB00776BC3 /* Box.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D47E1C7527FB00776BC3 /* Box.cpp */; };
 		EAD0D4811C7527FB00776BC3 /* Box.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D47E1C7527FB00776BC3 /* Box.cpp */; };
-		EAD0D4921C75280500776BC3 /* AccelerationBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4821C75280500776BC3 /* AccelerationBox.cpp */; };
-		EAD0D4931C75280500776BC3 /* AccelerationBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4821C75280500776BC3 /* AccelerationBox.cpp */; };
-		EAD0D4941C75280500776BC3 /* AdminBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4841C75280500776BC3 /* AdminBox.cpp */; };
-		EAD0D4951C75280500776BC3 /* AdminBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4841C75280500776BC3 /* AdminBox.cpp */; };
-		EAD0D4961C75280500776BC3 /* CollisionBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4861C75280500776BC3 /* CollisionBox.cpp */; };
-		EAD0D4971C75280500776BC3 /* CollisionBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4861C75280500776BC3 /* CollisionBox.cpp */; };
-		EAD0D4981C75280500776BC3 /* KickBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4881C75280500776BC3 /* KickBox.cpp */; };
-		EAD0D4991C75280500776BC3 /* KickBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4881C75280500776BC3 /* KickBox.cpp */; };
-		EAD0D49A1C75280500776BC3 /* ResetScoreBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D48A1C75280500776BC3 /* ResetScoreBox.cpp */; };
-		EAD0D49B1C75280500776BC3 /* ResetScoreBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D48A1C75280500776BC3 /* ResetScoreBox.cpp */; };
-		EAD0D49C1C75280500776BC3 /* ServerNameBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D48C1C75280500776BC3 /* ServerNameBox.cpp */; };
-		EAD0D49D1C75280500776BC3 /* ServerNameBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D48C1C75280500776BC3 /* ServerNameBox.cpp */; };
-		EAD0D49E1C75280500776BC3 /* StringBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D48E1C75280500776BC3 /* StringBox.cpp */; };
-		EAD0D49F1C75280500776BC3 /* StringBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D48E1C75280500776BC3 /* StringBox.cpp */; };
-		EAD0D4A01C75280500776BC3 /* TackleBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4901C75280500776BC3 /* TackleBox.cpp */; };
-		EAD0D4A11C75280500776BC3 /* TackleBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4901C75280500776BC3 /* TackleBox.cpp */; };
+		EAD0D4F71C75F92400776BC3 /* AccelerationMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4F11C75F92400776BC3 /* AccelerationMessage.cpp */; };
+		EAD0D4F81C75F92400776BC3 /* AccelerationMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4F11C75F92400776BC3 /* AccelerationMessage.cpp */; };
+		EAD0D4F91C75F92400776BC3 /* ServerNameMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4F31C75F92400776BC3 /* ServerNameMessage.cpp */; };
+		EAD0D4FA1C75F92400776BC3 /* ServerNameMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4F31C75F92400776BC3 /* ServerNameMessage.cpp */; };
+		EAD0D4FF1C75FC5B00776BC3 /* BoxFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4FD1C75FC5B00776BC3 /* BoxFactory.cpp */; };
+		EAD0D5001C75FC5B00776BC3 /* BoxFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4FD1C75FC5B00776BC3 /* BoxFactory.cpp */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
 /* End PBXBuildFile section */
 
@@ -601,22 +591,13 @@
 		EACC71871C6B54A80036DB3D /* XBox360Includes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XBox360Includes.h; path = ../../../shared/network/raknet/XBox360Includes.h; sourceTree = "<group>"; };
 		EAD0D47E1C7527FB00776BC3 /* Box.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Box.cpp; path = ../../../shared/network/Box.cpp; sourceTree = "<group>"; };
 		EAD0D47F1C7527FB00776BC3 /* Box.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Box.h; path = ../../../shared/network/Box.h; sourceTree = "<group>"; };
-		EAD0D4821C75280500776BC3 /* AccelerationBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AccelerationBox.cpp; path = ../../../shared/bloks/AccelerationBox.cpp; sourceTree = "<group>"; };
-		EAD0D4831C75280500776BC3 /* AccelerationBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccelerationBox.h; path = ../../../shared/bloks/AccelerationBox.h; sourceTree = "<group>"; };
-		EAD0D4841C75280500776BC3 /* AdminBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AdminBox.cpp; path = ../../../shared/bloks/AdminBox.cpp; sourceTree = "<group>"; };
-		EAD0D4851C75280500776BC3 /* AdminBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AdminBox.h; path = ../../../shared/bloks/AdminBox.h; sourceTree = "<group>"; };
-		EAD0D4861C75280500776BC3 /* CollisionBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CollisionBox.cpp; path = ../../../shared/bloks/CollisionBox.cpp; sourceTree = "<group>"; };
-		EAD0D4871C75280500776BC3 /* CollisionBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollisionBox.h; path = ../../../shared/bloks/CollisionBox.h; sourceTree = "<group>"; };
-		EAD0D4881C75280500776BC3 /* KickBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KickBox.cpp; path = ../../../shared/bloks/KickBox.cpp; sourceTree = "<group>"; };
-		EAD0D4891C75280500776BC3 /* KickBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KickBox.h; path = ../../../shared/bloks/KickBox.h; sourceTree = "<group>"; };
-		EAD0D48A1C75280500776BC3 /* ResetScoreBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ResetScoreBox.cpp; path = ../../../shared/bloks/ResetScoreBox.cpp; sourceTree = "<group>"; };
-		EAD0D48B1C75280500776BC3 /* ResetScoreBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResetScoreBox.h; path = ../../../shared/bloks/ResetScoreBox.h; sourceTree = "<group>"; };
-		EAD0D48C1C75280500776BC3 /* ServerNameBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ServerNameBox.cpp; path = ../../../shared/bloks/ServerNameBox.cpp; sourceTree = "<group>"; };
-		EAD0D48D1C75280500776BC3 /* ServerNameBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerNameBox.h; path = ../../../shared/bloks/ServerNameBox.h; sourceTree = "<group>"; };
-		EAD0D48E1C75280500776BC3 /* StringBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StringBox.cpp; path = ../../../shared/bloks/StringBox.cpp; sourceTree = "<group>"; };
-		EAD0D48F1C75280500776BC3 /* StringBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StringBox.h; path = ../../../shared/bloks/StringBox.h; sourceTree = "<group>"; };
-		EAD0D4901C75280500776BC3 /* TackleBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TackleBox.cpp; path = ../../../shared/bloks/TackleBox.cpp; sourceTree = "<group>"; };
-		EAD0D4911C75280500776BC3 /* TackleBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TackleBox.h; path = ../../../shared/bloks/TackleBox.h; sourceTree = "<group>"; };
+		EAD0D4A61C75C38800776BC3 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Message.h; path = ../../../shared/network/Message.h; sourceTree = "<group>"; };
+		EAD0D4F11C75F92400776BC3 /* AccelerationMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AccelerationMessage.cpp; path = ../../../shared/messages/AccelerationMessage.cpp; sourceTree = "<group>"; };
+		EAD0D4F21C75F92400776BC3 /* AccelerationMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccelerationMessage.h; path = ../../../shared/messages/AccelerationMessage.h; sourceTree = "<group>"; };
+		EAD0D4F31C75F92400776BC3 /* ServerNameMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ServerNameMessage.cpp; path = ../../../shared/messages/ServerNameMessage.cpp; sourceTree = "<group>"; };
+		EAD0D4F41C75F92400776BC3 /* ServerNameMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerNameMessage.h; path = ../../../shared/messages/ServerNameMessage.h; sourceTree = "<group>"; };
+		EAD0D4FD1C75FC5B00776BC3 /* BoxFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BoxFactory.cpp; path = ../../../shared/network/BoxFactory.cpp; sourceTree = "<group>"; };
+		EAD0D4FE1C75FC5B00776BC3 /* BoxFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoxFactory.h; path = ../../../shared/network/BoxFactory.h; sourceTree = "<group>"; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -780,13 +761,16 @@
 		EA4189151C33C2C9004B8934 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				EAD0D4F01C75F91B00776BC3 /* Messages */,
 				EACC707F1C6B547A0036DB3D /* RakNet */,
-				EA888B8B1C58B09A00534275 /* Blocks */,
 				EA5CA2C21C3FC724003437FF /* Connector.h */,
 				EA5CA2C11C3FC724003437FF /* Connector.cpp */,
 				EA5CA2C31C3FC724003437FF /* Definitions.h */,
 				EAD0D47E1C7527FB00776BC3 /* Box.cpp */,
 				EAD0D47F1C7527FB00776BC3 /* Box.h */,
+				EAD0D4FE1C75FC5B00776BC3 /* BoxFactory.h */,
+				EAD0D4FD1C75FC5B00776BC3 /* BoxFactory.cpp */,
+				EAD0D4A61C75C38800776BC3 /* Message.h */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -806,33 +790,10 @@
 		EA76BC8B1C32D07F00F2531F /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				46880B8619C43A87006E1F66 /* LobbyScene.cpp */,
 				46880B8719C43A87006E1F66 /* LobbyScene.h */,
+				46880B8619C43A87006E1F66 /* LobbyScene.cpp */,
 			);
 			name = Scenes;
-			sourceTree = "<group>";
-		};
-		EA888B8B1C58B09A00534275 /* Blocks */ = {
-			isa = PBXGroup;
-			children = (
-				EAD0D4821C75280500776BC3 /* AccelerationBox.cpp */,
-				EAD0D4831C75280500776BC3 /* AccelerationBox.h */,
-				EAD0D4841C75280500776BC3 /* AdminBox.cpp */,
-				EAD0D4851C75280500776BC3 /* AdminBox.h */,
-				EAD0D4861C75280500776BC3 /* CollisionBox.cpp */,
-				EAD0D4871C75280500776BC3 /* CollisionBox.h */,
-				EAD0D4881C75280500776BC3 /* KickBox.cpp */,
-				EAD0D4891C75280500776BC3 /* KickBox.h */,
-				EAD0D48A1C75280500776BC3 /* ResetScoreBox.cpp */,
-				EAD0D48B1C75280500776BC3 /* ResetScoreBox.h */,
-				EAD0D48C1C75280500776BC3 /* ServerNameBox.cpp */,
-				EAD0D48D1C75280500776BC3 /* ServerNameBox.h */,
-				EAD0D48E1C75280500776BC3 /* StringBox.cpp */,
-				EAD0D48F1C75280500776BC3 /* StringBox.h */,
-				EAD0D4901C75280500776BC3 /* TackleBox.cpp */,
-				EAD0D4911C75280500776BC3 /* TackleBox.h */,
-			);
-			name = Blocks;
 			sourceTree = "<group>";
 		};
 		EACC707F1C6B547A0036DB3D /* RakNet */ = {
@@ -1106,6 +1067,17 @@
 			name = RakNet;
 			sourceTree = "<group>";
 		};
+		EAD0D4F01C75F91B00776BC3 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				EAD0D4F11C75F92400776BC3 /* AccelerationMessage.cpp */,
+				EAD0D4F21C75F92400776BC3 /* AccelerationMessage.h */,
+				EAD0D4F31C75F92400776BC3 /* ServerNameMessage.cpp */,
+				EAD0D4F41C75F92400776BC3 /* ServerNameMessage.h */,
+			);
+			name = Messages;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1213,10 +1185,10 @@
 				EACC720E1C6B54A80036DB3D /* RakNetSocket2_WindowsStore8.cpp in Sources */,
 				EACC723A1C6B54A80036DB3D /* SocketLayer.cpp in Sources */,
 				EACC71D21C6B54A80036DB3D /* LocklessTypes.cpp in Sources */,
+				EAD0D4F91C75F92400776BC3 /* ServerNameMessage.cpp in Sources */,
 				EACC71F41C6B54A80036DB3D /* Rackspace.cpp in Sources */,
 				EACC72221C6B54A80036DB3D /* Rand.cpp in Sources */,
 				EACC71981C6B54A80036DB3D /* CommandParserInterface.cpp in Sources */,
-				EAD0D4921C75280500776BC3 /* AccelerationBox.cpp in Sources */,
 				EACC71E01C6B54A80036DB3D /* NatTypeDetectionServer.cpp in Sources */,
 				EACC71881C6B54A80036DB3D /* _FindFirst.cpp in Sources */,
 				EACC72581C6B54A80036DB3D /* UDPProxyServer.cpp in Sources */,
@@ -1235,7 +1207,6 @@
 				EACC72261C6B54A80036DB3D /* ReadyEvent.cpp in Sources */,
 				EACC72321C6B54A80036DB3D /* SecureHandshake.cpp in Sources */,
 				EACC724A1C6B54A80036DB3D /* TeamManager.cpp in Sources */,
-				EAD0D49A1C75280500776BC3 /* ResetScoreBox.cpp in Sources */,
 				EACC71B21C6B54A80036DB3D /* FileList.cpp in Sources */,
 				EACC719C1C6B54A80036DB3D /* ConsoleServer.cpp in Sources */,
 				EACC72521C6B54A80036DB3D /* UDPForwarder.cpp in Sources */,
@@ -1253,6 +1224,7 @@
 				EACC718A1C6B54A80036DB3D /* Base64Encoder.cpp in Sources */,
 				EACC725E1C6B54A80036DB3D /* VariadicSQLParser.cpp in Sources */,
 				EACC725C1C6B54A80036DB3D /* VariableListDeltaTracker.cpp in Sources */,
+				EAD0D4FF1C75FC5B00776BC3 /* BoxFactory.cpp in Sources */,
 				EACC725A1C6B54A80036DB3D /* VariableDeltaSerializer.cpp in Sources */,
 				EACC71D41C6B54A80036DB3D /* LogCommandParser.cpp in Sources */,
 				EACC71921C6B54A80036DB3D /* CloudClient.cpp in Sources */,
@@ -1264,13 +1236,13 @@
 				EACC72001C6B54A80036DB3D /* RakNetSocket2_Berkley.cpp in Sources */,
 				EACC72061C6B54A80036DB3D /* RakNetSocket2_PS4.cpp in Sources */,
 				EACC72241C6B54A80036DB3D /* RandSync.cpp in Sources */,
+				EAD0D4F71C75F92400776BC3 /* AccelerationMessage.cpp in Sources */,
 				EACC71EC1C6B54A80036DB3D /* PacketLogger.cpp in Sources */,
 				EACC71A01C6B54A80036DB3D /* DirectoryDeltaTransfer.cpp in Sources */,
 				EA6058AD1C6F89D500D89D46 /* StadiumManager.cpp in Sources */,
 				EACC72041C6B54A80036DB3D /* RakNetSocket2_PS3_PS4.cpp in Sources */,
 				EACC71C41C6B54A80036DB3D /* GridSectorizer.cpp in Sources */,
 				EACC72621C6B54A80036DB3D /* WSAStartupSingleton.cpp in Sources */,
-				EAD0D49C1C75280500776BC3 /* ServerNameBox.cpp in Sources */,
 				EACC72301C6B54A80036DB3D /* RPC4Plugin.cpp in Sources */,
 				EACC719E1C6B54A80036DB3D /* DataCompressor.cpp in Sources */,
 				EACC72401C6B54A80036DB3D /* StringTable.cpp in Sources */,
@@ -1281,7 +1253,6 @@
 				EACC72281C6B54A80036DB3D /* RelayPlugin.cpp in Sources */,
 				EACC71BC1C6B54A80036DB3D /* Getche.cpp in Sources */,
 				EACC71DE1C6B54A80036DB3D /* NatTypeDetectionCommon.cpp in Sources */,
-				EAD0D4A01C75280500776BC3 /* TackleBox.cpp in Sources */,
 				EACC72201C6B54A80036DB3D /* RakWString.cpp in Sources */,
 				EACC71EA1C6B54A80036DB3D /* PacketizedTCP.cpp in Sources */,
 				EACC71C81C6B54A80036DB3D /* HTTPConnection2.cpp in Sources */,
@@ -1296,13 +1267,11 @@
 				EACC72181C6B54A80036DB3D /* RakPeer.cpp in Sources */,
 				EACC724E1C6B54A80036DB3D /* ThreadsafePacketLogger.cpp in Sources */,
 				EACC723C1C6B54A80036DB3D /* StatisticsHistory.cpp in Sources */,
-				EAD0D4941C75280500776BC3 /* AdminBox.cpp in Sources */,
 				EACC72441C6B54A80036DB3D /* TableSerializer.cpp in Sources */,
 				EACC71AA1C6B54A80036DB3D /* DS_Table.cpp in Sources */,
 				EACC71901C6B54A80036DB3D /* CCRakNetUDT.cpp in Sources */,
 				EACC71F61C6B54A80036DB3D /* RakMemoryOverride.cpp in Sources */,
 				EACC724C1C6B54A80036DB3D /* TelnetTransport.cpp in Sources */,
-				EAD0D4961C75280500776BC3 /* CollisionBox.cpp in Sources */,
 				EACC720C1C6B54A80036DB3D /* RakNetSocket2_Windows_Linux.cpp in Sources */,
 				EACC71E21C6B54A80036DB3D /* NetworkIDManager.cpp in Sources */,
 				EACC71A41C6B54A80036DB3D /* DS_BytePool.cpp in Sources */,
@@ -1317,10 +1286,8 @@
 				EACC71C21C6B54A80036DB3D /* gettimeofday.cpp in Sources */,
 				EACC72601C6B54A80036DB3D /* VitaIncludes.cpp in Sources */,
 				EACC72021C6B54A80036DB3D /* RakNetSocket2_NativeClient.cpp in Sources */,
-				EAD0D4981C75280500776BC3 /* KickBox.cpp in Sources */,
 				EACC71F21C6B54A80036DB3D /* PS4Includes.cpp in Sources */,
 				EACC71C61C6B54A80036DB3D /* HTTPConnection.cpp in Sources */,
-				EAD0D49E1C75280500776BC3 /* StringBox.cpp in Sources */,
 				EACC71FE1C6B54A80036DB3D /* RakNetSocket2_Berkley_NativeClient.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1348,10 +1315,10 @@
 				EACC71B91C6B54A80036DB3D /* FormatString.cpp in Sources */,
 				EACC72011C6B54A80036DB3D /* RakNetSocket2_Berkley.cpp in Sources */,
 				EACC72031C6B54A80036DB3D /* RakNetSocket2_NativeClient.cpp in Sources */,
-				EAD0D49D1C75280500776BC3 /* ServerNameBox.cpp in Sources */,
 				EACC72051C6B54A80036DB3D /* RakNetSocket2_PS3_PS4.cpp in Sources */,
 				EACC72131C6B54A80036DB3D /* RakNetStatistics.cpp in Sources */,
 				EACC71991C6B54A80036DB3D /* CommandParserInterface.cpp in Sources */,
+				EAD0D4F81C75F92400776BC3 /* AccelerationMessage.cpp in Sources */,
 				EACC718D1C6B54A80036DB3D /* BitStream.cpp in Sources */,
 				EA41894D1C342C4B004B8934 /* TestScene.cpp in Sources */,
 				EACC71DF1C6B54A80036DB3D /* NatTypeDetectionCommon.cpp in Sources */,
@@ -1376,24 +1343,21 @@
 				EACC71E51C6B54A80036DB3D /* NetworkIDObject.cpp in Sources */,
 				EA2400631C6490C400906235 /* Player.cpp in Sources */,
 				EACC71B31C6B54A80036DB3D /* FileList.cpp in Sources */,
-				EAD0D4971C75280500776BC3 /* CollisionBox.cpp in Sources */,
 				EACC718B1C6B54A80036DB3D /* Base64Encoder.cpp in Sources */,
-				EAD0D4931C75280500776BC3 /* AccelerationBox.cpp in Sources */,
 				EACC72371C6B54A80036DB3D /* SignaledEvent.cpp in Sources */,
 				EACC72511C6B54A80036DB3D /* TwoWayAuthentication.cpp in Sources */,
 				EACC719B1C6B54A80036DB3D /* ConnectionGraph2.cpp in Sources */,
 				EACC72431C6B54A80036DB3D /* SuperFastHash.cpp in Sources */,
 				EACC71CF1C6B54A80036DB3D /* Itoa.cpp in Sources */,
+				EAD0D5001C75FC5B00776BC3 /* BoxFactory.cpp in Sources */,
 				EACC719D1C6B54A80036DB3D /* ConsoleServer.cpp in Sources */,
 				EACC71C11C6B54A80036DB3D /* GetTime.cpp in Sources */,
 				EACC71A71C6B54A80036DB3D /* DS_ByteQueue.cpp in Sources */,
-				EAD0D49F1C75280500776BC3 /* StringBox.cpp in Sources */,
 				EACC72171C6B54A80036DB3D /* RakNetTypes.cpp in Sources */,
 				EACC71E31C6B54A80036DB3D /* NetworkIDManager.cpp in Sources */,
 				EACC72491C6B54A80036DB3D /* TeamBalancer.cpp in Sources */,
 				EACC71DB1C6B54A80036DB3D /* NatPunchthroughServer.cpp in Sources */,
 				EACC71AB1C6B54A80036DB3D /* DS_Table.cpp in Sources */,
-				EAD0D4A11C75280500776BC3 /* TackleBox.cpp in Sources */,
 				EACC718F1C6B54A80036DB3D /* CCRakNetSlidingWindow.cpp in Sources */,
 				EACC71931C6B54A80036DB3D /* CloudClient.cpp in Sources */,
 				EACC72471C6B54A80036DB3D /* TCPInterface.cpp in Sources */,
@@ -1426,11 +1390,9 @@
 				EACC71D71C6B54A80036DB3D /* MessageFilter.cpp in Sources */,
 				EACC71A31C6B54A80036DB3D /* DR_SHA1.cpp in Sources */,
 				EACC72391C6B54A80036DB3D /* SimpleMutex.cpp in Sources */,
-				EAD0D4951C75280500776BC3 /* AdminBox.cpp in Sources */,
 				EACC723F1C6B54A80036DB3D /* StringCompressor.cpp in Sources */,
 				EACC722F1C6B54A80036DB3D /* Router2.cpp in Sources */,
 				EACC72411C6B54A80036DB3D /* StringTable.cpp in Sources */,
-				EAD0D4991C75280500776BC3 /* KickBox.cpp in Sources */,
 				EACC720B1C6B54A80036DB3D /* RakNetSocket2_Windows_Linux_360.cpp in Sources */,
 				EACC71CB1C6B54A80036DB3D /* CheckSum.cpp in Sources */,
 				EAD0D4811C7527FB00776BC3 /* Box.cpp in Sources */,
@@ -1446,10 +1408,10 @@
 				EACC71ED1C6B54A80036DB3D /* PacketLogger.cpp in Sources */,
 				EACC72271C6B54A80036DB3D /* ReadyEvent.cpp in Sources */,
 				EACC71D51C6B54A80036DB3D /* LogCommandParser.cpp in Sources */,
-				EAD0D49B1C75280500776BC3 /* ResetScoreBox.cpp in Sources */,
 				EACC721F1C6B54A80036DB3D /* RakThread.cpp in Sources */,
 				EACC72571C6B54A80036DB3D /* UDPProxyCoordinator.cpp in Sources */,
 				EACC72191C6B54A80036DB3D /* RakPeer.cpp in Sources */,
+				EAD0D4FA1C75F92400776BC3 /* ServerNameMessage.cpp in Sources */,
 				EACC71971C6B54A80036DB3D /* CloudServer.cpp in Sources */,
 				EACC724F1C6B54A80036DB3D /* ThreadsafePacketLogger.cpp in Sources */,
 				EACC72071C6B54A80036DB3D /* RakNetSocket2_PS4.cpp in Sources */,
