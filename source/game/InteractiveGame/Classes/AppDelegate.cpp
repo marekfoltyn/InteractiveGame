@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "LobbyScene.h"
+#include "Game.h"
 
 USING_NS_CC;
 
@@ -52,11 +52,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
     FileUtils::getInstance()->addSearchPath("res");
 //    FileUtils::getInstance()->addSearchPath("../../../shared/resources");
 
-    // create a scene. it's an autorelease object
-    auto scene = LobbyScene::createScene();
 
-    // run
-    director->runWithScene(scene);
+    // run the game
+    Game::getInstance()->run();
 
     return true;
 }
@@ -65,6 +63,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
 // This function will be called when the app is inactive. When comes a phone call,it's be invoked too
 void AppDelegate::applicationDidEnterBackground() {
+    
     Director::getInstance()->stopAnimation();
 
     // if you use SimpleAudioEngine, it must be pause

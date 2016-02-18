@@ -8,7 +8,6 @@
 #include "Definitions.h"
 #include "Connector.h"
 #include "Box.h"
-
 #include "BoxFactory.h"
 #include "AccelerationMessage.h"
 
@@ -77,6 +76,8 @@ bool LobbyScene::init()
     initServer();
     
     initGUI();
+    
+    game = Game::getInstance();
     
     //auto rootNode = CSLoader::createNode("MainScene.csb");
     //addChild(rootNode);
@@ -608,7 +609,5 @@ void LobbyScene::onPlayerTackle(Box * box)
 
 void LobbyScene::btnExitClicked(Ref * sender)
 {
-    Connector::getInstance()->stop();
-    Director::getInstance()->end();
-    exit(0);
+    game->end();
 }

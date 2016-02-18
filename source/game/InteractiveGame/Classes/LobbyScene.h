@@ -7,6 +7,7 @@
 
 #include "RakPeerInterface.h"
 #include "Box.h"
+#include "Game.h"
 #include "Player.h"
 
 using namespace GameNet;
@@ -38,6 +39,8 @@ public:
 
     
 private:
+    
+    Game * game;
     
     cocos2d::PhysicsWorld * sceneWorld;
     

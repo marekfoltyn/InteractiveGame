@@ -47,8 +47,8 @@
 		EA5CA2C41C3FC724003437FF /* Connector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5CA2C11C3FC724003437FF /* Connector.cpp */; };
 		EA5CA2C51C3FC724003437FF /* Connector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5CA2C11C3FC724003437FF /* Connector.cpp */; };
 		EA5CA2CB1C3FC933003437FF /* raknetx86_64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5CA2C91C3FC90D003437FF /* raknetx86_64.a */; };
-		EA6058AD1C6F89D500D89D46 /* StadiumManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA6058AB1C6F89D500D89D46 /* StadiumManager.cpp */; };
-		EA6058AE1C6F89D500D89D46 /* StadiumManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA6058AB1C6F89D500D89D46 /* StadiumManager.cpp */; };
+		EA6058AD1C6F89D500D89D46 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA6058AB1C6F89D500D89D46 /* Game.cpp */; };
+		EA6058AE1C6F89D500D89D46 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA6058AB1C6F89D500D89D46 /* Game.cpp */; };
 		EACC71881C6B54A80036DB3D /* _FindFirst.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70801C6B54A70036DB3D /* _FindFirst.cpp */; };
 		EACC71891C6B54A80036DB3D /* _FindFirst.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70801C6B54A70036DB3D /* _FindFirst.cpp */; };
 		EACC718A1C6B54A80036DB3D /* Base64Encoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70841C6B54A70036DB3D /* Base64Encoder.cpp */; };
@@ -277,6 +277,8 @@
 		EAD0D4FA1C75F92400776BC3 /* ServerNameMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4F31C75F92400776BC3 /* ServerNameMessage.cpp */; };
 		EAD0D4FF1C75FC5B00776BC3 /* BoxFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4FD1C75FC5B00776BC3 /* BoxFactory.cpp */; };
 		EAD0D5001C75FC5B00776BC3 /* BoxFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4FD1C75FC5B00776BC3 /* BoxFactory.cpp */; };
+		EAD0D5031C76083000776BC3 /* StadiumManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D5011C76083000776BC3 /* StadiumManager.cpp */; };
+		EAD0D5041C76083000776BC3 /* StadiumManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D5011C76083000776BC3 /* StadiumManager.cpp */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
 /* End PBXBuildFile section */
 
@@ -322,8 +324,8 @@
 		EA5CA2C21C3FC724003437FF /* Connector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Connector.h; path = ../../../shared/network/Connector.h; sourceTree = "<group>"; };
 		EA5CA2C31C3FC724003437FF /* Definitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Definitions.h; path = ../../../shared/network/Definitions.h; sourceTree = "<group>"; };
 		EA5CA2C91C3FC90D003437FF /* raknetx86_64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = raknetx86_64.a; path = ../../../shared/network/raknet/raknetx86_64.a; sourceTree = "<group>"; };
-		EA6058AB1C6F89D500D89D46 /* StadiumManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StadiumManager.cpp; sourceTree = "<group>"; };
-		EA6058AC1C6F89D500D89D46 /* StadiumManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StadiumManager.h; sourceTree = "<group>"; };
+		EA6058AB1C6F89D500D89D46 /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
+		EA6058AC1C6F89D500D89D46 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		EA76BC881C32CCA900F2531F /* GameDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDefinitions.h; sourceTree = "<group>"; };
 		EACC70801C6B54A70036DB3D /* _FindFirst.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = _FindFirst.cpp; path = ../../../shared/network/raknet/_FindFirst.cpp; sourceTree = "<group>"; };
 		EACC70811C6B54A70036DB3D /* _FindFirst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _FindFirst.h; path = ../../../shared/network/raknet/_FindFirst.h; sourceTree = "<group>"; };
@@ -598,6 +600,8 @@
 		EAD0D4F41C75F92400776BC3 /* ServerNameMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerNameMessage.h; path = ../../../shared/messages/ServerNameMessage.h; sourceTree = "<group>"; };
 		EAD0D4FD1C75FC5B00776BC3 /* BoxFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BoxFactory.cpp; path = ../../../shared/network/BoxFactory.cpp; sourceTree = "<group>"; };
 		EAD0D4FE1C75FC5B00776BC3 /* BoxFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoxFactory.h; path = ../../../shared/network/BoxFactory.h; sourceTree = "<group>"; };
+		EAD0D5011C76083000776BC3 /* StadiumManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StadiumManager.cpp; sourceTree = "<group>"; };
+		EAD0D5021C76083000776BC3 /* StadiumManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StadiumManager.h; sourceTree = "<group>"; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -750,8 +754,10 @@
 		EA24005F1C648D2500906235 /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				EA6058AC1C6F89D500D89D46 /* StadiumManager.h */,
-				EA6058AB1C6F89D500D89D46 /* StadiumManager.cpp */,
+				EAD0D5011C76083000776BC3 /* StadiumManager.cpp */,
+				EAD0D5021C76083000776BC3 /* StadiumManager.h */,
+				EA6058AC1C6F89D500D89D46 /* Game.h */,
+				EA6058AB1C6F89D500D89D46 /* Game.cpp */,
 				EA2400601C6490C400906235 /* Player.cpp */,
 				EA2400611C6490C400906235 /* Player.h */,
 			);
@@ -1176,6 +1182,7 @@
 				EACC71E61C6B54A80036DB3D /* PacketConsoleLogger.cpp in Sources */,
 				EACC718E1C6B54A80036DB3D /* CCRakNetSlidingWindow.cpp in Sources */,
 				EACC71CE1C6B54A80036DB3D /* Itoa.cpp in Sources */,
+				EAD0D5031C76083000776BC3 /* StadiumManager.cpp in Sources */,
 				EACC71CC1C6B54A80036DB3D /* IncrementalReadInterface.cpp in Sources */,
 				EACC71E41C6B54A80036DB3D /* NetworkIDObject.cpp in Sources */,
 				EACC71D81C6B54A80036DB3D /* NatPunchthroughClient.cpp in Sources */,
@@ -1239,7 +1246,7 @@
 				EAD0D4F71C75F92400776BC3 /* AccelerationMessage.cpp in Sources */,
 				EACC71EC1C6B54A80036DB3D /* PacketLogger.cpp in Sources */,
 				EACC71A01C6B54A80036DB3D /* DirectoryDeltaTransfer.cpp in Sources */,
-				EA6058AD1C6F89D500D89D46 /* StadiumManager.cpp in Sources */,
+				EA6058AD1C6F89D500D89D46 /* Game.cpp in Sources */,
 				EACC72041C6B54A80036DB3D /* RakNetSocket2_PS3_PS4.cpp in Sources */,
 				EACC71C41C6B54A80036DB3D /* GridSectorizer.cpp in Sources */,
 				EACC72621C6B54A80036DB3D /* WSAStartupSingleton.cpp in Sources */,
@@ -1383,9 +1390,10 @@
 				EACC71A51C6B54A80036DB3D /* DS_BytePool.cpp in Sources */,
 				EACC71D11C6B54A80036DB3D /* LinuxStrings.cpp in Sources */,
 				EACC724D1C6B54A80036DB3D /* TelnetTransport.cpp in Sources */,
-				EA6058AE1C6F89D500D89D46 /* StadiumManager.cpp in Sources */,
+				EA6058AE1C6F89D500D89D46 /* Game.cpp in Sources */,
 				EACC71E11C6B54A80036DB3D /* NatTypeDetectionServer.cpp in Sources */,
 				EACC71FB1C6B54A80036DB3D /* RakNetSocket.cpp in Sources */,
+				EAD0D5041C76083000776BC3 /* StadiumManager.cpp in Sources */,
 				EACC722D1C6B54A80036DB3D /* ReplicaManager3.cpp in Sources */,
 				EACC71D71C6B54A80036DB3D /* MessageFilter.cpp in Sources */,
 				EACC71A31C6B54A80036DB3D /* DR_SHA1.cpp in Sources */,
