@@ -18,7 +18,5 @@ std::string StringBox::parseString(Box * box)
 
 Box * StringBox::create(std::string str)
 {
-    std::string s = str;
-    auto box = Box::create(s.c_str(), static_cast<unsigned int>(s.length() + 1) ); // empty char
-    return box;
+    return Box::create(str);
 }

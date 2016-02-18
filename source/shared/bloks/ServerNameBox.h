@@ -21,12 +21,7 @@ public:
      * parse the string
      */
     static std::string parseServerName(Box * box);
-    
-    /**
-     * create ServerNameBox from string
-     */
-    static Box * create(std::string str);
-    
+        
 };
 
 

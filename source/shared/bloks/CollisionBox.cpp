@@ -12,7 +12,7 @@ using namespace GameNet;
 
 Box * CollisionBox::create()
 {
-    Box * box = Box::create(nullptr, 0);
+    Box * box = Box::createEmpty();
     box->setType(P_COLLISION);
     box->setReliability(PacketReliability::RELIABLE);
     box->setPriority(PacketPriority::HIGH_PRIORITY);

@@ -17,7 +17,9 @@ Box * AccelerationBox::Create(cocos2d::Acceleration * acc)
     str.y = acc->y;
     str.z = acc->z;
     
-    Box * box = Box::create( (const char *) &str, sizeof(AccStruct) );
+    std::string msg = std::string( (const char *) &str, sizeof(AccStruct) );
+    
+    Box * box = Box::create(msg);
     box->setType(P_ACCELERATION);
     box->setPriority(PacketPriority::HIGH_PRIORITY);
     box->setReliability(PacketReliability::UNRELIABLE);

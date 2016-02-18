@@ -7,7 +7,7 @@ AppDelegate::AppDelegate(){}
 AppDelegate::~AppDelegate(){}
 
 // toggle debug
-//#define DEBUG
+#define DEBUG
 
 //if you want a different context,just modify the value of glContextAttrs
 //it will takes effect on all platforms

@@ -12,7 +12,7 @@ using namespace GameNet;
 
 Box * TackleBox::create()
 {
-    Box * box = Box::create(nullptr, 0); // empty data
+    Box * box = Box::createEmpty(); // empty data
     box->setType(P_TACKLE);
     box->setReliability(PacketReliability::RELIABLE);
     box->setPriority(PacketPriority::HIGH_PRIORITY);

@@ -27,13 +27,18 @@ public:
      * create a Box and copies data so the data has to be freed manually
      * @param byteSize size of the data
      */
-    static Box * create(const char * data, unsigned int len );
+    static Box * create(std::string data);
     
     /**
      * create a Box from received packet
      * reliability and priority will be undefined
      */
     static Box * create(RakNet::Packet * p);
+    
+    /**
+     * create an empty box (with no data included)
+     */
+    static Box * createEmpty();
     
     /**
      * set packet type (defined in Definitions.h)
@@ -118,7 +123,7 @@ private:
      * creating Boxs (similar as creating objects in Cocos2dx):
      * Box::create(...)
      */
-    Box(const char * data, unsigned int length );
+    Box(std::string data);
     
     /**
      * private constructor

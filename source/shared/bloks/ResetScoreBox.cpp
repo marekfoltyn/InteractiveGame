@@ -12,7 +12,7 @@ using namespace GameNet;
 
 Box * ResetScoreBox::create()
 {
-    Box * box = Box::create(nullptr, 0); // empty data
+    Box * box = Box::createEmpty();
     box->setType(P_RESET_SCORE);
     box->setReliability(PacketReliability::RELIABLE);
     box->setPriority(PacketPriority::LOW_PRIORITY);

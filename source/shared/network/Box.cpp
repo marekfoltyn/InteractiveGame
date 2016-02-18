@@ -10,10 +10,10 @@
 
 using namespace GameNet;
 
-Box::Box(const char * d, unsigned int len )
+Box::Box(std::string data)
 {
     
-    loadData(d, len);
+    loadData(data.c_str(), static_cast<unsigned int>( data.length() ) );
     
     // default values
     priority = PacketPriority::HIGH_PRIORITY;
@@ -34,9 +34,14 @@ Box::Box(RakNet::Packet * packet)
 }
 
 
-Box * Box::create(const char * data, unsigned int len )
+Box * Box::create(std::string data)
 {
-    return new Box(data, len);
+    return new Box(data);
+}
+
+Box * Box::createEmpty()
+{
+    return new Box("");
 }
 
 
