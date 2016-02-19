@@ -313,6 +313,10 @@
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		EA2400601C6490C400906235 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		EA2400611C6490C400906235 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		EA3401511C7771E00085A4F4 /* BoxHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoxHandler.h; path = ../../../shared/network/BoxHandler.h; sourceTree = "<group>"; };
+		EA3401541C7776030085A4F4 /* NewPlayerHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewPlayerHandler.h; path = BoxHandlers/NewPlayerHandler.h; sourceTree = "<group>"; };
+		EA3401571C778BB30085A4F4 /* ExitGameHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExitGameHandler.h; path = BoxHandlers/ExitGameHandler.h; sourceTree = "<group>"; };
+		EA3401581C778BF00085A4F4 /* Handler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Handler.h; sourceTree = "<group>"; };
 		EA4189431C342867004B8934 /* InteractiveGame-unit-testing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "InteractiveGame-unit-testing.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA4189441C342867004B8934 /* InteractiveGame-desktop copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "InteractiveGame-desktop copy-Info.plist"; path = "/Users/marek/Documents/git/InteractiveGame/source/game/InteractiveGame/proj.ios_mac/InteractiveGame-desktop copy-Info.plist"; sourceTree = "<absolute>"; };
 		EA4189481C342C4B004B8934 /* TestDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestDelegate.cpp; sourceTree = "<group>"; };
@@ -754,14 +758,25 @@
 		EA24005F1C648D2500906235 /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				EAD0D5011C76083000776BC3 /* StadiumManager.cpp */,
-				EAD0D5021C76083000776BC3 /* StadiumManager.h */,
+				EA3401521C7772B80085A4F4 /* Handlers */,
 				EA6058AC1C6F89D500D89D46 /* Game.h */,
 				EA6058AB1C6F89D500D89D46 /* Game.cpp */,
+				EAD0D5021C76083000776BC3 /* StadiumManager.h */,
+				EAD0D5011C76083000776BC3 /* StadiumManager.cpp */,
 				EA2400601C6490C400906235 /* Player.cpp */,
 				EA2400611C6490C400906235 /* Player.h */,
+				EA3401581C778BF00085A4F4 /* Handler.h */,
 			);
 			name = Game;
+			sourceTree = "<group>";
+		};
+		EA3401521C7772B80085A4F4 /* Handlers */ = {
+			isa = PBXGroup;
+			children = (
+				EA3401541C7776030085A4F4 /* NewPlayerHandler.h */,
+				EA3401571C778BB30085A4F4 /* ExitGameHandler.h */,
+			);
+			name = Handlers;
 			sourceTree = "<group>";
 		};
 		EA4189151C33C2C9004B8934 /* Network */ = {
@@ -776,6 +791,7 @@
 				EAD0D47F1C7527FB00776BC3 /* Box.h */,
 				EAD0D4FE1C75FC5B00776BC3 /* BoxFactory.h */,
 				EAD0D4FD1C75FC5B00776BC3 /* BoxFactory.cpp */,
+				EA3401511C7771E00085A4F4 /* BoxHandler.h */,
 				EAD0D4A61C75C38800776BC3 /* Message.h */,
 			);
 			name = Network;

@@ -11,8 +11,9 @@
 
 #include "cocos2d.h"
 #include "Connector.h"
+#include "BoxHandler.h"
 
-USING_NS_CC;
+#include <map>
 
 /**
  * singleton class representing general game-logic principles
@@ -38,9 +39,16 @@ private:
     
     static Game * instance;
     
-    Scene * scene;
+    cocos2d::Scene * scene;
+    cocos2d::Director * director;
+    GameNet::Connector * connector;
+    std::map<int, BoxHandler *> boxHandlerMap;
     
     Game();
+    
+    bool startNetworking();
+    void registerBoxHandlers();
+    void receiveBoxes();
     
 };
 

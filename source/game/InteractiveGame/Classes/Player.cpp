@@ -9,14 +9,12 @@
 #include "Player.h"
 #include "BoxFactory.h"
 
-using namespace GameNet;
-
 
 Player::Player(RakNet::SystemAddress address)
 {
-    sprite = Sprite::create();
+    sprite = cocos2d::Sprite::create();
     this->address = address;
-    previousForce = Vec2(0,0);
+    previousForce = cocos2d::Vec2(0,0);
 }
 
 
@@ -36,7 +34,7 @@ void Player::destroy()
 
 
 
-void Player::setAppliedForce(Vec2 force)
+void Player::setAppliedForce(cocos2d::Vec2 force)
 {
     previousForce = force;
 }
@@ -44,6 +42,6 @@ void Player::setAppliedForce(Vec2 force)
 void Player::setAsAdmin()
 {
     admin = true;
-    auto box = BoxFactory::admin( this->getAddress() );
+    auto box = GameNet::BoxFactory::admin( this->getAddress() );
     box->send();
 }

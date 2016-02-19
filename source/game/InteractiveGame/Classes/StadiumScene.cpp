@@ -1,6 +1,7 @@
 #include <string>
 
 #include "StadiumScene.h"
+#include "cocos2d.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 
@@ -10,9 +11,6 @@
 #include "Box.h"
 #include "BoxFactory.h"
 #include "AccelerationMessage.h"
-
-USING_NS_CC;
-using namespace GameNet;
 
 #define COLOR_FONT_TRANSPARENT Color4B(255,255,255,44)
 
@@ -37,9 +35,9 @@ using namespace GameNet;
 #define LABEL_SCORE_LEFT "lblScoreLeft"
 #define LABEL_SCORE_RIGHT "lblScoreRight"
 
-using namespace cocostudio::timeline;
+using namespace cocos2d;
 
-Scene* StadiumScene::createScene()
+Scene * StadiumScene::createScene()
 {
     // 'scene' is an autorelease object
     auto scene = Scene::createWithPhysics();
@@ -77,8 +75,6 @@ bool StadiumScene::init()
     
     initGUI();
     
-    game = Game::getInstance();
-    
     //auto rootNode = CSLoader::createNode("MainScene.csb");
     //addChild(rootNode);
     
@@ -87,28 +83,14 @@ bool StadiumScene::init()
 
 void StadiumScene::initServer()
 {
-    // run async Connector (as a server)
-    bool started = Connector::getInstance()->startAsServer(MAX_PLAYERS);
-    Connector::getInstance()->setServerName("Mac");
-    
-    if(!started){
-        CCLOG("Server not started!");
-        // handle?
-        return;
-    }
-    
-    auto callback = CallFunc::create(CC_CALLBACK_0(StadiumScene::processBlock, this));
-    auto delay = DelayTime::create(RECEIVE_TIMEOUT);
-    auto sequence = Sequence::create(callback, delay, nullptr);
-    auto receivePacketAction = RepeatForever::create(sequence);
-    this->runAction(receivePacketAction);
+
 }
 
 void StadiumScene::initGUI()
 {
     auto visibleSize = Director::getInstance()->getVisibleSize();
     auto origin = Director::getInstance()->getVisibleOrigin();
-    auto c = Connector::getInstance();
+    auto c = GameNet::Connector::getInstance();
     
     // background color
     //auto background = cocos2d::LayerColor::create(COLOR_GREEN);
@@ -359,8 +341,8 @@ void StadiumScene::initGUI()
 
 void StadiumScene::processBlock()
 {
-    Connector * c = Connector::getInstance();
-    Box * box;
+    GameNet::Connector * c = GameNet::Connector::getInstance();
+    GameNet::Box * box;
     
     // c->receive() returns 0, if no received packet is in the queue
     while( (box = c->receive()) != nullptr )
@@ -493,7 +475,7 @@ bool StadiumScene::onContactBegin( cocos2d::PhysicsContact &contact )
             Player * player = players[id];
             CCLOG("Player %s collided.", player->getAddress().ToString() );
             
-            BoxFactory::collision(player->getAddress())->send();
+            GameNet::BoxFactory::collision(player->getAddress())->send();
         }
     }
     
@@ -518,11 +500,11 @@ bool StadiumScene::onContactBegin( cocos2d::PhysicsContact &contact )
 
 
 
-void StadiumScene::onAccelerationBox(Box * box)
+void StadiumScene::onAccelerationBox(GameNet::Box * box)
 {
     int id = RakNet::SystemAddress::ToInteger( box->getAddress() );
     
-    auto msg = AccelerationMessage();
+    auto msg = GameNet::AccelerationMessage();
     bool res = msg.deserialize(box->getData());
     if(res == false)
     {
@@ -560,7 +542,7 @@ void StadiumScene::onAccelerationBox(Box * box)
 
 
 
-void StadiumScene::onPlayerKick(Box * box)
+void StadiumScene::onPlayerKick(GameNet::Box * box)
 {
     int id = RakNet::SystemAddress::ToInteger( box->getAddress() );
     auto player = players[id]->getSprite();
@@ -582,7 +564,7 @@ void StadiumScene::onPlayerKick(Box * box)
     
 }
 
-void StadiumScene::onPlayerTackle(Box * box)
+void StadiumScene::onPlayerTackle(GameNet::Box * box)
 {
     int id = RakNet::SystemAddress::ToInteger( box->getAddress() );
     auto player = players[id]->getSprite();
@@ -609,5 +591,4 @@ void StadiumScene::onPlayerTackle(Box * box)
 
 void StadiumScene::btnExitClicked(Ref * sender)
 {
-    game->end();
 }

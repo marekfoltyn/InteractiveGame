@@ -12,20 +12,23 @@
 #include "cocos2d.h"
 #include "Connector.h"
 
-USING_NS_CC;
 
 /**
- * class that manages stadium - constructs and modifies object in i t
+ * class that manages stadium - constructs and modifies object in it
  * cooperating with the Scene and game logic (bonuses, pitch scaling, ...)
  */
 class StadiumManager{
 public:
     
-    static StadiumManager * create(Scene * scene);
+    static StadiumManager * create(cocos2d::Scene * scene);
+    
+    void setPitch();
     
 private:
     
-    Scene * scene;
+    StadiumManager(cocos2d::Scene * scene);
+    
+    cocos2d::Scene * scene;
     
 };
 

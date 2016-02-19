@@ -10,8 +10,6 @@
 #include "Game.h"
 #include "Player.h"
 
-using namespace GameNet;
-
 class StadiumScene : public cocos2d::Layer
 {
 public:
@@ -26,11 +24,11 @@ public:
     
     void processBlock();
     
-    void onAccelerationBox(Box * box);
+    void onAccelerationBox(GameNet::Box * box);
     
-    void onPlayerKick(Box * box);
+    void onPlayerKick(GameNet::Box * box);
     
-    void onPlayerTackle(Box * box);
+    void onPlayerTackle(GameNet::Box * box);
     
     /**
      * Exit game
