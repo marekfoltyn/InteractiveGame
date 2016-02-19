@@ -38,6 +38,8 @@ private:
     
     static Game * instance;
     
+    Scene * scene;
+    
     Game();
     
 };

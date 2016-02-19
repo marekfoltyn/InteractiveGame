@@ -21,7 +21,11 @@ USING_NS_CC;
 class StadiumManager{
 public:
     
+    static StadiumManager * create(Scene * scene);
+    
 private:
+    
+    Scene * scene;
     
 };
 

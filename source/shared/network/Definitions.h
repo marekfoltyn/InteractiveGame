@@ -4,6 +4,9 @@
 #include "MessageIdentifiers.h" // packet types
 #include "cocos2d.h" // CCLOG
 
+// toggle debug
+#define DEBUG
+
 // time (ms) during when reliable packet was not able to be received -> connection lost
 #define CONNECTION_LOST_TIMEOUT 5000
 

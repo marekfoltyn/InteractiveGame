@@ -1,6 +1,6 @@
 #include <string>
 
-#include "LobbyScene.h"
+#include "StadiumScene.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 
@@ -39,7 +39,7 @@ using namespace GameNet;
 
 using namespace cocostudio::timeline;
 
-Scene* LobbyScene::createScene()
+Scene* StadiumScene::createScene()
 {
     // 'scene' is an autorelease object
     auto scene = Scene::createWithPhysics();
@@ -53,7 +53,7 @@ Scene* LobbyScene::createScene()
     scene->getPhysicsWorld()->setGravity(Vec2::ZERO);
     
     // 'layer' is an autorelease object
-    auto layer = LobbyScene::create();
+    auto layer = StadiumScene::create();
     layer->setPhysicsWorld( scene->getPhysicsWorld() );
 
     // add layer as a child to scene
@@ -64,7 +64,7 @@ Scene* LobbyScene::createScene()
 }
 
 // on "init" you need to initialize your instance
-bool LobbyScene::init()
+bool StadiumScene::init()
 {
     //////////////////////////////
     // 1. super init first
@@ -85,7 +85,7 @@ bool LobbyScene::init()
     return true;
 }
 
-void LobbyScene::initServer()
+void StadiumScene::initServer()
 {
     // run async Connector (as a server)
     bool started = Connector::getInstance()->startAsServer(MAX_PLAYERS);
@@ -97,14 +97,14 @@ void LobbyScene::initServer()
         return;
     }
     
-    auto callback = CallFunc::create(CC_CALLBACK_0(LobbyScene::processBlock, this));
+    auto callback = CallFunc::create(CC_CALLBACK_0(StadiumScene::processBlock, this));
     auto delay = DelayTime::create(RECEIVE_TIMEOUT);
     auto sequence = Sequence::create(callback, delay, nullptr);
     auto receivePacketAction = RepeatForever::create(sequence);
     this->runAction(receivePacketAction);
 }
 
-void LobbyScene::initGUI()
+void StadiumScene::initGUI()
 {
     auto visibleSize = Director::getInstance()->getVisibleSize();
     auto origin = Director::getInstance()->getVisibleOrigin();
@@ -329,7 +329,7 @@ void LobbyScene::initGUI()
     auto disconnect = Label::createWithTTF("Exit", "Vanilla.ttf", 50);
     disconnect->setAlignment(TextHAlignment::CENTER);
     disconnect->setTextColor(COLOR_FONT_TRANSPARENT);
-    auto item = MenuItemLabel::create(disconnect, CC_CALLBACK_1(LobbyScene::btnExitClicked, this));
+    auto item = MenuItemLabel::create(disconnect, CC_CALLBACK_1(StadiumScene::btnExitClicked, this));
     item->setAnchorPoint(Vec2(0.5, 1));
     item->setPosition(Vec2( circle + origin.x + visibleSize.width/2, origin.y + visibleSize.height - 2*BORDER ));
     auto menu = Menu::create(item, NULL);
@@ -353,11 +353,11 @@ void LobbyScene::initGUI()
 
     // collision listener
     auto contactListener = EventListenerPhysicsContact::create();
-    contactListener->onContactBegin = CC_CALLBACK_1(LobbyScene::onContactBegin, this);
+    contactListener->onContactBegin = CC_CALLBACK_1(StadiumScene::onContactBegin, this);
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
 }
 
-void LobbyScene::processBlock()
+void StadiumScene::processBlock()
 {
     Connector * c = Connector::getInstance();
     Box * box;
@@ -478,7 +478,7 @@ void LobbyScene::processBlock()
     }
 }
 
-bool LobbyScene::onContactBegin( cocos2d::PhysicsContact &contact )
+bool StadiumScene::onContactBegin( cocos2d::PhysicsContact &contact )
 {
     PhysicsBody * a[2];
     a[0] = contact.getShapeA()->getBody();
@@ -518,7 +518,7 @@ bool LobbyScene::onContactBegin( cocos2d::PhysicsContact &contact )
 
 
 
-void LobbyScene::onAccelerationBox(Box * box)
+void StadiumScene::onAccelerationBox(Box * box)
 {
     int id = RakNet::SystemAddress::ToInteger( box->getAddress() );
     
@@ -560,7 +560,7 @@ void LobbyScene::onAccelerationBox(Box * box)
 
 
 
-void LobbyScene::onPlayerKick(Box * box)
+void StadiumScene::onPlayerKick(Box * box)
 {
     int id = RakNet::SystemAddress::ToInteger( box->getAddress() );
     auto player = players[id]->getSprite();
@@ -582,7 +582,7 @@ void LobbyScene::onPlayerKick(Box * box)
     
 }
 
-void LobbyScene::onPlayerTackle(Box * box)
+void StadiumScene::onPlayerTackle(Box * box)
 {
     int id = RakNet::SystemAddress::ToInteger( box->getAddress() );
     auto player = players[id]->getSprite();
@@ -607,7 +607,7 @@ void LobbyScene::onPlayerTackle(Box * box)
 
 
 
-void LobbyScene::btnExitClicked(Ref * sender)
+void StadiumScene::btnExitClicked(Ref * sender)
 {
     game->end();
 }

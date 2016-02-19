@@ -1,5 +1,5 @@
-#ifndef __LOBBY_SCENE_H__
-#define __LOBBY_SCENE_H__
+#ifndef __STADIUM_SCENE_H__
+#define __STADIUM_SCENE_H__
 
 #include "cocos2d.h"
 #include "extensions/cocos-ext.h"
@@ -12,7 +12,7 @@
 
 using namespace GameNet;
 
-class LobbyScene : public cocos2d::Layer
+class StadiumScene : public cocos2d::Layer
 {
 public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
@@ -22,7 +22,7 @@ public:
     virtual bool init();
 
     // implement the "static create()" method manually
-    CREATE_FUNC(LobbyScene);
+    CREATE_FUNC(StadiumScene);
     
     void processBlock();
     

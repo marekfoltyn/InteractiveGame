@@ -7,7 +7,7 @@
 //
 
 #include "Game.h"
-#include "LobbyScene.h"
+#include "StadiumScene.h"
 
 Game * Game::instance = nullptr;
 
@@ -34,7 +34,7 @@ Game * Game::getInstance()
 
 void Game::run()
 {
-    auto scene = LobbyScene::createScene();
+    scene = StadiumScene::createScene();
     Director::getInstance()->runWithScene(scene);
 }
 
