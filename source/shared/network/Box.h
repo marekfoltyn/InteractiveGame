@@ -80,6 +80,10 @@ public:
      */
     RakNet::SystemAddress getAddress();
     
+    /**
+     * get the id of the address (hash)
+     */
+    int getId();
     
     /**
      * get custom char data of packet (without packet type)

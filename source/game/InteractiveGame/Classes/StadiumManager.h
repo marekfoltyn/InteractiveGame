@@ -11,6 +11,8 @@
 
 #include "cocos2d.h"
 #include "StadiumScene.h"
+#include "VoidHandler.h"
+#include "Player.h"
 
 
 /**
@@ -22,7 +24,15 @@ public:
     
     static StadiumManager * create(StadiumScene * scene);
     
-    void setPitch();
+    void drawPitch();
+    
+    void addExitButton( VoidHandler * handler );
+    
+    void addPlayer(Player * player);
+    
+    void removePlayer(Player * player);
+    
+    void resetScore();
     
 private:
     
@@ -30,6 +40,11 @@ private:
     
     StadiumScene * scene;
     cocos2d::Director * director;
+
+    cocos2d::Size visibleSize;
+    cocos2d::Vec2 origin;
+
+    
 };
 
 #endif /* StadiumManager_h */

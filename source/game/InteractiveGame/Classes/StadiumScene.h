@@ -9,7 +9,7 @@
 #include "Box.h"
 #include "Player.h"
 
-#include "ExitGameHandler.h"
+#include "CollisionHandler.h"
 
 class StadiumScene : public cocos2d::Layer
 {
@@ -26,48 +26,20 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(StadiumScene);
     
-    void addExitHandler( ExitGameHandler * handler );
-    
-    
-    void onAccelerationBox(GameNet::Box * box);
-    
-    void onPlayerKick(GameNet::Box * box);
-    
-
-    
-    /**
-     * Exit game
-     */
-    void btnExitClicked(Ref * sender);
-
-    void tempReset(GameNet::Box * box);
-    
-    void tempKick(GameNet::Box * box);
-    
-    void tempNewPlayer(GameNet::Box * box);
-    
-    void tempDisconnect(GameNet::Box * box);
-    
-    void tempTackle(GameNet::Box * box);
+    void addCollisionHandler(int bitmask, CollisionHandler * handler);
     
 private:
     
     cocos2d::PhysicsWorld * sceneWorld;
     
     std::map<int, Player * > players;
+    std::map<int, CollisionHandler * > collisions;
     
     cocos2d::Sprite * point;
 
     void setPhysicsWorld(cocos2d::PhysicsWorld * world){ sceneWorld = world; }
     
-    // start the graphics stuff
-    void initGUI();
-    
-    void setDebugOutputEnabled(bool enabled);
-    
-    bool onContactBegin( cocos2d::PhysicsContact &contact );
-    
-    cocos2d::Vec2 prevForce;
+    bool collision( cocos2d::PhysicsContact &contact );
 };
 
 #endif // __LOBBY_SCENE_H__

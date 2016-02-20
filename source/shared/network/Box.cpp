@@ -98,6 +98,10 @@ RakNet::SystemAddress Box::getAddress()
     return address;
 }
 
+int Box::getId()
+{
+    return RakNet::SystemAddress::ToInteger(address);
+}
 
 std::string Box::getData()
 {

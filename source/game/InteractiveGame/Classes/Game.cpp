@@ -6,6 +6,8 @@
 //
 //
 
+#include "GameDefinitions.h"
+
 #include "Game.h"
 #include "StadiumScene.h"
 
@@ -17,6 +19,7 @@
 #include "ResetHandler.h"
 #include "KickHandler.h"
 #include "TackleHandler.h"
+#include "PlayerCollisionHandler.h"
 
 Game * Game::instance = nullptr;
 
@@ -50,17 +53,17 @@ void Game::run()
     director->runWithScene(scene);
     // get the StadiumScene object (StadiumScene::createScene() creates a general Scene*)
     this->scene = dynamic_cast<StadiumScene*>(scene->getChildByTag(StadiumScene::SCENE_TAG));
-    this->scene->addExitHandler( new ExitGameHandler(this) );
     
     stadiumManager = StadiumManager::create(this->scene);
-    stadiumManager->setPitch();
+    stadiumManager->drawPitch();
+    stadiumManager->addExitButton( new ExitGameHandler(this) );
     
     bool netOk = startNetworking();
     if(!netOk){
         //TODO cant't start networking
     }
     
-    registerBoxHandlers();
+    registerHandlers();
 }
 
 
@@ -72,6 +75,52 @@ void Game::end()
     exit(0);
 }
 
+
+
+void Game::addPlayer(Player * player)
+{
+    int id = player->getId();
+    players[id] = player;
+}
+
+
+
+void Game::removePlayer(Player * player)
+{
+    auto iterator = players.find( player->getId() );
+    if( iterator != players.end())
+    {
+        int sizeBefore = players.size();
+        std::string name = player->getName();
+        players.erase(iterator);
+        int sizeAfter = players.size();
+        
+        if(sizeBefore > sizeAfter){
+            CCLOG("Player %s was removed from game", name.c_str());
+        } else {
+            CCLOG("Player %s was NOT removed from game", name.c_str());
+        }
+        
+    }
+}
+
+
+
+Player * Game::getPlayer(int id)
+{
+    auto iterator = players.find(id);
+    if( iterator != players.end())
+    {
+        return iterator->second;
+    }
+    return nullptr;
+}
+
+
+Player * Game::getRandomPlayer()
+{
+    return players.begin()->second;
+}
 
 
 bool Game::startNetworking()
@@ -96,7 +145,7 @@ bool Game::startNetworking()
 
 
 
-void Game::registerBoxHandlers()
+void Game::registerHandlers()
 {
     auto logHandler = new LogHandler();
     auto disconnectHandler = new DisconnectHandler(this);
@@ -111,6 +160,9 @@ void Game::registerBoxHandlers()
     boxHandlerMap[P_NEW_CONNECTION] = logHandler;
     boxHandlerMap[P_KICK] = new KickHandler(this);
     boxHandlerMap[P_TACKLE] = new TackleHandler(this);
+    
+    scene->addCollisionHandler(BITMASK_PLAYER, new PlayerCollisionHandler(this) );
+    //TODO: scene->addCollisionHandler(BITMASK_GOAL_SCORE, new ScoreCollisionHandler(this) );
 }
 
 

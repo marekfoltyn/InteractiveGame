@@ -283,6 +283,8 @@
 		EAD00D151C787EFC0037E62E /* KickHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD00D121C787EFC0037E62E /* KickHandler.cpp */; };
 		EAD00D181C7883B40037E62E /* TackleHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD00D161C7883B40037E62E /* TackleHandler.cpp */; };
 		EAD00D191C7883B40037E62E /* TackleHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD00D161C7883B40037E62E /* TackleHandler.cpp */; };
+		EAD00D201C78ABF70037E62E /* PlayerCollisionHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD00D1E1C78ABF70037E62E /* PlayerCollisionHandler.cpp */; };
+		EAD00D211C78ABF70037E62E /* PlayerCollisionHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD00D1E1C78ABF70037E62E /* PlayerCollisionHandler.cpp */; };
 		EAD0D4801C7527FB00776BC3 /* Box.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D47E1C7527FB00776BC3 /* Box.cpp */; };
 		EAD0D4811C7527FB00776BC3 /* Box.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D47E1C7527FB00776BC3 /* Box.cpp */; };
 		EAD0D4F71C75F92400776BC3 /* AccelerationMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4F11C75F92400776BC3 /* AccelerationMessage.cpp */; };
@@ -328,7 +330,7 @@
 		EA2400601C6490C400906235 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		EA2400611C6490C400906235 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		EA3401511C7771E00085A4F4 /* BoxHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoxHandler.h; path = ../../../shared/network/BoxHandler.h; sourceTree = "<group>"; };
-		EA3401581C778BF00085A4F4 /* Handler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Handler.h; sourceTree = "<group>"; };
+		EA3401581C778BF00085A4F4 /* VoidHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoidHandler.h; sourceTree = "<group>"; };
 		EA4189431C342867004B8934 /* InteractiveGame-unit-testing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "InteractiveGame-unit-testing.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA4189441C342867004B8934 /* InteractiveGame-desktop copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "InteractiveGame-desktop copy-Info.plist"; path = "/Users/marek/Documents/git/InteractiveGame/source/game/InteractiveGame/proj.ios_mac/InteractiveGame-desktop copy-Info.plist"; sourceTree = "<absolute>"; };
 		EA4189481C342C4B004B8934 /* TestDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestDelegate.cpp; sourceTree = "<group>"; };
@@ -622,6 +624,9 @@
 		EAD00D131C787EFC0037E62E /* KickHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KickHandler.h; path = Handlers/KickHandler.h; sourceTree = "<group>"; };
 		EAD00D161C7883B40037E62E /* TackleHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TackleHandler.cpp; path = Handlers/TackleHandler.cpp; sourceTree = "<group>"; };
 		EAD00D171C7883B40037E62E /* TackleHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TackleHandler.h; path = Handlers/TackleHandler.h; sourceTree = "<group>"; };
+		EAD00D1A1C78A35C0037E62E /* CollisionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollisionHandler.h; sourceTree = "<group>"; };
+		EAD00D1E1C78ABF70037E62E /* PlayerCollisionHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PlayerCollisionHandler.cpp; path = Handlers/PlayerCollisionHandler.cpp; sourceTree = "<group>"; };
+		EAD00D1F1C78ABF70037E62E /* PlayerCollisionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerCollisionHandler.h; path = Handlers/PlayerCollisionHandler.h; sourceTree = "<group>"; };
 		EAD0D47E1C7527FB00776BC3 /* Box.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Box.cpp; path = ../../../shared/network/Box.cpp; sourceTree = "<group>"; };
 		EAD0D47F1C7527FB00776BC3 /* Box.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Box.h; path = ../../../shared/network/Box.h; sourceTree = "<group>"; };
 		EAD0D4A61C75C38800776BC3 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Message.h; path = ../../../shared/network/Message.h; sourceTree = "<group>"; };
@@ -786,8 +791,8 @@
 			isa = PBXGroup;
 			children = (
 				EA3401521C7772B80085A4F4 /* Handlers */,
-				EA6058AC1C6F89D500D89D46 /* Game.h */,
 				EA6058AB1C6F89D500D89D46 /* Game.cpp */,
+				EA6058AC1C6F89D500D89D46 /* Game.h */,
 				EAD0D5021C76083000776BC3 /* StadiumManager.h */,
 				EAD0D5011C76083000776BC3 /* StadiumManager.cpp */,
 				EA2400601C6490C400906235 /* Player.cpp */,
@@ -799,23 +804,12 @@
 		EA3401521C7772B80085A4F4 /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
-				EAD00D171C7883B40037E62E /* TackleHandler.h */,
-				EAD00D161C7883B40037E62E /* TackleHandler.cpp */,
-				EAD00D131C787EFC0037E62E /* KickHandler.h */,
-				EAD00D121C787EFC0037E62E /* KickHandler.cpp */,
-				EAD00D0B1C787D520037E62E /* DisconnectHandler.h */,
-				EAD00D0F1C787D660037E62E /* DisconnectHandler.cpp */,
-				EAD00D081C787BB50037E62E /* ResetHandler.h */,
-				EAD00D071C787BB50037E62E /* ResetHandler.cpp */,
-				EAD00D041C7874BD0037E62E /* AccelerationHandler.h */,
-				EAD00D031C7874BD0037E62E /* AccelerationHandler.cpp */,
-				EAD00CFC1C77B6B00037E62E /* LogHandler.h */,
-				EAD00CFA1C779E410037E62E /* NewPlayerHandler.h */,
-				EAD00D001C7872DF0037E62E /* NewPlayerHandler.cpp */,
-				EAD00CFB1C779E410037E62E /* ExitGameHandler.h */,
-				EAD00CFD1C786F040037E62E /* ExitGameHandler.cpp */,
-				EA3401581C778BF00085A4F4 /* Handler.h */,
+				EAD00D1B1C78A39D0037E62E /* BoxHandlers */,
+				EAD00D1C1C78A3C30037E62E /* CollisionHandlers */,
+				EAD00D1D1C78A3D10037E62E /* voidHandlers */,
 				EA3401511C7771E00085A4F4 /* BoxHandler.h */,
+				EAD00D1A1C78A35C0037E62E /* CollisionHandler.h */,
+				EA3401581C778BF00085A4F4 /* VoidHandler.h */,
 			);
 			name = Handlers;
 			sourceTree = "<group>";
@@ -1129,6 +1123,44 @@
 			name = RakNet;
 			sourceTree = "<group>";
 		};
+		EAD00D1B1C78A39D0037E62E /* BoxHandlers */ = {
+			isa = PBXGroup;
+			children = (
+				EAD00D031C7874BD0037E62E /* AccelerationHandler.cpp */,
+				EAD00D041C7874BD0037E62E /* AccelerationHandler.h */,
+				EAD00D0F1C787D660037E62E /* DisconnectHandler.cpp */,
+				EAD00D0B1C787D520037E62E /* DisconnectHandler.h */,
+				EAD00D121C787EFC0037E62E /* KickHandler.cpp */,
+				EAD00D131C787EFC0037E62E /* KickHandler.h */,
+				EAD00CFC1C77B6B00037E62E /* LogHandler.h */,
+				EAD00D001C7872DF0037E62E /* NewPlayerHandler.cpp */,
+				EAD00CFA1C779E410037E62E /* NewPlayerHandler.h */,
+				EAD00D071C787BB50037E62E /* ResetHandler.cpp */,
+				EAD00D081C787BB50037E62E /* ResetHandler.h */,
+				EAD00D161C7883B40037E62E /* TackleHandler.cpp */,
+				EAD00D171C7883B40037E62E /* TackleHandler.h */,
+			);
+			name = BoxHandlers;
+			sourceTree = "<group>";
+		};
+		EAD00D1C1C78A3C30037E62E /* CollisionHandlers */ = {
+			isa = PBXGroup;
+			children = (
+				EAD00D1E1C78ABF70037E62E /* PlayerCollisionHandler.cpp */,
+				EAD00D1F1C78ABF70037E62E /* PlayerCollisionHandler.h */,
+			);
+			name = CollisionHandlers;
+			sourceTree = "<group>";
+		};
+		EAD00D1D1C78A3D10037E62E /* voidHandlers */ = {
+			isa = PBXGroup;
+			children = (
+				EAD00CFD1C786F040037E62E /* ExitGameHandler.cpp */,
+				EAD00CFB1C779E410037E62E /* ExitGameHandler.h */,
+			);
+			name = voidHandlers;
+			sourceTree = "<group>";
+		};
 		EAD0D4F01C75F91B00776BC3 /* Messages */ = {
 			isa = PBXGroup;
 			children = (
@@ -1303,6 +1335,7 @@
 				EACC72001C6B54A80036DB3D /* RakNetSocket2_Berkley.cpp in Sources */,
 				EACC72061C6B54A80036DB3D /* RakNetSocket2_PS4.cpp in Sources */,
 				EACC72241C6B54A80036DB3D /* RandSync.cpp in Sources */,
+				EAD00D201C78ABF70037E62E /* PlayerCollisionHandler.cpp in Sources */,
 				EAD0D4F71C75F92400776BC3 /* AccelerationMessage.cpp in Sources */,
 				EACC71EC1C6B54A80036DB3D /* PacketLogger.cpp in Sources */,
 				EACC71A01C6B54A80036DB3D /* DirectoryDeltaTransfer.cpp in Sources */,
@@ -1380,6 +1413,7 @@
 				EACC725D1C6B54A80036DB3D /* VariableListDeltaTracker.cpp in Sources */,
 				EACC71AD1C6B54A80036DB3D /* DynDNS.cpp in Sources */,
 				EACC72351C6B54A80036DB3D /* SendToThread.cpp in Sources */,
+				EAD00D211C78ABF70037E62E /* PlayerCollisionHandler.cpp in Sources */,
 				EACC72251C6B54A80036DB3D /* RandSync.cpp in Sources */,
 				EACC722B1C6B54A80036DB3D /* ReliabilityLayer.cpp in Sources */,
 				EACC71AF1C6B54A80036DB3D /* EmailSender.cpp in Sources */,

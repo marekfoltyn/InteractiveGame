@@ -9,6 +9,8 @@
 #ifndef Player_h
 #define Player_h
 
+#include <string>
+
 #include "cocos2d.h"
 #include "Connector.h"
 
@@ -22,7 +24,7 @@ public:
     /**
      * create a new Player instance (after connecting)
      */
-    static Player * create(RakNet::SystemAddress address);
+    static Player * create(RakNet::SystemAddress address, std::string name);
     
     /**
      * get the cocos2dx Sprite object
@@ -33,6 +35,16 @@ public:
      * get the network address
      */
     RakNet::SystemAddress getAddress(){ return address; }
+    
+    /**
+     * get the player's name
+     */
+    std::string getName(){ return name; }
+    
+    /**
+     * get the player's id based on the SystemAddress hash
+     */
+    int getId();
     
     /**
      * deallocate the instance (after disconnection)
@@ -72,6 +84,11 @@ private:
     RakNet::SystemAddress address;
     
     /**
+     * player's name
+     */
+    std::string name;
+    
+    /**
      * force applied in previously received AccelerationBlok
      * necessary for player's direction change
      */
@@ -86,7 +103,7 @@ private:
     /**
      * private constructor - use Player::create()
      */
-    Player(RakNet::SystemAddress address);
+    Player(RakNet::SystemAddress address, std::string name);
 };
 
 #endif /* Player_h */

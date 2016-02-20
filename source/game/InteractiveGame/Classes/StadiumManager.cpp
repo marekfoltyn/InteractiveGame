@@ -6,33 +6,13 @@
 //
 //
 
+#include "GameDefinitions.h"
 #include "StadiumManager.h"
+#include "VoidHandler.h"
+#include "PlayerCollisionHandler.h"
 #include "cocos2d.h"
 
 USING_NS_CC;
-
-#define COLOR_FONT_TRANSPARENT Color4B(255,255,255,44)
-
-#define NODE_BALL "sprBall"
-#define BALL_DAMPING 0.7
-#define BORDER 20
-
-#define BITMASK_SOLID            1 // 0000 0001
-#define BITMASK_BALL             2 // 0000 0010
-#define BITMASK_PLAYER           4 // 0000 0100
-#define BITMASK_SCORE            8 // 0000 1000
-#define BITMASK_BALL_BOUNDARY   16 // 0001 0000
-
-#define SCALE_GOAL 0.8
-#define SCALE_BALL 0.8
-#define MATERIAL_SOLID PhysicsMaterial(0.5, 1, 0.5)
-#define MATERIAL_BALL PhysicsMaterial(0.5, 0.5, 0.5)
-
-#define LEFT  0
-#define RIGHT 1
-
-#define LABEL_SCORE_LEFT "lblScoreLeft"
-#define LABEL_SCORE_RIGHT "lblScoreRight"
 
 StadiumManager * StadiumManager::create(StadiumScene * scene)
 {
@@ -45,11 +25,13 @@ StadiumManager::StadiumManager(StadiumScene * scene)
 {
     this->scene = scene;
     this->director = cocos2d::Director::getInstance();
+    visibleSize = Director::getInstance()->getVisibleSize();
+    origin = Director::getInstance()->getVisibleOrigin();
 }
 
 
 
-void StadiumManager::setPitch()
+void StadiumManager::drawPitch()
 {
     auto visibleSize = director->getVisibleSize();
     auto origin = director->getVisibleOrigin();
@@ -290,3 +272,62 @@ void StadiumManager::setPitch()
     //contactListener->onContactBegin = CC_CALLBACK_1(StadiumScene::onContactBegin, this);
     //this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
 }
+
+
+void StadiumManager::addExitButton( VoidHandler * handler )
+{
+    VoidHandler * h = handler;
+    float circle = Sprite::create("center.png")->getContentSize().width/4;
+    
+    // leave button
+    auto disconnect = Label::createWithTTF("Exit", "Vanilla.ttf", 50);
+    disconnect->setAlignment(TextHAlignment::CENTER);
+    disconnect->setTextColor(COLOR_FONT_TRANSPARENT);
+    auto item = MenuItemLabel::create(disconnect, [h](cocos2d::Ref* ref){ // [h] captures h variable (and stores?)
+        h->execute();
+    });
+    item->setAnchorPoint(Vec2(0.5, 1));
+    item->setPosition(Vec2( circle + origin.x + visibleSize.width/2, origin.y + visibleSize.height - 2*BORDER ));
+    auto menu = Menu::create(item, NULL);
+    menu->setPosition(Vec2::ZERO);
+    scene->addChild(menu,1);
+    
+}
+
+
+
+void StadiumManager::addPlayer(Player * player)
+{
+    auto sprite = player->getSprite();
+    sprite->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
+    sprite->setScale(SCALE_BALL);
+    
+    auto body = sprite->getPhysicsBody();
+    body->setCollisionBitmask(PLAYER_COLLIDES_WITH);
+    body->setContactTestBitmask(BITMASK_ALL);
+    body->setRotationEnable(false);
+    scene->addChild(sprite);
+}
+
+
+void StadiumManager::removePlayer(Player * player)
+{
+    scene->removeChild( player->getSprite() );
+}
+
+
+
+void StadiumManager::resetScore()
+{
+    auto left = static_cast<Label*>( scene->getChildByName(LABEL_SCORE_LEFT) );
+    auto right = static_cast<Label*>( scene->getChildByName(LABEL_SCORE_RIGHT) );
+    
+    left->setString("0");
+    right->setString("0");
+
+}
+
+
+
+
+

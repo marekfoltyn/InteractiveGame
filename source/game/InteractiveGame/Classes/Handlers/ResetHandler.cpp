@@ -3,5 +3,5 @@
 
 void ResetHandler::execute(GameNet::Box * box)
 {
-    game->getScene()->tempReset(box);
+    game->getStadiumManager()->resetScore();
 }

@@ -38,7 +38,20 @@ public:
      */
     void end();
     
+    void addPlayer(Player * player);
+    void removePlayer(Player * player);
+    int playersCount(){ return players.size(); }
+    
+    /**
+     * returns nullptr if the players is not in the map
+     */
+    Player * getPlayer(int id);
+    
+    Player * getRandomPlayer();
+    
+    
     StadiumScene * getScene(){ return this->scene; }
+    StadiumManager * getStadiumManager(){ return this->stadiumManager; }
     
 private:
     
@@ -55,7 +68,7 @@ private:
     Game();
     
     bool startNetworking();
-    void registerBoxHandlers();
+    void registerHandlers();
     void receiveBoxes();
     
 };

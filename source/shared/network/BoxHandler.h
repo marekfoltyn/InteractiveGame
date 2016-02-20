@@ -11,6 +11,7 @@ public:
 
     virtual void execute( GameNet::Box * box ) = 0;
     
+    ~BoxHandler(){}
 };
 
 #endif // _Message_H_
