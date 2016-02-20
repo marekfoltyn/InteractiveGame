@@ -216,8 +216,8 @@ void Connector::setServerName(std::string name){
 
 std::string Connector::getServerName(){
 	if (raknetInterface == nullptr){
-        LOG("Server not started - no name!");
-        return "";
+        LOG("Server not started - returning default name");
+        return "Phone Stadium";
     }
     
     char * name;

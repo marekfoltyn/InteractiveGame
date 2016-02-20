@@ -53,7 +53,8 @@ Scene * StadiumScene::createScene()
     // 'layer' is an autorelease object
     auto layer = StadiumScene::create();
     layer->setPhysicsWorld( scene->getPhysicsWorld() );
-
+    layer->setTag(SCENE_TAG);
+    
     // add layer as a child to scene
     scene->addChild(layer);
 
@@ -71,8 +72,6 @@ bool StadiumScene::init()
         return false;
     }
     
-    initServer();
-    
     initGUI();
     
     //auto rootNode = CSLoader::createNode("MainScene.csb");
@@ -81,256 +80,9 @@ bool StadiumScene::init()
     return true;
 }
 
-void StadiumScene::initServer()
-{
-
-}
-
 void StadiumScene::initGUI()
 {
-    auto visibleSize = Director::getInstance()->getVisibleSize();
-    auto origin = Director::getInstance()->getVisibleOrigin();
-    auto c = GameNet::Connector::getInstance();
-    
-    // background color
-    //auto background = cocos2d::LayerColor::create(COLOR_GREEN);
-    auto background = Sprite::create("grass.png");
-    background->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
-    this->addChild(background);
-    
-    // center circle
-    auto line = Sprite::create("center.png");
-    line->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
-    this->addChild(line);
- 
-    float scaleX = visibleSize.width  / 100.0 - 2.0*BORDER/100.0;
-    float scaleY = visibleSize.height / 100.0 - 2.0*BORDER/100.0;
-    
-    // center line
-    line = Sprite::create("line.png");
-    line->setScaleX(scaleY);
-    line->setRotation(90);
-    line->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
-    this->addChild(line);
 
-    
-    // top line
-    line = Sprite::create("line.png");
-    line->setScaleX(scaleX);
-    line->setAnchorPoint(Vec2(0,1));
-    line->setPosition(Vec2( origin.x + BORDER, origin.y + visibleSize.height - BORDER));
-    this->addChild(line);
-    
-    // bottom line
-    line = Sprite::create("line.png");
-    line->setScaleX(scaleX);
-    line->setAnchorPoint(Vec2(0,0));
-    line->setPosition(Vec2( origin.x + BORDER, origin.y + BORDER));
-    this->addChild(line);
-    
-    // left line
-    line = Sprite::create("line.png");
-    line->setScaleX(scaleY);
-    line->setRotation(90);
-    line->setAnchorPoint(Vec2(0,0));
-    line->setPosition(Vec2( origin.x + BORDER, origin.y + visibleSize.height - BORDER));
-    this->addChild(line);
-    
-    // right line
-    line = Sprite::create("line.png");
-    line->setScaleX(scaleY);
-    line->setRotation(90);
-    line->setAnchorPoint(Vec2(0,1));
-    line->setPosition(Vec2( origin.x + visibleSize.width - BORDER, origin.y + visibleSize.height - BORDER ));
-    this->addChild(line);
-    
-    scaleX = visibleSize.width/800; // line.jpg is 100px wide
-    scaleY *= 0.5;
-    
-    // left lines near the goal
-    line = Sprite::create("line.png");
-    line->setScaleX(scaleX);
-    line->setAnchorPoint(Vec2(0,1));
-    line->setPosition(Vec2( origin.x + BORDER, origin.y + visibleSize.height/2 + scaleY*100/2 ));
-    this->addChild(line);
-    line = Sprite::create("line.png");
-    line->setScaleX(scaleX);
-    line->setAnchorPoint(Vec2(0,1));
-    line->setPosition(Vec2( origin.x + BORDER, origin.y + visibleSize.height/2 - scaleY*100/2 ));
-    this->addChild(line);
-    line = Sprite::create("line.png");
-    line->setScaleX(scaleY);
-    line->setRotation(90);
-    line->setAnchorPoint(Vec2(0,1));
-    line->setPosition(Vec2( origin.x + BORDER + scaleX*100, origin.y + visibleSize.height/2 + scaleY*100/2 ));
-    this->addChild(line);
-    
-    // right lines near the goal
-    line = Sprite::create("line.png");
-    line->setScaleX(scaleX);
-    line->setAnchorPoint(Vec2(0,1));
-    line->setPosition(Vec2( origin.x + visibleSize.width - BORDER - scaleX*100, origin.y + visibleSize.height/2 + scaleY*100/2 ));
-    this->addChild(line);
-    line = Sprite::create("line.png");
-    line->setScaleX(scaleX);
-    line->setAnchorPoint(Vec2(0,1));
-    line->setPosition(Vec2( origin.x + visibleSize.width - BORDER - scaleX*100, origin.y + visibleSize.height/2 - scaleY*100/2 ));
-    this->addChild(line);
-    line = Sprite::create("line.png");
-    line->setScaleX(scaleY);
-    line->setRotation(90);
-    line->setAnchorPoint(Vec2(0,0));
-    line->setPosition(Vec2( origin.x + visibleSize.width - BORDER - scaleX*100, origin.y + visibleSize.height/2 + scaleY*100/2 ));
-    this->addChild(line);
-    
-    // left goal
-    auto goal = Sprite::create("goal.png");
-    goal->setScale(SCALE_GOAL);
-    goal->setPosition(Vec2( origin.x, origin.y + visibleSize.height/2));
-    this->addChild(goal, 2);
-    
-    // right goal
-    goal = Sprite::create("goal.png");
-    goal->setRotation(180);
-    goal->setScale(SCALE_GOAL);
-    goal->setPosition(Vec2( origin.x + visibleSize.width, origin.y + visibleSize.height/2));
-    this->addChild(goal, 2);
-    
-    // goal physics
-    // 4 horizontal lines (each goal has two lines - top and down)
-    for(int i=0; i<4; i++)
-    {
-        auto top = Node::create();
-        auto body = PhysicsBody::createBox(cocos2d::Size( SCALE_GOAL*goal->getContentSize().width/2, 10), MATERIAL_SOLID);
-        body->setDynamic(false);
-        body->setCategoryBitmask(BITMASK_SOLID);
-        body->setCollisionBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER);
-        body->setContactTestBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER);
-        top->setPhysicsBody(body);
-        top->setPosition(Vec2(
-                              origin.x + (i>1)*(visibleSize.width) + (1-(i>1)*2)*0.25*SCALE_GOAL*goal->getContentSize().width,
-                              origin.y + visibleSize.height/2 + (1 - 2*(i%2)) * SCALE_GOAL*(goal->getContentSize().height/2
-        )));
-        this->addChild(top);
-    }
-    // score point detectors
-    for(int i=0; i<2; i++)
-    {
-        auto top = Node::create();
-        auto body = PhysicsBody::createBox(cocos2d::Size(
-            SCALE_GOAL*goal->getContentSize().width - 2*Sprite::create("ball.png")->getContentSize().width*SCALE_BALL,
-            SCALE_GOAL*goal->getContentSize().height - Sprite::create("ball.png")->getContentSize().width*SCALE_BALL));
-        body->setDynamic(false);
-        body->setCategoryBitmask(BITMASK_SCORE);
-        body->setCollisionBitmask(0);
-        body->setContactTestBitmask(BITMASK_BALL);
-        top->setAnchorPoint(Vec2( i, 0.5 ));
-        top->setPhysicsBody(body);
-        top->setTag(i); // LEFT and RIGHT (#defined)
-        top->setPosition(Vec2(
-                              origin.x + (i%2)*(visibleSize.width),
-                              origin.y + visibleSize.height/2
-        ));
-        this->addChild(top);
-    }
-
-    
-    // physics boundary
-    auto edgeBody = PhysicsBody::createEdgeBox(cocos2d::Size(visibleSize.width + 2*BORDER, visibleSize.height + 2*BORDER), MATERIAL_SOLID, BORDER);
-    edgeBody->setDynamic(false);
-    edgeBody->setCategoryBitmask(BITMASK_SOLID);
-    edgeBody->setCollisionBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER);
-    edgeBody->setContactTestBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER);
-    auto edgeNode = Node::create();
-    edgeNode->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
-    edgeNode->setPhysicsBody(edgeBody);
-    this->addChild(edgeNode);
-
-    // ball-only physics boundary
-    edgeBody = PhysicsBody::createEdgeBox(cocos2d::Size(visibleSize.width, visibleSize.height), MATERIAL_SOLID, BORDER);
-    edgeBody->setDynamic(false);
-    edgeBody->setCategoryBitmask(BITMASK_BALL_BOUNDARY);
-    edgeBody->setCollisionBitmask(BITMASK_BALL);
-    edgeBody->setContactTestBitmask(BITMASK_BALL);
-    edgeNode = Node::create();
-    edgeNode->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
-    edgeNode->setPhysicsBody(edgeBody);
-    this->addChild(edgeNode);
-    
-    // 4 anti-corner boxes
-    for(int i=0; i<4; i++)
-    {
-        auto box = PhysicsBody::createBox(cocos2d::Size( 90, 90 ));
-        box->setDynamic(false);
-        box->setCategoryBitmask(BITMASK_BALL_BOUNDARY);
-        box->setCollisionBitmask(BITMASK_BALL);
-        box->setContactTestBitmask(BITMASK_BALL);
-        edgeNode = Node::create();
-        edgeNode->setPosition(Vec2( origin.x + (i%2) * visibleSize.width, origin.y + (i>=2) * visibleSize.height ));
-        edgeNode->setPhysicsBody(box);
-        edgeNode->setRotation(45);
-        this->addChild(edgeNode);
-    }
-    
-    // 4 anti corner boxes near goals
-    for(int i=0; i<4; i++)
-    {
-        auto box = PhysicsBody::createBox(cocos2d::Size( 70, 70 ));
-        box->setDynamic(false);
-        box->setCategoryBitmask(BITMASK_BALL_BOUNDARY);
-        box->setCollisionBitmask(BITMASK_BALL);
-        box->setContactTestBitmask(BITMASK_BALL);
-        edgeNode = Node::create();
-        edgeNode->setPosition(Vec2( origin.x + (i%2) * visibleSize.width, origin.y + visibleSize.height/2 + (((i>=2)*2)-1) * goal->getContentSize().height*SCALE_GOAL/2 ));
-        edgeNode->setPhysicsBody(box);
-        edgeNode->setRotation(45);
-        this->addChild(edgeNode);
-    }
-
-    
-    auto * txtServerName = TextFieldTTF::createWithTTF(c->getServerName(), "Vanilla.ttf", 64);
-    txtServerName->setColor(Color3B(54, 72, 99));
-    txtServerName->setAnchorPoint(Vec2(0.5, 0.5));
-    txtServerName->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height - txtServerName->getContentSize().height ));
-    //this->addChild(txtServerName);
-    
-    // score labels
-    auto left = Label::createWithTTF("0", "Vanilla.ttf", 100);
-    float circle = Sprite::create("center.png")->getContentSize().width/4;
-    left->setPosition(Vec2( - circle + origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
-    left->setTextColor(COLOR_FONT_TRANSPARENT);
-    left->setName(LABEL_SCORE_LEFT);
-    this->addChild(left);
-    auto right = Label::createWithTTF("0", "Vanilla.ttf", 100);
-    right->setPosition(Vec2( circle + origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
-    right->setTextColor(COLOR_FONT_TRANSPARENT);
-    right->setName(LABEL_SCORE_RIGHT);
-    this->addChild(right);
-
-    // leave button
-    auto disconnect = Label::createWithTTF("Exit", "Vanilla.ttf", 50);
-    disconnect->setAlignment(TextHAlignment::CENTER);
-    disconnect->setTextColor(COLOR_FONT_TRANSPARENT);
-    auto item = MenuItemLabel::create(disconnect, CC_CALLBACK_1(StadiumScene::btnExitClicked, this));
-    item->setAnchorPoint(Vec2(0.5, 1));
-    item->setPosition(Vec2( circle + origin.x + visibleSize.width/2, origin.y + visibleSize.height - 2*BORDER ));
-    auto menu = Menu::create(item, NULL);
-    menu->setPosition(Vec2::ZERO);
-    this->addChild(menu);
-    
-    // ball sprite
-    point = Sprite::create("ball.png");
-    point->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
-    point->setScale(SCALE_BALL);
-    point->setName(NODE_BALL);
-    auto spriteBody = PhysicsBody::createCircle( point->getContentSize().width/2, MATERIAL_BALL );
-    spriteBody->setCategoryBitmask(BITMASK_BALL);
-    spriteBody->setCollisionBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER | BITMASK_BALL_BOUNDARY);
-    spriteBody->setContactTestBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER | BITMASK_SCORE | BITMASK_BALL_BOUNDARY);
-    spriteBody->setLinearDamping(BALL_DAMPING);
-    spriteBody->setAngularDamping(BALL_DAMPING);
-    point->setPhysicsBody(spriteBody);
-    this->addChild(point);
     prevForce = Vec2(0,0);
 
     // collision listener
@@ -339,125 +91,92 @@ void StadiumScene::initGUI()
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
 }
 
-void StadiumScene::processBlock()
+void StadiumScene::addExitHandler( ExitGameHandler * handler )
 {
-    GameNet::Connector * c = GameNet::Connector::getInstance();
-    GameNet::Box * box;
+    ExitGameHandler * h = handler;
+    auto visibleSize = Director::getInstance()->getVisibleSize();
+    auto origin = Director::getInstance()->getVisibleOrigin();
+    float circle = Sprite::create("center.png")->getContentSize().width/4;
     
-    // c->receive() returns 0, if no received packet is in the queue
-    while( (box = c->receive()) != nullptr )
+    // leave button
+    auto disconnect = Label::createWithTTF("Exit", "Vanilla.ttf", 50);
+    disconnect->setAlignment(TextHAlignment::CENTER);
+    disconnect->setTextColor(COLOR_FONT_TRANSPARENT);
+    auto item = MenuItemLabel::create(disconnect, [h](cocos2d::Ref* ref){ // [h] captures h variable (and stores?)
+        h->execute();
+    });
+    item->setAnchorPoint(Vec2(0.5, 1));
+    item->setPosition(Vec2( circle + origin.x + visibleSize.width/2, origin.y + visibleSize.height - 2*BORDER ));
+    auto menu = Menu::create(item, NULL);
+    menu->setPosition(Vec2::ZERO);
+    this->addChild(menu,1);
+
+}
+
+void StadiumScene::tempDisconnect(GameNet::Box * box)
+{
+    CCLOG("%s disconnected.", box->getAddress().ToString());
+    
+    int id = RakNet::SystemAddress::ToInteger( box->getAddress());
+    
+    this->removeChild( players[id]->getSprite() );
+    
+    // set new admin
+    if( players[id]->isAdmin() && players.size() >= 2 )
     {
-        switch ( box->getType() )
-        {
-            case P_PING:
-            {
-                CCLOG("Client %s has pinged.", box->getAddress().ToString() );
-                break;
-            }
-                
-            case P_NEW_CONNECTION:
-            {
-                CCLOG("%s connected.", box->getAddress().ToString() );
-                break;
-            }
-            case P_CONNECTION_LOST:
-            case P_DISCONNECTED:
-            {
-                CCLOG("%s disconnected.", box->getAddress().ToString());
-                
-                int id = RakNet::SystemAddress::ToInteger( box->getAddress());
-                
-                this->removeChild( players[id]->getSprite() );
-                
-                // set new admin
-                if( players[id]->isAdmin() && players.size() >= 2 )
-                {
-                    players.erase(id);
-                    players.begin()->second->setAsAdmin();
-                } else {
-                    players.erase(id);
-                }
-                
-                break;
-            }
-                                
-            case P_ACCELERATION:
-            {
-                onAccelerationBox(box);
-                break;
-            }
-                
-            case P_PLAYER_NAME:
-            {
-                __String name = box->getData(); // simple string, no need to deserialize
-                CCLOG("Player name: %s", name.getCString() );
-                
-                int id = RakNet::SystemAddress::ToInteger( box->getAddress());
-                auto player = Player::create( box->getAddress() );
-                players[id] = player;
-                
-                auto visibleSize = Director::getInstance()->getVisibleSize();
-                auto origin = Director::getInstance()->getVisibleOrigin();
-                
-                auto sprite = player->getSprite();
-                sprite->setTexture("player_no_color.png");
-                sprite->setScale(SCALE_BALL);
-                sprite->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
-                auto spriteBody = PhysicsBody::createCircle( sprite->getContentSize().width/2, PhysicsMaterial(0.5, 00, 0.5) );
-                spriteBody->setCategoryBitmask(BITMASK_PLAYER);
-                spriteBody->setCollisionBitmask(BITMASK_PLAYER | BITMASK_BALL | BITMASK_SOLID);
-                spriteBody->setContactTestBitmask(BITMASK_PLAYER | BITMASK_BALL | BITMASK_SOLID);
-                spriteBody->setTag(id);
-                spriteBody->setRotationEnable(false);
-                sprite->setPhysicsBody(spriteBody);
-                auto lblName = Label::createWithTTF(name.getCString(), "Vanilla.ttf", sprite->getContentSize().height/2);
-                lblName->setPosition(Vec2( sprite->getContentSize().width/2, sprite->getContentSize().height  ));
-                lblName->setAnchorPoint(Vec2( 0.5, 0 ));
-                lblName->setTextColor(Color4B(255,255,255,44));
-                sprite->addChild(lblName,1);
-                this->addChild(sprite,1);
-                
-                // is there an admin?
-                if( players.size() == 1 ) // only this new player
-                {
-                    players[id]->setAsAdmin();
-                }
-                
-                break;
-            }
-                
-            case P_KICK:
-            {
-                onPlayerKick(box);
-                break;
-            }
-                
-            case P_TACKLE:
-            {
-                onPlayerTackle(box);
-                break;
-            }
-                
-            case P_RESET_SCORE:
-            {
-                auto left = static_cast<Label*>( this->getChildByName(LABEL_SCORE_LEFT) );
-                auto right = static_cast<Label*>( this->getChildByName(LABEL_SCORE_RIGHT) );
-                
-                left->setString("0");
-                right->setString("0");
-                
-                break;
-            }
-                
-            default:
-            {
-                CCLOG("Packet type %d was ignored.", box->getType());
-                break;
-            }
-        }
-        
-        box->deallocate();
+        players.erase(id);
+        players.begin()->second->setAsAdmin();
+    } else {
+        players.erase(id);
     }
+    
+}
+
+void StadiumScene::tempReset(GameNet::Box * box)
+{
+    auto left = static_cast<Label*>( this->getChildByName(LABEL_SCORE_LEFT) );
+    auto right = static_cast<Label*>( this->getChildByName(LABEL_SCORE_RIGHT) );
+    
+    left->setString("0");
+    right->setString("0");
+}
+
+void StadiumScene::tempNewPlayer(GameNet::Box * box)
+{
+    __String name = box->getData(); // simple string, no need to deserialize
+    CCLOG("Player name: %s", name.getCString() );
+    
+    int id = RakNet::SystemAddress::ToInteger( box->getAddress());
+    auto player = Player::create( box->getAddress() );
+    players[id] = player;
+    
+    auto visibleSize = Director::getInstance()->getVisibleSize();
+    auto origin = Director::getInstance()->getVisibleOrigin();
+    
+    auto sprite = player->getSprite();
+    sprite->setTexture("player_no_color.png");
+    sprite->setScale(SCALE_BALL);
+    sprite->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
+    auto spriteBody = PhysicsBody::createCircle( sprite->getContentSize().width/2, PhysicsMaterial(0.5, 00, 0.5) );
+    spriteBody->setCategoryBitmask(BITMASK_PLAYER);
+    spriteBody->setCollisionBitmask(BITMASK_PLAYER | BITMASK_BALL | BITMASK_SOLID);
+    spriteBody->setContactTestBitmask(BITMASK_PLAYER | BITMASK_BALL | BITMASK_SOLID);
+    spriteBody->setTag(id);
+    spriteBody->setRotationEnable(false);
+    sprite->setPhysicsBody(spriteBody);
+    auto lblName = Label::createWithTTF(name.getCString(), "Vanilla.ttf", sprite->getContentSize().height/2);
+    lblName->setPosition(Vec2( sprite->getContentSize().width/2, sprite->getContentSize().height  ));
+    lblName->setAnchorPoint(Vec2( 0.5, 0 ));
+    lblName->setTextColor(Color4B(255,255,255,44));
+    sprite->addChild(lblName,1);
+    this->addChild(sprite,1);
+    
+    // is there an admin?
+    if( players.size() == 1 ) // only this new player
+    {
+        players[id]->setAsAdmin();
+    }
+
 }
 
 bool StadiumScene::onContactBegin( cocos2d::PhysicsContact &contact )
@@ -542,7 +261,7 @@ void StadiumScene::onAccelerationBox(GameNet::Box * box)
 
 
 
-void StadiumScene::onPlayerKick(GameNet::Box * box)
+void StadiumScene::tempKick(GameNet::Box * box)
 {
     int id = RakNet::SystemAddress::ToInteger( box->getAddress() );
     auto player = players[id]->getSprite();
@@ -564,7 +283,7 @@ void StadiumScene::onPlayerKick(GameNet::Box * box)
     
 }
 
-void StadiumScene::onPlayerTackle(GameNet::Box * box)
+void StadiumScene::tempTackle(GameNet::Box * box)
 {
     int id = RakNet::SystemAddress::ToInteger( box->getAddress() );
     auto player = players[id]->getSprite();

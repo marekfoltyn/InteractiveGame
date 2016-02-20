@@ -7,12 +7,16 @@
 
 #include "RakPeerInterface.h"
 #include "Box.h"
-#include "Game.h"
 #include "Player.h"
+
+#include "ExitGameHandler.h"
 
 class StadiumScene : public cocos2d::Layer
 {
 public:
+    
+    static const int SCENE_TAG = 1;
+    
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
     static cocos2d::Scene* createScene();
 
@@ -22,23 +26,31 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(StadiumScene);
     
-    void processBlock();
+    void addExitHandler( ExitGameHandler * handler );
+    
     
     void onAccelerationBox(GameNet::Box * box);
     
     void onPlayerKick(GameNet::Box * box);
     
-    void onPlayerTackle(GameNet::Box * box);
+
     
     /**
      * Exit game
      */
     void btnExitClicked(Ref * sender);
 
+    void tempReset(GameNet::Box * box);
+    
+    void tempKick(GameNet::Box * box);
+    
+    void tempNewPlayer(GameNet::Box * box);
+    
+    void tempDisconnect(GameNet::Box * box);
+    
+    void tempTackle(GameNet::Box * box);
     
 private:
-    
-    Game * game;
     
     cocos2d::PhysicsWorld * sceneWorld;
     
@@ -47,9 +59,6 @@ private:
     cocos2d::Sprite * point;
 
     void setPhysicsWorld(cocos2d::PhysicsWorld * world){ sceneWorld = world; }
-    
-    // start the server stuff
-    void initServer();
     
     // start the graphics stuff
     void initGUI();

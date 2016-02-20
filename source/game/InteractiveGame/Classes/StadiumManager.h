@@ -10,7 +10,7 @@
 #define StadiumManager_h
 
 #include "cocos2d.h"
-#include "Connector.h"
+#include "StadiumScene.h"
 
 
 /**
@@ -20,16 +20,16 @@
 class StadiumManager{
 public:
     
-    static StadiumManager * create(cocos2d::Scene * scene);
+    static StadiumManager * create(StadiumScene * scene);
     
     void setPitch();
     
 private:
     
-    StadiumManager(cocos2d::Scene * scene);
+    StadiumManager(StadiumScene * scene);
     
-    cocos2d::Scene * scene;
-    
+    StadiumScene * scene;
+    cocos2d::Director * director;
 };
 
 #endif /* StadiumManager_h */

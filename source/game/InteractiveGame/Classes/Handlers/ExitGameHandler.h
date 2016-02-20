@@ -1,28 +1,21 @@
 #ifndef  _ExitGameHandler_H_
 #define  _ExitGameHandler_H_
 
-#include "cocos2d.h"
-#include "Connector.h"
-#include "Box.h"
-#include "BoxHandler.h"
-#include "Game.h"
-
-#include <string>
+#include "Handler.h"
+class Game; // forward declaration - avoiding circular dependency
 
 class ExitGameHandler: public Handler{
 public:
     
     ExitGameHandler(Game * game){
         this->game = game;
-    }
+    };
     
-    void execute(){
-        game->end();
-    }
+    virtual void execute();
     
 private:
-    
     Game * game;
 };
+
 
 #endif // _ExitGameHandler_H_
