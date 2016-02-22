@@ -1,4 +1,5 @@
 #include "cocos2d.h"
+#include "ControllerDefinitions.h"
 #include "LobbyScene.h"
 
 #include "Connector.h"
@@ -82,20 +83,6 @@ void LobbyScene::initGraphics()
     lblKick->setTextColor(Color4B(124, 124, 124, 110));
     lblKick->setPosition( btnKick->getPosition() );
     this->addChild(lblKick);
-
-    // tackle button
-    auto btnTackle = ui::Button::create("ball_big.png");
-    btnTackle->setAnchorPoint(Vec2(0.5, 0.5));
-    btnTackle->setPosition(Vec2(origin.x + btnTackle->getContentSize().width*0.25, origin.y + visibleSize.height/2));
-    btnTackle->setScale(0.5);
-    btnTackle->addTouchEventListener(CC_CALLBACK_2(LobbyScene::btnTackleClick, this));
-    this->addChild(btnTackle);
-
-    // tackle label
-    auto lblTackle = Label::createWithTTF("Pass", "Vanilla.ttf", 125);
-    lblTackle->setTextColor(Color4B(124, 124, 124, 110));
-    lblTackle->setPosition( btnTackle->getPosition() );
-    this->addChild(lblTackle);
     
     // leave button
     auto disconnect = ui::Button::create();
@@ -106,7 +93,8 @@ void LobbyScene::initGraphics()
     disconnect->setTitleFontSize(100);
     disconnect->addTouchEventListener( CC_CALLBACK_2(LobbyScene::btnOnDisconnect, this) );
     disconnect->setAnchorPoint(Vec2(0, 1));
-    disconnect->setPosition(Vec2( origin.x + visibleSize.width * 0.275, origin.y + visibleSize.height ));
+    int border = disconnect->getContentSize().height/4;
+    disconnect->setPosition(Vec2( origin.x + border, origin.y + visibleSize.height - border ));
     this->addChild(disconnect);
     
 }
@@ -161,21 +149,60 @@ void LobbyScene::receiveAllBoxes()
 
 void LobbyScene::btnOnDisconnect(Ref * sender, ui::Widget::TouchEventType type)
 {
-    if( type != ui::Widget::TouchEventType::ENDED)
+    auto button = dynamic_cast<cocos2d::ui::Button*>(sender);
+    
+    // wait
+    if( type == ui::Widget::TouchEventType::ENDED ||
+        type == ui::Widget::TouchEventType::CANCELED )
     {
-        // we want only sucessfull click
+        // disable text scaling
+        button->getTitleRenderer()->setScale(1);
+
+        
+        // stop animation (click-trigger wont be called)
+        button->stopActionByTag(Definitions::TAG_DELAY_CLICK);
+        button->removeAllChildren();
         return;
     }
     
-    auto c = Connector::getInstance();
-    auto server = c->getServer();
-    if( server != RakNet::UNASSIGNED_SYSTEM_ADDRESS )
+    if( type == ui::Widget::TouchEventType::BEGAN)
     {
-        c->disconnect(server);
+        // disable text scaling
+        button->getTitleRenderer()->setScale(1);
+        
+        // run the click-delay (avoid accidental clicks)
+        auto action = Sequence::create(
+            DelayTime::create(Definitions::TIME_DELAY_CLICK),
+            CallFunc::create(
+                []()
+                {
+                    auto c = Connector::getInstance();
+                    auto server = c->getServer();
+                    if( server != RakNet::UNASSIGNED_SYSTEM_ADDRESS )
+                    {
+                        c->disconnect(server);
+                    }
+                    CCLOG("User disconnected. Returning to main menu.");
+                    Scene * main = ServerListScene::createScene();
+                    Director::getInstance()->replaceScene( TransitionSlideInT::create(SCENE_TRANSITION, main) );
+                }
+            ),
+            nullptr
+        );
+        action->setTag(Definitions::TAG_DELAY_CLICK);
+        button->runAction(action);
+        
+        // add background "loading" animation
+        auto bg = Sprite::create("line.png");
+        int border = button->getContentSize().height/4;
+        float scaleX = (2*border + button->getContentSize().width) / 100.0;
+        float scaleY = (2*border + button->getContentSize().height) / 5.0;
+        bg->setScale(0, scaleY);
+        bg->setPosition(cocos2d::Vec2( button->getContentSize().width/2, button->getContentSize().height/2 ));
+        button->addChild(bg,-1);
+        auto loading = ScaleTo::create(Definitions::TIME_DELAY_CLICK, scaleX, scaleY);
+        bg->runAction(loading);
     }
-    CCLOG("User disconnected. Returning to main menu.");
-    Scene * main = ServerListScene::createScene();
-    Director::getInstance()->replaceScene( TransitionSlideInT::create(SCENE_TRANSITION, main) );
 }
 
 
@@ -201,31 +228,6 @@ void LobbyScene::btnKickClick(Ref * sender, ui::Widget::TouchEventType type)
             break;
         }
         
-        case ui::Widget::TouchEventType::CANCELED:
-        case ui::Widget::TouchEventType::ENDED:
-        {
-            break;
-        }
-            
-        default:
-        {
-            break;
-        }
-    }
-}
-
-void LobbyScene::btnTackleClick(Ref * sender, ui::Widget::TouchEventType type)
-{
-    switch (type)
-    {
-        case ui::Widget::TouchEventType::BEGAN:
-        {
-            
-            BoxFactory::tackle()->send(); // send to server
-            Device::vibrate(0.1);
-            break;
-        }
-            
         case ui::Widget::TouchEventType::CANCELED:
         case ui::Widget::TouchEventType::ENDED:
         {

@@ -55,15 +55,6 @@ Box * BoxFactory::kick()
 }
 
 
-Box * BoxFactory::tackle()
-{
-    Box * box = Box::createEmpty();
-    box->setType(P_TACKLE);
-    box->setReliability(PacketReliability::RELIABLE);
-    box->setPriority(PacketPriority::IMMEDIATE_PRIORITY);
-    return box;
-}
-
 Box * BoxFactory::playerName(std::string name)
 {
     Box * box = Box::create(name);

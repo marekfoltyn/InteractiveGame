@@ -18,7 +18,6 @@
 #include "LogHandler.h"
 #include "ResetHandler.h"
 #include "KickHandler.h"
-#include "TackleHandler.h"
 #include "PlayerCollisionHandler.h"
 
 Game * Game::instance = nullptr;
@@ -159,7 +158,6 @@ void Game::registerHandlers()
     boxHandlerMap[P_PING] = logHandler;
     boxHandlerMap[P_NEW_CONNECTION] = logHandler;
     boxHandlerMap[P_KICK] = new KickHandler(this);
-    boxHandlerMap[P_TACKLE] = new TackleHandler(this);
     
     scene->addCollisionHandler(BITMASK_PLAYER, new PlayerCollisionHandler(this) );
     //TODO: scene->addCollisionHandler(BITMASK_GOAL_SCORE, new ScoreCollisionHandler(this) );

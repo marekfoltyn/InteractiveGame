@@ -100,7 +100,7 @@ RakNet::SystemAddress Box::getAddress()
 
 int Box::getId()
 {
-    return RakNet::SystemAddress::ToInteger(address);
+    return (unsigned int) RakNet::SystemAddress::ToInteger(address);
 }
 
 std::string Box::getData()

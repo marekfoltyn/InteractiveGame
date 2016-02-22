@@ -281,8 +281,6 @@
 		EAD00D111C787D660037E62E /* DisconnectHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD00D0F1C787D660037E62E /* DisconnectHandler.cpp */; };
 		EAD00D141C787EFC0037E62E /* KickHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD00D121C787EFC0037E62E /* KickHandler.cpp */; };
 		EAD00D151C787EFC0037E62E /* KickHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD00D121C787EFC0037E62E /* KickHandler.cpp */; };
-		EAD00D181C7883B40037E62E /* TackleHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD00D161C7883B40037E62E /* TackleHandler.cpp */; };
-		EAD00D191C7883B40037E62E /* TackleHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD00D161C7883B40037E62E /* TackleHandler.cpp */; };
 		EAD00D201C78ABF70037E62E /* PlayerCollisionHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD00D1E1C78ABF70037E62E /* PlayerCollisionHandler.cpp */; };
 		EAD00D211C78ABF70037E62E /* PlayerCollisionHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD00D1E1C78ABF70037E62E /* PlayerCollisionHandler.cpp */; };
 		EAD0D4801C7527FB00776BC3 /* Box.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D47E1C7527FB00776BC3 /* Box.cpp */; };
@@ -622,8 +620,6 @@
 		EAD00D0F1C787D660037E62E /* DisconnectHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DisconnectHandler.cpp; path = Handlers/DisconnectHandler.cpp; sourceTree = "<group>"; };
 		EAD00D121C787EFC0037E62E /* KickHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KickHandler.cpp; path = Handlers/KickHandler.cpp; sourceTree = "<group>"; };
 		EAD00D131C787EFC0037E62E /* KickHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KickHandler.h; path = Handlers/KickHandler.h; sourceTree = "<group>"; };
-		EAD00D161C7883B40037E62E /* TackleHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TackleHandler.cpp; path = Handlers/TackleHandler.cpp; sourceTree = "<group>"; };
-		EAD00D171C7883B40037E62E /* TackleHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TackleHandler.h; path = Handlers/TackleHandler.h; sourceTree = "<group>"; };
 		EAD00D1A1C78A35C0037E62E /* CollisionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollisionHandler.h; sourceTree = "<group>"; };
 		EAD00D1E1C78ABF70037E62E /* PlayerCollisionHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PlayerCollisionHandler.cpp; path = Handlers/PlayerCollisionHandler.cpp; sourceTree = "<group>"; };
 		EAD00D1F1C78ABF70037E62E /* PlayerCollisionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerCollisionHandler.h; path = Handlers/PlayerCollisionHandler.h; sourceTree = "<group>"; };
@@ -1137,8 +1133,6 @@
 				EAD00CFA1C779E410037E62E /* NewPlayerHandler.h */,
 				EAD00D071C787BB50037E62E /* ResetHandler.cpp */,
 				EAD00D081C787BB50037E62E /* ResetHandler.h */,
-				EAD00D161C7883B40037E62E /* TackleHandler.cpp */,
-				EAD00D171C7883B40037E62E /* TackleHandler.h */,
 			);
 			name = BoxHandlers;
 			sourceTree = "<group>";
@@ -1283,7 +1277,6 @@
 				EACC71D21C6B54A80036DB3D /* LocklessTypes.cpp in Sources */,
 				EAD0D4F91C75F92400776BC3 /* ServerNameMessage.cpp in Sources */,
 				EACC71F41C6B54A80036DB3D /* Rackspace.cpp in Sources */,
-				EAD00D181C7883B40037E62E /* TackleHandler.cpp in Sources */,
 				EACC72221C6B54A80036DB3D /* Rand.cpp in Sources */,
 				EACC71981C6B54A80036DB3D /* CommandParserInterface.cpp in Sources */,
 				EACC71E01C6B54A80036DB3D /* NatTypeDetectionServer.cpp in Sources */,
@@ -1399,7 +1392,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAD00D191C7883B40037E62E /* TackleHandler.cpp in Sources */,
 				EACC72291C6B54A80036DB3D /* RelayPlugin.cpp in Sources */,
 				EACC71F51C6B54A80036DB3D /* Rackspace.cpp in Sources */,
 				EACC71951C6B54A80036DB3D /* CloudCommon.cpp in Sources */,

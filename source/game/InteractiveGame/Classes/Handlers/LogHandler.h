@@ -42,13 +42,7 @@ public:
                 CCLOG("Kick.");
                 break;
             }
-                
-            case P_TACKLE:
-            {
-                CCLOG("Tackle.");
-                break;
-            }
-                
+                                
             case P_RESET_SCORE:
             {
                 CCLOG("Reset.");
