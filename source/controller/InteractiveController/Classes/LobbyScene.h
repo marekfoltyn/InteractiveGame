@@ -70,7 +70,7 @@ public:
     /**
      * set this controller as admin
      */
-    void setAsAdmin();
+    void pauseClick(cocos2d::Ref *pSender, ui::Widget::TouchEventType type);
     
     /**
      * connection was lost - (show the dialog? and) return to the server list scene

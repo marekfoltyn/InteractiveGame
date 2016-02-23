@@ -3,6 +3,8 @@
 
 #include "AccelerationMessage.h"
 
+#include <string>
+
 using namespace GameNet;
 
 Box * BoxFactory::acceleration(double x, double y, double z)
@@ -45,9 +47,9 @@ Box * BoxFactory::resetScore()
     return box;
 }
 
-Box * BoxFactory::kick()
+Box * BoxFactory::kick(unsigned char intensity)
 {
-    Box * box = Box::createEmpty();
+    Box * box = Box::create(std::string(intensity,1));
     box->setType(P_KICK);
     box->setReliability(PacketReliability::RELIABLE);
     box->setPriority(PacketPriority::IMMEDIATE_PRIORITY);

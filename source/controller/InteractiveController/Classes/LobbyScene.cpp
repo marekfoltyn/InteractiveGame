@@ -11,6 +11,8 @@ USING_NS_CC;
 using namespace GameNet;
 
 #define COLOR_GREEN Color4B(11, 112, 14, 255)
+#define NODE_PAUSE "nodePause"
+
 
 Scene * LobbyScene::createScene()
 {
@@ -97,6 +99,21 @@ void LobbyScene::initGraphics()
     disconnect->setPosition(Vec2( origin.x + border, origin.y + visibleSize.height - border ));
     this->addChild(disconnect);
     
+    // leave button
+    auto reset = ui::Button::create();
+    reset->setTitleText("reset");
+    reset->setTitleFontName("Vanilla.ttf");
+    reset->setTitleAlignment(TextHAlignment::CENTER);
+    reset->setTitleColor(Color3B(51, 152, 54));
+    reset->setTitleFontSize(100);
+    reset->addTouchEventListener(CC_CALLBACK_2(LobbyScene::pauseClick, this));
+    reset->setAnchorPoint(Vec2(0, 0));
+    border = reset->getContentSize().height/4;
+    reset->setPosition(Vec2( origin.x + border, origin.y + border ));
+    reset->setName(NODE_PAUSE);
+    reset->setVisible(false);
+    this->addChild(reset);
+    
 }
 
 
@@ -129,8 +146,8 @@ void LobbyScene::receiveAllBoxes()
                 
             case P_ADMIN:
             {
-                setAsAdmin();
-                break;
+                auto pause = this->getChildByName(NODE_PAUSE);
+                pause->setVisible(true);
             }
                 
             default:
@@ -167,6 +184,10 @@ void LobbyScene::btnOnDisconnect(Ref * sender, ui::Widget::TouchEventType type)
     
     if( type == ui::Widget::TouchEventType::BEGAN)
     {
+        
+#if ( CC_TARGET_PLATFORM != CC_PLATFORM_IOS ) // iOS ingores vibrate duration - too long vibrations
+        Device::vibrate(0.05);
+#endif
         // disable text scaling
         button->getTitleRenderer()->setScale(1);
         
@@ -223,7 +244,7 @@ void LobbyScene::btnKickClick(Ref * sender, ui::Widget::TouchEventType type)
         case ui::Widget::TouchEventType::BEGAN:
         {
          
-            BoxFactory::kick()->send(); // send to server
+            BoxFactory::kick(0)->send(); // send to server
             Device::vibrate(0.1);
             break;
         }
@@ -247,9 +268,66 @@ void LobbyScene::onAcceleration(cocos2d::Acceleration* acc, cocos2d::Event* unus
     box->send();
 }
 
-void LobbyScene::setAsAdmin()
+void LobbyScene::pauseClick(cocos2d::Ref *pSender, ui::Widget::TouchEventType type)
 {
-    CCLOG("I am the admin!");
+    
+    auto button = dynamic_cast<cocos2d::ui::Button*>(pSender);
+    int tag = 1;
+
+    // wait
+    if( type == ui::Widget::TouchEventType::ENDED ||
+       type == ui::Widget::TouchEventType::CANCELED )
+    {
+        // disable text scaling
+        button->getTitleRenderer()->setScale(1);
+        
+        
+        // stop animation (click-trigger wont be called)
+        button->stopActionByTag(tag);
+        button->removeAllChildren();
+        return;
+    }
+    
+    if( type == ui::Widget::TouchEventType::BEGAN)
+    {
+        
+#if ( CC_TARGET_PLATFORM != CC_PLATFORM_IOS ) // iOS ingores vibrate duration - too long vibrations
+        Device::vibrate(0.05);
+#endif
+        // disable text scaling
+        button->getTitleRenderer()->setScale(1);
+        
+        // run the click-delay (avoid accidental clicks)
+        auto action = Sequence::create(
+            DelayTime::create(Definitions::TIME_DELAY_CLICK),
+            CallFunc::create(
+                [button]()
+                {
+                    //TODO: pause game
+                    CCLOG("Pause.");
+                    button->removeAllChildren();
+                    BoxFactory::resetScore()->send();
+                }
+            ),
+            nullptr
+        );
+        action->setTag(tag);
+        button->runAction(action);
+        
+        // add background "loading" animation
+        auto bg = Sprite::create("line.png");
+        int border = button->getContentSize().height/4;
+        float scaleX = (2*border + button->getContentSize().width) / 100.0;
+        float scaleY = (2*border + button->getContentSize().height) / 5.0;
+        bg->setScale(0, scaleY);
+        bg->setPosition(cocos2d::Vec2( button->getContentSize().width/2, button->getContentSize().height/2 ));
+        button->addChild(bg,-1);
+        auto loading = ScaleTo::create(Definitions::TIME_DELAY_CLICK, scaleX, scaleY);
+        bg->runAction(loading);
+    }
+    
+    
+    /*CCLOG("I am the admin!");
     
     auto visibleSize = Director::getInstance()->getVisibleSize();
     auto origin = Director::getInstance()->getVisibleOrigin();
@@ -270,5 +348,5 @@ void LobbyScene::setAsAdmin()
     });
     reset->setAnchorPoint(Vec2(0, 0));
     reset->setPosition(Vec2( origin.x + visibleSize.width * 0.275, origin.y ));
-    this->addChild(reset);
+    this->addChild(reset);*/
 }

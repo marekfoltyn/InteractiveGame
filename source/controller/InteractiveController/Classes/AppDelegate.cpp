@@ -45,7 +45,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto scene = ServerListScene::createScene();
 
     // start networking
-    Connector::getInstance()-> start();
+    Connector::getInstance()->start();
     
     
     // run

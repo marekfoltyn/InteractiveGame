@@ -290,7 +290,7 @@ void StadiumManager::addExitButton( VoidHandler * handler )
     item->setPosition(Vec2( circle + origin.x + visibleSize.width/2, origin.y + visibleSize.height - 2*BORDER ));
     auto menu = Menu::create(item, NULL);
     menu->setPosition(Vec2::ZERO);
-    scene->addChild(menu,1);
+    scene->addChild(menu,0);
     
 }
 
