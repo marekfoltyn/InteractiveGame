@@ -1,6 +1,10 @@
 #ifndef __GAME_DEFINITIONS_H__
 #define __GAME_DEFINITIONS_H__
 
+// toggle debug
+#define DEBUG
+
+
 class GameDefinitions{
 public:
     

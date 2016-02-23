@@ -76,7 +76,12 @@ public:
      * connection was lost - (show the dialog? and) return to the server list scene
      */
     void onConnectionLost(Box * box);
-        
+    
+private:
+    
+    cocos2d::Size visibleSize;
+    cocos2d::Vec2 origin;
+    
 };
 
 #endif // __LOBBY_SCENE_H__

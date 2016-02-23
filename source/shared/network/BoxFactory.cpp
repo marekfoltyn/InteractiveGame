@@ -47,9 +47,12 @@ Box * BoxFactory::resetScore()
     return box;
 }
 
-Box * BoxFactory::kick(unsigned char intensity)
+Box * BoxFactory::kick(unsigned int intensity)
 {
-    Box * box = Box::create(std::string(intensity,1));
+    if( intensity > 255) intensity = 255;
+    std::stringstream ss;
+    ss << intensity;
+    Box * box = Box::create( ss.str() );
     box->setType(P_KICK);
     box->setReliability(PacketReliability::RELIABLE);
     box->setPriority(PacketPriority::IMMEDIATE_PRIORITY);

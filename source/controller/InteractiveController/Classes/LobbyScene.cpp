@@ -7,11 +7,14 @@
 
 #include "BoxFactory.h"
 
+#include "Timer.cpp"
+
 USING_NS_CC;
 using namespace GameNet;
 
 #define COLOR_GREEN Color4B(11, 112, 14, 255)
 #define NODE_PAUSE "nodePause"
+#define NODE_FORCE "nodeForce"
 
 
 Scene * LobbyScene::createScene()
@@ -64,8 +67,8 @@ bool LobbyScene::init()
 
 void LobbyScene::initGraphics()
 {
-    auto visibleSize = Director::getInstance()->getVisibleSize();
-    auto origin = Director::getInstance()->getVisibleOrigin();
+    visibleSize = Director::getInstance()->getVisibleSize();
+    origin = Director::getInstance()->getVisibleOrigin();
     
     // background color
     //auto background = cocos2d::LayerColor::create(COLOR_GREEN);
@@ -114,6 +117,13 @@ void LobbyScene::initGraphics()
     reset->setVisible(false);
     this->addChild(reset);
     
+    // force-loading image
+    auto force = Sprite::create("line.png");
+    force->setName(NODE_FORCE);
+    force->setScale(1,0);
+    force->setAnchorPoint(Vec2(1, 0.5));
+    force->setPosition(Vec2(origin.x + visibleSize.width - btnKick->getContentSize().width*1.05, origin.y + visibleSize.height/2));
+    this->addChild(force);
 }
 
 
@@ -243,15 +253,43 @@ void LobbyScene::btnKickClick(Ref * sender, ui::Widget::TouchEventType type)
     {
         case ui::Widget::TouchEventType::BEGAN:
         {
-         
-            BoxFactory::kick(0)->send(); // send to server
-            Device::vibrate(0.1);
+            Util::Timer * timer = new Util::Timer(true);
+            auto button = dynamic_cast<ui::Button*>(sender);
+            button->setUserData(timer);
+            
+            auto force = dynamic_cast<Sprite*>( this->getChildByName(NODE_FORCE) );
+            float scaleY = (0.8*visibleSize.height)/5.0;
+            force->runAction(ScaleTo::create(Definitions::TIME_KICK_FORCE_MAX, force->getScaleX(), scaleY));
+            
             break;
         }
         
         case ui::Widget::TouchEventType::CANCELED:
         case ui::Widget::TouchEventType::ENDED:
         {
+            
+            auto button = dynamic_cast<ui::Button*>(sender);
+            auto timer = dynamic_cast<Util::Timer*>( (Util::Timer*)button->getUserData() );
+            std::chrono::milliseconds elapsed = timer->Elapsed();
+            unsigned long long int ms = elapsed.count();
+
+            delete timer;
+        
+            auto forceSprite = dynamic_cast<Sprite*>( this->getChildByName(NODE_FORCE) );
+            forceSprite->stopAllActions();
+            forceSprite->setScaleY(0);
+            
+            if( ms >= Definitions::TIME_KICK_FORCE_MAX * 1000){
+                ms = Definitions::TIME_KICK_FORCE_MAX * 1000;
+            }
+            
+            unsigned int force = (ms / (Definitions::TIME_KICK_FORCE_MAX * 1000.0)) * 255.0;
+            
+            CCLOG("Elapsed %lld milliseconds, force %d%%, data = %d", ms, (int)(force/255.0 * 100.0), force);
+            
+            BoxFactory::kick(force)->send(); // send to server
+            Device::vibrate(0.1);
+            
             break;
         }
             
@@ -327,26 +365,4 @@ void LobbyScene::pauseClick(cocos2d::Ref *pSender, ui::Widget::TouchEventType ty
     }
     
     
-    /*CCLOG("I am the admin!");
-    
-    auto visibleSize = Director::getInstance()->getVisibleSize();
-    auto origin = Director::getInstance()->getVisibleOrigin();
-    
-    // leave button
-    auto reset = ui::Button::create();
-    reset->setTitleText("reset");
-    reset->setTitleFontName("Vanilla.ttf");
-    reset->setTitleAlignment(TextHAlignment::CENTER);
-    reset->setTitleColor(Color3B(51, 152, 54));
-    reset->setTitleFontSize(100);
-    reset->addTouchEventListener( [&] (cocos2d::Ref *pSender, ui::Widget::TouchEventType type) // definition of lambda function
-    {
-        if(type == ui::Widget::TouchEventType::ENDED){
-            CCLOG("Reseting score...");
-            BoxFactory::resetScore()->send();
-        }
-    });
-    reset->setAnchorPoint(Vec2(0, 0));
-    reset->setPosition(Vec2( origin.x + visibleSize.width * 0.275, origin.y ));
-    this->addChild(reset);*/
 }

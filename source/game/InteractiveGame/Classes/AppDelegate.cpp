@@ -1,4 +1,5 @@
 #include "AppDelegate.h"
+#include "GameDefinitions.h"
 #include "Game.h"
 
 AppDelegate::AppDelegate(){}
@@ -28,7 +29,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
             //glview = GLViewImpl::createWithRect("InteractiveGame", cocos2d::Rect(0, 0, 1024, 768));
             //glview = GLViewImpl::createWithRect("InteractiveGame", cocos2d::Rect(0, 0, 1400, 900));
         #else
-            glview = GLViewImpl::createWithFullScreen("InteractiveGame");
+            glview = cocos2d::GLViewImpl::createWithFullScreen("InteractiveGame");
         #endif
         
         director->setOpenGLView(glview);

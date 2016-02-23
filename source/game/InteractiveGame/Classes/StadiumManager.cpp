@@ -181,7 +181,7 @@ void StadiumManager::drawPitch()
     
     
     // physics boundary
-    auto edgeBody = PhysicsBody::createEdgeBox(cocos2d::Size(visibleSize.width + 2*BORDER, visibleSize.height + 2*BORDER), MATERIAL_SOLID, BORDER);
+    auto edgeBody = PhysicsBody::createEdgeBox(cocos2d::Size(visibleSize.width + 4*BORDER, visibleSize.height + 4*BORDER), MATERIAL_SOLID, BORDER);
     edgeBody->setDynamic(false);
     edgeBody->setCategoryBitmask(BITMASK_SOLID);
     edgeBody->setCollisionBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER);

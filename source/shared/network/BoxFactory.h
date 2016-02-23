@@ -40,7 +40,7 @@ public:
      * ball kick
      * intensity is the kick force from interval [0..255]
      */
-    static Box * kick(unsigned char intensity);
+    static Box * kick(unsigned int intensity);
     
     /**
      * tackle (small kick)
