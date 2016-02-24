@@ -1,17 +1,29 @@
-#ifndef __GAME_DEFINITIONS_H__
-#define __GAME_DEFINITIONS_H__
+#ifndef __GAMEPLAY_DEFINITIONS_H__
+#define __GAMEPLAY_DEFINITIONS_H__
 
-// toggle debug
-#define DEBUG
-
-
-class GameDefinitions{
+class Definitions{
 public:
+    
+    // delay when the click is considered successful (in seconds)
+    constexpr static const float TIME_DELAY_CLICK = 0.6;
+    
+    // action tag (delay, button animation and after ACCIDENT_CLICK_DELAY seconds call click handler)
+    static const int TAG_DELAY_CLICK = 1;
+    
+    // time needed to hold the kick button to maximum kick force
+    constexpr static const float TIME_KICK_FORCE_MAX = 1.0;
+    
+    
     
     static const int LEFT  = 0;
     static const int RIGHT = 1;
-    
+
+
 };
+
+
+// toggle debug
+#define DEBUG
 
 #define BITMASK_SOLID            1 // 0000 0001
 #define BITMASK_BALL             2 // 0000 0010
@@ -37,4 +49,7 @@ public:
 #define LABEL_SCORE_LEFT "lblScoreLeft"
 #define LABEL_SCORE_RIGHT "lblScoreRight"
 
-#endif // __GAME_DEFINITIONS_H__
+
+#define SCHEDULE_KICK_SLOWING "kickSlowing"
+
+#endif // __GAMEPLAY_DEFINITIONS_H__

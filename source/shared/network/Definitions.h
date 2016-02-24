@@ -52,8 +52,9 @@
 #define P_ACCELERATION                ID_USER_PACKET_ENUM+1
 #define P_COLLISION                   ID_USER_PACKET_ENUM+2
 #define P_PLAYER_NAME                 ID_USER_PACKET_ENUM+3
-#define P_KICK                        ID_USER_PACKET_ENUM+4
-#define P_ADMIN                       ID_USER_PACKET_ENUM+5
-#define P_RESET_SCORE                 ID_USER_PACKET_ENUM+6
+#define P_KICK_PRESSED                ID_USER_PACKET_ENUM+4
+#define P_KICK_RELEASED               ID_USER_PACKET_ENUM+5
+#define P_ADMIN                       ID_USER_PACKET_ENUM+6
+#define P_RESET_SCORE                 ID_USER_PACKET_ENUM+7
 
 #endif // _DEFINITIONS_H_

@@ -8,13 +8,13 @@
 
 #include "MessageIdentifiers.h"
 #include "Definitions.h"
-#include "GameDefinitions.h"
+#include "GameplayDefinitions.h"
 #include "Connector.h"
 #include "Box.h"
 #include "BoxFactory.h"
 #include "AccelerationMessage.h"
 
-#include "GameDefinitions.h"
+#include "GameplayDefinitions.h"
 
 using namespace cocos2d;
 
@@ -94,10 +94,10 @@ bool StadiumScene::collision( cocos2d::PhysicsContact &contact )
         if( a[i]->getCategoryBitmask() & BITMASK_SCORE ) // the ball in the goal
         {
             int goalSide = a[i]->getNode()->getTag();
-            CCLOG("GOOAAAALLL to %s", (goalSide==GameDefinitions::LEFT) ?  "left" : "right" );
+            CCLOG("GOOAAAALLL to %s", (goalSide==Definitions::LEFT) ?  "left" : "right" );
             
             // add points
-            Label * lbl = static_cast<Label*>( this->getChildByName( (goalSide == GameDefinitions::LEFT) ? LABEL_SCORE_RIGHT : LABEL_SCORE_LEFT ) );
+            Label * lbl = static_cast<Label*>( this->getChildByName( (goalSide == Definitions::LEFT) ? LABEL_SCORE_RIGHT : LABEL_SCORE_LEFT ) );
             int score = __String::create( lbl->getString() )->intValue();
             score++;
             lbl->setString( __String::createWithFormat("%d", score)->getCString() );

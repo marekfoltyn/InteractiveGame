@@ -8,7 +8,7 @@
 
 #include "Player.h"
 #include "BoxFactory.h"
-#include "GameDefinitions.h"
+#include "GameplayDefinitions.h"
 #include "cocos2d.h"
 
 
@@ -30,8 +30,8 @@ Player::Player(RakNet::SystemAddress address, std::string name)
     lblName->setTextColor(cocos2d::Color4B(255,255,255,44));
     sprite->addChild(lblName,1);
 
-    
     previousForce = cocos2d::Vec2(0,0);
+    speedScale = 1;
 }
 
 
@@ -65,4 +65,13 @@ void Player::setAsAdmin()
     admin = true;
     auto box = GameNet::BoxFactory::admin( this->getAddress() );
     box->send();
+}
+
+void Player::setSpeedScale(float scale)
+{
+    if( scale < 0){
+        speedScale = 0;
+    } else {
+        speedScale = scale;
+    }
 }

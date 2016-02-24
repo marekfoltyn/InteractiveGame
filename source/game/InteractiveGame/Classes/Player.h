@@ -71,6 +71,12 @@ public:
      */
     bool isAdmin(){ return admin; }
     
+    /**
+     * speedScale getter / setter
+     */
+    void setSpeedScale(float scale);
+    float getSpeedScale(){ return speedScale; }
+    
 private:
     
     /**
@@ -99,6 +105,11 @@ private:
      * (can control the stadium)
      */
     bool admin;
+    
+    /**
+     * interval [0,1] for maximum velocity scaling (kick loading, bonuses...)
+     */
+    float speedScale;
     
     /**
      * private constructor - use Player::create()

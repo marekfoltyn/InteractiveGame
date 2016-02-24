@@ -1,5 +1,5 @@
 #include "cocos2d.h"
-#include "ControllerDefinitions.h"
+#include "GameplayDefinitions.h"
 #include "LobbyScene.h"
 
 #include "Connector.h"
@@ -261,6 +261,8 @@ void LobbyScene::btnKickClick(Ref * sender, ui::Widget::TouchEventType type)
             float scaleY = (0.8*visibleSize.height)/5.0;
             force->runAction(ScaleTo::create(Definitions::TIME_KICK_FORCE_MAX, force->getScaleX(), scaleY));
             
+            BoxFactory::kickPressed()->send();
+            
             break;
         }
         
@@ -287,7 +289,7 @@ void LobbyScene::btnKickClick(Ref * sender, ui::Widget::TouchEventType type)
             
             CCLOG("Elapsed %lld milliseconds, force %d%%, data = %d", ms, (int)(force/255.0 * 100.0), force);
             
-            BoxFactory::kick(force)->send(); // send to server
+            BoxFactory::kickReleased(force)->send(); // send to server
             Device::vibrate(0.1);
             
             break;

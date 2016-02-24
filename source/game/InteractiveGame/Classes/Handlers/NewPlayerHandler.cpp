@@ -3,7 +3,7 @@
 #include "Game.h"
 #include "Player.h"
 #include "PlayerCollisionHandler.h"
-#include "GameDefinitions.h"
+#include "GameplayDefinitions.h"
 
 void NewPlayerHandler::execute(GameNet::Box * box)
 {

@@ -342,7 +342,6 @@
 		EA5CA2C91C3FC90D003437FF /* raknetx86_64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = raknetx86_64.a; path = ../../../shared/network/raknet/raknetx86_64.a; sourceTree = "<group>"; };
 		EA6058AB1C6F89D500D89D46 /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		EA6058AC1C6F89D500D89D46 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
-		EA76BC881C32CCA900F2531F /* GameDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDefinitions.h; sourceTree = "<group>"; };
 		EACC70801C6B54A70036DB3D /* _FindFirst.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = _FindFirst.cpp; path = ../../../shared/network/raknet/_FindFirst.cpp; sourceTree = "<group>"; };
 		EACC70811C6B54A70036DB3D /* _FindFirst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _FindFirst.h; path = ../../../shared/network/raknet/_FindFirst.h; sourceTree = "<group>"; };
 		EACC70821C6B54A70036DB3D /* AutopatcherPatchContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AutopatcherPatchContext.h; path = ../../../shared/network/raknet/AutopatcherPatchContext.h; sourceTree = "<group>"; };
@@ -634,6 +633,7 @@
 		EAD0D4FE1C75FC5B00776BC3 /* BoxFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoxFactory.h; path = ../../../shared/network/BoxFactory.h; sourceTree = "<group>"; };
 		EAD0D5011C76083000776BC3 /* StadiumManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StadiumManager.cpp; sourceTree = "<group>"; };
 		EAD0D5021C76083000776BC3 /* StadiumManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StadiumManager.h; sourceTree = "<group>"; };
+		EAEA974C1C7DBF6900AF1EEA /* GameplayDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameplayDefinitions.h; path = ../../../controller/InteractiveController/Classes/GameplayDefinitions.h; sourceTree = "<group>"; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -747,7 +747,7 @@
 				EA4189151C33C2C9004B8934 /* Network */,
 				EA24005F1C648D2500906235 /* Game */,
 				EA76BC8B1C32D07F00F2531F /* Scenes */,
-				EA76BC881C32CCA900F2531F /* GameDefinitions.h */,
+				EAEA974C1C7DBF6900AF1EEA /* GameplayDefinitions.h */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
 			);

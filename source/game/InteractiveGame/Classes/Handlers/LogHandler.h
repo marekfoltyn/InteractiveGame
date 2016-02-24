@@ -31,24 +31,7 @@ public:
                 CCLOG("%s disconnected.", box->getAddress().ToString());
                 break;
             }
-                
-            case P_ACCELERATION:
-            {
-                break;
-            }
-                
-            case P_KICK:
-            {
-                CCLOG("Kick.");
-                break;
-            }
                                 
-            case P_RESET_SCORE:
-            {
-                CCLOG("Reset.");
-                break;
-            }
-                
             default:
             {
                 CCLOG("Packet type %d was ignored.", box->getType());

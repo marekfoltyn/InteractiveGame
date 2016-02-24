@@ -6,7 +6,7 @@
 //
 //
 
-#include "GameDefinitions.h"
+#include "GameplayDefinitions.h"
 
 #include "Game.h"
 #include "StadiumScene.h"
@@ -157,7 +157,9 @@ void Game::registerHandlers()
 
     boxHandlerMap[P_PING] = logHandler;
     boxHandlerMap[P_NEW_CONNECTION] = logHandler;
-    boxHandlerMap[P_KICK] = new KickHandler(this);
+    auto kickHandler = new KickHandler(this);
+    boxHandlerMap[P_KICK_PRESSED] = kickHandler;
+    boxHandlerMap[P_KICK_RELEASED] = kickHandler;
     
     scene->addCollisionHandler(BITMASK_PLAYER, new PlayerCollisionHandler(this) );
     //TODO: scene->addCollisionHandler(BITMASK_GOAL_SCORE, new ScoreCollisionHandler(this) );

@@ -6,7 +6,7 @@
 //
 //
 
-#include "GameDefinitions.h"
+#include "GameplayDefinitions.h"
 #include "StadiumManager.h"
 #include "VoidHandler.h"
 #include "PlayerCollisionHandler.h"

@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "GameDefinitions.h"
+#include "GameplayDefinitions.h"
 #include "Game.h"
 
 AppDelegate::AppDelegate(){}
