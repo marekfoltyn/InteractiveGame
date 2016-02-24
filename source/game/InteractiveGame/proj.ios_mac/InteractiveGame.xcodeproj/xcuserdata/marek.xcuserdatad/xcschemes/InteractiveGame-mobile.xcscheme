@@ -32,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-            BuildableName = "InteractiveGame-mobile.app"
-            BlueprintName = "InteractiveGame-mobile"
+            BlueprintIdentifier = "5087E73D17EB910900C73F5D"
+            BuildableName = "InteractiveGame-desktop.app"
+            BlueprintName = "InteractiveGame-desktop"
             ReferencedContainer = "container:InteractiveGame.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -51,16 +51,10 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-            BuildableName = "InteractiveGame-mobile.app"
-            BlueprintName = "InteractiveGame-mobile"
-            ReferencedContainer = "container:InteractiveGame.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
+      <PathRunnable
+         runnableDebuggingMode = "0"
+         FilePath = "/Users/marek/Documents/git/InteractiveGame/source/game/InteractiveGame/proj.ios_mac/Build/Products/Debug-iphonesimulator/InteractiveGame-mobile.app">
+      </PathRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

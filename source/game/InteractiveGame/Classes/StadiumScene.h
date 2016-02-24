@@ -32,7 +32,6 @@ private:
     
     cocos2d::PhysicsWorld * sceneWorld;
     
-    std::map<int, Player * > players;
     std::map<int, CollisionHandler * > collisions;
     
     cocos2d::Sprite * point;

@@ -23,7 +23,7 @@ public:
 
 
 // toggle debug
-#define DEBUG
+//#define DEBUG
 
 #define BITMASK_SOLID            1 // 0000 0001
 #define BITMASK_BALL             2 // 0000 0010

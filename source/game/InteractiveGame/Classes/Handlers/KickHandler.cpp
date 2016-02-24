@@ -32,7 +32,7 @@ void KickHandler::pressed(GameNet::Box * box)
     
     playerSprite->schedule([player, intensity](float dt)
     {
-        player->setSpeedScale( player->getSpeedScale() - player->getSpeedScale()/20.0 );
+        player->setSpeedScale( player->getSpeedScale() - 1/30.0 );
         CCLOG("spedScale: %f", player->getSpeedScale());
     }
     ,Definitions::TIME_KICK_FORCE_MAX/20, 20, 0, SCHEDULE_KICK_SLOWING);

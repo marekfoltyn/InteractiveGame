@@ -175,6 +175,7 @@
 		EAD0D4B11C75D11A00776BC3 /* AccelerationMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4AD1C75D11A00776BC3 /* AccelerationMessage.cpp */; };
 		EAD0D4B21C75D11A00776BC3 /* ServerNameMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4AF1C75D11A00776BC3 /* ServerNameMessage.cpp */; };
 		EAD0D4B51C75F0DC00776BC3 /* BoxFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4B31C75F0DC00776BC3 /* BoxFactory.cpp */; };
+		EAEA97521C7DD52900AF1EEA /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAEA97501C7DD52900AF1EEA /* Controller.cpp */; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
 /* End PBXBuildFile section */
@@ -516,6 +517,11 @@
 		EAD0D4B01C75D11A00776BC3 /* ServerNameMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerNameMessage.h; path = ../../../shared/messages/ServerNameMessage.h; sourceTree = "<group>"; };
 		EAD0D4B31C75F0DC00776BC3 /* BoxFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BoxFactory.cpp; path = ../../../shared/network/BoxFactory.cpp; sourceTree = "<group>"; };
 		EAD0D4B41C75F0DC00776BC3 /* BoxFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoxFactory.h; path = ../../../shared/network/BoxFactory.h; sourceTree = "<group>"; };
+		EAEA974E1C7DCD8000AF1EEA /* BoxHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoxHandler.h; path = ../../../shared/network/BoxHandler.h; sourceTree = "<group>"; };
+		EAEA97501C7DD52900AF1EEA /* Controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Controller.cpp; sourceTree = "<group>"; };
+		EAEA97511C7DD52900AF1EEA /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
+		EAEA97541C7E087D00AF1EEA /* BoxHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoxHandler.h; path = ../../../shared/network/BoxHandler.h; sourceTree = "<group>"; };
+		EAEA97551C7E08A300AF1EEA /* VoidHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoidHandler.h; sourceTree = "<group>"; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -646,6 +652,7 @@
 				EA41891A1C33C309004B8934 /* GameNet */,
 				EADD22BD1C4EAEFE00A939CB /* Scenes */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
+				EAEA974F1C7DD50400AF1EEA /* Controller */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
 				EA3430801C7BA26200726EAF /* GameplayDefinitions.h */,
 			);
@@ -727,6 +734,7 @@
 				EAD0D4A31C75BE9900776BC3 /* Message.h */,
 				EAAB6A5A1C59F27000171969 /* Box.h */,
 				EAAB6A5B1C59F27000171969 /* Box.cpp */,
+				EAEA974E1C7DCD8000AF1EEA /* BoxHandler.h */,
 				EAD0D4B41C75F0DC00776BC3 /* BoxFactory.h */,
 				EAD0D4B31C75F0DC00776BC3 /* BoxFactory.cpp */,
 			);
@@ -1041,6 +1049,33 @@
 			name = Scenes;
 			sourceTree = "<group>";
 		};
+		EAEA974D1C7DCD4800AF1EEA /* BoxHandlers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = BoxHandlers;
+			sourceTree = "<group>";
+		};
+		EAEA974F1C7DD50400AF1EEA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EAEA97531C7E085000AF1EEA /* Handlers */,
+				EAEA97501C7DD52900AF1EEA /* Controller.cpp */,
+				EAEA97511C7DD52900AF1EEA /* Controller.h */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		EAEA97531C7E085000AF1EEA /* Handlers */ = {
+			isa = PBXGroup;
+			children = (
+				EAEA974D1C7DCD4800AF1EEA /* BoxHandlers */,
+				EAEA97541C7E087D00AF1EEA /* BoxHandler.h */,
+				EAEA97551C7E08A300AF1EEA /* VoidHandler.h */,
+			);
+			name = Handlers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1158,6 +1193,7 @@
 				EA888B671C58A6B200534275 /* StringCompressor.cpp in Sources */,
 				EA888B731C58A6B200534275 /* UDPProxyCoordinator.cpp in Sources */,
 				EA888B641C58A6B200534275 /* SimpleMutex.cpp in Sources */,
+				EAEA97521C7DD52900AF1EEA /* Controller.cpp in Sources */,
 				EAD0D4B51C75F0DC00776BC3 /* BoxFactory.cpp in Sources */,
 				EA888B6B1C58A6B200534275 /* TCPInterface.cpp in Sources */,
 				EA888B311C58A6B200534275 /* LocklessTypes.cpp in Sources */,

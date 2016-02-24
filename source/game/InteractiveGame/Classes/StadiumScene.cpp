@@ -22,14 +22,13 @@ Scene * StadiumScene::createScene()
 {
     // 'scene' is an autorelease object
     auto scene = Scene::createWithPhysics();
+    scene->getPhysicsWorld()->setGravity(Vec2::ZERO);
 
 #ifdef DEBUG
     scene->getPhysicsWorld()->setDebugDrawMask( PhysicsWorld::DEBUGDRAW_ALL );
 #else
     scene->getPhysicsWorld()->setDebugDrawMask( PhysicsWorld::DEBUGDRAW_NONE );
 #endif
-    
-    scene->getPhysicsWorld()->setGravity(Vec2::ZERO);
     
     // 'layer' is an autorelease object
     auto layer = StadiumScene::create();
