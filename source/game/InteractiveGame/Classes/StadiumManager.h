@@ -22,7 +22,7 @@
 class StadiumManager{
 public:
     
-    static StadiumManager * create(StadiumScene * scene);
+    static StadiumManager * create();
     
     void drawPitch();
     
@@ -34,9 +34,11 @@ public:
     
     void resetScore();
     
+    void runStadium();
+    
 private:
     
-    StadiumManager(StadiumScene * scene);
+    StadiumManager();
     
     StadiumScene * scene;
     cocos2d::Director * director;

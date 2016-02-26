@@ -48,13 +48,8 @@ Game * Game::getInstance()
 
 void Game::run()
 {
-    auto scene = StadiumScene::createScene();
-    director->runWithScene(scene);
-    // get the StadiumScene object (StadiumScene::createScene() creates a general Scene*)
-    this->scene = dynamic_cast<StadiumScene*>(scene->getChildByTag(StadiumScene::SCENE_TAG));
-    
-    stadiumManager = StadiumManager::create(this->scene);
-    stadiumManager->drawPitch();
+    stadiumManager = StadiumManager::create();
+    stadiumManager->runStadium();
     stadiumManager->addExitButton( new ExitGameHandler(this) );
     
     bool netOk = startNetworking();

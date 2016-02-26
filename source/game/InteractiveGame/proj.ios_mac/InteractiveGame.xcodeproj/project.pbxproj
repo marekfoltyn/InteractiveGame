@@ -746,8 +746,6 @@
 				EA41891F1C33D2E5004B8934 /* Testing */,
 				EA4189151C33C2C9004B8934 /* Network */,
 				EA24005F1C648D2500906235 /* Game */,
-				EA76BC8B1C32D07F00F2531F /* Scenes */,
-				EAEA974C1C7DBF6900AF1EEA /* GameplayDefinitions.h */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
 			);
@@ -787,10 +785,10 @@
 			isa = PBXGroup;
 			children = (
 				EA3401521C7772B80085A4F4 /* Handlers */,
+				EA76BC8B1C32D07F00F2531F /* Stadium */,
 				EA6058AB1C6F89D500D89D46 /* Game.cpp */,
 				EA6058AC1C6F89D500D89D46 /* Game.h */,
-				EAD0D5021C76083000776BC3 /* StadiumManager.h */,
-				EAD0D5011C76083000776BC3 /* StadiumManager.cpp */,
+				EAEA974C1C7DBF6900AF1EEA /* GameplayDefinitions.h */,
 				EA2400601C6490C400906235 /* Player.cpp */,
 				EA2400611C6490C400906235 /* Player.h */,
 			);
@@ -839,13 +837,15 @@
 			name = Testing;
 			sourceTree = "<group>";
 		};
-		EA76BC8B1C32D07F00F2531F /* Scenes */ = {
+		EA76BC8B1C32D07F00F2531F /* Stadium */ = {
 			isa = PBXGroup;
 			children = (
+				EAD0D5021C76083000776BC3 /* StadiumManager.h */,
+				EAD0D5011C76083000776BC3 /* StadiumManager.cpp */,
 				46880B8719C43A87006E1F66 /* StadiumScene.h */,
 				46880B8619C43A87006E1F66 /* StadiumScene.cpp */,
 			);
-			name = Scenes;
+			name = Stadium;
 			sourceTree = "<group>";
 		};
 		EACC707F1C6B547A0036DB3D /* RakNet */ = {

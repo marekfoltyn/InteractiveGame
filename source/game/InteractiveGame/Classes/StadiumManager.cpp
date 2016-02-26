@@ -14,16 +14,16 @@
 
 USING_NS_CC;
 
-StadiumManager * StadiumManager::create(StadiumScene * scene)
+StadiumManager * StadiumManager::create()
 {
-    return new StadiumManager(scene);
+    return new StadiumManager();
 }
 
 
 
-StadiumManager::StadiumManager(StadiumScene * scene)
+StadiumManager::StadiumManager()
 {
-    this->scene = scene;
+    this->scene = nullptr;
     this->director = cocos2d::Director::getInstance();
     visibleSize = Director::getInstance()->getVisibleSize();
     origin = Director::getInstance()->getVisibleOrigin();
@@ -328,6 +328,16 @@ void StadiumManager::resetScore()
 }
 
 
+void StadiumManager::runStadium()
+{
+    auto scene = StadiumScene::createScene();
+    director->runWithScene(scene);
+    
+    // get the StadiumScene object (StadiumScene::createScene() creates a general Scene*)
+    this->scene = dynamic_cast<StadiumScene*>(scene->getChildByTag(StadiumScene::SCENE_TAG));
+    
+    drawPitch();
+}
 
 
 
