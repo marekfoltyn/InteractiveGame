@@ -340,4 +340,7 @@ void StadiumManager::runStadium()
 }
 
 
-
+void StadiumManager::addCollisionHandler(int bitmask, CollisionHandler * handler)
+{
+    scene->addCollisionHandler(bitmask, handler);
+}

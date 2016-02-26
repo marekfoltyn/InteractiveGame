@@ -36,6 +36,8 @@ public:
     
     void runStadium();
     
+    void addCollisionHandler(int bitmask, CollisionHandler * handler);
+    
 private:
     
     StadiumManager();

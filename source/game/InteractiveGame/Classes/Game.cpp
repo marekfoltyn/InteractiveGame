@@ -27,6 +27,8 @@ Game::Game()
     director = cocos2d::Director::getInstance();
     connector = GameNet::Connector::getInstance();
     
+    stadiumManager = StadiumManager::create();
+    
     boxHandlerMap = std::map<int, BoxHandler*>();
 }
 
@@ -48,13 +50,12 @@ Game * Game::getInstance()
 
 void Game::run()
 {
-    stadiumManager = StadiumManager::create();
     stadiumManager->runStadium();
     stadiumManager->addExitButton( new ExitGameHandler(this) );
     
     bool netOk = startNetworking();
     if(!netOk){
-        //TODO cant't start networking
+        //TODO cant't start networking, show alert and exit
     }
     
     registerHandlers();
@@ -156,7 +157,7 @@ void Game::registerHandlers()
     boxHandlerMap[P_KICK_PRESSED] = kickHandler;
     boxHandlerMap[P_KICK_RELEASED] = kickHandler;
     
-    scene->addCollisionHandler(BITMASK_PLAYER, new PlayerCollisionHandler(this) );
+    stadiumManager->addCollisionHandler(BITMASK_PLAYER, new PlayerCollisionHandler(this) );
     //TODO: scene->addCollisionHandler(BITMASK_GOAL_SCORE, new ScoreCollisionHandler(this) );
 }
 

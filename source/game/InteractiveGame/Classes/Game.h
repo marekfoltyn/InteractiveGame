@@ -49,15 +49,12 @@ public:
     
     Player * getRandomPlayer();
     
-    
-    StadiumScene * getScene(){ return this->scene; }
     StadiumManager * getStadiumManager(){ return this->stadiumManager; }
     
 private:
     
     static Game * instance;
     
-    StadiumScene * scene;
     StadiumManager * stadiumManager;
     cocos2d::Director * director;
     GameNet::Connector * connector;
