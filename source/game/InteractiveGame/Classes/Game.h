@@ -11,7 +11,7 @@
 
 #include "cocos2d.h"
 #include "Connector.h"
-#include "BoxHandler.h"
+#include "AbstractHandlers.h"
 #include "Player.h"
 #include "StadiumScene.h"
 #include "StadiumManager.h"
@@ -49,6 +49,8 @@ public:
     
     Player * getRandomPlayer();
     
+    StadiumScene * getScene(){ return this->scene; }
+    
     StadiumManager * getStadiumManager(){ return this->stadiumManager; }
     
 private:
@@ -56,6 +58,7 @@ private:
     static Game * instance;
     
     StadiumManager * stadiumManager;
+    StadiumScene * scene;
     cocos2d::Director * director;
     GameNet::Connector * connector;
     

@@ -11,7 +11,7 @@
 #include "Game.h"
 #include "StadiumScene.h"
 
-#include "AccelerationHandler.h"
+#include "AccelerationBoxHandler.h"
 #include "NewPlayerHandler.h"
 #include "DisconnectHandler.h"
 #include "ExitGameHandler.h"
@@ -51,6 +51,7 @@ Game * Game::getInstance()
 void Game::run()
 {
     stadiumManager->runStadium();
+    scene = stadiumManager->getScene();
     stadiumManager->addExitButton( new ExitGameHandler(this) );
     
     bool netOk = startNetworking();
@@ -146,7 +147,7 @@ void Game::registerHandlers()
     auto disconnectHandler = new DisconnectHandler(this);
     
     boxHandlerMap[P_PLAYER_NAME] = new NewPlayerHandler(this);
-    boxHandlerMap[P_ACCELERATION] = new AccelerationHandler(this);
+    boxHandlerMap[P_ACCELERATION] = new AccelerationBoxHandler(this);
     boxHandlerMap[P_RESET_SCORE] = new ResetHandler(this);
     boxHandlerMap[P_DISCONNECTED] = disconnectHandler;
     boxHandlerMap[P_CONNECTION_LOST] = disconnectHandler;

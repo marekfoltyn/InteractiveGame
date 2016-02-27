@@ -10,28 +10,27 @@
 #define Controller_hpp
 
 #include "Connector.h"
-#include "BoxHandler.h"
+#include "HandlerMap.h"
+#include "MenuManager.h"
 
 class Controller{
 public:
     static Controller * getInstance();
     
     void run();
-    
-    void runMainMenu();
-    
+        
     //end();
-    
-    //void switchScene(SceneEnum scene)
-    
-    //
     
 private:
     static Controller * instance;
     cocos2d::Director * director;
     GameNet::Connector * connector;
     
-    std::map<int, BoxHandler *> boxHandlerMap;
+    HandlerMap * handlerMap;
+    
+    MenuManager * menuManager;
+    //LobbyManager * lobbyManager;
+    //GameManager * gameManager;
     
     Controller();
     

@@ -1,10 +1,10 @@
 #include "cocos2d.h"
-#include "AccelerationHandler.h"
+#include "AccelerationBoxHandler.h"
 #include "Game.h"
 #include "StadiumScene.h"
 #include "AccelerationMessage.h"
 
-void AccelerationHandler::execute(GameNet::Box * box)
+void AccelerationBoxHandler::execute(GameNet::Box * box)
 {
     
     int id = box->getId();

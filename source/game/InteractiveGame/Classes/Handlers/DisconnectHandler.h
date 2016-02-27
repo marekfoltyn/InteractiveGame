@@ -2,7 +2,7 @@
 #define  _DisconnectHandler_H_
 
 #include "Box.h"
-#include "BoxHandler.h"
+#include "AbstractHandlers.h"
 #include <string>
 class Game; // avoid circular dependency
 

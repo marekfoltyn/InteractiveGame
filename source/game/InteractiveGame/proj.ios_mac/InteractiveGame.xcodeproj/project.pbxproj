@@ -273,8 +273,8 @@
 		EAD00CFF1C786F040037E62E /* ExitGameHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD00CFD1C786F040037E62E /* ExitGameHandler.cpp */; };
 		EAD00D011C7872DF0037E62E /* NewPlayerHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD00D001C7872DF0037E62E /* NewPlayerHandler.cpp */; };
 		EAD00D021C7872DF0037E62E /* NewPlayerHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD00D001C7872DF0037E62E /* NewPlayerHandler.cpp */; };
-		EAD00D051C7874BD0037E62E /* AccelerationHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD00D031C7874BD0037E62E /* AccelerationHandler.cpp */; };
-		EAD00D061C7874BD0037E62E /* AccelerationHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD00D031C7874BD0037E62E /* AccelerationHandler.cpp */; };
+		EAD00D051C7874BD0037E62E /* AccelerationBoxHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD00D031C7874BD0037E62E /* AccelerationBoxHandler.cpp */; };
+		EAD00D061C7874BD0037E62E /* AccelerationBoxHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD00D031C7874BD0037E62E /* AccelerationBoxHandler.cpp */; };
 		EAD00D091C787BB50037E62E /* ResetHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD00D071C787BB50037E62E /* ResetHandler.cpp */; };
 		EAD00D0A1C787BB50037E62E /* ResetHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD00D071C787BB50037E62E /* ResetHandler.cpp */; };
 		EAD00D101C787D660037E62E /* DisconnectHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD00D0F1C787D660037E62E /* DisconnectHandler.cpp */; };
@@ -327,8 +327,6 @@
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		EA2400601C6490C400906235 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		EA2400611C6490C400906235 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
-		EA3401511C7771E00085A4F4 /* BoxHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoxHandler.h; path = ../../../shared/network/BoxHandler.h; sourceTree = "<group>"; };
-		EA3401581C778BF00085A4F4 /* VoidHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoidHandler.h; sourceTree = "<group>"; };
 		EA4189431C342867004B8934 /* InteractiveGame-unit-testing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "InteractiveGame-unit-testing.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA4189441C342867004B8934 /* InteractiveGame-desktop copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "InteractiveGame-desktop copy-Info.plist"; path = "/Users/marek/Documents/git/InteractiveGame/source/game/InteractiveGame/proj.ios_mac/InteractiveGame-desktop copy-Info.plist"; sourceTree = "<absolute>"; };
 		EA4189481C342C4B004B8934 /* TestDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestDelegate.cpp; sourceTree = "<group>"; };
@@ -342,6 +340,7 @@
 		EA5CA2C91C3FC90D003437FF /* raknetx86_64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = raknetx86_64.a; path = ../../../shared/network/raknet/raknetx86_64.a; sourceTree = "<group>"; };
 		EA6058AB1C6F89D500D89D46 /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		EA6058AC1C6F89D500D89D46 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		EACC03B01C81BC1A00971626 /* AbstractHandlers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AbstractHandlers.h; path = ../../../shared/game/AbstractHandlers.h; sourceTree = "<group>"; };
 		EACC70801C6B54A70036DB3D /* _FindFirst.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = _FindFirst.cpp; path = ../../../shared/network/raknet/_FindFirst.cpp; sourceTree = "<group>"; };
 		EACC70811C6B54A70036DB3D /* _FindFirst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _FindFirst.h; path = ../../../shared/network/raknet/_FindFirst.h; sourceTree = "<group>"; };
 		EACC70821C6B54A70036DB3D /* AutopatcherPatchContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AutopatcherPatchContext.h; path = ../../../shared/network/raknet/AutopatcherPatchContext.h; sourceTree = "<group>"; };
@@ -611,15 +610,14 @@
 		EAD00CFC1C77B6B00037E62E /* LogHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogHandler.h; path = Handlers/LogHandler.h; sourceTree = "<group>"; };
 		EAD00CFD1C786F040037E62E /* ExitGameHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ExitGameHandler.cpp; path = Handlers/ExitGameHandler.cpp; sourceTree = "<group>"; };
 		EAD00D001C7872DF0037E62E /* NewPlayerHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NewPlayerHandler.cpp; path = Handlers/NewPlayerHandler.cpp; sourceTree = "<group>"; };
-		EAD00D031C7874BD0037E62E /* AccelerationHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AccelerationHandler.cpp; path = Handlers/AccelerationHandler.cpp; sourceTree = "<group>"; };
-		EAD00D041C7874BD0037E62E /* AccelerationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccelerationHandler.h; path = Handlers/AccelerationHandler.h; sourceTree = "<group>"; };
+		EAD00D031C7874BD0037E62E /* AccelerationBoxHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AccelerationBoxHandler.cpp; path = Handlers/AccelerationBoxHandler.cpp; sourceTree = "<group>"; };
+		EAD00D041C7874BD0037E62E /* AccelerationBoxHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccelerationBoxHandler.h; path = Handlers/AccelerationBoxHandler.h; sourceTree = "<group>"; };
 		EAD00D071C787BB50037E62E /* ResetHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ResetHandler.cpp; path = Handlers/ResetHandler.cpp; sourceTree = "<group>"; };
 		EAD00D081C787BB50037E62E /* ResetHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResetHandler.h; path = Handlers/ResetHandler.h; sourceTree = "<group>"; };
 		EAD00D0B1C787D520037E62E /* DisconnectHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DisconnectHandler.h; path = Handlers/DisconnectHandler.h; sourceTree = "<group>"; };
 		EAD00D0F1C787D660037E62E /* DisconnectHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DisconnectHandler.cpp; path = Handlers/DisconnectHandler.cpp; sourceTree = "<group>"; };
 		EAD00D121C787EFC0037E62E /* KickHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KickHandler.cpp; path = Handlers/KickHandler.cpp; sourceTree = "<group>"; };
 		EAD00D131C787EFC0037E62E /* KickHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KickHandler.h; path = Handlers/KickHandler.h; sourceTree = "<group>"; };
-		EAD00D1A1C78A35C0037E62E /* CollisionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollisionHandler.h; sourceTree = "<group>"; };
 		EAD00D1E1C78ABF70037E62E /* PlayerCollisionHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PlayerCollisionHandler.cpp; path = Handlers/PlayerCollisionHandler.cpp; sourceTree = "<group>"; };
 		EAD00D1F1C78ABF70037E62E /* PlayerCollisionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerCollisionHandler.h; path = Handlers/PlayerCollisionHandler.h; sourceTree = "<group>"; };
 		EAD0D47E1C7527FB00776BC3 /* Box.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Box.cpp; path = ../../../shared/network/Box.cpp; sourceTree = "<group>"; };
@@ -785,6 +783,7 @@
 			isa = PBXGroup;
 			children = (
 				EA3401521C7772B80085A4F4 /* Handlers */,
+				EACC03B01C81BC1A00971626 /* AbstractHandlers.h */,
 				EA76BC8B1C32D07F00F2531F /* Stadium */,
 				EA6058AB1C6F89D500D89D46 /* Game.cpp */,
 				EA6058AC1C6F89D500D89D46 /* Game.h */,
@@ -801,9 +800,6 @@
 				EAD00D1B1C78A39D0037E62E /* BoxHandlers */,
 				EAD00D1C1C78A3C30037E62E /* CollisionHandlers */,
 				EAD00D1D1C78A3D10037E62E /* voidHandlers */,
-				EA3401511C7771E00085A4F4 /* BoxHandler.h */,
-				EAD00D1A1C78A35C0037E62E /* CollisionHandler.h */,
-				EA3401581C778BF00085A4F4 /* VoidHandler.h */,
 			);
 			name = Handlers;
 			sourceTree = "<group>";
@@ -1122,8 +1118,8 @@
 		EAD00D1B1C78A39D0037E62E /* BoxHandlers */ = {
 			isa = PBXGroup;
 			children = (
-				EAD00D031C7874BD0037E62E /* AccelerationHandler.cpp */,
-				EAD00D041C7874BD0037E62E /* AccelerationHandler.h */,
+				EAD00D031C7874BD0037E62E /* AccelerationBoxHandler.cpp */,
+				EAD00D041C7874BD0037E62E /* AccelerationBoxHandler.h */,
 				EAD00D0F1C787D660037E62E /* DisconnectHandler.cpp */,
 				EAD00D0B1C787D520037E62E /* DisconnectHandler.h */,
 				EAD00D121C787EFC0037E62E /* KickHandler.cpp */,
@@ -1269,7 +1265,7 @@
 				EACC71E41C6B54A80036DB3D /* NetworkIDObject.cpp in Sources */,
 				EACC71D81C6B54A80036DB3D /* NatPunchthroughClient.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
-				EAD00D051C7874BD0037E62E /* AccelerationHandler.cpp in Sources */,
+				EAD00D051C7874BD0037E62E /* AccelerationBoxHandler.cpp in Sources */,
 				EACC72361C6B54A80036DB3D /* SignaledEvent.cpp in Sources */,
 				EACC71F81C6B54A80036DB3D /* RakNetCommandParser.cpp in Sources */,
 				EACC720E1C6B54A80036DB3D /* RakNetSocket2_WindowsStore8.cpp in Sources */,
@@ -1458,7 +1454,7 @@
 				EACC71DB1C6B54A80036DB3D /* NatPunchthroughServer.cpp in Sources */,
 				EACC71AB1C6B54A80036DB3D /* DS_Table.cpp in Sources */,
 				EACC718F1C6B54A80036DB3D /* CCRakNetSlidingWindow.cpp in Sources */,
-				EAD00D061C7874BD0037E62E /* AccelerationHandler.cpp in Sources */,
+				EAD00D061C7874BD0037E62E /* AccelerationBoxHandler.cpp in Sources */,
 				EACC71931C6B54A80036DB3D /* CloudClient.cpp in Sources */,
 				EACC72471C6B54A80036DB3D /* TCPInterface.cpp in Sources */,
 				EACC71BB1C6B54A80036DB3D /* FullyConnectedMesh2.cpp in Sources */,

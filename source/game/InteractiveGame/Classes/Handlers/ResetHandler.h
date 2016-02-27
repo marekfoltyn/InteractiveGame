@@ -1,7 +1,7 @@
 #ifndef  _ResetHandler_H_
 #define  _ResetHandler_H_
 
-#include "BoxHandler.h"
+#include "AbstractHandlers.h"
 class Game; // forward declaration - avoiding circular dependency
 
 class ResetHandler: public BoxHandler{

@@ -3,7 +3,7 @@
 
 #include "cocos2d.h"
 #include "Box.h"
-#include "BoxHandler.h"
+#include "AbstractHandlers.h"
 
 #include <string>
 

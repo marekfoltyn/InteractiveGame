@@ -11,7 +11,7 @@
 
 #include "cocos2d.h"
 #include "StadiumScene.h"
-#include "VoidHandler.h"
+#include "AbstractHandlers.h"
 #include "Player.h"
 
 
@@ -37,6 +37,8 @@ public:
     void runStadium();
     
     void addCollisionHandler(int bitmask, CollisionHandler * handler);
+    
+    StadiumScene * getScene(){return scene; }
     
 private:
     

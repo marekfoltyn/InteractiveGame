@@ -8,7 +8,7 @@
 
 #include "GameplayDefinitions.h"
 #include "StadiumManager.h"
-#include "VoidHandler.h"
+#include "AbstractHandlers.h"
 #include "PlayerCollisionHandler.h"
 #include "cocos2d.h"
 

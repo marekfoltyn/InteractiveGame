@@ -2,14 +2,14 @@
 #define  _AccelerationHandler_H_
 
 #include "Box.h"
-#include "BoxHandler.h"
+#include "AbstractHandlers.h"
 #include <string>
 class Game; // avoid circular dependency
 
-class AccelerationHandler: public BoxHandler{
+class AccelerationBoxHandler: public BoxHandler{
 public:
     
-    AccelerationHandler(Game * game)
+    AccelerationBoxHandler(Game * game)
     {
         this->game = game;
     }

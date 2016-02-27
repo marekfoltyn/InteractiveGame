@@ -1,7 +1,7 @@
 #ifndef  _ExitGameHandler_H_
 #define  _ExitGameHandler_H_
 
-#include "VoidHandler.h"
+#include "AbstractHandlers.h"
 class Game; // forward declaration - avoiding circular dependency
 
 class ExitGameHandler: public VoidHandler{
@@ -11,7 +11,7 @@ public:
         this->game = game;
     };
     
-    virtual void execute(void * data = nullptr);
+    virtual void execute();
     
 private:
     Game * game;

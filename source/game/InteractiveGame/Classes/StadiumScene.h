@@ -9,7 +9,7 @@
 #include "Box.h"
 #include "Player.h"
 
-#include "CollisionHandler.h"
+#include "AbstractHandlers.h"
 
 class StadiumScene : public cocos2d::Layer
 {

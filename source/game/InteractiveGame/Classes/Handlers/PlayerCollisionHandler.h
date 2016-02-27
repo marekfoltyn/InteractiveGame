@@ -2,7 +2,7 @@
 #define  _PlayerCollisionHandler_H_
 
 #include "Game.h"
-#include "CollisionHandler.h"
+#include "AbstractHandlers.h"
 #include "Player.h"
 
 class PlayerCollisionHandler: public CollisionHandler{

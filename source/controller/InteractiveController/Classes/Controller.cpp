@@ -26,6 +26,7 @@ Controller::Controller()
 {
     director = cocos2d::Director::getInstance();
     connector = GameNet::Connector::getInstance();
+    handlerMap = HandlerMap::getInstance();
 }
 
 void Controller::run()
@@ -35,8 +36,7 @@ void Controller::run()
         //TODO cant't start networking
     }
     
-    registerHandlers();
-    //runMainMenu();
+    //menuManager->runMainMenu();
 }
 
 bool Controller::startNetworking()
@@ -59,13 +59,6 @@ bool Controller::startNetworking()
     return true;
 }
 
-
-void Controller::registerHandlers()
-{
-    
-}
-
-
 void Controller::receiveBoxes()
 {
     GameNet::Box * box;
@@ -74,15 +67,7 @@ void Controller::receiveBoxes()
     while( (box = connector->receive()) != nullptr )
     {
         int type = box->getType();
-        if( boxHandlerMap.count(type) > 0)
-        {
-            boxHandlerMap[type]->execute(box);
-        }
+        handlerMap->getBoxHandler(type)->execute(box);
         box->deallocate();
     }
-}
-
-void Controller::runMainMenu()
-{
-    
 }
