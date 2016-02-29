@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "Box.h"
 #include "AbstractHandlers.h"
+#include "GameplayDefinitions.h"
 
 #include <string>
 
@@ -14,24 +15,24 @@ public:
     {
         switch ( box->getType() )
         {
-            case P_PING:
+            case BOX_PING:
             {
                 CCLOG("Client %s has pinged.", box->getAddress().ToString() );
                 break;
             }
                 
-            case P_NEW_CONNECTION:
+            case BOX_NEW_CONNECTION:
             {
                 CCLOG("%s connected.", box->getAddress().ToString() );
                 break;
             }
-            case P_CONNECTION_LOST:
-            case P_DISCONNECTED:
+            case BOX_CONNECTION_LOST:
+            case BOX_DISCONNECTED:
             {
                 CCLOG("%s disconnected.", box->getAddress().ToString());
                 break;
             }
-                                
+                
             default:
             {
                 CCLOG("Packet type %d was ignored.", box->getType());

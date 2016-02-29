@@ -7,6 +7,10 @@ void DisconnectHandler::execute(GameNet::Box * box)
     
     int id = box->getId();
     auto player = game->getPlayer(id);
+    if(player == nullptr){
+        CCLOG("Player not found in the Game.");
+        return;
+    }
     
     game->getStadiumManager()->removePlayer(player);
     game->removePlayer(player);

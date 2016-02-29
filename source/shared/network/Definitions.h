@@ -37,24 +37,13 @@
 
 /////////////////// Message types  ///////////////////
 
-#define P_PING                        ID_UNCONNECTED_PING_OPEN_CONNECTIONS
-#define P_SERVER_NAME                 ID_UNCONNECTED_PONG
-#define P_NEW_CONNECTION              ID_NEW_INCOMING_CONNECTION
-#define P_CONNECTED                   ID_CONNECTION_REQUEST_ACCEPTED
-#define P_DISCONNECTED                ID_DISCONNECTION_NOTIFICATION
-#define P_CONNECTION_FAILED           ID_CONNECTION_ATTEMPT_FAILED
-#define P_CONNECTION_LOST             ID_CONNECTION_LOST
+
 
 /**
  * #define PACKET_CUSTOM              ID_USER_PACKET_ENUM+1 // +2, +3 and so on
  */
 
-#define P_ACCELERATION                ID_USER_PACKET_ENUM+1
-#define P_COLLISION                   ID_USER_PACKET_ENUM+2
-#define P_PLAYER_NAME                 ID_USER_PACKET_ENUM+3
-#define P_KICK_PRESSED                ID_USER_PACKET_ENUM+4
-#define P_KICK_RELEASED               ID_USER_PACKET_ENUM+5
-#define P_ADMIN                       ID_USER_PACKET_ENUM+6
-#define P_RESET_SCORE                 ID_USER_PACKET_ENUM+7
+// moved to GameplayEvents.h
+
 
 #endif // _DEFINITIONS_H_

@@ -4,6 +4,7 @@
 #include "MessageIdentifiers.h"
 #include "RakPeerInterface.h"
 #include "Definitions.h"
+#include "GameplayEvents.h"
 #include "Box.h"
 #include <string>
 

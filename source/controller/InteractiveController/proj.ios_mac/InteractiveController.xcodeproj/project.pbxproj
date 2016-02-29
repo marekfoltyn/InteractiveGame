@@ -180,6 +180,7 @@
 		EAD0D4B11C75D11A00776BC3 /* AccelerationMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4AD1C75D11A00776BC3 /* AccelerationMessage.cpp */; };
 		EAD0D4B21C75D11A00776BC3 /* ServerNameMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4AF1C75D11A00776BC3 /* ServerNameMessage.cpp */; };
 		EAD0D4B51C75F0DC00776BC3 /* BoxFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4B31C75F0DC00776BC3 /* BoxFactory.cpp */; };
+		EAE6C61D1C849C06000A8EBC /* ServerNameHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAE6C61B1C849C06000A8EBC /* ServerNameHandler.cpp */; };
 		EAEA97521C7DD52900AF1EEA /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAEA97501C7DD52900AF1EEA /* Controller.cpp */; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
@@ -533,7 +534,9 @@
 		EAD0D4B01C75D11A00776BC3 /* ServerNameMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerNameMessage.h; path = ../../../shared/messages/ServerNameMessage.h; sourceTree = "<group>"; };
 		EAD0D4B31C75F0DC00776BC3 /* BoxFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BoxFactory.cpp; path = ../../../shared/network/BoxFactory.cpp; sourceTree = "<group>"; };
 		EAD0D4B41C75F0DC00776BC3 /* BoxFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoxFactory.h; path = ../../../shared/network/BoxFactory.h; sourceTree = "<group>"; };
-		EAEA974E1C7DCD8000AF1EEA /* BoxHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoxHandler.h; path = ../../../shared/network/BoxHandler.h; sourceTree = "<group>"; };
+		EAE6C6181C849946000A8EBC /* GameplayEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameplayEvents.h; sourceTree = "<group>"; };
+		EAE6C61B1C849C06000A8EBC /* ServerNameHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServerNameHandler.cpp; sourceTree = "<group>"; };
+		EAE6C61C1C849C06000A8EBC /* ServerNameHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerNameHandler.h; sourceTree = "<group>"; };
 		EAEA97501C7DD52900AF1EEA /* Controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Controller.cpp; sourceTree = "<group>"; };
 		EAEA97511C7DD52900AF1EEA /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
@@ -746,7 +749,6 @@
 				EAD0D4A31C75BE9900776BC3 /* Message.h */,
 				EAAB6A5A1C59F27000171969 /* Box.h */,
 				EAAB6A5B1C59F27000171969 /* Box.cpp */,
-				EAEA974E1C7DCD8000AF1EEA /* BoxHandler.h */,
 				EAD0D4B41C75F0DC00776BC3 /* BoxFactory.h */,
 				EAD0D4B31C75F0DC00776BC3 /* BoxFactory.cpp */,
 			);
@@ -1039,6 +1041,7 @@
 				EAEA97501C7DD52900AF1EEA /* Controller.cpp */,
 				EAEA97511C7DD52900AF1EEA /* Controller.h */,
 				EA3430801C7BA26200726EAF /* GameplayDefinitions.h */,
+				EAE6C6181C849946000A8EBC /* GameplayEvents.h */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1103,17 +1106,35 @@
 			name = Messages;
 			sourceTree = "<group>";
 		};
-		EAEA974D1C7DCD4800AF1EEA /* BoxHandlers */ = {
+		EAE6C6171C849877000A8EBC /* Touch */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = BoxHandlers;
+			name = Touch;
+			sourceTree = "<group>";
+		};
+		EAE6C61A1C849BE9000A8EBC /* Connection */ = {
+			isa = PBXGroup;
+			children = (
+				EAE6C61B1C849C06000A8EBC /* ServerNameHandler.cpp */,
+				EAE6C61C1C849C06000A8EBC /* ServerNameHandler.h */,
+			);
+			name = Connection;
+			sourceTree = "<group>";
+		};
+		EAEA974D1C7DCD4800AF1EEA /* Box */ = {
+			isa = PBXGroup;
+			children = (
+				EAE6C61A1C849BE9000A8EBC /* Connection */,
+			);
+			name = Box;
 			sourceTree = "<group>";
 		};
 		EAEA97531C7E085000AF1EEA /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
-				EAEA974D1C7DCD4800AF1EEA /* BoxHandlers */,
+				EAE6C6171C849877000A8EBC /* Touch */,
+				EAEA974D1C7DCD4800AF1EEA /* Box */,
 				EACC03AF1C81BC0500971626 /* AbstractHandlers.h */,
 				EACC03B61C81C14B00971626 /* EmptyUniversalHandler.cpp */,
 				EACC03B71C81C14B00971626 /* EmptyUniversalHandler.h */,
@@ -1253,6 +1274,7 @@
 				EA888B551C58A6B200534275 /* RakSleep.cpp in Sources */,
 				EA888B141C58A6B200534275 /* CommandParserInterface.cpp in Sources */,
 				EA888B681C58A6B200534275 /* StringTable.cpp in Sources */,
+				EAE6C61D1C849C06000A8EBC /* ServerNameHandler.cpp in Sources */,
 				EA36A80F1C7CD74D000E1636 /* Timer.cpp in Sources */,
 				EA888B111C58A6B200534275 /* CloudClient.cpp in Sources */,
 				EA888B5E1C58A6B200534275 /* ReplicaManager3.cpp in Sources */,

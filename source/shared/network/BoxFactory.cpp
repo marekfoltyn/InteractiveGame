@@ -1,4 +1,4 @@
-#include "Definitions.h"
+#include "Connector.h"
 #include "BoxFactory.h"
 
 #include "AccelerationMessage.h"
@@ -11,7 +11,7 @@ Box * BoxFactory::acceleration(double x, double y, double z)
 {
     auto msg = AccelerationMessage(x,y,z);
     auto box = Box::create( msg.serialize() );
-    box->setType(P_ACCELERATION);
+    box->setType(BOX_ACCELERATION);
     box->setPriority(PacketPriority::IMMEDIATE_PRIORITY);
     box->setReliability(PacketReliability::UNRELIABLE);
 
@@ -21,7 +21,7 @@ Box * BoxFactory::acceleration(double x, double y, double z)
 Box * BoxFactory::admin(RakNet::SystemAddress address)
 {
     Box * box = Box::createEmpty();
-    box->setType(P_ADMIN);
+    box->setType(BOX_ADMIN);
     box->setReliability(PacketReliability::RELIABLE);
     box->setPriority(PacketPriority::LOW_PRIORITY);
     box->setAddress(address);
@@ -31,7 +31,7 @@ Box * BoxFactory::admin(RakNet::SystemAddress address)
 Box * BoxFactory::collision(RakNet::SystemAddress address)
 {
     Box * box = Box::createEmpty();
-    box->setType(P_COLLISION);
+    box->setType(BOX_COLLISION);
     box->setReliability(PacketReliability::RELIABLE);
     box->setPriority(PacketPriority::IMMEDIATE_PRIORITY);
     box->setAddress(address);    
@@ -41,7 +41,7 @@ Box * BoxFactory::collision(RakNet::SystemAddress address)
 Box * BoxFactory::resetScore()
 {
     Box * box = Box::createEmpty();
-    box->setType(P_RESET_SCORE);
+    box->setType(BOX_RESET_SCORE);
     box->setReliability(PacketReliability::RELIABLE);
     box->setPriority(PacketPriority::LOW_PRIORITY);
     return box;
@@ -50,7 +50,7 @@ Box * BoxFactory::resetScore()
 Box * BoxFactory::kickPressed()
 {
     Box * box = Box::createEmpty();
-    box->setType(P_KICK_PRESSED);
+    box->setType(BOX_KICK_PRESSED);
     box->setReliability(PacketReliability::RELIABLE);
     box->setPriority(PacketPriority::IMMEDIATE_PRIORITY);
     return box;
@@ -62,7 +62,7 @@ Box * BoxFactory::kickReleased(unsigned int intensity)
     std::stringstream ss;
     ss << intensity;
     Box * box = Box::create( ss.str() );
-    box->setType(P_KICK_RELEASED);
+    box->setType(BOX_KICK_RELEASED);
     box->setReliability(PacketReliability::RELIABLE);
     box->setPriority(PacketPriority::IMMEDIATE_PRIORITY);
     return box;
@@ -72,7 +72,7 @@ Box * BoxFactory::kickReleased(unsigned int intensity)
 Box * BoxFactory::playerName(std::string name)
 {
     Box * box = Box::create(name);
-    box->setType(P_PLAYER_NAME);
+    box->setType(BOX_PLAYER_NAME);
     box->setReliability(PacketReliability::RELIABLE);
     box->setPriority(PacketPriority::LOW_PRIORITY);
     return box;

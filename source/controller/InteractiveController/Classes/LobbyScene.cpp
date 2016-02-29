@@ -138,14 +138,14 @@ void LobbyScene::receiveAllBoxes()
     {
         switch ( box->getType() )
         {
-            case P_CONNECTION_LOST:
+            case BOX_CONNECTION_LOST:
             {
                 CCLOG("Connection lost.");
                 onConnectionLost(box);
                 break;
             }
               
-            case P_COLLISION:
+            case BOX_COLLISION:
             {
 #if ( CC_TARGET_PLATFORM != CC_PLATFORM_IOS ) // iOS ingores vibrate duration - too long vibrations
                 Device::vibrate(0.05);
@@ -154,7 +154,7 @@ void LobbyScene::receiveAllBoxes()
                 break;
             }
                 
-            case P_ADMIN:
+            case BOX_ADMIN:
             {
                 auto pause = this->getChildByName(NODE_PAUSE);
                 pause->setVisible(true);

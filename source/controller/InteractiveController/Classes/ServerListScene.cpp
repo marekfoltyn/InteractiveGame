@@ -47,8 +47,9 @@ bool ServerListScene::init()
         return false;
     }
     
+    this->setTag(SCENE_TAG);
+    
     initGraphics();
-    startReceiveBoxes();
     startFindServers();
         
     return true;
@@ -206,20 +207,20 @@ void ServerListScene::receiveAllBoxes()
     {
         switch ( box->getType() )
         {
-            case P_SERVER_NAME:
+            case BOX_SERVER_NAME:
             {
                 refreshServer(box);
                 break;
             }
                 
-            case P_CONNECTED:
+            case BOX_CONNECTED:
             {
                 onConnected(box);
                 box->deallocate();
                 return;
             }
                 
-            case P_CONNECTION_FAILED:
+            case BOX_CONNECTION_FAILED:
             {
                 connectionFailed(box);
                 break;

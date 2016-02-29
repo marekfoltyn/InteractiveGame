@@ -1,20 +1,20 @@
 //
-//  MenuManager.cpp
+//  LobbyManager.cpp
 //  InteractiveController
 //
 //  Created by Marek Foltýn on 27.02.16.
 //
 //
 
-#include "MenuManager.h"
+#include "LobbyManager.h"
 
-MenuManager * MenuManager::instance = nullptr;
+LobbyManager * LobbyManager::instance = nullptr;
 
-MenuManager * MenuManager::getInstance()
+LobbyManager * LobbyManager::getInstance()
 {
     if(instance == nullptr)
     {
-        return new MenuManager();
+        return new LobbyManager();
     }
     else
     {
@@ -24,7 +24,7 @@ MenuManager * MenuManager::getInstance()
 
 
 
-MenuManager::MenuManager()
+LobbyManager::LobbyManager()
 {
 
 }

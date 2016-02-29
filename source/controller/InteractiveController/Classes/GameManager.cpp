@@ -1,20 +1,20 @@
 //
-//  MenuManager.cpp
+//  GameManager.cpp
 //  InteractiveController
 //
 //  Created by Marek Foltýn on 27.02.16.
 //
 //
 
-#include "MenuManager.h"
+#include "GameManager.h"
 
-MenuManager * MenuManager::instance = nullptr;
+GameManager * GameManager::instance = nullptr;
 
-MenuManager * MenuManager::getInstance()
+GameManager * GameManager::getInstance()
 {
     if(instance == nullptr)
     {
-        return new MenuManager();
+        return new GameManager();
     }
     else
     {
@@ -24,7 +24,7 @@ MenuManager * MenuManager::getInstance()
 
 
 
-MenuManager::MenuManager()
+GameManager::GameManager()
 {
 
 }

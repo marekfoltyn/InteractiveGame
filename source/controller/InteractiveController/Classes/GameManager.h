@@ -1,25 +1,25 @@
 //
-//  MenuManager.h
+//  GameManager.h
 //  InteractiveController
 //
 //  Created by Marek Foltýn on 27.02.16.
 //
 //
 
-#ifndef MenuManager_h
-#define MenuManager_h
+#ifndef GameManager_h
+#define GameManager_h
 
-class MenuManager{
+class GameManager{
 public:
     
-    MenuManager * getInstance();
+    GameManager * getInstance();
     
     
 private:
     
-    static MenuManager * instance;
-    MenuManager();
+    static GameManager * instance;
+    GameManager();
     
 };
 
-#endif /* MenuManager_h */
+#endif /* GameManager_h */

@@ -192,11 +192,11 @@ Box * Connector::receive(){
         LOG("\n");*/
 
         // set server to Connector
-        if(p->data[0] == P_CONNECTED){
+        if(p->data[0] == BOX_CONNECTED){
             server = p->systemAddress;
         }
         
-        if(p->data[0] == P_CONNECTION_LOST){
+        if(p->data[0] == BOX_CONNECTION_LOST){
             server = RakNet::UNASSIGNED_SYSTEM_ADDRESS;
         }
         

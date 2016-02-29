@@ -14,7 +14,7 @@ HandlerMap * HandlerMap::getInstance()
 {
     if(instance == nullptr)
     {
-        return new HandlerMap();
+        return instance = new HandlerMap();
     }
     else
     {

@@ -1,25 +1,25 @@
 //
-//  MenuManager.h
+//  LobbyManager.h
 //  InteractiveController
 //
 //  Created by Marek Foltýn on 27.02.16.
 //
 //
 
-#ifndef MenuManager_h
-#define MenuManager_h
+#ifndef LobbyManager_h
+#define LobbyManager_h
 
-class MenuManager{
+class LobbyManager{
 public:
     
-    MenuManager * getInstance();
+    LobbyManager * getInstance();
     
     
 private:
     
-    static MenuManager * instance;
-    MenuManager();
+    static LobbyManager * instance;
+    LobbyManager();
     
 };
 
-#endif /* MenuManager_h */
+#endif /* LobbyManager_h */

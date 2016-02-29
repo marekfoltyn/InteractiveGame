@@ -8,11 +8,11 @@ void KickHandler::execute(GameNet::Box * box)
 {
     
     switch (box->getType()) {
-        case P_KICK_PRESSED:
+        case BOX_KICK_PRESSED:
             pressed(box);
         break;
             
-        case P_KICK_RELEASED:
+        case BOX_KICK_RELEASED:
             released(box);
         break;
             

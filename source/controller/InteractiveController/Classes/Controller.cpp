@@ -14,7 +14,7 @@ Controller * Controller::getInstance()
 {
     if(instance == nullptr)
     {
-        return new Controller();
+        return instance = new Controller();
     }
     else
     {
@@ -27,6 +27,7 @@ Controller::Controller()
     director = cocos2d::Director::getInstance();
     connector = GameNet::Connector::getInstance();
     handlerMap = HandlerMap::getInstance();
+    menuManager = MenuManager::getInstance();
 }
 
 void Controller::run()
@@ -36,7 +37,7 @@ void Controller::run()
         //TODO cant't start networking
     }
     
-    //menuManager->runMainMenu();
+    menuManager->startWithMainMenu();
 }
 
 bool Controller::startNetworking()

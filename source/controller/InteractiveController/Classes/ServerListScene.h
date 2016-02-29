@@ -44,6 +44,8 @@ class ServerListScene : public cocos2d::Layer
 {
 public:
     
+    static const int SCENE_TAG = 1;
+    
     /**
      * Cocos2d-x:
      * there's no 'id' in cpp, so we recommend returning the class instance pointer

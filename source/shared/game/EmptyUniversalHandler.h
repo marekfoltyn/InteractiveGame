@@ -11,7 +11,13 @@
 
 #include "AbstractHandlers.h"
 
-class EmptyUniversalHandler: VoidHandler, BoxHandler, TouchHandler, AccelerationHandler, CollisionHandler{
+class EmptyUniversalHandler:
+    public VoidHandler,
+    public BoxHandler,
+    public TouchHandler,
+    public AccelerationHandler,
+    public CollisionHandler
+{
     virtual void execute();
     virtual void execute( GameNet::Box * box );
     virtual void execute( Ref * sender );

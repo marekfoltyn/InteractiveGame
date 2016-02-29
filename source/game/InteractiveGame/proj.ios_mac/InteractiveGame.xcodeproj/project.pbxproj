@@ -631,6 +631,7 @@
 		EAD0D4FE1C75FC5B00776BC3 /* BoxFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoxFactory.h; path = ../../../shared/network/BoxFactory.h; sourceTree = "<group>"; };
 		EAD0D5011C76083000776BC3 /* StadiumManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StadiumManager.cpp; sourceTree = "<group>"; };
 		EAD0D5021C76083000776BC3 /* StadiumManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StadiumManager.h; sourceTree = "<group>"; };
+		EAE6C6191C849A28000A8EBC /* GameplayEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameplayEvents.h; path = ../../../controller/InteractiveController/Classes/GameplayEvents.h; sourceTree = "<group>"; };
 		EAEA974C1C7DBF6900AF1EEA /* GameplayDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameplayDefinitions.h; path = ../../../controller/InteractiveController/Classes/GameplayDefinitions.h; sourceTree = "<group>"; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
@@ -788,6 +789,7 @@
 				EA6058AB1C6F89D500D89D46 /* Game.cpp */,
 				EA6058AC1C6F89D500D89D46 /* Game.h */,
 				EAEA974C1C7DBF6900AF1EEA /* GameplayDefinitions.h */,
+				EAE6C6191C849A28000A8EBC /* GameplayEvents.h */,
 				EA2400601C6490C400906235 /* Player.cpp */,
 				EA2400611C6490C400906235 /* Player.h */,
 			);

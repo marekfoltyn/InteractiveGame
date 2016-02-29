@@ -15,6 +15,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp
 FILE_LIST1 := $(wildcard $(LOCAL_PATH)/../../Classes/*.cpp)
 FILE_LIST2 := $(wildcard $(LOCAL_PATH)/../../../../shared/network/*.cpp)
 FILE_LIST3 := $(wildcard $(LOCAL_PATH)/../../../../shared/messages/*.cpp)
+FILE_LIST4 := $(wildcard $(LOCAL_PATH)/../../../../shared/game/*.cpp)
 
 LOCAL_SRC_FILES += $(FILE_LIST1:$(LOCAL_PATH)/%=%)
 LOCAL_SRC_FILES += $(FILE_LIST2:$(LOCAL_PATH)/%=%)
@@ -24,6 +25,7 @@ LOCAL_SRC_FILES += $(FILE_LIST4:$(LOCAL_PATH)/%=%)
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../../shared/network
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../../shared/messages
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../../shared/game
 
 # _COCOS_HEADER_ANDROID_BEGIN
 # _COCOS_HEADER_ANDROID_END

@@ -1,6 +1,8 @@
 #ifndef __GAMEPLAY_DEFINITIONS_H__
 #define __GAMEPLAY_DEFINITIONS_H__
 
+#include "GameplayEvents.h"
+
 class Definitions{
 public:
     
@@ -23,7 +25,7 @@ public:
 
 
 // toggle debug
-//#define DEBUG
+#define DEBUG
 
 #define BITMASK_SOLID            1 // 0000 0001
 #define BITMASK_BALL             2 // 0000 0010

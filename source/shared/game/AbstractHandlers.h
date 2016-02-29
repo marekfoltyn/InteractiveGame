@@ -9,47 +9,47 @@ USING_NS_CC;
 
 class BaseHandler{
 public:
-    ~BaseHandler(){}
+    virtual ~BaseHandler(){}
 };
 
 
 
-class VoidHandler: BaseHandler{
+class VoidHandler: public BaseHandler{
 public:
     virtual void execute() = 0;
 };
 
 
 
-class BoxHandler: BaseHandler{
+class BoxHandler: public BaseHandler{
 public:
     virtual void execute( GameNet::Box * box ) = 0;
 };
 
 
 
-class ClickHandler: BaseHandler{
+class ClickHandler: public BaseHandler{
 public:
     virtual void execute( Ref * sender ) = 0;
 };
 
 
 
-class TouchHandler: BaseHandler{
+class TouchHandler: public BaseHandler{
 public:
     virtual void execute( Ref * sender, ui::Widget::TouchEventType type ) = 0;
 };
 
 
 
-class AccelerationHandler: BaseHandler{
+class AccelerationHandler: public BaseHandler{
 public:
     virtual void execute( Acceleration* acc, Event * unused_event ) = 0;
 };
 
 
 
-class CollisionHandler: BaseHandler{
+class CollisionHandler: public BaseHandler{
 public:
     virtual void execute(PhysicsBody * first, PhysicsBody * second) = 0;
 };

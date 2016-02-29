@@ -146,17 +146,17 @@ void Game::registerHandlers()
     auto logHandler = new LogHandler();
     auto disconnectHandler = new DisconnectHandler(this);
     
-    boxHandlerMap[P_PLAYER_NAME] = new NewPlayerHandler(this);
-    boxHandlerMap[P_ACCELERATION] = new AccelerationBoxHandler(this);
-    boxHandlerMap[P_RESET_SCORE] = new ResetHandler(this);
-    boxHandlerMap[P_DISCONNECTED] = disconnectHandler;
-    boxHandlerMap[P_CONNECTION_LOST] = disconnectHandler;
+    boxHandlerMap[BOX_PLAYER_NAME] = new NewPlayerHandler(this);
+    boxHandlerMap[BOX_ACCELERATION] = new AccelerationBoxHandler(this);
+    boxHandlerMap[BOX_RESET_SCORE] = new ResetHandler(this);
+    boxHandlerMap[BOX_DISCONNECTED] = disconnectHandler;
+    boxHandlerMap[BOX_CONNECTION_LOST] = disconnectHandler;
 
-    boxHandlerMap[P_PING] = logHandler;
-    boxHandlerMap[P_NEW_CONNECTION] = logHandler;
+    boxHandlerMap[BOX_PING] = logHandler;
+    boxHandlerMap[BOX_NEW_CONNECTION] = logHandler;
     auto kickHandler = new KickHandler(this);
-    boxHandlerMap[P_KICK_PRESSED] = kickHandler;
-    boxHandlerMap[P_KICK_RELEASED] = kickHandler;
+    boxHandlerMap[BOX_KICK_PRESSED] = kickHandler;
+    boxHandlerMap[BOX_KICK_RELEASED] = kickHandler;
     
     stadiumManager->addCollisionHandler(BITMASK_PLAYER, new PlayerCollisionHandler(this) );
     //TODO: scene->addCollisionHandler(BITMASK_GOAL_SCORE, new ScoreCollisionHandler(this) );
