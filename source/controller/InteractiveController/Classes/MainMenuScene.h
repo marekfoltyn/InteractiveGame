@@ -1,5 +1,5 @@
-#ifndef __SERVERLIST_SCENE_H__
-#define __SERVERLIST_SCENE_H__
+#ifndef __MainMenu_SCENE_H__
+#define __MainMenu_SCENE_H__
 
 #include <map>
 #include <atomic>
@@ -40,7 +40,7 @@ struct ServerMapEntry{
 /**
  * First scene - showing the main menu with the list of servers in LAN
  */
-class ServerListScene : public cocos2d::Layer
+class MainMenuScene : public cocos2d::Layer
 {
 public:
     
@@ -62,18 +62,12 @@ public:
      * Cocos2d-x:
      * implement the "static create()" method manually
      */
-    CREATE_FUNC(ServerListScene);
+    CREATE_FUNC(MainMenuScene);
     
     /**
      * load and set up cocos nodes and graphics in init()
      */
     void initGraphics();
-
-    /**
-     * receive Box processing loop
-     * receives until RakNet returns 0 (empty packet queue)
-     */
-    void receiveAllBoxes();
     
     /**
      * decrease lifetime of found servers and find more servers
@@ -98,11 +92,6 @@ public:
      * if not, add this server to the server list
      */
     void refreshServer(Box * box);
-    
-    /**
-     * Succesfully connected to a server (send player name and go to lobby)
-     */
-    void onConnected(Box * box);
     
     /**
      * Connection to server failed
@@ -154,4 +143,4 @@ private:
     void decreaseServersLifetime();
 };
 
-#endif // __SERVERLIST_SCENE_H__
+#endif // __MainMenu_SCENE_H__

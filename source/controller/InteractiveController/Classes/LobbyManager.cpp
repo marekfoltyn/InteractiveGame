@@ -26,5 +26,34 @@ LobbyManager * LobbyManager::getInstance()
 
 LobbyManager::LobbyManager()
 {
+    director = cocos2d::Director::getInstance();
+    handlerMap = HandlerMap::getInstance();
 
+    lobbyScene = nullptr;
+}
+
+
+
+void LobbyManager::runLobby()
+{
+    // create a scene. it's an autorelease object
+    auto scene = LobbyScene::createScene();
+    
+    // run
+    director->replaceScene(scene);
+}
+
+
+
+bool LobbyManager::isLobbyRunning()
+{
+    return getLobbyScene() != nullptr;
+}
+
+
+
+LobbyScene * LobbyManager::getLobbyScene()
+{
+    auto scene = director->getRunningScene()->getChildByTag<LobbyScene*>(LobbyScene::SCENE_TAG);
+    return scene;
 }

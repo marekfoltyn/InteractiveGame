@@ -1,20 +1,20 @@
 //
-//  ServerNameHandler.hpp
+//  ConnectedHandler.hpp
 //  InteractiveController
 //
 //  Created by Marek Foltýn on 29.02.16.
 //
 //
 
-#ifndef ServerNameHandler_hpp
-#define ServerNameHandler_hpp
+#ifndef ConnectionLost_hpp
+#define ConnectionLost_hpp
 
 #include "AbstractHandlers.h"
 
-class ServerNameHandler: public BoxHandler{
+class ConnectionLostHandler: public BoxHandler{
 public:
 
-    ServerNameHandler();
+    ConnectionLostHandler();
     
     virtual void execute( GameNet::Box * box );
     
@@ -22,4 +22,4 @@ private:
     
 };
 
-#endif /* ServerNameHandler_hpp */
+#endif /* ConnectionLost_h */

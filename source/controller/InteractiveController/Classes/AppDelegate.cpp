@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "Controller.h"
+#include "StartHandler.h"
 
 USING_NS_CC;
 
@@ -39,8 +39,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setAnimationInterval(1.0 / 60);
 
     FileUtils::getInstance()->addSearchPath("res");
-
-    Controller::getInstance()->run();
+    
+    StartHandler().execute();
 
     return true;
 }

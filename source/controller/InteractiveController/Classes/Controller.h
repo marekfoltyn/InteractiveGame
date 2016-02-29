@@ -11,32 +11,22 @@
 
 #include "Connector.h"
 #include "HandlerMap.h"
-#include "MenuManager.h"
 
 class Controller{
 public:
+    
     static Controller * getInstance();
-    
-    void run();
-        
-    //end();
-    
-private:
-    static Controller * instance;
-    cocos2d::Director * director;
-    GameNet::Connector * connector;
-    
-    HandlerMap * handlerMap;
-    
-    MenuManager * menuManager;
-    //LobbyManager * lobbyManager;
-    //GameManager * gameManager;
-    
-    Controller();
     
     bool startNetworking();
     
-    void registerHandlers();
+private:
+    
+    static Controller * instance;
+    cocos2d::Director * director;
+    GameNet::Connector * connector;
+    HandlerMap * handlerMap;
+    
+    Controller();
     
     void receiveBoxes();
 

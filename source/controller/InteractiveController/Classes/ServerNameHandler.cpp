@@ -7,22 +7,23 @@
 //
 
 #include "ServerNameHandler.h"
+#include "ServerNameMessage.h"
 
-ServerNameHandler::ServerNameHandler(MenuManager * manager)
-{
-    this->menuManager = manager;
-}
+ServerNameHandler::ServerNameHandler(){}
 
 void ServerNameHandler::execute( GameNet::Box * box )
 {
-     if( menuManager->isMainMenuRunning() )
+     /*if( menuManager->isMainMenuRunning() )
      {
-         CCLOG("Refreshing server...");
+         auto message = ServerNameMessage();
+         message.deserialize(box->getData());
+         auto name = message.getServerName();
+         CCLOG("Server ping: %s", name.c_str());
+         
          menuManager->getMainMenuScene()->refreshServer(box);
      }
      else
      {
          CCLOG("ServerName ignored, menu is not running.");
-     }
-    
+     }*/
 }

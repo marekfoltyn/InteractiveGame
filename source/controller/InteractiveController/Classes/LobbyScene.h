@@ -21,6 +21,8 @@ class LobbyScene : public cocos2d::Layer
 {
 public:
     
+    static const int SCENE_TAG = 1;
+    
     /**
      * cocos2d: there's no 'id' in cpp, so we recommend returning the class instance pointer
      */
@@ -40,13 +42,7 @@ public:
      * load and set up cocos nodes and static graphics
      */
     void initGraphics();
-    
-    /**
-     * receive Block processing loop
-     * receives until RakNet returns 0 (empty packet queue)
-     */
-    void receiveAllBoxes();
-    
+        
     /**
      * send movement information to the server
      */
@@ -71,11 +67,6 @@ public:
      * set this controller as admin
      */
     void pauseClick(cocos2d::Ref *pSender, ui::Widget::TouchEventType type);
-    
-    /**
-     * connection was lost - (show the dialog? and) return to the server list scene
-     */
-    void onConnectionLost(Box * box);
     
 private:
     

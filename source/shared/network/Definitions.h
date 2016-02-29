@@ -33,7 +33,7 @@
 #define RECEIVE_TIMEOUT 0.03
 
 // scene transition speed (in seconds)
-#define SCENE_TRANSITION 0.2
+#define TIME_SCENE_TRANSITION 0.2
 
 /////////////////// Message types  ///////////////////
 

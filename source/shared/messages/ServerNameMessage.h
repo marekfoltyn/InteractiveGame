@@ -25,8 +25,6 @@ public:
      */
     std::string getServerName();
     
-    ServerNameMessage(){}
-    
 private:
     
     std::string str;

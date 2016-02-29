@@ -7,8 +7,13 @@
 //
 
 #include "Controller.h"
+#include "ConnectionResultHandler.h"
+#include "ConnectionLostHandler.h"
+#include "ServerNameHandler.h"
 
 Controller * Controller::instance = nullptr;
+
+
 
 Controller * Controller::getInstance()
 {
@@ -27,24 +32,14 @@ Controller::Controller()
     director = cocos2d::Director::getInstance();
     connector = GameNet::Connector::getInstance();
     handlerMap = HandlerMap::getInstance();
-    menuManager = MenuManager::getInstance();
 }
 
-void Controller::run()
-{
-    bool netOk = startNetworking();
-    if(!netOk){
-        //TODO cant't start networking
-    }
-    
-    menuManager->startWithMainMenu();
-}
+
 
 bool Controller::startNetworking()
 {
     // run  Connector (as a client)
     bool started = connector->start();
-    connector->setServerName("PhoneBall Arena");
     
     if(!started){
         CCLOG("Connector not started!");
@@ -59,6 +54,8 @@ bool Controller::startNetworking()
     
     return true;
 }
+
+
 
 void Controller::receiveBoxes()
 {

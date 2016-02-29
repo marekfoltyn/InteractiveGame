@@ -1,4 +1,4 @@
-#include "ServerListScene.h"
+#include "MainMenuScene.h"
 #include "LobbyScene.h"
 
 #include "Connector.h"
@@ -23,13 +23,13 @@ USING_NS_CC;
 
 #define ACTION_RECEIVE_BOXES 100
 
-Scene * ServerListScene::createScene()
+Scene * MainMenuScene::createScene()
 {
     // 'scene' is an autorelease object
     auto scene = Scene::create();
     
     // 'layer' is an autorelease object
-    auto layer = ServerListScene::create();
+    auto layer = MainMenuScene::create();
 
     // add layer as a child to scene
     scene->addChild(layer);
@@ -40,7 +40,7 @@ Scene * ServerListScene::createScene()
 
 
 
-bool ServerListScene::init()
+bool MainMenuScene::init()
 {
     // 1. super init first
     if( Layer::init() == false ){
@@ -50,6 +50,7 @@ bool ServerListScene::init()
     this->setTag(SCENE_TAG);
     
     initGraphics();
+    
     startFindServers();
         
     return true;
@@ -57,7 +58,7 @@ bool ServerListScene::init()
 
 
 
-void ServerListScene::initGraphics()
+void MainMenuScene::initGraphics()
 {
     auto visibleSize = Director::getInstance()->getVisibleSize();
     auto origin = Director::getInstance()->getVisibleOrigin();
@@ -81,7 +82,6 @@ void ServerListScene::initGraphics()
     gameName->setOpacity(FONT_OPACITY_HALF);
     this->addChild(gameName);
     
-    
     // ball logo
     auto logo = ui::ImageView::create("ball_medium_small.png");
     logo->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height - 2*BORDER_DEFAULT - logo->getContentSize().height/2 ));
@@ -90,7 +90,7 @@ void ServerListScene::initGraphics()
     
     // exit
     auto lblExit = Label::createWithTTF("Exit", "Vanilla.ttf", FONT_SIZE_DEFAULT);
-    auto exit = MenuItemLabel::create(lblExit, CC_CALLBACK_1(ServerListScene::btnLeaveClicked, this));
+    auto exit = MenuItemLabel::create(lblExit, CC_CALLBACK_1(MainMenuScene::btnLeaveClicked, this));
     exit->setAnchorPoint(Vec2(0.5,0));
     exit->setPosition( origin.x + visibleSize.width * 7.0/8, origin.y + BORDER_DEFAULT );
     auto menu = Menu::create(exit, nullptr);
@@ -127,7 +127,7 @@ void ServerListScene::initGraphics()
     txtName->setPosition(Vec2( origin.x + visibleSize.width * 3.0/4, lblName->getPosition().y - lblName->getContentSize().height - BORDER_DEFAULT));
     txtName->setColor(Color3B::WHITE);
     txtName->setPlaceHolderColor(Color4B(255, 255, 255, 124));
-    txtName->addEventListener(CC_CALLBACK_2(ServerListScene::txtNameEvent, this));
+    txtName->addEventListener(CC_CALLBACK_2(MainMenuScene::txtNameEvent, this));
     this->addChild(txtName);
     
     // background behind text field
@@ -159,88 +159,28 @@ void ServerListScene::initGraphics()
     menuView->setScrollBarEnabled(false);
     this->addChild(menuView);
     
-    /*    auto label = Label::createWithTTF("Ahojky", "8-Bit-Madness.ttf", visibleSize.height/12);
-     //auto item = MenuItemFont::create(name, CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
-     auto item = MenuItemLabel::create(label, CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
-     item->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
-     
-     auto menu = Menu::create(item, NULL);
-     menu->setPosition(Vec2::ZERO);
-     this->addChild(menu);*/
-    
 }
 
 
 
-void ServerListScene::startFindServers()
+void MainMenuScene::startFindServers()
 {
-    auto step = CallFunc::create(CC_CALLBACK_0(ServerListScene::findServersStep, this));
+    auto step = CallFunc::create(CC_CALLBACK_0(MainMenuScene::findServersStep, this));
     auto delay = DelayTime::create(FIND_SERVER_REPEAT_TIME);
     auto sequence = Sequence::create(step, delay, nullptr);
     auto findServersAction = RepeatForever::create(sequence);
     this->runAction(findServersAction);
-}
-
-
-
-void ServerListScene::startReceiveBoxes()
-{
-    serverCount = 0;
     
-    auto callback = CallFunc::create(CC_CALLBACK_0(ServerListScene::receiveAllBoxes, this));
-    auto delay = DelayTime::create(RECEIVE_TIMEOUT);
-    auto sequence = Sequence::create(callback, delay, nullptr);
-    auto receivePacketAction = RepeatForever::create(sequence);
-    receivePacketAction->setTag(ACTION_RECEIVE_BOXES);
-    this->runAction(receivePacketAction);
-}
-
-
-
-void ServerListScene::receiveAllBoxes()
-{
-    Connector * c = Connector::getInstance();
-    Box * box;
-    
-    // c->receive() returns 0, if no received packet is in the queue
-    while( (box = c->receive()) != nullptr )
+    this->schedule([&](float dt)
     {
-        switch ( box->getType() )
-        {
-            case BOX_SERVER_NAME:
-            {
-                refreshServer(box);
-                break;
-            }
-                
-            case BOX_CONNECTED:
-            {
-                onConnected(box);
-                box->deallocate();
-                return;
-            }
-                
-            case BOX_CONNECTION_FAILED:
-            {
-                connectionFailed(box);
-                break;
-            }
-            
-            default:
-            {
-                // packet ignored
-                CCLOG("ServerListScene: Packet %d ignored.", box->getType());
-                break;
-            }
-        }
-        
-        box->deallocate();
-    }
+        //this->receiveBoxes();
+    }, RECEIVE_TIMEOUT, CC_REPEAT_FOREVER, 0.0f, "pingServers");
+
 }
 
 
 
-void ServerListScene::refreshServer(Box * box)
+void MainMenuScene::refreshServer(Box * box)
 {
     // parse Box
     ServerNameMessage msg = ServerNameMessage();
@@ -260,7 +200,7 @@ void ServerListScene::refreshServer(Box * box)
 
 
 
-void ServerListScene::addOrUpdateServer(std::string serverName, RakNet::SystemAddress address)
+void MainMenuScene::addOrUpdateServer(std::string serverName, RakNet::SystemAddress address)
 {
     auto menuView = (ui::ScrollView *) this->getChildByName(NODE_SERVERS);
     auto origin = Director::getInstance()->getVisibleOrigin();
@@ -286,7 +226,7 @@ void ServerListScene::addOrUpdateServer(std::string serverName, RakNet::SystemAd
         btn->setTitleFontName("Vanilla.ttf");
         btn->setTitleFontSize(FONT_SIZE_DEFAULT);
         btn->setTitleColor(Color3B::WHITE);
-        btn->addClickEventListener(CC_CALLBACK_1(ServerListScene::btnServerClicked, this));
+        btn->addClickEventListener(CC_CALLBACK_1(MainMenuScene::btnServerClicked, this));
         btn->setPosition(Vec2(menuView->getInnerContainerSize().width/2,menuView->getInnerContainerSize().height - serverCount * 1.5 * btn->getContentSize().height ));
         
         menuView->setInnerContainerSize(cocos2d::Size( menuView->getInnerContainerSize().width, (serverCount+1) * 1.5 * btn->getContentSize().height ));
@@ -306,16 +246,16 @@ void ServerListScene::addOrUpdateServer(std::string serverName, RakNet::SystemAd
 
 
 
-void ServerListScene::findServersStep()
+void MainMenuScene::findServersStep()
 {
     Connector::getInstance()->ping();
     decreaseServersLifetime(); // refresh actually found servers
-    CCLOG("[ServerListScene] Searching servers...");
+    CCLOG("[MainMenuScene] Searching servers...");
 }
 
 
 
-void ServerListScene::decreaseServersLifetime()
+void MainMenuScene::decreaseServersLifetime()
 {
     
     for(std::map<int, ServerMapEntry*>::iterator i = serverMap.begin(); i != serverMap.end(); i++)
@@ -370,23 +310,7 @@ void ServerListScene::decreaseServersLifetime()
 
 
 
-void ServerListScene::onConnected(Box * box)
-{
-    // send player's name
-    UserDefault * def = UserDefault::getInstance();
-    std::string name = def->getStringForKey("player_name", "noname");
-    
-    BoxFactory::playerName(name)->send();
-    
-    CCLOG("Connected to %s", box->getAddress().ToString());
-    this->stopActionByTag(ACTION_RECEIVE_BOXES); // stop receiving boxs
-    auto scene = LobbyScene::createScene();
-    Director::getInstance()->replaceScene( TransitionSlideInB::create(SCENE_TRANSITION, scene) );
-}
-
-
-
-void ServerListScene::connectionFailed(Box * box)
+void MainMenuScene::connectionFailed(Box * box)
 {
     auto logo = (ui::ImageView *) this->getChildByName(NODE_LOGO);
     logo->stopAllActions();
@@ -397,7 +321,7 @@ void ServerListScene::connectionFailed(Box * box)
 
 
 
-void ServerListScene::txtNameEvent(Ref * sender, ui::TextField::EventType type)
+void MainMenuScene::txtNameEvent(Ref * sender, ui::TextField::EventType type)
 {
     ui::TextField * txtField = dynamic_cast<ui::TextField *>( sender );
     
@@ -435,7 +359,7 @@ void ServerListScene::txtNameEvent(Ref * sender, ui::TextField::EventType type)
 
 
 
-void ServerListScene::btnServerClicked(Ref * pSender)
+void MainMenuScene::btnServerClicked(Ref * pSender)
 {
     auto btn = (cocos2d::ui::Button *) pSender;
     int tag = btn->getTag(); // tag value is the key in serverMap
@@ -451,12 +375,12 @@ void ServerListScene::btnServerClicked(Ref * pSender)
     
     RakNet::SystemAddress address = *(serverMap[tag]->address);
     Connector::getInstance()->connect(address);
-    CCLOG("[ServerListScene] Connecting to %s", address.ToString());
+    CCLOG("[MainMenuScene] Connecting to %s", address.ToString());
 }
 
 
 
-void ServerListScene::btnLeaveClicked(Ref * pSender)
+void MainMenuScene::btnLeaveClicked(Ref * pSender)
 {
     Connector::getInstance()->stop();
     Director::getInstance()->end();

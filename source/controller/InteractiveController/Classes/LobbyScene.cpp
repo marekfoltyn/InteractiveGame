@@ -3,7 +3,7 @@
 #include "LobbyScene.h"
 
 #include "Connector.h"
-#include "ServerListScene.h"
+#include "MainMenuScene.h"
 
 #include "BoxFactory.h"
 
@@ -43,18 +43,13 @@ bool LobbyScene::init()
         return false;
     }
     
+    this->setTag(SCENE_TAG);
+    
     //auto rootNode = CSLoader::createNode("MainScene.csb");
     //addChild(rootNode);
          
     initGraphics();
     
-    // start receiving bloks
-    auto callback = CallFunc::create(CC_CALLBACK_0(LobbyScene::receiveAllBoxes, this));
-    auto delay = DelayTime::create(RECEIVE_TIMEOUT);
-    auto sequence = Sequence::create(callback, delay, nullptr);
-    auto receivePacketAction = RepeatForever::create(sequence);
-    this->runAction(receivePacketAction);
-
     // init accelerometer
     auto listener = EventListenerAcceleration::create(CC_CALLBACK_2(LobbyScene::onAcceleration, this));
     Device::setAccelerometerEnabled(true);
@@ -128,7 +123,7 @@ void LobbyScene::initGraphics()
 
 
 
-void LobbyScene::receiveAllBoxes()
+/*void LobbyScene::receiveAllBoxes()
 {
     Connector * c = Connector::getInstance();
     Box * box;
@@ -170,7 +165,7 @@ void LobbyScene::receiveAllBoxes()
         
         box->deallocate();
     }
-}
+}*/
 
 
 
@@ -214,8 +209,8 @@ void LobbyScene::btnOnDisconnect(Ref * sender, ui::Widget::TouchEventType type)
                         c->disconnect(server);
                     }
                     CCLOG("User disconnected. Returning to main menu.");
-                    Scene * main = ServerListScene::createScene();
-                    Director::getInstance()->replaceScene( TransitionSlideInT::create(SCENE_TRANSITION, main) );
+                    Scene * main = MainMenuScene::createScene();
+                    Director::getInstance()->replaceScene( TransitionSlideInT::create(TIME_SCENE_TRANSITION, main) );
                 }
             ),
             nullptr
@@ -235,16 +230,6 @@ void LobbyScene::btnOnDisconnect(Ref * sender, ui::Widget::TouchEventType type)
         bg->runAction(loading);
     }
 }
-
-
-
-void LobbyScene::onConnectionLost(Box * box)
-{
-    CCLOG("Connection lost. Returning to main menu.");
-    Scene * main = ServerListScene::createScene();
-    Director::getInstance()->replaceScene(main);
-}
-
 
 
 void LobbyScene::btnKickClick(Ref * sender, ui::Widget::TouchEventType type)
