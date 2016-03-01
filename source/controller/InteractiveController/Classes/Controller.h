@@ -19,6 +19,18 @@ public:
     
     bool startNetworking();
     
+    template<class T>
+    bool isRunning()
+    {
+        return getScene<T>() != nullptr;
+    }
+    
+    template<class T>
+    T * getScene()
+    {
+            return director->getRunningScene()->getChildByTag<T*>(T::SCENE_TAG);
+    }
+    
 private:
     
     static Controller * instance;

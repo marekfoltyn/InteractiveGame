@@ -9,6 +9,8 @@
 #include "ui/CocosGUI.h"
 #include "Connector.h"
 
+#include "HandlerMap.h"
+
 USING_NS_CC;
 USING_NS_CC_EXT;
 using namespace GameNet;
@@ -111,6 +113,8 @@ private:
      * key - hash of the system address
      */
     std::map<int, ServerMapEntry*> serverMap;
+    
+    HandlerMap * handlerMap;
     
     /**
      * count of active servers (serverMap.size() doesn't work, because inactive servers items are not deleted due to memory issues)

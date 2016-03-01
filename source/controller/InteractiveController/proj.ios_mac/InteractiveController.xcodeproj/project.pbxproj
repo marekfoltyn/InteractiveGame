@@ -174,8 +174,6 @@
 		EAAB6A651C59F77D00171969 /* MainMenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A641C59F77D00171969 /* MainMenuScene.cpp */; };
 		EACC03B51C81C01600971626 /* HandlerMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC03B31C81C01600971626 /* HandlerMap.cpp */; };
 		EACC03B81C81C14B00971626 /* EmptyUniversalHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC03B61C81C14B00971626 /* EmptyUniversalHandler.cpp */; };
-		EACC03C31C81F2F000971626 /* GameManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC03BF1C81F2F000971626 /* GameManager.cpp */; };
-		EACC03C41C81F2F000971626 /* LobbyManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC03C11C81F2F000971626 /* LobbyManager.cpp */; };
 		EAD0D4B11C75D11A00776BC3 /* AccelerationMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4AD1C75D11A00776BC3 /* AccelerationMessage.cpp */; };
 		EAD0D4B21C75D11A00776BC3 /* ServerNameMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4AF1C75D11A00776BC3 /* ServerNameMessage.cpp */; };
 		EAD0D4B51C75F0DC00776BC3 /* BoxFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4B31C75F0DC00776BC3 /* BoxFactory.cpp */; };
@@ -183,6 +181,7 @@
 		EAE6C6201C84DC74000A8EBC /* ConnectionResultHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAE6C61E1C84DC74000A8EBC /* ConnectionResultHandler.cpp */; };
 		EAE6C6231C84EB3F000A8EBC /* ConnectionLostHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAE6C6211C84EB3F000A8EBC /* ConnectionLostHandler.cpp */; };
 		EAE6C6271C84FF52000A8EBC /* StartHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAE6C6251C84FF52000A8EBC /* StartHandler.cpp */; };
+		EAE6C62A1C85135F000A8EBC /* PingServersHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAE6C6281C85135F000A8EBC /* PingServersHandler.cpp */; };
 		EAEA97521C7DD52900AF1EEA /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAEA97501C7DD52900AF1EEA /* Controller.cpp */; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
@@ -523,10 +522,6 @@
 		EACC03B41C81C01600971626 /* HandlerMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HandlerMap.h; path = ../../../shared/game/HandlerMap.h; sourceTree = "<group>"; };
 		EACC03B61C81C14B00971626 /* EmptyUniversalHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EmptyUniversalHandler.cpp; path = ../../../shared/game/EmptyUniversalHandler.cpp; sourceTree = "<group>"; };
 		EACC03B71C81C14B00971626 /* EmptyUniversalHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmptyUniversalHandler.h; path = ../../../shared/game/EmptyUniversalHandler.h; sourceTree = "<group>"; };
-		EACC03BF1C81F2F000971626 /* GameManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameManager.cpp; sourceTree = "<group>"; };
-		EACC03C01C81F2F000971626 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
-		EACC03C11C81F2F000971626 /* LobbyManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LobbyManager.cpp; sourceTree = "<group>"; };
-		EACC03C21C81F2F000971626 /* LobbyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LobbyManager.h; sourceTree = "<group>"; };
 		EAD0D4A31C75BE9900776BC3 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Message.h; path = ../../../shared/network/Message.h; sourceTree = "<group>"; };
 		EAD0D4AD1C75D11A00776BC3 /* AccelerationMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AccelerationMessage.cpp; path = ../../../shared/messages/AccelerationMessage.cpp; sourceTree = "<group>"; };
 		EAD0D4AE1C75D11A00776BC3 /* AccelerationMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccelerationMessage.h; path = ../../../shared/messages/AccelerationMessage.h; sourceTree = "<group>"; };
@@ -543,6 +538,8 @@
 		EAE6C6221C84EB3F000A8EBC /* ConnectionLostHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionLostHandler.h; sourceTree = "<group>"; };
 		EAE6C6251C84FF52000A8EBC /* StartHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StartHandler.cpp; sourceTree = "<group>"; };
 		EAE6C6261C84FF52000A8EBC /* StartHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartHandler.h; sourceTree = "<group>"; };
+		EAE6C6281C85135F000A8EBC /* PingServersHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PingServersHandler.cpp; sourceTree = "<group>"; };
+		EAE6C6291C85135F000A8EBC /* PingServersHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingServersHandler.h; sourceTree = "<group>"; };
 		EAEA97501C7DD52900AF1EEA /* Controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Controller.cpp; sourceTree = "<group>"; };
 		EAEA97511C7DD52900AF1EEA /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
@@ -1055,7 +1052,7 @@
 		EAB7574A1C80AF7C00B80E7C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				EACC03B91C81EFEC00971626 /* MainMenu */,
+				EACC03B91C81EFEC00971626 /* Menu */,
 				EACC03BD1C81F28500971626 /* Lobby */,
 				EACC03BE1C81F29200971626 /* Game */,
 			);
@@ -1070,20 +1067,18 @@
 			name = Util;
 			sourceTree = "<group>";
 		};
-		EACC03B91C81EFEC00971626 /* MainMenu */ = {
+		EACC03B91C81EFEC00971626 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
 				EAAB6A641C59F77D00171969 /* MainMenuScene.cpp */,
 				EAAB6A631C59F77D00171969 /* MainMenuScene.h */,
 			);
-			name = MainMenu;
+			name = Menu;
 			sourceTree = "<group>";
 		};
 		EACC03BD1C81F28500971626 /* Lobby */ = {
 			isa = PBXGroup;
 			children = (
-				EACC03C11C81F2F000971626 /* LobbyManager.cpp */,
-				EACC03C21C81F2F000971626 /* LobbyManager.h */,
 				EA888A001C58A18F00534275 /* LobbyScene.cpp */,
 				EA8889FE1C58A18F00534275 /* LobbyScene.h */,
 			);
@@ -1093,8 +1088,6 @@
 		EACC03BE1C81F29200971626 /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				EACC03BF1C81F2F000971626 /* GameManager.cpp */,
-				EACC03C01C81F2F000971626 /* GameManager.h */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -1135,6 +1128,8 @@
 			children = (
 				EAE6C6251C84FF52000A8EBC /* StartHandler.cpp */,
 				EAE6C6261C84FF52000A8EBC /* StartHandler.h */,
+				EAE6C6281C85135F000A8EBC /* PingServersHandler.cpp */,
+				EAE6C6291C85135F000A8EBC /* PingServersHandler.h */,
 			);
 			name = Void;
 			sourceTree = "<group>";
@@ -1287,7 +1282,6 @@
 				EA888B3D1C58A6B200534275 /* PacketizedTCP.cpp in Sources */,
 				EA888B471C58A6B200534275 /* RakNetSocket2_Berkley_NativeClient.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
-				EACC03C31C81F2F000971626 /* GameManager.cpp in Sources */,
 				EA888B2C1C58A6B200534275 /* HTTPConnection2.cpp in Sources */,
 				EA888B551C58A6B200534275 /* RakSleep.cpp in Sources */,
 				EA888B141C58A6B200534275 /* CommandParserInterface.cpp in Sources */,
@@ -1329,7 +1323,6 @@
 				EA888B4D1C58A6B200534275 /* RakNetSocket2_Windows_Linux_360.cpp in Sources */,
 				EAE6C6271C84FF52000A8EBC /* StartHandler.cpp in Sources */,
 				EA888B4A1C58A6B200534275 /* RakNetSocket2_PS3_PS4.cpp in Sources */,
-				EACC03C41C81F2F000971626 /* LobbyManager.cpp in Sources */,
 				EA888B661C58A6B200534275 /* StatisticsHistory.cpp in Sources */,
 				EA888B261C58A6B200534275 /* Getche.cpp in Sources */,
 				EA888B271C58A6B200534275 /* Gets.cpp in Sources */,
@@ -1404,6 +1397,7 @@
 				EA888B411C58A6B200534275 /* PS4Includes.cpp in Sources */,
 				EA888B5D1C58A6B200534275 /* ReliabilityLayer.cpp in Sources */,
 				EA888B601C58A6B200534275 /* RPC4Plugin.cpp in Sources */,
+				EAE6C62A1C85135F000A8EBC /* PingServersHandler.cpp in Sources */,
 				EA888B181C58A6B200534275 /* DirectoryDeltaTransfer.cpp in Sources */,
 				EA888B331C58A6B200534275 /* MessageFilter.cpp in Sources */,
 			);

@@ -34,6 +34,6 @@
 #define BOX_ADMIN                       ID_USER_PACKET_ENUM+6
 #define BOX_RESET_SCORE                 ID_USER_PACKET_ENUM+7
 
-
+#define VOID_PING_SERVERS               ID_USER_PACKET_ENUM+1000
 
 #endif /* GameplayEvents_h */

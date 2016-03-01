@@ -7,9 +7,6 @@
 //
 
 #include "Controller.h"
-#include "ConnectionResultHandler.h"
-#include "ConnectionLostHandler.h"
-#include "ServerNameHandler.h"
 
 Controller * Controller::instance = nullptr;
 

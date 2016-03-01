@@ -5,6 +5,9 @@
 #include "ServerNameMessage.h"
 #include "BoxFactory.h"
 
+#include "ServerNameHandler.h"
+#include "PingServersHandler.h"
+
 USING_NS_CC;
 
 #define Z_INDEX_BG -100
@@ -52,6 +55,11 @@ bool MainMenuScene::init()
     initGraphics();
     
     startFindServers();
+    
+    // register handlers
+    handlerMap = HandlerMap::getInstance();
+    handlerMap->add(BOX_SERVER_NAME, new ServerNameHandler());
+    handlerMap->add(VOID_PING_SERVERS, new PingServersHandler());
         
     return true;
 }
@@ -165,16 +173,13 @@ void MainMenuScene::initGraphics()
 
 void MainMenuScene::startFindServers()
 {
-    auto step = CallFunc::create(CC_CALLBACK_0(MainMenuScene::findServersStep, this));
-    auto delay = DelayTime::create(FIND_SERVER_REPEAT_TIME);
-    auto sequence = Sequence::create(step, delay, nullptr);
-    auto findServersAction = RepeatForever::create(sequence);
-    this->runAction(findServersAction);
     
     this->schedule([&](float dt)
     {
-        //this->receiveBoxes();
-    }, RECEIVE_TIMEOUT, CC_REPEAT_FOREVER, 0.0f, "pingServers");
+        //this->findServersStep();
+        this->handlerMap->getVoidHandler(VOID_PING_SERVERS)->execute();
+    },
+    FIND_SERVER_REPEAT_TIME, CC_REPEAT_FOREVER, 0.0f, "pingServers");
 
 }
 
