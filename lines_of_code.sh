@@ -1,0 +1,1 @@
+find /Users/marek/Documents/git/InteractiveGame/source | grep -E "\.h$|.cpp$" | grep -v -E "raknet|proj|Catch" | xargs cloc
