@@ -6,6 +6,7 @@
 #include "MainMenuScene.h"
 
 #include "BoxFactory.h"
+#include "AdminHandler.h"
 
 #include "Timer.cpp"
 
@@ -54,6 +55,21 @@ bool LobbyScene::init()
     auto listener = EventListenerAcceleration::create(CC_CALLBACK_2(LobbyScene::onAcceleration, this));
     Device::setAccelerometerEnabled(true);
     Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+    
+    // register handlers
+    handlerMap = HandlerMap::create();
+    controller = Controller::getInstance();
+    
+    // register handlers
+    handlerMap->add(BOX_ADMIN, new AdminHandler(this));
+    
+    // schedule box receiving
+    this->schedule([&](float dt)
+    {
+        controller->receiveBoxes(handlerMap);
+    },
+    RECEIVE_TIMEOUT, CC_REPEAT_FOREVER, 0.0f, "receiveBoxes");
+
     
     return true;
 }

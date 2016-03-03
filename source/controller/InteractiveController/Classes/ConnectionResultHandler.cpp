@@ -35,10 +35,12 @@ void ConnectionResultHandler::execute( GameNet::Box * box )
         GameNet::BoxFactory::playerName(name)->send();
     
         CCLOG("Connected to %s", box->getAddress().ToString());
-    
-        // show next scene
         
-        auto scene = LobbyScene::createScene();
-        director->replaceScene(TransitionSlideInB::create(TIME_SCENE_TRANSITION, scene));
+        // stop receiving packets to old scene
+        scene->unscheduleAllCallbacks();
+        
+        // show next scene
+        auto nextScene = LobbyScene::createScene();
+        director->replaceScene(TransitionSlideInB::create(TIME_SCENE_TRANSITION, nextScene));
     }
 }

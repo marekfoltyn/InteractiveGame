@@ -6,6 +6,8 @@
 #include "ui/CocosGUI.h"
 
 #include "Connector.h"
+#include "HandlerMap.h"
+#include "Controller.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -73,6 +75,9 @@ private:
     
     cocos2d::Size visibleSize;
     cocos2d::Vec2 origin;
+    
+    std::shared_ptr<HandlerMap> handlerMap;
+    Controller * controller;
     
 };
 
