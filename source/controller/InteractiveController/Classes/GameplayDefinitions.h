@@ -15,17 +15,16 @@ public:
     // time needed to hold the kick button to maximum kick force
     constexpr static const float TIME_KICK_FORCE_MAX = 1.0;
     
-    
-    
     static const int LEFT  = 0;
     static const int RIGHT = 1;
-
 
 };
 
 
 // toggle debug
 #define DEBUG
+
+#define SETTINGS_VIBRATE "vibrate"
 
 #define BITMASK_SOLID            1 // 0000 0001
 #define BITMASK_BALL             2 // 0000 0010
@@ -53,5 +52,8 @@ public:
 
 
 #define SCHEDULE_KICK_SLOWING "kickSlowing"
+
+
+#define BORDER_DEFAULT 50
 
 #endif // __GAMEPLAY_DEFINITIONS_H__

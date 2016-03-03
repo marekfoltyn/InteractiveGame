@@ -17,7 +17,10 @@
 class HandlerMap{
 public:
     
-    static HandlerMap * getInstance();
+    HandlerMap();
+    ~HandlerMap();
+    
+    static std::shared_ptr<HandlerMap> create();
     
     void add(int eventType, BaseHandler * handler);
     void remove(int eventType);
@@ -25,13 +28,14 @@ public:
     
     VoidHandler         * getVoidHandler      (int eventType);
     BoxHandler          * getBoxHandler       (int eventType);
+    ClickHandler        * getClickHandler     (int eventType);
     TouchHandler        * getTouchHandler     (int eventType);
     AccelerationHandler * getAccHandler       (int eventType);
     CollisionHandler    * getCollisionHandler (int eventType);
+
+    
     
 private:
-    
-    HandlerMap();
     
     static HandlerMap * instance;
     

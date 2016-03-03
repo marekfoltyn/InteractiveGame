@@ -9,8 +9,14 @@
 #include "GameplayDefinitions.h"
 #include "ConnectionResultHandler.h"
 #include "BoxFactory.h"
+#include "LobbyScene.h"
+#include "MainMenuScene.h"
 
-ConnectionResultHandler::ConnectionResultHandler(){}
+ConnectionResultHandler::ConnectionResultHandler(MainMenuScene * scene)
+{
+    director = Director::getInstance();
+    this->scene = scene;
+}
 
 void ConnectionResultHandler::execute( GameNet::Box * box )
 {
@@ -18,7 +24,8 @@ void ConnectionResultHandler::execute( GameNet::Box * box )
     if( type == BOX_CONNECTION_FAILED)
     {
         CCLOG("Connection failed");
-        //menuManager->getMainMenuScene()->connectionFailed(box);
+        scene->setLoadingAnimation(false);
+        Device::vibrate(0.5);
     }
     else if( type == BOX_CONNECTED)
     {
@@ -30,6 +37,8 @@ void ConnectionResultHandler::execute( GameNet::Box * box )
         CCLOG("Connected to %s", box->getAddress().ToString());
     
         // show next scene
-        //lobbyManager->runLobby();
+        
+        auto scene = LobbyScene::createScene();
+        director->replaceScene(TransitionSlideInB::create(TIME_SCENE_TRANSITION, scene));
     }
 }

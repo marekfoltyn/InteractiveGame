@@ -6,25 +6,24 @@
 //
 //
 
-#ifndef ConnectionResult_hpp
-#define ConnectionResult_hpp
+#ifndef Admin_hpp
+#define Admin_hpp
 
 #include "AbstractHandlers.h"
 
-class MainMenuScene;
+class LobbyScene;
 
-class ConnectionResultHandler: public BoxHandler{
+class AdminHandler: public BoxHandler{
 public:
 
-    ConnectionResultHandler(MainMenuScene * scene);
-    
+    AdminHandler(LobbyScene * scene);
     virtual void execute( GameNet::Box * box );
     
 private:
   
     Director * director;
-    MainMenuScene * scene;
+    LobbyScene * scene;
     
 };
 
-#endif /* ConnectionResult_h */
+#endif /* Admin_h */

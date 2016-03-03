@@ -7,6 +7,7 @@
 //
 
 #include "Controller.h"
+#include "GameplayDefinitions.h"
 
 Controller * Controller::instance = nullptr;
 
@@ -28,7 +29,6 @@ Controller::Controller()
 {
     director = cocos2d::Director::getInstance();
     connector = GameNet::Connector::getInstance();
-    handlerMap = HandlerMap::getInstance();
 }
 
 
@@ -43,18 +43,12 @@ bool Controller::startNetworking()
         return false;
     }
     
-    director->getScheduler()->schedule([&](float dt)
-    {
-        this->receiveBoxes();
-    },
-    this, RECEIVE_TIMEOUT, CC_REPEAT_FOREVER, 0.0f, false, "receiveBoxes");
-    
     return true;
 }
 
 
 
-void Controller::receiveBoxes()
+void Controller::receiveBoxes(std::shared_ptr<HandlerMap> handlerMap)
 {
     GameNet::Box * box;
     
@@ -66,3 +60,19 @@ void Controller::receiveBoxes()
         box->deallocate();
     }
 }
+
+
+void Controller::setVibrate(bool set)
+{
+    UserDefault * def = UserDefault::getInstance();
+    def->setBoolForKey(SETTINGS_VIBRATE, set);
+}
+
+
+
+bool Controller::isVibrateEnabled()
+{
+    UserDefault * def = UserDefault::getInstance();
+    return def->getBoolForKey(SETTINGS_VIBRATE, true);
+}
+

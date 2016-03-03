@@ -35,5 +35,6 @@
 #define BOX_RESET_SCORE                 ID_USER_PACKET_ENUM+7
 
 #define VOID_PING_SERVERS               ID_USER_PACKET_ENUM+1000
+#define CLICK_CONNECT_TO_SERVER         ID_USER_PACKET_ENUM+1001
 
 #endif /* GameplayEvents_h */

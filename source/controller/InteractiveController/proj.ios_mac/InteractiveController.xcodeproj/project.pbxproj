@@ -57,6 +57,7 @@
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
+		EA0767A71C883C4300A5280B /* AdminHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA0767A51C883C4300A5280B /* AdminHandler.cpp */; };
 		EA36A80F1C7CD74D000E1636 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA36A80E1C7CD74D000E1636 /* Timer.cpp */; };
 		EA888A021C58A18F00534275 /* LobbyScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888A001C58A18F00534275 /* LobbyScene.cpp */; };
 		EA888B0C1C58A6B200534275 /* _FindFirst.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888A9E1C58A6B100534275 /* _FindFirst.cpp */; };
@@ -177,11 +178,10 @@
 		EAD0D4B11C75D11A00776BC3 /* AccelerationMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4AD1C75D11A00776BC3 /* AccelerationMessage.cpp */; };
 		EAD0D4B21C75D11A00776BC3 /* ServerNameMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4AF1C75D11A00776BC3 /* ServerNameMessage.cpp */; };
 		EAD0D4B51C75F0DC00776BC3 /* BoxFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4B31C75F0DC00776BC3 /* BoxFactory.cpp */; };
-		EAE6C61D1C849C06000A8EBC /* ServerNameHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAE6C61B1C849C06000A8EBC /* ServerNameHandler.cpp */; };
 		EAE6C6201C84DC74000A8EBC /* ConnectionResultHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAE6C61E1C84DC74000A8EBC /* ConnectionResultHandler.cpp */; };
 		EAE6C6231C84EB3F000A8EBC /* ConnectionLostHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAE6C6211C84EB3F000A8EBC /* ConnectionLostHandler.cpp */; };
 		EAE6C6271C84FF52000A8EBC /* StartHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAE6C6251C84FF52000A8EBC /* StartHandler.cpp */; };
-		EAE6C62A1C85135F000A8EBC /* PingServersHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAE6C6281C85135F000A8EBC /* PingServersHandler.cpp */; };
+		EAE6C62A1C85135F000A8EBC /* ServersHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAE6C6281C85135F000A8EBC /* ServersHandler.cpp */; };
 		EAEA97521C7DD52900AF1EEA /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAEA97501C7DD52900AF1EEA /* Controller.cpp */; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
@@ -241,6 +241,8 @@
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		EA0767A51C883C4300A5280B /* AdminHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AdminHandler.cpp; sourceTree = "<group>"; };
+		EA0767A61C883C4300A5280B /* AdminHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminHandler.h; sourceTree = "<group>"; };
 		EA3430801C7BA26200726EAF /* GameplayDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameplayDefinitions.h; sourceTree = "<group>"; };
 		EA36A80E1C7CD74D000E1636 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
 		EA651D891C46DC02003EE325 /* raknetx86_64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = raknetx86_64.a; path = ../../../shared/network/raknet/raknetx86_64.a; sourceTree = "<group>"; };
@@ -530,16 +532,14 @@
 		EAD0D4B31C75F0DC00776BC3 /* BoxFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BoxFactory.cpp; path = ../../../shared/network/BoxFactory.cpp; sourceTree = "<group>"; };
 		EAD0D4B41C75F0DC00776BC3 /* BoxFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoxFactory.h; path = ../../../shared/network/BoxFactory.h; sourceTree = "<group>"; };
 		EAE6C6181C849946000A8EBC /* GameplayEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameplayEvents.h; sourceTree = "<group>"; };
-		EAE6C61B1C849C06000A8EBC /* ServerNameHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServerNameHandler.cpp; sourceTree = "<group>"; };
-		EAE6C61C1C849C06000A8EBC /* ServerNameHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerNameHandler.h; sourceTree = "<group>"; };
 		EAE6C61E1C84DC74000A8EBC /* ConnectionResultHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConnectionResultHandler.cpp; sourceTree = "<group>"; };
 		EAE6C61F1C84DC74000A8EBC /* ConnectionResultHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionResultHandler.h; sourceTree = "<group>"; };
 		EAE6C6211C84EB3F000A8EBC /* ConnectionLostHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConnectionLostHandler.cpp; sourceTree = "<group>"; };
 		EAE6C6221C84EB3F000A8EBC /* ConnectionLostHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionLostHandler.h; sourceTree = "<group>"; };
 		EAE6C6251C84FF52000A8EBC /* StartHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StartHandler.cpp; sourceTree = "<group>"; };
 		EAE6C6261C84FF52000A8EBC /* StartHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartHandler.h; sourceTree = "<group>"; };
-		EAE6C6281C85135F000A8EBC /* PingServersHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PingServersHandler.cpp; sourceTree = "<group>"; };
-		EAE6C6291C85135F000A8EBC /* PingServersHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingServersHandler.h; sourceTree = "<group>"; };
+		EAE6C6281C85135F000A8EBC /* ServersHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServersHandler.cpp; sourceTree = "<group>"; };
+		EAE6C6291C85135F000A8EBC /* ServersHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServersHandler.h; sourceTree = "<group>"; };
 		EAEA97501C7DD52900AF1EEA /* Controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Controller.cpp; sourceTree = "<group>"; };
 		EAEA97511C7DD52900AF1EEA /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
@@ -739,6 +739,24 @@
 				034F43A6BC63D68FDA683FB9 /* libcocos2d iOS.a */,
 			);
 			name = "ios-libs";
+			sourceTree = "<group>";
+		};
+		EA0767A01C87613B00A5280B /* Void */ = {
+			isa = PBXGroup;
+			children = (
+				EAE6C6251C84FF52000A8EBC /* StartHandler.cpp */,
+				EAE6C6261C84FF52000A8EBC /* StartHandler.h */,
+			);
+			name = Void;
+			sourceTree = "<group>";
+		};
+		EA0767A41C88377600A5280B /* Mixed */ = {
+			isa = PBXGroup;
+			children = (
+				EAE6C6281C85135F000A8EBC /* ServersHandler.cpp */,
+				EAE6C6291C85135F000A8EBC /* ServersHandler.h */,
+			);
+			name = Mixed;
 			sourceTree = "<group>";
 		};
 		EA41891A1C33C309004B8934 /* Network */ = {
@@ -1052,7 +1070,7 @@
 		EAB7574A1C80AF7C00B80E7C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				EACC03B91C81EFEC00971626 /* Menu */,
+				EACC03B91C81EFEC00971626 /* MainMenu */,
 				EACC03BD1C81F28500971626 /* Lobby */,
 				EACC03BE1C81F29200971626 /* Game */,
 			);
@@ -1067,13 +1085,13 @@
 			name = Util;
 			sourceTree = "<group>";
 		};
-		EACC03B91C81EFEC00971626 /* Menu */ = {
+		EACC03B91C81EFEC00971626 /* MainMenu */ = {
 			isa = PBXGroup;
 			children = (
 				EAAB6A641C59F77D00171969 /* MainMenuScene.cpp */,
 				EAAB6A631C59F77D00171969 /* MainMenuScene.h */,
 			);
-			name = Menu;
+			name = MainMenu;
 			sourceTree = "<group>";
 		};
 		EACC03BD1C81F28500971626 /* Lobby */ = {
@@ -1103,18 +1121,9 @@
 			name = Messages;
 			sourceTree = "<group>";
 		};
-		EAE6C6171C849877000A8EBC /* Touch */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Touch;
-			sourceTree = "<group>";
-		};
 		EAE6C61A1C849BE9000A8EBC /* Connection */ = {
 			isa = PBXGroup;
 			children = (
-				EAE6C61B1C849C06000A8EBC /* ServerNameHandler.cpp */,
-				EAE6C61C1C849C06000A8EBC /* ServerNameHandler.h */,
 				EAE6C61E1C84DC74000A8EBC /* ConnectionResultHandler.cpp */,
 				EAE6C61F1C84DC74000A8EBC /* ConnectionResultHandler.h */,
 				EAE6C6211C84EB3F000A8EBC /* ConnectionLostHandler.cpp */,
@@ -1123,21 +1132,12 @@
 			name = Connection;
 			sourceTree = "<group>";
 		};
-		EAE6C6241C84FF38000A8EBC /* Void */ = {
-			isa = PBXGroup;
-			children = (
-				EAE6C6251C84FF52000A8EBC /* StartHandler.cpp */,
-				EAE6C6261C84FF52000A8EBC /* StartHandler.h */,
-				EAE6C6281C85135F000A8EBC /* PingServersHandler.cpp */,
-				EAE6C6291C85135F000A8EBC /* PingServersHandler.h */,
-			);
-			name = Void;
-			sourceTree = "<group>";
-		};
 		EAEA974D1C7DCD4800AF1EEA /* Box */ = {
 			isa = PBXGroup;
 			children = (
 				EAE6C61A1C849BE9000A8EBC /* Connection */,
+				EA0767A51C883C4300A5280B /* AdminHandler.cpp */,
+				EA0767A61C883C4300A5280B /* AdminHandler.h */,
 			);
 			name = Box;
 			sourceTree = "<group>";
@@ -1145,8 +1145,8 @@
 		EAEA97531C7E085000AF1EEA /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
-				EAE6C6241C84FF38000A8EBC /* Void */,
-				EAE6C6171C849877000A8EBC /* Touch */,
+				EA0767A41C88377600A5280B /* Mixed */,
+				EA0767A01C87613B00A5280B /* Void */,
 				EAEA974D1C7DCD4800AF1EEA /* Box */,
 				EACC03AF1C81BC0500971626 /* AbstractHandlers.h */,
 				EACC03B61C81C14B00971626 /* EmptyUniversalHandler.cpp */,
@@ -1286,7 +1286,6 @@
 				EA888B551C58A6B200534275 /* RakSleep.cpp in Sources */,
 				EA888B141C58A6B200534275 /* CommandParserInterface.cpp in Sources */,
 				EA888B681C58A6B200534275 /* StringTable.cpp in Sources */,
-				EAE6C61D1C849C06000A8EBC /* ServerNameHandler.cpp in Sources */,
 				EA36A80F1C7CD74D000E1636 /* Timer.cpp in Sources */,
 				EA888B111C58A6B200534275 /* CloudClient.cpp in Sources */,
 				EA888B5E1C58A6B200534275 /* ReplicaManager3.cpp in Sources */,
@@ -1351,6 +1350,7 @@
 				EA888B101C58A6B200534275 /* CCRakNetUDT.cpp in Sources */,
 				EA888B161C58A6B200534275 /* ConsoleServer.cpp in Sources */,
 				EA888B3C1C58A6B200534275 /* PacketFileLogger.cpp in Sources */,
+				EA0767A71C883C4300A5280B /* AdminHandler.cpp in Sources */,
 				EA888B2B1C58A6B200534275 /* HTTPConnection.cpp in Sources */,
 				EA888B431C58A6B200534275 /* RakMemoryOverride.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
@@ -1397,7 +1397,7 @@
 				EA888B411C58A6B200534275 /* PS4Includes.cpp in Sources */,
 				EA888B5D1C58A6B200534275 /* ReliabilityLayer.cpp in Sources */,
 				EA888B601C58A6B200534275 /* RPC4Plugin.cpp in Sources */,
-				EAE6C62A1C85135F000A8EBC /* PingServersHandler.cpp in Sources */,
+				EAE6C62A1C85135F000A8EBC /* ServersHandler.cpp in Sources */,
 				EA888B181C58A6B200534275 /* DirectoryDeltaTransfer.cpp in Sources */,
 				EA888B331C58A6B200534275 /* MessageFilter.cpp in Sources */,
 			);

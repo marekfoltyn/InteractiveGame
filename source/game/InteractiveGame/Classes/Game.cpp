@@ -123,7 +123,7 @@ bool Game::startNetworking()
 {
     // run  Connector (as a server)
     bool started = connector->startAsServer(MAX_PLAYERS);
-    connector->setServerName("PhoneBall Arena");
+    connector->setServerName("Stadium 25");
     
     if(!started){
         CCLOG("Server not started!");

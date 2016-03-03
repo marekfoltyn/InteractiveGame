@@ -10,16 +10,9 @@
 
 HandlerMap * HandlerMap::instance = nullptr;
 
-HandlerMap * HandlerMap::getInstance()
+std::shared_ptr<HandlerMap> HandlerMap::create()
 {
-    if(instance == nullptr)
-    {
-        return instance = new HandlerMap();
-    }
-    else
-    {
-        return instance;
-    }
+    return std::make_shared<HandlerMap>();
 }
 
 
@@ -28,6 +21,14 @@ HandlerMap::HandlerMap()
 {
     handlerMap = std::map<int, BaseHandler*>();
     emptyHandler = new EmptyUniversalHandler();
+    CCLOG("HandlerMap()");
+}
+
+HandlerMap::~HandlerMap()
+{
+    delete emptyHandler;
+    handlerMap.clear();
+    CCLOG("~HandlerMap()");
 }
 
 
@@ -94,6 +95,11 @@ VoidHandler * HandlerMap::getVoidHandler(int eventType)
 BoxHandler * HandlerMap::getBoxHandler(int eventType)
 {
     return get<BoxHandler*>(eventType);
+}
+
+ClickHandler * HandlerMap::getClickHandler(int eventType)
+{
+    return get<ClickHandler*>(eventType);
 }
 
 TouchHandler * HandlerMap::getTouchHandler(int eventType)

@@ -11,6 +11,7 @@
 
 #include "Connector.h"
 #include "HandlerMap.h"
+#include "cocos2d.h"
 
 class Controller{
 public:
@@ -18,6 +19,10 @@ public:
     static Controller * getInstance();
     
     bool startNetworking();
+    void receiveBoxes(std::shared_ptr<HandlerMap> handlerMap);
+    
+    void setVibrate(bool set);
+    bool isVibrateEnabled();
     
     template<class T>
     bool isRunning()
@@ -36,11 +41,8 @@ private:
     static Controller * instance;
     cocos2d::Director * director;
     GameNet::Connector * connector;
-    HandlerMap * handlerMap;
     
     Controller();
-    
-    void receiveBoxes();
 
 };
 

@@ -1,12 +1,13 @@
 #include "MainMenuScene.h"
 #include "LobbyScene.h"
+#include "GameplayDefinitions.h"
 
 #include "Connector.h"
 #include "ServerNameMessage.h"
 #include "BoxFactory.h"
 
-#include "ServerNameHandler.h"
-#include "PingServersHandler.h"
+#include "ServersHandler.h"
+#include "ConnectionResultHandler.h"
 
 USING_NS_CC;
 
@@ -14,17 +15,15 @@ USING_NS_CC;
 #define Z_INDEX_BG_NAME -99
 #define Z_INDEX_LOADING 100
 
-#define FONT_SIZE_DEFAULT 70
 #define FONT_OPACITY_HALF 100
 
-#define NODE_SERVERS "menuView"
-#define NODE_LOGO    "logo"
 #define COLOR_GREEN Color4B(11, 112, 14, 255)
 #define COLOR_BG_TRANSPARENT Color4B(255,255,255,24)
 
-#define BORDER_DEFAULT 50
-
 #define ACTION_RECEIVE_BOXES 100
+
+const std::string MainMenuScene::NODE_SERVERS = "menuView";
+const std::string MainMenuScene::NODE_LOGO    = "logo";
 
 Scene * MainMenuScene::createScene()
 {
@@ -54,14 +53,39 @@ bool MainMenuScene::init()
     
     initGraphics();
     
-    startFindServers();
-    
     // register handlers
-    handlerMap = HandlerMap::getInstance();
-    handlerMap->add(BOX_SERVER_NAME, new ServerNameHandler());
-    handlerMap->add(VOID_PING_SERVERS, new PingServersHandler());
-        
+    handlerMap = HandlerMap::create();
+    controller = Controller::getInstance();
+    
+    // dynamic cast - ServersHandler implements two interfaces (both derived from BaseHandler),
+    // so we have to decide, which interface will be casted to BaseHandler
+
+    auto serverHandler = new ServersHandler(this);
+    auto connectionHandler = new ConnectionResultHandler(this);
+    
+    handlerMap->add(BOX_SERVER_NAME, dynamic_cast<BoxHandler*>(serverHandler));
+    handlerMap->add(VOID_PING_SERVERS, dynamic_cast<VoidHandler*>(serverHandler));
+    handlerMap->add(CLICK_CONNECT_TO_SERVER, dynamic_cast<ClickHandler*>(serverHandler));
+    handlerMap->add(BOX_CONNECTED, connectionHandler);
+    handlerMap->add(BOX_CONNECTION_FAILED, connectionHandler);
+    
+    startFindServers();
+    scheduleBoxReceive();
+    
+    CCLOG("MainMenuScene initialized.");
+    
     return true;
+}
+
+
+
+void MainMenuScene::scheduleBoxReceive()
+{
+    this->schedule([&](float dt)
+    {
+        controller->receiveBoxes(handlerMap);
+    },
+    RECEIVE_TIMEOUT, CC_REPEAT_FOREVER, 0.0f, "receiveBoxes");
 }
 
 
@@ -158,7 +182,7 @@ void MainMenuScene::initGraphics()
     // Server names menu
     auto menuView = ui::ScrollView::create();
     menuView->setName(NODE_SERVERS);
-    menuView->setPosition(Vec2( origin.x + visibleSize.width * 1.0/4, lblName->getPosition().y - lblName->getContentSize().height - BORDER_DEFAULT ));
+    menuView->setPosition(Vec2( origin.x + visibleSize.width * 1.0/4, lblName->getPosition().y - lblName->getContentSize().height ));
     menuView->setDirection( ui::ScrollView::Direction::VERTICAL );
     menuView->setContentSize(cocos2d::Size(visibleSize.width/2 - 2*BORDER_DEFAULT, menuView->getPosition().y - origin.y));
     menuView->setInnerContainerSize( menuView->getContentSize() );
@@ -173,155 +197,26 @@ void MainMenuScene::initGraphics()
 
 void MainMenuScene::startFindServers()
 {
-    
     this->schedule([&](float dt)
     {
-        //this->findServersStep();
         this->handlerMap->getVoidHandler(VOID_PING_SERVERS)->execute();
     },
     FIND_SERVER_REPEAT_TIME, CC_REPEAT_FOREVER, 0.0f, "pingServers");
-
 }
 
 
-
-void MainMenuScene::refreshServer(Box * box)
-{
-    // parse Box
-    ServerNameMessage msg = ServerNameMessage();
-    bool res = msg.deserialize( box->getData() );
-    if( res == false){
-        CCLOG("ServerNameMessage deserialization FAILED!");
-        return;
-    }
-    
-    auto name = msg.getServerName();
-    
-    CCLOG("Server response: %s", name.c_str() );
-    
-    addOrUpdateServer(name, box->getAddress());
-    
-}
-
-
-
-void MainMenuScene::addOrUpdateServer(std::string serverName, RakNet::SystemAddress address)
-{
-    auto menuView = (ui::ScrollView *) this->getChildByName(NODE_SERVERS);
-    auto origin = Director::getInstance()->getVisibleOrigin();
-    int hash = (int) RakNet::SystemAddress::ToInteger( address );
-    
-    if( serverMap.count( hash ) != 1 || serverMap[hash] == nullptr ) // when deleted, set to nullptr (node is not deleted, bad memory acces during map loop)
-    {
-        // create new entry
-        ServerMapEntry * s = new ServerMapEntry();
-        s->position = serverCount;
-        s->inactiveSeconds = 0;
-        s->address = new RakNet::SystemAddress(address); // copy adress (packet will be deallocated)
-        serverMap[hash] = s;
-
-        CCLOG("%s added (hash: %d).", serverName.c_str(), hash);
-        std::string name(serverName.c_str());
-        
-        // add to the menu (img, background, label)
-        auto btn = ui::Button::create(/*"servername_bg.png", "servername_bg.png"*/);
-        btn->setTag(hash);
-        btn->setAnchorPoint(Vec2(0.5, 1));
-        btn->setTitleText(name);
-        btn->setTitleFontName("Vanilla.ttf");
-        btn->setTitleFontSize(FONT_SIZE_DEFAULT);
-        btn->setTitleColor(Color3B::WHITE);
-        btn->addClickEventListener(CC_CALLBACK_1(MainMenuScene::btnServerClicked, this));
-        btn->setPosition(Vec2(menuView->getInnerContainerSize().width/2,menuView->getInnerContainerSize().height - serverCount * 1.5 * btn->getContentSize().height ));
-        
-        menuView->setInnerContainerSize(cocos2d::Size( menuView->getInnerContainerSize().width, (serverCount+1) * 1.5 * btn->getContentSize().height ));
-        menuView->addChild(btn);
-        
-        serverCount++;
-        
-        //repositionServers();
-        
-    } else
-    {
-        // server already exists - refresh server lifetime
-        auto s = serverMap[hash];
-        s->inactiveSeconds = 0;
-    }
-}
-
-
-
-void MainMenuScene::findServersStep()
-{
-    Connector::getInstance()->ping();
-    decreaseServersLifetime(); // refresh actually found servers
-    CCLOG("[MainMenuScene] Searching servers...");
-}
-
-
-
-void MainMenuScene::decreaseServersLifetime()
-{
-    
-    for(std::map<int, ServerMapEntry*>::iterator i = serverMap.begin(); i != serverMap.end(); i++)
-    {
-        // iterator->first = key
-        // iterator->second = value
-        if(i->second == nullptr)
-        {
-            continue;
-        }
-        
-        i->second->inactiveSeconds++;
-        CCLOG("%s lifetime set to %d", i->second->address->ToString(), (int) i->second->inactiveSeconds);
-        
-        if( i->second->inactiveSeconds >= SERVER_MENU_LIFETIME)
-        {
-            auto menuView = (ui::ScrollView *) this->getChildByName(NODE_SERVERS);
-            
-            //delete
-            CCLOG("%s removed for inactivity.",i->second->address->ToString());
-            
-            // delete menu entry
-            int hash = i->first;
-            auto btn = (ui::Button * ) menuView->getChildByTag(hash);
-            if(btn != nullptr)
-            {
-                cocos2d::Size lblSize = btn->getContentSize();
-                menuView->removeChild(btn);
-                
-                // move other servers up
-                for(std::map<int, ServerMapEntry*>::iterator j = serverMap.begin(); j != serverMap.end(); j++)
-                {
-                    if(j->second == nullptr) return;
-                    
-                    if(j->second->position > i->second->position)
-                    {
-                        auto entry = (ui::Button * ) menuView->getChildByTag( j->first );
-                        entry->setPosition(Vec2( entry->getPosition().x, entry->getPosition().y + entry->getContentSize().height ));
-                        j->second->position--;
-                    }
-                }
-            }
-            
-            delete i->second->address;
-            serverMap[i->first] = nullptr;
-            serverCount--;
-        }
-        
-    }
-    
-}
-
-
-
-void MainMenuScene::connectionFailed(Box * box)
+void MainMenuScene::setLoadingAnimation(bool set)
 {
     auto logo = (ui::ImageView *) this->getChildByName(NODE_LOGO);
-    logo->stopAllActions();
-    //logo->setRotation(0);
     
-    Device::vibrate(0.5);
+    if(set)
+    {
+        logo->runAction( RepeatForever::create( RotateBy::create(1, 360) ) );
+    }
+    else
+    {
+        logo->stopAllActions();
+    }
 }
 
 
@@ -366,21 +261,7 @@ void MainMenuScene::txtNameEvent(Ref * sender, ui::TextField::EventType type)
 
 void MainMenuScene::btnServerClicked(Ref * pSender)
 {
-    auto btn = (cocos2d::ui::Button *) pSender;
-    int tag = btn->getTag(); // tag value is the key in serverMap
-    
-    auto logo = (ui::ImageView *) this->getChildByName(NODE_LOGO);
-    logo->runAction( RepeatForever::create( RotateBy::create(1, 360) ) );
-    
-    if(tag == -1)
-    {
-        CCLOG("Tag not found. Can't connect.");
-        return;
-    }
-    
-    RakNet::SystemAddress address = *(serverMap[tag]->address);
-    Connector::getInstance()->connect(address);
-    CCLOG("[MainMenuScene] Connecting to %s", address.ToString());
+    this->handlerMap->getClickHandler(CLICK_CONNECT_TO_SERVER)->execute(pSender);
 }
 
 

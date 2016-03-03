@@ -8,6 +8,7 @@
 #include "extensions/cocos-ext.h"
 #include "ui/CocosGUI.h"
 #include "Connector.h"
+#include "Controller.h"
 
 #include "HandlerMap.h"
 
@@ -15,29 +16,6 @@ USING_NS_CC;
 USING_NS_CC_EXT;
 using namespace GameNet;
 
-/**
- * Simple structure for storing information about servers in LAN
- */
-struct ServerMapEntry{
-    
-    /**
-     * server address (IP and port)
-     */
-    RakNet::SystemAddress * address;
-
-    /**
-     * how many second the server did not responed
-     * after SERVER_MENU_LIFETIME seconds the server entry
-     * will be deleted
-     */
-    std::atomic<int> inactiveSeconds;
-
-    /**
-     * position in scrollview
-     * necessary for item position (when deleted)
-     */
-    int position;
-};
 
 /**
  * First scene - showing the main menu with the list of servers in LAN
@@ -47,6 +25,10 @@ class MainMenuScene : public cocos2d::Layer
 public:
     
     static const int SCENE_TAG = 1;
+    static const int FONT_SIZE_DEFAULT = 70;
+    
+    static const std::string NODE_SERVERS;
+    static const std::string NODE_LOGO;
     
     /**
      * Cocos2d-x:
@@ -71,12 +53,7 @@ public:
      */
     void initGraphics();
     
-    /**
-     * decrease lifetime of found servers and find more servers
-     * this method is called periodically
-     */
-    void findServersStep();
-    
+    void scheduleBoxReceive();
     
     /**
      * This method is called when user interacts with the player name textfield
@@ -88,43 +65,18 @@ public:
      */
     void btnServerClicked(Ref * pSender);
     
-    /**
-     * a server has responded to the ping
-     * if the controller knows about it, resets its lifetime
-     * if not, add this server to the server list
-     */
-    void refreshServer(Box * box);
-    
-    /**
-     * Connection to server failed
-     */
-    void connectionFailed(Box * box);
+
+    void setLoadingAnimation(bool set);
     
     /**
      * Exit game
      */
     void btnLeaveClicked(Ref * pSender);
     
-    
 private:
     
-    /**
-     * map of available servers
-     * key - hash of the system address
-     */
-    std::map<int, ServerMapEntry*> serverMap;
-    
-    HandlerMap * handlerMap;
-    
-    /**
-     * count of active servers (serverMap.size() doesn't work, because inactive servers items are not deleted due to memory issues)
-     */
-    int serverCount;
-    
-    /**
-     * start receiving boxs
-     */
-    void startReceiveBoxes();
+    std::shared_ptr<HandlerMap> handlerMap;
+    Controller * controller;
         
     /**
      * periodically send broadcast ping to find servers
@@ -135,16 +87,7 @@ private:
      * send a ping broadcast message to find servers
      */
     void pingServers();
-        
-    /**
-     * add new menu item to scroll view or updates if exists
-     */
-    void addOrUpdateServer(std::string serverName, RakNet::SystemAddress address);
     
-    /**
-     * every "server search" decreases servers lifetimes (when not responding -> delete from menu)
-     */
-    void decreaseServersLifetime();
 };
 
 #endif // __MainMenu_SCENE_H__

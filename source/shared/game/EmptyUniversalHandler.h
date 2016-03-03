@@ -14,6 +14,7 @@
 class EmptyUniversalHandler:
     public VoidHandler,
     public BoxHandler,
+    public ClickHandler,
     public TouchHandler,
     public AccelerationHandler,
     public CollisionHandler

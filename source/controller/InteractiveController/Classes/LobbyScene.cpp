@@ -13,9 +13,9 @@ USING_NS_CC;
 using namespace GameNet;
 
 #define COLOR_GREEN Color4B(11, 112, 14, 255)
-#define NODE_PAUSE "nodePause"
 #define NODE_FORCE "nodeForce"
 
+const char * LobbyScene::NODE_PAUSE = "nodePause";
 
 Scene * LobbyScene::createScene()
 {
