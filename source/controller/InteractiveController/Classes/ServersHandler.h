@@ -31,7 +31,7 @@ public:
     /**
      * received ping from a server
      */
-    void execute(GameNet::Box * box);
+    bool execute(GameNet::Box * box);
     
     /**
      * click on a server menu item

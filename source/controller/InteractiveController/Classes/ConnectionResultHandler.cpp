@@ -18,7 +18,7 @@ ConnectionResultHandler::ConnectionResultHandler(MainMenuScene * scene)
     this->scene = scene;
 }
 
-void ConnectionResultHandler::execute( GameNet::Box * box )
+bool ConnectionResultHandler::execute( GameNet::Box * box )
 {
     int type = box->getType();
     if( type == BOX_CONNECTION_FAILED)
@@ -42,5 +42,10 @@ void ConnectionResultHandler::execute( GameNet::Box * box )
         // show next scene
         auto nextScene = LobbyScene::createScene();
         director->replaceScene(TransitionSlideInB::create(TIME_SCENE_TRANSITION, nextScene));
+        
+        // stop receiving loop (the rest will receive next scene)
+        return true;
     }
+    
+    return false;
 }

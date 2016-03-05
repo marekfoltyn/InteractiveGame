@@ -39,12 +39,12 @@ void ServersHandler::execute()
 
 
 
-void ServersHandler::execute(GameNet::Box * box)
+bool ServersHandler::execute(GameNet::Box * box)
 {
     if( !controller->isRunning<MainMenuScene>() )
     {
         CCLOG("MainMenu is not running, ServerName ignored.");
-        return;
+        return false;
     }
     
     auto message = ServerNameMessage();
@@ -53,6 +53,8 @@ void ServersHandler::execute(GameNet::Box * box)
     CCLOG("Server ping: %s", name.c_str());
     
     addOrUpdateServer(name, box->getAddress());
+    
+    return false;
 }
 
 

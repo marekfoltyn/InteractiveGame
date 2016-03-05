@@ -15,9 +15,11 @@ void EmptyUniversalHandler::execute()
 
 
 
-void EmptyUniversalHandler::execute( GameNet::Box * box )
+bool EmptyUniversalHandler::execute( GameNet::Box * box )
 {
-    CCLOG("BoxHandler");
+    CCLOG("BoxHandler (type: %d)", (int) box->getType());
+    
+    return false;
 }
 
 

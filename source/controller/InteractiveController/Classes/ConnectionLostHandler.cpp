@@ -11,7 +11,7 @@
 
 ConnectionLostHandler::ConnectionLostHandler(){}
 
-void ConnectionLostHandler::execute( GameNet::Box * box )
+bool ConnectionLostHandler::execute( GameNet::Box * box )
 {
     CCLOG("Connection lost. Returning to main menu.");
     
@@ -19,4 +19,6 @@ void ConnectionLostHandler::execute( GameNet::Box * box )
     //menuManager->runMainMenu();
     
     //IDEA: menuManager->getMainMenuScene()->showConnectionLostWindow();
+
+    return false;
 }

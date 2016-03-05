@@ -16,7 +16,7 @@ public:
 
     ConnectionLostHandler();
     
-    virtual void execute( GameNet::Box * box );
+    virtual bool execute( GameNet::Box * box );
     
 private:
     

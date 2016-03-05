@@ -23,7 +23,7 @@ public:
 
 class BoxHandler: public BaseHandler{
 public:
-    virtual void execute( GameNet::Box * box ) = 0;
+    virtual bool execute( GameNet::Box * box ) = 0;
 };
 
 

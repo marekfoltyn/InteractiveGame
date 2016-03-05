@@ -53,11 +53,14 @@ void Controller::receiveBoxes(std::shared_ptr<HandlerMap> handlerMap)
     GameNet::Box * box;
     
     // c->receive() returns 0, if no received packet is in the queue
+    bool finish = false;
     while( (box = connector->receive()) != nullptr )
     {
         int type = box->getType();
-        handlerMap->getBoxHandler(type)->execute(box);
+        finish = handlerMap->getBoxHandler(type)->execute(box);
         box->deallocate();
+        
+        if(finish) break;
     }
 }
 

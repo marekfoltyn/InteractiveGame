@@ -17,7 +17,7 @@ class AdminHandler: public BoxHandler{
 public:
 
     AdminHandler(LobbyScene * scene);
-    virtual void execute( GameNet::Box * box );
+    virtual bool execute( GameNet::Box * box );
     
 private:
   

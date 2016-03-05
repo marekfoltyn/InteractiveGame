@@ -20,7 +20,7 @@ class EmptyUniversalHandler:
     public CollisionHandler
 {
     virtual void execute();
-    virtual void execute( GameNet::Box * box );
+    virtual bool execute( GameNet::Box * box );
     virtual void execute( Ref * sender );
     virtual void execute( Ref * sender, ui::Widget::TouchEventType type );
     virtual void execute( Acceleration* acc, Event * unused_event );
