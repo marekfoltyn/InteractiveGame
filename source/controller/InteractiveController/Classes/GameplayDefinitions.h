@@ -3,6 +3,9 @@
 
 #include "GameplayEvents.h"
 
+/**
+ * static constants and values used in both Controller and Game
+ */
 class Definitions{
 public:
     

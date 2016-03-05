@@ -13,10 +13,17 @@
 
 class LobbyScene;
 
+/**
+ * Processing admin attaching
+ */
 class AdminHandler: public BoxHandler{
 public:
 
     AdminHandler(LobbyScene * scene);
+    
+    /**
+     * set this player as the admin
+     */
     virtual bool execute( GameNet::Box * box );
     
 private:

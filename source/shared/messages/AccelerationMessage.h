@@ -5,16 +5,22 @@
 
 namespace GameNet {
 
+/**
+ * Message representing the x,y,z coordinates of the
+ * accelerometer
+ */
 class AccelerationMessage: Message {
 public:
     
     /**
-     * implement Message interface
+     * implementation of the Message interface
+     * convert AccelerationMessage to string
      */
     virtual std::string serialize();
 
     /**
-     * implement Message interface
+     * implementation of the Message interface
+     * set values of AccelerationMessage from the string
      */
     virtual bool deserialize(std::string str);
 

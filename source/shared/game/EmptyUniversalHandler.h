@@ -11,6 +11,12 @@
 
 #include "AbstractHandlers.h"
 
+/**
+ * This handler implements every handler type
+ * and is used in the HandlerMap as "not-found handler"
+ * - when no handler is found to the proper type, this handler
+ *   is returned and logs not found event.
+ */
 class EmptyUniversalHandler:
     public VoidHandler,
     public BoxHandler,

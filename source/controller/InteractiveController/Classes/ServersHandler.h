@@ -13,9 +13,13 @@
 #include "Controller.h"
 #include "AbstractHandlers.h"
 
-class MainMenuScene; // avoid circular dependency
+class MainMenuScene;
 struct ServerMapEntry;
 
+/**
+ * Handler responsible for proper server search and displaying
+ * including adding/deleting server entries
+ */
 class ServersHandler: public VoidHandler, public BoxHandler, public ClickHandler{
 public:
     
@@ -62,8 +66,14 @@ private:
      */
     void addOrUpdateServer(std::string serverName, RakNet::SystemAddress address);
     
+    /**
+     * remove server entry from the scene
+     */
     void deleteServer(int hash);
     
+    /**
+     * set positions to servers in scrollView
+     */
     void repositionServers();
 };
 

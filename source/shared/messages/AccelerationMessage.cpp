@@ -28,6 +28,7 @@ std::string AccelerationMessage::serialize()
 bool AccelerationMessage::deserialize(std::string str)
 {
     if(str.length() < 3*sizeof(double)){
+        // invalid string size
         return false;
     }
     

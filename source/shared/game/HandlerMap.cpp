@@ -8,8 +8,6 @@
 
 #include "HandlerMap.h"
 
-HandlerMap * HandlerMap::instance = nullptr;
-
 std::shared_ptr<HandlerMap> HandlerMap::create()
 {
     return std::make_shared<HandlerMap>();
@@ -27,7 +25,7 @@ HandlerMap::HandlerMap()
 HandlerMap::~HandlerMap()
 {
     delete emptyHandler;
-    handlerMap.clear();
+    clear();
     CCLOG("~HandlerMap()");
 }
 

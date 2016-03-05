@@ -132,12 +132,12 @@ void ServersHandler::decreaseServersLifetime()
         if( i->second->inactiveSeconds >= SERVER_MENU_LIFETIME)
         {
             deleteServer(i->first);
-            i=serverMap.begin();
+            i=serverMap.begin(); // we don't know the next iterator, need to start over
             repositionServers();
         }
         else
         {
-            i++;
+            i++; // next iterator
         }
     }
 }

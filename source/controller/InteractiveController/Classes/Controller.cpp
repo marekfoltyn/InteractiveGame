@@ -35,7 +35,7 @@ Controller::Controller()
 
 bool Controller::startNetworking()
 {
-    // run  Connector (as a client)
+    // run  Connector as a client
     bool started = connector->start();
     
     if(!started){

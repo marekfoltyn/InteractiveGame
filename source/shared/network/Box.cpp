@@ -12,6 +12,7 @@ using namespace GameNet;
 
 Box::Box(std::string data)
 {
+    connector = Connector::getInstance();
     
     loadData(data.c_str(), static_cast<unsigned int>( data.length() ) );
     
@@ -24,8 +25,10 @@ Box::Box(std::string data)
 
 Box::Box(RakNet::Packet * packet)
 {
+    connector = Connector::getInstance();
+    
     const char * data = (char *) packet->data + 1; // skip first byte
-    unsigned int len = packet->length - 1;
+    unsigned int len = packet->length - 1; // skip first byte
     loadData(data, len);
     
     setAddress( packet->systemAddress );
@@ -110,15 +113,10 @@ std::string Box::getData()
     // but the data are terminated after first null byte
     // e.g.: timestamp has four bytes, but usually the first three bytes
     // are null, so it would return an empty string
+    // so the best option is to create std:string with specified length:
     return std::string(data+1, getLength()); // skip the packet type
 }
 
-/*template <typename T>
-T * Box::getMessage()
-{
-    // deserialize() returns Message* (so cast to WhateverMessage*)
-    return dynamic_cast<T*>(T::deserialize( getData() ));
-}*/
 
 
 const int Box::getLength()
@@ -144,7 +142,7 @@ const int Box::getPacketLength()
 
 void Box::send()
 {
-    Connector::getInstance()->send(this);
+    connector->send(this);
     this->deallocate();
 }
 
@@ -156,7 +154,7 @@ void Box::deallocate()
     
     if(packet != nullptr)
     {
-        Connector::getInstance()->getInterface()->DeallocatePacket(packet);
+        connector->getInterface()->DeallocatePacket(packet);
     }
     
     delete this;

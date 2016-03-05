@@ -6,6 +6,10 @@
 
 namespace GameNet {
 
+/**
+ * class representing Game ping response
+ * it sends timestamp (not needed) and server name
+ */
 class ServerNameMessage: Message {
 public:
     

@@ -5,7 +5,7 @@
 #include "PlayerCollisionHandler.h"
 #include "GameplayDefinitions.h"
 
-void NewPlayerHandler::execute(GameNet::Box * box)
+bool NewPlayerHandler::execute(GameNet::Box * box)
 {
     CCLOG("New player: %s", box->getData().c_str() );
     
@@ -20,4 +20,5 @@ void NewPlayerHandler::execute(GameNet::Box * box)
         int id = player->getId();
         game->getPlayer(id)->setAsAdmin();
     }
+    return false;
 }

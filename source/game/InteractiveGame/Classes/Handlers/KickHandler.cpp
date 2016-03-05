@@ -4,7 +4,7 @@
 
 #include <string>
 
-void KickHandler::execute(GameNet::Box * box)
+bool KickHandler::execute(GameNet::Box * box)
 {
     
     switch (box->getType()) {
@@ -19,7 +19,7 @@ void KickHandler::execute(GameNet::Box * box)
         default:
         break;
     }
-    
+    return false;
 }
 
 

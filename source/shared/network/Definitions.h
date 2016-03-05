@@ -4,11 +4,14 @@
 #include "MessageIdentifiers.h" // packet types
 #include "cocos2d.h" // CCLOG
 
+/**
+ * constants used in GameNet module
+ */
 
 // time (ms) during when reliable packet was not able to be received -> connection lost
 #define CONNECTION_LOST_TIMEOUT 5000
 
-// logging function
+// logging function - now used with cocos2d
 #define LOG(...) CCLOG(__VA_ARGS__)
 
 // port used for all communication

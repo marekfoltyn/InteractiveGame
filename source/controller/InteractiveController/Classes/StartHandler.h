@@ -12,11 +12,18 @@
 #include "Controller.h"
 #include "AbstractHandlers.h"
 
+/**
+ * First handler responsible for the application initialization,
+ * network start and first scene setup
+ */
 class StartHandler: public VoidHandler{
 public:
     
     StartHandler();
     
+    /**
+     * start networking and show the first scene
+     */
     void execute();
     
 private:

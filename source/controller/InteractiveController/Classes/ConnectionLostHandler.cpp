@@ -9,7 +9,10 @@
 #include "ConnectionLostHandler.h"
 #include "BoxFactory.h"
 
-ConnectionLostHandler::ConnectionLostHandler(){}
+ConnectionLostHandler::ConnectionLostHandler()
+{
+    director = cocos2d::Director::getInstance();
+}
 
 bool ConnectionLostHandler::execute( GameNet::Box * box )
 {
@@ -19,6 +22,7 @@ bool ConnectionLostHandler::execute( GameNet::Box * box )
     //menuManager->runMainMenu();
     
     //IDEA: menuManager->getMainMenuScene()->showConnectionLostWindow();
-
+    //TODO
+    
     return false;
 }

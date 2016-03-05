@@ -11,7 +11,7 @@
 class LogHandler: public BoxHandler{
 public:
     
-    void execute(GameNet::Box * box)
+    bool execute(GameNet::Box * box)
     {
         switch ( box->getType() )
         {
@@ -38,9 +38,9 @@ public:
                 CCLOG("Packet type %d was ignored.", box->getType());
                 break;
             }
-        }
+       }
+        return false;
     }
-
 };
 
 #endif // _LogHandler_H_

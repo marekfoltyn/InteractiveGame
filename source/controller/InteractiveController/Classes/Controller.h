@@ -13,23 +13,55 @@
 #include "HandlerMap.h"
 #include "cocos2d.h"
 
+/**
+ * singleton class controlling base processes in the application
+ * - networking setup
+ * - getting running scene
+ * - options
+ * - ...
+ */
 class Controller{
 public:
     
     static Controller * getInstance();
     
+    /**
+     * start RakNet interface
+     * returns false if there is a network error
+     */
     bool startNetworking();
+    
+    /**
+     * receive boxes and executes handlers from the handlerMap
+     */
     void receiveBoxes(std::shared_ptr<HandlerMap> handlerMap);
     
+    /**
+     * saves vibrate options
+     */
     void setVibrate(bool set);
+    
+    /**
+     * returns true if there is vibration enabled in user options
+     * false otherwise
+     */
     bool isVibrateEnabled();
     
+    /**
+     * template method
+     * returns true if the running class is an instance of type T
+     */
     template<class T>
     bool isRunning()
     {
         return getScene<T>() != nullptr;
     }
     
+    /**
+     * template method
+     * returns the running class (if it is an instance of T)
+     * if it is not instance of T, returns nullptr
+     */
     template<class T>
     T * getScene()
     {
@@ -42,6 +74,9 @@ private:
     cocos2d::Director * director;
     GameNet::Connector * connector;
     
+    /**
+     * singleton - private constructor
+     */
     Controller();
 
 };

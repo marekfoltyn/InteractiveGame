@@ -4,7 +4,7 @@
 #include "StadiumScene.h"
 #include "AccelerationMessage.h"
 
-void AccelerationBoxHandler::execute(GameNet::Box * box)
+bool AccelerationBoxHandler::execute(GameNet::Box * box)
 {
     
     int id = box->getId();
@@ -13,7 +13,7 @@ void AccelerationBoxHandler::execute(GameNet::Box * box)
     if(res == false)
     {
         CCLOG("AccelerationMessage deserialization failed.");
-        return;
+        return false;
     }
     
     float x = (float) msg.getX();
@@ -28,7 +28,7 @@ void AccelerationBoxHandler::execute(GameNet::Box * box)
     if(player == nullptr)
     {
         CCLOG("Player not found in Game::players.");
-        return;
+        return false;
     }
     auto sprite = player->getSprite();
     
@@ -40,4 +40,6 @@ void AccelerationBoxHandler::execute(GameNet::Box * box)
     sprite->getPhysicsBody()->applyForce(force);
     sprite->getPhysicsBody()->applyForce(oppositePrevForce);
     sprite->getPhysicsBody()->setVelocityLimit(400*forceSize*(player->getSpeedScale()));
+    
+    return false;
 }

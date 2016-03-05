@@ -43,6 +43,7 @@ public:
     
     /** 
      * connect to a server
+     * don't use if startAsServer() was called!
      */
     void connect( RakNet::SystemAddress server );
     
@@ -64,7 +65,8 @@ public:
     Box * receive();
     
     /**
-     * get/set server name (if startAsServer() was called before)
+     * get/set server name
+     * if the Connector is not started as a server, does nothing / returns default server name
      */
     void setServerName(std::string name);
     std::string getServerName();
@@ -77,7 +79,7 @@ public:
     
     /**
      * If the instance of Connector is a client, returns the address
-     * of the server, otherwise returns RakNet::UNASSIGNED_SYSTEM_ADDRESS
+     * of the server the Connector is connected to, otherwise returns RakNet::UNASSIGNED_SYSTEM_ADDRESS
      */
     RakNet::SystemAddress getServer();
     

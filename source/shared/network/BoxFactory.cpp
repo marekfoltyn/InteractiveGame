@@ -58,6 +58,7 @@ Box * BoxFactory::kickPressed()
 
 Box * BoxFactory::kickReleased(unsigned int intensity)
 {
+    // normalize intensity (0-255)
     if( intensity > 255) intensity = 255;
     std::stringstream ss;
     ss << intensity;

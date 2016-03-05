@@ -14,7 +14,7 @@ public:
         this->game = game;
     }
     
-    void execute(GameNet::Box * box);
+    bool execute(GameNet::Box * box);
     
 private:
     

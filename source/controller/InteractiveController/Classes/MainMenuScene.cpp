@@ -51,30 +51,33 @@ bool MainMenuScene::init()
     
     this->setTag(SCENE_TAG);
     
-    initGraphics();
-    
-    // register handlers
-    handlerMap = HandlerMap::create();
     controller = Controller::getInstance();
+    handlerMap = HandlerMap::create();
     
-    // dynamic cast - ServersHandler implements two interfaces (both derived from BaseHandler),
-    // so we have to decide, which interface will be casted to BaseHandler
+    initGraphics();
+    registerHandlers();
+    scheduleBoxReceive();
+    startFindServers();
+    
+    CCLOG("MainMenuScene initialized.");
+    
+    return true;
+}
 
+
+
+void MainMenuScene::registerHandlers()
+{
     auto serverHandler = new ServersHandler(this);
     auto connectionHandler = new ConnectionResultHandler(this);
     
+    // dynamic cast - ServersHandler implements two interfaces (both derived from BaseHandler),
+    // so we have to decide, which interface will be casted to BaseHandler
     handlerMap->add(BOX_SERVER_NAME, dynamic_cast<BoxHandler*>(serverHandler));
     handlerMap->add(VOID_PING_SERVERS, dynamic_cast<VoidHandler*>(serverHandler));
     handlerMap->add(CLICK_CONNECT_TO_SERVER, dynamic_cast<ClickHandler*>(serverHandler));
     handlerMap->add(BOX_CONNECTED, connectionHandler);
     handlerMap->add(BOX_CONNECTION_FAILED, connectionHandler);
-    
-    startFindServers();
-    scheduleBoxReceive();
-    
-    CCLOG("MainMenuScene initialized.");
-    
-    return true;
 }
 
 

@@ -53,6 +53,9 @@ public:
      */
     void initGraphics();
     
+    /**
+     * start Box receiving
+     */
     void scheduleBoxReceive();
     
     /**
@@ -65,7 +68,9 @@ public:
      */
     void btnServerClicked(Ref * pSender);
     
-
+    /**
+     * show that the Controller is connecting to a server
+     */
     void setLoadingAnimation(bool set);
     
     /**
@@ -75,9 +80,21 @@ public:
     
 private:
     
-    std::shared_ptr<HandlerMap> handlerMap;
+    /**
+     * Controller instance
+     */
     Controller * controller;
-        
+    
+    /**
+     * map of event handlers interacting with this scene
+     */
+    std::shared_ptr<HandlerMap> handlerMap;
+    
+    /**
+     * registering handlers
+     */
+    void registerHandlers();
+    
     /**
      * periodically send broadcast ping to find servers
      */

@@ -12,7 +12,7 @@
 /**
  * Gameplay events - all "things" that could happen in the game and requires some processing
  * for example: click, packet receive, score point, collision and so on...
- * Each event has own code. This codes are based on RakNet packet numbering, but it is not
+ * Each event has own code. Some codes  are based on RakNet packet numbering, but it is not
  * necessary (it is only easier - Box and Event numbering are the same)
  *
  * This file is shared with both the Game and the Controller
@@ -33,6 +33,8 @@
 #define BOX_KICK_RELEASED               ID_USER_PACKET_ENUM+5
 #define BOX_ADMIN                       ID_USER_PACKET_ENUM+6 // 140
 #define BOX_RESET_SCORE                 ID_USER_PACKET_ENUM+7
+
+// Box type has range 0 - 255, so it is better that non-Box events have bigger numbers
 
 #define VOID_PING_SERVERS               ID_USER_PACKET_ENUM+1000
 #define CLICK_CONNECT_TO_SERVER         ID_USER_PACKET_ENUM+1001

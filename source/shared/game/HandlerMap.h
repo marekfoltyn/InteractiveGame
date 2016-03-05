@@ -14,17 +14,51 @@
 
 #include <map>
 
+/**
+ * map of handlers
+ * key is the event type defined in GameplayEvents.h
+ * and value is the Handler
+ */
 class HandlerMap{
 public:
     
-    HandlerMap();
-    ~HandlerMap();
-    
+    /**
+     * handlerMap creation
+     */
     static std::shared_ptr<HandlerMap> create();
     
+    /**
+     * constructor - it is better ot call HandlerMap::create()
+     */
+    HandlerMap();
+    
+    /**
+     * destructor - deletes all handler pointers including
+     * the handler data
+     */
+    ~HandlerMap();
+    
+    /**
+     * add a handler (does not matter what type)
+     */
     void add(int eventType, BaseHandler * handler);
+    
+    /**
+     * remove a handler defined via eventType
+     */
     void remove(int eventType);
+    
+    /**
+     * deletes all handler pointers including
+     * the handler data
+     */
     void clear();
+    
+    /**
+     * get handler
+     * if not found, returns EmptyUniversalHandler, that does nothing
+     * but the log the event
+     */
     
     VoidHandler         * getVoidHandler      (int eventType);
     BoxHandler          * getBoxHandler       (int eventType);
@@ -36,8 +70,6 @@ public:
     
     
 private:
-    
-    static HandlerMap * instance;
     
     std::map<int, BaseHandler *> handlerMap;
     

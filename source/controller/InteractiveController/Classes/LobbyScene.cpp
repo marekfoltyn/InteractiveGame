@@ -139,52 +139,6 @@ void LobbyScene::initGraphics()
 
 
 
-/*void LobbyScene::receiveAllBoxes()
-{
-    Connector * c = Connector::getInstance();
-    Box * box;
-    
-    // c->receive() returns 0, if no received packet is in the queue
-    while( (box = c->receive()) != nullptr )
-    {
-        switch ( box->getType() )
-        {
-            case BOX_CONNECTION_LOST:
-            {
-                CCLOG("Connection lost.");
-                onConnectionLost(box);
-                break;
-            }
-              
-            case BOX_COLLISION:
-            {
-#if ( CC_TARGET_PLATFORM != CC_PLATFORM_IOS ) // iOS ingores vibrate duration - too long vibrations
-                Device::vibrate(0.05);
-#endif
-                CCLOG("Collision!");
-                break;
-            }
-                
-            case BOX_ADMIN:
-            {
-                auto pause = this->getChildByName(NODE_PAUSE);
-                pause->setVisible(true);
-            }
-                
-            default:
-            {
-                // packet ignored
-                CCLOG("Packet %d ignored.", box->getType() );
-                break;
-            }
-        }
-        
-        box->deallocate();
-    }
-}*/
-
-
-
 void LobbyScene::btnOnDisconnect(Ref * sender, ui::Widget::TouchEventType type)
 {
     auto button = dynamic_cast<cocos2d::ui::Button*>(sender);
@@ -248,6 +202,7 @@ void LobbyScene::btnOnDisconnect(Ref * sender, ui::Widget::TouchEventType type)
 }
 
 
+
 void LobbyScene::btnKickClick(Ref * sender, ui::Widget::TouchEventType type)
 {
     switch (type)
@@ -273,7 +228,7 @@ void LobbyScene::btnKickClick(Ref * sender, ui::Widget::TouchEventType type)
             
             auto button = dynamic_cast<ui::Button*>(sender);
             auto timer = dynamic_cast<Util::Timer*>( (Util::Timer*)button->getUserData() );
-            std::chrono::milliseconds elapsed = timer->Elapsed();
+            std::chrono::milliseconds elapsed = timer->elapsed();
             unsigned long long int ms = elapsed.count();
 
             delete timer;

@@ -18,6 +18,7 @@ std::string ServerNameMessage::serialize()
 bool ServerNameMessage::deserialize(std::string str)
 {
     if(str.length() < 4){
+        // timestamp not included -> invalid size
         return false;
     }
     

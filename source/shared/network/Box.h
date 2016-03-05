@@ -6,6 +6,11 @@
 
 #include <string>
 
+// GameNet::Connector dependency
+namespace GameNet{
+    class Connector;
+}
+
 namespace GameNet {
 
 /**
@@ -117,6 +122,11 @@ public:
     void deallocate();
     
 private:
+    
+    /** 
+     * Connector instance
+     */
+    Connector * connector;
     
     /**
      * internal method

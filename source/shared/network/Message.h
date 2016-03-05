@@ -6,7 +6,7 @@
 namespace GameNet {
 
 /**
- * An abstract class representing custom binary data
+ * An "interface" representing custom binary data
  * that will be sent in a GameNet::Box
  * Message has two functions - serialize and deserialize data
  */

@@ -40,6 +40,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     FileUtils::getInstance()->addSearchPath("res");
     
+    // entry point to the custom game
     StartHandler().execute();
 
     return true;

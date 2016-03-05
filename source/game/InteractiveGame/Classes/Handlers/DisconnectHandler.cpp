@@ -1,7 +1,7 @@
 #include "DisconnectHandler.h"
 #include "Game.h"
 
-void DisconnectHandler::execute(GameNet::Box * box)
+bool DisconnectHandler::execute(GameNet::Box * box)
 {
     CCLOG("%s disconnected.", box->getAddress().ToString());
     
@@ -9,7 +9,7 @@ void DisconnectHandler::execute(GameNet::Box * box)
     auto player = game->getPlayer(id);
     if(player == nullptr){
         CCLOG("Player not found in the Game.");
-        return;
+        return false;
     }
     
     game->getStadiumManager()->removePlayer(player);
@@ -24,4 +24,5 @@ void DisconnectHandler::execute(GameNet::Box * box)
     }
     
     player->destroy();
+    return false;
 }
