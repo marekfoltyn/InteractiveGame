@@ -49,6 +49,12 @@
 		EA5CA2CB1C3FC933003437FF /* raknetx86_64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5CA2C91C3FC90D003437FF /* raknetx86_64.a */; };
 		EA6058AD1C6F89D500D89D46 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA6058AB1C6F89D500D89D46 /* Game.cpp */; };
 		EA6058AE1C6F89D500D89D46 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA6058AB1C6F89D500D89D46 /* Game.cpp */; };
+		EA90F3541C8F41B900C8B23C /* EmptyUniversalHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA90F3501C8F41B900C8B23C /* EmptyUniversalHandler.cpp */; };
+		EA90F3551C8F41B900C8B23C /* EmptyUniversalHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA90F3501C8F41B900C8B23C /* EmptyUniversalHandler.cpp */; };
+		EA90F3561C8F41B900C8B23C /* HandlerMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA90F3521C8F41B900C8B23C /* HandlerMap.cpp */; };
+		EA90F3571C8F41B900C8B23C /* HandlerMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA90F3521C8F41B900C8B23C /* HandlerMap.cpp */; };
+		EA90F35A1C8F41FE00C8B23C /* StartHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA90F3581C8F41FE00C8B23C /* StartHandler.cpp */; };
+		EA90F35B1C8F41FE00C8B23C /* StartHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA90F3581C8F41FE00C8B23C /* StartHandler.cpp */; };
 		EACC71881C6B54A80036DB3D /* _FindFirst.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70801C6B54A70036DB3D /* _FindFirst.cpp */; };
 		EACC71891C6B54A80036DB3D /* _FindFirst.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70801C6B54A70036DB3D /* _FindFirst.cpp */; };
 		EACC718A1C6B54A80036DB3D /* Base64Encoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70841C6B54A70036DB3D /* Base64Encoder.cpp */; };
@@ -340,6 +346,12 @@
 		EA5CA2C91C3FC90D003437FF /* raknetx86_64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = raknetx86_64.a; path = ../../../shared/network/raknet/raknetx86_64.a; sourceTree = "<group>"; };
 		EA6058AB1C6F89D500D89D46 /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		EA6058AC1C6F89D500D89D46 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		EA90F3501C8F41B900C8B23C /* EmptyUniversalHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EmptyUniversalHandler.cpp; path = ../../../shared/game/EmptyUniversalHandler.cpp; sourceTree = "<group>"; };
+		EA90F3511C8F41B900C8B23C /* EmptyUniversalHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmptyUniversalHandler.h; path = ../../../shared/game/EmptyUniversalHandler.h; sourceTree = "<group>"; };
+		EA90F3521C8F41B900C8B23C /* HandlerMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HandlerMap.cpp; path = ../../../shared/game/HandlerMap.cpp; sourceTree = "<group>"; };
+		EA90F3531C8F41B900C8B23C /* HandlerMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HandlerMap.h; path = ../../../shared/game/HandlerMap.h; sourceTree = "<group>"; };
+		EA90F3581C8F41FE00C8B23C /* StartHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StartHandler.cpp; path = Handlers/StartHandler.cpp; sourceTree = "<group>"; };
+		EA90F3591C8F41FE00C8B23C /* StartHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartHandler.h; path = Handlers/StartHandler.h; sourceTree = "<group>"; };
 		EACC03B01C81BC1A00971626 /* AbstractHandlers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AbstractHandlers.h; path = ../../../shared/game/AbstractHandlers.h; sourceTree = "<group>"; };
 		EACC70801C6B54A70036DB3D /* _FindFirst.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = _FindFirst.cpp; path = ../../../shared/network/raknet/_FindFirst.cpp; sourceTree = "<group>"; };
 		EACC70811C6B54A70036DB3D /* _FindFirst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _FindFirst.h; path = ../../../shared/network/raknet/_FindFirst.h; sourceTree = "<group>"; };
@@ -784,7 +796,6 @@
 			isa = PBXGroup;
 			children = (
 				EA3401521C7772B80085A4F4 /* Handlers */,
-				EACC03B01C81BC1A00971626 /* AbstractHandlers.h */,
 				EA76BC8B1C32D07F00F2531F /* Stadium */,
 				EA6058AB1C6F89D500D89D46 /* Game.cpp */,
 				EA6058AC1C6F89D500D89D46 /* Game.h */,
@@ -802,6 +813,11 @@
 				EAD00D1B1C78A39D0037E62E /* BoxHandlers */,
 				EAD00D1C1C78A3C30037E62E /* CollisionHandlers */,
 				EAD00D1D1C78A3D10037E62E /* voidHandlers */,
+				EACC03B01C81BC1A00971626 /* AbstractHandlers.h */,
+				EA90F3501C8F41B900C8B23C /* EmptyUniversalHandler.cpp */,
+				EA90F3511C8F41B900C8B23C /* EmptyUniversalHandler.h */,
+				EA90F3521C8F41B900C8B23C /* HandlerMap.cpp */,
+				EA90F3531C8F41B900C8B23C /* HandlerMap.h */,
 			);
 			name = Handlers;
 			sourceTree = "<group>";
@@ -1149,6 +1165,8 @@
 			children = (
 				EAD00CFD1C786F040037E62E /* ExitGameHandler.cpp */,
 				EAD00CFB1C779E410037E62E /* ExitGameHandler.h */,
+				EA90F3581C8F41FE00C8B23C /* StartHandler.cpp */,
+				EA90F3591C8F41FE00C8B23C /* StartHandler.h */,
 			);
 			name = voidHandlers;
 			sourceTree = "<group>";
@@ -1258,6 +1276,7 @@
 				EACC71BE1C6B54A80036DB3D /* Gets.cpp in Sources */,
 				EA2400621C6490C400906235 /* Player.cpp in Sources */,
 				EACC71B81C6B54A80036DB3D /* FormatString.cpp in Sources */,
+				EA90F35A1C8F41FE00C8B23C /* StartHandler.cpp in Sources */,
 				EACC722E1C6B54A80036DB3D /* Router2.cpp in Sources */,
 				EACC71E61C6B54A80036DB3D /* PacketConsoleLogger.cpp in Sources */,
 				EACC718E1C6B54A80036DB3D /* CCRakNetSlidingWindow.cpp in Sources */,
@@ -1275,6 +1294,7 @@
 				EACC71D21C6B54A80036DB3D /* LocklessTypes.cpp in Sources */,
 				EAD0D4F91C75F92400776BC3 /* ServerNameMessage.cpp in Sources */,
 				EACC71F41C6B54A80036DB3D /* Rackspace.cpp in Sources */,
+				EA90F3541C8F41B900C8B23C /* EmptyUniversalHandler.cpp in Sources */,
 				EACC72221C6B54A80036DB3D /* Rand.cpp in Sources */,
 				EACC71981C6B54A80036DB3D /* CommandParserInterface.cpp in Sources */,
 				EACC71E01C6B54A80036DB3D /* NatTypeDetectionServer.cpp in Sources */,
@@ -1365,6 +1385,7 @@
 				EACC71901C6B54A80036DB3D /* CCRakNetUDT.cpp in Sources */,
 				EACC71F61C6B54A80036DB3D /* RakMemoryOverride.cpp in Sources */,
 				EACC724C1C6B54A80036DB3D /* TelnetTransport.cpp in Sources */,
+				EA90F3561C8F41B900C8B23C /* HandlerMap.cpp in Sources */,
 				EACC720C1C6B54A80036DB3D /* RakNetSocket2_Windows_Linux.cpp in Sources */,
 				EACC71E21C6B54A80036DB3D /* NetworkIDManager.cpp in Sources */,
 				EACC71A41C6B54A80036DB3D /* DS_BytePool.cpp in Sources */,
@@ -1453,6 +1474,7 @@
 				EACC72171C6B54A80036DB3D /* RakNetTypes.cpp in Sources */,
 				EACC71E31C6B54A80036DB3D /* NetworkIDManager.cpp in Sources */,
 				EACC72491C6B54A80036DB3D /* TeamBalancer.cpp in Sources */,
+				EA90F35B1C8F41FE00C8B23C /* StartHandler.cpp in Sources */,
 				EACC71DB1C6B54A80036DB3D /* NatPunchthroughServer.cpp in Sources */,
 				EACC71AB1C6B54A80036DB3D /* DS_Table.cpp in Sources */,
 				EACC718F1C6B54A80036DB3D /* CCRakNetSlidingWindow.cpp in Sources */,
@@ -1478,6 +1500,7 @@
 				EACC719F1C6B54A80036DB3D /* DataCompressor.cpp in Sources */,
 				EACC71B71C6B54A80036DB3D /* FileOperations.cpp in Sources */,
 				EACC721D1C6B54A80036DB3D /* RakString.cpp in Sources */,
+				EA90F3551C8F41B900C8B23C /* EmptyUniversalHandler.cpp in Sources */,
 				EA5CA2C51C3FC724003437FF /* Connector.cpp in Sources */,
 				EACC71FD1C6B54A80036DB3D /* RakNetSocket2_360_720.cpp in Sources */,
 				EACC71A51C6B54A80036DB3D /* DS_BytePool.cpp in Sources */,
@@ -1500,6 +1523,7 @@
 				EACC725F1C6B54A80036DB3D /* VariadicSQLParser.cpp in Sources */,
 				EAD00D021C7872DF0037E62E /* NewPlayerHandler.cpp in Sources */,
 				EACC72091C6B54A80036DB3D /* RakNetSocket2_Vita.cpp in Sources */,
+				EA90F3571C8F41B900C8B23C /* HandlerMap.cpp in Sources */,
 				EACC723B1C6B54A80036DB3D /* SocketLayer.cpp in Sources */,
 				EACC71C91C6B54A80036DB3D /* HTTPConnection2.cpp in Sources */,
 				EACC71D91C6B54A80036DB3D /* NatPunchthroughClient.cpp in Sources */,

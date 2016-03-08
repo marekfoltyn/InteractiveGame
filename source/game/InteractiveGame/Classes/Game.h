@@ -15,6 +15,7 @@
 #include "Player.h"
 #include "StadiumScene.h"
 #include "StadiumManager.h"
+#include "HandlerMap.h"
 
 #include <map>
 
@@ -38,8 +39,21 @@ public:
      */
     void end();
     
+    /**
+     * add a Player to the player map
+     * (not to the stadium!)
+     */
     void addPlayer(Player * player);
+    
+    /**
+     * remove the Player from the player map
+     * (not from the stadium!)
+     */
     void removePlayer(Player * player);
+    
+    /**
+     * returns players map size
+     */
     int playersCount(){ return players.size(); }
     
     /**
@@ -47,28 +61,56 @@ public:
      */
     Player * getPlayer(int id);
     
+    /**
+     * returns a player (we can't determine which player)
+     * not random function, usually returns always the same player!
+     */
     Player * getRandomPlayer();
     
-    StadiumScene * getScene(){ return this->scene; }
+    /**
+     * start RakNet interface
+     * returns false if there is a network error
+     */
+    bool startNetworking();
     
     StadiumManager * getStadiumManager(){ return this->stadiumManager; }
     
 private:
     
-    static Game * instance;
-    
-    StadiumManager * stadiumManager;
-    StadiumScene * scene;
     cocos2d::Director * director;
     GameNet::Connector * connector;
     
-    std::map<int, BoxHandler *> boxHandlerMap;
+    /**
+     * singleton instance
+     */
+    static Game * instance;
+    
+    /**
+     * stadium manager - creates the stadium, resizes, manages player
+     * in it and so on
+     */
+    StadiumManager * stadiumManager;
+    
+    /**
+     * map of all game events
+     */
+    std::shared_ptr<HandlerMap> handlerMap;
+    
+    /**
+     * player map
+     */
     std::map<int, Player *> players;
     
     Game();
     
-    bool startNetworking();
+    /**
+     * add game handlers to the HandlerMap
+     */
     void registerHandlers();
+    
+    /**
+     * call BoxHandler to each received Box
+     */
     void receiveBoxes();
     
 };

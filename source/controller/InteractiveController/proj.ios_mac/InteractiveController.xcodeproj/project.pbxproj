@@ -750,15 +750,6 @@
 			name = Void;
 			sourceTree = "<group>";
 		};
-		EA0767A41C88377600A5280B /* Mixed */ = {
-			isa = PBXGroup;
-			children = (
-				EAE6C6281C85135F000A8EBC /* ServersHandler.cpp */,
-				EAE6C6291C85135F000A8EBC /* ServersHandler.h */,
-			);
-			name = Mixed;
-			sourceTree = "<group>";
-		};
 		EA41891A1C33C309004B8934 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -1054,6 +1045,17 @@
 			name = RakNet;
 			sourceTree = "<group>";
 		};
+		EA90F34F1C8F407A00C8B23C /* Handlers */ = {
+			isa = PBXGroup;
+			children = (
+				EAE6C61E1C84DC74000A8EBC /* ConnectionResultHandler.cpp */,
+				EAE6C61F1C84DC74000A8EBC /* ConnectionResultHandler.h */,
+				EAE6C6281C85135F000A8EBC /* ServersHandler.cpp */,
+				EAE6C6291C85135F000A8EBC /* ServersHandler.h */,
+			);
+			name = Handlers;
+			sourceTree = "<group>";
+		};
 		EAB757491C80AAF000B80E7C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -1088,6 +1090,7 @@
 		EACC03B91C81EFEC00971626 /* MainMenu */ = {
 			isa = PBXGroup;
 			children = (
+				EA90F34F1C8F407A00C8B23C /* Handlers */,
 				EAAB6A641C59F77D00171969 /* MainMenuScene.cpp */,
 				EAAB6A631C59F77D00171969 /* MainMenuScene.h */,
 			);
@@ -1124,8 +1127,6 @@
 		EAE6C61A1C849BE9000A8EBC /* Connection */ = {
 			isa = PBXGroup;
 			children = (
-				EAE6C61E1C84DC74000A8EBC /* ConnectionResultHandler.cpp */,
-				EAE6C61F1C84DC74000A8EBC /* ConnectionResultHandler.h */,
 				EAE6C6211C84EB3F000A8EBC /* ConnectionLostHandler.cpp */,
 				EAE6C6221C84EB3F000A8EBC /* ConnectionLostHandler.h */,
 			);
@@ -1145,7 +1146,6 @@
 		EAEA97531C7E085000AF1EEA /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
-				EA0767A41C88377600A5280B /* Mixed */,
 				EA0767A01C87613B00A5280B /* Void */,
 				EAEA974D1C7DCD4800AF1EEA /* Box */,
 				EACC03AF1C81BC0500971626 /* AbstractHandlers.h */,

@@ -26,10 +26,8 @@ Game::Game()
 {
     director = cocos2d::Director::getInstance();
     connector = GameNet::Connector::getInstance();
-    
     stadiumManager = StadiumManager::create();
-    
-    boxHandlerMap = std::map<int, BoxHandler*>();
+    handlerMap = HandlerMap::create();
 }
 
 
@@ -51,13 +49,7 @@ Game * Game::getInstance()
 void Game::run()
 {
     stadiumManager->runStadium();
-    scene = stadiumManager->getScene();
     stadiumManager->addExitButton( new ExitGameHandler(this) );
-    
-    bool netOk = startNetworking();
-    if(!netOk){
-        //TODO cant't start networking, show alert and exit
-    }
     
     registerHandlers();
 }
@@ -130,10 +122,7 @@ bool Game::startNetworking()
         return false;
     }
 
-    director->getScheduler()->schedule([&](float dt)
-    {
-        this->receiveBoxes();
-    },
+    director->getScheduler()->schedule(CC_CALLBACK_0(Game::receiveBoxes, this),
     this, RECEIVE_TIMEOUT, CC_REPEAT_FOREVER, 0.0f, false, "receiveBoxes");
     
     return true;
@@ -145,21 +134,20 @@ void Game::registerHandlers()
 {
     auto logHandler = new LogHandler();
     auto disconnectHandler = new DisconnectHandler(this);
-    
-    boxHandlerMap[BOX_PLAYER_NAME] = new NewPlayerHandler(this);
-    boxHandlerMap[BOX_ACCELERATION] = new AccelerationBoxHandler(this);
-    boxHandlerMap[BOX_RESET_SCORE] = new ResetHandler(this);
-    boxHandlerMap[BOX_DISCONNECTED] = disconnectHandler;
-    boxHandlerMap[BOX_CONNECTION_LOST] = disconnectHandler;
-
-    boxHandlerMap[BOX_PING] = logHandler;
-    boxHandlerMap[BOX_NEW_CONNECTION] = logHandler;
     auto kickHandler = new KickHandler(this);
-    boxHandlerMap[BOX_KICK_PRESSED] = kickHandler;
-    boxHandlerMap[BOX_KICK_RELEASED] = kickHandler;
+    
+    handlerMap->add(BOX_PLAYER_NAME, new NewPlayerHandler(this));
+    handlerMap->add(BOX_ACCELERATION, new AccelerationBoxHandler(this));
+    handlerMap->add(BOX_RESET_SCORE, new ResetHandler(this));
+    handlerMap->add(BOX_DISCONNECTED, disconnectHandler);
+    handlerMap->add(BOX_CONNECTION_LOST, disconnectHandler);
+    handlerMap->add(BOX_PING, logHandler);
+    handlerMap->add(BOX_NEW_CONNECTION, logHandler);
+    handlerMap->add(BOX_KICK_PRESSED, kickHandler);
+    handlerMap->add(BOX_KICK_RELEASED, kickHandler);
     
     stadiumManager->addCollisionHandler(BITMASK_PLAYER, new PlayerCollisionHandler(this) );
-    //TODO: scene->addCollisionHandler(BITMASK_GOAL_SCORE, new ScoreCollisionHandler(this) );
+    //IDEA: scene->addCollisionHandler(BITMASK_GOAL_SCORE, new ScoreCollisionHandler(this) );
 }
 
 
@@ -167,15 +155,16 @@ void Game::registerHandlers()
 void Game::receiveBoxes()
 {
     GameNet::Box * box;
+    int type;
+    bool finish = false;
     
     // c->receive() returns 0, if no received packet is in the queue
     while( (box = connector->receive()) != nullptr )
     {
-        int type = box->getType();
-        if( boxHandlerMap.count(type) > 0)
-        {
-            boxHandlerMap[type]->execute(box);
-        }
+        type = box->getType();
+        finish = handlerMap->getBoxHandler(type)->execute(box); // Handler map returs always a valid handler
         box->deallocate();
+        
+        if(finish) break;
     }
 }

@@ -1,6 +1,6 @@
 #include "AppDelegate.h"
 #include "GameplayDefinitions.h"
-#include "Game.h"
+#include "StartHandler.h"
 
 AppDelegate::AppDelegate(){}
 AppDelegate::~AppDelegate(){}
@@ -46,11 +46,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setAnimationInterval(1.0 / 60);
 
     cocos2d::FileUtils::getInstance()->addSearchPath("res");
-//    FileUtils::getInstance()->addSearchPath("../../../shared/resources");
-
 
     // run the game
-    Game::getInstance()->run();
+    StartHandler().execute();
 
     return true;
 }

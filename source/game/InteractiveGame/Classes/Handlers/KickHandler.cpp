@@ -46,7 +46,7 @@ void KickHandler::released(GameNet::Box * box)
     
     auto player = game->getPlayer(id);
     auto playerSprite = player->getSprite();
-    auto ball = game->getScene()->getChildByName<cocos2d::Sprite *>(NODE_BALL);
+    auto ball = game->getStadiumManager()->getScene()->getChildByName<cocos2d::Sprite *>(NODE_BALL);
     
     float distance = ball->getPosition().distance( playerSprite->getPosition() );
     
