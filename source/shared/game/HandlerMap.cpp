@@ -43,7 +43,7 @@ void HandlerMap::remove(int eventType)
 {
     if(handlerMap.count(eventType) == 0)
     {
-        delete handlerMap[eventType];
+        //delete handlerMap[eventType];
         handlerMap.erase(eventType);
     }
 }
@@ -52,9 +52,9 @@ void HandlerMap::remove(int eventType)
 
 void HandlerMap::clear()
 {
-    for(auto it=handlerMap.begin(); it!=handlerMap.end(); it++){
+    /*for(auto it=handlerMap.begin(); it!=handlerMap.end(); it++){
         delete it->second;
-    }
+    }*/
 
     handlerMap.clear();
 }
