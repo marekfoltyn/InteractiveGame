@@ -33,10 +33,13 @@
 #define BOX_KICK_RELEASED               ID_USER_PACKET_ENUM+5
 #define BOX_ADMIN                       ID_USER_PACKET_ENUM+6 // 140
 #define BOX_RESET_SCORE                 ID_USER_PACKET_ENUM+7
+#define BOX_TEAM_SELECT                 ID_USER_PACKET_ENUM+8
 
 // Box type has range 0 - 255, so it is better that non-Box events have bigger numbers
 
 #define VOID_PING_SERVERS               ID_USER_PACKET_ENUM+1000
 #define CLICK_CONNECT_TO_SERVER         ID_USER_PACKET_ENUM+1001
+#define TOUCH_TEAM_SELECT               ID_USER_PACKET_ENUM+1002
+#define VOID_DISCONNECT                 ID_USER_PACKET_ENUM+1003
 
 #endif /* GameplayEvents_h */

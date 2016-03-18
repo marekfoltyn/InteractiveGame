@@ -19,6 +19,7 @@
 #include "ResetHandler.h"
 #include "KickHandler.h"
 #include "PlayerCollisionHandler.h"
+#include "TeamSelectHandler.h"
 
 Game * Game::instance = nullptr;
 
@@ -145,6 +146,7 @@ void Game::registerHandlers()
     handlerMap->add(BOX_NEW_CONNECTION, logHandler);
     handlerMap->add(BOX_KICK_PRESSED, kickHandler);
     handlerMap->add(BOX_KICK_RELEASED, kickHandler);
+    handlerMap->add(BOX_TEAM_SELECT, new TeamSelectHandler(this));
     
     stadiumManager->addCollisionHandler(BITMASK_PLAYER, new PlayerCollisionHandler(this) );
     //IDEA: scene->addCollisionHandler(BITMASK_GOAL_SCORE, new ScoreCollisionHandler(this) );
@@ -166,5 +168,39 @@ void Game::receiveBoxes()
         box->deallocate();
         
         if(finish) break;
+    }
+}
+
+std::string Game::getAutoTeam()
+{
+    int red  = 0;
+    int blue = 0;
+    
+    // get team balance
+    for(auto it = players.begin(); it != players.end(); ++it)
+    {
+        if(it->second->getTeam().compare(TEAM_BLUE) == 0)
+        {
+            blue++;
+        }
+        else if(it->second->getTeam().compare(TEAM_RED) == 0)
+        {
+            red++;
+        }
+    }
+    
+    if(red < blue)
+    {
+        return TEAM_RED;
+    }
+    else if( blue < red)
+    {
+        return TEAM_BLUE;
+    }
+    else
+    {
+        // randomly select team
+        int random = RandomHelper::random_int(0, 1);
+        return (random == 0) ? TEAM_BLUE : TEAM_RED;
     }
 }

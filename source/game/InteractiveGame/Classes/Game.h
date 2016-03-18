@@ -68,6 +68,12 @@ public:
     Player * getRandomPlayer();
     
     /**
+     * auto assigns team color
+     * @return team color of the new player
+     */
+    std::string getAutoTeam();
+    
+    /**
      * start RakNet interface
      * returns false if there is a network error
      */

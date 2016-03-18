@@ -9,6 +9,8 @@
 #include "StartHandler.h"
 #include "MainMenuScene.h"
 
+#include "WindowManager.h"
+
 StartHandler::StartHandler()
 {
     controller = Controller::getInstance();
@@ -34,6 +36,8 @@ void StartHandler::execute()
 void StartHandler::showMainMenu()
 {
     // create a scene. it's an autorelease object
-    auto scene = MainMenuScene::createScene();
-    director->runWithScene(scene);
+    auto menu = MainMenuScene::createScene();
+    director->runWithScene(menu);
+  
+    //auto scene = dynamic_cast<MainMenuScene*>(menu->getChildByTag(MainMenuScene::SCENE_TAG));
 }

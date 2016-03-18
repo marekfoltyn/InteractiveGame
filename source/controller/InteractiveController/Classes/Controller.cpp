@@ -29,6 +29,7 @@ Controller::Controller()
 {
     director = cocos2d::Director::getInstance();
     connector = GameNet::Connector::getInstance();
+    admin = false;
 }
 
 
@@ -79,3 +80,9 @@ bool Controller::isVibrateEnabled()
     return def->getBoolForKey(SETTINGS_VIBRATE, true);
 }
 
+
+
+void Controller::setAdmin(bool status)
+{
+    admin = status;
+}

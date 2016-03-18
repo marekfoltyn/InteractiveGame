@@ -47,6 +47,11 @@ public:
      * implement the "static create()" method manually
      */
     CREATE_FUNC(MainMenuScene);
+
+    /**
+     * get the real MainMenuScene object (Layer)
+     */
+    MainMenuScene * getScene();
     
     /**
      * load and set up cocos nodes and graphics in init()

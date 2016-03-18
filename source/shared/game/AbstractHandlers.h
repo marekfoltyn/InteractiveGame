@@ -30,6 +30,9 @@ public:
 
 /**
  * Handler that processes a received Box
+ *
+ * @return true if the active scene should stop Box receiving (before scene replace)
+ * - keep received boxes in a queue to receive by next scene
  */
 class BoxHandler: public BaseHandler{
 public:

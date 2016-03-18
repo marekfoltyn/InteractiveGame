@@ -17,7 +17,6 @@ USING_NS_CC;
 
 #define FONT_OPACITY_HALF 100
 
-#define COLOR_GREEN Color4B(11, 112, 14, 255)
 #define COLOR_BG_TRANSPARENT Color4B(255,255,255,24)
 
 #define ACTION_RECEIVE_BOXES 100
@@ -32,12 +31,20 @@ Scene * MainMenuScene::createScene()
     
     // 'layer' is an autorelease object
     auto layer = MainMenuScene::create();
+    layer->setTag(SCENE_TAG);
 
     // add layer as a child to scene
     scene->addChild(layer);
 
     // return the scene
     return scene;
+}
+
+
+
+MainMenuScene * MainMenuScene::getScene()
+{
+    return dynamic_cast<MainMenuScene*>( this->getChildByTag(SCENE_TAG) );
 }
 
 
@@ -53,6 +60,9 @@ bool MainMenuScene::init()
     
     controller = Controller::getInstance();
     handlerMap = HandlerMap::create();
+    
+    // reset admin status
+    controller->setAdmin(false);
     
     initGraphics();
     registerHandlers();

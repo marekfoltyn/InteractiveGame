@@ -10,6 +10,7 @@
 #define Admin_hpp
 
 #include "AbstractHandlers.h"
+#include "Controller.h"
 
 class LobbyScene;
 
@@ -29,6 +30,7 @@ public:
 private:
   
     Director * director;
+    Controller * controller;
     LobbyScene * scene;
     
 };

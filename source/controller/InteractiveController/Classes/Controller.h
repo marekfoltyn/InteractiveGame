@@ -68,11 +68,22 @@ public:
             return director->getRunningScene()->getChildByTag<T*>(T::SCENE_TAG);
     }
     
+    /**
+     * when admin box received, set this controller as an admin
+     */
+    void setAdmin(bool admin);
+    
+    /**
+     * check if this player is an admin
+     */
+    bool isAdmin(){return admin;}
+    
 private:
     
     static Controller * instance;
     cocos2d::Director * director;
     GameNet::Connector * connector;
+    bool admin;
     
     /**
      * singleton - private constructor

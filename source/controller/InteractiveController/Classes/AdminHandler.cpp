@@ -14,14 +14,20 @@
 AdminHandler::AdminHandler(LobbyScene * scene)
 {
     director = Director::getInstance();
+    controller = Controller::getInstance();
     this->scene = scene;
 }
 
 bool AdminHandler::execute( GameNet::Box * box )
 {
-    CCLOG("Showing admin button...");
-    auto pause = scene->getChildByName(LobbyScene::NODE_PAUSE);
-    pause->setVisible(true);
-
+    controller->setAdmin(true);
+    
+    if(scene != nullptr)
+    {
+        CCLOG("Showing admin button...");
+        auto pause = scene->getChildByName(LobbyScene::NODE_PAUSE);
+        pause->setVisible(true);
+    }
+    
     return false;
 }

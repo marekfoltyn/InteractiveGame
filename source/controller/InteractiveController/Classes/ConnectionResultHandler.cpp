@@ -9,7 +9,7 @@
 #include "GameplayDefinitions.h"
 #include "ConnectionResultHandler.h"
 #include "BoxFactory.h"
-#include "LobbyScene.h"
+#include "TeamScene.h"
 #include "MainMenuScene.h"
 
 ConnectionResultHandler::ConnectionResultHandler(MainMenuScene * scene)
@@ -40,7 +40,7 @@ bool ConnectionResultHandler::execute( GameNet::Box * box )
         scene->unscheduleAllCallbacks();
         
         // show next scene
-        auto nextScene = LobbyScene::createScene();
+        auto nextScene = TeamScene::createScene();
         director->replaceScene(TransitionSlideInB::create(TIME_SCENE_TRANSITION, nextScene));
         
         // stop receiving loop (the rest will receive next scene)

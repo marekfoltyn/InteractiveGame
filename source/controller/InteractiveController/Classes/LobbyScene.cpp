@@ -7,6 +7,7 @@
 
 #include "BoxFactory.h"
 #include "AdminHandler.h"
+#include "ConnectionLostHandler.h"
 
 #include "Timer.cpp"
 
@@ -46,9 +47,9 @@ bool LobbyScene::init()
     
     this->setTag(SCENE_TAG);
     
-    //auto rootNode = CSLoader::createNode("MainScene.csb");
-    //addChild(rootNode);
-         
+    handlerMap = HandlerMap::create();
+    controller = Controller::getInstance();
+
     initGraphics();
     
     // init accelerometer
@@ -57,11 +58,8 @@ bool LobbyScene::init()
     Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
     
     // register handlers
-    handlerMap = HandlerMap::create();
-    controller = Controller::getInstance();
-    
-    // register handlers
     handlerMap->add(BOX_ADMIN, new AdminHandler(this));
+    handlerMap->add(BOX_CONNECTION_LOST, new ConnectionLostHandler());
     
     // schedule box receiving
     this->schedule([&](float dt)
@@ -113,7 +111,7 @@ void LobbyScene::initGraphics()
     disconnect->setPosition(Vec2( origin.x + border, origin.y + visibleSize.height - border ));
     this->addChild(disconnect);
     
-    // leave button
+    // admin button
     auto reset = ui::Button::create();
     reset->setTitleText("reset");
     reset->setTitleFontName("Vanilla.ttf");
@@ -125,7 +123,10 @@ void LobbyScene::initGraphics()
     border = reset->getContentSize().height/4;
     reset->setPosition(Vec2( origin.x + border, origin.y + border ));
     reset->setName(NODE_PAUSE);
-    reset->setVisible(false);
+    if(controller->isAdmin() == false)
+    {
+        reset->setVisible(false);
+    }
     this->addChild(reset);
     
     // force-loading image

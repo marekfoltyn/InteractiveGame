@@ -76,3 +76,16 @@ void Player::setSpeedScale(float scale)
         speedScale = scale;
     }
 }
+
+void Player::setTeam(std::string newTeam)
+{
+    if(newTeam == TEAM_RED)
+    {
+        sprite->setTexture("player_red.png");
+    }
+    else if(newTeam == TEAM_BLUE)
+    {
+        sprite->setTexture("player_blue.png");
+    }
+    team = newTeam;
+}

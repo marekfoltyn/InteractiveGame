@@ -7,7 +7,8 @@
 //
 
 #include "ConnectionLostHandler.h"
-#include "BoxFactory.h"
+#include "MainMenuScene.h"
+#include "WindowManager.h"
 
 ConnectionLostHandler::ConnectionLostHandler()
 {
@@ -18,11 +19,11 @@ bool ConnectionLostHandler::execute( GameNet::Box * box )
 {
     CCLOG("Connection lost. Returning to main menu.");
     
-    // show next scene
-    //menuManager->runMainMenu();
+    auto menu = MainMenuScene::createScene();
+    director->replaceScene(menu);
     
-    //IDEA: menuManager->getMainMenuScene()->showConnectionLostWindow();
-    //TODO
+    auto scene = dynamic_cast<MainMenuScene*>(menu->getChildByTag(MainMenuScene::SCENE_TAG));
+    WindowManager::showConnectionLostDialog(scene);
     
     return false;
 }

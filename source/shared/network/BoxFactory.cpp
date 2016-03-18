@@ -78,3 +78,13 @@ Box * BoxFactory::playerName(std::string name)
     box->setPriority(PacketPriority::LOW_PRIORITY);
     return box;
 }
+
+
+Box * BoxFactory::teamSelection(std::string team)
+{
+    Box * box = Box::create(team);
+    box->setType(BOX_TEAM_SELECT);
+    box->setReliability(PacketReliability::RELIABLE);
+    box->setPriority(PacketPriority::LOW_PRIORITY);
+    return box;
+}

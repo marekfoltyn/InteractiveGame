@@ -42,6 +42,12 @@ public:
     std::string getName(){ return name; }
     
     /**
+     * team manipulation
+     */
+    std::string getTeam(){return team;}
+    void setTeam(std::string newTeam);
+    
+    /**
      * get the player's id based on the SystemAddress hash
      */
     int getId();
@@ -93,6 +99,11 @@ private:
      * player's name
      */
     std::string name;
+    
+    /**
+     * player's team color
+     */
+    std::string team;
     
     /**
      * force applied in previously received AccelerationBlok

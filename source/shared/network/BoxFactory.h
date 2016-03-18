@@ -5,7 +5,7 @@
 #include "Box.h"
 
 namespace GameNet {
-
+    
 /**
  * class responsible for proper Box objects creation
  * every Box (except RakNet's internal packets) sould be created via BoxFactory
@@ -57,6 +57,10 @@ public:
      */
     static Box * playerName(std::string name);
     
+    /**
+     * player's team selection
+     */
+    static Box * teamSelection(std::string team);
 };
 }
 

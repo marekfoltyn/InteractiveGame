@@ -20,12 +20,20 @@ public:
     
     static const int LEFT  = 0;
     static const int RIGHT = 1;
+    
+    // fade out duration when a dialog is canceled (in seconds)
+    constexpr static const float DIALOG_FADEOUT_DURATION = 0.5;
 
 };
 
+#define COLOR_GREEN Color4B(11, 112, 14, 255)
+
+#define TEAM_BLUE "blue"
+#define TEAM_RED  "red"
+#define TEAM_AUTO "auto"
 
 // toggle debug
-#define DEBUG
+//#define DEBUG
 
 #define SETTINGS_VIBRATE "vibrate"
 
