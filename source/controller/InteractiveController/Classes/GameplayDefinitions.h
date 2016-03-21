@@ -28,7 +28,18 @@ public:
     
     static const int OPACITY_FULL = 255;
     static const int OPACITY_HALF = 123;
+    
+    constexpr static const float TIME_KICKBONUS_MIN = 5.0;
+    constexpr static const float TIME_KICKBONUS_MAX = 20.0;
+    constexpr static const float KICKBONUS_MULTIPLIER = 2.0;
+    
+    static const unsigned int TIME_MATCH_SHORT  = 180;     // 3 min
+    static const unsigned int TIME_MATCH_MEDIUM = 300;     // 5 min
+    static const unsigned int TIME_MATCH_LONG   = 600;     // 10 min
 
+    constexpr static const float TIME_GENERATE_BONUS_MIN = 5.0;
+    constexpr static const float TIME_GENERATE_BONUS_MAX = 60.0;
+    
 };
 
 #define COLOR_GREEN Color4B(11, 112, 14, 255)
@@ -66,6 +77,7 @@ public:
 
 
 #define SCHEDULE_KICK_SLOWING "kickSlowing"
+#define SCHEDULE_GENERATE_BONUS "generateBonus"
 
 
 #define BORDER_DEFAULT 50

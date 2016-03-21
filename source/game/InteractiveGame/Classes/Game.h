@@ -79,7 +79,26 @@ public:
      */
     bool startNetworking();
     
+    /**
+     * get the game state
+     */
+    bool isPlaying(){ return playing; }
+
+    /**
+     * StadiumManager getter
+     */
     StadiumManager * getStadiumManager(){ return this->stadiumManager; }
+    
+    /* IDEAS:
+     
+     void startBonusGenerating();
+     void stopBonusGenerating();     // including removing bonuses in the pitch
+     
+     void startMatch();
+     
+     */
+
+    
     
 private:
     
@@ -100,7 +119,17 @@ private:
     /**
      * map of all game events
      */
-    std::shared_ptr<HandlerMap> handlerMap;
+    HandlerMap * handlerMap;
+    
+    /**
+     * state of the stadium - lobby (false) or playing a match (true)
+     */
+    bool playing;
+    
+    /**
+     * selected match duration
+     */
+    unsigned int matchDuration;
     
     /**
      * player map

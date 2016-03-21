@@ -29,6 +29,7 @@ Game::Game()
     connector = GameNet::Connector::getInstance();
     stadiumManager = StadiumManager::create();
     handlerMap = HandlerMap::create();
+    matchDuration = Definitions::TIME_MATCH_SHORT;
 }
 
 
@@ -49,6 +50,7 @@ Game * Game::getInstance()
 
 void Game::run()
 {
+    playing = false;
     stadiumManager->runStadium();
     stadiumManager->addExitButton( new ExitGameHandler(this) );
     

@@ -68,7 +68,7 @@ void KickHandler::released(GameNet::Box * box)
         auto direction = ball->getPosition() - playerSprite->getPosition();
         direction.normalize();
         int kickForce = 200000 + 800000 * force;
-        auto impulse = direction * kickForce;
+        auto impulse = direction * kickForce * (player->getKickMultiplier());
         //impulse.negate();
         ball->getPhysicsBody()->applyImpulse( impulse );
         

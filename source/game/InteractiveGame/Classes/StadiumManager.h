@@ -38,6 +38,18 @@ public:
     
     void addCollisionHandler(int bitmask, CollisionHandler * handler);
     
+    /* IDEAS:
+     
+    void setPitchSize(PitchSize size);
+     
+    void prepareLobby();
+     
+    void prepareMatch();
+     
+    
+     
+     */
+    
     StadiumScene * getScene(){return scene; }
     
 private:
@@ -50,6 +62,19 @@ private:
     cocos2d::Size visibleSize;
     cocos2d::Vec2 origin;
 
+    /* IDEAS:
+     
+    PitchSize pitchSize;
+    
+    void removeBonuses();
+     
+    void setPlayerListEnabled(bool enabled);
+    
+    void setGameResultEnabled(bool enabled);
+    
+     
+     
+     */
     
 };
 

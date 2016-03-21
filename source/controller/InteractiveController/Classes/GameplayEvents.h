@@ -38,9 +38,12 @@
 // Box type has range 0 - 255, so it is better that non-Box events have bigger numbers
 
 #define VOID_PING_SERVERS               ID_USER_PACKET_ENUM+1000
-#define CLICK_CONNECT_TO_SERVER         ID_USER_PACKET_ENUM+1001
-#define TOUCH_TEAM_SELECT               ID_USER_PACKET_ENUM+1002
-#define VOID_DISCONNECT                 ID_USER_PACKET_ENUM+1003
-#define TOUCH_TOGGLE_VIBRATE            ID_USER_PACKET_ENUM+1004
+#define VOID_GENERATE_BONUS             ID_USER_PACKET_ENUM+1001
+#define VOID_DISCONNECT                 ID_USER_PACKET_ENUM+1002
+
+#define TOUCH_TEAM_SELECT               ID_USER_PACKET_ENUM+2000
+#define TOUCH_TOGGLE_VIBRATE            ID_USER_PACKET_ENUM+2001
+
+#define CLICK_CONNECT_TO_SERVER         ID_USER_PACKET_ENUM+3000
 
 #endif /* GameplayEvents_h */

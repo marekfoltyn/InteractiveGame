@@ -32,14 +32,14 @@ bool AccelerationBoxHandler::execute(GameNet::Box * box)
     }
     auto sprite = player->getSprite();
     
-    cocos2d::Vec2 force = cocos2d::Vec2(1000000000*x, 1000000000*y);
+    cocos2d::Vec2 force = cocos2d::Vec2(1000000000*x*(player->getSpeedMultiplier()), 1000000000*y*(player->getSpeedMultiplier()));
     cocos2d::Vec2 prevForce = player->getPreviousForce();
     cocos2d::Vec2 oppositePrevForce = cocos2d::Vec2( - prevForce.x, - prevForce.y );
     player->setAppliedForce(force);
     
     sprite->getPhysicsBody()->applyForce(force);
     sprite->getPhysicsBody()->applyForce(oppositePrevForce);
-    sprite->getPhysicsBody()->setVelocityLimit(400*forceSize*(player->getSpeedScale()));
+    sprite->getPhysicsBody()->setVelocityLimit(400*forceSize*(player->getSpeedScale())*(player->getSpeedMultiplier()));
     
     return false;
 }

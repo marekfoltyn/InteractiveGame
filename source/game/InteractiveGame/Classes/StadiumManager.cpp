@@ -11,6 +11,7 @@
 #include "AbstractHandlers.h"
 #include "PlayerCollisionHandler.h"
 #include "cocos2d.h"
+#include "KickBonus.h"
 
 USING_NS_CC;
 

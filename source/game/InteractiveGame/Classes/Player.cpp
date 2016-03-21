@@ -32,6 +32,8 @@ Player::Player(RakNet::SystemAddress address, std::string name)
 
     previousForce = cocos2d::Vec2(0,0);
     speedScale = 1;
+    kickMultiplier = 1;
+    speedMultiplier = 1;
 }
 
 
@@ -88,4 +90,11 @@ void Player::setTeam(std::string newTeam)
         sprite->setTexture("player_blue.png");
     }
     team = newTeam;
+}
+
+
+
+void Player::setKickMultiplier(float multiplier)
+{
+    kickMultiplier = multiplier;
 }

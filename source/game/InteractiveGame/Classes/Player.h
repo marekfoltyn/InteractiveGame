@@ -83,6 +83,19 @@ public:
     void setSpeedScale(float scale);
     float getSpeedScale(){ return speedScale; }
     
+    /**
+     * kickMultiplier getter / setter
+     */
+    void setKickMultiplier(float multiplier);
+    float getKickMultiplier(){ return kickMultiplier; }
+
+    /**
+     * speedMultiplier getter / setter
+     */
+    void setSpeedMultiplier(float multiplier);
+    float getSpeedMultiplier(){ return speedMultiplier; }
+
+    
 private:
     
     /**
@@ -118,9 +131,19 @@ private:
     bool admin;
     
     /**
-     * interval [0,1] for maximum velocity scaling (kick loading, bonuses...)
+     * interval [0,1] for maximum velocity scaling (kick loading)
      */
     float speedScale;
+    
+    /**
+     * bonus kick scale factor (normal is 1) - multiplies kick force
+     */
+    float kickMultiplier;
+
+    /**
+     * bonus speed scale factor (normal is 1) - multiplies velocity
+     */
+    float speedMultiplier;
     
     /**
      * private constructor - use Player::create()
