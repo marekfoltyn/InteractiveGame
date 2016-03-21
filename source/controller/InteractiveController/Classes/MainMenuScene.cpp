@@ -8,6 +8,7 @@
 
 #include "ServersHandler.h"
 #include "ConnectionResultHandler.h"
+#include "ToggleVibrateHandler.h"
 
 USING_NS_CC;
 
@@ -23,6 +24,7 @@ USING_NS_CC;
 
 const std::string MainMenuScene::NODE_SERVERS = "menuView";
 const std::string MainMenuScene::NODE_LOGO    = "logo";
+const std::string MainMenuScene::NODE_VIBRATE = "vibrate";
 
 Scene * MainMenuScene::createScene()
 {
@@ -88,6 +90,7 @@ void MainMenuScene::registerHandlers()
     handlerMap->add(CLICK_CONNECT_TO_SERVER, dynamic_cast<ClickHandler*>(serverHandler));
     handlerMap->add(BOX_CONNECTED, connectionHandler);
     handlerMap->add(BOX_CONNECTION_FAILED, connectionHandler);
+    handlerMap->add(TOUCH_TOGGLE_VIBRATE, new ToggleVibrateHandler());
 }
 
 
@@ -199,11 +202,31 @@ void MainMenuScene::initGraphics()
     menuView->setDirection( ui::ScrollView::Direction::VERTICAL );
     menuView->setContentSize(cocos2d::Size(visibleSize.width/2 - 2*BORDER_DEFAULT, menuView->getPosition().y - origin.y));
     menuView->setInnerContainerSize( menuView->getContentSize() );
-    menuView->setAnchorPoint(Vec2( 0.5, 1));
+    menuView->setAnchorPoint(Vec2(0.5, 1));
     menuView->setBounceEnabled(true);
     menuView->setScrollBarEnabled(false);
     this->addChild(menuView);
     
+    // vibrate button
+    auto btnVibrate = ui::Button::create("vibrate.png");
+    btnVibrate->setName(NODE_VIBRATE);
+    btnVibrate->setAnchorPoint(Vec2(0.5, 1));
+    btnVibrate->setPosition(Vec2(origin.x + visibleSize.width * 3.0/4, txtName->getPosition().y - txtName->getContentSize().height - 2*BORDER_DEFAULT));
+    btnVibrate->addTouchEventListener([&](Ref * sender, ui::Widget::TouchEventType type){
+        handlerMap->getTouchHandler(TOUCH_TOGGLE_VIBRATE)->execute(sender, type);
+    });
+    if( !controller->isVibrateEnabled() )
+    {
+        btnVibrate->setOpacity(Definitions::OPACITY_HALF);
+    }
+    // iOS does not use vibration settings
+    #if ( CC_TARGET_PLATFORM == CC_PLATFORM_IOS )
+    // show even on iOS if debug mode is enabled (I want to see it in iOS simulator)
+    #ifndef DEBUG
+        btnVibrate->setVisible(false);
+    #endif
+    #endif
+    this->addChild(btnVibrate);
 }
 
 

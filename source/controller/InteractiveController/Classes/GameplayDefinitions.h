@@ -22,7 +22,12 @@ public:
     static const int RIGHT = 1;
     
     // fade out duration when a dialog is canceled (in seconds)
-    constexpr static const float DIALOG_FADEOUT_DURATION = 0.5;
+    constexpr static const float DIALOG_FADEOUT_DURATION = 0.25;
+    
+    constexpr static const float TIME_COLLISION_VIBRATION = 0.05;
+    
+    static const int OPACITY_FULL = 255;
+    static const int OPACITY_HALF = 123;
 
 };
 
@@ -33,7 +38,7 @@ public:
 #define TEAM_AUTO "auto"
 
 // toggle debug
-//#define DEBUG
+#define DEBUG
 
 #define SETTINGS_VIBRATE "vibrate"
 

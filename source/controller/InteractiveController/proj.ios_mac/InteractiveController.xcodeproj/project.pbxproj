@@ -61,6 +61,8 @@
 		EA36A80F1C7CD74D000E1636 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA36A80E1C7CD74D000E1636 /* Timer.cpp */; };
 		EA36CE221C91BEE900A498A7 /* TeamScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA36CE201C91BEE900A498A7 /* TeamScene.cpp */; };
 		EA36CE251C91C62600A498A7 /* WindowManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA36CE241C91C62600A498A7 /* WindowManager.cpp */; };
+		EA59272F1C9FD5E5005ECB92 /* CollisionBoxHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA59272D1C9FD5E5005ECB92 /* CollisionBoxHandler.cpp */; };
+		EA5927321C9FE599005ECB92 /* ToggleVibrateHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5927301C9FE599005ECB92 /* ToggleVibrateHandler.cpp */; };
 		EA8840B41C9C1E9200DEC852 /* DisconnectHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA8840B21C9C1E9200DEC852 /* DisconnectHandler.cpp */; };
 		EA8840B71C9C21E600DEC852 /* TeamSelectHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA8840B51C9C21E600DEC852 /* TeamSelectHandler.cpp */; };
 		EA888A021C58A18F00534275 /* LobbyScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888A001C58A18F00534275 /* LobbyScene.cpp */; };
@@ -253,6 +255,10 @@
 		EA36CE211C91BEE900A498A7 /* TeamScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamScene.h; sourceTree = "<group>"; };
 		EA36CE231C91C61900A498A7 /* WindowManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowManager.h; sourceTree = "<group>"; };
 		EA36CE241C91C62600A498A7 /* WindowManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WindowManager.cpp; sourceTree = "<group>"; };
+		EA59272D1C9FD5E5005ECB92 /* CollisionBoxHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CollisionBoxHandler.cpp; sourceTree = "<group>"; };
+		EA59272E1C9FD5E5005ECB92 /* CollisionBoxHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollisionBoxHandler.h; sourceTree = "<group>"; };
+		EA5927301C9FE599005ECB92 /* ToggleVibrateHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToggleVibrateHandler.cpp; sourceTree = "<group>"; };
+		EA5927311C9FE599005ECB92 /* ToggleVibrateHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToggleVibrateHandler.h; sourceTree = "<group>"; };
 		EA651D891C46DC02003EE325 /* raknetx86_64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = raknetx86_64.a; path = ../../../shared/network/raknet/raknetx86_64.a; sourceTree = "<group>"; };
 		EA8840B21C9C1E9200DEC852 /* DisconnectHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DisconnectHandler.cpp; sourceTree = "<group>"; };
 		EA8840B31C9C1E9200DEC852 /* DisconnectHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisconnectHandler.h; sourceTree = "<group>"; };
@@ -1062,6 +1068,8 @@
 			children = (
 				EA8840B51C9C21E600DEC852 /* TeamSelectHandler.cpp */,
 				EA8840B61C9C21E600DEC852 /* TeamSelectHandler.h */,
+				EA5927301C9FE599005ECB92 /* ToggleVibrateHandler.cpp */,
+				EA5927311C9FE599005ECB92 /* ToggleVibrateHandler.h */,
 			);
 			name = Handlers;
 			sourceTree = "<group>";
@@ -1167,6 +1175,8 @@
 				EAE6C61A1C849BE9000A8EBC /* Connection */,
 				EA0767A51C883C4300A5280B /* AdminHandler.cpp */,
 				EA0767A61C883C4300A5280B /* AdminHandler.h */,
+				EA59272D1C9FD5E5005ECB92 /* CollisionBoxHandler.cpp */,
+				EA59272E1C9FD5E5005ECB92 /* CollisionBoxHandler.h */,
 			);
 			name = Box;
 			sourceTree = "<group>";
@@ -1332,6 +1342,7 @@
 				EA888B541C58A6B200534275 /* RakPeer.cpp in Sources */,
 				EA888B291C58A6B200534275 /* gettimeofday.cpp in Sources */,
 				EA888B251C58A6B200534275 /* FullyConnectedMesh2.cpp in Sources */,
+				EA59272F1C9FD5E5005ECB92 /* CollisionBoxHandler.cpp in Sources */,
 				EA888B691C58A6B200534275 /* SuperFastHash.cpp in Sources */,
 				EA888B2A1C58A6B200534275 /* GridSectorizer.cpp in Sources */,
 				EA888B371C58A6B200534275 /* NatTypeDetectionCommon.cpp in Sources */,
@@ -1343,6 +1354,7 @@
 				EA888B361C58A6B200534275 /* NatTypeDetectionClient.cpp in Sources */,
 				EAAB6A5C1C59F27000171969 /* Box.cpp in Sources */,
 				EA888B3B1C58A6B200534275 /* PacketConsoleLogger.cpp in Sources */,
+				EA5927321C9FE599005ECB92 /* ToggleVibrateHandler.cpp in Sources */,
 				EA888B171C58A6B200534275 /* DataCompressor.cpp in Sources */,
 				EA888A021C58A18F00534275 /* LobbyScene.cpp in Sources */,
 				EA888B3F1C58A6B200534275 /* PacketOutputWindowLogger.cpp in Sources */,

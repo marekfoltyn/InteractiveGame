@@ -29,6 +29,7 @@ public:
     
     static const std::string NODE_SERVERS;
     static const std::string NODE_LOGO;
+    static const std::string NODE_VIBRATE;
     
     /**
      * Cocos2d-x:

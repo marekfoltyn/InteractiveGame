@@ -8,6 +8,7 @@
 #include "BoxFactory.h"
 #include "AdminHandler.h"
 #include "ConnectionLostHandler.h"
+#include "CollisionBoxHandler.h"
 
 #include "Timer.cpp"
 
@@ -60,6 +61,7 @@ bool LobbyScene::init()
     // register handlers
     handlerMap->add(BOX_ADMIN, new AdminHandler(this));
     handlerMap->add(BOX_CONNECTION_LOST, new ConnectionLostHandler());
+    handlerMap->add(BOX_COLLISION, new CollisionBoxHandler());
     
     // schedule box receiving
     this->schedule([&](float dt)
@@ -161,8 +163,11 @@ void LobbyScene::btnOnDisconnect(Ref * sender, ui::Widget::TouchEventType type)
     if( type == ui::Widget::TouchEventType::BEGAN)
     {
         
-#if ( CC_TARGET_PLATFORM != CC_PLATFORM_IOS ) // iOS ingores vibrate duration - too long vibrations
-        Device::vibrate(0.05);
+#if ( CC_TARGET_PLATFORM != CC_PLATFORM_IOS ) // iOS ignores vibrate duration - too long vibrations
+        if( controller->isVibrateEnabled() )
+        {
+            Device::vibrate(0.05);
+        }
 #endif
         // disable text scaling
         button->getTitleRenderer()->setScale(1);
@@ -247,7 +252,14 @@ void LobbyScene::btnKickClick(Ref * sender, ui::Widget::TouchEventType type)
             CCLOG("Elapsed %lld milliseconds, force %d%%, data = %d", ms, (int)(force/255.0 * 100.0), force);
             
             BoxFactory::kickReleased(force)->send(); // send to server
-            Device::vibrate(0.1);
+
+#if ( CC_TARGET_PLATFORM != CC_PLATFORM_IOS ) // iOS ignores vibrate duration - too long vibrations
+            if( controller->isVibrateEnabled() )
+            {
+                Device::vibrate(0.01);
+            }
+#endif
+
             
             break;
         }
@@ -288,8 +300,11 @@ void LobbyScene::pauseClick(cocos2d::Ref *pSender, ui::Widget::TouchEventType ty
     if( type == ui::Widget::TouchEventType::BEGAN)
     {
         
-#if ( CC_TARGET_PLATFORM != CC_PLATFORM_IOS ) // iOS ingores vibrate duration - too long vibrations
-        Device::vibrate(0.05);
+#if ( CC_TARGET_PLATFORM != CC_PLATFORM_IOS ) // iOS ignores vibrate duration - too long vibrations
+        if( controller->isVibrateEnabled() )
+        {
+            Device::vibrate(0.05);
+        }
 #endif
         // disable text scaling
         button->getTitleRenderer()->setScale(1);

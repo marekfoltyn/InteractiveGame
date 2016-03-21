@@ -30,7 +30,7 @@ class EmptyUniversalHandler:
     virtual void execute( Ref * sender );
     virtual void execute( Ref * sender, ui::Widget::TouchEventType type );
     virtual void execute( Acceleration* acc, Event * unused_event );
-    virtual void execute(PhysicsBody * first, PhysicsBody * second);
+    virtual void execute( PhysicsBody * first, PhysicsBody * second );
 };
 
 

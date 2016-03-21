@@ -41,5 +41,6 @@
 #define CLICK_CONNECT_TO_SERVER         ID_USER_PACKET_ENUM+1001
 #define TOUCH_TEAM_SELECT               ID_USER_PACKET_ENUM+1002
 #define VOID_DISCONNECT                 ID_USER_PACKET_ENUM+1003
+#define TOUCH_TOGGLE_VIBRATE            ID_USER_PACKET_ENUM+1004
 
 #endif /* GameplayEvents_h */

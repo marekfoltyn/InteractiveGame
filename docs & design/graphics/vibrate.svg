@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 744.09448819 1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="vibrate.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="399.2869"
+     inkscape:cy="715.95001"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="751"
+     inkscape:window-x="1048"
+     inkscape:window-y="1051"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Vrstva 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="opacity:0.93000022;fill:none;fill-opacity:1;stroke:#6b5815;stroke-width:27.2198925;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4136"
+       width="112.8993"
+       height="173.7888"
+       x="401.7467"
+       y="322.55533"
+       ry="13.953846"
+       inkscape:export-xdpi="44.774189"
+       inkscape:export-ydpi="44.774189"
+       inkscape:export-filename="/Users/marek/Documents/git/InteractiveGame/source/controller/InteractiveController/Resources/res/vibrate.png" />
+    <path
+       style="fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#6b5815;stroke-width:20.49536705;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;opacity:0.93"
+       id="path4142"
+       sodipodi:type="arc"
+       sodipodi:cx="189.01053"
+       sodipodi:cy="-556.22656"
+       sodipodi:rx="70.616051"
+       sodipodi:ry="70.616051"
+       sodipodi:start="1.9844856"
+       sodipodi:end="3.3715034"
+       d="m 160.62357,-491.5674 a 70.616051,70.616051 0 0 1 -40.37095,-80.7519"
+       sodipodi:open="true"
+       transform="matrix(0.89194602,-0.45214189,-0.45214189,-0.89194602,0,0)"
+       inkscape:export-xdpi="44.774189"
+       inkscape:export-ydpi="44.774189"
+       inkscape:export-filename="/Users/marek/Documents/git/InteractiveGame/source/controller/InteractiveController/Resources/res/vibrate.png" />
+    <path
+       transform="matrix(0.89194602,-0.45214189,-0.45214189,-0.89194602,0,0)"
+       sodipodi:open="true"
+       d="M 141.84856,-455.72165 A 108.09833,108.09833 0 0 1 80.049116,-579.33583"
+       sodipodi:end="3.3715034"
+       sodipodi:start="1.9844856"
+       sodipodi:ry="108.09833"
+       sodipodi:rx="108.09833"
+       sodipodi:cy="-554.70123"
+       sodipodi:cx="185.30302"
+       sodipodi:type="arc"
+       id="path4164"
+       style="fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#6b5815;stroke-width:20.49536705;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;opacity:0.93"
+       inkscape:export-xdpi="44.774189"
+       inkscape:export-ydpi="44.774189"
+       inkscape:export-filename="/Users/marek/Documents/git/InteractiveGame/source/controller/InteractiveController/Resources/res/vibrate.png" />
+    <path
+       transform="matrix(-0.89194602,-0.45214189,0.45214189,-0.89194602,0,0)"
+       sodipodi:open="true"
+       d="m -659.15673,-74.886323 a 70.616051,70.616051 0 0 1 -40.37096,-80.751897"
+       sodipodi:end="3.3715034"
+       sodipodi:start="1.9844856"
+       sodipodi:ry="70.616051"
+       sodipodi:rx="70.616051"
+       sodipodi:cy="-139.54549"
+       sodipodi:cx="-630.76978"
+       sodipodi:type="arc"
+       id="path4166"
+       style="fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#6b5815;stroke-width:20.49536705;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;opacity:0.93"
+       inkscape:export-xdpi="44.774189"
+       inkscape:export-ydpi="44.774189"
+       inkscape:export-filename="/Users/marek/Documents/git/InteractiveGame/source/controller/InteractiveController/Resources/res/vibrate.png" />
+    <path
+       style="fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#6b5815;stroke-width:20.49536705;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;opacity:0.93"
+       id="path4168"
+       sodipodi:type="arc"
+       sodipodi:cx="-634.47729"
+       sodipodi:cy="-138.02016"
+       sodipodi:rx="108.09833"
+       sodipodi:ry="108.09833"
+       sodipodi:start="1.9844856"
+       sodipodi:end="3.3715034"
+       d="M -677.93175,-39.040571 A 108.09833,108.09833 0 0 1 -739.7312,-162.65475"
+       sodipodi:open="true"
+       transform="matrix(-0.89194602,-0.45214189,0.45214189,-0.89194602,0,0)"
+       inkscape:export-xdpi="44.774189"
+       inkscape:export-ydpi="44.774189"
+       inkscape:export-filename="/Users/marek/Documents/git/InteractiveGame/source/controller/InteractiveController/Resources/res/vibrate.png" />
+  </g>
+</svg>

@@ -19,9 +19,9 @@ void WindowManager::showConnectionLostDialog(MainMenuScene * scene)
     auto origin = director->getVisibleOrigin();
     
     // background
-    auto bg = ui::Button::create("line_green.png");
+    auto bg = ui::Button::create("line_black.png");
     bg->setScale(16.8, 20*10.5);
-    bg->setOpacity(200);
+    bg->setOpacity(100);
     bg->setCascadeOpacityEnabled(true);
     bg->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
     s->addChild(bg);
