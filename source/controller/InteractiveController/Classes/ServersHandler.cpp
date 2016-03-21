@@ -27,7 +27,7 @@ ServersHandler::~ServersHandler()
 {
     for(auto it=serverMap.begin(); it!=serverMap.end(); it++)
     {
-        delete it->second;
+        deleteServer(it->first);
     }
 }
 
@@ -147,10 +147,15 @@ void ServersHandler::decreaseServersLifetime()
 void ServersHandler::deleteServer(int hash)
 {
     std::string address = serverMap[hash]->address->ToString();
+    CCLOG("%s removed for inactivity.",address.c_str());
+    
+    delete serverMap[hash]->address;
+    delete serverMap[hash];
+    
     auto btn = (ui::Button * ) menuView->getChildByTag(hash);
     menuView->removeChild(btn);
     serverMap.erase(hash);
-    CCLOG("%s removed for inactivity.",address.c_str());
+
 }
 
 

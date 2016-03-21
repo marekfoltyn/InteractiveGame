@@ -49,7 +49,7 @@ bool Controller::startNetworking()
 
 
 
-void Controller::receiveBoxes(std::shared_ptr<HandlerMap> handlerMap)
+void Controller::receiveBoxes(HandlerMap * handlerMap)
 {
     GameNet::Box * box;
     

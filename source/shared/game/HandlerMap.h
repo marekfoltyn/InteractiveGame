@@ -13,6 +13,7 @@
 #include "EmptyUniversalHandler.h"
 
 #include <map>
+#include <set>
 
 /**
  * map of handlers
@@ -25,7 +26,7 @@ public:
     /**
      * handlerMap creation
      */
-    static std::shared_ptr<HandlerMap> create();
+    static HandlerMap * create();
     
     /**
      * constructor - it is better ot call HandlerMap::create()

@@ -94,7 +94,7 @@ private:
     /**
      * map of event handlers interacting with this scene
      */
-    std::shared_ptr<HandlerMap> handlerMap;
+    HandlerMap * handlerMap;
     
     /**
      * registering handlers

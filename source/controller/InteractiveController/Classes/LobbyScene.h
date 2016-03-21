@@ -76,7 +76,7 @@ private:
     cocos2d::Size visibleSize;
     cocos2d::Vec2 origin;
     
-    std::shared_ptr<HandlerMap> handlerMap;
+    HandlerMap * handlerMap;
     Controller * controller;
     
 };

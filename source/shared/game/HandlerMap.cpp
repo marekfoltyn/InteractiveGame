@@ -8,9 +8,9 @@
 
 #include "HandlerMap.h"
 
-std::shared_ptr<HandlerMap> HandlerMap::create()
+HandlerMap * HandlerMap::create()
 {
-    return std::make_shared<HandlerMap>();
+    return new HandlerMap();
 }
 
 
@@ -24,7 +24,22 @@ HandlerMap::HandlerMap()
 
 HandlerMap::~HandlerMap()
 {
+    std::set<BaseHandler*> deleted = std::set<BaseHandler*>();
+    
+    for(auto it=handlerMap.begin(); it!=handlerMap.end(); ++it)
+    {
+        if(deleted.count(it->second) > 0)
+        {
+            // already deleted
+            continue;
+        }
+        
+        deleted.insert(it->second);
+        delete it->second;
+    }
+    
     delete emptyHandler;
+    deleted.clear();
     clear();
     CCLOG("~HandlerMap()");
 }

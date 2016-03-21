@@ -34,7 +34,7 @@ public:
     /**
      * receive boxes and executes handlers from the handlerMap
      */
-    void receiveBoxes(std::shared_ptr<HandlerMap> handlerMap);
+    void receiveBoxes(HandlerMap * handlerMap);
     
     /**
      * saves vibrate options
