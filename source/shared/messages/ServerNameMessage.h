@@ -1,7 +1,7 @@
 #ifndef  _ServerNameMessage_H_
 #define  _ServerNameMessage_H_
 
-#include "Message.h"
+#include "BoxMessage.h"
 #include <string>
 
 namespace GameNet {
@@ -10,7 +10,7 @@ namespace GameNet {
  * class representing Game ping response
  * it sends timestamp (not needed) and server name
  */
-class ServerNameMessage: Message {
+class ServerNameMessage: BoxMessage {
 public:
     
     /**

@@ -543,7 +543,7 @@
 		EACC03B41C81C01600971626 /* HandlerMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HandlerMap.h; path = ../../../shared/game/HandlerMap.h; sourceTree = "<group>"; };
 		EACC03B61C81C14B00971626 /* EmptyUniversalHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EmptyUniversalHandler.cpp; path = ../../../shared/game/EmptyUniversalHandler.cpp; sourceTree = "<group>"; };
 		EACC03B71C81C14B00971626 /* EmptyUniversalHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmptyUniversalHandler.h; path = ../../../shared/game/EmptyUniversalHandler.h; sourceTree = "<group>"; };
-		EAD0D4A31C75BE9900776BC3 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Message.h; path = ../../../shared/network/Message.h; sourceTree = "<group>"; };
+		EAD0D4A31C75BE9900776BC3 /* BoxMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoxMessage.h; path = ../../../shared/network/BoxMessage.h; sourceTree = "<group>"; };
 		EAD0D4AD1C75D11A00776BC3 /* AccelerationMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AccelerationMessage.cpp; path = ../../../shared/messages/AccelerationMessage.cpp; sourceTree = "<group>"; };
 		EAD0D4AE1C75D11A00776BC3 /* AccelerationMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccelerationMessage.h; path = ../../../shared/messages/AccelerationMessage.h; sourceTree = "<group>"; };
 		EAD0D4AF1C75D11A00776BC3 /* ServerNameMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ServerNameMessage.cpp; path = ../../../shared/messages/ServerNameMessage.cpp; sourceTree = "<group>"; };
@@ -779,7 +779,7 @@
 				EA888B7C1C58A6FC00534275 /* Definitions.h */,
 				EAAB6A571C59F21E00171969 /* Connector.h */,
 				EAAB6A581C59F21E00171969 /* Connector.cpp */,
-				EAD0D4A31C75BE9900776BC3 /* Message.h */,
+				EAD0D4A31C75BE9900776BC3 /* BoxMessage.h */,
 				EAAB6A5A1C59F27000171969 /* Box.h */,
 				EAAB6A5B1C59F27000171969 /* Box.cpp */,
 				EAD0D4B41C75F0DC00776BC3 /* BoxFactory.h */,
@@ -1155,6 +1155,7 @@
 		EAD0D4A91C75CD5800776BC3 /* Messages */ = {
 			isa = PBXGroup;
 			children = (
+				EAF1A91F1CA1F8D90061BCCF /* Protobuf */,
 				EAD0D4AE1C75D11A00776BC3 /* AccelerationMessage.h */,
 				EAD0D4AD1C75D11A00776BC3 /* AccelerationMessage.cpp */,
 				EAD0D4B01C75D11A00776BC3 /* ServerNameMessage.h */,
@@ -1198,6 +1199,13 @@
 				EACC03B41C81C01600971626 /* HandlerMap.h */,
 			);
 			name = Handlers;
+			sourceTree = "<group>";
+		};
+		EAF1A91F1CA1F8D90061BCCF /* Protobuf */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Protobuf;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

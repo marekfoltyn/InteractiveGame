@@ -1,0 +1,20 @@
+message GameState {
+
+  enum PitchSize {
+    SIZE_SMALL = 0;
+    SIZE_MEDIUM = 1;
+    SIZE_BIG = 2;
+  }
+  
+  enum MatchDuration {
+  	DURATION_SHORT = 0;
+	DURATION_MEDIUM = 1;
+	DURATION_LONG = 2;
+  }
+
+  optional string name            = 1;
+  optional MatchDuration duration = 2;
+  optional PitchSize pitchSize    = 3;
+  optional int32 bots             = 4;
+  optional bool running           = 5;
+}

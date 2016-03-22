@@ -1,7 +1,7 @@
 #ifndef  _AccelerationMessage_H_
 #define  _AccelerationMessage_H_
 
-#include "Message.h"
+#include "BoxMessage.h"
 
 namespace GameNet {
 
@@ -9,7 +9,7 @@ namespace GameNet {
  * Message representing the x,y,z coordinates of the
  * accelerometer
  */
-class AccelerationMessage: Message {
+class AccelerationMessage: BoxMessage {
 public:
     
     /**

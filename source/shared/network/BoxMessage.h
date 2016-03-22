@@ -1,5 +1,5 @@
-#ifndef  _Message_H_
-#define  _Message_H_
+#ifndef  _BoxMessage_H_
+#define  _BoxMessage_H_
 
 #include <string>
 
@@ -10,7 +10,7 @@ namespace GameNet {
  * that will be sent in a GameNet::Box
  * Message has two functions - serialize and deserialize data
  */
-class Message {
+class BoxMessage {
 public:
     
     /**
@@ -34,12 +34,12 @@ public:
     /**
      * virtual destructor - necessary ( http://stackoverflow.com/questions/318064 )
      */
-    virtual ~Message(){}
+    virtual ~BoxMessage(){}
     
     /**
      * implicit constructor
      */
-    Message(){}
+    BoxMessage(){}
 };
     
 }

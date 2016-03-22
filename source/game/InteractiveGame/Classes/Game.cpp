@@ -21,6 +21,8 @@
 #include "PlayerCollisionHandler.h"
 #include "TeamSelectHandler.h"
 
+#include "GameState.pb.h"
+
 Game * Game::instance = nullptr;
 
 Game::Game()
@@ -30,6 +32,10 @@ Game::Game()
     stadiumManager = StadiumManager::create();
     handlerMap = HandlerMap::create();
     matchDuration = Definitions::TIME_MATCH_SHORT;
+    
+    GOOGLE_PROTOBUF_VERIFY_VERSION;
+    
+    GameState state;
 }
 
 
