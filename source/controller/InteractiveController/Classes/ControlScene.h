@@ -19,7 +19,7 @@ using namespace GameNet;
  * This class represents the lobby, players can prepare for the game (they choose the color)
  * The lobby is represented by an empty game room - players can move freely, but they can't shoot etc.
  */
-class LobbyScene : public cocos2d::Layer
+class ControlScene : public cocos2d::Layer
 {
 public:
     
@@ -39,7 +39,7 @@ public:
     /**
      * implement the "static create()" method manually
      */
-    CREATE_FUNC(LobbyScene);
+    CREATE_FUNC(ControlScene);
     
     /**
      * load and set up cocos nodes and static graphics

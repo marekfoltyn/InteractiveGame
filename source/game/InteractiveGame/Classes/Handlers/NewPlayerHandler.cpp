@@ -13,12 +13,13 @@ bool NewPlayerHandler::execute(GameNet::Box * box)
     game->addPlayer(player);
     
     // add to the stadium
-    game->getStadiumManager()->addPlayer(player);
+    game->getStadiumManager()->addNewPlayer(player);
     
     if( game->playersCount() == 1 ) // only this player is in the stadium
     {
-        int id = player->getId();
-        game->getPlayer(id)->setAsAdmin();
+        player->setAsAdmin();
+        game->getStadiumManager()->setAdminName( player->getName() );
     }
+    
     return false;
 }

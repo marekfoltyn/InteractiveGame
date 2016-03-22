@@ -34,6 +34,7 @@ Player::Player(RakNet::SystemAddress address, std::string name)
     speedScale = 1;
     kickMultiplier = 1;
     speedMultiplier = 1;
+    team = "";
 }
 
 

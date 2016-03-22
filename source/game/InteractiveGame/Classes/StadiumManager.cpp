@@ -253,6 +253,24 @@ void StadiumManager::drawPitch()
     right->setName(LABEL_SCORE_RIGHT);
     scene->addChild(right);
     
+    // admin
+    auto lblAdmin = Label::createWithTTF("Admin:", "Vanilla.ttf", 30);
+    lblAdmin->setAlignment(TextHAlignment::CENTER);
+    lblAdmin->setTextColor(COLOR_FONT_TRANSPARENT);
+    lblAdmin->setAnchorPoint(Vec2(0.5, 0));
+    lblAdmin->setPosition(Vec2( origin.x + visibleSize.width/2 - circle, origin.y + 2*BORDER ));
+    scene->addChild(lblAdmin,0);
+
+    // admin name
+    auto lblAdminName = Label::createWithTTF("", "Vanilla.ttf", 30);
+    lblAdminName->setName(LABEL_ADMIN);
+    lblAdminName->setAlignment(TextHAlignment::LEFT);
+    lblAdminName->setTextColor(COLOR_FONT_TRANSPARENT);
+    lblAdminName->setAnchorPoint(Vec2(0, 0));
+    lblAdminName->setPosition(Vec2( origin.x + visibleSize.width/2 + BORDER, origin.y + 2*BORDER ));
+    scene->addChild(lblAdminName,0);
+    
+    
     // ball sprite
     auto ball = Sprite::create("ball.png");
     ball->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
@@ -265,7 +283,8 @@ void StadiumManager::drawPitch()
     spriteBody->setLinearDamping(BALL_DAMPING);
     spriteBody->setAngularDamping(BALL_DAMPING);
     ball->setPhysicsBody(spriteBody);
-    scene->addChild(ball);
+    //scene->addChild(ball);
+    
     //prevForce = Vec2(0,0);
     
     // collision listener
@@ -292,28 +311,47 @@ void StadiumManager::addExitButton( VoidHandler * handler )
     auto menu = Menu::create(item, NULL);
     menu->setPosition(Vec2::ZERO);
     scene->addChild(menu,0);
-    
 }
 
 
 
-void StadiumManager::addPlayer(Player * player)
+void StadiumManager::addNewPlayer(Player * player)
 {
     auto sprite = player->getSprite();
     sprite->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
     sprite->setScale(SCALE_BALL);
+    sprite->setVisible(false);;                       // not playing yet
     
     auto body = sprite->getPhysicsBody();
     body->setCollisionBitmask(PLAYER_COLLIDES_WITH);
     body->setContactTestBitmask(BITMASK_ALL);
     body->setRotationEnable(false);
+    body->setEnabled(false);                           // not playing yet
+    
     scene->addChild(sprite);
 }
+
+
+
+void StadiumManager::showPlayer(Player * player)
+{
+    player->getSprite()->setVisible(true);
+    player->getSprite()->getPhysicsBody()->setEnabled(true);
+}
+
 
 
 void StadiumManager::removePlayer(Player * player)
 {
     scene->removeChild( player->getSprite() );
+}
+
+
+
+void StadiumManager::setAdminName(std::string name)
+{
+    auto label = static_cast<Label*>( scene->getChildByName(LABEL_ADMIN) );
+    label->setString(name);
 }
 
 

@@ -89,6 +89,16 @@ public:
      */
     StadiumManager * getStadiumManager(){ return this->stadiumManager; }
     
+    /**
+     * once a while generate a bonus
+     */
+    void startBonusGenerating();
+    
+    /**
+     * stop bonus generating and remove all bonuses from the game
+     */
+    void stopBonusGenerating();
+    
     /* IDEAS:
      
      void startBonusGenerating();

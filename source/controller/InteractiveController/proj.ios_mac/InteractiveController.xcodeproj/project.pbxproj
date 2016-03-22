@@ -65,7 +65,7 @@
 		EA5927321C9FE599005ECB92 /* ToggleVibrateHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5927301C9FE599005ECB92 /* ToggleVibrateHandler.cpp */; };
 		EA8840B41C9C1E9200DEC852 /* DisconnectHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA8840B21C9C1E9200DEC852 /* DisconnectHandler.cpp */; };
 		EA8840B71C9C21E600DEC852 /* TeamSelectHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA8840B51C9C21E600DEC852 /* TeamSelectHandler.cpp */; };
-		EA888A021C58A18F00534275 /* LobbyScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888A001C58A18F00534275 /* LobbyScene.cpp */; };
+		EA888A021C58A18F00534275 /* ControlScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888A001C58A18F00534275 /* ControlScene.cpp */; };
 		EA888B0C1C58A6B200534275 /* _FindFirst.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888A9E1C58A6B100534275 /* _FindFirst.cpp */; };
 		EA888B0D1C58A6B200534275 /* Base64Encoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888A9F1C58A6B100534275 /* Base64Encoder.cpp */; };
 		EA888B0E1C58A6B200534275 /* BitStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AA01C58A6B100534275 /* BitStream.cpp */; };
@@ -264,8 +264,8 @@
 		EA8840B31C9C1E9200DEC852 /* DisconnectHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisconnectHandler.h; sourceTree = "<group>"; };
 		EA8840B51C9C21E600DEC852 /* TeamSelectHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TeamSelectHandler.cpp; sourceTree = "<group>"; };
 		EA8840B61C9C21E600DEC852 /* TeamSelectHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamSelectHandler.h; sourceTree = "<group>"; };
-		EA8889FE1C58A18F00534275 /* LobbyScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LobbyScene.h; sourceTree = "<group>"; };
-		EA888A001C58A18F00534275 /* LobbyScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LobbyScene.cpp; sourceTree = "<group>"; };
+		EA8889FE1C58A18F00534275 /* ControlScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlScene.h; sourceTree = "<group>"; };
+		EA888A001C58A18F00534275 /* ControlScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlScene.cpp; sourceTree = "<group>"; };
 		EA888A041C58A6B100534275 /* _FindFirst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _FindFirst.h; path = ../../../shared/network/raknet/_FindFirst.h; sourceTree = "<group>"; };
 		EA888A051C58A6B100534275 /* AutopatcherPatchContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AutopatcherPatchContext.h; path = ../../../shared/network/raknet/AutopatcherPatchContext.h; sourceTree = "<group>"; };
 		EA888A061C58A6B100534275 /* AutopatcherRepositoryInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AutopatcherRepositoryInterface.h; path = ../../../shared/network/raknet/AutopatcherRepositoryInterface.h; sourceTree = "<group>"; };
@@ -1132,8 +1132,8 @@
 			isa = PBXGroup;
 			children = (
 				EA8840B11C9C1B2800DEC852 /* Handlers */,
-				EA888A001C58A18F00534275 /* LobbyScene.cpp */,
-				EA8889FE1C58A18F00534275 /* LobbyScene.h */,
+				EA888A001C58A18F00534275 /* ControlScene.cpp */,
+				EA8889FE1C58A18F00534275 /* ControlScene.h */,
 				EA36CE201C91BEE900A498A7 /* TeamScene.cpp */,
 				EA36CE211C91BEE900A498A7 /* TeamScene.h */,
 			);
@@ -1356,7 +1356,7 @@
 				EA888B3B1C58A6B200534275 /* PacketConsoleLogger.cpp in Sources */,
 				EA5927321C9FE599005ECB92 /* ToggleVibrateHandler.cpp in Sources */,
 				EA888B171C58A6B200534275 /* DataCompressor.cpp in Sources */,
-				EA888A021C58A18F00534275 /* LobbyScene.cpp in Sources */,
+				EA888A021C58A18F00534275 /* ControlScene.cpp in Sources */,
 				EA888B3F1C58A6B200534275 /* PacketOutputWindowLogger.cpp in Sources */,
 				EA888B6C1C58A6B200534275 /* TeamBalancer.cpp in Sources */,
 				EA888B3A1C58A6B200534275 /* NetworkIDObject.cpp in Sources */,

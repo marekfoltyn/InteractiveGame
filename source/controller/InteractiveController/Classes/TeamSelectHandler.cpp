@@ -8,7 +8,7 @@
 
 #include "TeamSelectHandler.h"
 #include "BoxFactory.h"
-#include "LobbyScene.h"
+#include "ControlScene.h"
 
 
 TeamSelectHandler::TeamSelectHandler()
@@ -35,6 +35,6 @@ void TeamSelectHandler::execute(Ref * sender, ui::Widget::TouchEventType type)
     connector->send(box);
     
     // go to Lobby
-    auto scene = LobbyScene::createScene();
+    auto scene = ControlScene::createScene();
     director->replaceScene(TransitionSlideInB::create(TIME_SCENE_TRANSITION, scene));
 }

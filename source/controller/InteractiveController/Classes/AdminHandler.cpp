@@ -9,9 +9,9 @@
 #include "GameplayDefinitions.h"
 #include "AdminHandler.h"
 #include "BoxFactory.h"
-#include "LobbyScene.h"
+#include "ControlScene.h"
 
-AdminHandler::AdminHandler(LobbyScene * scene)
+AdminHandler::AdminHandler(ControlScene * scene)
 {
     director = Director::getInstance();
     controller = Controller::getInstance();
@@ -25,7 +25,7 @@ bool AdminHandler::execute( GameNet::Box * box )
     if(scene != nullptr)
     {
         CCLOG("Showing admin button...");
-        auto pause = scene->getChildByName(LobbyScene::NODE_PAUSE);
+        auto pause = scene->getChildByName(ControlScene::NODE_PAUSE);
         pause->setVisible(true);
     }
     

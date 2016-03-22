@@ -26,5 +26,7 @@ bool TeamSelectHandler::execute(GameNet::Box * box)
         player->setTeam(team);
     }
     
+    game->getStadiumManager()->showPlayer(player);
+    
     return false;
 }

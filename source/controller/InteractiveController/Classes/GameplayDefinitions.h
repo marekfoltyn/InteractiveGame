@@ -74,6 +74,7 @@ public:
 #define MATERIAL_PLAYER cocos2d::PhysicsMaterial(0.5, 0, 0.5)
 #define LABEL_SCORE_LEFT "lblScoreLeft"
 #define LABEL_SCORE_RIGHT "lblScoreRight"
+#define LABEL_ADMIN "lblAdminName"
 
 
 #define SCHEDULE_KICK_SLOWING "kickSlowing"

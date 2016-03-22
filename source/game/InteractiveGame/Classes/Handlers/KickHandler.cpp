@@ -48,11 +48,17 @@ void KickHandler::released(GameNet::Box * box)
     auto playerSprite = player->getSprite();
     auto ball = game->getStadiumManager()->getScene()->getChildByName<cocos2d::Sprite *>(NODE_BALL);
     
-    float distance = ball->getPosition().distance( playerSprite->getPosition() );
-    
     // reset speedScale
     playerSprite->unschedule(SCHEDULE_KICK_SLOWING);
     player->setSpeedScale(1);
+    
+    if(ball == nullptr)
+    {
+        CCLOG("No ball in the game...");
+        return;
+    }
+    
+    float distance = ball->getPosition().distance( playerSprite->getPosition() );
     
     // pass ball
     if( distance < 2.0/3 * ((playerSprite->getContentSize().width * SCALE_BALL + ball->getContentSize().width * SCALE_BALL )) )

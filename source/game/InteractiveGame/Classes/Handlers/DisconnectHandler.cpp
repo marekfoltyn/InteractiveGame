@@ -20,7 +20,12 @@ bool DisconnectHandler::execute(GameNet::Box * box)
     {
         auto newAdmin = game->getRandomPlayer();
         newAdmin->setAsAdmin();
+        game->getStadiumManager()->setAdminName( newAdmin->getName() );
         CCLOG("New admin is %s", newAdmin->getName().c_str());
+    }
+    else if (game->playersCount() == 0)
+    {
+        game->getStadiumManager()->setAdminName("");
     }
     
     player->destroy();

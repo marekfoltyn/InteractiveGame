@@ -206,3 +206,19 @@ std::string Game::getAutoTeam()
         return (random == 0) ? TEAM_BLUE : TEAM_RED;
     }
 }
+
+
+
+void Game::startBonusGenerating()
+{
+    //
+    //handlerMap->add(VOID_GENERATE_BONUS, new BonusHandler(this));
+    //handlerMap->getVoidHandler(VOID_GENERATE_BONUS)->execute();
+}
+
+
+
+void Game::stopBonusGenerating()
+{
+    
+}

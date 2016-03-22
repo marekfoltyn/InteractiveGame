@@ -12,7 +12,7 @@
 #include "AbstractHandlers.h"
 #include "Controller.h"
 
-class LobbyScene;
+class ControlScene;
 
 /**
  * Processing admin attaching
@@ -20,7 +20,7 @@ class LobbyScene;
 class AdminHandler: public BoxHandler{
 public:
 
-    AdminHandler(LobbyScene * scene);
+    AdminHandler(ControlScene * scene);
     
     /**
      * set this player as the admin
@@ -31,7 +31,7 @@ private:
   
     Director * director;
     Controller * controller;
-    LobbyScene * scene;
+    ControlScene * scene;
     
 };
 

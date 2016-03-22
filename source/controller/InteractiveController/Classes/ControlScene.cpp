@@ -1,6 +1,6 @@
 #include "cocos2d.h"
 #include "GameplayDefinitions.h"
-#include "LobbyScene.h"
+#include "ControlScene.h"
 
 #include "Connector.h"
 #include "MainMenuScene.h"
@@ -18,15 +18,15 @@ using namespace GameNet;
 #define COLOR_GREEN Color4B(11, 112, 14, 255)
 #define NODE_FORCE "nodeForce"
 
-const char * LobbyScene::NODE_PAUSE = "nodePause";
+const char * ControlScene::NODE_PAUSE = "nodePause";
 
-Scene * LobbyScene::createScene()
+Scene * ControlScene::createScene()
 {
     // 'scene' is an autorelease object
     auto scene = Scene::create();
     
     // 'layer' is an autorelease object
-    auto layer = LobbyScene::create();
+    auto layer = ControlScene::create();
 
     // add layer as a child to scene
     scene->addChild(layer);
@@ -38,7 +38,7 @@ Scene * LobbyScene::createScene()
 
 
 // on "init" you need to initialize your instance
-bool LobbyScene::init()
+bool ControlScene::init()
 {
     // cocos2d: 1. super init first
     if ( !Layer::init() )
@@ -54,7 +54,7 @@ bool LobbyScene::init()
     initGraphics();
     
     // init accelerometer
-    auto listener = EventListenerAcceleration::create(CC_CALLBACK_2(LobbyScene::onAcceleration, this));
+    auto listener = EventListenerAcceleration::create(CC_CALLBACK_2(ControlScene::onAcceleration, this));
     Device::setAccelerometerEnabled(true);
     Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
     
@@ -76,7 +76,7 @@ bool LobbyScene::init()
 
 
 
-void LobbyScene::initGraphics()
+void ControlScene::initGraphics()
 {
     visibleSize = Director::getInstance()->getVisibleSize();
     origin = Director::getInstance()->getVisibleOrigin();
@@ -91,7 +91,7 @@ void LobbyScene::initGraphics()
     auto btnKick = ui::Button::create("ball_big.png");
     btnKick->setAnchorPoint(Vec2(0.5, 0.5));
     btnKick->setPosition(Vec2(origin.x + visibleSize.width - btnKick->getContentSize().width/2, origin.y + visibleSize.height/2));
-    btnKick->addTouchEventListener(CC_CALLBACK_2(LobbyScene::btnKickClick, this));
+    btnKick->addTouchEventListener(CC_CALLBACK_2(ControlScene::btnKickClick, this));
     this->addChild(btnKick);
     
     // kick label
@@ -107,7 +107,7 @@ void LobbyScene::initGraphics()
     disconnect->setTitleAlignment(TextHAlignment::CENTER);
     disconnect->setTitleColor(Color3B(51, 152, 54));
     disconnect->setTitleFontSize(100);
-    disconnect->addTouchEventListener( CC_CALLBACK_2(LobbyScene::btnOnDisconnect, this) );
+    disconnect->addTouchEventListener( CC_CALLBACK_2(ControlScene::btnOnDisconnect, this) );
     disconnect->setAnchorPoint(Vec2(0, 1));
     int border = disconnect->getContentSize().height/4;
     disconnect->setPosition(Vec2( origin.x + border, origin.y + visibleSize.height - border ));
@@ -115,12 +115,12 @@ void LobbyScene::initGraphics()
     
     // admin button
     auto reset = ui::Button::create();
-    reset->setTitleText("reset");
+    reset->setTitleText("admin");
     reset->setTitleFontName("Vanilla.ttf");
     reset->setTitleAlignment(TextHAlignment::CENTER);
     reset->setTitleColor(Color3B(51, 152, 54));
     reset->setTitleFontSize(100);
-    reset->addTouchEventListener(CC_CALLBACK_2(LobbyScene::pauseClick, this));
+    reset->addTouchEventListener(CC_CALLBACK_2(ControlScene::pauseClick, this));
     reset->setAnchorPoint(Vec2(0, 0));
     border = reset->getContentSize().height/4;
     reset->setPosition(Vec2( origin.x + border, origin.y + border ));
@@ -142,7 +142,7 @@ void LobbyScene::initGraphics()
 
 
 
-void LobbyScene::btnOnDisconnect(Ref * sender, ui::Widget::TouchEventType type)
+void ControlScene::btnOnDisconnect(Ref * sender, ui::Widget::TouchEventType type)
 {
     auto button = dynamic_cast<cocos2d::ui::Button*>(sender);
     
@@ -209,7 +209,7 @@ void LobbyScene::btnOnDisconnect(Ref * sender, ui::Widget::TouchEventType type)
 
 
 
-void LobbyScene::btnKickClick(Ref * sender, ui::Widget::TouchEventType type)
+void ControlScene::btnKickClick(Ref * sender, ui::Widget::TouchEventType type)
 {
     switch (type)
     {
@@ -271,13 +271,13 @@ void LobbyScene::btnKickClick(Ref * sender, ui::Widget::TouchEventType type)
     }
 }
 
-void LobbyScene::onAcceleration(cocos2d::Acceleration* acc, cocos2d::Event* unused_event)
+void ControlScene::onAcceleration(cocos2d::Acceleration* acc, cocos2d::Event* unused_event)
 {
     Box * box = BoxFactory::acceleration(acc->x, acc->y, acc->z);
     box->send();
 }
 
-void LobbyScene::pauseClick(cocos2d::Ref *pSender, ui::Widget::TouchEventType type)
+void ControlScene::pauseClick(cocos2d::Ref *pSender, ui::Widget::TouchEventType type)
 {
     
     auto button = dynamic_cast<cocos2d::ui::Button*>(pSender);

@@ -1,5 +1,5 @@
 #include "MainMenuScene.h"
-#include "LobbyScene.h"
+#include "ControlScene.h"
 #include "GameplayDefinitions.h"
 
 #include "Connector.h"
@@ -169,7 +169,7 @@ void MainMenuScene::initGraphics()
     
     // player name - text field
     auto txtName = ui::TextField::create("<your name>", "Vanilla.ttf", FONT_SIZE_DEFAULT);
-    txtName->setMaxLength(12);
+    txtName->setMaxLength(8);
     txtName->setMaxLengthEnabled(true);
     txtName->setAnchorPoint(Vec2(0.5,1));
     txtName->setPosition(Vec2( origin.x + visibleSize.width * 3.0/4, lblName->getPosition().y - lblName->getContentSize().height - BORDER_DEFAULT));

@@ -28,9 +28,13 @@ public:
     
     void addExitButton( VoidHandler * handler );
     
-    void addPlayer(Player * player);
+    void addNewPlayer(Player * player);
+    
+    void showPlayer(Player * player);
     
     void removePlayer(Player * player);
+    
+    void setAdminName(std::string name);
     
     void resetScore();
     
