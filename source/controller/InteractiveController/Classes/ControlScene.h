@@ -69,7 +69,7 @@ public:
     /**
      * set this controller as admin
      */
-    void pauseClick(cocos2d::Ref *pSender, ui::Widget::TouchEventType type);
+    void adminClick(cocos2d::Ref *pSender, ui::Widget::TouchEventType type);
     
 private:
     

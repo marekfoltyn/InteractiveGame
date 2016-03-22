@@ -9,6 +9,7 @@
 #include "AdminHandler.h"
 #include "ConnectionLostHandler.h"
 #include "CollisionBoxHandler.h"
+#include "AdminDialogHandler.h"
 
 #include "Timer.cpp"
 
@@ -62,6 +63,7 @@ bool ControlScene::init()
     handlerMap->add(BOX_ADMIN, new AdminHandler(this));
     handlerMap->add(BOX_CONNECTION_LOST, new ConnectionLostHandler());
     handlerMap->add(BOX_COLLISION, new CollisionBoxHandler());
+    handlerMap->add(VOID_ADMIN_DIALOG, new AdminDialogHandler());
     
     // schedule box receiving
     this->schedule([&](float dt)
@@ -120,7 +122,7 @@ void ControlScene::initGraphics()
     reset->setTitleAlignment(TextHAlignment::CENTER);
     reset->setTitleColor(Color3B(51, 152, 54));
     reset->setTitleFontSize(100);
-    reset->addTouchEventListener(CC_CALLBACK_2(ControlScene::pauseClick, this));
+    reset->addTouchEventListener(CC_CALLBACK_2(ControlScene::adminClick, this));
     reset->setAnchorPoint(Vec2(0, 0));
     border = reset->getContentSize().height/4;
     reset->setPosition(Vec2( origin.x + border, origin.y + border ));
@@ -277,7 +279,7 @@ void ControlScene::onAcceleration(cocos2d::Acceleration* acc, cocos2d::Event* un
     box->send();
 }
 
-void ControlScene::pauseClick(cocos2d::Ref *pSender, ui::Widget::TouchEventType type)
+void ControlScene::adminClick(cocos2d::Ref *pSender, ui::Widget::TouchEventType type)
 {
     
     auto button = dynamic_cast<cocos2d::ui::Button*>(pSender);
@@ -313,12 +315,10 @@ void ControlScene::pauseClick(cocos2d::Ref *pSender, ui::Widget::TouchEventType 
         auto action = Sequence::create(
             DelayTime::create(Definitions::TIME_DELAY_CLICK),
             CallFunc::create(
-                [button]()
+                [&, button]()
                 {
-                    //TODO: pause game
-                    CCLOG("Pause.");
                     button->removeAllChildren();
-                    BoxFactory::resetScore()->send();
+                    handlerMap->getVoidHandler(VOID_ADMIN_DIALOG)->execute();
                 }
             ),
             nullptr

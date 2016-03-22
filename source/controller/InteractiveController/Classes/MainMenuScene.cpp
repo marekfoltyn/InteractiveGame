@@ -3,7 +3,6 @@
 #include "GameplayDefinitions.h"
 
 #include "Connector.h"
-#include "ServerNameMessage.h"
 #include "BoxFactory.h"
 
 #include "ServersHandler.h"
@@ -210,8 +209,8 @@ void MainMenuScene::initGraphics()
     // vibrate button
     auto btnVibrate = ui::Button::create("vibrate.png");
     btnVibrate->setName(NODE_VIBRATE);
-    btnVibrate->setAnchorPoint(Vec2(0.5, 1));
-    btnVibrate->setPosition(Vec2(origin.x + visibleSize.width * 3.0/4, txtName->getPosition().y - txtName->getContentSize().height - 2*BORDER_DEFAULT));
+    btnVibrate->setAnchorPoint(Vec2(0, 0));
+    btnVibrate->setPosition(Vec2(origin.x + BORDER_DEFAULT, origin.y + BORDER_DEFAULT));
     btnVibrate->addTouchEventListener([&](Ref * sender, ui::Widget::TouchEventType type){
         handlerMap->getTouchHandler(TOUCH_TOGGLE_VIBRATE)->execute(sender, type);
     });

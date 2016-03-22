@@ -10,12 +10,12 @@
 #define WindowManager_h
 
 #include "cocos2d.h"
-#include "MainMenuScene.h"
+#include "Connector.h"     // #include into WindowManager.cpp makes "Point reference is ambigous" in MacTypes.h !!!
 
 USING_NS_CC;
 
 /**
- * helper class showind popup windows
+ * helper class showing popup windows
  */
 class WindowManager{
 public:
@@ -25,7 +25,14 @@ public:
     /**
      * show "connection lost" dialog
      */
-    static void showConnectionLostDialog(MainMenuScene * scene);
+    static void showConnectionLostDialog(Layer * scene);
+    
+    /**
+     * show a dialog with admin settings
+     * (match duration, pitch size, ...)
+     */
+    static void showAdminSettings(Node * scene);
+  //static void showAdminSettings(Node * scene, GameState * state);
     
 };
 

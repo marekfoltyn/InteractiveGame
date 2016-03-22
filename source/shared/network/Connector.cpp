@@ -1,7 +1,6 @@
 #include "Connector.h"
 
 #include <cstring>
-#include <string>
 #include <stdlib.h>
 
 using namespace GameNet;

@@ -10,9 +10,9 @@
 #include "GameplayDefinitions.h"
 #include "ui/CocosGUI.h"
 
-void WindowManager::showConnectionLostDialog(MainMenuScene * scene)
+void WindowManager::showConnectionLostDialog(Layer * scene)
 {
-    Layer * s = scene;
+
     
     auto director = Director::getInstance();
     auto visibleSize = director->getVisibleSize();
@@ -24,27 +24,27 @@ void WindowManager::showConnectionLostDialog(MainMenuScene * scene)
     bg->setOpacity(100);
     bg->setCascadeOpacityEnabled(true);
     bg->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
-    s->addChild(bg);
+    scene->addChild(bg);
 
     // dialog box
     auto box = Sprite::create("line.png");
     box->setScale(10, 20*6);
     box->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
-    s->addChild(box);
+    scene->addChild(box);
     
     
     // text
     auto text = Label::createWithTTF("Connection lost.", "Vanilla.ttf", FONT_SIZE_DEFAULT);
     text->setTextColor(COLOR_GREEN);
     text->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 + (box->getContentSize().height*box->getScaleY())/4 ));
-    s->addChild(text);
+    scene->addChild(text);
     
     auto ok = ui::Button::create();
     ok->setTitleText("Ok");
     ok->getTitleRenderer()->setTTFConfig(TTFConfig("Vanilla.ttf",FONT_SIZE_DEFAULT*2));
     ok->getTitleRenderer()->setTextColor(COLOR_GREEN);
     ok->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 - (box->getContentSize().height*box->getScaleY())/4 ));
-    s->addChild(ok);
+    scene->addChild(ok);
     
     // disappear after click
     // [&]()[] is not working... [ok](){} works
@@ -59,17 +59,128 @@ void WindowManager::showConnectionLostDialog(MainMenuScene * scene)
             box->runAction(FadeOut::create(Definitions::DIALOG_FADEOUT_DURATION));
 
             // remove from scene
-            scene->schedule([scene,ok,text,bg,box](float dt){
+            scene->scheduleOnce([scene,ok,text,bg,box](float dt){
                 scene->removeChild(ok);
                 scene->removeChild(text);
                 scene->removeChild(bg);
                 scene->removeChild(box);
-            }, 0, 1, Definitions::DIALOG_FADEOUT_DURATION, "");
+                CCLOG("dialog children removed.");
+            }, Definitions::DIALOG_FADEOUT_DURATION, "dialogHide");     // "dialogHide" must not be "" !!! otherwise repeats forever!
             
         }
     });
+}
+
+
+
+void WindowManager::showAdminSettings(cocos2d::Node * scene)
+{
+    auto director = Director::getInstance();
+    //auto connector = GameNet::Connector::getInstance();
+    auto visibleSize = director->getVisibleSize();
+    auto origin = director->getVisibleOrigin();
     
-    CCLOG("dialog...");
+    // background
+    auto bg = ui::Button::create("line_black.png");
+    bg->setScale(16.8, 20*10.5);
+    bg->setOpacity(100);
+    bg->setCascadeOpacityEnabled(true);
+    bg->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
+    scene->addChild(bg);
     
-    //TODO
+    // dialog box
+    auto box = Sprite::create("dialogBox.png");
+    box->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
+    box->setCascadeOpacityEnabled(true);
+    scene->addChild(box);
+    
+    auto boxSize = box->getContentSize();
+
+    // Stadium:
+    auto lblStadium = Label::createWithTTF("Stadium:", "Vanilla.ttf", FONT_SIZE_DEFAULT);
+    lblStadium->setTextColor(COLOR_GREEN);
+    lblStadium->setAnchorPoint(Vec2(0,1));
+    lblStadium->setPosition(Vec2( BORDER_DEFAULT, boxSize.height - BORDER_DEFAULT ));
+    box->addChild(lblStadium);
+
+    // Duration:
+    auto lblDuration = Label::createWithTTF("Duration:", "Vanilla.ttf", FONT_SIZE_DEFAULT);
+    lblDuration->setTextColor(COLOR_GREEN);
+    lblDuration->setAnchorPoint(Vec2(0,1));
+    lblDuration->setPosition(Vec2( BORDER_DEFAULT, boxSize.height - lblStadium->getContentSize().height - 2*BORDER_DEFAULT));
+    box->addChild(lblDuration);
+
+    // Size:
+    auto lblSize = Label::createWithTTF("Size:", "Vanilla.ttf", FONT_SIZE_DEFAULT);
+    lblSize->setTextColor(COLOR_GREEN);
+    lblSize->setAnchorPoint(Vec2(0,1));
+    lblSize->setPosition(Vec2( BORDER_DEFAULT, boxSize.height - 2*lblStadium->getContentSize().height - 3*BORDER_DEFAULT));
+    box->addChild(lblSize);
+    
+    // Bots:
+    auto lblBots = Label::createWithTTF("Bots:", "Vanilla.ttf", FONT_SIZE_DEFAULT);
+    lblBots->setTextColor(COLOR_GREEN);
+    lblBots->setAnchorPoint(Vec2(0,1));
+    lblBots->setPosition(Vec2( BORDER_DEFAULT, boxSize.height - 3*lblStadium->getContentSize().height - 4*BORDER_DEFAULT));
+    box->addChild(lblBots);
+
+    
+    // Start button
+    auto ok = ui::Button::create();
+    ok->setTitleText("Start");
+    ok->setAnchorPoint(Vec2(1,0));
+    ok->getTitleRenderer()->setTTFConfig(TTFConfig("Vanilla.ttf",1.5*FONT_SIZE_DEFAULT));
+    ok->getTitleRenderer()->setTextColor(COLOR_GREEN);
+    ok->setPosition(Vec2( boxSize.width - BORDER_DEFAULT, BORDER_DEFAULT ));
+    box->addChild(ok);
+
+    // Cancel button
+    auto btnCancel = ui::Button::create();
+    btnCancel->setTitleText("Cancel");
+    btnCancel->setAnchorPoint(Vec2(0,0));
+    btnCancel->getTitleRenderer()->setTTFConfig(TTFConfig("Vanilla.ttf",1.5*FONT_SIZE_DEFAULT));
+    btnCancel->getTitleRenderer()->setTextColor(COLOR_GREEN_SEMI_TRANSPARENT);
+    btnCancel->setPosition(Vec2( BORDER_DEFAULT, BORDER_DEFAULT ));
+    box->addChild(btnCancel);
+    
+    // disappear after click
+    // [&]()[] is not working... [ok](){} works
+    ok->addTouchEventListener([scene,box,bg](Ref * sender, ui::Widget::TouchEventType type)
+    {
+        if(type == ui::Widget::TouchEventType::BEGAN)
+        {
+            box->runAction(FadeOut::create(Definitions::DIALOG_FADEOUT_DURATION));
+            bg->runAction(FadeOut::create(Definitions::DIALOG_FADEOUT_DURATION));
+            
+            // remove from scene
+            scene->scheduleOnce([scene,box,bg](float dt){
+                scene->removeChild(box);
+                scene->removeChild(bg);
+                CCLOG("dialog children removed.");
+            }, Definitions::DIALOG_FADEOUT_DURATION, "dialogHide");     // "dialogHide" must not be "" !!! otherwise repeats forever!
+            
+            //BoxFactory::startGame()->send();
+        }
+    });
+    
+    // disappear after click
+    // [&]()[] is not working... [ok](){} works
+    btnCancel->addTouchEventListener([scene,box,bg](Ref * sender, ui::Widget::TouchEventType type)
+    {
+        if(type == ui::Widget::TouchEventType::BEGAN)
+        {
+            box->runAction(FadeOut::create(Definitions::DIALOG_FADEOUT_DURATION));
+            bg->runAction(FadeOut::create(Definitions::DIALOG_FADEOUT_DURATION));
+            
+            // remove from scene
+            scene->scheduleOnce([scene,box,bg](float dt){
+            scene->removeChild(box);
+            scene->removeChild(bg);
+            CCLOG("dialog children removed.");
+        }, Definitions::DIALOG_FADEOUT_DURATION, "dialogHide");     // "dialogHide" must not be "" !!! otherwise repeats forever!
+      }
+  });
+    
+
+    
 }
