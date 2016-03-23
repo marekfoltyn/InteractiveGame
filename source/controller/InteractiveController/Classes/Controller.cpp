@@ -9,6 +9,8 @@
 #include "Controller.h"
 #include "GameplayDefinitions.h"
 
+#include "GameState.pb.h"
+
 Controller * Controller::instance = nullptr;
 
 
@@ -30,6 +32,8 @@ Controller::Controller()
     director = cocos2d::Director::getInstance();
     connector = GameNet::Connector::getInstance();
     admin = false;
+    
+    GameState state;
 }
 
 
