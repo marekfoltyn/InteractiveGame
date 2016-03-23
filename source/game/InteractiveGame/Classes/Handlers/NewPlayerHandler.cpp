@@ -17,8 +17,7 @@ bool NewPlayerHandler::execute(GameNet::Box * box)
     
     if( game->playersCount() == 1 ) // only this player is in the stadium
     {
-        player->setAsAdmin();
-        game->getStadiumManager()->setAdminName( player->getName() );
+        game->setAsAdmin(player);
     }
     
     return false;

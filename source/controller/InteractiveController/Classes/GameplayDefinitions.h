@@ -42,6 +42,8 @@ public:
     
 };
 
+#define SERVER_NAME_DEFAULT "Stadium 14"
+
 #define COLOR_GREEN                   Color4B(11, 112, 14, 255)
 #define COLOR_GREEN_SEMI_TRANSPARENT  Color4B(11, 112, 14, 155)
 #define COLOR_RED   Color4B(209, 119, 45, 255)

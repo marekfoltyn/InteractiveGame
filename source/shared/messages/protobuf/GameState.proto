@@ -11,10 +11,15 @@ message GameState {
 	DURATION_MEDIUM = 1;
 	DURATION_LONG = 2;
   }
+  
+  enum State {
+  	STATE_LOBBY   = 0;
+	STATE_RUNNING = 1;
+	STATE_PAUSED  = 2;
+  }
 
   optional string name            = 1;
   optional MatchDuration duration = 2;
   optional PitchSize pitchSize    = 3;
-  optional int32 bots             = 4;
-  optional bool running           = 5;
+  optional State state            = 4;
 }

@@ -9,7 +9,6 @@
 #include "Controller.h"
 #include "GameplayDefinitions.h"
 
-#include "GameState.pb.h"
 
 Controller * Controller::instance = nullptr;
 

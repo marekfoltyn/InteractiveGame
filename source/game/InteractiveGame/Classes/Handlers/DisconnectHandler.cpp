@@ -19,8 +19,7 @@ bool DisconnectHandler::execute(GameNet::Box * box)
     if( player->isAdmin() && game->playersCount() >= 1 )
     {
         auto newAdmin = game->getRandomPlayer();
-        newAdmin->setAsAdmin();
-        game->getStadiumManager()->setAdminName( newAdmin->getName() );
+        game->setAsAdmin(newAdmin);
         CCLOG("New admin is %s", newAdmin->getName().c_str());
     }
     else if (game->playersCount() == 0)

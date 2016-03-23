@@ -10,7 +10,6 @@
 #include "BoxFactory.h"
 #include "ControlScene.h"
 
-
 TeamSelectHandler::TeamSelectHandler()
 {
     director = Director::getInstance();
@@ -29,12 +28,15 @@ void TeamSelectHandler::execute(Ref * sender, ui::Widget::TouchEventType type)
         return;
     }
     
+    // stop receiving packets to old scene
+    director->getRunningScene()->unscheduleAllCallbacks();
+    
     // send to server
     auto team = button->getName();
     auto box = GameNet::BoxFactory::teamSelection(team);
     connector->send(box);
     
     // go to Lobby
-    auto scene = ControlScene::createScene();
-    director->replaceScene(TransitionSlideInB::create(TIME_SCENE_TRANSITION, scene));
+    auto newScene = ControlScene::createScene();
+    director->replaceScene(TransitionSlideInB::create(TIME_SCENE_TRANSITION, newScene));
 }

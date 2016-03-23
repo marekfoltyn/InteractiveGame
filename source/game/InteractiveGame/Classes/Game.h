@@ -16,6 +16,7 @@
 #include "StadiumScene.h"
 #include "StadiumManager.h"
 #include "HandlerMap.h"
+#include "GameState.pb.h"
 
 #include <map>
 
@@ -38,6 +39,11 @@ public:
      * called when player wants to end the game
      */
     void end();
+    
+    /**
+     * returns serialiable game information
+     */
+    GameState getState(){ return gameState; }
     
     /**
      * add a Player to the player map
@@ -99,6 +105,11 @@ public:
      */
     void stopBonusGenerating();
     
+    /**
+     * set the Player as the admin and sends him game state information
+     */
+    void setAsAdmin(Player * player);
+    
     /* IDEAS:
      
      void startBonusGenerating();
@@ -114,6 +125,11 @@ private:
     
     cocos2d::Director * director;
     GameNet::Connector * connector;
+    
+    /**
+     * serializable game information
+     */
+    GameState gameState;
     
     /**
      * singleton instance
@@ -147,6 +163,8 @@ private:
     std::map<int, Player *> players;
     
     Game();
+    
+    void initGameState();
     
     /**
      * add game handlers to the HandlerMap

@@ -4,6 +4,8 @@
 #include "MessageIdentifiers.h"
 #include "Box.h"
 
+#include "GameState.pb.h"
+
 namespace GameNet {
     
 /**
@@ -24,7 +26,7 @@ public:
      *
      * address - RakNet::SystemAddress of the player to be the admin
      */
-    static Box * admin(RakNet::SystemAddress address);
+    static Box * admin(RakNet::SystemAddress address, GameState gameState);
   
     /**
      * simple collision information

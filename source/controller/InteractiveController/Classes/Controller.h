@@ -12,6 +12,7 @@
 #include "Connector.h"
 #include "HandlerMap.h"
 #include "cocos2d.h"
+#include "GameState.pb.h"
 
 /**
  * singleton class controlling base processes in the application
@@ -78,12 +79,16 @@ public:
      */
     bool isAdmin(){return admin;}
     
+    GameState gameState;
+    
 private:
     
     static Controller * instance;
     cocos2d::Director * director;
     GameNet::Connector * connector;
     bool admin;
+    
+    
     
     /**
      * singleton - private constructor

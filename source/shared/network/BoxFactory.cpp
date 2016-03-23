@@ -18,9 +18,12 @@ Box * BoxFactory::acceleration(double x, double y, double z)
     return box;
 }
 
-Box * BoxFactory::admin(RakNet::SystemAddress address)
+Box * BoxFactory::admin(RakNet::SystemAddress address, GameState gameState)
 {
-    Box * box = Box::createEmpty();
+    std::string message;
+    gameState.SerializeToString( &message );
+    
+    Box * box = Box::create(message);
     box->setType(BOX_ADMIN);
     box->setReliability(PacketReliability::RELIABLE);
     box->setPriority(PacketPriority::LOW_PRIORITY);

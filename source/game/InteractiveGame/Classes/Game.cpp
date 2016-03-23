@@ -21,7 +21,7 @@
 #include "PlayerCollisionHandler.h"
 #include "TeamSelectHandler.h"
 
-#include "GameState.pb.h"
+#include "BoxFactory.h"
 
 Game * Game::instance = nullptr;
 
@@ -35,9 +35,18 @@ Game::Game()
     
     GOOGLE_PROTOBUF_VERIFY_VERSION;
     
-    GameState state;
+    initGameState();
 }
 
+
+void Game::initGameState()
+{
+    gameState = GameState();
+    gameState.set_name(SERVER_NAME_DEFAULT);
+    gameState.set_pitchsize(GameState_PitchSize_SIZE_SMALL);
+    gameState.set_duration(GameState_MatchDuration_DURATION_MEDIUM);
+    gameState.set_state(GameState_State_STATE_LOBBY);
+}
 
 
 Game * Game::getInstance()
@@ -124,7 +133,7 @@ bool Game::startNetworking()
 {
     // run  Connector (as a server)
     bool started = connector->startAsServer(MAX_PLAYERS);
-    connector->setServerName("Stadium 25");
+    connector->setServerName(SERVER_NAME_DEFAULT);
     
     if(!started){
         CCLOG("Server not started!");
@@ -227,4 +236,16 @@ void Game::startBonusGenerating()
 void Game::stopBonusGenerating()
 {
     
+}
+
+
+
+void Game::setAsAdmin(Player * player)
+{
+    player->setAsAdmin();
+    getStadiumManager()->setAdminName( player->getName() );
+
+    auto box = GameNet::BoxFactory::admin( player->getAddress(), getState() );
+    box->send();
+
 }

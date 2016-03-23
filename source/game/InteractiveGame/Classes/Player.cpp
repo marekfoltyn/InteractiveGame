@@ -66,8 +66,6 @@ void Player::setAppliedForce(cocos2d::Vec2 force)
 void Player::setAsAdmin()
 {
     admin = true;
-    auto box = GameNet::BoxFactory::admin( this->getAddress() );
-    box->send();
     CCLOG("%s is the new admin.", name.c_str());
 }
 
