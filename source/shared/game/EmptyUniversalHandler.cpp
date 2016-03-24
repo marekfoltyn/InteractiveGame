@@ -49,3 +49,10 @@ void EmptyUniversalHandler::execute(PhysicsBody * first, PhysicsBody * second)
 {
     CCLOG("CollisionHandler");
 }
+
+
+
+void EmptyUniversalHandler::execute( std::string str )
+{
+    CCLOG("StringHandler");
+}

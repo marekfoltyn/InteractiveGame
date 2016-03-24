@@ -79,6 +79,10 @@ public:
      */
     bool isAdmin(){return admin;}
     
+    std::string getServerName();
+    
+    void setServerName(std::string name);
+    
     GameState gameState;
     
 private:

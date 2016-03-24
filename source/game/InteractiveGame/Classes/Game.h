@@ -110,6 +110,12 @@ public:
      */
     void setAsAdmin(Player * player);
     
+    /**
+     * set new server name
+     */
+    void setName(std::string name);
+    
+    std::string getName(){ return gameState.name(); }
     /* IDEAS:
      
      void startBonusGenerating();
@@ -151,12 +157,7 @@ private:
      * state of the stadium - lobby (false) or playing a match (true)
      */
     bool playing;
-    
-    /**
-     * selected match duration
-     */
-    unsigned int matchDuration;
-    
+        
     /**
      * player map
      */

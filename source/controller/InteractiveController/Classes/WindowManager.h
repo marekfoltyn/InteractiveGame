@@ -11,6 +11,8 @@
 
 #include "cocos2d.h"
 #include "Connector.h"     // #include into WindowManager.cpp makes "Point reference is ambigous" in MacTypes.h !!!
+#include "GameState.pb.h"
+#include "HandlerMap.h"
 
 USING_NS_CC;
 
@@ -31,8 +33,7 @@ public:
      * show a dialog with admin settings
      * (match duration, pitch size, ...)
      */
-    static void showAdminSettings(Node * scene);
-  //static void showAdminSettings(Node * scene, GameState * state);
+    static void showAdminSettings(Node * scene, GameState gameState, HandlerMap * handlerMap);
     
 };
 

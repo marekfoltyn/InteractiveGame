@@ -79,10 +79,13 @@ public:
 #define LABEL_SCORE_LEFT "lblScoreLeft"
 #define LABEL_SCORE_RIGHT "lblScoreRight"
 #define LABEL_ADMIN "lblAdminName"
+#define LABEL_SERVER_NAME "lblServerName"
 
 
 #define SCHEDULE_KICK_SLOWING "kickSlowing"
 #define SCHEDULE_GENERATE_BONUS "generateBonus"
+
+#define FONT_DEFAULT "Vanilla.ttf"
 
 
 #define BORDER_DEFAULT 50

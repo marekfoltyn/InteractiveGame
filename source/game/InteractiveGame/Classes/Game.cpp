@@ -20,6 +20,7 @@
 #include "KickHandler.h"
 #include "PlayerCollisionHandler.h"
 #include "TeamSelectHandler.h"
+#include "GameStateHandler.h"
 
 #include "BoxFactory.h"
 
@@ -31,21 +32,16 @@ Game::Game()
     connector = GameNet::Connector::getInstance();
     stadiumManager = StadiumManager::create();
     handlerMap = HandlerMap::create();
-    matchDuration = Definitions::TIME_MATCH_SHORT;
-    
-    GOOGLE_PROTOBUF_VERIFY_VERSION;
-    
-    initGameState();
 }
 
 
 void Game::initGameState()
 {
     gameState = GameState();
-    gameState.set_name(SERVER_NAME_DEFAULT);
     gameState.set_pitchsize(GameState_PitchSize_SIZE_SMALL);
     gameState.set_duration(GameState_MatchDuration_DURATION_MEDIUM);
     gameState.set_state(GameState_State_STATE_LOBBY);
+    setName(SERVER_NAME_DEFAULT);
 }
 
 
@@ -53,12 +49,10 @@ Game * Game::getInstance()
 {
     if(instance == nullptr)
     {
-        return new Game();
+        instance = new Game();
     }
-    else
-    {
-        return instance;
-    }
+    
+    return instance;
 }
 
 
@@ -70,6 +64,7 @@ void Game::run()
     stadiumManager->addExitButton( new ExitGameHandler(this) );
     
     registerHandlers();
+    initGameState();
 }
 
 
@@ -164,6 +159,7 @@ void Game::registerHandlers()
     handlerMap->add(BOX_KICK_PRESSED, kickHandler);
     handlerMap->add(BOX_KICK_RELEASED, kickHandler);
     handlerMap->add(BOX_TEAM_SELECT, new TeamSelectHandler(this));
+    handlerMap->add(BOX_ADMIN, new GameStateHandler());
     
     stadiumManager->addCollisionHandler(BITMASK_PLAYER, new PlayerCollisionHandler(this) );
     //IDEA: scene->addCollisionHandler(BITMASK_GOAL_SCORE, new ScoreCollisionHandler(this) );
@@ -244,8 +240,20 @@ void Game::setAsAdmin(Player * player)
 {
     player->setAsAdmin();
     getStadiumManager()->setAdminName( player->getName() );
-
-    auto box = GameNet::BoxFactory::admin( player->getAddress(), getState() );
+    CCLOG("%s", gameState.DebugString().c_str());
+    auto box = GameNet::BoxFactory::admin( player->getAddress(), gameState );
     box->send();
 
+}
+
+
+
+void Game::setName(std::string name)
+{
+    connector->setServerName(name);
+    gameState.set_name(name);
+    stadiumManager->setServerName(name);
+    
+    CCLOG("GAME: name = %s", gameState.name().c_str());
+    CCLOG("%s", gameState.DebugString().c_str());
 }

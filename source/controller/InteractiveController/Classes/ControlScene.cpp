@@ -10,6 +10,7 @@
 #include "ConnectionLostHandler.h"
 #include "CollisionBoxHandler.h"
 #include "AdminDialogHandler.h"
+#include "ServerNameUpdateHandler.h"
 
 #include "Timer.cpp"
 
@@ -19,7 +20,7 @@ using namespace GameNet;
 #define COLOR_GREEN Color4B(11, 112, 14, 255)
 #define NODE_FORCE "nodeForce"
 
-const char * ControlScene::NODE_PAUSE = "nodePause";
+const char * ControlScene::NODE_ADMIN = "nodeAdmin";
 
 Scene * ControlScene::createScene()
 {
@@ -63,7 +64,8 @@ bool ControlScene::init()
     handlerMap->add(BOX_ADMIN, new AdminHandler(this));
     handlerMap->add(BOX_CONNECTION_LOST, new ConnectionLostHandler());
     handlerMap->add(BOX_COLLISION, new CollisionBoxHandler());
-    handlerMap->add(VOID_ADMIN_DIALOG, new AdminDialogHandler());
+    handlerMap->add(VOID_ADMIN_DIALOG, new AdminDialogHandler(handlerMap));
+    handlerMap->add(STRING_SERVER_NAME_UPDATE, new ServerNameUpdateHandler());
     
     // schedule box receiving
     this->schedule([&](float dt)
@@ -126,7 +128,7 @@ void ControlScene::initGraphics()
     reset->setAnchorPoint(Vec2(0, 0));
     border = reset->getContentSize().height/4;
     reset->setPosition(Vec2( origin.x + border, origin.y + border ));
-    reset->setName(NODE_PAUSE);
+    reset->setName(NODE_ADMIN);
     if(controller->isAdmin() == false)
     {
         reset->setVisible(false);

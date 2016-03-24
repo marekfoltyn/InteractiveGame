@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 #include "Box.h"
+#include <string>
 
 USING_NS_CC;
 
@@ -76,6 +77,13 @@ public:
 };
 
 
+/**
+ * Handler that process the string parameter (for example text field update)
+ */
+class StringHandler: public BaseHandler{
+public:
+    virtual void execute(std::string) = 0;
+};
 
 
 

@@ -13,6 +13,7 @@
 #include "cocos2d.h"
 #include "Connector.h"
 #include "Controller.h"
+#include "HandlerMap.h"
 
 /**
  * Class that show admin dialog
@@ -20,7 +21,7 @@
 class AdminDialogHandler: public VoidHandler{
 public:
 
-    AdminDialogHandler();
+    AdminDialogHandler(HandlerMap * handlerMap);
     
     /**
      * return to the main menu
@@ -32,6 +33,7 @@ private:
     cocos2d::Director * director;
     GameNet::Connector * connector;
     Controller * controller;
+    HandlerMap * handlerMap;
 };
 
 #endif /* ConnectionLost_h */

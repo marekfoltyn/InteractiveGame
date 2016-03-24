@@ -25,7 +25,7 @@ Box * BoxFactory::admin(RakNet::SystemAddress address, GameState gameState)
     
     Box * box = Box::create(message);
     box->setType(BOX_ADMIN);
-    box->setReliability(PacketReliability::RELIABLE);
+    box->setReliability(PacketReliability::RELIABLE_ORDERED);
     box->setPriority(PacketPriority::LOW_PRIORITY);
     box->setAddress(address);
     return box;

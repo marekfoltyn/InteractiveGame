@@ -32,7 +32,7 @@ Controller::Controller()
     connector = GameNet::Connector::getInstance();
     admin = false;
     
-    GameState state;
+    GameState state = GameState();
 }
 
 
@@ -88,4 +88,26 @@ bool Controller::isVibrateEnabled()
 void Controller::setAdmin(bool status)
 {
     admin = status;
+}
+
+
+
+std::string Controller::getServerName()
+{
+    if( gameState.has_name() )
+    {
+        return gameState.name();
+    }
+    else
+    {
+        return "";
+    }
+}
+
+
+
+void Controller::setServerName( std::string name )
+{
+    GameState stateChange = GameState();
+    stateChange.set_name(name);
 }

@@ -23,7 +23,8 @@ class EmptyUniversalHandler:
     public ClickHandler,
     public TouchHandler,
     public AccelerationHandler,
-    public CollisionHandler
+    public CollisionHandler,
+    public StringHandler
 {
     virtual void execute();
     virtual bool execute( GameNet::Box * box );
@@ -31,6 +32,7 @@ class EmptyUniversalHandler:
     virtual void execute( Ref * sender, ui::Widget::TouchEventType type );
     virtual void execute( Acceleration* acc, Event * unused_event );
     virtual void execute( PhysicsBody * first, PhysicsBody * second );
+    virtual void execute( std::string str );
 };
 
 

@@ -47,4 +47,6 @@
 
 #define CLICK_CONNECT_TO_SERVER         ID_USER_PACKET_ENUM+3000
 
+#define STRING_SERVER_NAME_UPDATE       ID_USER_PACKET_ENUM+4000
+
 #endif /* GameplayEvents_h */

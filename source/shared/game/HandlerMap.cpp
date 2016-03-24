@@ -129,3 +129,8 @@ CollisionHandler * HandlerMap::getCollisionHandler(int eventType)
 {
     return get<CollisionHandler*>(eventType);
 }
+
+StringHandler * HandlerMap::getStringHandler(int eventType)
+{
+    return get<StringHandler*>(eventType);
+}

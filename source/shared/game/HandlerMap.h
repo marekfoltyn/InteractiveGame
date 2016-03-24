@@ -67,6 +67,7 @@ public:
     TouchHandler        * getTouchHandler     (int eventType);
     AccelerationHandler * getAccHandler       (int eventType);
     CollisionHandler    * getCollisionHandler (int eventType);
+    StringHandler       * getStringHandler    (int eventType);
 
     
     

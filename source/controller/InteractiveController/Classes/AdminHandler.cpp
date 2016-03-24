@@ -23,16 +23,16 @@ bool AdminHandler::execute( GameNet::Box * box )
     controller->setAdmin(true);
     
     auto message = box->getData();
-    GameState state = GameState();
-    state.ParseFromString(message);
+    controller->gameState.ParseFromString(message);
+    
     CCLOG("Game state:");
     CCLOG("===========");
-    CCLOG("%s", state.DebugString().c_str());
+    CCLOG("%s", controller->gameState.DebugString().c_str());
     
     if(scene != nullptr)
     {
         CCLOG("Showing admin button...");
-        auto pause = scene->getChildByName(ControlScene::NODE_PAUSE);
+        auto pause = scene->getChildByName(ControlScene::NODE_ADMIN);
         pause->setVisible(true);
     }
     

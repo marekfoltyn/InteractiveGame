@@ -269,7 +269,15 @@ void StadiumManager::drawPitch()
     lblAdminName->setAnchorPoint(Vec2(0, 0));
     lblAdminName->setPosition(Vec2( origin.x + visibleSize.width/2 + BORDER, origin.y + 2*BORDER ));
     scene->addChild(lblAdminName,0);
-    
+
+    // server name
+    auto lblServerName = Label::createWithTTF("", "Vanilla.ttf", 30);
+    lblServerName->setName(LABEL_SERVER_NAME);
+    lblServerName->setAlignment(TextHAlignment::LEFT);
+    lblServerName->setTextColor(COLOR_FONT_TRANSPARENT);
+    lblServerName->setAnchorPoint(Vec2(0, 1));
+    lblServerName->setPosition(Vec2( origin.x + 2*BORDER, origin.y + visibleSize.height - 2*BORDER ));
+    scene->addChild(lblServerName,0);
     
     // ball sprite
     auto ball = Sprite::create("ball.png");
@@ -283,7 +291,7 @@ void StadiumManager::drawPitch()
     spriteBody->setLinearDamping(BALL_DAMPING);
     spriteBody->setAngularDamping(BALL_DAMPING);
     ball->setPhysicsBody(spriteBody);
-    //scene->addChild(ball);
+    scene->addChild(ball);
     
     //prevForce = Vec2(0,0);
     
@@ -297,17 +305,16 @@ void StadiumManager::drawPitch()
 void StadiumManager::addExitButton( VoidHandler * handler )
 {
     VoidHandler * h = handler;
-    float circle = Sprite::create("center.png")->getContentSize().width/4;
     
     // leave button
-    auto disconnect = Label::createWithTTF("Exit", "Vanilla.ttf", 50);
+    auto disconnect = Label::createWithTTF("Exit", "Vanilla.ttf", 40);
     disconnect->setAlignment(TextHAlignment::CENTER);
     disconnect->setTextColor(COLOR_FONT_TRANSPARENT);
     auto item = MenuItemLabel::create(disconnect, [h](cocos2d::Ref* ref){ // [h] captures h variable (and stores?)
         h->execute();
     });
     item->setAnchorPoint(Vec2(0.5, 1));
-    item->setPosition(Vec2( circle + origin.x + visibleSize.width/2, origin.y + visibleSize.height - 2*BORDER ));
+    item->setPosition(Vec2( origin.x + visibleSize.width - 2*BORDER_DEFAULT, origin.y + visibleSize.height - 2*BORDER ));
     auto menu = Menu::create(item, NULL);
     menu->setPosition(Vec2::ZERO);
     scene->addChild(menu,0);
@@ -353,6 +360,21 @@ void StadiumManager::setAdminName(std::string name)
     auto label = static_cast<Label*>( scene->getChildByName(LABEL_ADMIN) );
     label->setString(name);
 }
+
+
+
+void StadiumManager::setServerName(std::string name)
+{
+    if(scene == nullptr) return;
+    
+    auto label = dynamic_cast<Label*>( scene->getChildByName(LABEL_SERVER_NAME) );
+
+    if(label != nullptr)
+    {
+        label->setString(name);
+    }
+}
+
 
 
 

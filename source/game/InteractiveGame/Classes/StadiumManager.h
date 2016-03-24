@@ -36,6 +36,8 @@ public:
     
     void setAdminName(std::string name);
     
+    void setServerName(std::string name);
+    
     void resetScore();
     
     void runStadium();

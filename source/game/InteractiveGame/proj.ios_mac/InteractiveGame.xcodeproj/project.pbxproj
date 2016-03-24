@@ -59,6 +59,8 @@
 		EA90F3571C8F41B900C8B23C /* HandlerMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA90F3521C8F41B900C8B23C /* HandlerMap.cpp */; };
 		EA90F35A1C8F41FE00C8B23C /* StartHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA90F3581C8F41FE00C8B23C /* StartHandler.cpp */; };
 		EA90F35B1C8F41FE00C8B23C /* StartHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA90F3581C8F41FE00C8B23C /* StartHandler.cpp */; };
+		EA9913701CA4214A00442222 /* GameStateHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA99136E1CA4214A00442222 /* GameStateHandler.cpp */; };
+		EA9913711CA4214A00442222 /* GameStateHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA99136E1CA4214A00442222 /* GameStateHandler.cpp */; };
 		EACC71881C6B54A80036DB3D /* _FindFirst.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70801C6B54A70036DB3D /* _FindFirst.cpp */; };
 		EACC71891C6B54A80036DB3D /* _FindFirst.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70801C6B54A70036DB3D /* _FindFirst.cpp */; };
 		EACC718A1C6B54A80036DB3D /* Base64Encoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70841C6B54A70036DB3D /* Base64Encoder.cpp */; };
@@ -432,6 +434,8 @@
 		EA90F3531C8F41B900C8B23C /* HandlerMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HandlerMap.h; path = ../../../shared/game/HandlerMap.h; sourceTree = "<group>"; };
 		EA90F3581C8F41FE00C8B23C /* StartHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StartHandler.cpp; path = Handlers/StartHandler.cpp; sourceTree = "<group>"; };
 		EA90F3591C8F41FE00C8B23C /* StartHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartHandler.h; path = Handlers/StartHandler.h; sourceTree = "<group>"; };
+		EA99136E1CA4214A00442222 /* GameStateHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameStateHandler.cpp; path = Handlers/GameStateHandler.cpp; sourceTree = "<group>"; };
+		EA99136F1CA4214A00442222 /* GameStateHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameStateHandler.h; path = Handlers/GameStateHandler.h; sourceTree = "<group>"; };
 		EACC03B01C81BC1A00971626 /* AbstractHandlers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AbstractHandlers.h; path = ../../../shared/game/AbstractHandlers.h; sourceTree = "<group>"; };
 		EACC70801C6B54A70036DB3D /* _FindFirst.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = _FindFirst.cpp; path = ../../../shared/network/raknet/_FindFirst.cpp; sourceTree = "<group>"; };
 		EACC70811C6B54A70036DB3D /* _FindFirst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _FindFirst.h; path = ../../../shared/network/raknet/_FindFirst.h; sourceTree = "<group>"; };
@@ -1328,6 +1332,8 @@
 		EAD00D1B1C78A39D0037E62E /* BoxHandlers */ = {
 			isa = PBXGroup;
 			children = (
+				EA99136E1CA4214A00442222 /* GameStateHandler.cpp */,
+				EA99136F1CA4214A00442222 /* GameStateHandler.h */,
 				EAD00D031C7874BD0037E62E /* AccelerationBoxHandler.cpp */,
 				EAD00D041C7874BD0037E62E /* AccelerationBoxHandler.h */,
 				EAD00D0F1C787D660037E62E /* DisconnectHandler.cpp */,
@@ -1622,6 +1628,7 @@
 				EACC723A1C6B54A80036DB3D /* SocketLayer.cpp in Sources */,
 				EACC71D21C6B54A80036DB3D /* LocklessTypes.cpp in Sources */,
 				EA36CE1E1C91BA2B00A498A7 /* TeamSelectHandler.cpp in Sources */,
+				EA9913701CA4214A00442222 /* GameStateHandler.cpp in Sources */,
 				EAD0D4F91C75F92400776BC3 /* ServerNameMessage.cpp in Sources */,
 				EACC71F41C6B54A80036DB3D /* Rackspace.cpp in Sources */,
 				EAF1AD881CA285E90061BCCF /* wire_format.cc in Sources */,
@@ -1930,6 +1937,7 @@
 				EAF1ACFF1CA285E90061BCCF /* descriptor.pb.cc in Sources */,
 				EACC71C51C6B54A80036DB3D /* GridSectorizer.cpp in Sources */,
 				EACC71B11C6B54A80036DB3D /* EpochTimeToString.cpp in Sources */,
+				EA9913711CA4214A00442222 /* GameStateHandler.cpp in Sources */,
 				EAF1AD031CA285E90061BCCF /* descriptor_database.cc in Sources */,
 				EACC72151C6B54A80036DB3D /* RakNetTransport2.cpp in Sources */,
 				EAF1AD251CA285E90061BCCF /* repeated_field.cc in Sources */,

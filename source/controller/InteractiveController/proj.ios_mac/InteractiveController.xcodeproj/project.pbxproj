@@ -176,6 +176,7 @@
 		EA888B771C58A6B200534275 /* VariadicSQLParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888B091C58A6B200534275 /* VariadicSQLParser.cpp */; };
 		EA888B781C58A6B200534275 /* VitaIncludes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888B0A1C58A6B200534275 /* VitaIncludes.cpp */; };
 		EA888B791C58A6B200534275 /* WSAStartupSingleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888B0B1C58A6B200534275 /* WSAStartupSingleton.cpp */; };
+		EA99136D1CA41B8500442222 /* ServerNameUpdateHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA99136B1CA41B8500442222 /* ServerNameUpdateHandler.cpp */; };
 		EAAB6A591C59F21E00171969 /* Connector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A581C59F21E00171969 /* Connector.cpp */; };
 		EAAB6A5C1C59F27000171969 /* Box.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A5B1C59F27000171969 /* Box.cpp */; };
 		EAAB6A651C59F77D00171969 /* MainMenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A641C59F77D00171969 /* MainMenuScene.cpp */; };
@@ -567,6 +568,8 @@
 		EA888B0A1C58A6B200534275 /* VitaIncludes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VitaIncludes.cpp; path = ../../../shared/network/raknet/VitaIncludes.cpp; sourceTree = "<group>"; };
 		EA888B0B1C58A6B200534275 /* WSAStartupSingleton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WSAStartupSingleton.cpp; path = ../../../shared/network/raknet/WSAStartupSingleton.cpp; sourceTree = "<group>"; };
 		EA888B7C1C58A6FC00534275 /* Definitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Definitions.h; path = ../../../shared/network/Definitions.h; sourceTree = "<group>"; };
+		EA99136B1CA41B8500442222 /* ServerNameUpdateHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServerNameUpdateHandler.cpp; sourceTree = "<group>"; };
+		EA99136C1CA41B8500442222 /* ServerNameUpdateHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerNameUpdateHandler.h; sourceTree = "<group>"; };
 		EAAB6A571C59F21E00171969 /* Connector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Connector.h; path = ../../../shared/network/Connector.h; sourceTree = "<group>"; };
 		EAAB6A581C59F21E00171969 /* Connector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Connector.cpp; path = ../../../shared/network/Connector.cpp; sourceTree = "<group>"; };
 		EAAB6A5A1C59F27000171969 /* Box.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Box.h; path = ../../../shared/network/Box.h; sourceTree = "<group>"; };
@@ -1196,6 +1199,8 @@
 		EA8840B11C9C1B2800DEC852 /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
+				EA99136B1CA41B8500442222 /* ServerNameUpdateHandler.cpp */,
+				EA99136C1CA41B8500442222 /* ServerNameUpdateHandler.h */,
 				EAF1A91C1CA1C8D00061BCCF /* AdminDialogHandler.cpp */,
 				EAF1A91D1CA1C8D00061BCCF /* AdminDialogHandler.h */,
 				EA8840B51C9C21E600DEC852 /* TeamSelectHandler.cpp */,
@@ -1708,6 +1713,7 @@
 				EA888B281C58A6B200534275 /* GetTime.cpp in Sources */,
 				EA888B5B1C58A6B200534275 /* ReadyEvent.cpp in Sources */,
 				EA888B381C58A6B200534275 /* NatTypeDetectionServer.cpp in Sources */,
+				EA99136D1CA41B8500442222 /* ServerNameUpdateHandler.cpp in Sources */,
 				EA888B791C58A6B200534275 /* WSAStartupSingleton.cpp in Sources */,
 				EAF1AC671CA281360061BCCF /* substitute.cc in Sources */,
 				EA888B1D1C58A6B200534275 /* DS_Table.cpp in Sources */,

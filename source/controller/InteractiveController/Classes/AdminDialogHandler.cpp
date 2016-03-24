@@ -9,15 +9,16 @@
 #include "AdminDialogHandler.h"
 #include "WindowManager.h"
 
-AdminDialogHandler::AdminDialogHandler()
+AdminDialogHandler::AdminDialogHandler(HandlerMap * handlerMap)
 {
     director = cocos2d::Director::getInstance();
     connector = GameNet::Connector::getInstance();
     controller = Controller::getInstance();
+    this->handlerMap = handlerMap;
 }
 
 void AdminDialogHandler::execute()
 {
     auto scene = director->getRunningScene();
-    WindowManager::showAdminSettings(scene);
+    WindowManager::showAdminSettings(scene, controller->gameState, handlerMap );
 }

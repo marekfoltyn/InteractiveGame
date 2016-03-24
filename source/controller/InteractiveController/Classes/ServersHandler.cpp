@@ -113,6 +113,9 @@ void ServersHandler::addOrUpdateServer(std::string serverName, RakNet::SystemAdd
         // server already exists - refresh server lifetime
         auto s = serverMap[hash];
         s->inactiveSeconds = 0;
+        
+        // update server name if changed
+        s->button->setTitleText(serverName);
     }
 }
 
