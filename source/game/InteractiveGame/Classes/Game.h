@@ -114,8 +114,18 @@ public:
      * set new server name
      */
     void setName(std::string name);
-    
     std::string getName(){ return gameState.name(); }
+    
+    /**
+     * set new server size
+     */
+    void setSize(GameState_PitchSize size);
+    
+    /**
+     * set new match duration
+     */
+    void setDuration(GameState_MatchDuration);
+    
     /* IDEAS:
      
      void startBonusGenerating();
@@ -176,6 +186,11 @@ private:
      * call BoxHandler to each received Box
      */
     void receiveBoxes();
+    
+    /**
+     * helper class - conversion between gameState and seconds
+     */
+    int durationToSeconds(GameState_MatchDuration duration);
     
 };
 

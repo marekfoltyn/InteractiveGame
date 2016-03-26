@@ -257,3 +257,44 @@ void Game::setName(std::string name)
     CCLOG("GAME: name = %s", gameState.name().c_str());
     CCLOG("%s", gameState.DebugString().c_str());
 }
+
+
+
+void Game::setSize(GameState_PitchSize size)
+{
+    gameState.set_pitchsize(size);
+//  stadiumManager->setSize(size);
+    CCLOG("size: %d", gameState.pitchsize());
+}
+
+
+
+void Game::setDuration(GameState_MatchDuration duration)
+{
+    int seconds = durationToSeconds(duration);
+    gameState.set_duration(duration);
+    stadiumManager->setSecondsLeft( seconds );
+    CCLOG("duration: %d", gameState.duration());
+}
+
+
+
+int Game::durationToSeconds(GameState_MatchDuration duration)
+{
+    if(duration == GameState_MatchDuration_DURATION_SHORT)
+    {
+        return Definitions::TIME_MATCH_SHORT;
+    }
+
+    if(duration == GameState_MatchDuration_DURATION_MEDIUM)
+    {
+        return Definitions::TIME_MATCH_MEDIUM;
+    }
+
+    if(duration == GameState_MatchDuration_DURATION_LONG)
+    {
+        return Definitions::TIME_MATCH_LONG;
+    }
+
+    return 0;
+}

@@ -18,12 +18,13 @@ ServerNameUpdateHandler::ServerNameUpdateHandler()
 
 void ServerNameUpdateHandler::execute(std::string name)
 {
+    // gameState difference
     GameState stateChange = GameState();
+    stateChange.set_name(name);
     
     // update local game state object
     controller->gameState.set_name(name);
     
     // send to server
-    stateChange.set_name(name);
     BoxFactory::admin( connector->getServer(), stateChange)->send();
 }

@@ -32,6 +32,8 @@ private:
     GameState state;
     
     void updateName();
+    void updateSize();
+    void updateDuration();
 };
 
 #endif /* GameState_h */

@@ -29,6 +29,16 @@ bool GameStateHandler::execute( GameNet::Box * box )
         updateName();
     }
     
+    if( state.has_pitchsize() )
+    {
+        updateSize();
+    }
+    
+    if( state.has_duration() )
+    {
+        updateDuration();
+    }
+    
     return false;
 }
 
@@ -36,6 +46,19 @@ bool GameStateHandler::execute( GameNet::Box * box )
 
 void GameStateHandler::updateName()
 {
-    CCLOG("new name: %s", state.name().c_str());
     game->setName( state.name() );
+}
+
+
+
+void GameStateHandler::updateSize()
+{
+    game->setSize( state.pitchsize() );
+}
+
+
+
+void GameStateHandler::updateDuration()
+{
+    game->setDuration( state.duration() );
 }

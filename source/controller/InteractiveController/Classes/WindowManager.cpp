@@ -96,7 +96,7 @@ void WindowManager::showAdminSettings(cocos2d::Node * scene, GameState gameState
 
     // Stadium:
     auto lblStadium = Label::createWithTTF("Stadium:", FONT_DEFAULT, FONT_SIZE_DEFAULT);
-    lblStadium->setTextColor(COLOR_GREEN_SEMI_TRANSPARENT);
+    lblStadium->setTextColor(COLOR_GRAY);
     lblStadium->setAnchorPoint(Vec2(0,1));
     lblStadium->setPosition(Vec2( BORDER_DEFAULT, boxSize.height - BORDER_DEFAULT ));
     box->addChild(lblStadium);
@@ -134,17 +134,157 @@ void WindowManager::showAdminSettings(cocos2d::Node * scene, GameState gameState
 
     // Duration:
     auto lblDuration = Label::createWithTTF("Duration:", FONT_DEFAULT, FONT_SIZE_DEFAULT);
-    lblDuration->setTextColor(COLOR_GREEN_SEMI_TRANSPARENT);
+    lblDuration->setTextColor(COLOR_GRAY);
     lblDuration->setAnchorPoint(Vec2(0,1));
     lblDuration->setPosition(Vec2( BORDER_DEFAULT, boxSize.height - lblStadium->getContentSize().height - 2*BORDER_DEFAULT));
     box->addChild(lblDuration);
 
+    auto btn3min = ui::Button::create();
+    auto btn5min = ui::Button::create();
+    auto btn7min = ui::Button::create();
+    
+    // 7min
+    btn7min->setTitleText("7min");
+    btn7min->setAnchorPoint(Vec2(1,1));
+    btn7min->getTitleRenderer()->setTTFConfig(TTFConfig(FONT_DEFAULT, FONT_SIZE_DEFAULT));
+    btn7min->getTitleRenderer()->setTextColor(COLOR_GREEN_ALMOST_TRANSPARENT);
+    btn7min->setPosition(Vec2( boxSize.width - BORDER_DEFAULT, boxSize.height - lblStadium->getContentSize().height - 2*BORDER_DEFAULT));
+    box->addChild(btn7min);
+    btn7min->addTouchEventListener([handlerMap, btn3min, btn5min, btn7min](Ref * sender, ui::Widget::TouchEventType type)
+    {
+        if(type != ui::Widget::TouchEventType::BEGAN) return;
+        btn3min->getTitleRenderer()->setTextColor(COLOR_GREEN_ALMOST_TRANSPARENT);
+        btn5min->getTitleRenderer()->setTextColor(COLOR_GREEN_ALMOST_TRANSPARENT);
+        btn7min->getTitleRenderer()->setTextColor(COLOR_GREEN);
+        handlerMap->getStringHandler(STRING_SERVER_DURATION_UPDATE)->execute(STRING_DURATION_LONG);
+    });
+    
+    // 5min
+    btn5min->setTitleText("5min");
+    btn5min->setAnchorPoint(Vec2(1,1));
+    btn5min->getTitleRenderer()->setTTFConfig(TTFConfig(FONT_DEFAULT, FONT_SIZE_DEFAULT));
+    btn5min->getTitleRenderer()->setTextColor(COLOR_GREEN_ALMOST_TRANSPARENT);
+    btn5min->setPosition(Vec2( boxSize.width - btn7min->getTitleRenderer()->getContentSize().width - 2*BORDER_DEFAULT, boxSize.height - lblStadium->getContentSize().height - 2*BORDER_DEFAULT));
+    box->addChild(btn5min);
+    btn5min->addTouchEventListener([handlerMap, btn3min, btn5min, btn7min](Ref * sender, ui::Widget::TouchEventType type)
+    {
+        if(type != ui::Widget::TouchEventType::BEGAN) return;
+        btn3min->getTitleRenderer()->setTextColor(COLOR_GREEN_ALMOST_TRANSPARENT);
+        btn5min->getTitleRenderer()->setTextColor(COLOR_GREEN);
+        btn7min->getTitleRenderer()->setTextColor(COLOR_GREEN_ALMOST_TRANSPARENT);
+        handlerMap->getStringHandler(STRING_SERVER_DURATION_UPDATE)->execute(STRING_DURATION_MEDIUM);
+    });
+    
+    
+    // 3min
+    btn3min->setTitleText("3min");
+    btn3min->setAnchorPoint(Vec2(1,1));
+    btn3min->getTitleRenderer()->setTTFConfig(TTFConfig(FONT_DEFAULT, FONT_SIZE_DEFAULT));
+    btn3min->getTitleRenderer()->setTextColor(COLOR_GREEN_ALMOST_TRANSPARENT);
+    btn3min->setPosition(Vec2( boxSize.width - 2 * btn5min->getTitleRenderer()->getContentSize().width - 3*BORDER_DEFAULT, boxSize.height - lblStadium->getContentSize().height - 2*BORDER_DEFAULT));
+    box->addChild(btn3min);
+    btn3min->addTouchEventListener([handlerMap, btn3min, btn5min, btn7min](Ref * sender, ui::Widget::TouchEventType type)
+    {
+        if(type != ui::Widget::TouchEventType::BEGAN) return;
+        btn3min->getTitleRenderer()->setTextColor(COLOR_GREEN);
+        btn5min->getTitleRenderer()->setTextColor(COLOR_GREEN_ALMOST_TRANSPARENT);
+        btn7min->getTitleRenderer()->setTextColor(COLOR_GREEN_ALMOST_TRANSPARENT);
+        handlerMap->getStringHandler(STRING_SERVER_DURATION_UPDATE)->execute(STRING_DURATION_SHORT);
+    });
+    
+    
+    // set active duration
+    switch ( gameState.duration() ) {
+        case GameState_MatchDuration_DURATION_SHORT:
+            btn3min->getTitleRenderer()->setTextColor(COLOR_GREEN);
+        break;
+        case GameState_MatchDuration_DURATION_MEDIUM:
+            btn5min->getTitleRenderer()->setTextColor(COLOR_GREEN);
+        break;
+        case GameState_MatchDuration_DURATION_LONG:
+            btn7min->getTitleRenderer()->setTextColor(COLOR_GREEN);
+        break;
+            
+        default:
+            break;
+    }
+
     // Size:
     auto lblSize = Label::createWithTTF("Size:", FONT_DEFAULT, FONT_SIZE_DEFAULT);
-    lblSize->setTextColor(COLOR_GREEN_SEMI_TRANSPARENT);
+    lblSize->setTextColor(COLOR_GRAY);
     lblSize->setAnchorPoint(Vec2(0,1));
     lblSize->setPosition(Vec2( BORDER_DEFAULT, boxSize.height - 2*lblStadium->getContentSize().height - 3*BORDER_DEFAULT));
     box->addChild(lblSize);
+
+    auto btnSizeBig = ui::Button::create();
+    auto btnSizeMedium = ui::Button::create();
+    auto btnSizeSmall = ui::Button::create();
+    
+    // big
+    btnSizeBig->setTitleText("big");
+    btnSizeBig->setAnchorPoint(Vec2(1,1));
+    btnSizeBig->getTitleRenderer()->setTTFConfig(TTFConfig(FONT_DEFAULT, FONT_SIZE_DEFAULT));
+    btnSizeBig->getTitleRenderer()->setTextColor(COLOR_GREEN_ALMOST_TRANSPARENT);
+    btnSizeBig->setPosition(Vec2( boxSize.width - BORDER_DEFAULT, boxSize.height - 2*lblStadium->getContentSize().height - 3*BORDER_DEFAULT));
+    box->addChild(btnSizeBig);
+    btnSizeBig->addTouchEventListener([handlerMap, btnSizeSmall, btnSizeMedium, btnSizeBig](Ref * sender, ui::Widget::TouchEventType type)
+    {
+        if(type != ui::Widget::TouchEventType::BEGAN) return;
+        btnSizeSmall->getTitleRenderer()->setTextColor(COLOR_GREEN_ALMOST_TRANSPARENT);
+        btnSizeMedium->getTitleRenderer()->setTextColor(COLOR_GREEN_ALMOST_TRANSPARENT);
+        btnSizeBig->getTitleRenderer()->setTextColor(COLOR_GREEN);
+        handlerMap->getStringHandler(STRING_SERVER_SIZE_UPDATE)->execute(STRING_SIZE_BIG);
+    });
+    
+    // medium
+    btnSizeMedium->setTitleText("medium");
+    btnSizeMedium->setAnchorPoint(Vec2(1,1));
+    btnSizeMedium->getTitleRenderer()->setTTFConfig(TTFConfig(FONT_DEFAULT, FONT_SIZE_DEFAULT));
+    btnSizeMedium->getTitleRenderer()->setTextColor(COLOR_GREEN_ALMOST_TRANSPARENT);
+    btnSizeMedium->setPosition(Vec2( boxSize.width - btnSizeBig->getTitleRenderer()->getContentSize().width - 2*BORDER_DEFAULT, boxSize.height - 2*lblStadium->getContentSize().height - 3*BORDER_DEFAULT));
+    box->addChild(btnSizeMedium);
+    btnSizeMedium->addTouchEventListener([handlerMap, btnSizeSmall, btnSizeMedium, btnSizeBig](Ref * sender, ui::Widget::TouchEventType type)
+    {
+        if(type != ui::Widget::TouchEventType::BEGAN) return;
+        btnSizeSmall->getTitleRenderer()->setTextColor(COLOR_GREEN_ALMOST_TRANSPARENT);
+        btnSizeMedium->getTitleRenderer()->setTextColor(COLOR_GREEN);
+        btnSizeBig->getTitleRenderer()->setTextColor(COLOR_GREEN_ALMOST_TRANSPARENT);
+        handlerMap->getStringHandler(STRING_SERVER_SIZE_UPDATE)->execute(STRING_SIZE_MEDIUM);
+    });
+    
+    // small
+    btnSizeSmall->setTitleText("small");
+    btnSizeSmall->setAnchorPoint(Vec2(1,1));
+    btnSizeSmall->getTitleRenderer()->setTTFConfig(TTFConfig(FONT_DEFAULT, FONT_SIZE_DEFAULT));
+    btnSizeSmall->getTitleRenderer()->setTextColor(COLOR_GREEN_ALMOST_TRANSPARENT);
+    btnSizeSmall->setPosition(Vec2( boxSize.width - btnSizeMedium->getTitleRenderer()->getContentSize().width - btnSizeBig->getTitleRenderer()->getContentSize().width - 3*BORDER_DEFAULT, boxSize.height - 2*lblStadium->getContentSize().height - 3*BORDER_DEFAULT));
+    box->addChild(btnSizeSmall);
+    btnSizeSmall->addTouchEventListener([handlerMap, btnSizeSmall, btnSizeMedium, btnSizeBig](Ref * sender, ui::Widget::TouchEventType type)
+    {
+        if(type != ui::Widget::TouchEventType::BEGAN) return;
+        btnSizeSmall->getTitleRenderer()->setTextColor(COLOR_GREEN);
+        btnSizeMedium->getTitleRenderer()->setTextColor(COLOR_GREEN_ALMOST_TRANSPARENT);
+        btnSizeBig->getTitleRenderer()->setTextColor(COLOR_GREEN_ALMOST_TRANSPARENT);
+        handlerMap->getStringHandler(STRING_SERVER_SIZE_UPDATE)->execute(STRING_SIZE_SMALL);
+    });
+
+    
+    // set active size
+    switch ( gameState.pitchsize() ) {
+        case GameState_PitchSize_SIZE_SMALL:
+            btnSizeSmall->getTitleRenderer()->setTextColor(COLOR_GREEN);
+            break;
+        case GameState_PitchSize_SIZE_MEDIUM:
+            btnSizeMedium->getTitleRenderer()->setTextColor(COLOR_GREEN);
+            break;
+        case GameState_PitchSize_SIZE_BIG:
+            btnSizeBig->getTitleRenderer()->setTextColor(COLOR_GREEN);
+            break;
+            
+        default:
+            break;
+    }
+    
     
     // Bots:
     auto lblBots = Label::createWithTTF("Bots:", FONT_DEFAULT, FONT_SIZE_DEFAULT);
@@ -152,7 +292,6 @@ void WindowManager::showAdminSettings(cocos2d::Node * scene, GameState gameState
     lblBots->setAnchorPoint(Vec2(0,1));
     lblBots->setPosition(Vec2( BORDER_DEFAULT, boxSize.height - 3*lblStadium->getContentSize().height - 4*BORDER_DEFAULT));
     //box->addChild(lblBots);
-
     
     // Start button
     auto ok = ui::Button::create();

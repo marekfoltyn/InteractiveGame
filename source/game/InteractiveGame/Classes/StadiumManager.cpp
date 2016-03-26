@@ -293,6 +293,16 @@ void StadiumManager::drawPitch()
     ball->setPhysicsBody(spriteBody);
     scene->addChild(ball);
     
+    // server name
+    auto lblTime = Label::createWithTTF("05:00", "Vanilla.ttf", 30);
+    lblTime->setName(LABEL_TIME);
+    lblTime->setAlignment(TextHAlignment::LEFT);
+    lblTime->setTextColor(COLOR_FONT_TRANSPARENT);
+    lblTime->setAnchorPoint(Vec2(0, 1));
+    lblTime->setPosition(Vec2( origin.x + visibleSize.width/2 + BORDER, origin.y + visibleSize.height - 2*BORDER ));
+    scene->addChild(lblTime,0);
+    
+    
     //prevForce = Vec2(0,0);
     
     // collision listener
@@ -404,4 +414,15 @@ void StadiumManager::runStadium()
 void StadiumManager::addCollisionHandler(int bitmask, CollisionHandler * handler)
 {
     scene->addCollisionHandler(bitmask, handler);
+}
+
+
+
+void StadiumManager::setSecondsLeft(int secondsLeft)
+{
+    auto label = scene->getChildByName<Label*>(LABEL_TIME);
+    int minutes = secondsLeft / 60;
+    int seconds = secondsLeft % 60;
+    std::string text = __String::createWithFormat("%02d:%02d", minutes, seconds)->getCString();
+    label->setString(text);
 }

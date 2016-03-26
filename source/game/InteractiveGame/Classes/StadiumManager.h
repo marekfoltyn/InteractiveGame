@@ -38,6 +38,8 @@ public:
     
     void setServerName(std::string name);
     
+    void setSecondsLeft(int seconds);
+    
     void resetScore();
     
     void runStadium();

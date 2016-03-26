@@ -35,7 +35,7 @@ public:
     
     static const unsigned int TIME_MATCH_SHORT  = 180;     // 3 min
     static const unsigned int TIME_MATCH_MEDIUM = 300;     // 5 min
-    static const unsigned int TIME_MATCH_LONG   = 600;     // 10 min
+    static const unsigned int TIME_MATCH_LONG   = 420;     // 7 min
 
     constexpr static const float TIME_GENERATE_BONUS_MIN = 5.0;
     constexpr static const float TIME_GENERATE_BONUS_MAX = 60.0;
@@ -44,13 +44,25 @@ public:
 
 #define SERVER_NAME_DEFAULT "Stadium 14"
 
-#define COLOR_GREEN                   Color4B(11, 112, 14, 255)
-#define COLOR_GREEN_SEMI_TRANSPARENT  Color4B(11, 112, 14, 155)
+#define COLOR_GRAY                      Color4B(1, 52, 4, 120)
+#define COLOR_GREEN                     Color4B(11, 112, 14, 255)
+#define COLOR_GREEN_SEMI_TRANSPARENT    Color4B(11, 112, 14, 155)
+#define COLOR_GREEN_ALMOST_TRANSPARENT  Color4B(11, 112, 14, 77)
 #define COLOR_RED   Color4B(209, 119, 45, 255)
 
 #define TEAM_BLUE "blue"
 #define TEAM_RED  "red"
 #define TEAM_AUTO "auto"
+
+#define STRING_DURATION_SHORT "3min"
+#define STRING_DURATION_MEDIUM "5min"
+#define STRING_DURATION_LONG "7min"
+
+#define STRING_SIZE_SMALL  "small"
+#define STRING_SIZE_MEDIUM "medium"
+#define STRING_SIZE_BIG    "big"
+
+
 
 // toggle debug
 #define DEBUG
@@ -80,6 +92,7 @@ public:
 #define LABEL_SCORE_RIGHT "lblScoreRight"
 #define LABEL_ADMIN "lblAdminName"
 #define LABEL_SERVER_NAME "lblServerName"
+#define LABEL_TIME "lblTime"
 
 
 #define SCHEDULE_KICK_SLOWING "kickSlowing"

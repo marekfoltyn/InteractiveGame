@@ -11,6 +11,8 @@
 #include "CollisionBoxHandler.h"
 #include "AdminDialogHandler.h"
 #include "ServerNameUpdateHandler.h"
+#include "ServerSizeUpdateHandler.h"
+#include "ServerDurationUpdateHandler.h"
 
 #include "Timer.cpp"
 
@@ -66,6 +68,9 @@ bool ControlScene::init()
     handlerMap->add(BOX_COLLISION, new CollisionBoxHandler());
     handlerMap->add(VOID_ADMIN_DIALOG, new AdminDialogHandler(handlerMap));
     handlerMap->add(STRING_SERVER_NAME_UPDATE, new ServerNameUpdateHandler());
+    handlerMap->add(STRING_SERVER_SIZE_UPDATE, new ServerSizeUpdateHandler());
+    handlerMap->add(STRING_SERVER_DURATION_UPDATE, new ServerDurationUpdateHandler());
+    
     
     // schedule box receiving
     this->schedule([&](float dt)

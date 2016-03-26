@@ -58,6 +58,8 @@
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 		EA0767A71C883C4300A5280B /* AdminHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA0767A51C883C4300A5280B /* AdminHandler.cpp */; };
+		EA3215591CA696D900D79A48 /* ServerDurationUpdateHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA3215551CA696D900D79A48 /* ServerDurationUpdateHandler.cpp */; };
+		EA32155A1CA696D900D79A48 /* ServerSizeUpdateHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA3215571CA696D900D79A48 /* ServerSizeUpdateHandler.cpp */; };
 		EA36A80F1C7CD74D000E1636 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA36A80E1C7CD74D000E1636 /* Timer.cpp */; };
 		EA36CE221C91BEE900A498A7 /* TeamScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA36CE201C91BEE900A498A7 /* TeamScene.cpp */; };
 		EA36CE251C91C62600A498A7 /* WindowManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA36CE241C91C62600A498A7 /* WindowManager.cpp */; };
@@ -286,6 +288,10 @@
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		EA0767A51C883C4300A5280B /* AdminHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AdminHandler.cpp; sourceTree = "<group>"; };
 		EA0767A61C883C4300A5280B /* AdminHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminHandler.h; sourceTree = "<group>"; };
+		EA3215551CA696D900D79A48 /* ServerDurationUpdateHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServerDurationUpdateHandler.cpp; sourceTree = "<group>"; };
+		EA3215561CA696D900D79A48 /* ServerDurationUpdateHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerDurationUpdateHandler.h; sourceTree = "<group>"; };
+		EA3215571CA696D900D79A48 /* ServerSizeUpdateHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServerSizeUpdateHandler.cpp; sourceTree = "<group>"; };
+		EA3215581CA696D900D79A48 /* ServerSizeUpdateHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerSizeUpdateHandler.h; sourceTree = "<group>"; };
 		EA3430801C7BA26200726EAF /* GameplayDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameplayDefinitions.h; sourceTree = "<group>"; };
 		EA36A80E1C7CD74D000E1636 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
 		EA36CE201C91BEE900A498A7 /* TeamScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TeamScene.cpp; sourceTree = "<group>"; };
@@ -1199,6 +1205,10 @@
 		EA8840B11C9C1B2800DEC852 /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
+				EA3215551CA696D900D79A48 /* ServerDurationUpdateHandler.cpp */,
+				EA3215561CA696D900D79A48 /* ServerDurationUpdateHandler.h */,
+				EA3215571CA696D900D79A48 /* ServerSizeUpdateHandler.cpp */,
+				EA3215581CA696D900D79A48 /* ServerSizeUpdateHandler.h */,
 				EA99136B1CA41B8500442222 /* ServerNameUpdateHandler.cpp */,
 				EA99136C1CA41B8500442222 /* ServerNameUpdateHandler.h */,
 				EAF1A91C1CA1C8D00061BCCF /* AdminDialogHandler.cpp */,
@@ -1598,6 +1608,7 @@
 				EA888B2C1C58A6B200534275 /* HTTPConnection2.cpp in Sources */,
 				EA888B551C58A6B200534275 /* RakSleep.cpp in Sources */,
 				EAF1AC3C1CA281360061BCCF /* printer.cc in Sources */,
+				EA32155A1CA696D900D79A48 /* ServerSizeUpdateHandler.cpp in Sources */,
 				EA888B141C58A6B200534275 /* CommandParserInterface.cpp in Sources */,
 				EA888B681C58A6B200534275 /* StringTable.cpp in Sources */,
 				EAF1AC421CA281360061BCCF /* message.cc in Sources */,
@@ -1732,6 +1743,7 @@
 				EA888B771C58A6B200534275 /* VariadicSQLParser.cpp in Sources */,
 				EAF1AC411CA281360061BCCF /* zero_copy_stream_impl_lite.cc in Sources */,
 				EAF1AC631CA281360061BCCF /* once.cc in Sources */,
+				EA3215591CA696D900D79A48 /* ServerDurationUpdateHandler.cpp in Sources */,
 				EA888B451C58A6B200534275 /* RakNetSocket.cpp in Sources */,
 				EA888B321C58A6B200534275 /* LogCommandParser.cpp in Sources */,
 				EAF1AC461CA281360061BCCF /* service.cc in Sources */,
