@@ -63,6 +63,8 @@
 		EA36A80F1C7CD74D000E1636 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA36A80E1C7CD74D000E1636 /* Timer.cpp */; };
 		EA36CE221C91BEE900A498A7 /* TeamScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA36CE201C91BEE900A498A7 /* TeamScene.cpp */; };
 		EA36CE251C91C62600A498A7 /* WindowManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA36CE241C91C62600A498A7 /* WindowManager.cpp */; };
+		EA568A2A1CAAAEAC00C4A35C /* StartGameHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA568A281CAAAEAC00C4A35C /* StartGameHandler.cpp */; };
+		EA568A2D1CAAB0BF00C4A35C /* StopGameHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA568A2B1CAAB0BF00C4A35C /* StopGameHandler.cpp */; };
 		EA59272F1C9FD5E5005ECB92 /* CollisionBoxHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA59272D1C9FD5E5005ECB92 /* CollisionBoxHandler.cpp */; };
 		EA5927321C9FE599005ECB92 /* ToggleVibrateHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5927301C9FE599005ECB92 /* ToggleVibrateHandler.cpp */; };
 		EA8840B41C9C1E9200DEC852 /* DisconnectHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA8840B21C9C1E9200DEC852 /* DisconnectHandler.cpp */; };
@@ -298,6 +300,10 @@
 		EA36CE211C91BEE900A498A7 /* TeamScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamScene.h; sourceTree = "<group>"; };
 		EA36CE231C91C61900A498A7 /* WindowManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowManager.h; sourceTree = "<group>"; };
 		EA36CE241C91C62600A498A7 /* WindowManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WindowManager.cpp; sourceTree = "<group>"; };
+		EA568A281CAAAEAC00C4A35C /* StartGameHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StartGameHandler.cpp; sourceTree = "<group>"; };
+		EA568A291CAAAEAC00C4A35C /* StartGameHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartGameHandler.h; sourceTree = "<group>"; };
+		EA568A2B1CAAB0BF00C4A35C /* StopGameHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StopGameHandler.cpp; sourceTree = "<group>"; };
+		EA568A2C1CAAB0BF00C4A35C /* StopGameHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopGameHandler.h; sourceTree = "<group>"; };
 		EA59272D1C9FD5E5005ECB92 /* CollisionBoxHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CollisionBoxHandler.cpp; sourceTree = "<group>"; };
 		EA59272E1C9FD5E5005ECB92 /* CollisionBoxHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollisionBoxHandler.h; sourceTree = "<group>"; };
 		EA5927301C9FE599005ECB92 /* ToggleVibrateHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToggleVibrateHandler.cpp; sourceTree = "<group>"; };
@@ -1205,6 +1211,10 @@
 		EA8840B11C9C1B2800DEC852 /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
+				EA568A2B1CAAB0BF00C4A35C /* StopGameHandler.cpp */,
+				EA568A2C1CAAB0BF00C4A35C /* StopGameHandler.h */,
+				EA568A281CAAAEAC00C4A35C /* StartGameHandler.cpp */,
+				EA568A291CAAAEAC00C4A35C /* StartGameHandler.h */,
 				EA3215551CA696D900D79A48 /* ServerDurationUpdateHandler.cpp */,
 				EA3215561CA696D900D79A48 /* ServerDurationUpdateHandler.h */,
 				EA3215571CA696D900D79A48 /* ServerSizeUpdateHandler.cpp */,
@@ -1621,6 +1631,7 @@
 				EA888B701C58A6B200534275 /* TwoWayAuthentication.cpp in Sources */,
 				EA888B6D1C58A6B200534275 /* TeamManager.cpp in Sources */,
 				EAD0D4B11C75D11A00776BC3 /* AccelerationMessage.cpp in Sources */,
+				EA568A2D1CAAB0BF00C4A35C /* StopGameHandler.cpp in Sources */,
 				EA888B3E1C58A6B200534275 /* PacketLogger.cpp in Sources */,
 				EA888B781C58A6B200534275 /* VitaIncludes.cpp in Sources */,
 				EACC03B51C81C01600971626 /* HandlerMap.cpp in Sources */,
@@ -1704,6 +1715,7 @@
 				EA888B751C58A6B200534275 /* VariableDeltaSerializer.cpp in Sources */,
 				EAAB6A651C59F77D00171969 /* MainMenuScene.cpp in Sources */,
 				EA888B241C58A6B200534275 /* FormatString.cpp in Sources */,
+				EA568A2A1CAAAEAC00C4A35C /* StartGameHandler.cpp in Sources */,
 				EAF1AC331CA281360061BCCF /* descriptor.pb.cc in Sources */,
 				EA888B5A1C58A6B200534275 /* RandSync.cpp in Sources */,
 				EA888B211C58A6B200534275 /* FileList.cpp in Sources */,

@@ -10,6 +10,8 @@
 #include "ConnectionLostHandler.h"
 #include "CollisionBoxHandler.h"
 #include "AdminDialogHandler.h"
+#include "StartGameHandler.h"
+#include "StopGameHandler.h"
 #include "ServerNameUpdateHandler.h"
 #include "ServerSizeUpdateHandler.h"
 #include "ServerDurationUpdateHandler.h"
@@ -67,10 +69,11 @@ bool ControlScene::init()
     handlerMap->add(BOX_CONNECTION_LOST, new ConnectionLostHandler());
     handlerMap->add(BOX_COLLISION, new CollisionBoxHandler());
     handlerMap->add(VOID_ADMIN_DIALOG, new AdminDialogHandler(handlerMap));
+    handlerMap->add(VOID_START_GAME, new StartGameHandler());
+    handlerMap->add(VOID_STOP_GAME, new StopGameHandler());
     handlerMap->add(STRING_SERVER_NAME_UPDATE, new ServerNameUpdateHandler());
     handlerMap->add(STRING_SERVER_SIZE_UPDATE, new ServerSizeUpdateHandler());
     handlerMap->add(STRING_SERVER_DURATION_UPDATE, new ServerDurationUpdateHandler());
-    
     
     // schedule box receiving
     this->schedule([&](float dt)

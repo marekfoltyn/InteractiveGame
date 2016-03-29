@@ -46,6 +46,10 @@ public:
     
     void addCollisionHandler(int bitmask, CollisionHandler * handler);
     
+    void matchMode();
+    
+    void lobbyMode();
+    
     /* IDEAS:
      
     void setPitchSize(PitchSize size);

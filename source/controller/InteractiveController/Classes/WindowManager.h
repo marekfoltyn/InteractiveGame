@@ -35,6 +35,11 @@ public:
      */
     static void showAdminSettings(Node * scene, GameState gameState, HandlerMap * handlerMap);
     
+    /**
+     * game stop - admin can stop the game while running
+     */
+    static void showStopGame(Node * scene, GameState gameState, HandlerMap * handlerMap);
+    
 };
 
 #endif /* WindowManager_h */

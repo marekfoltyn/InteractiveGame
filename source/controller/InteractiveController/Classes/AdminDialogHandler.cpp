@@ -20,5 +20,10 @@ AdminDialogHandler::AdminDialogHandler(HandlerMap * handlerMap)
 void AdminDialogHandler::execute()
 {
     auto scene = director->getRunningScene();
-    WindowManager::showAdminSettings(scene, controller->gameState, handlerMap );
+
+    if(controller->gameState.state() == GameState_State_STATE_RUNNING){
+        WindowManager::showStopGame(scene, controller->gameState, handlerMap);
+    } else {
+        WindowManager::showAdminSettings(scene, controller->gameState, handlerMap );
+    }
 }

@@ -426,3 +426,17 @@ void StadiumManager::setSecondsLeft(int secondsLeft)
     std::string text = __String::createWithFormat("%02d:%02d", minutes, seconds)->getCString();
     label->setString(text);
 }
+
+
+
+void StadiumManager::matchMode()
+{
+    
+}
+
+
+
+void StadiumManager::lobbyMode()
+{
+    
+}

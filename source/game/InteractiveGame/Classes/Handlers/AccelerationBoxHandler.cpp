@@ -39,7 +39,7 @@ bool AccelerationBoxHandler::execute(GameNet::Box * box)
     
     sprite->getPhysicsBody()->applyForce(force);
     sprite->getPhysicsBody()->applyForce(oppositePrevForce);
-    sprite->getPhysicsBody()->setVelocityLimit(400*forceSize*(player->getSpeedScale())*(player->getSpeedMultiplier()));
+    sprite->getPhysicsBody()->setVelocityLimit(500*forceSize*(player->getSpeedScale())*(player->getSpeedMultiplier()));
     
     return false;
 }

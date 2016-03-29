@@ -3,6 +3,9 @@
 
 #include "GameplayEvents.h"
 
+// toggle debug
+#define DEBUG
+
 /**
  * static constants and values used in both Controller and Game
  */
@@ -62,10 +65,6 @@ public:
 #define STRING_SIZE_MEDIUM "medium"
 #define STRING_SIZE_BIG    "big"
 
-
-
-// toggle debug
-#define DEBUG
 
 #define SETTINGS_VIBRATE "vibrate"
 
