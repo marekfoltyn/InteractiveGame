@@ -46,6 +46,8 @@
 		EA41894C1C342C4B004B8934 /* TestDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA4189481C342C4B004B8934 /* TestDelegate.cpp */; };
 		EA41894D1C342C4B004B8934 /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA41894A1C342C4B004B8934 /* TestScene.cpp */; };
 		EA4189501C342CEF004B8934 /* Catch.h in Sources */ = {isa = PBXBuildFile; fileRef = EA41894F1C342CEF004B8934 /* Catch.h */; };
+		EA568A3F1CAAEDF600C4A35C /* CountdownHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA568A3D1CAAEDF600C4A35C /* CountdownHandler.cpp */; };
+		EA568A401CAAEDF600C4A35C /* CountdownHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA568A3D1CAAEDF600C4A35C /* CountdownHandler.cpp */; };
 		EA5927371CA03E91005ECB92 /* KickBonus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5927351CA03E91005ECB92 /* KickBonus.cpp */; };
 		EA5927381CA03E91005ECB92 /* KickBonus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5927351CA03E91005ECB92 /* KickBonus.cpp */; };
 		EA5CA2C41C3FC724003437FF /* Connector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5CA2C11C3FC724003437FF /* Connector.cpp */; };
@@ -418,6 +420,8 @@
 		EA41894A1C342C4B004B8934 /* TestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestScene.cpp; sourceTree = "<group>"; };
 		EA41894B1C342C4B004B8934 /* TestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestScene.h; sourceTree = "<group>"; };
 		EA41894F1C342CEF004B8934 /* Catch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Catch.h; sourceTree = "<group>"; };
+		EA568A3D1CAAEDF600C4A35C /* CountdownHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CountdownHandler.cpp; path = Handlers/CountdownHandler.cpp; sourceTree = "<group>"; };
+		EA568A3E1CAAEDF600C4A35C /* CountdownHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CountdownHandler.h; path = Handlers/CountdownHandler.h; sourceTree = "<group>"; };
 		EA5927331CA03C25005ECB92 /* BonusInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BonusInterface.h; sourceTree = "<group>"; };
 		EA5927351CA03E91005ECB92 /* KickBonus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KickBonus.cpp; sourceTree = "<group>"; };
 		EA5927361CA03E91005ECB92 /* KickBonus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KickBonus.h; sourceTree = "<group>"; };
@@ -1363,6 +1367,8 @@
 		EAD00D1D1C78A3D10037E62E /* voidHandlers */ = {
 			isa = PBXGroup;
 			children = (
+				EA568A3D1CAAEDF600C4A35C /* CountdownHandler.cpp */,
+				EA568A3E1CAAEDF600C4A35C /* CountdownHandler.h */,
 				EAD00CFD1C786F040037E62E /* ExitGameHandler.cpp */,
 				EAD00CFB1C779E410037E62E /* ExitGameHandler.h */,
 				EA90F3581C8F41FE00C8B23C /* StartHandler.cpp */,
@@ -1683,6 +1689,7 @@
 				EAF1AD621CA285E90061BCCF /* stringprintf.cc in Sources */,
 				EACC725C1C6B54A80036DB3D /* VariableListDeltaTracker.cpp in Sources */,
 				EAD0D4FF1C75FC5B00776BC3 /* BoxFactory.cpp in Sources */,
+				EA568A3F1CAAEDF600C4A35C /* CountdownHandler.cpp in Sources */,
 				EACC725A1C6B54A80036DB3D /* VariableDeltaSerializer.cpp in Sources */,
 				EACC71D41C6B54A80036DB3D /* LogCommandParser.cpp in Sources */,
 				EACC71921C6B54A80036DB3D /* CloudClient.cpp in Sources */,
@@ -1797,6 +1804,7 @@
 				EACC72011C6B54A80036DB3D /* RakNetSocket2_Berkley.cpp in Sources */,
 				EAF1AD231CA285E90061BCCF /* reflection_ops.cc in Sources */,
 				EACC72031C6B54A80036DB3D /* RakNetSocket2_NativeClient.cpp in Sources */,
+				EA568A401CAAEDF600C4A35C /* CountdownHandler.cpp in Sources */,
 				EAD00D151C787EFC0037E62E /* KickHandler.cpp in Sources */,
 				EACC72051C6B54A80036DB3D /* RakNetSocket2_PS3_PS4.cpp in Sources */,
 				EACC72131C6B54A80036DB3D /* RakNetStatistics.cpp in Sources */,

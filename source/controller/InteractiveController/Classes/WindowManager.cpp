@@ -136,7 +136,8 @@ void WindowManager::showAdminSettings(cocos2d::Node * scene, GameState gameState
     auto lblDuration = Label::createWithTTF("Duration:", FONT_DEFAULT, FONT_SIZE_DEFAULT);
     lblDuration->setTextColor(COLOR_GRAY);
     lblDuration->setAnchorPoint(Vec2(0,1));
-    lblDuration->setPosition(Vec2( BORDER_DEFAULT, boxSize.height - lblStadium->getContentSize().height - 2*BORDER_DEFAULT));
+//    lblDuration->setPosition(Vec2( BORDER_DEFAULT, boxSize.height - lblStadium->getContentSize().height - 2*BORDER_DEFAULT));
+    lblDuration->setPosition(Vec2( BORDER_DEFAULT, boxSize.height - 2*lblStadium->getContentSize().height - 3*BORDER_DEFAULT));
     box->addChild(lblDuration);
 
     auto btn3min = ui::Button::create();
@@ -148,7 +149,8 @@ void WindowManager::showAdminSettings(cocos2d::Node * scene, GameState gameState
     btn7min->setAnchorPoint(Vec2(1,1));
     btn7min->getTitleRenderer()->setTTFConfig(TTFConfig(FONT_DEFAULT, FONT_SIZE_DEFAULT));
     btn7min->getTitleRenderer()->setTextColor(COLOR_GREEN_ALMOST_TRANSPARENT);
-    btn7min->setPosition(Vec2( boxSize.width - BORDER_DEFAULT, boxSize.height - lblStadium->getContentSize().height - 2*BORDER_DEFAULT));
+//    btn7min->setPosition(Vec2( boxSize.width - BORDER_DEFAULT, boxSize.height - lblStadium->getContentSize().height - 2*BORDER_DEFAULT));
+    btn7min->setPosition(Vec2( boxSize.width - BORDER_DEFAULT, boxSize.height - 2*lblStadium->getContentSize().height - 3*BORDER_DEFAULT));
     box->addChild(btn7min);
     btn7min->addTouchEventListener([handlerMap, btn3min, btn5min, btn7min](Ref * sender, ui::Widget::TouchEventType type)
     {
@@ -164,7 +166,8 @@ void WindowManager::showAdminSettings(cocos2d::Node * scene, GameState gameState
     btn5min->setAnchorPoint(Vec2(1,1));
     btn5min->getTitleRenderer()->setTTFConfig(TTFConfig(FONT_DEFAULT, FONT_SIZE_DEFAULT));
     btn5min->getTitleRenderer()->setTextColor(COLOR_GREEN_ALMOST_TRANSPARENT);
-    btn5min->setPosition(Vec2( boxSize.width - btn7min->getTitleRenderer()->getContentSize().width - 2*BORDER_DEFAULT, boxSize.height - lblStadium->getContentSize().height - 2*BORDER_DEFAULT));
+//    btn5min->setPosition(Vec2( boxSize.width - btn7min->getTitleRenderer()->getContentSize().width - 2*BORDER_DEFAULT, boxSize.height - lblStadium->getContentSize().height - 2*BORDER_DEFAULT));
+    btn5min->setPosition(Vec2( boxSize.width - btn7min->getTitleRenderer()->getContentSize().width - 2*BORDER_DEFAULT, boxSize.height - 2*lblStadium->getContentSize().height - 3*BORDER_DEFAULT));
     box->addChild(btn5min);
     btn5min->addTouchEventListener([handlerMap, btn3min, btn5min, btn7min](Ref * sender, ui::Widget::TouchEventType type)
     {
@@ -181,7 +184,8 @@ void WindowManager::showAdminSettings(cocos2d::Node * scene, GameState gameState
     btn3min->setAnchorPoint(Vec2(1,1));
     btn3min->getTitleRenderer()->setTTFConfig(TTFConfig(FONT_DEFAULT, FONT_SIZE_DEFAULT));
     btn3min->getTitleRenderer()->setTextColor(COLOR_GREEN_ALMOST_TRANSPARENT);
-    btn3min->setPosition(Vec2( boxSize.width - 2 * btn5min->getTitleRenderer()->getContentSize().width - 3*BORDER_DEFAULT, boxSize.height - lblStadium->getContentSize().height - 2*BORDER_DEFAULT));
+//    btn3min->setPosition(Vec2( boxSize.width - 2 * btn5min->getTitleRenderer()->getContentSize().width - 3*BORDER_DEFAULT, boxSize.height - lblStadium->getContentSize().height - 2*BORDER_DEFAULT));
+    btn3min->setPosition(Vec2( boxSize.width - 2 * btn5min->getTitleRenderer()->getContentSize().width - 3*BORDER_DEFAULT, boxSize.height - 2*lblStadium->getContentSize().height - 3*BORDER_DEFAULT));
     box->addChild(btn3min);
     btn3min->addTouchEventListener([handlerMap, btn3min, btn5min, btn7min](Ref * sender, ui::Widget::TouchEventType type)
     {

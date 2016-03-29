@@ -138,8 +138,10 @@ void MainMenuScene::initGraphics()
     // exit
     auto lblExit = Label::createWithTTF("Exit", "Vanilla.ttf", FONT_SIZE_DEFAULT);
     auto exit = MenuItemLabel::create(lblExit, CC_CALLBACK_1(MainMenuScene::btnLeaveClicked, this));
-    exit->setAnchorPoint(Vec2(0.5,0));
-    exit->setPosition( origin.x + visibleSize.width * 7.0/8, origin.y + BORDER_DEFAULT );
+    //exit->setAnchorPoint(Vec2(0.5,0));
+    exit->setAnchorPoint(Vec2(1,0));
+    //exit->setPosition( origin.x + visibleSize.width * 7.0/8, origin.y + BORDER_DEFAULT );
+    exit->setPosition( origin.x + visibleSize.width - BORDER_DEFAULT, origin.y + BORDER_DEFAULT );
     auto menu = Menu::create(exit, nullptr);
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu);

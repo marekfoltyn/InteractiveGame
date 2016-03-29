@@ -39,6 +39,11 @@ bool GameStateHandler::execute( GameNet::Box * box )
         updateDuration();
     }
     
+    if( state.has_state() )
+    {
+        updateMatchState();
+    }
+    
     return false;
 }
 
@@ -61,4 +66,21 @@ void GameStateHandler::updateSize()
 void GameStateHandler::updateDuration()
 {
     game->setDuration( state.duration() );
+}
+
+
+
+void GameStateHandler::updateMatchState()
+{
+    if( state.state() == GameState_State_STATE_RUNNING)
+    {
+        game->startMatch();
+        return;
+    }
+    
+    if( state.state() == GameState_State_STATE_LOBBY)
+    {
+        game->stopMatch();
+        return;
+    }
 }

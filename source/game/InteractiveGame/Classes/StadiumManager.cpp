@@ -233,28 +233,21 @@ void StadiumManager::drawPitch()
         scene->addChild(edgeNode);
     }
     
-    
-    auto * txtServerName = TextFieldTTF::createWithTTF(c->getServerName(), "Vanilla.ttf", 64);
-    txtServerName->setColor(Color3B(54, 72, 99));
-    txtServerName->setAnchorPoint(Vec2(0.5, 0.5));
-    txtServerName->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height - txtServerName->getContentSize().height ));
-    //this->addChild(txtServerName);
-    
     // score labels
-    auto left = Label::createWithTTF("0", "Vanilla.ttf", 100);
+    leftScore = Label::createWithTTF("0", "Vanilla.ttf", 100);
     float circle = Sprite::create("center.png")->getContentSize().width/4;
-    left->setPosition(Vec2( - circle + origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
-    left->setTextColor(COLOR_FONT_TRANSPARENT);
-    left->setName(LABEL_SCORE_LEFT);
-    scene->addChild(left);
-    auto right = Label::createWithTTF("0", "Vanilla.ttf", 100);
-    right->setPosition(Vec2( circle + origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
-    right->setTextColor(COLOR_FONT_TRANSPARENT);
-    right->setName(LABEL_SCORE_RIGHT);
-    scene->addChild(right);
+    leftScore->setPosition(Vec2( - circle + origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
+    leftScore->setTextColor(COLOR_FONT_TRANSPARENT);
+    leftScore->setName(LABEL_SCORE_LEFT);
+    scene->addChild(leftScore);
+    rightScore = Label::createWithTTF("0", "Vanilla.ttf", 100);
+    rightScore->setPosition(Vec2( circle + origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
+    rightScore->setTextColor(COLOR_FONT_TRANSPARENT);
+    rightScore->setName(LABEL_SCORE_RIGHT);
+    scene->addChild(rightScore);
     
     // admin
-    auto lblAdmin = Label::createWithTTF("Admin:", "Vanilla.ttf", 30);
+    lblAdmin = Label::createWithTTF("Admin:", "Vanilla.ttf", 30);
     lblAdmin->setAlignment(TextHAlignment::CENTER);
     lblAdmin->setTextColor(COLOR_FONT_TRANSPARENT);
     lblAdmin->setAnchorPoint(Vec2(0.5, 0));
@@ -262,7 +255,7 @@ void StadiumManager::drawPitch()
     scene->addChild(lblAdmin,0);
 
     // admin name
-    auto lblAdminName = Label::createWithTTF("", "Vanilla.ttf", 30);
+    lblAdminName = Label::createWithTTF("", "Vanilla.ttf", 30);
     lblAdminName->setName(LABEL_ADMIN);
     lblAdminName->setAlignment(TextHAlignment::LEFT);
     lblAdminName->setTextColor(COLOR_FONT_TRANSPARENT);
@@ -271,7 +264,7 @@ void StadiumManager::drawPitch()
     scene->addChild(lblAdminName,0);
 
     // server name
-    auto lblServerName = Label::createWithTTF("", "Vanilla.ttf", 30);
+    lblServerName = Label::createWithTTF("", "Vanilla.ttf", 30);
     lblServerName->setName(LABEL_SERVER_NAME);
     lblServerName->setAlignment(TextHAlignment::LEFT);
     lblServerName->setTextColor(COLOR_FONT_TRANSPARENT);
@@ -292,9 +285,10 @@ void StadiumManager::drawPitch()
     spriteBody->setAngularDamping(BALL_DAMPING);
     ball->setPhysicsBody(spriteBody);
     scene->addChild(ball);
+    setBallEnabled(false);
     
-    // server name
-    auto lblTime = Label::createWithTTF("05:00", "Vanilla.ttf", 30);
+    // countdown time
+    lblTime = Label::createWithTTF("", "Vanilla.ttf", 30);
     lblTime->setName(LABEL_TIME);
     lblTime->setAlignment(TextHAlignment::LEFT);
     lblTime->setTextColor(COLOR_FONT_TRANSPARENT);
@@ -317,10 +311,10 @@ void StadiumManager::addExitButton( VoidHandler * handler )
     VoidHandler * h = handler;
     
     // leave button
-    auto disconnect = Label::createWithTTF("Exit", "Vanilla.ttf", 40);
-    disconnect->setAlignment(TextHAlignment::CENTER);
-    disconnect->setTextColor(COLOR_FONT_TRANSPARENT);
-    auto item = MenuItemLabel::create(disconnect, [h](cocos2d::Ref* ref){ // [h] captures h variable (and stores?)
+    btnExit = Label::createWithTTF("Exit", "Vanilla.ttf", 40);
+    btnExit->setAlignment(TextHAlignment::CENTER);
+    btnExit->setTextColor(COLOR_FONT_TRANSPARENT);
+    auto item = MenuItemLabel::create(btnExit, [h](cocos2d::Ref* ref){ // [h] captures h variable (and stores?)
         h->execute();
     });
     item->setAnchorPoint(Vec2(0.5, 1));
@@ -420,6 +414,7 @@ void StadiumManager::addCollisionHandler(int bitmask, CollisionHandler * handler
 
 void StadiumManager::setSecondsLeft(int secondsLeft)
 {
+    this->secondsLeft = secondsLeft;
     auto label = scene->getChildByName<Label*>(LABEL_TIME);
     int minutes = secondsLeft / 60;
     int seconds = secondsLeft % 60;
@@ -429,14 +424,52 @@ void StadiumManager::setSecondsLeft(int secondsLeft)
 
 
 
+void StadiumManager::setBallEnabled(bool enabled)
+{
+    auto ball = scene->getChildByName<Sprite*>(NODE_BALL);
+    ball->getPhysicsBody()->setEnabled(enabled);
+    ball->setVisible(enabled);
+    
+    if(enabled)
+    {
+        ball->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
+    }
+}
+
+
+
 void StadiumManager::matchMode()
 {
-    
+    resetScore();
+    setBallEnabled(true);
+    setLabelsTransparent(true);
 }
 
 
 
 void StadiumManager::lobbyMode()
 {
+    setBallEnabled(false);
+    setLabelsTransparent(false);
+}
+
+
+
+void StadiumManager::setLabelsTransparent(bool transparent)
+{
+    Action * action;
+ 
+    if(transparent){
+        action = FadeTo::create(Definitions::TIME_LABEL_FADE, OPACITY_LABELS);
+    } else {
+        action = FadeTo::create(Definitions::TIME_LABEL_FADE, 255);
+    }
     
+    leftScore->runAction(action);
+    rightScore->runAction(action->clone());
+    lblAdmin->runAction(action->clone());
+    lblAdminName->runAction(action->clone());
+    lblServerName->runAction(action->clone());
+    lblTime->runAction(action->clone());
+    btnExit->runAction(action->clone());
 }

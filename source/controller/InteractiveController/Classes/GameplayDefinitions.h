@@ -43,15 +43,19 @@ public:
     constexpr static const float TIME_GENERATE_BONUS_MIN = 5.0;
     constexpr static const float TIME_GENERATE_BONUS_MAX = 60.0;
     
+    constexpr static const float TIME_LABEL_FADE = 0.5;
+    
 };
 
-#define SERVER_NAME_DEFAULT "Stadium 14"
+#define SERVER_NAME_DEFAULT "ConnectHere"
 
 #define COLOR_GRAY                      Color4B(1, 52, 4, 120)
 #define COLOR_GREEN                     Color4B(11, 112, 14, 255)
 #define COLOR_GREEN_SEMI_TRANSPARENT    Color4B(11, 112, 14, 155)
 #define COLOR_GREEN_ALMOST_TRANSPARENT  Color4B(11, 112, 14, 77)
 #define COLOR_RED   Color4B(209, 119, 45, 255)
+
+#define OPACITY_LABELS 44
 
 #define TEAM_BLUE "blue"
 #define TEAM_RED  "red"
@@ -78,7 +82,8 @@ public:
 
 #define PLAYER_COLLIDES_WITH    BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER
 
-#define COLOR_FONT_TRANSPARENT cocos2d::Color4B(255,255,255,44)
+//#define COLOR_FONT_TRANSPARENT cocos2d::Color4B(255,255,255,44)
+#define COLOR_FONT_TRANSPARENT cocos2d::Color4B(255,255,255,255)
 #define NODE_BALL "sprBall"
 #define BALL_DAMPING 0.7
 #define BORDER 20
@@ -96,6 +101,7 @@ public:
 
 #define SCHEDULE_KICK_SLOWING "kickSlowing"
 #define SCHEDULE_GENERATE_BONUS "generateBonus"
+#define SCHEDULE_COUNTDOWN "countdown"
 
 #define FONT_DEFAULT "Vanilla.ttf"
 

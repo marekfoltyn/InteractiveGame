@@ -39,6 +39,7 @@ public:
     void setServerName(std::string name);
     
     void setSecondsLeft(int seconds);
+    int getSecondsLeft(){ return secondsLeft; }
     
     void resetScore();
     
@@ -49,6 +50,8 @@ public:
     void matchMode();
     
     void lobbyMode();
+    
+    void setBallEnabled(bool enabled);
     
     /* IDEAS:
      
@@ -74,6 +77,18 @@ private:
     cocos2d::Size visibleSize;
     cocos2d::Vec2 origin;
 
+    int secondsLeft;
+    
+    Label * leftScore;
+    Label * rightScore;
+    Label * lblAdmin;
+    Label * lblAdminName;
+    Label * lblServerName;
+    Label * lblTime;
+    Label * btnExit;
+    
+    void setLabelsTransparent(bool transparent);
+    
     /* IDEAS:
      
     PitchSize pitchSize;

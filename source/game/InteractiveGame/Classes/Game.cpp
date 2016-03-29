@@ -21,6 +21,7 @@
 #include "PlayerCollisionHandler.h"
 #include "TeamSelectHandler.h"
 #include "GameStateHandler.h"
+#include "CountdownHandler.h"
 
 #include "BoxFactory.h"
 
@@ -32,6 +33,7 @@ Game::Game()
     connector = GameNet::Connector::getInstance();
     stadiumManager = StadiumManager::create();
     handlerMap = HandlerMap::create();
+    admin = nullptr;
 }
 
 
@@ -65,6 +67,7 @@ void Game::run()
     
     registerHandlers();
     initGameState();
+    stadiumManager->setSecondsLeft(durationToSeconds(GameState_MatchDuration_DURATION_MEDIUM));
 }
 
 
@@ -161,6 +164,8 @@ void Game::registerHandlers()
     handlerMap->add(BOX_TEAM_SELECT, new TeamSelectHandler(this));
     handlerMap->add(BOX_ADMIN, new GameStateHandler());
     
+    handlerMap->add(VOID_COUNTDOWN_FINISHED, new CountdownHandler());
+    
     stadiumManager->addCollisionHandler(BITMASK_PLAYER, new PlayerCollisionHandler(this) );
     //IDEA: scene->addCollisionHandler(BITMASK_GOAL_SCORE, new ScoreCollisionHandler(this) );
 }
@@ -238,12 +243,12 @@ void Game::stopBonusGenerating()
 
 void Game::setAsAdmin(Player * player)
 {
+    admin = player;
     player->setAsAdmin();
     getStadiumManager()->setAdminName( player->getName() );
     CCLOG("%s", gameState.DebugString().c_str());
     auto box = GameNet::BoxFactory::admin( player->getAddress(), gameState );
     box->send();
-
 }
 
 
@@ -297,4 +302,57 @@ int Game::durationToSeconds(GameState_MatchDuration duration)
     }
 
     return 0;
+}
+
+
+
+void Game::setCountdownEnabled(bool enabled)
+{
+    if(!enabled)
+    {
+        stadiumManager->getScene()->unschedule(SCHEDULE_COUNTDOWN);
+        return;
+    }
+    
+    // enabled == true
+    stadiumManager->getScene()->schedule([&](float dt)
+    {
+        int secondsLeft = stadiumManager->getSecondsLeft();
+        secondsLeft--;
+        stadiumManager->setSecondsLeft(secondsLeft);
+
+        // countdown finished
+        if(secondsLeft == 0)
+        {
+            handlerMap->getVoidHandler(VOID_COUNTDOWN_FINISHED)->execute();
+            gameState.set_state(GameState_State_STATE_LOBBY);
+            
+            // update admin's game state
+            auto box = GameNet::BoxFactory::admin( admin->getAddress(), gameState );
+            box->send();
+        }
+    },
+    1, CC_REPEAT_FOREVER, 0.0f, SCHEDULE_COUNTDOWN);
+
+}
+
+
+
+void Game::startMatch()
+{
+    gameState.set_state(GameState_State_STATE_RUNNING);
+    stadiumManager->setSecondsLeft(durationToSeconds(gameState.duration()));
+    stadiumManager->matchMode();
+    setCountdownEnabled(true);
+    startBonusGenerating();
+}
+
+
+
+void Game::stopMatch()
+{
+    gameState.set_state(GameState_State_STATE_LOBBY);
+    stadiumManager->lobbyMode();
+    setCountdownEnabled(false);
+    stopBonusGenerating();
 }

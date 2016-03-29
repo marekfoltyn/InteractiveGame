@@ -126,6 +126,22 @@ public:
      */
     void setDuration(GameState_MatchDuration);
     
+    /**
+     * begin the match
+     */
+    void startMatch();
+    
+    /**
+     * force stop the match
+     */
+    void stopMatch();
+    
+    /**
+     * start/stop match countdown
+     * when countdown is finished, it calls handler for VOID_COUNTDOWN_FINISHED
+     */
+    void setCountdownEnabled(bool enabled);
+    
     /* IDEAS:
      
      void startBonusGenerating();
@@ -167,7 +183,13 @@ private:
      * state of the stadium - lobby (false) or playing a match (true)
      */
     bool playing;
-        
+    
+    
+    /**
+     * pointer of the admin player
+     */
+    Player * admin;
+     
     /**
      * player map
      */

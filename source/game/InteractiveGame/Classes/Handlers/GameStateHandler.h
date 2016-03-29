@@ -30,10 +30,12 @@ private:
     Director * director;
     Game * game;
     GameState state;
+    int secondsLeft;
     
     void updateName();
     void updateSize();
     void updateDuration();
+    void updateMatchState();
 };
 
 #endif /* GameState_h */
