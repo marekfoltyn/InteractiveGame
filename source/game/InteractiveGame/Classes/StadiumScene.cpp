@@ -84,23 +84,6 @@ bool StadiumScene::collision( cocos2d::PhysicsContact &contact )
         {
             iterator->second->execute( a[i], a[ (i+1)%2 ] ); // i==0 -> 1, i==1 -> 0
         }
-        
-    }
-        
-    // score detection
-    for(int i=0; i<2; i++)
-    {
-        if( a[i]->getCategoryBitmask() & BITMASK_SCORE ) // the ball in the goal
-        {
-            int goalSide = a[i]->getNode()->getTag();
-            CCLOG("GOOAAAALLL to %s", (goalSide==Definitions::LEFT) ?  "left" : "right" );
-            
-            // add points
-            Label * lbl = static_cast<Label*>( this->getChildByName( (goalSide == Definitions::LEFT) ? LABEL_SCORE_RIGHT : LABEL_SCORE_LEFT ) );
-            int score = __String::create( lbl->getString() )->intValue();
-            score++;
-            lbl->setString( __String::createWithFormat("%d", score)->getCString() );
-        }
     }
     
     return true;

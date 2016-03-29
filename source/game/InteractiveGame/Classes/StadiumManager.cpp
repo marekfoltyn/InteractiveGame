@@ -36,7 +36,6 @@ void StadiumManager::drawPitch()
 {
     auto visibleSize = director->getVisibleSize();
     auto origin = director->getVisibleOrigin();
-    auto c = GameNet::Connector::getInstance();
     
     // background color
     //auto background = cocos2d::LayerColor::create(COLOR_GREEN);
@@ -279,13 +278,13 @@ void StadiumManager::drawPitch()
     ball->setName(NODE_BALL);
     auto spriteBody = PhysicsBody::createCircle( ball->getContentSize().width/2, MATERIAL_BALL );
     spriteBody->setCategoryBitmask(BITMASK_BALL);
-    spriteBody->setCollisionBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER | BITMASK_BALL_BOUNDARY);
-    spriteBody->setContactTestBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER | BITMASK_SCORE | BITMASK_BALL_BOUNDARY);
+    spriteBody->setCollisionBitmask(BALL_CONTACTS_WITHOUT_GOAL);
+    spriteBody->setContactTestBitmask(BALL_CONTACTS);
     spriteBody->setLinearDamping(BALL_DAMPING);
     spriteBody->setAngularDamping(BALL_DAMPING);
     ball->setPhysicsBody(spriteBody);
     scene->addChild(ball);
-    setBallEnabled(false);
+    setBallVisible(false);
     
     // countdown time
     lblTime = Label::createWithTTF("", "Vanilla.ttf", 30);
@@ -296,6 +295,14 @@ void StadiumManager::drawPitch()
     lblTime->setPosition(Vec2( origin.x + visibleSize.width/2 + BORDER, origin.y + visibleSize.height - 2*BORDER ));
     scene->addChild(lblTime,0);
     
+    // GOAAAL label
+    auto lblGoal = Label::createWithTTF("Goal!", "Vanilla.ttf", Definitions::FONT_SIZE_GOAL_ANIMATION);
+    lblGoal->setAnchorPoint(Vec2(1,1));
+    lblGoal->setPosition(Vec2(0,0));
+    lblGoal->setName(LABEL_GOAL_ANIMATION);
+    lblGoal->setOpacity(140);
+    scene->addChild(lblGoal);
+
     
     //prevForce = Vec2(0,0);
     
@@ -424,15 +431,17 @@ void StadiumManager::setSecondsLeft(int secondsLeft)
 
 
 
-void StadiumManager::setBallEnabled(bool enabled)
+void StadiumManager::setBallVisible(bool visible)
 {
     auto ball = scene->getChildByName<Sprite*>(NODE_BALL);
-    ball->getPhysicsBody()->setEnabled(enabled);
-    ball->setVisible(enabled);
+    ball->getPhysicsBody()->setEnabled(visible);
+    ball->setVisible(visible);
     
-    if(enabled)
+    if(visible)
     {
         ball->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
+        ball->getPhysicsBody()->setVelocity(Vec2::ZERO);
+        ball->getPhysicsBody()->setAngularVelocity(0);
     }
 }
 
@@ -441,7 +450,7 @@ void StadiumManager::setBallEnabled(bool enabled)
 void StadiumManager::matchMode()
 {
     resetScore();
-    setBallEnabled(true);
+    setBallVisible(true);
     setLabelsTransparent(true);
 }
 
@@ -449,7 +458,7 @@ void StadiumManager::matchMode()
 
 void StadiumManager::lobbyMode()
 {
-    setBallEnabled(false);
+    setBallVisible(false);
     setLabelsTransparent(false);
 }
 

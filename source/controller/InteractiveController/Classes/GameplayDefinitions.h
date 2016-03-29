@@ -13,7 +13,7 @@ class Definitions{
 public:
     
     // delay when the click is considered successful (in seconds)
-    constexpr static const float TIME_DELAY_CLICK = 0.6;
+    constexpr static const float TIME_DELAY_CLICK = 0.4;
     
     // action tag (delay, button animation and after ACCIDENT_CLICK_DELAY seconds call click handler)
     static const int TAG_DELAY_CLICK = 1;
@@ -45,9 +45,14 @@ public:
     
     constexpr static const float TIME_LABEL_FADE = 0.5;
     
+    static const int FONT_SIZE_GOAL_ANIMATION = 100;
 };
 
 #define SERVER_NAME_DEFAULT "ConnectHere"
+
+#define TIME_GOAL_ANIMATION 1
+#define TIME_BALL_RESET_DELAY 4.0
+#define TIME_BALL_CENTER 0.5
 
 #define COLOR_GRAY                      Color4B(1, 52, 4, 120)
 #define COLOR_GREEN                     Color4B(11, 112, 14, 255)
@@ -80,7 +85,10 @@ public:
 
 #define BITMASK_ALL    0xFFFFFFFF
 
-#define PLAYER_COLLIDES_WITH    BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER
+#define PLAYER_COLLIDES_WITH               BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER
+#define BALL_CONTACTS                      BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER | BITMASK_BALL_BOUNDARY | BITMASK_SCORE
+#define BALL_CONTACTS_WITHOUT_GOAL         BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER | BITMASK_BALL_BOUNDARY
+#define BALL_CONTACTS_AFTER_SCORE          BITMASK_SOLID | BITMASK_BALL | BITMASK_BALL_BOUNDARY
 
 //#define COLOR_FONT_TRANSPARENT cocos2d::Color4B(255,255,255,44)
 #define COLOR_FONT_TRANSPARENT cocos2d::Color4B(255,255,255,255)
@@ -97,6 +105,7 @@ public:
 #define LABEL_ADMIN "lblAdminName"
 #define LABEL_SERVER_NAME "lblServerName"
 #define LABEL_TIME "lblTime"
+#define LABEL_GOAL_ANIMATION "lblGoalAnimation"
 
 
 #define SCHEDULE_KICK_SLOWING "kickSlowing"
@@ -105,6 +114,7 @@ public:
 
 #define FONT_DEFAULT "Vanilla.ttf"
 
+#define POSITION_CENTER Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2)
 
 #define BORDER_DEFAULT 50
 

@@ -2,6 +2,11 @@
 #include "Connector.h"
 #include "BoxFactory.h"
 
+PlayerCollisionHandler::PlayerCollisionHandler()
+{
+    game = Game::getInstance();
+}
+
 void PlayerCollisionHandler::execute(cocos2d::PhysicsBody * first, cocos2d::PhysicsBody * second)
 {
     int id = first->getTag();

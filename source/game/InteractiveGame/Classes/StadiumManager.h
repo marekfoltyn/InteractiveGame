@@ -51,7 +51,7 @@ public:
     
     void lobbyMode();
     
-    void setBallEnabled(bool enabled);
+    void setBallVisible(bool visible);
     
     /* IDEAS:
      

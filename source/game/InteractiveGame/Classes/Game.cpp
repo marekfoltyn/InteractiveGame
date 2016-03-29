@@ -19,6 +19,7 @@
 #include "ResetHandler.h"
 #include "KickHandler.h"
 #include "PlayerCollisionHandler.h"
+#include "GoalCollisionHandler.h"
 #include "TeamSelectHandler.h"
 #include "GameStateHandler.h"
 #include "CountdownHandler.h"
@@ -166,8 +167,8 @@ void Game::registerHandlers()
     
     handlerMap->add(VOID_COUNTDOWN_FINISHED, new CountdownHandler());
     
-    stadiumManager->addCollisionHandler(BITMASK_PLAYER, new PlayerCollisionHandler(this) );
-    //IDEA: scene->addCollisionHandler(BITMASK_GOAL_SCORE, new ScoreCollisionHandler(this) );
+    stadiumManager->addCollisionHandler(BITMASK_PLAYER, new PlayerCollisionHandler() );
+    stadiumManager->addCollisionHandler(BITMASK_SCORE, new GoalCollisionHandler() );
 }
 
 
