@@ -87,6 +87,7 @@ public:
      * kickMultiplier getter / setter
      */
     void setKickMultiplier(float multiplier);
+    void addKickMultiplier(float dt);
     float getKickMultiplier(){ return kickMultiplier; }
 
     /**

@@ -50,6 +50,8 @@
 		EA568A401CAAEDF600C4A35C /* CountdownHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA568A3D1CAAEDF600C4A35C /* CountdownHandler.cpp */; };
 		EA568A431CAB053300C4A35C /* GoalCollisionHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA568A411CAB053300C4A35C /* GoalCollisionHandler.cpp */; };
 		EA568A441CAB053300C4A35C /* GoalCollisionHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA568A411CAB053300C4A35C /* GoalCollisionHandler.cpp */; };
+		EA568A471CAB3AB100C4A35C /* BonusHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA568A451CAB3AB100C4A35C /* BonusHandler.cpp */; };
+		EA568A481CAB3AB100C4A35C /* BonusHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA568A451CAB3AB100C4A35C /* BonusHandler.cpp */; };
 		EA5927371CA03E91005ECB92 /* KickBonus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5927351CA03E91005ECB92 /* KickBonus.cpp */; };
 		EA5927381CA03E91005ECB92 /* KickBonus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5927351CA03E91005ECB92 /* KickBonus.cpp */; };
 		EA5CA2C41C3FC724003437FF /* Connector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5CA2C11C3FC724003437FF /* Connector.cpp */; };
@@ -426,6 +428,8 @@
 		EA568A3E1CAAEDF600C4A35C /* CountdownHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CountdownHandler.h; path = Handlers/CountdownHandler.h; sourceTree = "<group>"; };
 		EA568A411CAB053300C4A35C /* GoalCollisionHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GoalCollisionHandler.cpp; path = Handlers/GoalCollisionHandler.cpp; sourceTree = "<group>"; };
 		EA568A421CAB053300C4A35C /* GoalCollisionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GoalCollisionHandler.h; path = Handlers/GoalCollisionHandler.h; sourceTree = "<group>"; };
+		EA568A451CAB3AB100C4A35C /* BonusHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BonusHandler.cpp; path = Handlers/BonusHandler.cpp; sourceTree = "<group>"; };
+		EA568A461CAB3AB100C4A35C /* BonusHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BonusHandler.h; path = Handlers/BonusHandler.h; sourceTree = "<group>"; };
 		EA5927331CA03C25005ECB92 /* BonusInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BonusInterface.h; sourceTree = "<group>"; };
 		EA5927351CA03E91005ECB92 /* KickBonus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KickBonus.cpp; sourceTree = "<group>"; };
 		EA5927361CA03E91005ECB92 /* KickBonus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KickBonus.h; sourceTree = "<group>"; };
@@ -1373,6 +1377,8 @@
 		EAD00D1D1C78A3D10037E62E /* voidHandlers */ = {
 			isa = PBXGroup;
 			children = (
+				EA568A451CAB3AB100C4A35C /* BonusHandler.cpp */,
+				EA568A461CAB3AB100C4A35C /* BonusHandler.h */,
 				EA568A3D1CAAEDF600C4A35C /* CountdownHandler.cpp */,
 				EA568A3E1CAAEDF600C4A35C /* CountdownHandler.h */,
 				EAD00CFD1C786F040037E62E /* ExitGameHandler.cpp */,
@@ -1626,6 +1632,7 @@
 				EAD0D5031C76083000776BC3 /* StadiumManager.cpp in Sources */,
 				EAF1AD121CA285E90061BCCF /* printer.cc in Sources */,
 				EAF1AD221CA285E90061BCCF /* reflection_ops.cc in Sources */,
+				EA568A471CAB3AB100C4A35C /* BonusHandler.cpp in Sources */,
 				EACC71CC1C6B54A80036DB3D /* IncrementalReadInterface.cpp in Sources */,
 				EACC71E41C6B54A80036DB3D /* NetworkIDObject.cpp in Sources */,
 				EACC71D81C6B54A80036DB3D /* NatPunchthroughClient.cpp in Sources */,
@@ -1912,6 +1919,7 @@
 				EAD0D5041C76083000776BC3 /* StadiumManager.cpp in Sources */,
 				EACC722D1C6B54A80036DB3D /* ReplicaManager3.cpp in Sources */,
 				EA568A441CAB053300C4A35C /* GoalCollisionHandler.cpp in Sources */,
+				EA568A481CAB3AB100C4A35C /* BonusHandler.cpp in Sources */,
 				EACC71D71C6B54A80036DB3D /* MessageFilter.cpp in Sources */,
 				EACC71A31C6B54A80036DB3D /* DR_SHA1.cpp in Sources */,
 				EACC72391C6B54A80036DB3D /* SimpleMutex.cpp in Sources */,

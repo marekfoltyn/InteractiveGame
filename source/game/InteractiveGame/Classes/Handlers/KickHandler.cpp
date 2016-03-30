@@ -65,6 +65,10 @@ void KickHandler::released(GameNet::Box * box)
     {
         float force;
         
+        // when I take multiple kick bonuses, shoot would kick the ball
+        // out of the stadium - let's allow maximum multiplier 2.0
+        float realKickMultiplier = player->getKickMultiplier() > 2.0 ? 2.0 : player->getKickMultiplier();
+        
         if( box->getData().length() == 0 ){
             force = 0;
         } else {
@@ -73,8 +77,8 @@ void KickHandler::released(GameNet::Box * box)
         
         auto direction = ball->getPosition() - playerSprite->getPosition();
         direction.normalize();
-        int kickForce = 250000 + 750000 * force;
-        auto impulse = direction * kickForce * (player->getKickMultiplier());
+        int kickForce = 250000 + 750000 * force * realKickMultiplier;
+        auto impulse = direction * kickForce;
         //impulse.negate();
         ball->getPhysicsBody()->applyImpulse( impulse );
         

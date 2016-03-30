@@ -96,14 +96,10 @@ public:
     StadiumManager * getStadiumManager(){ return this->stadiumManager; }
     
     /**
-     * once a while generate a bonus
+     * toogle bonus generating
+     * - when set to false, it removes all existing bonuses
      */
-    void startBonusGenerating();
-    
-    /**
-     * stop bonus generating and remove all bonuses from the game
-     */
-    void stopBonusGenerating();
+    void setBonusesEnabled(bool enabled);
     
     /**
      * set the Player as the admin and sends him game state information
@@ -141,16 +137,6 @@ public:
      * when countdown is finished, it calls handler for VOID_COUNTDOWN_FINISHED
      */
     void setCountdownEnabled(bool enabled);
-    
-    /* IDEAS:
-     
-     void startBonusGenerating();
-     void stopBonusGenerating();     // including removing bonuses in the pitch
-     
-     void startMatch();
-     
-     */
-
     
     
 private:
@@ -210,7 +196,7 @@ private:
     void receiveBoxes();
     
     /**
-     * helper class - conversion between gameState and seconds
+     * helper method - conversion between gameState and seconds
      */
     int durationToSeconds(GameState_MatchDuration duration);
     

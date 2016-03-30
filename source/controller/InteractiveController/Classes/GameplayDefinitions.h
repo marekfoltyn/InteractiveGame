@@ -54,6 +54,11 @@ public:
 #define TIME_BALL_RESET_DELAY 4.0
 #define TIME_BALL_CENTER 0.5
 
+#define TIME_BONUS_GENERATION_MIN  5.0
+#define TIME_BONUS_GENERATION_MAX 50.0
+
+#define PROBABILITY_BONUS 0.10  
+
 #define COLOR_GRAY                      Color4B(1, 52, 4, 120)
 #define COLOR_GREEN                     Color4B(11, 112, 14, 255)
 #define COLOR_GREEN_SEMI_TRANSPARENT    Color4B(11, 112, 14, 155)
@@ -77,15 +82,17 @@ public:
 
 #define SETTINGS_VIBRATE "vibrate"
 
-#define BITMASK_SOLID            1 // 0000 0001
-#define BITMASK_BALL             2 // 0000 0010
-#define BITMASK_PLAYER           4 // 0000 0100
-#define BITMASK_SCORE            8 // 0000 1000
-#define BITMASK_BALL_BOUNDARY   16 // 0001 0000
+#define BITMASK_SOLID            1 // 0000000 1
+#define BITMASK_BALL             2 // 000000 1 0
+#define BITMASK_PLAYER           4 // 00000 1 00
+#define BITMASK_SCORE            8 // 0000 1 000
+#define BITMASK_BALL_BOUNDARY   16 // 000 1 0000
+#define BITMASK_BONUS           32 // 00 1 00000
 
 #define BITMASK_ALL    0xFFFFFFFF
 
 #define PLAYER_COLLIDES_WITH               BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER
+
 #define BALL_CONTACTS                      BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER | BITMASK_BALL_BOUNDARY | BITMASK_SCORE
 #define BALL_CONTACTS_WITHOUT_GOAL         BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER | BITMASK_BALL_BOUNDARY
 #define BALL_CONTACTS_AFTER_SCORE          BITMASK_SOLID | BITMASK_BALL | BITMASK_BALL_BOUNDARY
@@ -106,6 +113,7 @@ public:
 #define LABEL_SERVER_NAME "lblServerName"
 #define LABEL_TIME "lblTime"
 #define LABEL_GOAL_ANIMATION "lblGoalAnimation"
+#define LABEL_BONUS "lblBonus"
 
 
 #define SCHEDULE_KICK_SLOWING "kickSlowing"

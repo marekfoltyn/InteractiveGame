@@ -14,12 +14,16 @@ class TimedBonus : public BonusInterface{
     void activate(Player * player)
     {
         this->activateEffect(player);
-        
-        Director::getInstance()->getRunningScene()->schedule([this, player](float dt)
+        auto duration = generateDuration();
+        auto scheduleId = __String::createWithFormat("%p", this); // unique bonus identifier
+        player->getSprite()->scheduleOnce([this, player](float dt)
         {
             this->deactivateEffect(player);
+            CCLOG("Bonus deactivated.");
+            delete this;
         },
-        generateDuration(), 0, 0.0f, "effectDeactivate");
+        duration, scheduleId->getCString());
+        CCLOG("Bonus activated for %f seconds.", duration);
     }
     
     /**

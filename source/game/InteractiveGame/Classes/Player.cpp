@@ -97,3 +97,10 @@ void Player::setKickMultiplier(float multiplier)
 {
     kickMultiplier = multiplier;
 }
+
+
+
+void Player::addKickMultiplier(float dt)
+{
+    kickMultiplier += dt;
+}

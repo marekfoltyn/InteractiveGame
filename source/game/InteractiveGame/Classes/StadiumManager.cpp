@@ -263,7 +263,7 @@ void StadiumManager::drawPitch()
     scene->addChild(lblAdminName,0);
 
     // server name
-    lblServerName = Label::createWithTTF("", "Vanilla.ttf", 30);
+    lblServerName = Label::createWithTTF("", "Vanilla.ttf", 40);
     lblServerName->setName(LABEL_SERVER_NAME);
     lblServerName->setAlignment(TextHAlignment::LEFT);
     lblServerName->setTextColor(COLOR_FONT_TRANSPARENT);
@@ -287,7 +287,7 @@ void StadiumManager::drawPitch()
     setBallVisible(false);
     
     // countdown time
-    lblTime = Label::createWithTTF("", "Vanilla.ttf", 30);
+    lblTime = Label::createWithTTF("", "Vanilla.ttf", 40);
     lblTime->setName(LABEL_TIME);
     lblTime->setAlignment(TextHAlignment::LEFT);
     lblTime->setTextColor(COLOR_FONT_TRANSPARENT);

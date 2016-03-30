@@ -8,6 +8,8 @@ USING_NS_CC;
 class KickBonus: public TimedBonus {
 public:
     
+    static KickBonus * create();
+    
     KickBonus();
         
     /**

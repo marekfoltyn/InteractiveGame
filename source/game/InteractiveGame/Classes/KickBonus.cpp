@@ -1,27 +1,38 @@
 #include "KickBonus.h"
 #include "GameplayDefinitions.h"
 
+KickBonus * KickBonus::create()
+{
+    return new KickBonus();
+}
+
 KickBonus::KickBonus()
 {
-    sprite = nullptr;
     durationMin = Definitions::TIME_KICKBONUS_MIN;
     durationMax = Definitions::TIME_KICKBONUS_MAX;
+
+    sprite = Sprite::create("bonus_kick.png");
+    sprite->setScale(0.5);
+    sprite->setName(LABEL_BONUS);
+    
+    auto body = cocos2d::PhysicsBody::createCircle( sprite->getContentSize().width/2, MATERIAL_PLAYER);
+    body->setCategoryBitmask(BITMASK_BONUS);
+    body->setContactTestBitmask(BITMASK_PLAYER);
+    sprite->setPhysicsBody(body);
+
+    
 }
 
 
 void KickBonus::activateEffect(Player * player)
 {
-    player->setKickMultiplier(Definitions::KICKBONUS_MULTIPLIER);
-    //BoxFactory::KickBonusActivated(player)->send();
+    player->addKickMultiplier(Definitions::KICKBONUS_MULTIPLIER);
 }
 
 
 
 Sprite * KickBonus::getSprite()
 {
-    auto sprite = Sprite::create("bonus_kick.png");
-    
-    
     return sprite;
 }
 
@@ -29,7 +40,6 @@ Sprite * KickBonus::getSprite()
 
 void KickBonus::deactivateEffect(Player * player)
 {
-    //BoxFactory::KickBonusDeactivated(player)->send();
-    player->setKickMultiplier(1);
+    player->addKickMultiplier( - Definitions::KICKBONUS_MULTIPLIER );
 }
 

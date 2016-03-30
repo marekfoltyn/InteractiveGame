@@ -23,6 +23,7 @@
 #include "TeamSelectHandler.h"
 #include "GameStateHandler.h"
 #include "CountdownHandler.h"
+#include "BonusHandler.h"
 
 #include "BoxFactory.h"
 
@@ -152,6 +153,7 @@ void Game::registerHandlers()
     auto logHandler = new LogHandler();
     auto disconnectHandler = new DisconnectHandler(this);
     auto kickHandler = new KickHandler(this);
+    auto bonusHandler = new BonusHandler();
     
     handlerMap->add(BOX_PLAYER_NAME, new NewPlayerHandler(this));
     handlerMap->add(BOX_ACCELERATION, new AccelerationBoxHandler(this));
@@ -166,9 +168,11 @@ void Game::registerHandlers()
     handlerMap->add(BOX_ADMIN, new GameStateHandler());
     
     handlerMap->add(VOID_COUNTDOWN_FINISHED, new CountdownHandler());
+    handlerMap->add(VOID_GENERATE_BONUS, (VoidHandler*)(bonusHandler));
     
     stadiumManager->addCollisionHandler(BITMASK_PLAYER, new PlayerCollisionHandler() );
     stadiumManager->addCollisionHandler(BITMASK_SCORE, new GoalCollisionHandler() );
+    stadiumManager->addCollisionHandler(BITMASK_BONUS, (CollisionHandler*) bonusHandler);
 }
 
 
@@ -226,18 +230,28 @@ std::string Game::getAutoTeam()
 
 
 
-void Game::startBonusGenerating()
+void Game::setBonusesEnabled(bool enabled)
 {
-    //
-    //handlerMap->add(VOID_GENERATE_BONUS, new BonusHandler(this));
-    //handlerMap->getVoidHandler(VOID_GENERATE_BONUS)->execute();
-}
-
-
-
-void Game::stopBonusGenerating()
-{
+    if(!enabled)
+    {
+        stadiumManager->getScene()->unschedule(SCHEDULE_GENERATE_BONUS);
+        
+        // delete existing nodes
+        Node * bonus = stadiumManager->getScene()->getChildByName(LABEL_BONUS);
+        while ( bonus != nullptr ) {
+            stadiumManager->getScene()->removeChild(bonus);
+            bonus = stadiumManager->getScene()->getChildByName(LABEL_BONUS);
+        }
+        return;
+    }
     
+    // repeats every seconds, but the probability if the bonus will be
+    // generated or not depends on PROBABILITY_BONUS
+    stadiumManager->getScene()->schedule([&](float dt)
+    {
+        handlerMap->getVoidHandler(VOID_GENERATE_BONUS)->execute();
+    }
+    ,1 , SCHEDULE_GENERATE_BONUS);
 }
 
 
@@ -345,7 +359,7 @@ void Game::startMatch()
     stadiumManager->setSecondsLeft(durationToSeconds(gameState.duration()));
     stadiumManager->matchMode();
     setCountdownEnabled(true);
-    startBonusGenerating();
+    setBonusesEnabled(true);
 }
 
 
@@ -355,5 +369,5 @@ void Game::stopMatch()
     gameState.set_state(GameState_State_STATE_LOBBY);
     stadiumManager->lobbyMode();
     setCountdownEnabled(false);
-    stopBonusGenerating();
+    setBonusesEnabled(false);
 }
