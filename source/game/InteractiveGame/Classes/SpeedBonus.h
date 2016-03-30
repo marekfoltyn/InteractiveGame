@@ -1,16 +1,20 @@
-#ifndef  _KickBonus_H_
-#define  _KickBonus_H_
+#ifndef  _SpeedBonus_H_
+#define  _SpeedBonus_H_
 
 #include "TimedBonus.h"
 
 USING_NS_CC;
 
-class KickBonus: public TimedBonus {
+#define SPEEDBONUS_MIN 5.0
+#define SPEEDBONUS_MAX 20.0
+#define SPEEDBONUS_MULTIPLIER 0.4
+
+class SpeedBonus: public TimedBonus {
 public:
     
-    static KickBonus * create();
+    static SpeedBonus * create();
     
-    KickBonus();
+    SpeedBonus();
         
 protected:
     
@@ -27,4 +31,4 @@ protected:
 };
 
 
-#endif // _KickBonus_H_
+#endif // _SpeedBonus_H_

@@ -5,6 +5,7 @@
 #include "Box.h"
 
 #include "GameState.pb.h"
+#include "GameStream.pb.h"
 
 namespace GameNet {
     
@@ -63,6 +64,11 @@ public:
      * player's team selection
      */
     static Box * teamSelection(std::string team);
+    
+    /**
+     * game stream step information
+     */
+    static Box * gameStream(RakNet::SystemAddress player, PBGameStream & stream);
 };
 }
 

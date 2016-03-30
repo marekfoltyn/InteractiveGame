@@ -28,6 +28,7 @@ public:
     constexpr static const float DIALOG_FADEOUT_DURATION = 0.25;
     
     constexpr static const float TIME_COLLISION_VIBRATION = 0.05;
+    constexpr static const float TIME_VIBRATION_ENABLED = 0.20;
     
     static const int OPACITY_FULL = 255;
     static const int OPACITY_HALF = 123;

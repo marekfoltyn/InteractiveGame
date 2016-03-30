@@ -23,7 +23,7 @@ public:
      * get the game Sprite of the bonus
      * (with a PhysicsBody)
      */
-    virtual Sprite * getSprite() = 0;
+    virtual Sprite * getSprite(){ return sprite; }
     
 
     virtual ~BonusInterface(){}

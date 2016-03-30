@@ -52,6 +52,12 @@
 		EA568A441CAB053300C4A35C /* GoalCollisionHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA568A411CAB053300C4A35C /* GoalCollisionHandler.cpp */; };
 		EA568A471CAB3AB100C4A35C /* BonusHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA568A451CAB3AB100C4A35C /* BonusHandler.cpp */; };
 		EA568A481CAB3AB100C4A35C /* BonusHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA568A451CAB3AB100C4A35C /* BonusHandler.cpp */; };
+		EA568A4B1CABC39700C4A35C /* SpeedBonus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA568A491CABC39700C4A35C /* SpeedBonus.cpp */; };
+		EA568A4C1CABC39700C4A35C /* SpeedBonus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA568A491CABC39700C4A35C /* SpeedBonus.cpp */; };
+		EA568A4F1CABC7B100C4A35C /* InvisibilityBonus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA568A4D1CABC7B100C4A35C /* InvisibilityBonus.cpp */; };
+		EA568A501CABC7B100C4A35C /* InvisibilityBonus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA568A4D1CABC7B100C4A35C /* InvisibilityBonus.cpp */; };
+		EA568A531CABD0FA00C4A35C /* GameStream.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = EA568A511CABD0FA00C4A35C /* GameStream.pb.cc */; };
+		EA568A541CABD0FA00C4A35C /* GameStream.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = EA568A511CABD0FA00C4A35C /* GameStream.pb.cc */; };
 		EA5927371CA03E91005ECB92 /* KickBonus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5927351CA03E91005ECB92 /* KickBonus.cpp */; };
 		EA5927381CA03E91005ECB92 /* KickBonus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5927351CA03E91005ECB92 /* KickBonus.cpp */; };
 		EA5CA2C41C3FC724003437FF /* Connector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5CA2C11C3FC724003437FF /* Connector.cpp */; };
@@ -430,6 +436,12 @@
 		EA568A421CAB053300C4A35C /* GoalCollisionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GoalCollisionHandler.h; path = Handlers/GoalCollisionHandler.h; sourceTree = "<group>"; };
 		EA568A451CAB3AB100C4A35C /* BonusHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BonusHandler.cpp; path = Handlers/BonusHandler.cpp; sourceTree = "<group>"; };
 		EA568A461CAB3AB100C4A35C /* BonusHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BonusHandler.h; path = Handlers/BonusHandler.h; sourceTree = "<group>"; };
+		EA568A491CABC39700C4A35C /* SpeedBonus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpeedBonus.cpp; sourceTree = "<group>"; };
+		EA568A4A1CABC39700C4A35C /* SpeedBonus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeedBonus.h; sourceTree = "<group>"; };
+		EA568A4D1CABC7B100C4A35C /* InvisibilityBonus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InvisibilityBonus.cpp; sourceTree = "<group>"; };
+		EA568A4E1CABC7B100C4A35C /* InvisibilityBonus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvisibilityBonus.h; sourceTree = "<group>"; };
+		EA568A511CABD0FA00C4A35C /* GameStream.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameStream.pb.cc; path = ../../../shared/messages/GameStream.pb.cc; sourceTree = "<group>"; };
+		EA568A521CABD0FA00C4A35C /* GameStream.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameStream.pb.h; path = ../../../shared/messages/GameStream.pb.h; sourceTree = "<group>"; };
 		EA5927331CA03C25005ECB92 /* BonusInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BonusInterface.h; sourceTree = "<group>"; };
 		EA5927351CA03E91005ECB92 /* KickBonus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KickBonus.cpp; sourceTree = "<group>"; };
 		EA5927361CA03E91005ECB92 /* KickBonus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KickBonus.h; sourceTree = "<group>"; };
@@ -1046,6 +1058,10 @@
 				EA59273B1CA040F2005ECB92 /* Abstracts */,
 				EA5927351CA03E91005ECB92 /* KickBonus.cpp */,
 				EA5927361CA03E91005ECB92 /* KickBonus.h */,
+				EA568A491CABC39700C4A35C /* SpeedBonus.cpp */,
+				EA568A4A1CABC39700C4A35C /* SpeedBonus.h */,
+				EA568A4D1CABC7B100C4A35C /* InvisibilityBonus.cpp */,
+				EA568A4E1CABC7B100C4A35C /* InvisibilityBonus.h */,
 			);
 			name = Bonuses;
 			sourceTree = "<group>";
@@ -1398,6 +1414,8 @@
 				EAD0D4F21C75F92400776BC3 /* AccelerationMessage.h */,
 				EAD0D4F31C75F92400776BC3 /* ServerNameMessage.cpp */,
 				EAD0D4F41C75F92400776BC3 /* ServerNameMessage.h */,
+				EA568A511CABD0FA00C4A35C /* GameStream.pb.cc */,
+				EA568A521CABD0FA00C4A35C /* GameStream.pb.h */,
 			);
 			name = Messages;
 			sourceTree = "<group>";
@@ -1638,6 +1656,7 @@
 				EACC71D81C6B54A80036DB3D /* NatPunchthroughClient.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				EAD00D051C7874BD0037E62E /* AccelerationBoxHandler.cpp in Sources */,
+				EA568A531CABD0FA00C4A35C /* GameStream.pb.cc in Sources */,
 				EAF1AD1A1CA285E90061BCCF /* zero_copy_stream_impl.cc in Sources */,
 				EACC72361C6B54A80036DB3D /* SignaledEvent.cpp in Sources */,
 				EAF1AD641CA285E90061BCCF /* structurally_valid.cc in Sources */,
@@ -1695,6 +1714,7 @@
 				EACC71DC1C6B54A80036DB3D /* NatTypeDetectionClient.cpp in Sources */,
 				EACC72141C6B54A80036DB3D /* RakNetTransport2.cpp in Sources */,
 				EAF1ACFC1CA285E90061BCCF /* descriptor.cc in Sources */,
+				EA568A4B1CABC39700C4A35C /* SpeedBonus.cpp in Sources */,
 				EACC71A81C6B54A80036DB3D /* DS_HuffmanEncodingTree.cpp in Sources */,
 				EACC718A1C6B54A80036DB3D /* Base64Encoder.cpp in Sources */,
 				EAD00CFE1C786F040037E62E /* ExitGameHandler.cpp in Sources */,
@@ -1711,6 +1731,7 @@
 				EACC723E1C6B54A80036DB3D /* StringCompressor.cpp in Sources */,
 				46880B8B19C43A87006E1F66 /* StadiumScene.cpp in Sources */,
 				EACC71D01C6B54A80036DB3D /* LinuxStrings.cpp in Sources */,
+				EA568A4F1CABC7B100C4A35C /* InvisibilityBonus.cpp in Sources */,
 				EACC71EE1C6B54A80036DB3D /* PacketOutputWindowLogger.cpp in Sources */,
 				EACC72001C6B54A80036DB3D /* RakNetSocket2_Berkley.cpp in Sources */,
 				EACC72061C6B54A80036DB3D /* RakNetSocket2_PS4.cpp in Sources */,
@@ -1802,6 +1823,7 @@
 				EACC72451C6B54A80036DB3D /* TableSerializer.cpp in Sources */,
 				EA5927381CA03E91005ECB92 /* KickBonus.cpp in Sources */,
 				EAF1AD171CA285E90061BCCF /* tokenizer.cc in Sources */,
+				EA568A501CABC7B100C4A35C /* InvisibilityBonus.cpp in Sources */,
 				EACC71DD1C6B54A80036DB3D /* NatTypeDetectionClient.cpp in Sources */,
 				EACC71F91C6B54A80036DB3D /* RakNetCommandParser.cpp in Sources */,
 				EACC71C71C6B54A80036DB3D /* HTTPConnection.cpp in Sources */,
@@ -1835,6 +1857,7 @@
 				EAF1AD051CA285E90061BCCF /* dynamic_message.cc in Sources */,
 				EACC72311C6B54A80036DB3D /* RPC4Plugin.cpp in Sources */,
 				EACC725B1C6B54A80036DB3D /* VariableDeltaSerializer.cpp in Sources */,
+				EA568A541CABD0FA00C4A35C /* GameStream.pb.cc in Sources */,
 				EACC71D31C6B54A80036DB3D /* LocklessTypes.cpp in Sources */,
 				EACC72551C6B54A80036DB3D /* UDPProxyClient.cpp in Sources */,
 				EACC721B1C6B54A80036DB3D /* RakSleep.cpp in Sources */,
@@ -1865,6 +1888,7 @@
 				EACC72431C6B54A80036DB3D /* SuperFastHash.cpp in Sources */,
 				EACC71CF1C6B54A80036DB3D /* Itoa.cpp in Sources */,
 				EAD0D5001C75FC5B00776BC3 /* BoxFactory.cpp in Sources */,
+				EA568A4C1CABC39700C4A35C /* SpeedBonus.cpp in Sources */,
 				EACC719D1C6B54A80036DB3D /* ConsoleServer.cpp in Sources */,
 				EAF1AD891CA285E90061BCCF /* wire_format.cc in Sources */,
 				EACC71C11C6B54A80036DB3D /* GetTime.cpp in Sources */,

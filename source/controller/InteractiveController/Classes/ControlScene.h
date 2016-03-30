@@ -71,14 +71,25 @@ public:
      */
     void adminClick(cocos2d::Ref *pSender, ui::Widget::TouchEventType type);
     
+    /**
+     * get stadium layer for game rendering
+     */
+    Layer * getStadiumLayer(){ return stadiumLayer; }
+    
 private:
     
     cocos2d::Size visibleSize;
     cocos2d::Vec2 origin;
+    cocos2d::Layer * stadiumLayer;
     
     HandlerMap * handlerMap;
     Controller * controller;
     
+    /**
+     * prepare stadium layer for game rendering
+     * default hidden
+     */
+    void initStadiumLayer();
 };
 
 #endif // __LOBBY_SCENE_H__

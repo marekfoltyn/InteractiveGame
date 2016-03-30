@@ -73,6 +73,7 @@ void Controller::setVibrate(bool set)
 {
     UserDefault * def = UserDefault::getInstance();
     def->setBoolForKey(SETTINGS_VIBRATE, set);
+    if(set) Device::vibrate(Definitions::TIME_VIBRATION_ENABLED);
 }
 
 

@@ -91,3 +91,18 @@ Box * BoxFactory::teamSelection(std::string team)
     box->setPriority(PacketPriority::LOW_PRIORITY);
     return box;
 }
+
+
+Box * BoxFactory::gameStream(RakNet::SystemAddress player, PBGameStream & stream)
+{
+    Box * box;
+    std::string serialized;
+
+    stream.SerializeToString(&serialized);
+    box = Box::create(serialized);
+    box->setType(BOX_GAME_STREAM);
+    box->setAddress(player);
+    box->setReliability(PacketReliability::UNRELIABLE);
+    box->setPriority(PacketPriority::IMMEDIATE_PRIORITY);
+    return box;
+}

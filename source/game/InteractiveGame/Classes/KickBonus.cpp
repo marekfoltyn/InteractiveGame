@@ -31,13 +31,6 @@ void KickBonus::activateEffect(Player * player)
 
 
 
-Sprite * KickBonus::getSprite()
-{
-    return sprite;
-}
-
-
-
 void KickBonus::deactivateEffect(Player * player)
 {
     player->addKickMultiplier( - Definitions::KICKBONUS_MULTIPLIER );

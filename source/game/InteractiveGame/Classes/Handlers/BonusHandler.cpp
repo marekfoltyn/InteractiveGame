@@ -2,6 +2,8 @@
 #include "Game.h"
 #include "GameplayDefinitions.h"
 #include "KickBonus.h"
+#include "SpeedBonus.h"
+#include "InvisibilityBonus.h"
 
 #include <string>
 
@@ -65,8 +67,16 @@ void BonusHandler::execute(PhysicsBody * first, PhysicsBody * second)
 
 BonusInterface * BonusHandler::generateBonus()
 {
+    auto random = RandomHelper::random_int(0, 2);
+    
     // to be refactored (when more bonuses added)
-    return KickBonus::create();
+    if( random == 0 ){
+        return SpeedBonus::create();
+    } else if ( random == 1 ) {
+        return KickBonus::create();
+    } else {
+        return InvisibilityBonus::create();
+    }
 }
 
 

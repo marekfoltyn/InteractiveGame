@@ -94,8 +94,8 @@ public:
      * speedMultiplier getter / setter
      */
     void setSpeedMultiplier(float multiplier);
+    void addSpeedMultiplier(float dt);
     float getSpeedMultiplier(){ return speedMultiplier; }
-
     
 private:
     

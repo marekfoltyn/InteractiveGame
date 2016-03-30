@@ -98,9 +98,21 @@ void Player::setKickMultiplier(float multiplier)
     kickMultiplier = multiplier;
 }
 
-
-
 void Player::addKickMultiplier(float dt)
 {
     kickMultiplier += dt;
+}
+
+
+
+void Player::setSpeedMultiplier(float multiplier)
+{
+    speedMultiplier = multiplier;
+}
+
+
+
+void Player::addSpeedMultiplier(float dt)
+{
+    speedMultiplier += dt;
 }

@@ -34,6 +34,7 @@
 #define BOX_ADMIN                       ID_USER_PACKET_ENUM+6 // 140
 #define BOX_RESET_SCORE                 ID_USER_PACKET_ENUM+7
 #define BOX_TEAM_SELECT                 ID_USER_PACKET_ENUM+8
+#define BOX_GAME_STREAM                 ID_USER_PACKET_ENUM+9
 
 // Box type has range 0 - 255, so it is better that non-Box events have bigger numbers
 

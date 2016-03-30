@@ -25,13 +25,7 @@ class TimedBonus : public BonusInterface{
         duration, scheduleId->getCString());
         CCLOG("Bonus activated for %f seconds.", duration);
     }
-    
-    /**
-     * get the game Sprite of the bonus
-     * (with a PhysicsBody)
-     */
-    virtual Sprite * getSprite() = 0;
-    
+        
 protected:
     
     /**

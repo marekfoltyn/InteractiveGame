@@ -15,6 +15,7 @@
 #include "ServerNameUpdateHandler.h"
 #include "ServerSizeUpdateHandler.h"
 #include "ServerDurationUpdateHandler.h"
+#include "GameStreamHandler.h"
 
 #include "Timer.cpp"
 
@@ -23,6 +24,7 @@ using namespace GameNet;
 
 #define COLOR_GREEN Color4B(11, 112, 14, 255)
 #define NODE_FORCE "nodeForce"
+#define Z_INDEX_STADIUM_SCENE 104
 
 const char * ControlScene::NODE_ADMIN = "nodeAdmin";
 
@@ -68,6 +70,7 @@ bool ControlScene::init()
     handlerMap->add(BOX_ADMIN, new AdminHandler(this));
     handlerMap->add(BOX_CONNECTION_LOST, new ConnectionLostHandler());
     handlerMap->add(BOX_COLLISION, new CollisionBoxHandler());
+    handlerMap->add(BOX_GAME_STREAM, new GameStreamHandler(this));
     handlerMap->add(VOID_ADMIN_DIALOG, new AdminDialogHandler(handlerMap));
     handlerMap->add(VOID_START_GAME, new StartGameHandler());
     handlerMap->add(VOID_STOP_GAME, new StopGameHandler());
@@ -143,13 +146,37 @@ void ControlScene::initGraphics()
     }
     this->addChild(reset);
     
-    // force-loading image
+    // kickforce-loading image
     auto force = Sprite::create("line.png");
     force->setName(NODE_FORCE);
     force->setScale(1,0);
     force->setAnchorPoint(Vec2(1, 0.5));
     force->setPosition(Vec2(origin.x + visibleSize.width - btnKick->getContentSize().width*1.05, origin.y + visibleSize.height/2));
     this->addChild(force);
+    
+    initStadiumLayer();
+}
+
+
+
+void ControlScene::initStadiumLayer()
+{
+    stadiumLayer = Layer::create();
+    stadiumLayer->setAnchorPoint(Vec2(0, 0));
+    stadiumLayer->setContentSize(visibleSize);
+    stadiumLayer->setPosition(POSITION_CENTER);
+    stadiumLayer->setVisible(false);
+    this->addChild(stadiumLayer, Z_INDEX_STADIUM_SCENE);
+    
+    // background color
+    auto background = Sprite::create("grass.png");
+    
+    // magic position - no idea why, but works (background covers the whole screen)
+    background->setAnchorPoint(Vec2(1,1));
+    background->setPosition(Vec2( stadiumLayer->getContentSize().width/2, stadiumLayer->getContentSize().height/2 ));
+    stadiumLayer->addChild(background);
+    
+    
 }
 
 
