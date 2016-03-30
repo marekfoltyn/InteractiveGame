@@ -138,6 +138,11 @@ public:
      */
     void setCountdownEnabled(bool enabled);
     
+    /**
+     * returns stadium size ratio:
+     * visible width / visible height
+     */
+    double getStadiumRatio();
     
 private:
     

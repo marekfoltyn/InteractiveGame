@@ -371,3 +371,10 @@ void Game::stopMatch()
     setCountdownEnabled(false);
     setBonusesEnabled(false);
 }
+
+
+
+double Game::getStadiumRatio()
+{
+    return director->getVisibleSize().width / director->getVisibleSize().height;
+}

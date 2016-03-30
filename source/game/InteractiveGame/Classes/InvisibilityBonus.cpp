@@ -54,7 +54,10 @@ void InvisibilityBonus::deactivateEffect(Player * player)
 void InvisibilityBonus::sendInitialGameStream(Player * player)
 {
     PBGameStream stream;
+    double ratio = game->getStadiumRatio();
+    
     stream.set_active(true);
+    stream.set_pitchratio(ratio);
     
     GameNet::BoxFactory::gameStream(player->getAddress(), stream)->send();
 }
