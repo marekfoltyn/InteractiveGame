@@ -12,6 +12,13 @@
 USING_NS_CC;
 USING_NS_CC_EXT;
 
+#define STADIUM_CIRCLE "stadiumCircle"
+#define STADIUM_CENTER_LINE "stadiumCenterLine"
+#define STADIUM_TOP_LINE "stadiumTopLine"
+#define STADIUM_BOTTOM_LINE "stadiumBottomLine"
+#define STADIUM_LEFT_LINE "stadiumLeftLine"
+#define STADIUM_RIGHT_LINE "stadiumRightLine"
+
 using namespace GameNet;
 
 /**
@@ -70,12 +77,7 @@ public:
      * set this controller as admin
      */
     void adminClick(cocos2d::Ref *pSender, ui::Widget::TouchEventType type);
-    
-    /**
-     * get stadium layer for game rendering
-     */
-    Layer * getStadiumLayer(){ return stadiumLayer; }
-    
+        
 private:
     
     cocos2d::Size visibleSize;
@@ -85,11 +87,6 @@ private:
     HandlerMap * handlerMap;
     Controller * controller;
     
-    /**
-     * prepare stadium layer for game rendering
-     * default hidden
-     */
-    void initStadiumLayer();
 };
 
 #endif // __LOBBY_SCENE_H__

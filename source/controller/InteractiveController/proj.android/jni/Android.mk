@@ -18,18 +18,19 @@ FILE_LIST3 := $(wildcard $(LOCAL_PATH)/../../../../shared/messages/*.cpp)
 FILE_LIST4 := $(wildcard $(LOCAL_PATH)/../../../../shared/messages/*.cc)
 FILE_LIST5 := $(wildcard $(LOCAL_PATH)/../../../../shared/game/*.cpp)
 
-FILE_LIST6 := $(wildcard $(LOCAL_PATH)/../../../../shared/google/protobuf/*.cc)
-FILE_LIST7 := $(wildcard $(LOCAL_PATH)/../../../../shared/google/protobuf/io/*.cc)
-FILE_LIST8 := $(wildcard $(LOCAL_PATH)/../../../../shared/google/protobuf/stubs/*.cc)
+FILE_LIST7 := $(wildcard $(LOCAL_PATH)/../../../../shared/google/protobuf/*.cc)
+FILE_LIST8 := $(wildcard $(LOCAL_PATH)/../../../../shared/google/protobuf/io/*.cc)
+FILE_LIST9 := $(wildcard $(LOCAL_PATH)/../../../../shared/google/protobuf/stubs/*.cc)
 
 LOCAL_SRC_FILES += $(FILE_LIST1:$(LOCAL_PATH)/%=%)
 LOCAL_SRC_FILES += $(FILE_LIST2:$(LOCAL_PATH)/%=%)
 LOCAL_SRC_FILES += $(FILE_LIST3:$(LOCAL_PATH)/%=%)
 LOCAL_SRC_FILES += $(FILE_LIST4:$(LOCAL_PATH)/%=%)
 LOCAL_SRC_FILES += $(FILE_LIST5:$(LOCAL_PATH)/%=%)
-LOCAL_SRC_FILES += $(FILE_LIST6:$(LOCAL_PATH)/%=%)
+
 LOCAL_SRC_FILES += $(FILE_LIST7:$(LOCAL_PATH)/%=%)
 LOCAL_SRC_FILES += $(FILE_LIST8:$(LOCAL_PATH)/%=%)
+LOCAL_SRC_FILES += $(FILE_LIST9:$(LOCAL_PATH)/%=%)
 				   
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../../shared

@@ -56,6 +56,8 @@ bool ControlScene::init()
     
     this->setTag(SCENE_TAG);
     
+    CCLOG("Init ControlScene.");
+    
     handlerMap = HandlerMap::create();
     controller = Controller::getInstance();
 
@@ -153,30 +155,6 @@ void ControlScene::initGraphics()
     force->setAnchorPoint(Vec2(1, 0.5));
     force->setPosition(Vec2(origin.x + visibleSize.width - btnKick->getContentSize().width*1.05, origin.y + visibleSize.height/2));
     this->addChild(force);
-    
-    initStadiumLayer();
-}
-
-
-
-void ControlScene::initStadiumLayer()
-{
-    stadiumLayer = Layer::create();
-    stadiumLayer->setAnchorPoint(Vec2(0, 0));
-    stadiumLayer->setContentSize(visibleSize);
-    stadiumLayer->setPosition(POSITION_CENTER);
-    stadiumLayer->setVisible(false);
-    this->addChild(stadiumLayer, Z_INDEX_STADIUM_SCENE);
-    
-    // background color
-    auto background = Sprite::create("grass.png");
-    
-    // magic position - no idea why, but works (background covers the whole screen)
-    background->setAnchorPoint(Vec2(1,1));
-    background->setPosition(Vec2( stadiumLayer->getContentSize().width/2, stadiumLayer->getContentSize().height/2 ));
-    stadiumLayer->addChild(background);
-    
-    
 }
 
 

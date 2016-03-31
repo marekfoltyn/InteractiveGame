@@ -69,6 +69,8 @@
 		EA568A5A1CABEBCB00C4A35C /* GameStream.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = EA568A581CABEBCB00C4A35C /* GameStream.pb.cc */; };
 		EA59272F1C9FD5E5005ECB92 /* CollisionBoxHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA59272D1C9FD5E5005ECB92 /* CollisionBoxHandler.cpp */; };
 		EA5927321C9FE599005ECB92 /* ToggleVibrateHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5927301C9FE599005ECB92 /* ToggleVibrateHandler.cpp */; };
+		EA6457741CAD4C4D003C732B /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA6457721CAD4C4D003C732B /* Player.cpp */; };
+		EA6457781CAD510F003C732B /* GameStreamConnectionLostHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA6457761CAD510F003C732B /* GameStreamConnectionLostHandler.cpp */; };
 		EA8840B41C9C1E9200DEC852 /* DisconnectHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA8840B21C9C1E9200DEC852 /* DisconnectHandler.cpp */; };
 		EA8840B71C9C21E600DEC852 /* TeamSelectHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA8840B51C9C21E600DEC852 /* TeamSelectHandler.cpp */; };
 		EA888A021C58A18F00534275 /* ControlScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888A001C58A18F00534275 /* ControlScene.cpp */; };
@@ -232,6 +234,7 @@
 		EAF1AC6D1CA281360061BCCF /* wire_format_lite.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1ABDE1CA281360061BCCF /* wire_format_lite.cc */; };
 		EAF1AC701CA282840061BCCF /* descriptor.proto in Resources */ = {isa = PBXBuildFile; fileRef = EAF1AC6F1CA282840061BCCF /* descriptor.proto */; };
 		EAF1AD8E1CA287D40061BCCF /* GameState.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1AD8C1CA287D40061BCCF /* GameState.pb.cc */; };
+		EAFC04AF1CAC324E00EB0133 /* StadiumScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAFC04AC1CAC324D00EB0133 /* StadiumScene.cpp */; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
 /* End PBXBuildFile section */
@@ -314,6 +317,10 @@
 		EA59272E1C9FD5E5005ECB92 /* CollisionBoxHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollisionBoxHandler.h; sourceTree = "<group>"; };
 		EA5927301C9FE599005ECB92 /* ToggleVibrateHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToggleVibrateHandler.cpp; sourceTree = "<group>"; };
 		EA5927311C9FE599005ECB92 /* ToggleVibrateHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToggleVibrateHandler.h; sourceTree = "<group>"; };
+		EA6457721CAD4C4D003C732B /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Player.cpp; path = ../../../shared/game/Player.cpp; sourceTree = "<group>"; };
+		EA6457731CAD4C4D003C732B /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = ../../../shared/game/Player.h; sourceTree = "<group>"; };
+		EA6457761CAD510F003C732B /* GameStreamConnectionLostHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameStreamConnectionLostHandler.cpp; sourceTree = "<group>"; };
+		EA6457771CAD510F003C732B /* GameStreamConnectionLostHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameStreamConnectionLostHandler.h; sourceTree = "<group>"; };
 		EA651D891C46DC02003EE325 /* raknetx86_64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = raknetx86_64.a; path = ../../../shared/network/raknet/raknetx86_64.a; sourceTree = "<group>"; };
 		EA8840B21C9C1E9200DEC852 /* DisconnectHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DisconnectHandler.cpp; sourceTree = "<group>"; };
 		EA8840B31C9C1E9200DEC852 /* DisconnectHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisconnectHandler.h; sourceTree = "<group>"; };
@@ -710,6 +717,8 @@
 		EAF1AC6F1CA282840061BCCF /* descriptor.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = descriptor.proto; sourceTree = "<group>"; };
 		EAF1AD8C1CA287D40061BCCF /* GameState.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameState.pb.cc; path = ../../../shared/messages/GameState.pb.cc; sourceTree = "<group>"; };
 		EAF1AD8D1CA287D40061BCCF /* GameState.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameState.pb.h; path = ../../../shared/messages/GameState.pb.h; sourceTree = "<group>"; };
+		EAFC04AC1CAC324D00EB0133 /* StadiumScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StadiumScene.cpp; path = ../../../shared/game/StadiumScene.cpp; sourceTree = "<group>"; };
+		EAFC04AD1CAC324E00EB0133 /* StadiumScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StadiumScene.h; path = ../../../shared/game/StadiumScene.h; sourceTree = "<group>"; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -941,6 +950,17 @@
 			children = (
 			);
 			name = Testing;
+			sourceTree = "<group>";
+		};
+		EA6457751CAD50CB003C732B /* GameStream */ = {
+			isa = PBXGroup;
+			children = (
+				EA568A551CABDE5600C4A35C /* GameStreamHandler.cpp */,
+				EA568A561CABDE5600C4A35C /* GameStreamHandler.h */,
+				EA6457761CAD510F003C732B /* GameStreamConnectionLostHandler.cpp */,
+				EA6457771CAD510F003C732B /* GameStreamConnectionLostHandler.h */,
+			);
+			name = GameStream;
 			sourceTree = "<group>";
 		};
 		EA6D04F21C53DCD0003A08BE /* RakNet */ = {
@@ -1217,8 +1237,7 @@
 		EA8840B11C9C1B2800DEC852 /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
-				EA568A551CABDE5600C4A35C /* GameStreamHandler.cpp */,
-				EA568A561CABDE5600C4A35C /* GameStreamHandler.h */,
+				EA6457751CAD50CB003C732B /* GameStream */,
 				EA568A2B1CAAB0BF00C4A35C /* StopGameHandler.cpp */,
 				EA568A2C1CAAB0BF00C4A35C /* StopGameHandler.h */,
 				EA568A281CAAAEAC00C4A35C /* StartGameHandler.cpp */,
@@ -1259,6 +1278,8 @@
 				EAEA97511C7DD52900AF1EEA /* Controller.h */,
 				EA3430801C7BA26200726EAF /* GameplayDefinitions.h */,
 				EAE6C6181C849946000A8EBC /* GameplayEvents.h */,
+				EA6457721CAD4C4D003C732B /* Player.cpp */,
+				EA6457731CAD4C4D003C732B /* Player.h */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1268,7 +1289,7 @@
 			children = (
 				EACC03B91C81EFEC00971626 /* MainMenu */,
 				EACC03BD1C81F28500971626 /* Control */,
-				EACC03BE1C81F29200971626 /* Game */,
+				EACC03BE1C81F29200971626 /* Stadium */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -1305,11 +1326,13 @@
 			name = Control;
 			sourceTree = "<group>";
 		};
-		EACC03BE1C81F29200971626 /* Game */ = {
+		EACC03BE1C81F29200971626 /* Stadium */ = {
 			isa = PBXGroup;
 			children = (
+				EAFC04AC1CAC324D00EB0133 /* StadiumScene.cpp */,
+				EAFC04AD1CAC324E00EB0133 /* StadiumScene.h */,
 			);
-			name = Game;
+			name = Stadium;
 			sourceTree = "<group>";
 		};
 		EAD0D4A91C75CD5800776BC3 /* Messages */ = {
@@ -1748,6 +1771,7 @@
 				EA888B281C58A6B200534275 /* GetTime.cpp in Sources */,
 				EA888B5B1C58A6B200534275 /* ReadyEvent.cpp in Sources */,
 				EA888B381C58A6B200534275 /* NatTypeDetectionServer.cpp in Sources */,
+				EAFC04AF1CAC324E00EB0133 /* StadiumScene.cpp in Sources */,
 				EA99136D1CA41B8500442222 /* ServerNameUpdateHandler.cpp in Sources */,
 				EA888B791C58A6B200534275 /* WSAStartupSingleton.cpp in Sources */,
 				EAF1AC671CA281360061BCCF /* substitute.cc in Sources */,
@@ -1770,6 +1794,8 @@
 				EA3215591CA696D900D79A48 /* ServerDurationUpdateHandler.cpp in Sources */,
 				EA888B451C58A6B200534275 /* RakNetSocket.cpp in Sources */,
 				EA888B321C58A6B200534275 /* LogCommandParser.cpp in Sources */,
+				EA6457741CAD4C4D003C732B /* Player.cpp in Sources */,
+				EA6457781CAD510F003C732B /* GameStreamConnectionLostHandler.cpp in Sources */,
 				EAF1AC461CA281360061BCCF /* service.cc in Sources */,
 				EA888B621C58A6B200534275 /* SendToThread.cpp in Sources */,
 				EA888B391C58A6B200534275 /* NetworkIDManager.cpp in Sources */,

@@ -9,15 +9,13 @@ class Game; // avoid circular dependency
 class NewPlayerHandler: public BoxHandler{
 public:
     
-    NewPlayerHandler(Game * game)
-    {
-        this->game = game;
-    }
+    NewPlayerHandler();
     
     bool execute(GameNet::Box * box);
     
 private:
     
+    Director * director;
     Game * game;
 };
 

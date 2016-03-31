@@ -3,18 +3,22 @@ message PBGameStream
 	/**
 	 * when false, stop receiving stream
 	 */
-	optional bool active       = 1;
+	optional bool active = 1;
 	
-	/**
-	 * pitch width / pitch height
-	 * depends on PC screen, but we need to render
-	 * the same ratio on mobile screen
-	 */
-	optional double pitchRatio  = 2;
+	optional int32 width  = 2;
+	
+	optional int32 height = 3;
 
-	optional PBBall ball = 3;
+	optional PBBall ball = 4;
 	
-	repeated PBPlayer player = 4;
+	repeated PBPlayer player = 5;
+	
+	optional int32 scoreLeft = 6;
+	
+	optional int32 scoreRight = 7;
+	
+	
+	
 }
 
 message PBVec2
@@ -31,18 +35,22 @@ enum PBTeam
 
 message PBBall
 {
-	optional PBVec2 position      = 1;
-	optional PBVec2 velocity      = 2;
-	optional bool visible       = 3;
-	optional bool playerEnabled = 4;
+	optional PBVec2 position       = 1;
+	optional PBVec2 velocity       = 2;
+	optional bool playerEnabled    = 3;
+	optional float angularVelocity = 4;
+	optional float angle           = 5;
 }
 
 
 message PBPlayer
 {
 	optional PBVec2 position = 1;
-	optional PBVec2 velocity = 2;
+	optional PBVec2 force = 2;
 	optional string name = 3;
 	optional PBTeam team = 4;
-	optional bool connected = 5;
+	optional float speedScale = 5;
+	optional int32 id = 6;
+	optional float kickMultiplier = 7;
+	optional float speedMultiplier = 8;
 }

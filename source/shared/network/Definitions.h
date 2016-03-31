@@ -33,7 +33,7 @@
 #define SERVER_MENU_LIFETIME 5
 
 // how often to run packet receive loop (in seconds)
-#define RECEIVE_TIMEOUT 0.03
+#define RECEIVE_TIMEOUT 0.015
 
 // scene transition speed (in seconds)
 #define TIME_SCENE_TRANSITION 0.2

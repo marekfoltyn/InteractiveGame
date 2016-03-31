@@ -16,7 +16,6 @@
 #include "DisconnectHandler.h"
 #include "ExitGameHandler.h"
 #include "LogHandler.h"
-#include "ResetHandler.h"
 #include "KickHandler.h"
 #include "PlayerCollisionHandler.h"
 #include "GoalCollisionHandler.h"
@@ -33,9 +32,9 @@ Game::Game()
 {
     director = cocos2d::Director::getInstance();
     connector = GameNet::Connector::getInstance();
-    stadiumManager = StadiumManager::create();
     handlerMap = HandlerMap::create();
     admin = nullptr;
+    players = std::map<int, Player *>();
 }
 
 
@@ -55,7 +54,6 @@ Game * Game::getInstance()
     {
         instance = new Game();
     }
-    
     return instance;
 }
 
@@ -63,13 +61,24 @@ Game * Game::getInstance()
 
 void Game::run()
 {
-    playing = false;
-    stadiumManager->runStadium();
-    stadiumManager->addExitButton( new ExitGameHandler(this) );
+    auto origin = director->getVisibleOrigin();
+    auto visibleSize = director->getVisibleSize();
+    auto directorScene = StadiumScene::createScene();
+    int secondsLeft = durationToSeconds(GameState_MatchDuration_DURATION_MEDIUM);
     
+    // show the scene
+    director->runWithScene(directorScene);
+    stadium = directorScene->getChildByTag<StadiumScene*>(StadiumScene::SCENE_TAG);
+    stadium->initPitch(origin, visibleSize);
+
+    // set up handlers and protobuf data
     registerHandlers();
     initGameState();
-    stadiumManager->setSecondsLeft(durationToSeconds(GameState_MatchDuration_DURATION_MEDIUM));
+
+    // set up game and other related things
+    stadium->setSecondsLeft(secondsLeft);
+    stadium->showExitButton(new ExitGameHandler());
+    playing = false;
 }
 
 
@@ -96,17 +105,10 @@ void Game::removePlayer(Player * player)
     auto iterator = players.find( player->getId() );
     if( iterator != players.end())
     {
-        int sizeBefore = players.size();
         std::string name = player->getName();
         players.erase(iterator);
-        int sizeAfter = players.size();
         
-        if(sizeBefore > sizeAfter){
-            CCLOG("Player %s was removed from game", name.c_str());
-        } else {
-            CCLOG("Player %s was NOT removed from game", name.c_str());
-        }
-        
+        CCLOG("Player %s was removed from game", name.c_str());
     }
 }
 
@@ -155,9 +157,8 @@ void Game::registerHandlers()
     auto kickHandler = new KickHandler(this);
     auto bonusHandler = new BonusHandler();
     
-    handlerMap->add(BOX_PLAYER_NAME, new NewPlayerHandler(this));
+    handlerMap->add(BOX_PLAYER_NAME, new NewPlayerHandler());
     handlerMap->add(BOX_ACCELERATION, new AccelerationBoxHandler(this));
-    handlerMap->add(BOX_RESET_SCORE, new ResetHandler(this));
     handlerMap->add(BOX_DISCONNECTED, disconnectHandler);
     handlerMap->add(BOX_CONNECTION_LOST, disconnectHandler);
     handlerMap->add(BOX_PING, logHandler);
@@ -170,9 +171,9 @@ void Game::registerHandlers()
     handlerMap->add(VOID_COUNTDOWN_FINISHED, new CountdownHandler());
     handlerMap->add(VOID_GENERATE_BONUS, (VoidHandler*)(bonusHandler));
     
-    stadiumManager->addCollisionHandler(BITMASK_PLAYER, new PlayerCollisionHandler() );
-    stadiumManager->addCollisionHandler(BITMASK_SCORE, new GoalCollisionHandler() );
-    stadiumManager->addCollisionHandler(BITMASK_BONUS, (CollisionHandler*) bonusHandler);
+    stadium->addCollisionHandler(BITMASK_PLAYER, new PlayerCollisionHandler() );
+    stadium->addCollisionHandler(BITMASK_SCORE, new GoalCollisionHandler() );
+    stadium->addCollisionHandler(BITMASK_BONUS, (CollisionHandler*) bonusHandler);
 }
 
 
@@ -234,24 +235,41 @@ void Game::setBonusesEnabled(bool enabled)
 {
     if(!enabled)
     {
-        stadiumManager->getScene()->unschedule(SCHEDULE_GENERATE_BONUS);
+        stadium->unschedule(SCHEDULE_GENERATE_BONUS);
         
         // delete existing nodes
-        Node * bonus = stadiumManager->getScene()->getChildByName(LABEL_BONUS);
+        Node * bonus = stadium->getChildByName(LABEL_BONUS);
         while ( bonus != nullptr ) {
-            stadiumManager->getScene()->removeChild(bonus);
-            bonus = stadiumManager->getScene()->getChildByName(LABEL_BONUS);
+            stadium->removeChild(bonus);
+            bonus = stadium->getChildByName(LABEL_BONUS);
         }
+        
+        stadium->getEventDispatcher()->removeEventListener(debugListener);
+        
         return;
     }
     
     // repeats every seconds, but the probability if the bonus will be
     // generated or not depends on PROBABILITY_BONUS
-    stadiumManager->getScene()->schedule([&](float dt)
+    stadium->schedule([&](float dt)
     {
         handlerMap->getVoidHandler(VOID_GENERATE_BONUS)->execute();
     }
     ,1 , SCHEDULE_GENERATE_BONUS);
+    
+    
+    // DEBUG all bonus generation
+    auto debugListener = EventListenerKeyboard::create();
+    debugListener->onKeyPressed = [&](EventKeyboard::KeyCode keyCode, Event* event)
+    {
+        Vec2 loc = event->getCurrentTarget()->getPosition();
+        if( keyCode == EventKeyboard::KeyCode::KEY_B)
+        {
+            auto handler = handlerMap->getVoidHandler(VOID_GENERATE_BONUS);
+            ((BonusHandler * )handler)->generateDebugBonuses();
+        }
+    };
+    stadium->getEventDispatcher()->addEventListenerWithSceneGraphPriority(debugListener,stadium);
 }
 
 
@@ -260,10 +278,12 @@ void Game::setAsAdmin(Player * player)
 {
     admin = player;
     player->setAsAdmin();
-    getStadiumManager()->setAdminName( player->getName() );
-    CCLOG("%s", gameState.DebugString().c_str());
+    stadium->setAdminName( player->getName() );
+
     auto box = GameNet::BoxFactory::admin( player->getAddress(), gameState );
     box->send();
+    
+    CCLOG("%s", gameState.DebugString().c_str());
 }
 
 
@@ -272,7 +292,7 @@ void Game::setName(std::string name)
 {
     connector->setServerName(name);
     gameState.set_name(name);
-    stadiumManager->setServerName(name);
+    stadium->setServerName(name);
     
     CCLOG("GAME: name = %s", gameState.name().c_str());
     CCLOG("%s", gameState.DebugString().c_str());
@@ -293,7 +313,7 @@ void Game::setDuration(GameState_MatchDuration duration)
 {
     int seconds = durationToSeconds(duration);
     gameState.set_duration(duration);
-    stadiumManager->setSecondsLeft( seconds );
+    stadium->setSecondsLeft( seconds );
     CCLOG("duration: %d", gameState.duration());
 }
 
@@ -325,16 +345,16 @@ void Game::setCountdownEnabled(bool enabled)
 {
     if(!enabled)
     {
-        stadiumManager->getScene()->unschedule(SCHEDULE_COUNTDOWN);
+        stadium->unschedule(SCHEDULE_COUNTDOWN);
         return;
     }
     
     // enabled == true
-    stadiumManager->getScene()->schedule([&](float dt)
+    stadium->schedule([&](float dt)
     {
-        int secondsLeft = stadiumManager->getSecondsLeft();
+        int secondsLeft = stadium->getSecondsLeft();
         secondsLeft--;
-        stadiumManager->setSecondsLeft(secondsLeft);
+        stadium->setSecondsLeft(secondsLeft);
 
         // countdown finished
         if(secondsLeft == 0)
@@ -356,8 +376,10 @@ void Game::setCountdownEnabled(bool enabled)
 void Game::startMatch()
 {
     gameState.set_state(GameState_State_STATE_RUNNING);
-    stadiumManager->setSecondsLeft(durationToSeconds(gameState.duration()));
-    stadiumManager->matchMode();
+    stadium->setSecondsLeft(durationToSeconds(gameState.duration()));
+    stadium->setMatchMode(true);
+    stadium->setBallInGame(true);
+    stadium->resetScore();
     setCountdownEnabled(true);
     setBonusesEnabled(true);
 }
@@ -367,14 +389,23 @@ void Game::startMatch()
 void Game::stopMatch()
 {
     gameState.set_state(GameState_State_STATE_LOBBY);
-    stadiumManager->lobbyMode();
+    stadium->setMatchMode(false);
+    stadium->setBallInGame(false);
     setCountdownEnabled(false);
     setBonusesEnabled(false);
 }
 
 
 
-double Game::getStadiumRatio()
-{
-    return director->getVisibleSize().width / director->getVisibleSize().height;
-}
+
+
+
+
+
+
+
+
+
+
+
+

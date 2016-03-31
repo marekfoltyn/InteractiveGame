@@ -12,7 +12,7 @@ bool DisconnectHandler::execute(GameNet::Box * box)
         return false;
     }
     
-    game->getStadiumManager()->removePlayer(player);
+    game->getStadium()->removeChild( player->getSprite() );
     game->removePlayer(player);
     
     // set new admin
@@ -24,7 +24,7 @@ bool DisconnectHandler::execute(GameNet::Box * box)
     }
     else if (game->playersCount() == 0)
     {
-        game->getStadiumManager()->setAdminName("");
+        game->getStadium()->setAdminName("");
     }
     
     player->destroy();

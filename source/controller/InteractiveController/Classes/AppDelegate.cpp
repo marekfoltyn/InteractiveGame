@@ -1,5 +1,6 @@
 #include "AppDelegate.h"
 #include "StartHandler.h"
+#include "GameplayDefinitions.h"
 
 USING_NS_CC;
 
@@ -26,11 +27,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
     if(!glview) {
-        glview = GLViewImpl::createWithRect("InteractiveController", cocos2d::Rect(0, 0, 1680, 1050));
+        glview = GLViewImpl::createWithRect("InteractiveController", cocos2d::Rect(0, 0, DESIGN_WIDTH, DESIGN_HEIGHT));
         director->setOpenGLView(glview);
     }
 
-    director->getOpenGLView()->setDesignResolutionSize(1680, 1050, ResolutionPolicy::NO_BORDER);
+    director->getOpenGLView()->setDesignResolutionSize(DESIGN_WIDTH, DESIGN_HEIGHT, ResolutionPolicy::NO_BORDER);
 
     // gitturn on display FPS
     //director->setDisplayStats(true);

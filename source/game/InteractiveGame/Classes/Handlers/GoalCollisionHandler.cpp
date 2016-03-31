@@ -24,7 +24,7 @@ void GoalCollisionHandler::execute(cocos2d::PhysicsBody * first, cocos2d::Physic
         CCLOG("GOOAAAALLL to %s", (goalSide==Definitions::LEFT) ?  "left" : "right" );
         
         // add points
-        Label * lbl = static_cast<Label*>( game->getStadiumManager()->getScene()->getChildByName( (goalSide == Definitions::LEFT) ? LABEL_SCORE_RIGHT : LABEL_SCORE_LEFT ) );
+        Label * lbl = static_cast<Label*>( game->getStadium()->getChildByName( (goalSide == Definitions::LEFT) ? LABEL_SCORE_RIGHT : LABEL_SCORE_LEFT ) );
         int score = __String::create( lbl->getString() )->intValue();
         score++;
         lbl->setString( __String::createWithFormat("%d", score)->getCString() );
@@ -42,24 +42,22 @@ void GoalCollisionHandler::scoreSequence(int side)
     auto visibleSize = director->getVisibleSize();
     
     // disable collision with goal
-    ball->setContactTestBitmask(BALL_CONTACTS_AFTER_SCORE);
-    ball->setCollisionBitmask(BALL_CONTACTS_AFTER_SCORE);
+    // players can't interact with the ball until it is moved to center
+    game->getStadium()->setBallKickable(false);
     
     // GOAAAL label
-    auto lblGoal = game->getStadiumManager()->getScene()->getChildByName<Label*>(LABEL_GOAL_ANIMATION);
+    auto lblGoal = game->getStadium()->getChildByName<Label*>(LABEL_GOAL_ANIMATION);
     lblGoal->setAnchorPoint(Vec2(0.5, 0.5));
     lblGoal->setPosition(POSITION_CENTER);
     lblGoal->setOpacity(255);
     lblGoal->setScale(1);
-    game->getStadiumManager()->getScene()->addChild(lblGoal);
+    game->getStadium()->addChild(lblGoal);
     
     // animate the label
     auto scale = ScaleTo::create(TIME_GOAL_ANIMATION, 4);
     auto fade = FadeOut::create(TIME_GOAL_ANIMATION);
     auto spawn = Spawn::create(scale, fade, nullptr);
     lblGoal->runAction(spawn);
-    
-    
     
     // reset the ball
     auto disablePhysics = CallFunc::create([&]()
@@ -69,8 +67,7 @@ void GoalCollisionHandler::scoreSequence(int side)
     });
     auto enable = CallFunc::create([&]()
     {
-        ball->setContactTestBitmask(BALL_CONTACTS);
-        ball->setCollisionBitmask(BALL_CONTACTS_WITHOUT_GOAL);
+        game->getStadium()->setBallKickable(true);
     });
     auto delay = DelayTime::create(TIME_BALL_RESET_DELAY);
     auto center = MoveTo::create(TIME_BALL_CENTER, POSITION_CENTER);

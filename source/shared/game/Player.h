@@ -25,6 +25,12 @@ public:
      * create a new Player instance (after connecting)
      */
     static Player * create(RakNet::SystemAddress address, std::string name);
+
+    /**
+     * create a new Player instance (without address - client)
+     */
+    static Player * create(std::string name);
+    
     
     /**
      * get the cocos2dx Sprite object
@@ -60,12 +66,12 @@ public:
     /**
      * get applied force in previous accelerometer blok
      */
-    cocos2d::Vec2 getPreviousForce(){ return previousForce; }
+    cocos2d::Vec2 getPreviousForceVector(){ return appliedForceVector; }
     
     /**
      * set applied force in this accelerometer blok
      */
-    void setAppliedForce(cocos2d::Vec2 force);
+    void applyForce(cocos2d::Vec2 force);
     
     /**
      * set this player as admin
@@ -123,7 +129,8 @@ private:
      * force applied in previously received AccelerationBlok
      * necessary for player's direction change
      */
-    cocos2d::Vec2 previousForce;
+    cocos2d::Vec2 appliedForceVector;
+    cocos2d::Vec2 realPreviousForce;
     
     /**
      * indicates if the players is admin

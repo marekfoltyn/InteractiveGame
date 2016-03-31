@@ -6,10 +6,12 @@
 
 USING_NS_CC;
 
-#define INVISIBILITY_MIN 10.0
-#define INVISIBILITY_MAX 25.0
+#define INVISIBILITY_MIN 60.0
+#define INVISIBILITY_MAX 60.0
 #define TIME_GAMESTREAM_DELAY 0.03
 #define SCHEDULE_GAMESTREAM "gameStream"
+#define BALL_COUNTDOWN 60
+#define PLAYER_COUNTDOWN 31
 
 class InvisibilityBonus: public TimedBonus {
 public:
@@ -19,6 +21,9 @@ public:
     InvisibilityBonus();
         
 protected:
+    
+    int playerCountdown;
+    int ballCountdown;
     
     /**
      * effect activation

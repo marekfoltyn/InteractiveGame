@@ -14,7 +14,6 @@
 #include "AbstractHandlers.h"
 #include "Player.h"
 #include "StadiumScene.h"
-#include "StadiumManager.h"
 #include "HandlerMap.h"
 #include "GameState.pb.h"
 
@@ -44,6 +43,11 @@ public:
      * returns serialiable game information
      */
     GameState getState(){ return gameState; }
+    
+    /**
+     * get the StadiumScene object
+     */
+    StadiumScene * getStadium(){ return stadium; }
     
     /**
      * add a Player to the player map
@@ -91,11 +95,6 @@ public:
     bool isPlaying(){ return playing; }
 
     /**
-     * StadiumManager getter
-     */
-    StadiumManager * getStadiumManager(){ return this->stadiumManager; }
-    
-    /**
      * toogle bonus generating
      * - when set to false, it removes all existing bonuses
      */
@@ -137,12 +136,11 @@ public:
      * when countdown is finished, it calls handler for VOID_COUNTDOWN_FINISHED
      */
     void setCountdownEnabled(bool enabled);
-    
+        
     /**
-     * returns stadium size ratio:
-     * visible width / visible height
+     * player map
      */
-    double getStadiumRatio();
+    std::map<int, Player *> players;
     
 private:
     
@@ -160,12 +158,6 @@ private:
     static Game * instance;
     
     /**
-     * stadium manager - creates the stadium, resizes, manages player
-     * in it and so on
-     */
-    StadiumManager * stadiumManager;
-    
-    /**
      * map of all game events
      */
     HandlerMap * handlerMap;
@@ -175,16 +167,15 @@ private:
      */
     bool playing;
     
+    /**
+     * stadium scene
+     */
+    StadiumScene * stadium;
     
     /**
      * pointer of the admin player
      */
     Player * admin;
-     
-    /**
-     * player map
-     */
-    std::map<int, Player *> players;
     
     Game();
     
@@ -204,6 +195,8 @@ private:
      * helper method - conversion between gameState and seconds
      */
     int durationToSeconds(GameState_MatchDuration duration);
+    
+    EventListenerKeyboard * debugListener;
     
 };
 

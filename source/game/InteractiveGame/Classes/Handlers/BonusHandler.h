@@ -29,6 +29,11 @@ public:
      */
     void execute(PhysicsBody * first, PhysicsBody * second);
     
+    /**
+     * generates all bonuses for debug purposes
+     */
+    void generateDebugBonuses();
+    
 private:
     
     Game * game;
@@ -37,6 +42,12 @@ private:
     
     BonusInterface * generateBonus();
 
+    /**
+     * place bonus to specified position
+     * and schedules for automatic deletion
+     */
+    void placeBonus(BonusInterface * bonus, Vec2 position);
+    
     Vec2 generatePosition();
     
 };

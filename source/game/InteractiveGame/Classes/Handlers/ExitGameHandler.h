@@ -2,14 +2,12 @@
 #define  _ExitGameHandler_H_
 
 #include "AbstractHandlers.h"
-class Game; // forward declaration - avoiding circular dependency
+class Game;
 
 class ExitGameHandler: public VoidHandler{
 public:
     
-    ExitGameHandler(Game * game){
-        this->game = game;
-    };
+    ExitGameHandler();
     
     virtual void execute();
     

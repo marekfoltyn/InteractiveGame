@@ -7,26 +7,25 @@
 
 bool TeamSelectHandler::execute(GameNet::Box * box)
 {
-    //GameNet::TeamSelectMessage msg = GameNet::TeamSelectMessage();
-    //bool res = msg.deserialize( box->getData() );
-    
     CCLOG("TEAM_SELECT: %s", box->getData().c_str());
     
     int id = box->getId();
     std::string team = box->getData();
+    auto player = game->getPlayer(id);
     
+    // auto assign
     if(team.compare(TEAM_AUTO) == 0)
     {
         team = game->getAutoTeam();
     }
     
-    auto player = game->getPlayer(id);
     if(player != nullptr)
     {
         player->setTeam(team);
+
+        // show player in the game
+        player->getSprite()->setVisible(true);
+        player->getSprite()->getPhysicsBody()->setEnabled(true);
     }
-    
-    game->getStadiumManager()->showPlayer(player);
-    
     return false;
 }

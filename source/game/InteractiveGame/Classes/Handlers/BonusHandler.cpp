@@ -16,7 +16,7 @@ BonusHandler::BonusHandler()
 {
     director = Director::getInstance();
     game = Game::getInstance();
-    scene = game->getStadiumManager()->getScene();
+    scene = game->getStadium();
 }
 
 
@@ -33,21 +33,8 @@ void BonusHandler::execute()
     
     BonusInterface * bonus = generateBonus();
     auto position = generatePosition();
-        
-    bonus->getSprite()->setPosition( position );
-    // connect Sprite with the bonus
-    bonus->getSprite()->setUserData(bonus);
-    scene->addChild(bonus->getSprite());
     
-    CCLOG("Bonus generated.");
-    
-    bonus->getSprite()->scheduleOnce([&, bonus](float dt)
-    {
-        scene->removeChild(bonus->getSprite());
-        delete bonus;
-        CCLOG("Bonus removed.");
-    },
-    BONUS_LIFETIME, SCHEDULE_DISAPPEAR);
+    placeBonus(bonus, position);
 }
 
 
@@ -81,6 +68,26 @@ BonusInterface * BonusHandler::generateBonus()
 
 
 
+void BonusHandler::placeBonus(BonusInterface * bonus, Vec2 position)
+{
+    bonus->getSprite()->setPosition( position );
+    // connect Sprite with the bonus
+    bonus->getSprite()->setUserData(bonus);
+    scene->addChild(bonus->getSprite());
+    
+    CCLOG("Bonus generated.");
+    
+    bonus->getSprite()->scheduleOnce([&, bonus](float dt)
+    {
+        scene->removeChild(bonus->getSprite());
+        delete bonus;
+        CCLOG("Bonus removed.");
+    },
+    BONUS_LIFETIME, SCHEDULE_DISAPPEAR);
+}
+
+
+
 Vec2 BonusHandler::generatePosition()
 {
     auto origin = director->getVisibleOrigin();
@@ -90,4 +97,22 @@ Vec2 BonusHandler::generatePosition()
     float y = RandomHelper::random_real<float>(0, visibleSize.height);
     
     return Vec2(origin.x + x, origin.y + y);
+}
+
+
+
+void BonusHandler::generateDebugBonuses()
+{
+    auto origin = director->getVisibleOrigin();
+    auto visibleSize = director->getVisibleSize();
+    auto offset = Vec2(100,0);
+    auto position = Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height - 5*BORDER);
+    position -= 4 * offset;
+
+    for(int i=0; i<3; i++)
+    {
+        placeBonus(KickBonus::create(), position + i * offset);
+        placeBonus(SpeedBonus::create(), position + (i+3) * offset);
+        placeBonus(InvisibilityBonus::create(), position + (i+6) * offset);
+    }
 }

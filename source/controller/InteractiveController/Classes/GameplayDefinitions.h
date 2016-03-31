@@ -51,6 +51,9 @@ public:
 
 #define SERVER_NAME_DEFAULT "ConnectHere"
 
+#define DESIGN_WIDTH 1680
+#define DESIGN_HEIGHT 1050
+
 #define TIME_GOAL_ANIMATION 1
 #define TIME_BALL_RESET_DELAY 4.0
 #define TIME_BALL_CENTER 0.5

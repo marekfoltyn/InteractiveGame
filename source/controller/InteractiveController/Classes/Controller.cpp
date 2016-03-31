@@ -8,6 +8,7 @@
 
 #include "Controller.h"
 #include "GameplayDefinitions.h"
+#include "BoxFactory.h"
 
 
 Controller * Controller::instance = nullptr;
@@ -30,8 +31,8 @@ Controller::Controller()
 {
     director = cocos2d::Director::getInstance();
     connector = GameNet::Connector::getInstance();
-    admin = false;
     
+    admin = false;
     GameState state = GameState();
 }
 
@@ -112,3 +113,45 @@ void Controller::setServerName( std::string name )
     GameState stateChange = GameState();
     stateChange.set_name(name);
 }
+
+
+
+void Controller::pushStadium()
+{
+    // prepare stadium scene
+    directorStadium = StadiumScene::createScene();
+    director->pushScene(directorStadium);
+    stadium = directorStadium->getChildByTag<StadiumScene*>(StadiumScene::SCENE_TAG);
+}
+
+
+
+void Controller::popStadium()
+{
+    director->popScene();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

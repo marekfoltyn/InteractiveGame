@@ -46,7 +46,7 @@ void KickHandler::released(GameNet::Box * box)
     
     auto player = game->getPlayer(id);
     auto playerSprite = player->getSprite();
-    auto ball = game->getStadiumManager()->getScene()->getChildByName<cocos2d::Sprite *>(NODE_BALL);
+    auto ball = game->getStadium()->getChildByName<cocos2d::Sprite *>(NODE_BALL);
     
     // reset speedScale
     playerSprite->unschedule(SCHEDULE_KICK_SLOWING);
@@ -55,6 +55,12 @@ void KickHandler::released(GameNet::Box * box)
     if(ball == nullptr)
     {
         CCLOG("No ball in the game...");
+        return;
+    }
+    
+    if( ball->getPhysicsBody()->getTag() == StadiumScene::BALL_NON_KICKABLE)
+    {
+        CCLOG("Ball is non kickable.");
         return;
     }
     

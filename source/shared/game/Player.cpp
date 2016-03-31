@@ -11,7 +11,6 @@
 #include "GameplayDefinitions.h"
 #include "cocos2d.h"
 
-
 Player::Player(RakNet::SystemAddress address, std::string name)
 {
     this->address = address;
@@ -21,6 +20,9 @@ Player::Player(RakNet::SystemAddress address, std::string name)
     auto body = cocos2d::PhysicsBody::createCircle( sprite->getContentSize().width/2, MATERIAL_PLAYER);
     body->setTag( getId() );
     body->setCategoryBitmask(BITMASK_PLAYER);
+    body->setContactTestBitmask(BITMASK_ALL);
+    body->setCollisionBitmask(BITMASK_ALL);
+    body->setRotationEnable(false);
     sprite->setPhysicsBody(body);
     
     // label
@@ -30,12 +32,19 @@ Player::Player(RakNet::SystemAddress address, std::string name)
     lblName->setTextColor(cocos2d::Color4B(255,255,255,44));
     sprite->addChild(lblName,1);
 
-    previousForce = cocos2d::Vec2(0,0);
+    appliedForceVector = cocos2d::Vec2::ZERO;
+    realPreviousForce = cocos2d::Vec2::ZERO;
     speedScale = 1;
     kickMultiplier = 1;
     speedMultiplier = 1;
-    team = "";
+    team = TEAM_AUTO;
 }
+
+Player * Player::create(std::string name)
+{
+    return Player::create(RakNet::UNASSIGNED_SYSTEM_ADDRESS, name);
+}
+
 
 
 
@@ -58,9 +67,21 @@ void Player::destroy()
 
 
 
-void Player::setAppliedForce(cocos2d::Vec2 force)
+void Player::applyForce(cocos2d::Vec2 forceVector)
 {
-    previousForce = force;
+    appliedForceVector = forceVector;
+    auto x = forceVector.x;
+    auto y = forceVector.y;
+    auto forceSize = forceVector.getLength();
+    
+    auto force = cocos2d::Vec2(1000000000*x*(getSpeedMultiplier()), 1000000000*y*(getSpeedMultiplier()));
+    cocos2d::Vec2 prevForce = realPreviousForce;
+    cocos2d::Vec2 oppositePrevForce = cocos2d::Vec2( - prevForce.x, - prevForce.y );
+    realPreviousForce = force;
+    
+    sprite->getPhysicsBody()->applyForce(force);
+    sprite->getPhysicsBody()->applyForce(oppositePrevForce);
+    sprite->getPhysicsBody()->setVelocityLimit(450*forceSize*(getSpeedScale())*(getSpeedMultiplier()));
 }
 
 void Player::setAsAdmin()

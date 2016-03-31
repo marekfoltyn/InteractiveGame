@@ -118,26 +118,33 @@ class PBGameStream : public ::google::protobuf::Message {
   inline bool active() const;
   inline void set_active(bool value);
 
-  // optional double pitchRatio = 2;
-  inline bool has_pitchratio() const;
-  inline void clear_pitchratio();
-  static const int kPitchRatioFieldNumber = 2;
-  inline double pitchratio() const;
-  inline void set_pitchratio(double value);
+  // optional int32 width = 2;
+  inline bool has_width() const;
+  inline void clear_width();
+  static const int kWidthFieldNumber = 2;
+  inline ::google::protobuf::int32 width() const;
+  inline void set_width(::google::protobuf::int32 value);
 
-  // optional .PBBall ball = 3;
+  // optional int32 height = 3;
+  inline bool has_height() const;
+  inline void clear_height();
+  static const int kHeightFieldNumber = 3;
+  inline ::google::protobuf::int32 height() const;
+  inline void set_height(::google::protobuf::int32 value);
+
+  // optional .PBBall ball = 4;
   inline bool has_ball() const;
   inline void clear_ball();
-  static const int kBallFieldNumber = 3;
+  static const int kBallFieldNumber = 4;
   inline const ::PBBall& ball() const;
   inline ::PBBall* mutable_ball();
   inline ::PBBall* release_ball();
   inline void set_allocated_ball(::PBBall* ball);
 
-  // repeated .PBPlayer player = 4;
+  // repeated .PBPlayer player = 5;
   inline int player_size() const;
   inline void clear_player();
-  static const int kPlayerFieldNumber = 4;
+  static const int kPlayerFieldNumber = 5;
   inline const ::PBPlayer& player(int index) const;
   inline ::PBPlayer* mutable_player(int index);
   inline ::PBPlayer* add_player();
@@ -146,23 +153,46 @@ class PBGameStream : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::PBPlayer >*
       mutable_player();
 
+  // optional int32 scoreLeft = 6;
+  inline bool has_scoreleft() const;
+  inline void clear_scoreleft();
+  static const int kScoreLeftFieldNumber = 6;
+  inline ::google::protobuf::int32 scoreleft() const;
+  inline void set_scoreleft(::google::protobuf::int32 value);
+
+  // optional int32 scoreRight = 7;
+  inline bool has_scoreright() const;
+  inline void clear_scoreright();
+  static const int kScoreRightFieldNumber = 7;
+  inline ::google::protobuf::int32 scoreright() const;
+  inline void set_scoreright(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:PBGameStream)
  private:
   inline void set_has_active();
   inline void clear_has_active();
-  inline void set_has_pitchratio();
-  inline void clear_has_pitchratio();
+  inline void set_has_width();
+  inline void clear_has_width();
+  inline void set_has_height();
+  inline void clear_has_height();
   inline void set_has_ball();
   inline void clear_has_ball();
+  inline void set_has_scoreleft();
+  inline void clear_has_scoreleft();
+  inline void set_has_scoreright();
+  inline void clear_has_scoreright();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  double pitchratio_;
-  ::PBBall* ball_;
-  ::google::protobuf::RepeatedPtrField< ::PBPlayer > player_;
   bool active_;
+  ::google::protobuf::int32 width_;
+  ::PBBall* ball_;
+  ::google::protobuf::int32 height_;
+  ::google::protobuf::int32 scoreleft_;
+  ::google::protobuf::RepeatedPtrField< ::PBPlayer > player_;
+  ::google::protobuf::int32 scoreright_;
   friend void  protobuf_AddDesc_GameStream_2eproto();
   friend void protobuf_AssignDesc_GameStream_2eproto();
   friend void protobuf_ShutdownFile_GameStream_2eproto();
@@ -332,19 +362,26 @@ class PBBall : public ::google::protobuf::Message {
   inline ::PBVec2* release_velocity();
   inline void set_allocated_velocity(::PBVec2* velocity);
 
-  // optional bool visible = 3;
-  inline bool has_visible() const;
-  inline void clear_visible();
-  static const int kVisibleFieldNumber = 3;
-  inline bool visible() const;
-  inline void set_visible(bool value);
-
-  // optional bool playerEnabled = 4;
+  // optional bool playerEnabled = 3;
   inline bool has_playerenabled() const;
   inline void clear_playerenabled();
-  static const int kPlayerEnabledFieldNumber = 4;
+  static const int kPlayerEnabledFieldNumber = 3;
   inline bool playerenabled() const;
   inline void set_playerenabled(bool value);
+
+  // optional float angularVelocity = 4;
+  inline bool has_angularvelocity() const;
+  inline void clear_angularvelocity();
+  static const int kAngularVelocityFieldNumber = 4;
+  inline float angularvelocity() const;
+  inline void set_angularvelocity(float value);
+
+  // optional float angle = 5;
+  inline bool has_angle() const;
+  inline void clear_angle();
+  static const int kAngleFieldNumber = 5;
+  inline float angle() const;
+  inline void set_angle(float value);
 
   // @@protoc_insertion_point(class_scope:PBBall)
  private:
@@ -352,10 +389,12 @@ class PBBall : public ::google::protobuf::Message {
   inline void clear_has_position();
   inline void set_has_velocity();
   inline void clear_has_velocity();
-  inline void set_has_visible();
-  inline void clear_has_visible();
   inline void set_has_playerenabled();
   inline void clear_has_playerenabled();
+  inline void set_has_angularvelocity();
+  inline void clear_has_angularvelocity();
+  inline void set_has_angle();
+  inline void clear_has_angle();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -363,8 +402,9 @@ class PBBall : public ::google::protobuf::Message {
   mutable int _cached_size_;
   ::PBVec2* position_;
   ::PBVec2* velocity_;
-  bool visible_;
   bool playerenabled_;
+  float angularvelocity_;
+  float angle_;
   friend void  protobuf_AddDesc_GameStream_2eproto();
   friend void protobuf_AssignDesc_GameStream_2eproto();
   friend void protobuf_ShutdownFile_GameStream_2eproto();
@@ -436,14 +476,14 @@ class PBPlayer : public ::google::protobuf::Message {
   inline ::PBVec2* release_position();
   inline void set_allocated_position(::PBVec2* position);
 
-  // optional .PBVec2 velocity = 2;
-  inline bool has_velocity() const;
-  inline void clear_velocity();
-  static const int kVelocityFieldNumber = 2;
-  inline const ::PBVec2& velocity() const;
-  inline ::PBVec2* mutable_velocity();
-  inline ::PBVec2* release_velocity();
-  inline void set_allocated_velocity(::PBVec2* velocity);
+  // optional .PBVec2 force = 2;
+  inline bool has_force() const;
+  inline void clear_force();
+  static const int kForceFieldNumber = 2;
+  inline const ::PBVec2& force() const;
+  inline ::PBVec2* mutable_force();
+  inline ::PBVec2* release_force();
+  inline void set_allocated_force(::PBVec2* force);
 
   // optional string name = 3;
   inline bool has_name() const;
@@ -464,35 +504,65 @@ class PBPlayer : public ::google::protobuf::Message {
   inline ::PBTeam team() const;
   inline void set_team(::PBTeam value);
 
-  // optional bool connected = 5;
-  inline bool has_connected() const;
-  inline void clear_connected();
-  static const int kConnectedFieldNumber = 5;
-  inline bool connected() const;
-  inline void set_connected(bool value);
+  // optional float speedScale = 5;
+  inline bool has_speedscale() const;
+  inline void clear_speedscale();
+  static const int kSpeedScaleFieldNumber = 5;
+  inline float speedscale() const;
+  inline void set_speedscale(float value);
+
+  // optional int32 id = 6;
+  inline bool has_id() const;
+  inline void clear_id();
+  static const int kIdFieldNumber = 6;
+  inline ::google::protobuf::int32 id() const;
+  inline void set_id(::google::protobuf::int32 value);
+
+  // optional float kickMultiplier = 7;
+  inline bool has_kickmultiplier() const;
+  inline void clear_kickmultiplier();
+  static const int kKickMultiplierFieldNumber = 7;
+  inline float kickmultiplier() const;
+  inline void set_kickmultiplier(float value);
+
+  // optional float speedMultiplier = 8;
+  inline bool has_speedmultiplier() const;
+  inline void clear_speedmultiplier();
+  static const int kSpeedMultiplierFieldNumber = 8;
+  inline float speedmultiplier() const;
+  inline void set_speedmultiplier(float value);
 
   // @@protoc_insertion_point(class_scope:PBPlayer)
  private:
   inline void set_has_position();
   inline void clear_has_position();
-  inline void set_has_velocity();
-  inline void clear_has_velocity();
+  inline void set_has_force();
+  inline void clear_has_force();
   inline void set_has_name();
   inline void clear_has_name();
   inline void set_has_team();
   inline void clear_has_team();
-  inline void set_has_connected();
-  inline void clear_has_connected();
+  inline void set_has_speedscale();
+  inline void clear_has_speedscale();
+  inline void set_has_id();
+  inline void clear_has_id();
+  inline void set_has_kickmultiplier();
+  inline void clear_has_kickmultiplier();
+  inline void set_has_speedmultiplier();
+  inline void clear_has_speedmultiplier();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::PBVec2* position_;
-  ::PBVec2* velocity_;
+  ::PBVec2* force_;
   ::std::string* name_;
   int team_;
-  bool connected_;
+  float speedscale_;
+  ::google::protobuf::int32 id_;
+  float kickmultiplier_;
+  float speedmultiplier_;
   friend void  protobuf_AddDesc_GameStream_2eproto();
   friend void protobuf_AssignDesc_GameStream_2eproto();
   friend void protobuf_ShutdownFile_GameStream_2eproto();
@@ -531,39 +601,63 @@ inline void PBGameStream::set_active(bool value) {
   // @@protoc_insertion_point(field_set:PBGameStream.active)
 }
 
-// optional double pitchRatio = 2;
-inline bool PBGameStream::has_pitchratio() const {
+// optional int32 width = 2;
+inline bool PBGameStream::has_width() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void PBGameStream::set_has_pitchratio() {
+inline void PBGameStream::set_has_width() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void PBGameStream::clear_has_pitchratio() {
+inline void PBGameStream::clear_has_width() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void PBGameStream::clear_pitchratio() {
-  pitchratio_ = 0;
-  clear_has_pitchratio();
+inline void PBGameStream::clear_width() {
+  width_ = 0;
+  clear_has_width();
 }
-inline double PBGameStream::pitchratio() const {
-  // @@protoc_insertion_point(field_get:PBGameStream.pitchRatio)
-  return pitchratio_;
+inline ::google::protobuf::int32 PBGameStream::width() const {
+  // @@protoc_insertion_point(field_get:PBGameStream.width)
+  return width_;
 }
-inline void PBGameStream::set_pitchratio(double value) {
-  set_has_pitchratio();
-  pitchratio_ = value;
-  // @@protoc_insertion_point(field_set:PBGameStream.pitchRatio)
+inline void PBGameStream::set_width(::google::protobuf::int32 value) {
+  set_has_width();
+  width_ = value;
+  // @@protoc_insertion_point(field_set:PBGameStream.width)
 }
 
-// optional .PBBall ball = 3;
-inline bool PBGameStream::has_ball() const {
+// optional int32 height = 3;
+inline bool PBGameStream::has_height() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void PBGameStream::set_has_ball() {
+inline void PBGameStream::set_has_height() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void PBGameStream::clear_has_ball() {
+inline void PBGameStream::clear_has_height() {
   _has_bits_[0] &= ~0x00000004u;
+}
+inline void PBGameStream::clear_height() {
+  height_ = 0;
+  clear_has_height();
+}
+inline ::google::protobuf::int32 PBGameStream::height() const {
+  // @@protoc_insertion_point(field_get:PBGameStream.height)
+  return height_;
+}
+inline void PBGameStream::set_height(::google::protobuf::int32 value) {
+  set_has_height();
+  height_ = value;
+  // @@protoc_insertion_point(field_set:PBGameStream.height)
+}
+
+// optional .PBBall ball = 4;
+inline bool PBGameStream::has_ball() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void PBGameStream::set_has_ball() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void PBGameStream::clear_has_ball() {
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void PBGameStream::clear_ball() {
   if (ball_ != NULL) ball_->::PBBall::Clear();
@@ -596,7 +690,7 @@ inline void PBGameStream::set_allocated_ball(::PBBall* ball) {
   // @@protoc_insertion_point(field_set_allocated:PBGameStream.ball)
 }
 
-// repeated .PBPlayer player = 4;
+// repeated .PBPlayer player = 5;
 inline int PBGameStream::player_size() const {
   return player_.size();
 }
@@ -624,6 +718,54 @@ inline ::google::protobuf::RepeatedPtrField< ::PBPlayer >*
 PBGameStream::mutable_player() {
   // @@protoc_insertion_point(field_mutable_list:PBGameStream.player)
   return &player_;
+}
+
+// optional int32 scoreLeft = 6;
+inline bool PBGameStream::has_scoreleft() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void PBGameStream::set_has_scoreleft() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void PBGameStream::clear_has_scoreleft() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void PBGameStream::clear_scoreleft() {
+  scoreleft_ = 0;
+  clear_has_scoreleft();
+}
+inline ::google::protobuf::int32 PBGameStream::scoreleft() const {
+  // @@protoc_insertion_point(field_get:PBGameStream.scoreLeft)
+  return scoreleft_;
+}
+inline void PBGameStream::set_scoreleft(::google::protobuf::int32 value) {
+  set_has_scoreleft();
+  scoreleft_ = value;
+  // @@protoc_insertion_point(field_set:PBGameStream.scoreLeft)
+}
+
+// optional int32 scoreRight = 7;
+inline bool PBGameStream::has_scoreright() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void PBGameStream::set_has_scoreright() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void PBGameStream::clear_has_scoreright() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void PBGameStream::clear_scoreright() {
+  scoreright_ = 0;
+  clear_has_scoreright();
+}
+inline ::google::protobuf::int32 PBGameStream::scoreright() const {
+  // @@protoc_insertion_point(field_get:PBGameStream.scoreRight)
+  return scoreright_;
+}
+inline void PBGameStream::set_scoreright(::google::protobuf::int32 value) {
+  set_has_scoreright();
+  scoreright_ = value;
+  // @@protoc_insertion_point(field_set:PBGameStream.scoreRight)
 }
 
 // -------------------------------------------------------------------
@@ -764,39 +906,15 @@ inline void PBBall::set_allocated_velocity(::PBVec2* velocity) {
   // @@protoc_insertion_point(field_set_allocated:PBBall.velocity)
 }
 
-// optional bool visible = 3;
-inline bool PBBall::has_visible() const {
+// optional bool playerEnabled = 3;
+inline bool PBBall::has_playerenabled() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void PBBall::set_has_visible() {
+inline void PBBall::set_has_playerenabled() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void PBBall::clear_has_visible() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void PBBall::clear_visible() {
-  visible_ = false;
-  clear_has_visible();
-}
-inline bool PBBall::visible() const {
-  // @@protoc_insertion_point(field_get:PBBall.visible)
-  return visible_;
-}
-inline void PBBall::set_visible(bool value) {
-  set_has_visible();
-  visible_ = value;
-  // @@protoc_insertion_point(field_set:PBBall.visible)
-}
-
-// optional bool playerEnabled = 4;
-inline bool PBBall::has_playerenabled() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void PBBall::set_has_playerenabled() {
-  _has_bits_[0] |= 0x00000008u;
-}
 inline void PBBall::clear_has_playerenabled() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void PBBall::clear_playerenabled() {
   playerenabled_ = false;
@@ -810,6 +928,54 @@ inline void PBBall::set_playerenabled(bool value) {
   set_has_playerenabled();
   playerenabled_ = value;
   // @@protoc_insertion_point(field_set:PBBall.playerEnabled)
+}
+
+// optional float angularVelocity = 4;
+inline bool PBBall::has_angularvelocity() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void PBBall::set_has_angularvelocity() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void PBBall::clear_has_angularvelocity() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void PBBall::clear_angularvelocity() {
+  angularvelocity_ = 0;
+  clear_has_angularvelocity();
+}
+inline float PBBall::angularvelocity() const {
+  // @@protoc_insertion_point(field_get:PBBall.angularVelocity)
+  return angularvelocity_;
+}
+inline void PBBall::set_angularvelocity(float value) {
+  set_has_angularvelocity();
+  angularvelocity_ = value;
+  // @@protoc_insertion_point(field_set:PBBall.angularVelocity)
+}
+
+// optional float angle = 5;
+inline bool PBBall::has_angle() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void PBBall::set_has_angle() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void PBBall::clear_has_angle() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void PBBall::clear_angle() {
+  angle_ = 0;
+  clear_has_angle();
+}
+inline float PBBall::angle() const {
+  // @@protoc_insertion_point(field_get:PBBall.angle)
+  return angle_;
+}
+inline void PBBall::set_angle(float value) {
+  set_has_angle();
+  angle_ = value;
+  // @@protoc_insertion_point(field_set:PBBall.angle)
 }
 
 // -------------------------------------------------------------------
@@ -857,45 +1023,45 @@ inline void PBPlayer::set_allocated_position(::PBVec2* position) {
   // @@protoc_insertion_point(field_set_allocated:PBPlayer.position)
 }
 
-// optional .PBVec2 velocity = 2;
-inline bool PBPlayer::has_velocity() const {
+// optional .PBVec2 force = 2;
+inline bool PBPlayer::has_force() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void PBPlayer::set_has_velocity() {
+inline void PBPlayer::set_has_force() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void PBPlayer::clear_has_velocity() {
+inline void PBPlayer::clear_has_force() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void PBPlayer::clear_velocity() {
-  if (velocity_ != NULL) velocity_->::PBVec2::Clear();
-  clear_has_velocity();
+inline void PBPlayer::clear_force() {
+  if (force_ != NULL) force_->::PBVec2::Clear();
+  clear_has_force();
 }
-inline const ::PBVec2& PBPlayer::velocity() const {
-  // @@protoc_insertion_point(field_get:PBPlayer.velocity)
-  return velocity_ != NULL ? *velocity_ : *default_instance_->velocity_;
+inline const ::PBVec2& PBPlayer::force() const {
+  // @@protoc_insertion_point(field_get:PBPlayer.force)
+  return force_ != NULL ? *force_ : *default_instance_->force_;
 }
-inline ::PBVec2* PBPlayer::mutable_velocity() {
-  set_has_velocity();
-  if (velocity_ == NULL) velocity_ = new ::PBVec2;
-  // @@protoc_insertion_point(field_mutable:PBPlayer.velocity)
-  return velocity_;
+inline ::PBVec2* PBPlayer::mutable_force() {
+  set_has_force();
+  if (force_ == NULL) force_ = new ::PBVec2;
+  // @@protoc_insertion_point(field_mutable:PBPlayer.force)
+  return force_;
 }
-inline ::PBVec2* PBPlayer::release_velocity() {
-  clear_has_velocity();
-  ::PBVec2* temp = velocity_;
-  velocity_ = NULL;
+inline ::PBVec2* PBPlayer::release_force() {
+  clear_has_force();
+  ::PBVec2* temp = force_;
+  force_ = NULL;
   return temp;
 }
-inline void PBPlayer::set_allocated_velocity(::PBVec2* velocity) {
-  delete velocity_;
-  velocity_ = velocity;
-  if (velocity) {
-    set_has_velocity();
+inline void PBPlayer::set_allocated_force(::PBVec2* force) {
+  delete force_;
+  force_ = force;
+  if (force) {
+    set_has_force();
   } else {
-    clear_has_velocity();
+    clear_has_force();
   }
-  // @@protoc_insertion_point(field_set_allocated:PBPlayer.velocity)
+  // @@protoc_insertion_point(field_set_allocated:PBPlayer.force)
 }
 
 // optional string name = 3;
@@ -999,28 +1165,100 @@ inline void PBPlayer::set_team(::PBTeam value) {
   // @@protoc_insertion_point(field_set:PBPlayer.team)
 }
 
-// optional bool connected = 5;
-inline bool PBPlayer::has_connected() const {
+// optional float speedScale = 5;
+inline bool PBPlayer::has_speedscale() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }
-inline void PBPlayer::set_has_connected() {
+inline void PBPlayer::set_has_speedscale() {
   _has_bits_[0] |= 0x00000010u;
 }
-inline void PBPlayer::clear_has_connected() {
+inline void PBPlayer::clear_has_speedscale() {
   _has_bits_[0] &= ~0x00000010u;
 }
-inline void PBPlayer::clear_connected() {
-  connected_ = false;
-  clear_has_connected();
+inline void PBPlayer::clear_speedscale() {
+  speedscale_ = 0;
+  clear_has_speedscale();
 }
-inline bool PBPlayer::connected() const {
-  // @@protoc_insertion_point(field_get:PBPlayer.connected)
-  return connected_;
+inline float PBPlayer::speedscale() const {
+  // @@protoc_insertion_point(field_get:PBPlayer.speedScale)
+  return speedscale_;
 }
-inline void PBPlayer::set_connected(bool value) {
-  set_has_connected();
-  connected_ = value;
-  // @@protoc_insertion_point(field_set:PBPlayer.connected)
+inline void PBPlayer::set_speedscale(float value) {
+  set_has_speedscale();
+  speedscale_ = value;
+  // @@protoc_insertion_point(field_set:PBPlayer.speedScale)
+}
+
+// optional int32 id = 6;
+inline bool PBPlayer::has_id() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void PBPlayer::set_has_id() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void PBPlayer::clear_has_id() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void PBPlayer::clear_id() {
+  id_ = 0;
+  clear_has_id();
+}
+inline ::google::protobuf::int32 PBPlayer::id() const {
+  // @@protoc_insertion_point(field_get:PBPlayer.id)
+  return id_;
+}
+inline void PBPlayer::set_id(::google::protobuf::int32 value) {
+  set_has_id();
+  id_ = value;
+  // @@protoc_insertion_point(field_set:PBPlayer.id)
+}
+
+// optional float kickMultiplier = 7;
+inline bool PBPlayer::has_kickmultiplier() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void PBPlayer::set_has_kickmultiplier() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void PBPlayer::clear_has_kickmultiplier() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void PBPlayer::clear_kickmultiplier() {
+  kickmultiplier_ = 0;
+  clear_has_kickmultiplier();
+}
+inline float PBPlayer::kickmultiplier() const {
+  // @@protoc_insertion_point(field_get:PBPlayer.kickMultiplier)
+  return kickmultiplier_;
+}
+inline void PBPlayer::set_kickmultiplier(float value) {
+  set_has_kickmultiplier();
+  kickmultiplier_ = value;
+  // @@protoc_insertion_point(field_set:PBPlayer.kickMultiplier)
+}
+
+// optional float speedMultiplier = 8;
+inline bool PBPlayer::has_speedmultiplier() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void PBPlayer::set_has_speedmultiplier() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void PBPlayer::clear_has_speedmultiplier() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void PBPlayer::clear_speedmultiplier() {
+  speedmultiplier_ = 0;
+  clear_has_speedmultiplier();
+}
+inline float PBPlayer::speedmultiplier() const {
+  // @@protoc_insertion_point(field_get:PBPlayer.speedMultiplier)
+  return speedmultiplier_;
+}
+inline void PBPlayer::set_speedmultiplier(float value) {
+  set_has_speedmultiplier();
+  speedmultiplier_ = value;
+  // @@protoc_insertion_point(field_set:PBPlayer.speedMultiplier)
 }
 
 

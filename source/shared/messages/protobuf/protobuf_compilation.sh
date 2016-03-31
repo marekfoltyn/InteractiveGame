@@ -1,1 +1,1 @@
-protoc --cpp_out=. protobuf/GameState.proto
+protoc --cpp_out=../ *.proto

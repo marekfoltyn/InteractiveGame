@@ -13,6 +13,7 @@
 #include "HandlerMap.h"
 #include "cocos2d.h"
 #include "GameState.pb.h"
+#include "StadiumScene.h"
 
 /**
  * singleton class controlling base processes in the application
@@ -79,20 +80,73 @@ public:
      */
     bool isAdmin(){return admin;}
     
+    /**
+     * returns server name, if it is known,
+     * "" otherwise
+     */
     std::string getServerName();
     
+    /**
+     * set the server name received from server
+     */
     void setServerName(std::string name);
     
+    /**
+     * stadium scene getter
+     */
+    StadiumScene * getStadium(){ return stadium; }
+    
+    /**
+     * show stadium scene
+     * using cocos2d scene stack
+     * and pushes the StadiumScene on top
+     */
+    void pushStadium();
+    
+    /**
+     * hide stadium scene
+     * before this call, pushStadium() must be called!
+     * removes the StadiumScene from the scene stack
+     */
+    void popStadium();
+    
+    /**
+     * protobuf game state
+     */
     GameState gameState;
     
 private:
     
+    /**
+     * singleton instance
+     */
     static Controller * instance;
+    
+    /**
+     * cocos2d game director
+     */
     cocos2d::Director * director;
+    
+    /**
+     * gamenet director
+     */
     GameNet::Connector * connector;
+    
+    /**
+     * stadium instance for invisibility bonus
+     */
+    StadiumScene * stadium;
+    
+    /**
+     * stadium scene required for scene replace
+     * by cocos2d::Director
+     */
+    Scene * directorStadium;
+    
+    /**
+     * indicator if this player is the game admin
+     */
     bool admin;
-    
-    
     
     /**
      * singleton - private constructor
