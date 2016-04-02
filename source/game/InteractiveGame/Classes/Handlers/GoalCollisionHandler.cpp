@@ -45,20 +45,9 @@ void GoalCollisionHandler::scoreSequence(int side)
     // players can't interact with the ball until it is moved to center
     game->getStadium()->setBallKickable(false);
     
-    // GOAAAL label
-    auto lblGoal = game->getStadium()->getChildByName<Label*>(LABEL_GOAL_ANIMATION);
-    lblGoal->setAnchorPoint(Vec2(0.5, 0.5));
-    lblGoal->setPosition(POSITION_CENTER);
-    lblGoal->setOpacity(255);
-    lblGoal->setScale(1);
-    game->getStadium()->addChild(lblGoal);
-    
-    // animate the label
-    auto scale = ScaleTo::create(TIME_GOAL_ANIMATION, 4);
-    auto fade = FadeOut::create(TIME_GOAL_ANIMATION);
-    auto spawn = Spawn::create(scale, fade, nullptr);
-    lblGoal->runAction(spawn);
-    
+    // animate!
+    game->getStadium()->goalAnimation();
+        
     // reset the ball
     auto disablePhysics = CallFunc::create([&]()
     {

@@ -69,6 +69,7 @@ public:
      * game stream step information
      */
     static Box * gameStream(RakNet::SystemAddress player, PBGameStream & stream);
+    static Box * gameStreamReliable(RakNet::SystemAddress player, PBGameStream & stream);
 };
 }
 

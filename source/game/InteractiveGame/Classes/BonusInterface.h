@@ -20,6 +20,18 @@ public:
     virtual void activate(Player * player) = 0;
     
     /**
+     * bonus deactivation
+     * used both automatically and manually:
+     *
+     * - after bonus lifetime it will automatically deactivates the bonus
+     *   (when nothing unusuall happens)
+     *
+     * - when game over, it is necessary to deactivate
+     *   bonus manually
+     */
+    //virtual void deactivate();
+    
+    /**
      * get the game Sprite of the bonus
      * (with a PhysicsBody)
      */

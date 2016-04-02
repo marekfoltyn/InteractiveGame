@@ -17,16 +17,12 @@
 #include "ServerDurationUpdateHandler.h"
 #include "GameStreamHandler.h"
 
-#include "Timer.cpp"
-
 USING_NS_CC;
 using namespace GameNet;
 
 #define COLOR_GREEN Color4B(11, 112, 14, 255)
 #define NODE_FORCE "nodeForce"
 #define Z_INDEX_STADIUM_SCENE 104
-
-const char * ControlScene::NODE_ADMIN = "nodeAdmin";
 
 Scene * ControlScene::createScene()
 {
@@ -57,6 +53,7 @@ bool ControlScene::init()
     this->setTag(SCENE_TAG);
     
     CCLOG("Init ControlScene.");
+    kickTimer = Util::Timer();
     
     handlerMap = HandlerMap::create();
     controller = Controller::getInstance();
@@ -141,7 +138,7 @@ void ControlScene::initGraphics()
     reset->setAnchorPoint(Vec2(0, 0));
     border = reset->getContentSize().height/4;
     reset->setPosition(Vec2( origin.x + border, origin.y + border ));
-    reset->setName(NODE_ADMIN);
+    reset->setName(BUTTON_ADMIN);
     if(controller->isAdmin() == false)
     {
         reset->setVisible(false);
@@ -232,9 +229,8 @@ void ControlScene::btnKickClick(Ref * sender, ui::Widget::TouchEventType type)
     {
         case ui::Widget::TouchEventType::BEGAN:
         {
-            Util::Timer * timer = new Util::Timer(true);
-            auto button = dynamic_cast<ui::Button*>(sender);
-            button->setUserData(timer);
+            // start time measuring
+            kickTimer.reset();
             
             auto force = dynamic_cast<Sprite*>( this->getChildByName(NODE_FORCE) );
             float scaleY = (0.8*visibleSize.height)/5.0;
@@ -248,14 +244,9 @@ void ControlScene::btnKickClick(Ref * sender, ui::Widget::TouchEventType type)
         case ui::Widget::TouchEventType::CANCELED:
         case ui::Widget::TouchEventType::ENDED:
         {
-            
-            auto button = dynamic_cast<ui::Button*>(sender);
-            auto timer = dynamic_cast<Util::Timer*>( (Util::Timer*)button->getUserData() );
-            std::chrono::milliseconds elapsed = timer->elapsed();
+            std::chrono::milliseconds elapsed = kickTimer.elapsed();
             unsigned long long int ms = elapsed.count();
 
-            delete timer;
-        
             auto forceSprite = dynamic_cast<Sprite*>( this->getChildByName(NODE_FORCE) );
             forceSprite->stopAllActions();
             forceSprite->setScaleY(0);

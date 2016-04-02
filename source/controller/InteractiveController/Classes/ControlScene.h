@@ -8,6 +8,7 @@
 #include "Connector.h"
 #include "HandlerMap.h"
 #include "Controller.h"
+#include "Timer.cpp"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -31,7 +32,6 @@ class ControlScene : public cocos2d::Layer
 public:
     
     static const int SCENE_TAG = 1;
-    static const char * NODE_ADMIN;
     
     /**
      * cocos2d: there's no 'id' in cpp, so we recommend returning the class instance pointer
@@ -83,6 +83,8 @@ private:
     cocos2d::Size visibleSize;
     cocos2d::Vec2 origin;
     cocos2d::Layer * stadiumLayer;
+    
+    Util::Timer kickTimer;
     
     HandlerMap * handlerMap;
     Controller * controller;

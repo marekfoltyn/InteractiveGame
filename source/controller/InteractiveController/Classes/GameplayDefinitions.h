@@ -118,7 +118,7 @@ public:
 #define LABEL_TIME "lblTime"
 #define LABEL_GOAL_ANIMATION "lblGoalAnimation"
 #define LABEL_BONUS "lblBonus"
-
+#define BUTTON_ADMIN "btnAdmin"
 
 #define SCHEDULE_KICK_SLOWING "kickSlowing"
 #define SCHEDULE_GENERATE_BONUS "generateBonus"

@@ -338,11 +338,11 @@ void StadiumScene::initPitch(Vec2 newOrigin, cocos2d::Size newVisibleSize)
     this->addChild(lblTime,0);
     
     // GOAAAL label
-    auto lblGoal = Label::createWithTTF("Goal!", "Vanilla.ttf", Definitions::FONT_SIZE_GOAL_ANIMATION);
-    lblGoal->setAnchorPoint(Vec2(1,1));
-    lblGoal->setPosition(Vec2(0,0));
+    lblGoal = Label::createWithTTF("Goal!", "Vanilla.ttf", Definitions::FONT_SIZE_GOAL_ANIMATION);
+    lblGoal->setAnchorPoint(Vec2(0.5, 0.5));
+    lblGoal->setPosition(POSITION_CENTER);
     lblGoal->setName(LABEL_GOAL_ANIMATION);
-    lblGoal->setOpacity(140);
+    lblGoal->setOpacity(0);
     this->addChild(lblGoal);
     
     // exit button
@@ -464,6 +464,21 @@ int StadiumScene::getScore(Side side)
     Label * label = (side==SIDE_LEFT) ? leftScore : rightScore;
     int score = __String::create( label->getString() )->intValue();
     return score;
+}
+
+
+
+void StadiumScene::goalAnimation()
+{
+    // GOAAAL label
+    lblGoal->setOpacity(255);
+    lblGoal->setScale(1);
+    
+    // animate the label
+    auto scale = ScaleTo::create(TIME_GOAL_ANIMATION, 4);
+    auto fade = FadeOut::create(TIME_GOAL_ANIMATION);
+    auto spawn = Spawn::create(scale, fade, nullptr);
+    lblGoal->runAction(spawn);
 }
 
 

@@ -62,6 +62,12 @@ private:
      * active players
      */
     std::map<int, Player*> playerMap;
+    
+    /**
+     * score was at least once set, so we can
+     * animate gooooaaal
+     */
+    bool scoreSet;
 
     /**
      * toggle if bonus is active

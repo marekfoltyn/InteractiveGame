@@ -20,7 +20,7 @@ class ControlScene;
 class AdminHandler: public BoxHandler{
 public:
 
-    AdminHandler(ControlScene * scene);
+    AdminHandler(Node * scene);
     
     /**
      * set this player as the admin
@@ -31,7 +31,7 @@ private:
   
     Director * director;
     Controller * controller;
-    ControlScene * scene;
+    Node * scene;
     
 };
 

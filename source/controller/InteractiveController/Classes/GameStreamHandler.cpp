@@ -7,11 +7,16 @@
 //
 
 #include "GameplayDefinitions.h"
-#include "GameStreamHandler.h"
-#include "GameStreamConnectionLostHandler.h"
 #include "BoxFactory.h"
 #include "ControlScene.h"
 #include "StadiumScene.h"
+
+#include "GameStreamHandler.h"
+#include "GameStreamConnectionLostHandler.h"
+#include "AdminHandler.h"
+#include "AdminDialogHandler.h"
+#include "CollisionBoxHandler.h"
+#include "StopGameHandler.h"
 
 GameStreamHandler::GameStreamHandler(ControlScene * scene)
 {
@@ -20,6 +25,7 @@ GameStreamHandler::GameStreamHandler(ControlScene * scene)
     handlerMap = HandlerMap::create();
     playerMap = std::map<int, Player *>();
     timer = Util::Timer();
+    scoreSet = false;
 }
 
 bool GameStreamHandler::execute( GameNet::Box * box )
@@ -41,13 +47,11 @@ bool GameStreamHandler::execute( GameNet::Box * box )
     }
     
     // update score
-    if( stream.has_scoreleft() )
+    if( stream.has_scoreleft() && stream.has_scoreright() )
     {
         updateScore(StadiumScene::SIDE_LEFT, stream.scoreleft() );
-    }
-    if( stream.has_scoreright() )
-    {
         updateScore(StadiumScene::SIDE_RIGHT, stream.scoreright() );
+        scoreSet = true;
     }
 
     
@@ -88,7 +92,11 @@ void GameStreamHandler::updateActive(bool isActive)
 
 void GameStreamHandler::updateScore(StadiumScene::Side side, int score)
 {
-    auto stadium = controller->getStadium();
+    // scoreSet - score was at least once updated (at first)
+    if( stadium->getScore(side) < score && scoreSet )
+    {
+        stadium->goalAnimation();
+    }
     stadium->setScore(side, score);
 }
 
@@ -131,18 +139,23 @@ void GameStreamHandler::updatePlayers(PBGameStream stream)
         Player * player;
 
         // try to find already existing player
-        if( playerMap.find( playerState.id() ) == playerMap.end())
+        if( playerMap.count( playerState.id() ) == 0)
         {
             // not found, need to add new
-            // but only if he has a team
-            if(playerState.has_team())
+            // but only if he has a team (skip otherwise
+            if(!playerState.has_team())
+            {
+                // player has not selected a team yet, nothing to render
+                continue;
+            }
+            else
             {
                 player = Player::create( playerState.name() );
                 playerMap[playerState.id()] = player;
                 
                 std::string team = (playerState.team() == PBTeam::RED) ? TEAM_RED : TEAM_BLUE;
                 player->setTeam(team);
-                player->getSprite()->setPosition(Vec2( playerState.position().x(), playerState.position().y() ));
+                player->getSprite()->setPosition(Vec2( stadium->getContentSize().width/2, stadium->getContentSize().height/2 ));
                 
                 stadium->addChild(player->getSprite());
             }
@@ -165,9 +178,9 @@ void GameStreamHandler::updatePlayers(PBGameStream stream)
             Vec2 newPosition = Vec2( playerState.position().x(), playerState.position().y());
             Vec2 delta = newPosition - player->getSprite()->getPosition();
   
-            //auto move = EaseInOut::create(MoveBy::create(0.1, delta), 2);
-            //player->getSprite()->runAction(move);
-            player->getSprite()->setPosition(newPosition);
+            auto move = EaseInOut::create(MoveBy::create(0.05, delta), 2);
+            player->getSprite()->runAction(move);
+            //player->getSprite()->setPosition(newPosition);
         }
         
         // speedscale - during kick force loading
@@ -197,6 +210,11 @@ void GameStreamHandler::startNetworking()
     // register handlers
     handlerMap->add(BOX_GAME_STREAM, this);
     handlerMap->add(BOX_CONNECTION_LOST, new GameStreamConnectionLostHandler(stadium));
+    handlerMap->add(BOX_ADMIN, new AdminHandler(stadium));
+    handlerMap->add(BOX_COLLISION, new CollisionBoxHandler());
+    handlerMap->add(VOID_ADMIN_DIALOG, new AdminDialogHandler(handlerMap));
+    handlerMap->add(VOID_STOP_GAME, new StopGameHandler());
+    
     
     
     director->getScheduler()->schedule([&](float dt)
@@ -224,7 +242,7 @@ void GameStreamHandler::prepareStadium()
     auto origin = director->getVisibleOrigin();
     auto size = director->getVisibleSize();
     
-    auto stadium = controller->getStadium();
+    stadium = controller->getStadium();
     stadium->initPitch(origin, size);
     stadium->setMatchMode(true, false);
     stadium->setBallInGame(true);

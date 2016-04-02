@@ -41,7 +41,7 @@ void InvisibilityBonus::activateEffect(Player * player)
     // hide player (physics body works normally)
     player->getSprite()->setVisible(false);
     
-    // send initial data - pitch ratio, players, and so on...
+    // send initial data
     sendInitialGameStream(player);
     player->getSprite()->schedule([&, player](float dt)
     {
@@ -75,7 +75,7 @@ void InvisibilityBonus::sendInitialGameStream(Player * player)
     stream.set_width( game->getStadium()->getContentSize().width );
     stream.set_height( game->getStadium()->getContentSize().height );
     
-    GameNet::BoxFactory::gameStream(player->getAddress(), stream)->send();
+    GameNet::BoxFactory::gameStreamReliable(player->getAddress(), stream)->send();
 }
 
 
@@ -84,6 +84,16 @@ void InvisibilityBonus::sendGameStreamDelta(Player * player)
 {
     auto stadium = game->getStadium();
     PBGameStream delta = PBGameStream();
+ 
+    // first condition - if the game has already finished, just tell it
+    // and don't send anything else
+    if(!game->isPlaying())
+    {
+        delta.set_active(false);
+        GameNet::BoxFactory::gameStream(player->getAddress(), delta)->send();
+        player->getSprite()->unschedule(SCHEDULE_GAMESTREAM);
+        return;
+    }
     
     ////////////////
     // game state //
@@ -158,9 +168,6 @@ void InvisibilityBonus::sendGameStreamDelta(Player * player)
             playerState->set_allocated_position(position);
         }
     }
-    
-    
-    
     
     GameNet::BoxFactory::gameStream(player->getAddress(), delta)->send();
 }

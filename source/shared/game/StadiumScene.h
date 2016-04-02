@@ -115,6 +115,11 @@ public:
     int getScore(Side side);
     
     /**
+     * runs Goal! animation
+     */
+    void goalAnimation();
+    
+    /**
      * set seconds left to match over
      */
     void setSecondsLeft(int seconds);
@@ -167,6 +172,7 @@ private:
     Label * lblAdminName;
     Label * lblServerName;
     Label * lblTime;
+    Label * lblGoal;
     ui::Button * btnExit;
     Sprite * sprBall;
     

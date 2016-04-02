@@ -246,6 +246,13 @@ void Game::setBonusesEnabled(bool enabled)
         
         stadium->getEventDispatcher()->removeEventListener(debugListener);
         
+        // deactivate all active bonuses
+        for(auto it=players.begin(); it!=players.end(); it++)
+        {
+            //TODO:
+            //bonusHandler->deactivateAllBonuses();
+        }
+        
         return;
     }
     
@@ -253,13 +260,13 @@ void Game::setBonusesEnabled(bool enabled)
     // generated or not depends on PROBABILITY_BONUS
     stadium->schedule([&](float dt)
     {
-        handlerMap->getVoidHandler(VOID_GENERATE_BONUS)->execute();
+        //TEMP DISABLED - use debug key "B" instead
+        //handlerMap->getVoidHandler(VOID_GENERATE_BONUS)->execute();
     }
     ,1 , SCHEDULE_GENERATE_BONUS);
     
-    
     // DEBUG all bonus generation
-    auto debugListener = EventListenerKeyboard::create();
+    debugListener = EventListenerKeyboard::create();
     debugListener->onKeyPressed = [&](EventKeyboard::KeyCode keyCode, Event* event)
     {
         Vec2 loc = event->getCurrentTarget()->getPosition();
@@ -375,6 +382,7 @@ void Game::setCountdownEnabled(bool enabled)
 
 void Game::startMatch()
 {
+    playing = true;
     gameState.set_state(GameState_State_STATE_RUNNING);
     stadium->setSecondsLeft(durationToSeconds(gameState.duration()));
     stadium->setMatchMode(true);
@@ -388,6 +396,7 @@ void Game::startMatch()
 
 void Game::stopMatch()
 {
+    playing = false;
     gameState.set_state(GameState_State_STATE_LOBBY);
     stadium->setMatchMode(false);
     stadium->setBallInGame(false);

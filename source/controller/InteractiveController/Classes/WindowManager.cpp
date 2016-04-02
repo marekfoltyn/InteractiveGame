@@ -378,7 +378,7 @@ void WindowManager::showStopGame(Node * scene, GameState gameState, HandlerMap *
     scene->addChild(box);
     auto boxSize = box->getContentSize();
     
-    auto lblStadium = Label::createWithTTF("The match is running. Do you want to stop the match?", FONT_DEFAULT, 1.5*FONT_SIZE_DEFAULT);
+    auto lblStadium = Label::createWithTTF("The match is running. Do you want to stop the match?", FONT_DEFAULT, 1.3*FONT_SIZE_DEFAULT);
     lblStadium->setMaxLineWidth(boxSize.width*3.0/4 - 2*BORDER_DEFAULT);
     lblStadium->setAlignment(TextHAlignment::CENTER);
     lblStadium->setTextColor(COLOR_GRAY);

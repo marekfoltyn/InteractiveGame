@@ -102,7 +102,17 @@ Box * BoxFactory::gameStream(RakNet::SystemAddress player, PBGameStream & stream
     box = Box::create(serialized);
     box->setType(BOX_GAME_STREAM);
     box->setAddress(player);
-    box->setReliability(PacketReliability::UNRELIABLE);
+    box->setReliability(PacketReliability::UNRELIABLE_SEQUENCED);
     box->setPriority(PacketPriority::IMMEDIATE_PRIORITY);
     return box;
 }
+
+
+Box * BoxFactory::gameStreamReliable(RakNet::SystemAddress player, PBGameStream & stream)
+{
+    Box * box = gameStream(player, stream);
+    box->setReliability(PacketReliability::RELIABLE_ORDERED);
+    return box;
+}
+
+
