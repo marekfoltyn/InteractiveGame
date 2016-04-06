@@ -13,7 +13,7 @@ message PBGameStream
 	optional int32 width  = 4;
 	
 	optional int32 height = 5;
-
+	
 	optional PBBall ball = 6;
 	
 	repeated PBPlayer player = 7;
@@ -22,7 +22,7 @@ message PBGameStream
 	
 	optional int32 scoreRight = 9;
 	
-	
+	repeated PBBonus bonus = 10;
 	
 }
 
@@ -58,4 +58,13 @@ message PBPlayer
 	optional int32 id = 6;
 	optional float kickMultiplier = 7;
 	optional float speedMultiplier = 8;
+}
+
+
+message PBBonus
+{
+	optional int32 id = 1;
+	optional string res = 2;
+	optional PBVec2 position = 3;
+	optional string name = 4;
 }

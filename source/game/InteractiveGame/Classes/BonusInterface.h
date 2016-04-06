@@ -50,6 +50,11 @@ public:
     int getPlayerId(){return playerId;}
     
     /**
+     * return unique bonus id
+     */
+    int id(){return uniqueId;}
+    
+    /**
      * get the game Sprite of the bonus
      * (with a PhysicsBody)
      */
@@ -69,6 +74,11 @@ protected:
      * DON'T FORGET TO SET IN CONSTRUCTOR
      */
     std::string name;
+    
+    /**
+     * unique bonus id (used in protobuf message)
+     */
+    int uniqueId;
     
     Game * game;
     
@@ -108,6 +118,9 @@ protected:
         return RandomHelper::random_real<float>(durationMin, durationMax);
     }
 
+private:
+    
+    static int lastGeneratedId;
 
 };
 

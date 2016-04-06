@@ -4,7 +4,7 @@
 #include "GameplayEvents.h"
 
 // toggle debug
-//#define DEBUG
+#define DEBUG
 
 /**
  * static constants and values used in both Controller and Game
@@ -83,6 +83,9 @@ public:
 #define STRING_SIZE_MEDIUM "medium"
 #define STRING_SIZE_BIG    "big"
 
+#define BONUS_KICK "KickBonus"
+#define BONUS_SPEED "SpeedBonus"
+#define BONUS_INVISIBILITY "InvisibilityBonus"
 
 #define SETTINGS_VIBRATE "vibrate"
 

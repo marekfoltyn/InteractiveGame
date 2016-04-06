@@ -36,6 +36,7 @@ class PBGameStream;
 class PBVec2;
 class PBBall;
 class PBPlayer;
+class PBBonus;
 
 enum PBTeam {
   RED = 0,
@@ -174,6 +175,18 @@ class PBGameStream : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 scoreright() const;
   inline void set_scoreright(::google::protobuf::int32 value);
 
+  // repeated .PBBonus bonus = 10;
+  inline int bonus_size() const;
+  inline void clear_bonus();
+  static const int kBonusFieldNumber = 10;
+  inline const ::PBBonus& bonus(int index) const;
+  inline ::PBBonus* mutable_bonus(int index);
+  inline ::PBBonus* add_bonus();
+  inline const ::google::protobuf::RepeatedPtrField< ::PBBonus >&
+      bonus() const;
+  inline ::google::protobuf::RepeatedPtrField< ::PBBonus >*
+      mutable_bonus();
+
   // @@protoc_insertion_point(class_scope:PBGameStream)
  private:
   inline void set_has_active();
@@ -202,6 +215,7 @@ class PBGameStream : public ::google::protobuf::Message {
   ::google::protobuf::int32 height_;
   ::google::protobuf::int32 scoreleft_;
   ::google::protobuf::RepeatedPtrField< ::PBPlayer > player_;
+  ::google::protobuf::RepeatedPtrField< ::PBBonus > bonus_;
   ::google::protobuf::int32 scoreright_;
   friend void  protobuf_AddDesc_GameStream_2eproto();
   friend void protobuf_AssignDesc_GameStream_2eproto();
@@ -580,6 +594,127 @@ class PBPlayer : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static PBPlayer* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class PBBonus : public ::google::protobuf::Message {
+ public:
+  PBBonus();
+  virtual ~PBBonus();
+
+  PBBonus(const PBBonus& from);
+
+  inline PBBonus& operator=(const PBBonus& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const PBBonus& default_instance();
+
+  void Swap(PBBonus* other);
+
+  // implements Message ----------------------------------------------
+
+  PBBonus* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const PBBonus& from);
+  void MergeFrom(const PBBonus& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 id = 1;
+  inline bool has_id() const;
+  inline void clear_id();
+  static const int kIdFieldNumber = 1;
+  inline ::google::protobuf::int32 id() const;
+  inline void set_id(::google::protobuf::int32 value);
+
+  // optional string res = 2;
+  inline bool has_res() const;
+  inline void clear_res();
+  static const int kResFieldNumber = 2;
+  inline const ::std::string& res() const;
+  inline void set_res(const ::std::string& value);
+  inline void set_res(const char* value);
+  inline void set_res(const char* value, size_t size);
+  inline ::std::string* mutable_res();
+  inline ::std::string* release_res();
+  inline void set_allocated_res(::std::string* res);
+
+  // optional .PBVec2 position = 3;
+  inline bool has_position() const;
+  inline void clear_position();
+  static const int kPositionFieldNumber = 3;
+  inline const ::PBVec2& position() const;
+  inline ::PBVec2* mutable_position();
+  inline ::PBVec2* release_position();
+  inline void set_allocated_position(::PBVec2* position);
+
+  // optional string name = 4;
+  inline bool has_name() const;
+  inline void clear_name();
+  static const int kNameFieldNumber = 4;
+  inline const ::std::string& name() const;
+  inline void set_name(const ::std::string& value);
+  inline void set_name(const char* value);
+  inline void set_name(const char* value, size_t size);
+  inline ::std::string* mutable_name();
+  inline ::std::string* release_name();
+  inline void set_allocated_name(::std::string* name);
+
+  // @@protoc_insertion_point(class_scope:PBBonus)
+ private:
+  inline void set_has_id();
+  inline void clear_has_id();
+  inline void set_has_res();
+  inline void clear_has_res();
+  inline void set_has_position();
+  inline void clear_has_position();
+  inline void set_has_name();
+  inline void clear_has_name();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* res_;
+  ::PBVec2* position_;
+  ::std::string* name_;
+  ::google::protobuf::int32 id_;
+  friend void  protobuf_AddDesc_GameStream_2eproto();
+  friend void protobuf_AssignDesc_GameStream_2eproto();
+  friend void protobuf_ShutdownFile_GameStream_2eproto();
+
+  void InitAsDefaultInstance();
+  static PBBonus* default_instance_;
+};
 // ===================================================================
 
 
@@ -800,6 +935,36 @@ inline void PBGameStream::set_scoreright(::google::protobuf::int32 value) {
   set_has_scoreright();
   scoreright_ = value;
   // @@protoc_insertion_point(field_set:PBGameStream.scoreRight)
+}
+
+// repeated .PBBonus bonus = 10;
+inline int PBGameStream::bonus_size() const {
+  return bonus_.size();
+}
+inline void PBGameStream::clear_bonus() {
+  bonus_.Clear();
+}
+inline const ::PBBonus& PBGameStream::bonus(int index) const {
+  // @@protoc_insertion_point(field_get:PBGameStream.bonus)
+  return bonus_.Get(index);
+}
+inline ::PBBonus* PBGameStream::mutable_bonus(int index) {
+  // @@protoc_insertion_point(field_mutable:PBGameStream.bonus)
+  return bonus_.Mutable(index);
+}
+inline ::PBBonus* PBGameStream::add_bonus() {
+  // @@protoc_insertion_point(field_add:PBGameStream.bonus)
+  return bonus_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::PBBonus >&
+PBGameStream::bonus() const {
+  // @@protoc_insertion_point(field_list:PBGameStream.bonus)
+  return bonus_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::PBBonus >*
+PBGameStream::mutable_bonus() {
+  // @@protoc_insertion_point(field_mutable_list:PBGameStream.bonus)
+  return &bonus_;
 }
 
 // -------------------------------------------------------------------
@@ -1293,6 +1458,227 @@ inline void PBPlayer::set_speedmultiplier(float value) {
   set_has_speedmultiplier();
   speedmultiplier_ = value;
   // @@protoc_insertion_point(field_set:PBPlayer.speedMultiplier)
+}
+
+// -------------------------------------------------------------------
+
+// PBBonus
+
+// optional int32 id = 1;
+inline bool PBBonus::has_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void PBBonus::set_has_id() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void PBBonus::clear_has_id() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void PBBonus::clear_id() {
+  id_ = 0;
+  clear_has_id();
+}
+inline ::google::protobuf::int32 PBBonus::id() const {
+  // @@protoc_insertion_point(field_get:PBBonus.id)
+  return id_;
+}
+inline void PBBonus::set_id(::google::protobuf::int32 value) {
+  set_has_id();
+  id_ = value;
+  // @@protoc_insertion_point(field_set:PBBonus.id)
+}
+
+// optional string res = 2;
+inline bool PBBonus::has_res() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void PBBonus::set_has_res() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void PBBonus::clear_has_res() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void PBBonus::clear_res() {
+  if (res_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    res_->clear();
+  }
+  clear_has_res();
+}
+inline const ::std::string& PBBonus::res() const {
+  // @@protoc_insertion_point(field_get:PBBonus.res)
+  return *res_;
+}
+inline void PBBonus::set_res(const ::std::string& value) {
+  set_has_res();
+  if (res_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    res_ = new ::std::string;
+  }
+  res_->assign(value);
+  // @@protoc_insertion_point(field_set:PBBonus.res)
+}
+inline void PBBonus::set_res(const char* value) {
+  set_has_res();
+  if (res_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    res_ = new ::std::string;
+  }
+  res_->assign(value);
+  // @@protoc_insertion_point(field_set_char:PBBonus.res)
+}
+inline void PBBonus::set_res(const char* value, size_t size) {
+  set_has_res();
+  if (res_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    res_ = new ::std::string;
+  }
+  res_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:PBBonus.res)
+}
+inline ::std::string* PBBonus::mutable_res() {
+  set_has_res();
+  if (res_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    res_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:PBBonus.res)
+  return res_;
+}
+inline ::std::string* PBBonus::release_res() {
+  clear_has_res();
+  if (res_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = res_;
+    res_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void PBBonus::set_allocated_res(::std::string* res) {
+  if (res_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete res_;
+  }
+  if (res) {
+    set_has_res();
+    res_ = res;
+  } else {
+    clear_has_res();
+    res_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:PBBonus.res)
+}
+
+// optional .PBVec2 position = 3;
+inline bool PBBonus::has_position() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void PBBonus::set_has_position() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void PBBonus::clear_has_position() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void PBBonus::clear_position() {
+  if (position_ != NULL) position_->::PBVec2::Clear();
+  clear_has_position();
+}
+inline const ::PBVec2& PBBonus::position() const {
+  // @@protoc_insertion_point(field_get:PBBonus.position)
+  return position_ != NULL ? *position_ : *default_instance_->position_;
+}
+inline ::PBVec2* PBBonus::mutable_position() {
+  set_has_position();
+  if (position_ == NULL) position_ = new ::PBVec2;
+  // @@protoc_insertion_point(field_mutable:PBBonus.position)
+  return position_;
+}
+inline ::PBVec2* PBBonus::release_position() {
+  clear_has_position();
+  ::PBVec2* temp = position_;
+  position_ = NULL;
+  return temp;
+}
+inline void PBBonus::set_allocated_position(::PBVec2* position) {
+  delete position_;
+  position_ = position;
+  if (position) {
+    set_has_position();
+  } else {
+    clear_has_position();
+  }
+  // @@protoc_insertion_point(field_set_allocated:PBBonus.position)
+}
+
+// optional string name = 4;
+inline bool PBBonus::has_name() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void PBBonus::set_has_name() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void PBBonus::clear_has_name() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void PBBonus::clear_name() {
+  if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    name_->clear();
+  }
+  clear_has_name();
+}
+inline const ::std::string& PBBonus::name() const {
+  // @@protoc_insertion_point(field_get:PBBonus.name)
+  return *name_;
+}
+inline void PBBonus::set_name(const ::std::string& value) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+  // @@protoc_insertion_point(field_set:PBBonus.name)
+}
+inline void PBBonus::set_name(const char* value) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+  // @@protoc_insertion_point(field_set_char:PBBonus.name)
+}
+inline void PBBonus::set_name(const char* value, size_t size) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    name_ = new ::std::string;
+  }
+  name_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:PBBonus.name)
+}
+inline ::std::string* PBBonus::mutable_name() {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    name_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:PBBonus.name)
+  return name_;
+}
+inline ::std::string* PBBonus::release_name() {
+  clear_has_name();
+  if (name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = name_;
+    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void PBBonus::set_allocated_name(::std::string* name) {
+  if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete name_;
+  }
+  if (name) {
+    set_has_name();
+    name_ = name;
+  } else {
+    clear_has_name();
+    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:PBBonus.name)
 }
 
 

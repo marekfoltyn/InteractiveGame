@@ -11,7 +11,7 @@ InvisibilityBonus * InvisibilityBonus::create()
 
 InvisibilityBonus::InvisibilityBonus() : BonusInterface()
 {
-    name = "InvisibilityBonus";
+    name = BONUS_INVISIBILITY;
     
     game = Game::getInstance();
     director = Director::getInstance();
@@ -22,6 +22,7 @@ InvisibilityBonus::InvisibilityBonus() : BonusInterface()
     sprite = Sprite::create("bonus_invisibility.png");
     sprite->setScale(0.5);
     sprite->setName(LABEL_BONUS);
+    sprite->setUserData(this);    
     
     auto body = cocos2d::PhysicsBody::createCircle( sprite->getContentSize().width/2, MATERIAL_PLAYER);
     body->setCategoryBitmask(BITMASK_BONUS);
@@ -175,6 +176,32 @@ void InvisibilityBonus::sendGameStreamDelta(Player * player)
             position->set_x( player->getSprite()->getPositionX() );
             position->set_y( player->getSprite()->getPositionY() );
             playerState->set_allocated_position(position);
+        }
+    }
+    
+    /////////////////////////////////
+    // send bonuses state - always //
+    /////////////////////////////////
+    
+    auto nodes = stadium->getChildren();
+    for(Node * node : nodes)
+    {
+        if( node->getName().compare(LABEL_BONUS) == 0)
+        {
+            auto bonus = dynamic_cast<BonusInterface*>((BonusInterface*)node->getUserData());
+            if(bonus == nullptr)
+            {
+                CCLOG("LABEL_BONUS, but it is not BonusInterface * !!!");
+                continue;
+            }
+            
+            auto bonusState = delta.add_bonus();
+            auto position = new PBVec2();
+            position->set_x(bonus->getSprite()->getPositionX());
+            position->set_y(bonus->getSprite()->getPositionY());
+            bonusState->set_allocated_position(position);
+            bonusState->set_id( bonus->id() );
+            bonusState->set_name(bonus->getName());
         }
     }
     

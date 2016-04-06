@@ -9,7 +9,7 @@ SpeedBonus * SpeedBonus::create()
 
 SpeedBonus::SpeedBonus() : BonusInterface()
 {
-    name = "SpeedBonus";
+    name = BONUS_SPEED;
     
     durationMin = SPEEDBONUS_MIN;
     durationMax = SPEEDBONUS_MAX;
@@ -17,6 +17,7 @@ SpeedBonus::SpeedBonus() : BonusInterface()
     sprite = Sprite::create("bonus_speed.png");
     sprite->setScale(0.5);
     sprite->setName(LABEL_BONUS);
+    sprite->setUserData(this);    
     
     auto body = cocos2d::PhysicsBody::createCircle( sprite->getContentSize().width/2, MATERIAL_PLAYER);
     body->setCategoryBitmask(BITMASK_BONUS);

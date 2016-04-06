@@ -74,6 +74,20 @@ private:
     std::map<unsigned long, Player*> playerMap;
     
     /**
+     * refresh flags
+     * if the player was refreshed during game stream update
+     * set to true, otherwise it will remain false and it indicates
+     * that the player is already not in the game
+     */
+    std::map<unsigned long, bool> playerRefreshed;
+    
+    /**
+     * similar as Players
+     */
+    std::map<int, Sprite*> bonusMap;
+    std::map<int, bool> bonusRefreshed;
+    
+    /**
      * score was at least once set, so we can
      * animate gooooaaal
      */
@@ -100,6 +114,11 @@ private:
      * update players sprites
      */
     void updatePlayers( PBGameStream stream );
+    
+    /**
+     * update bonuses
+     */
+    void updateBonuses( PBGameStream stream );
     
     /**
      * schedules box receiving directly to cocos2d::Director

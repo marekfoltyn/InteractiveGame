@@ -9,7 +9,7 @@ KickBonus * KickBonus::create()
 
 KickBonus::KickBonus() : BonusInterface()
 {
-    name = "KickBonus";
+    name = BONUS_KICK;
     
     durationMin = Definitions::TIME_KICKBONUS_MIN;
     durationMax = Definitions::TIME_KICKBONUS_MAX;
@@ -17,6 +17,7 @@ KickBonus::KickBonus() : BonusInterface()
     sprite = Sprite::create("bonus_kick.png");
     sprite->setScale(0.5);
     sprite->setName(LABEL_BONUS);
+    sprite->setUserData(this);
     
     auto body = cocos2d::PhysicsBody::createCircle( sprite->getContentSize().width/2, MATERIAL_PLAYER);
     body->setCategoryBitmask(BITMASK_BONUS);

@@ -24,6 +24,9 @@ GameStreamHandler::GameStreamHandler(ControlScene * scene)
     controller = Controller::getInstance();
     handlerMap = HandlerMap::create();
     playerMap = std::map<unsigned long, Player *>();
+    playerRefreshed = std::map<unsigned long, bool>();
+    bonusMap = std::map<int, Sprite *>();
+    bonusRefreshed = std::map<int, bool>();
     timer = Util::Timer();
     scoreSet = false;
 }
@@ -67,6 +70,9 @@ bool GameStreamHandler::execute( GameNet::Box * box )
         updatePlayers(stream);
     }
     
+    // update bonuses always (when only one bonus before, we have to remove it)
+    updateBonuses(stream);
+    
     return stop;
 }
 
@@ -90,12 +96,16 @@ void GameStreamHandler::updateActive(PBGameStream stream)
         controller->pushStadium();
         prepareStadium(pitchSize);
         playerMap.clear();
+        playerRefreshed.clear();
+        bonusMap.clear();
+        bonusRefreshed.clear();
         startNetworking();
     }
     else
     {
         stopNetworking();
         controller->popStadium();
+        scoreSet = false;
     }
 }
 
@@ -144,16 +154,22 @@ void GameStreamHandler::updatePlayers(PBGameStream stream)
 {
     auto stadium = controller->getStadium();
     
+    // first set all player as unrefreshed (we need to find which player to remove)
+    for(auto it=playerRefreshed.begin(); it!=playerRefreshed.end(); it++)
+    {
+        it->second = false;
+    }
+    
     for(int i=0; i<stream.player_size(); i++)
     {
         auto playerState = stream.player(i);
         Player * player;
-
+        
         // try to find already existing player
         if( playerMap.count( playerState.id() ) == 0)
         {
             // not found, need to add new
-            // but only if he has a team (skip otherwise
+            // but only if he has a team (skip otherwise)
             if(!playerState.has_team())
             {
                 // player has not selected a team yet, nothing to render
@@ -167,6 +183,8 @@ void GameStreamHandler::updatePlayers(PBGameStream stream)
                 std::string team = (playerState.team() == PBTeam::RED) ? TEAM_RED : TEAM_BLUE;
                 player->setTeam(team);
                 player->getSprite()->setPosition(Vec2( pitchSize.width/2, pitchSize.height/2 ));
+                player->getSprite()->setVisible(false);
+                player->getSprite()->getPhysicsBody()->setEnabled(false);
                 
                 stadium->addChild(player->getSprite());
             }
@@ -175,6 +193,8 @@ void GameStreamHandler::updatePlayers(PBGameStream stream)
         {
             player = playerMap[ playerState.id() ];
         }
+        
+        playerRefreshed[playerState.id()] = true;
         
         // apply force (same way as in server)
         if(playerState.has_force())
@@ -189,8 +209,19 @@ void GameStreamHandler::updatePlayers(PBGameStream stream)
             Vec2 newPosition = Vec2( playerState.position().x(), playerState.position().y());
             Vec2 delta = newPosition - Vec2(player->getSprite()->getPositionX(), player->getSprite()->getPositionY());
   
-            auto move = EaseInOut::create(MoveBy::create(0.05, delta), 2);
-            player->getSprite()->runAction(move);
+            // if the sprite is invisible (newly added), move directly, otherwise animate
+            if(player->getSprite()->isVisible())
+            {
+                auto move = EaseInOut::create(MoveBy::create(0.05, delta), 2);
+                player->getSprite()->runAction(move);
+            }
+            else
+            {
+                player->getSprite()->setVisible(true);
+                player->getSprite()->getPhysicsBody()->setEnabled(true);
+                player->getSprite()->setPosition(newPosition);
+            }
+            
         }
         
         // speedscale - during kick force loading
@@ -207,8 +238,91 @@ void GameStreamHandler::updatePlayers(PBGameStream stream)
         {
             player->setSpeedMultiplier( playerState.speedmultiplier() );
         }
-
     }
+    
+    // remove unrefreshed players
+    for(auto it=playerRefreshed.begin(); it!=playerRefreshed.end(); it++)
+    {
+        if( it->second == false)
+        {
+            // is the player in the map?
+            if(playerMap.count(it->first) > 0)
+            {
+                stadium->removeChild(playerMap[it->first]->getSprite());
+                playerMap.erase(it->first);
+            }
+        }
+    }
+}
+
+
+
+void GameStreamHandler::updateBonuses(PBGameStream stream)
+{
+    auto stadium = controller->getStadium();
+    
+    // first set all bonuses as unrefreshed (we need to find which bonus to remove)
+    for(auto it=bonusRefreshed.begin(); it!=bonusRefreshed.end(); it++)
+    {
+        it->second = false;
+    }
+    
+    for(int i=0; i<stream.bonus_size(); i++)
+    {
+        auto bonusState = stream.bonus(i);
+        Sprite * bonus;
+        
+        // try to find already existing player
+        if( bonusMap.count( bonusState.id() ) == 0)
+        {
+            std::string src = "";
+            if( bonusState.name().compare(BONUS_KICK) == 0) src = "bonus_kick.png";
+            if( bonusState.name().compare(BONUS_SPEED) == 0) src = "bonus_speed.png";
+            if( bonusState.name().compare(BONUS_INVISIBILITY) == 0) src = "bonus_invisibility.png";
+            
+            bonus = Sprite::create(src);
+            bonus->setScale(0.5);
+            bonus->setName(LABEL_BONUS);
+            
+            auto body = cocos2d::PhysicsBody::createCircle( bonus->getContentSize().width/2, MATERIAL_PLAYER);
+            body->setCategoryBitmask(BITMASK_BONUS);
+            body->setContactTestBitmask(BITMASK_PLAYER);
+            //bonus->setPhysicsBody(body);
+
+            bonusMap[bonusState.id()] = bonus;
+            
+            stadium->addChild(bonus);
+        }
+        else
+        {
+            bonus = bonusMap[ bonusState.id() ];
+        }
+
+        bonus->setPosition(Vec2( bonusState.position().x(), bonusState.position().y() ));
+        bonusRefreshed[bonusState.id()] = true;
+    }
+    
+    
+    // remove unrefreshed bonuses
+    std::vector<int> toDelete;
+    for(auto it=bonusRefreshed.begin(); it!=bonusRefreshed.end(); it++)
+    {
+        if( it->second == false)
+        {
+            // is the bonus in the map?
+            if(bonusMap.count(it->first) > 0)
+            {
+                stadium->removeChild(bonusMap[it->first]);
+                bonusMap.erase(it->first);
+                toDelete.push_back(it->first);
+            }
+        }
+    }
+/*    for(auto str : toDelete)
+    {
+        bonusMap.erase(str);
+    }*/
+    
 }
 
 
@@ -304,7 +418,7 @@ void GameStreamHandler::prepareStadium(cocos2d::Size pitchSize)
         // we must move the pitch when player moves (in order to see the rest)
         if( pitchSize.width > visibleSize.width)
         {
-            // player is too left -> we do not want to see what is right of the pitch
+            // player is too left -> we do not want to see what is behind the pitch borders
             if( pitchPosition.x > realOrigin.x )
             {
                 pitchPosition.x = realOrigin.x;
