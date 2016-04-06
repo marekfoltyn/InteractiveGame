@@ -8,6 +8,7 @@
 #include "ServersHandler.h"
 #include "ConnectionResultHandler.h"
 #include "ToggleVibrateHandler.h"
+#include "AdminHandler.h"
 
 USING_NS_CC;
 
@@ -85,11 +86,14 @@ void MainMenuScene::registerHandlers()
     // dynamic cast - ServersHandler implements two interfaces (both derived from BaseHandler),
     // so we have to decide, which interface will be casted to BaseHandler
     handlerMap->add(BOX_SERVER_NAME, dynamic_cast<BoxHandler*>(serverHandler));
-    handlerMap->add(VOID_PING_SERVERS, dynamic_cast<VoidHandler*>(serverHandler));
-    handlerMap->add(CLICK_CONNECT_TO_SERVER, dynamic_cast<ClickHandler*>(serverHandler));
+    handlerMap->add(BOX_ADMIN, new AdminHandler(nullptr));
     handlerMap->add(BOX_CONNECTED, connectionHandler);
     handlerMap->add(BOX_CONNECTION_FAILED, connectionHandler);
+
     handlerMap->add(TOUCH_TOGGLE_VIBRATE, new ToggleVibrateHandler());
+    handlerMap->add(VOID_PING_SERVERS, dynamic_cast<VoidHandler*>(serverHandler));
+    handlerMap->add(CLICK_CONNECT_TO_SERVER, dynamic_cast<ClickHandler*>(serverHandler));
+    
 }
 
 

@@ -1,0 +1,5 @@
+SLOVA K VYSVĚTLENÍ
+
+akcelerometr
+proximity senzor
+gyroskop

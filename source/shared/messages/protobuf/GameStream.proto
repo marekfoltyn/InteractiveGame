@@ -5,17 +5,22 @@ message PBGameStream
 	 */
 	optional bool active = 1;
 	
-	optional int32 width  = 2;
+	/**
+	 * ID of the player, who receives this stream
+	 */
+	optional uint64 playerId = 3;
 	
-	optional int32 height = 3;
+	optional int32 width  = 4;
+	
+	optional int32 height = 5;
 
-	optional PBBall ball = 4;
+	optional PBBall ball = 6;
 	
-	repeated PBPlayer player = 5;
+	repeated PBPlayer player = 7;
 	
-	optional int32 scoreLeft = 6;
+	optional int32 scoreLeft = 8;
 	
-	optional int32 scoreRight = 7;
+	optional int32 scoreRight = 9;
 	
 	
 	

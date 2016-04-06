@@ -42,8 +42,9 @@ void protobuf_AssignDesc_GameStream_2eproto() {
       "GameStream.proto");
   GOOGLE_CHECK(file != NULL);
   PBGameStream_descriptor_ = file->message_type(0);
-  static const int PBGameStream_offsets_[7] = {
+  static const int PBGameStream_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBGameStream, active_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBGameStream, playerid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBGameStream, width_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBGameStream, height_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBGameStream, ball_),
@@ -162,20 +163,20 @@ void protobuf_AddDesc_GameStream_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\020GameStream.proto\"\226\001\n\014PBGameStream\022\016\n\006a"
-    "ctive\030\001 \001(\010\022\r\n\005width\030\002 \001(\005\022\016\n\006height\030\003 \001"
-    "(\005\022\025\n\004ball\030\004 \001(\0132\007.PBBall\022\031\n\006player\030\005 \003("
-    "\0132\t.PBPlayer\022\021\n\tscoreLeft\030\006 \001(\005\022\022\n\nscore"
-    "Right\030\007 \001(\005\"\036\n\006PBVec2\022\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 "
-    "\002(\002\"}\n\006PBBall\022\031\n\010position\030\001 \001(\0132\007.PBVec2"
-    "\022\031\n\010velocity\030\002 \001(\0132\007.PBVec2\022\025\n\rplayerEna"
-    "bled\030\003 \001(\010\022\027\n\017angularVelocity\030\004 \001(\002\022\r\n\005a"
-    "ngle\030\005 \001(\002\"\263\001\n\010PBPlayer\022\031\n\010position\030\001 \001("
-    "\0132\007.PBVec2\022\026\n\005force\030\002 \001(\0132\007.PBVec2\022\014\n\004na"
-    "me\030\003 \001(\t\022\025\n\004team\030\004 \001(\0162\007.PBTeam\022\022\n\nspeed"
-    "Scale\030\005 \001(\002\022\n\n\002id\030\006 \001(\005\022\026\n\016kickMultiplie"
-    "r\030\007 \001(\002\022\027\n\017speedMultiplier\030\010 \001(\002*\033\n\006PBTe"
-    "am\022\007\n\003RED\020\000\022\010\n\004BLUE\020\001", 541);
+    "\n\020GameStream.proto\"\250\001\n\014PBGameStream\022\016\n\006a"
+    "ctive\030\001 \001(\010\022\020\n\010playerId\030\003 \001(\004\022\r\n\005width\030\004"
+    " \001(\005\022\016\n\006height\030\005 \001(\005\022\025\n\004ball\030\006 \001(\0132\007.PBB"
+    "all\022\031\n\006player\030\007 \003(\0132\t.PBPlayer\022\021\n\tscoreL"
+    "eft\030\010 \001(\005\022\022\n\nscoreRight\030\t \001(\005\"\036\n\006PBVec2\022"
+    "\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\"}\n\006PBBall\022\031\n\010posit"
+    "ion\030\001 \001(\0132\007.PBVec2\022\031\n\010velocity\030\002 \001(\0132\007.P"
+    "BVec2\022\025\n\rplayerEnabled\030\003 \001(\010\022\027\n\017angularV"
+    "elocity\030\004 \001(\002\022\r\n\005angle\030\005 \001(\002\"\263\001\n\010PBPlaye"
+    "r\022\031\n\010position\030\001 \001(\0132\007.PBVec2\022\026\n\005force\030\002 "
+    "\001(\0132\007.PBVec2\022\014\n\004name\030\003 \001(\t\022\025\n\004team\030\004 \001(\016"
+    "2\007.PBTeam\022\022\n\nspeedScale\030\005 \001(\002\022\n\n\002id\030\006 \001("
+    "\005\022\026\n\016kickMultiplier\030\007 \001(\002\022\027\n\017speedMultip"
+    "lier\030\010 \001(\002*\033\n\006PBTeam\022\007\n\003RED\020\000\022\010\n\004BLUE\020\001", 559);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "GameStream.proto", &protobuf_RegisterTypes);
   PBGameStream::default_instance_ = new PBGameStream();
@@ -214,6 +215,7 @@ bool PBTeam_IsValid(int value) {
 
 #ifndef _MSC_VER
 const int PBGameStream::kActiveFieldNumber;
+const int PBGameStream::kPlayerIdFieldNumber;
 const int PBGameStream::kWidthFieldNumber;
 const int PBGameStream::kHeightFieldNumber;
 const int PBGameStream::kBallFieldNumber;
@@ -242,6 +244,7 @@ PBGameStream::PBGameStream(const PBGameStream& from)
 void PBGameStream::SharedCtor() {
   _cached_size_ = 0;
   active_ = false;
+  playerid_ = GOOGLE_ULONGLONG(0);
   width_ = 0;
   height_ = 0;
   ball_ = NULL;
@@ -293,8 +296,8 @@ void PBGameStream::Clear() {
     ::memset(&first, 0, n);                                \
   } while (0)
 
-  if (_has_bits_[0 / 32] & 111) {
-    ZR_(active_, width_);
+  if (_has_bits_[0 / 32] & 223) {
+    ZR_(playerid_, width_);
     ZR_(height_, scoreleft_);
     if (has_ball()) {
       if (ball_ != NULL) ball_->::PBBall::Clear();
@@ -330,13 +333,28 @@ bool PBGameStream::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(16)) goto parse_width;
+        if (input->ExpectTag(24)) goto parse_playerId;
         break;
       }
 
-      // optional int32 width = 2;
-      case 2: {
-        if (tag == 16) {
+      // optional uint64 playerId = 3;
+      case 3: {
+        if (tag == 24) {
+         parse_playerId:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &playerid_)));
+          set_has_playerid();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(32)) goto parse_width;
+        break;
+      }
+
+      // optional int32 width = 4;
+      case 4: {
+        if (tag == 32) {
          parse_width:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -345,13 +363,13 @@ bool PBGameStream::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(24)) goto parse_height;
+        if (input->ExpectTag(40)) goto parse_height;
         break;
       }
 
-      // optional int32 height = 3;
-      case 3: {
-        if (tag == 24) {
+      // optional int32 height = 5;
+      case 5: {
+        if (tag == 40) {
          parse_height:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -360,40 +378,40 @@ bool PBGameStream::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(34)) goto parse_ball;
+        if (input->ExpectTag(50)) goto parse_ball;
         break;
       }
 
-      // optional .PBBall ball = 4;
-      case 4: {
-        if (tag == 34) {
+      // optional .PBBall ball = 6;
+      case 6: {
+        if (tag == 50) {
          parse_ball:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_ball()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(42)) goto parse_player;
+        if (input->ExpectTag(58)) goto parse_player;
         break;
       }
 
-      // repeated .PBPlayer player = 5;
-      case 5: {
-        if (tag == 42) {
+      // repeated .PBPlayer player = 7;
+      case 7: {
+        if (tag == 58) {
          parse_player:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                 input, add_player()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(42)) goto parse_player;
-        if (input->ExpectTag(48)) goto parse_scoreLeft;
+        if (input->ExpectTag(58)) goto parse_player;
+        if (input->ExpectTag(64)) goto parse_scoreLeft;
         break;
       }
 
-      // optional int32 scoreLeft = 6;
-      case 6: {
-        if (tag == 48) {
+      // optional int32 scoreLeft = 8;
+      case 8: {
+        if (tag == 64) {
          parse_scoreLeft:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -402,13 +420,13 @@ bool PBGameStream::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(56)) goto parse_scoreRight;
+        if (input->ExpectTag(72)) goto parse_scoreRight;
         break;
       }
 
-      // optional int32 scoreRight = 7;
-      case 7: {
-        if (tag == 56) {
+      // optional int32 scoreRight = 9;
+      case 9: {
+        if (tag == 72) {
          parse_scoreRight:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -451,36 +469,41 @@ void PBGameStream::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->active(), output);
   }
 
-  // optional int32 width = 2;
+  // optional uint64 playerId = 3;
+  if (has_playerid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(3, this->playerid(), output);
+  }
+
+  // optional int32 width = 4;
   if (has_width()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->width(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->width(), output);
   }
 
-  // optional int32 height = 3;
+  // optional int32 height = 5;
   if (has_height()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->height(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->height(), output);
   }
 
-  // optional .PBBall ball = 4;
+  // optional .PBBall ball = 6;
   if (has_ball()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4, this->ball(), output);
+      6, this->ball(), output);
   }
 
-  // repeated .PBPlayer player = 5;
+  // repeated .PBPlayer player = 7;
   for (int i = 0; i < this->player_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5, this->player(i), output);
+      7, this->player(i), output);
   }
 
-  // optional int32 scoreLeft = 6;
+  // optional int32 scoreLeft = 8;
   if (has_scoreleft()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->scoreleft(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->scoreleft(), output);
   }
 
-  // optional int32 scoreRight = 7;
+  // optional int32 scoreRight = 9;
   if (has_scoreright()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->scoreright(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(9, this->scoreright(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -498,38 +521,43 @@ void PBGameStream::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->active(), target);
   }
 
-  // optional int32 width = 2;
+  // optional uint64 playerId = 3;
+  if (has_playerid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(3, this->playerid(), target);
+  }
+
+  // optional int32 width = 4;
   if (has_width()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->width(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->width(), target);
   }
 
-  // optional int32 height = 3;
+  // optional int32 height = 5;
   if (has_height()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->height(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->height(), target);
   }
 
-  // optional .PBBall ball = 4;
+  // optional .PBBall ball = 6;
   if (has_ball()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        4, this->ball(), target);
+        6, this->ball(), target);
   }
 
-  // repeated .PBPlayer player = 5;
+  // repeated .PBPlayer player = 7;
   for (int i = 0; i < this->player_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        5, this->player(i), target);
+        7, this->player(i), target);
   }
 
-  // optional int32 scoreLeft = 6;
+  // optional int32 scoreLeft = 8;
   if (has_scoreleft()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(6, this->scoreleft(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->scoreleft(), target);
   }
 
-  // optional int32 scoreRight = 7;
+  // optional int32 scoreRight = 9;
   if (has_scoreright()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(7, this->scoreright(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(9, this->scoreright(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -549,35 +577,42 @@ int PBGameStream::ByteSize() const {
       total_size += 1 + 1;
     }
 
-    // optional int32 width = 2;
+    // optional uint64 playerId = 3;
+    if (has_playerid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt64Size(
+          this->playerid());
+    }
+
+    // optional int32 width = 4;
     if (has_width()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->width());
     }
 
-    // optional int32 height = 3;
+    // optional int32 height = 5;
     if (has_height()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->height());
     }
 
-    // optional .PBBall ball = 4;
+    // optional .PBBall ball = 6;
     if (has_ball()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->ball());
     }
 
-    // optional int32 scoreLeft = 6;
+    // optional int32 scoreLeft = 8;
     if (has_scoreleft()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->scoreleft());
     }
 
-    // optional int32 scoreRight = 7;
+    // optional int32 scoreRight = 9;
     if (has_scoreright()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
@@ -585,7 +620,7 @@ int PBGameStream::ByteSize() const {
     }
 
   }
-  // repeated .PBPlayer player = 5;
+  // repeated .PBPlayer player = 7;
   total_size += 1 * this->player_size();
   for (int i = 0; i < this->player_size(); i++) {
     total_size +=
@@ -622,6 +657,9 @@ void PBGameStream::MergeFrom(const PBGameStream& from) {
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_active()) {
       set_active(from.active());
+    }
+    if (from.has_playerid()) {
+      set_playerid(from.playerid());
     }
     if (from.has_width()) {
       set_width(from.width());
@@ -666,6 +704,7 @@ bool PBGameStream::IsInitialized() const {
 void PBGameStream::Swap(PBGameStream* other) {
   if (other != this) {
     std::swap(active_, other->active_);
+    std::swap(playerid_, other->playerid_);
     std::swap(width_, other->width_);
     std::swap(height_, other->height_);
     std::swap(ball_, other->ball_);

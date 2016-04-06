@@ -152,10 +152,10 @@ bool Game::startNetworking()
 
 void Game::registerHandlers()
 {
+    bonusHandler = new BonusHandler();
     auto logHandler = new LogHandler();
     auto disconnectHandler = new DisconnectHandler(this);
     auto kickHandler = new KickHandler(this);
-    auto bonusHandler = new BonusHandler();
     
     handlerMap->add(BOX_PLAYER_NAME, new NewPlayerHandler());
     handlerMap->add(BOX_ACCELERATION, new AccelerationBoxHandler(this));
@@ -169,11 +169,10 @@ void Game::registerHandlers()
     handlerMap->add(BOX_ADMIN, new GameStateHandler());
     
     handlerMap->add(VOID_COUNTDOWN_FINISHED, new CountdownHandler());
-    handlerMap->add(VOID_GENERATE_BONUS, (VoidHandler*)(bonusHandler));
     
     stadium->addCollisionHandler(BITMASK_PLAYER, new PlayerCollisionHandler() );
     stadium->addCollisionHandler(BITMASK_SCORE, new GoalCollisionHandler() );
-    stadium->addCollisionHandler(BITMASK_BONUS, (CollisionHandler*) bonusHandler);
+    stadium->addCollisionHandler(BITMASK_BONUS, bonusHandler);
 }
 
 
@@ -227,56 +226,6 @@ std::string Game::getAutoTeam()
         int random = RandomHelper::random_int(0, 1);
         return (random == 0) ? TEAM_BLUE : TEAM_RED;
     }
-}
-
-
-
-void Game::setBonusesEnabled(bool enabled)
-{
-    if(!enabled)
-    {
-        stadium->unschedule(SCHEDULE_GENERATE_BONUS);
-        
-        // delete existing nodes
-        Node * bonus = stadium->getChildByName(LABEL_BONUS);
-        while ( bonus != nullptr ) {
-            stadium->removeChild(bonus);
-            bonus = stadium->getChildByName(LABEL_BONUS);
-        }
-        
-        stadium->getEventDispatcher()->removeEventListener(debugListener);
-        
-        // deactivate all active bonuses
-        for(auto it=players.begin(); it!=players.end(); it++)
-        {
-            //TODO:
-            //bonusHandler->deactivateAllBonuses();
-        }
-        
-        return;
-    }
-    
-    // repeats every seconds, but the probability if the bonus will be
-    // generated or not depends on PROBABILITY_BONUS
-    stadium->schedule([&](float dt)
-    {
-        //TEMP DISABLED - use debug key "B" instead
-        //handlerMap->getVoidHandler(VOID_GENERATE_BONUS)->execute();
-    }
-    ,1 , SCHEDULE_GENERATE_BONUS);
-    
-    // DEBUG all bonus generation
-    debugListener = EventListenerKeyboard::create();
-    debugListener->onKeyPressed = [&](EventKeyboard::KeyCode keyCode, Event* event)
-    {
-        Vec2 loc = event->getCurrentTarget()->getPosition();
-        if( keyCode == EventKeyboard::KeyCode::KEY_B)
-        {
-            auto handler = handlerMap->getVoidHandler(VOID_GENERATE_BONUS);
-            ((BonusHandler * )handler)->generateDebugBonuses();
-        }
-    };
-    stadium->getEventDispatcher()->addEventListenerWithSceneGraphPriority(debugListener,stadium);
 }
 
 
@@ -389,7 +338,7 @@ void Game::startMatch()
     stadium->setBallInGame(true);
     stadium->resetScore();
     setCountdownEnabled(true);
-    setBonusesEnabled(true);
+    bonusHandler->setBonusDaemonEnabled(true);
 }
 
 
@@ -401,7 +350,7 @@ void Game::stopMatch()
     stadium->setMatchMode(false);
     stadium->setBallInGame(false);
     setCountdownEnabled(false);
-    setBonusesEnabled(false);
+    bonusHandler->setBonusDaemonEnabled(false);
 }
 
 

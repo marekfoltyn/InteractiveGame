@@ -1,7 +1,7 @@
 #ifndef  _SpeedBonus_H_
 #define  _SpeedBonus_H_
 
-#include "TimedBonus.h"
+#include "BonusInterface.h"
 
 USING_NS_CC;
 
@@ -9,7 +9,7 @@ USING_NS_CC;
 #define SPEEDBONUS_MAX 20.0
 #define SPEEDBONUS_MULTIPLIER 0.4
 
-class SpeedBonus: public TimedBonus {
+class SpeedBonus: public BonusInterface {
 public:
     
     static SpeedBonus * create();
@@ -21,13 +21,12 @@ protected:
     /**
      * effect activation
      */
-    virtual void activateEffect(Player * player);
+    virtual void activate(int playerId);
     
     /**
-     * bonus deactivation after amount of time
-     * (private because deactivation is automatic)
+     * effect deactivation
      */
-    virtual void deactivateEffect(Player * player);
+    virtual void deactivate();
 };
 
 

@@ -42,10 +42,20 @@ public:
     virtual bool execute( GameNet::Box * box );
     
 private:
-  
+    
     Director * director;
     Controller * controller;
     StadiumScene * stadium;
+    
+    /**
+     * pitch size received from server
+     */
+    cocos2d::Size pitchSize;
+    
+    /**
+     * id of this phone received in initial game stream
+     */
+    unsigned long myId;
     
     /**
      * "stopwatch" instance
@@ -61,7 +71,7 @@ private:
     /**
      * active players
      */
-    std::map<int, Player*> playerMap;
+    std::map<unsigned long, Player*> playerMap;
     
     /**
      * score was at least once set, so we can
@@ -74,7 +84,7 @@ private:
      * true - initialize stadium scene, networking and other stuff
      * false - back to the Control scene
      */
-    void updateActive(bool isActive);
+    void updateActive(PBGameStream stream);
     
     /**
      * update game score
@@ -106,7 +116,7 @@ private:
     /**
      * load stadium and bind control elements
      */
-    void prepareStadium();
+    void prepareStadium(cocos2d::Size pitchSize);
     
     /**
      * kick touch began
@@ -125,6 +135,7 @@ private:
      * kick the ball! :)
      */
     bool onTouchEnded(Touch * touch, Event * event);
+    
 };
 
 #endif /* GameStream_h */

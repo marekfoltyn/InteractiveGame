@@ -118,33 +118,40 @@ class PBGameStream : public ::google::protobuf::Message {
   inline bool active() const;
   inline void set_active(bool value);
 
-  // optional int32 width = 2;
+  // optional uint64 playerId = 3;
+  inline bool has_playerid() const;
+  inline void clear_playerid();
+  static const int kPlayerIdFieldNumber = 3;
+  inline ::google::protobuf::uint64 playerid() const;
+  inline void set_playerid(::google::protobuf::uint64 value);
+
+  // optional int32 width = 4;
   inline bool has_width() const;
   inline void clear_width();
-  static const int kWidthFieldNumber = 2;
+  static const int kWidthFieldNumber = 4;
   inline ::google::protobuf::int32 width() const;
   inline void set_width(::google::protobuf::int32 value);
 
-  // optional int32 height = 3;
+  // optional int32 height = 5;
   inline bool has_height() const;
   inline void clear_height();
-  static const int kHeightFieldNumber = 3;
+  static const int kHeightFieldNumber = 5;
   inline ::google::protobuf::int32 height() const;
   inline void set_height(::google::protobuf::int32 value);
 
-  // optional .PBBall ball = 4;
+  // optional .PBBall ball = 6;
   inline bool has_ball() const;
   inline void clear_ball();
-  static const int kBallFieldNumber = 4;
+  static const int kBallFieldNumber = 6;
   inline const ::PBBall& ball() const;
   inline ::PBBall* mutable_ball();
   inline ::PBBall* release_ball();
   inline void set_allocated_ball(::PBBall* ball);
 
-  // repeated .PBPlayer player = 5;
+  // repeated .PBPlayer player = 7;
   inline int player_size() const;
   inline void clear_player();
-  static const int kPlayerFieldNumber = 5;
+  static const int kPlayerFieldNumber = 7;
   inline const ::PBPlayer& player(int index) const;
   inline ::PBPlayer* mutable_player(int index);
   inline ::PBPlayer* add_player();
@@ -153,17 +160,17 @@ class PBGameStream : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::PBPlayer >*
       mutable_player();
 
-  // optional int32 scoreLeft = 6;
+  // optional int32 scoreLeft = 8;
   inline bool has_scoreleft() const;
   inline void clear_scoreleft();
-  static const int kScoreLeftFieldNumber = 6;
+  static const int kScoreLeftFieldNumber = 8;
   inline ::google::protobuf::int32 scoreleft() const;
   inline void set_scoreleft(::google::protobuf::int32 value);
 
-  // optional int32 scoreRight = 7;
+  // optional int32 scoreRight = 9;
   inline bool has_scoreright() const;
   inline void clear_scoreright();
-  static const int kScoreRightFieldNumber = 7;
+  static const int kScoreRightFieldNumber = 9;
   inline ::google::protobuf::int32 scoreright() const;
   inline void set_scoreright(::google::protobuf::int32 value);
 
@@ -171,6 +178,8 @@ class PBGameStream : public ::google::protobuf::Message {
  private:
   inline void set_has_active();
   inline void clear_has_active();
+  inline void set_has_playerid();
+  inline void clear_has_playerid();
   inline void set_has_width();
   inline void clear_has_width();
   inline void set_has_height();
@@ -186,6 +195,7 @@ class PBGameStream : public ::google::protobuf::Message {
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
+  ::google::protobuf::uint64 playerid_;
   bool active_;
   ::google::protobuf::int32 width_;
   ::PBBall* ball_;
@@ -601,15 +611,39 @@ inline void PBGameStream::set_active(bool value) {
   // @@protoc_insertion_point(field_set:PBGameStream.active)
 }
 
-// optional int32 width = 2;
-inline bool PBGameStream::has_width() const {
+// optional uint64 playerId = 3;
+inline bool PBGameStream::has_playerid() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void PBGameStream::set_has_width() {
+inline void PBGameStream::set_has_playerid() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void PBGameStream::clear_has_width() {
+inline void PBGameStream::clear_has_playerid() {
   _has_bits_[0] &= ~0x00000002u;
+}
+inline void PBGameStream::clear_playerid() {
+  playerid_ = GOOGLE_ULONGLONG(0);
+  clear_has_playerid();
+}
+inline ::google::protobuf::uint64 PBGameStream::playerid() const {
+  // @@protoc_insertion_point(field_get:PBGameStream.playerId)
+  return playerid_;
+}
+inline void PBGameStream::set_playerid(::google::protobuf::uint64 value) {
+  set_has_playerid();
+  playerid_ = value;
+  // @@protoc_insertion_point(field_set:PBGameStream.playerId)
+}
+
+// optional int32 width = 4;
+inline bool PBGameStream::has_width() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void PBGameStream::set_has_width() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void PBGameStream::clear_has_width() {
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void PBGameStream::clear_width() {
   width_ = 0;
@@ -625,15 +659,15 @@ inline void PBGameStream::set_width(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:PBGameStream.width)
 }
 
-// optional int32 height = 3;
+// optional int32 height = 5;
 inline bool PBGameStream::has_height() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void PBGameStream::set_has_height() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void PBGameStream::clear_has_height() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void PBGameStream::clear_height() {
   height_ = 0;
@@ -649,15 +683,15 @@ inline void PBGameStream::set_height(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:PBGameStream.height)
 }
 
-// optional .PBBall ball = 4;
+// optional .PBBall ball = 6;
 inline bool PBGameStream::has_ball() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void PBGameStream::set_has_ball() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000010u;
 }
 inline void PBGameStream::clear_has_ball() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void PBGameStream::clear_ball() {
   if (ball_ != NULL) ball_->::PBBall::Clear();
@@ -690,7 +724,7 @@ inline void PBGameStream::set_allocated_ball(::PBBall* ball) {
   // @@protoc_insertion_point(field_set_allocated:PBGameStream.ball)
 }
 
-// repeated .PBPlayer player = 5;
+// repeated .PBPlayer player = 7;
 inline int PBGameStream::player_size() const {
   return player_.size();
 }
@@ -720,15 +754,15 @@ PBGameStream::mutable_player() {
   return &player_;
 }
 
-// optional int32 scoreLeft = 6;
+// optional int32 scoreLeft = 8;
 inline bool PBGameStream::has_scoreleft() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void PBGameStream::set_has_scoreleft() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000040u;
 }
 inline void PBGameStream::clear_has_scoreleft() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline void PBGameStream::clear_scoreleft() {
   scoreleft_ = 0;
@@ -744,15 +778,15 @@ inline void PBGameStream::set_scoreleft(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:PBGameStream.scoreLeft)
 }
 
-// optional int32 scoreRight = 7;
+// optional int32 scoreRight = 9;
 inline bool PBGameStream::has_scoreright() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+  return (_has_bits_[0] & 0x00000080u) != 0;
 }
 inline void PBGameStream::set_has_scoreright() {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000080u;
 }
 inline void PBGameStream::clear_has_scoreright() {
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000080u;
 }
 inline void PBGameStream::clear_scoreright() {
   scoreright_ = 0;

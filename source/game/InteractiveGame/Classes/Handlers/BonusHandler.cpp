@@ -16,12 +16,66 @@ BonusHandler::BonusHandler()
 {
     director = Director::getInstance();
     game = Game::getInstance();
-    scene = game->getStadium();
+    stadium = game->getStadium();
+    activeBonuses = std::set<BonusInterface *>();
 }
 
 
 
-void BonusHandler::execute()
+void BonusHandler::setBonusDaemonEnabled(bool enabled)
+{
+    if(!enabled)
+    {
+        stadium->unschedule(SCHEDULE_GENERATE_BONUS);
+        
+        // delete existing nodes
+        Node * bonus = stadium->getChildByName(LABEL_BONUS);
+        while ( bonus != nullptr ) {
+            stadium->removeChild(bonus);
+            bonus = stadium->getChildByName(LABEL_BONUS);
+        }
+        
+        stadium->getEventDispatcher()->removeEventListener(debugListener);
+        
+        // deactivate all active bonuses
+        // first unschedule deactivation callbacks
+        for(auto it=game->players.begin(); it!=game->players.end(); it++)
+        {
+            it->second->getSprite()->unscheduleAllCallbacks();
+        }
+        // then deactivate the whole bonuses
+        while(activeBonuses.size() > 0)
+        {
+            deactivate( *(activeBonuses.begin()) );
+        }
+        
+        return;
+    }
+    
+    // repeats every second, but the probability if the bonus will be
+    // generated or not depends on PROBABILITY_BONUS
+    stadium->schedule([&](float dt)
+    {
+        probabilityGeneration();
+    }
+    ,1 , SCHEDULE_GENERATE_BONUS);
+    
+    // DEBUG - all bonuses generation
+    debugListener = EventListenerKeyboard::create();
+    debugListener->onKeyPressed = [&](EventKeyboard::KeyCode keyCode, Event* event)
+    {
+        Vec2 loc = event->getCurrentTarget()->getPosition();
+        if( keyCode == EventKeyboard::KeyCode::KEY_B)
+        {
+            generateDebugBonuses();
+        }
+    };
+    stadium->getEventDispatcher()->addEventListenerWithSceneGraphPriority(debugListener,stadium);
+}
+
+
+
+void BonusHandler::probabilityGeneration()
 {
     float result = RandomHelper::random_real<float>(0, 1);
     if( result > PROBABILITY_BONUS)
@@ -29,8 +83,6 @@ void BonusHandler::execute()
         return;
     }
 
-    // let's generate a bonus!
-    
     BonusInterface * bonus = generateBonus();
     auto position = generatePosition();
     
@@ -42,12 +94,59 @@ void BonusHandler::execute()
 void BonusHandler::execute(PhysicsBody * first, PhysicsBody * second)
 {
     int id = second->getTag();
-    auto player = game->getPlayer(id);
     auto sprite = dynamic_cast<Sprite*>(first->getNode());
-    auto bonus = (BonusInterface*) sprite->getUserData();
+    BonusInterface * bonus = dynamic_cast<BonusInterface*>( (BonusInterface *)sprite->getUserData());
+ 
+    auto player = game->getPlayer(id);
+    
+    if(bonus == nullptr)
+    {
+        CCLOG("BonusInterface * not set in bonus sprite!");
+        return;
+    }
 
-    bonus->activate(player);
-    scene->removeChild(sprite);
+    // activate bonus effect
+    for(auto it=activeBonuses.begin(); it!=activeBonuses.end(); it++)
+    {
+        if( (*it)->getPlayerId()==id && (*it)->getName() == bonus->getName() )
+        {
+            deactivate(*it);
+            
+            // schedule name is string-formatted bonus pointer (must be unique)
+            player->getSprite()->unschedule(__String::createWithFormat("%p", *it)->getCString());
+            break;
+        }
+    }
+    activeBonuses.insert(bonus);
+    bonus->activate(id);
+
+
+    // schedule usual bonus deactivation
+    player->getSprite()->scheduleOnce([&, bonus](float dt)
+    {
+        deactivate(bonus);
+    }
+    // schedule name is string-formatted bonus pointer (must be unique)
+    , bonus->getDuration(), __String::createWithFormat("%p", bonus)->getCString() );
+    
+    bonus->getSprite()->unschedule(SCHEDULE_DISAPPEAR);
+    stadium->removeChild(sprite);
+}
+
+
+
+void BonusHandler::deactivate(BonusInterface * bonus)
+{
+    // check if this bonus was not force-deactivated (game over, ...)
+    if( activeBonuses.count(bonus) > 0 )
+    {
+        stadium->unschedule(bonus->getName());
+        bonus->deactivate();
+        activeBonuses.erase(bonus);
+        
+        CCLOG("%s effect deactivated.", bonus->getName().c_str());
+        delete bonus;
+    }
 }
 
 
@@ -73,13 +172,13 @@ void BonusHandler::placeBonus(BonusInterface * bonus, Vec2 position)
     bonus->getSprite()->setPosition( position );
     // connect Sprite with the bonus
     bonus->getSprite()->setUserData(bonus);
-    scene->addChild(bonus->getSprite());
+    stadium->addChild(bonus->getSprite());
     
     CCLOG("Bonus generated.");
     
     bonus->getSprite()->scheduleOnce([&, bonus](float dt)
     {
-        scene->removeChild(bonus->getSprite());
+        stadium->removeChild(bonus->getSprite());
         delete bonus;
         CCLOG("Bonus removed.");
     },

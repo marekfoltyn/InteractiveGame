@@ -23,7 +23,7 @@ GameStreamHandler::GameStreamHandler(ControlScene * scene)
     director = Director::getInstance();
     controller = Controller::getInstance();
     handlerMap = HandlerMap::create();
-    playerMap = std::map<int, Player *>();
+    playerMap = std::map<unsigned long, Player *>();
     timer = Util::Timer();
     scoreSet = false;
 }
@@ -42,7 +42,7 @@ bool GameStreamHandler::execute( GameNet::Box * box )
     // toggle bonus - always changes the scene!
     if( stream.has_active() )
     {
-        updateActive(stream.active());
+        updateActive(stream);
         stop = true;
     }
     
@@ -72,12 +72,23 @@ bool GameStreamHandler::execute( GameNet::Box * box )
 
 
 
-void GameStreamHandler::updateActive(bool isActive)
+void GameStreamHandler::updateActive(PBGameStream stream)
 {
-    if(isActive)
+    if(stream.active())
     {
+        // it the game stream begins it has to send
+        // pitch size (we need to know proportions)
+        if( !stream.has_height() || !stream.has_width() || !stream.has_playerid())
+        {
+            CCLOG("FATAL ERROR - server did not send pitch size or player ID!");
+            return;
+        }
+        
+        myId = stream.playerid();
+        pitchSize = cocos2d::Size( stream.width(), stream.height() );
+        
         controller->pushStadium();
-        prepareStadium();
+        prepareStadium(pitchSize);
         playerMap.clear();
         startNetworking();
     }
@@ -155,7 +166,7 @@ void GameStreamHandler::updatePlayers(PBGameStream stream)
                 
                 std::string team = (playerState.team() == PBTeam::RED) ? TEAM_RED : TEAM_BLUE;
                 player->setTeam(team);
-                player->getSprite()->setPosition(Vec2( stadium->getContentSize().width/2, stadium->getContentSize().height/2 ));
+                player->getSprite()->setPosition(Vec2( pitchSize.width/2, pitchSize.height/2 ));
                 
                 stadium->addChild(player->getSprite());
             }
@@ -176,11 +187,10 @@ void GameStreamHandler::updatePlayers(PBGameStream stream)
         if(playerState.has_position())
         {
             Vec2 newPosition = Vec2( playerState.position().x(), playerState.position().y());
-            Vec2 delta = newPosition - player->getSprite()->getPosition();
+            Vec2 delta = newPosition - Vec2(player->getSprite()->getPositionX(), player->getSprite()->getPositionY());
   
             auto move = EaseInOut::create(MoveBy::create(0.05, delta), 2);
             player->getSprite()->runAction(move);
-            //player->getSprite()->setPosition(newPosition);
         }
         
         // speedscale - during kick force loading
@@ -210,7 +220,7 @@ void GameStreamHandler::startNetworking()
     // register handlers
     handlerMap->add(BOX_GAME_STREAM, this);
     handlerMap->add(BOX_CONNECTION_LOST, new GameStreamConnectionLostHandler(stadium));
-    handlerMap->add(BOX_ADMIN, new AdminHandler(stadium));
+    handlerMap->add(BOX_ADMIN, new AdminHandler(nullptr));
     handlerMap->add(BOX_COLLISION, new CollisionBoxHandler());
     handlerMap->add(VOID_ADMIN_DIALOG, new AdminDialogHandler(handlerMap));
     handlerMap->add(VOID_STOP_GAME, new StopGameHandler());
@@ -235,17 +245,18 @@ void GameStreamHandler::stopNetworking()
 
 
 
-void GameStreamHandler::prepareStadium()
+void GameStreamHandler::prepareStadium(cocos2d::Size pitchSize)
 {
     //REFACTOR: compute origin that the pitch will be in center
     //          and size that corresponds to server size
-    auto origin = director->getVisibleOrigin();
-    auto size = director->getVisibleSize();
+    auto origin = Vec2( (DESIGN_WIDTH - pitchSize.width)/2, (DESIGN_HEIGHT - pitchSize.height)/2 );
+    auto size = pitchSize;
     
     stadium = controller->getStadium();
     stadium->initPitch(origin, size);
     stadium->setMatchMode(true, false);
     stadium->setBallInGame(true);
+    
     
     // init accelerometer
     auto listener = EventListenerAcceleration::create([](Acceleration * acc, Event * ignore)
@@ -270,6 +281,63 @@ void GameStreamHandler::prepareStadium()
     force->setOpacity(FORCEBAR_OPACITY);
     force->setVisible(false);
     stadium->addChild(force, 90);
+    
+    // schedule pitch movement with player
+    stadium->schedule([&, pitchSize, origin](float dt)
+    {
+        if( playerMap.count(myId) == 0 )
+        {
+            // nothing to compute movement from
+            CCLOG("movePitch: player not found");
+            return;
+        }
+        
+        // move the pitch according to player
+        auto player = playerMap[myId];
+        auto realOrigin = director->getVisibleOrigin();
+        auto visibleSize = director->getVisibleSize();
+        auto center = Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2);
+        auto pitchPosition = center - player->getSprite()->getPosition();
+        
+        // correct the pitch position
+        // if the pitch width is bigger than visible width of the phone screen
+        // we must move the pitch when player moves (in order to see the rest)
+        if( pitchSize.width > visibleSize.width)
+        {
+            // player is too left -> we do not want to see what is right of the pitch
+            if( pitchPosition.x > realOrigin.x )
+            {
+                pitchPosition.x = realOrigin.x;
+            }
+            // player is too right - similar as above
+            else if( pitchPosition.x < realOrigin.x + visibleSize.width - pitchSize.width)
+            {
+                pitchPosition.x = realOrigin.x + visibleSize.width - pitchSize.width;
+            }
+            
+            stadium->setPositionX( pitchPosition.x );
+        }
+        
+        // the same as width
+        if( pitchSize.height > visibleSize.height)
+        {
+            // player is too bottom
+            if( pitchPosition.y > realOrigin.y )
+            {
+                pitchPosition.y = realOrigin.y;
+            }
+            // player is too up
+            else if( pitchPosition.y < realOrigin.y + visibleSize.height - pitchSize.height)
+            {
+                pitchPosition.y = realOrigin.y + visibleSize.height - pitchSize.height;
+            }
+            
+            stadium->setPositionY( pitchPosition.y );
+        }
+        
+    }
+    , 1.0/60, "pitchMovement");
+    
 }
 
 

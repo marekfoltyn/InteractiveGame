@@ -1,13 +1,16 @@
 #include "SpeedBonus.h"
 #include "GameplayDefinitions.h"
+#include "Game.h"
 
 SpeedBonus * SpeedBonus::create()
 {
     return new SpeedBonus();
 }
 
-SpeedBonus::SpeedBonus()
+SpeedBonus::SpeedBonus() : BonusInterface()
 {
+    name = "SpeedBonus";
+    
     durationMin = SPEEDBONUS_MIN;
     durationMax = SPEEDBONUS_MAX;
 
@@ -22,15 +25,29 @@ SpeedBonus::SpeedBonus()
 }
 
 
-void SpeedBonus::activateEffect(Player * player)
+void SpeedBonus::activate(int playerId)
 {
-    player->addSpeedMultiplier(SPEEDBONUS_MULTIPLIER);
+    this->playerId = playerId;
+    Player * player = game->getPlayer(playerId);
+    if(player != nullptr)
+    {
+        player->addSpeedMultiplier(SPEEDBONUS_MULTIPLIER);
+    }
 }
 
 
 
-void SpeedBonus::deactivateEffect(Player * player)
+void SpeedBonus::deactivate()
 {
-    player->addSpeedMultiplier( - SPEEDBONUS_MULTIPLIER );
+    this->playerId = playerId;
+    Player * player = game->getPlayer(playerId);
+    if(player != nullptr)
+    {
+        player->addSpeedMultiplier( - SPEEDBONUS_MULTIPLIER);
+    }
+    else
+    {
+        CCLOG("%s not deactivated - player not found!", name.c_str());
+    }
 }
 

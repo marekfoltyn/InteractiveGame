@@ -441,7 +441,13 @@ sp\^ osobom, ktor\'y nezni\v zuje hodnotu Diela (vr\'atane komer\v cn\'eho vyu\v
 \AfterEndPreamble{
 	\frontmatter
 	\thispagestyle{empty}
-	\if\@lang1{Sem vlo{\v z}te zad{\' a}n{\' i} Va{\v s}{\' i} pr{\' a}ce.}\else\if\@lang2{Sem vlo{\v z}te zadanie Va{\v s}ej pr{\' a}ce.}\else{Insert here your thesis' task.}\fi\fi
+
+	Vytvo{\v r}te syst{\' e}m pro interaktivn{\' i} ovl{\' a}d{\' a}n{\' i} PC hry pomoc{\' i} chytr{\' e}ho telefonu. 
+	PC i telefony budou p{\v r}ipojeny ve stejn{\' e} lok{\' a}ln{\' i} s{\' i}ti. 
+	Vyu{\v z}ijte interaktivn{\' i} mo{\v z}nosti chytr{\' y}ch telefon{\r u} (vibrace, pohybov{\' y} senzor, displej, ...). 
+	Navrhn{\v e}te a implementujte s{\' i}{\v t}ov{\' e} rozhran{\' i} pro komunikaci mezi PC a telefony. 
+	Vytvo{\v r}en{\' e} {\v r}e{\v s}en{\' i} demonstrujte na jednoduch{\' e} PC h{\v r}e. 
+	S{\' i}{\v t}ov{\' e} rozhran{\' i} i v{\' y}slednou hru {\v r}{\' a}dn{\v e} otestujte a zdokumentujte.
 
 	\pagestyle{plain}
 	\cleardoublepage

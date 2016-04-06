@@ -1,4 +1,5 @@
 #include "InvisibilityBonus.h"
+#include "Game.h"
 #include "GameplayDefinitions.h"
 #include "GameStream.pb.h"
 #include "BoxFactory.h"
@@ -8,9 +9,12 @@ InvisibilityBonus * InvisibilityBonus::create()
     return new InvisibilityBonus();
 }
 
-InvisibilityBonus::InvisibilityBonus()
+InvisibilityBonus::InvisibilityBonus() : BonusInterface()
 {
+    name = "InvisibilityBonus";
+    
     game = Game::getInstance();
+    director = Director::getInstance();
     
     durationMin = INVISIBILITY_MIN;
     durationMax = INVISIBILITY_MAX;
@@ -24,19 +28,19 @@ InvisibilityBonus::InvisibilityBonus()
     body->setContactTestBitmask(BITMASK_PLAYER);
     sprite->setPhysicsBody(body);
     
-    // 1 ... firstly send with position
+    // 1 ... first time send with position
     playerCountdown = 1;
     ballCountdown = 1;
 }
 
 
-void InvisibilityBonus::activateEffect(Player * player)
+void InvisibilityBonus::activate(int playerId)
 {
-    // avoid duplicate invisibility
-    if(!player->getSprite()->isVisible())
-    {
-        return;
-    }
+    this->playerId = playerId;
+    Player * player = game->getPlayer(playerId);
+
+    // player already disconnected
+    if(player == nullptr){ return; }
     
     // hide player (physics body works normally)
     player->getSprite()->setVisible(false);
@@ -52,17 +56,20 @@ void InvisibilityBonus::activateEffect(Player * player)
 
 
 
-void InvisibilityBonus::deactivateEffect(Player * player)
+void InvisibilityBonus::deactivate()
 {
-    // duplicate activation
-    if(player->getSprite()->isVisible())
-    {
-        return;
-    }
+    Player * player = game->getPlayer(playerId);
     
-    player->getSprite()->setVisible(true);
-    player->getSprite()->unschedule(SCHEDULE_GAMESTREAM);
-    sendLastGameStream(player);
+    if(player != nullptr)
+    {
+        player->getSprite()->setVisible(true);
+        player->getSprite()->unschedule(SCHEDULE_GAMESTREAM);
+        sendLastGameStream(player);
+    }
+    else
+    {
+        CCLOG("%s not deactivated - player not found!", name.c_str());
+    }
 }
 
 
@@ -72,8 +79,9 @@ void InvisibilityBonus::sendInitialGameStream(Player * player)
     PBGameStream stream = PBGameStream();
     
     stream.set_active(true);
-    stream.set_width( game->getStadium()->getContentSize().width );
-    stream.set_height( game->getStadium()->getContentSize().height );
+    stream.set_playerid(player->getId());
+    stream.set_width( director->getVisibleSize().width );
+    stream.set_height( director->getVisibleSize().height );
     
     GameNet::BoxFactory::gameStreamReliable(player->getAddress(), stream)->send();
 }
@@ -82,6 +90,7 @@ void InvisibilityBonus::sendInitialGameStream(Player * player)
 
 void InvisibilityBonus::sendGameStreamDelta(Player * player)
 {
+    CCLOG("Preparing game delta...");
     auto stadium = game->getStadium();
     PBGameStream delta = PBGameStream();
  

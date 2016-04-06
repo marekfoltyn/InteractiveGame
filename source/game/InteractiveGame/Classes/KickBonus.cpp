@@ -1,13 +1,16 @@
 #include "KickBonus.h"
 #include "GameplayDefinitions.h"
+#include "Game.h"
 
 KickBonus * KickBonus::create()
 {
     return new KickBonus();
 }
 
-KickBonus::KickBonus()
+KickBonus::KickBonus() : BonusInterface()
 {
+    name = "KickBonus";
+    
     durationMin = Definitions::TIME_KICKBONUS_MIN;
     durationMax = Definitions::TIME_KICKBONUS_MAX;
 
@@ -24,15 +27,28 @@ KickBonus::KickBonus()
 }
 
 
-void KickBonus::activateEffect(Player * player)
+void KickBonus::activate(int playerId)
 {
-    player->addKickMultiplier(Definitions::KICKBONUS_MULTIPLIER);
+    this->playerId = playerId;
+    Player * player = game->getPlayer(playerId);
+    if(player != nullptr)
+    {
+        player->addKickMultiplier(Definitions::KICKBONUS_MULTIPLIER);
+    }
 }
 
 
 
-void KickBonus::deactivateEffect(Player * player)
+void KickBonus::deactivate()
 {
-    player->addKickMultiplier( - Definitions::KICKBONUS_MULTIPLIER );
+    Player * player = game->getPlayer(playerId);
+    if(player != nullptr)
+    {
+        player->addKickMultiplier( - Definitions::KICKBONUS_MULTIPLIER );
+    }
+    else
+    {
+        CCLOG("%s not deactivated - player not found!", name.c_str());
+    }
 }
 

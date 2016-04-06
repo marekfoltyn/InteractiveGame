@@ -16,8 +16,10 @@
 #include "StadiumScene.h"
 #include "HandlerMap.h"
 #include "GameState.pb.h"
+class BonusHandler;
 
 #include <map>
+#include <set>
 
 /**
  * singleton class representing general game
@@ -93,12 +95,6 @@ public:
      * get the game state
      */
     bool isPlaying(){ return playing; }
-
-    /**
-     * toogle bonus generating
-     * - when set to false, it removes all existing bonuses
-     */
-    void setBonusesEnabled(bool enabled);
     
     /**
      * set the Player as the admin and sends him game state information
@@ -138,7 +134,8 @@ public:
     void setCountdownEnabled(bool enabled);
         
     /**
-     * player map
+     * map of players
+     * USE FOR READING ONLY! For editing, use addPlaye(...) or removePlayer(...)
      */
     std::map<int, Player *> players;
     
@@ -177,6 +174,11 @@ private:
      */
     Player * admin;
     
+    /**
+     * bonus handler object
+     */
+    BonusHandler * bonusHandler;
+    
     Game();
     
     void initGameState();
@@ -195,8 +197,6 @@ private:
      * helper method - conversion between gameState and seconds
      */
     int durationToSeconds(GameState_MatchDuration duration);
-    
-    EventListenerKeyboard * debugListener;
     
 };
 

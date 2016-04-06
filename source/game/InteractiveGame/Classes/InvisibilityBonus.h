@@ -1,19 +1,19 @@
 #ifndef  _InvisibilityBonus_H_
 #define  _InvisibilityBonus_H_
 
-#include "TimedBonus.h"
+#include "BonusInterface.h"
 #include "Game.h"
 
 USING_NS_CC;
 
-#define INVISIBILITY_MIN 60.0
-#define INVISIBILITY_MAX 60.0
+#define INVISIBILITY_MIN 30.0
+#define INVISIBILITY_MAX 30.0
 #define TIME_GAMESTREAM_DELAY 0.015
 #define SCHEDULE_GAMESTREAM "gameStream"
 #define BALL_COUNTDOWN 15
 #define PLAYER_COUNTDOWN 29
 
-class InvisibilityBonus: public TimedBonus {
+class InvisibilityBonus: public BonusInterface {
 public:
     
     static InvisibilityBonus * create();
@@ -28,15 +28,15 @@ protected:
     /**
      * effect activation
      */
-    virtual void activateEffect(Player * player);
+    virtual void activate(int playerId);
     
     /**
-     * bonus deactivation after amount of time
-     * (private because deactivation is automatic)
+     * effect deactivation
      */
-    virtual void deactivateEffect(Player * player);
+    virtual void deactivate();
     
     Game * game;
+    cocos2d::Director * director;
     
     /**
      * sending game information necessary for

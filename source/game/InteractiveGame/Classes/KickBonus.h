@@ -1,11 +1,11 @@
 #ifndef  _KickBonus_H_
 #define  _KickBonus_H_
 
-#include "TimedBonus.h"
+#include "BonusInterface.h"
 
 USING_NS_CC;
 
-class KickBonus: public TimedBonus {
+class KickBonus: public BonusInterface {
 public:
     
     static KickBonus * create();
@@ -17,13 +17,12 @@ protected:
     /**
      * effect activation
      */
-    virtual void activateEffect(Player * player);
+    virtual void activate(int playerId);
     
     /**
-     * bonus deactivation after amount of time
-     * (private because deactivation is automatic)
+     * effect deactivation
      */
-    virtual void deactivateEffect(Player * player);
+    virtual void deactivate();
 };
 
 
