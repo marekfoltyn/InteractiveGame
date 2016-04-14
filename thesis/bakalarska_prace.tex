@@ -6,7 +6,7 @@
 % english thesis in English language
 % hidelinks remove colour boxes around hyperlinks
 
-\documentclass[thesis=B,czech]{FITthesis}[2012/06/26] %documentclass ... typ dokumentu (definovany v souboru .cls)
+\documentclass[thesis=B,czech,hidelinks]{FITthesis}[2012/06/26] %documentclass ... typ dokumentu (definovany v souboru .cls)
 
 \usepackage[utf8]{inputenc} % LaTeX source encoded as UTF-8
 
@@ -34,14 +34,14 @@
 \authorFN{Foltýn} %příjmení autora
 \authorWithDegrees{Marek Foltýn} %jméno autora včetně současných akademických titulů
 \supervisor{Ing. Filip K{\v r}ikava, Ph.D.}
-\acknowledgements{Chci velmi poděkovat vedoucímu práce Ing. Filipu K{\v r}ikavovi, Ph.D. za p{\v r}íkladné vedení. Dále pak své manželce Veronice Foltýnové za trpělivost a ochotu vytvá{\v r}et prost{\v r}edí vhodné ke tvorbě bakalářské práce, 
-rodičům a celé mé rodině za velkou podporu v mnoha směrech. Děkuji také všem, kteří se podíleli na testování hratelnosti.}
-\abstractCS{V~několika větách shrňte obsah a přínos této práce v~češtině. Po přečtení abstraktu by se čtenář měl mít čtenář dost informací pro rozhodnutí, zda chce Vaši práci číst.}
-\abstractEN{Sem doplňte ekvivalent abstraktu Vaší práce v~angličtině.}
+\acknowledgements{Chtěl bych poděkovat vedoucímu práce Ing. Filipu K{\v r}ikavovi, Ph.D. za~pomoc a~p{\v r}íkladné vedení práce. Dále pak své manželce Veronice Foltýnové za~trpělivost a~ochotu vytvá{\v r}et prost{\v r}edí vhodné ke~tvorbě bakalářské práce, 
+rodičům a~celé mé rodině za~velkou podporu ve~všech směrech. Děkuji také všem, kteří se podíleli na~testování hratelnosti hry.}
+\abstractCS{Tato bakalářská práce se zabývá tvorbou systému pro~ovládání PC hry pomocí mobilního telefonu. Hlavním cílem je obohacení herního zážitku pomocí interaktivních prvků, které jsou na~mobilních telefonech k~dispozici. Součástí práce je analýza způsobů ovládání her, přehled interaktivních technologií v mobilních telefonech a~samotná tvorba komunikačního systému, který je demonstrován na~jednoduché hře. }
+\abstractEN{The main purpose of this thesis is to create an interactive PC game control system using smartphones in order to enhance the game experience. The thesis contains the analysis of different ways how a PC game can be controlled, the overwiev of interactive mobile technologies and also the communication system implementation, which is demonstrated in a simple game. }
 \placeForDeclarationOfAuthenticity{V~Praze}
 \declarationOfAuthenticityOption{4} %volba Prohlášení (číslo 1-6)
-\keywordsCS{Nahraďte seznamem klíčových slov v češtině oddělených čárkou.}
-\keywordsEN{Nahraďte seznamem klíčových slov v angličtině oddělených čárkou.}
+\keywordsCS{interaktivní ovládání PC hry, smartphone, komunikační systém, Cocos2d-x, RakNet}
+\keywordsEN{interactive PC game controller, smartphone, communication system, Cocos2d-x, RakNet}
 
 \begin{document} % zacatek celeho dokumentu
 
@@ -50,36 +50,42 @@ rodičům a celé mé rodině za velkou podporu v mnoha směrech. Děkuji také 
 
 \begin{introduction}
 
-%TODO: NAPSAT UVOD % 
+Počítačové hry existují od~počátku prvních počítačů \cite{rylich}. Jejich možnosti se vyvíjí podobně, jako se vyvíjí výpočetní a~grafický výkon, hardware a~další technologie. Neustálé zmenšování součástek v~současné době nabízí vysoký výkon ve~velmi malých strojích: notebooky, chytré telefony a~dokonce i~hodinky s~vícejádrovými procesory. \cite{kupi}
+
+Na~zmenšování hardwaru se adaptovaly také hry, které se v~hojné míře objevují i~na~přenosných zařízeních, jako jsou mobilní telefony, tablety a~další. Lidé tak mohou kromě počítačového stolu hrát doslova kdekoli.
+
+Spolu s~vývojem počítačů se mění i~způsoby, jak lze počítačové hry ovládat. Kromě tradiční myši a~klávesnice lze využít joystick, volant, gamepad a~jiná podobná zařízení. Všechny tyto technologie se v herním průmyslu snaží obohatit hráčův zážitek intuitivním ovládáním. Existují však elektronická zařízení s~velkým množstvím senzorů, u~kterých se nabízí otázka, jak tyto senzory využít pro~ovládání hry. Mobilní telefony.
+
+Mobilní telefony se v~dnešní době rozvíjí velmi rychlým tempem. Téměř každý nový smarthphone je vybaven dotykovým displejem, akcelerometrem společně s~gyroskopem, proximity senzorem, vibračním motorkem a~dalšímy senzory okolního prostředí. Dále pak jsou schopny bezdrátově komunikovat pomocí WiFi, bluetooth a~při tomto množství interaktivních prvků v~jediném zařízení se přirozeně nabízí otázka, jak všechny tyto nové technologie využít pro~větší zážitek z~hraní. Velké využití nabízí například dotyková obrazovka. Sjednocuje se zde vizuální část hry s~ovládáním. Pokud chce například hráč přesunout objekt, jednoduše se jej dotkne prstem a přetáhne. Všech těchto výhod široce využívají mobilní hry.
+
+V~této práci se budu zabývat hledáním způsobu, jak využít interaktivní prvky mobilních telefonů pro~ovládání počítačové hry. Smartphone tedy nebude sloužit jako samostatná herní konzole, ani jako simulace periferie typu myš nebo gamepad, ale bude tvořit jednotný celek společně se~samostatným počítačem. Tuto myšlenku se budu snažit demonstrovat vytvořením systému komunikace mezi telefony a~počítačem a~jeho využitím v~jednoduché hře. 
+
 
 \end{introduction}
 
-\chapter{Ovládání PC hry}
+\chapter{Druhy ovládání PC her}
 
 % obecné povídání o způsobech ovládání her %
 
 % vývoj mobilních telefonů a rozšiřování jejich schopností %
-
-Mobilní telefony se v dnešní době rozvíjí velmi rychlým tempem. Obsahují mnoho senzorů okolního prostředí: téměř každý nový smarthphone obsahuje dotykový displej, akcelerometr společně s gyroskopem, proximity senzor, vibrační motorek. Dále pak jsou schopny bezdrátově komunikovat pomocí WiFi, bluetooth a dalších technologií.
-
-Stejně jako u rozvoje stolních počítačů se i u mobilních telefonů nabízí otázka, jak všechny tyto nové technologie využít pro větší zážitek z hraní. Stejně jako u 
-
-Velké využití nabízí dotyková obrazovka. Sjednocuje se zde vizuální část hry s ovládáním. Pokud chce například hráč přesunout objekt, jednoduše se jej dotkne prstem a přetáhne. Ve hrách 
 
 % propojení mobilů a PC her %
 
 % výhody oproti tradičním způsobům ovládání %
 
 
-\chapter{Požadavky}
 
-\chapter{Návrh}
 
-\chapter{Implementace}
+\chapter{Interaktivní prvky v mobilních telefonech}
 
-\chapter{Testování}
+\chapter{Tvorba systému}
 
-\chapter{Dokumentace}
+\section{Analýza}
+\section{Požadavky}
+\section{Návrh}
+\section{Implementace}
+\section{Testování}
+\section{Dokumentace}
 
 \begin{conclusion}
 	%sem napište závěr Vaší práce

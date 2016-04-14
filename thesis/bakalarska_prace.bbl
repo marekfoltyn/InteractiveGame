@@ -1,0 +1,21 @@
+\begin{thebibliography}{1}
+\providecommand{\biburl}[1]{\url{#1}}
+\providecommand{\urlprefix}{Dostupn{\' e} z: }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+\providecommand{\selectlanguage}[1]{\relax}
+\providecommand{\eprint}[2][]{\biburl{#2}}
+
+\bibitem{rylich}
+Rylich, J.: \emph{Po{\v c}{\'\i}ta{\v c}ov{\'e} hry jako fenom{\'e}n nov{\'y}ch
+  m{\'e}di{\'\i}}. Diplomov\'a pr\'ace, Univerzita Karlova v Praze,
+  Filozofick{\'a} fakulta, {\'U}stav informa{\v c}n{\'\i}ch studi{\'\i} a
+  knihovnictv{\'\i}, Studia nov{\'y}ch m{\'e}di{\'\i}., 2011.
+
+\bibitem{kupi}
+Ltd., P.~.: New android smart phone watch - 24kupi pro edition.
+\urlprefix\biburl{http://www.24kupi.com/24kupi-pro-edition-watch}
+
+\end{thebibliography}
