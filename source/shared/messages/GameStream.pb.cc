@@ -45,7 +45,7 @@ void protobuf_AssignDesc_GameStream_2eproto() {
       "GameStream.proto");
   GOOGLE_CHECK(file != NULL);
   PBGameStream_descriptor_ = file->message_type(0);
-  static const int PBGameStream_offsets_[9] = {
+  static const int PBGameStream_offsets_[10] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBGameStream, active_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBGameStream, playerid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBGameStream, width_),
@@ -55,6 +55,7 @@ void protobuf_AssignDesc_GameStream_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBGameStream, scoreleft_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBGameStream, scoreright_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBGameStream, bonus_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBGameStream, duration_),
   };
   PBGameStream_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -84,12 +85,11 @@ void protobuf_AssignDesc_GameStream_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(PBVec2));
   PBBall_descriptor_ = file->message_type(2);
-  static const int PBBall_offsets_[5] = {
+  static const int PBBall_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBBall, position_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBBall, velocity_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBBall, playerenabled_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBBall, angularvelocity_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBBall, angle_),
   };
   PBBall_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -103,7 +103,7 @@ void protobuf_AssignDesc_GameStream_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(PBBall));
   PBPlayer_descriptor_ = file->message_type(3);
-  static const int PBPlayer_offsets_[8] = {
+  static const int PBPlayer_offsets_[9] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBPlayer, position_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBPlayer, force_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBPlayer, name_),
@@ -112,6 +112,7 @@ void protobuf_AssignDesc_GameStream_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBPlayer, id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBPlayer, kickmultiplier_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBPlayer, speedmultiplier_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBPlayer, visible_),
   };
   PBPlayer_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -189,23 +190,24 @@ void protobuf_AddDesc_GameStream_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\020GameStream.proto\"\301\001\n\014PBGameStream\022\016\n\006a"
+    "\n\020GameStream.proto\"\323\001\n\014PBGameStream\022\016\n\006a"
     "ctive\030\001 \001(\010\022\020\n\010playerId\030\003 \001(\004\022\r\n\005width\030\004"
     " \001(\005\022\016\n\006height\030\005 \001(\005\022\025\n\004ball\030\006 \001(\0132\007.PBB"
     "all\022\031\n\006player\030\007 \003(\0132\t.PBPlayer\022\021\n\tscoreL"
     "eft\030\010 \001(\005\022\022\n\nscoreRight\030\t \001(\005\022\027\n\005bonus\030\n"
-    " \003(\0132\010.PBBonus\"\036\n\006PBVec2\022\t\n\001x\030\001 \002(\002\022\t\n\001y"
-    "\030\002 \002(\002\"}\n\006PBBall\022\031\n\010position\030\001 \001(\0132\007.PBV"
-    "ec2\022\031\n\010velocity\030\002 \001(\0132\007.PBVec2\022\025\n\rplayer"
-    "Enabled\030\003 \001(\010\022\027\n\017angularVelocity\030\004 \001(\002\022\r"
-    "\n\005angle\030\005 \001(\002\"\263\001\n\010PBPlayer\022\031\n\010position\030\001"
-    " \001(\0132\007.PBVec2\022\026\n\005force\030\002 \001(\0132\007.PBVec2\022\014\n"
-    "\004name\030\003 \001(\t\022\025\n\004team\030\004 \001(\0162\007.PBTeam\022\022\n\nsp"
-    "eedScale\030\005 \001(\002\022\n\n\002id\030\006 \001(\005\022\026\n\016kickMultip"
-    "lier\030\007 \001(\002\022\027\n\017speedMultiplier\030\010 \001(\002\"K\n\007P"
-    "BBonus\022\n\n\002id\030\001 \001(\005\022\013\n\003res\030\002 \001(\t\022\031\n\010posit"
-    "ion\030\003 \001(\0132\007.PBVec2\022\014\n\004name\030\004 \001(\t*\033\n\006PBTe"
-    "am\022\007\n\003RED\020\000\022\010\n\004BLUE\020\001", 661);
+    " \003(\0132\010.PBBonus\022\020\n\010duration\030\013 \001(\005\"\036\n\006PBVe"
+    "c2\022\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\"n\n\006PBBall\022\031\n\010po"
+    "sition\030\001 \001(\0132\007.PBVec2\022\031\n\010velocity\030\002 \001(\0132"
+    "\007.PBVec2\022\025\n\rplayerEnabled\030\003 \001(\010\022\027\n\017angul"
+    "arVelocity\030\004 \001(\002\"\304\001\n\010PBPlayer\022\031\n\010positio"
+    "n\030\001 \001(\0132\007.PBVec2\022\026\n\005force\030\002 \001(\0132\007.PBVec2"
+    "\022\014\n\004name\030\003 \001(\t\022\025\n\004team\030\004 \001(\0162\007.PBTeam\022\022\n"
+    "\nspeedScale\030\005 \001(\002\022\n\n\002id\030\006 \001(\005\022\026\n\016kickMul"
+    "tiplier\030\007 \001(\002\022\027\n\017speedMultiplier\030\010 \001(\002\022\017"
+    "\n\007visible\030\t \001(\010\"K\n\007PBBonus\022\n\n\002id\030\001 \001(\005\022\013"
+    "\n\003res\030\002 \001(\t\022\031\n\010position\030\003 \001(\0132\007.PBVec2\022\014"
+    "\n\004name\030\004 \001(\t*\033\n\006PBTeam\022\007\n\003RED\020\000\022\010\n\004BLUE\020"
+    "\001", 681);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "GameStream.proto", &protobuf_RegisterTypes);
   PBGameStream::default_instance_ = new PBGameStream();
@@ -254,6 +256,7 @@ const int PBGameStream::kPlayerFieldNumber;
 const int PBGameStream::kScoreLeftFieldNumber;
 const int PBGameStream::kScoreRightFieldNumber;
 const int PBGameStream::kBonusFieldNumber;
+const int PBGameStream::kDurationFieldNumber;
 #endif  // !_MSC_VER
 
 PBGameStream::PBGameStream()
@@ -282,6 +285,7 @@ void PBGameStream::SharedCtor() {
   ball_ = NULL;
   scoreleft_ = 0;
   scoreright_ = 0;
+  duration_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -336,6 +340,7 @@ void PBGameStream::Clear() {
     }
     scoreright_ = 0;
   }
+  duration_ = 0;
 
 #undef OFFSET_OF_FIELD_
 #undef ZR_
@@ -482,6 +487,21 @@ bool PBGameStream::MergePartialFromCodedStream(
           goto handle_unusual;
         }
         if (input->ExpectTag(82)) goto parse_bonus;
+        if (input->ExpectTag(88)) goto parse_duration;
+        break;
+      }
+
+      // optional int32 duration = 11;
+      case 11: {
+        if (tag == 88) {
+         parse_duration:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &duration_)));
+          set_has_duration();
+        } else {
+          goto handle_unusual;
+        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -559,6 +579,11 @@ void PBGameStream::SerializeWithCachedSizes(
       10, this->bonus(i), output);
   }
 
+  // optional int32 duration = 11;
+  if (has_duration()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(11, this->duration(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -620,6 +645,11 @@ void PBGameStream::SerializeWithCachedSizes(
         10, this->bonus(i), target);
   }
 
+  // optional int32 duration = 11;
+  if (has_duration()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(11, this->duration(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -677,6 +707,15 @@ int PBGameStream::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->scoreright());
+    }
+
+  }
+  if (_has_bits_[9 / 32] & (0xffu << (9 % 32))) {
+    // optional int32 duration = 11;
+    if (has_duration()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->duration());
     }
 
   }
@@ -746,6 +785,11 @@ void PBGameStream::MergeFrom(const PBGameStream& from) {
       set_scoreright(from.scoreright());
     }
   }
+  if (from._has_bits_[9 / 32] & (0xffu << (9 % 32))) {
+    if (from.has_duration()) {
+      set_duration(from.duration());
+    }
+  }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -782,6 +826,7 @@ void PBGameStream::Swap(PBGameStream* other) {
     std::swap(scoreleft_, other->scoreleft_);
     std::swap(scoreright_, other->scoreright_);
     bonus_.Swap(&other->bonus_);
+    std::swap(duration_, other->duration_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -1075,7 +1120,6 @@ const int PBBall::kPositionFieldNumber;
 const int PBBall::kVelocityFieldNumber;
 const int PBBall::kPlayerEnabledFieldNumber;
 const int PBBall::kAngularVelocityFieldNumber;
-const int PBBall::kAngleFieldNumber;
 #endif  // !_MSC_VER
 
 PBBall::PBBall()
@@ -1102,7 +1146,6 @@ void PBBall::SharedCtor() {
   velocity_ = NULL;
   playerenabled_ = false;
   angularvelocity_ = 0;
-  angle_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1150,8 +1193,8 @@ void PBBall::Clear() {
     ::memset(&first, 0, n);                                \
   } while (0)
 
-  if (_has_bits_[0 / 32] & 31) {
-    ZR_(playerenabled_, angle_);
+  if (_has_bits_[0 / 32] & 15) {
+    ZR_(playerenabled_, angularvelocity_);
     if (has_position()) {
       if (position_ != NULL) position_->::PBVec2::Clear();
     }
@@ -1228,21 +1271,6 @@ bool PBBall::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(45)) goto parse_angle;
-        break;
-      }
-
-      // optional float angle = 5;
-      case 5: {
-        if (tag == 45) {
-         parse_angle:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &angle_)));
-          set_has_angle();
-        } else {
-          goto handle_unusual;
-        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -1294,11 +1322,6 @@ void PBBall::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteFloat(4, this->angularvelocity(), output);
   }
 
-  // optional float angle = 5;
-  if (has_angle()) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(5, this->angle(), output);
-  }
-
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -1331,11 +1354,6 @@ void PBBall::SerializeWithCachedSizes(
   // optional float angularVelocity = 4;
   if (has_angularvelocity()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(4, this->angularvelocity(), target);
-  }
-
-  // optional float angle = 5;
-  if (has_angle()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(5, this->angle(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -1371,11 +1389,6 @@ int PBBall::ByteSize() const {
 
     // optional float angularVelocity = 4;
     if (has_angularvelocity()) {
-      total_size += 1 + 4;
-    }
-
-    // optional float angle = 5;
-    if (has_angle()) {
       total_size += 1 + 4;
     }
 
@@ -1418,9 +1431,6 @@ void PBBall::MergeFrom(const PBBall& from) {
     if (from.has_angularvelocity()) {
       set_angularvelocity(from.angularvelocity());
     }
-    if (from.has_angle()) {
-      set_angle(from.angle());
-    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -1454,7 +1464,6 @@ void PBBall::Swap(PBBall* other) {
     std::swap(velocity_, other->velocity_);
     std::swap(playerenabled_, other->playerenabled_);
     std::swap(angularvelocity_, other->angularvelocity_);
-    std::swap(angle_, other->angle_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -1481,6 +1490,7 @@ const int PBPlayer::kSpeedScaleFieldNumber;
 const int PBPlayer::kIdFieldNumber;
 const int PBPlayer::kKickMultiplierFieldNumber;
 const int PBPlayer::kSpeedMultiplierFieldNumber;
+const int PBPlayer::kVisibleFieldNumber;
 #endif  // !_MSC_VER
 
 PBPlayer::PBPlayer()
@@ -1512,6 +1522,7 @@ void PBPlayer::SharedCtor() {
   id_ = 0;
   kickmultiplier_ = 0;
   speedmultiplier_ = 0;
+  visible_ = false;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1576,6 +1587,7 @@ void PBPlayer::Clear() {
       }
     }
   }
+  visible_ = false;
 
 #undef OFFSET_OF_FIELD_
 #undef ZR_
@@ -1712,6 +1724,21 @@ bool PBPlayer::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(72)) goto parse_visible;
+        break;
+      }
+
+      // optional bool visible = 9;
+      case 9: {
+        if (tag == 72) {
+         parse_visible:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &visible_)));
+          set_has_visible();
+        } else {
+          goto handle_unusual;
+        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -1789,6 +1816,11 @@ void PBPlayer::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteFloat(8, this->speedmultiplier(), output);
   }
 
+  // optional bool visible = 9;
+  if (has_visible()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(9, this->visible(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -1848,6 +1880,11 @@ void PBPlayer::SerializeWithCachedSizes(
   // optional float speedMultiplier = 8;
   if (has_speedmultiplier()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(8, this->speedmultiplier(), target);
+  }
+
+  // optional bool visible = 9;
+  if (has_visible()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(9, this->visible(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -1912,6 +1949,13 @@ int PBPlayer::ByteSize() const {
     }
 
   }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    // optional bool visible = 9;
+    if (has_visible()) {
+      total_size += 1 + 1;
+    }
+
+  }
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -1963,6 +2007,11 @@ void PBPlayer::MergeFrom(const PBPlayer& from) {
       set_speedmultiplier(from.speedmultiplier());
     }
   }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    if (from.has_visible()) {
+      set_visible(from.visible());
+    }
+  }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -1999,6 +2048,7 @@ void PBPlayer::Swap(PBPlayer* other) {
     std::swap(id_, other->id_);
     std::swap(kickmultiplier_, other->kickmultiplier_);
     std::swap(speedmultiplier_, other->speedmultiplier_);
+    std::swap(visible_, other->visible_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

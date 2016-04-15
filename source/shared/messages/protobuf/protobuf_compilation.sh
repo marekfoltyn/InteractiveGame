@@ -1,1 +1,1 @@
-protoc --cpp_out=../ *.proto
+protoc -I=/Users/marek/Documents/git/InteractiveGame/source/shared/messages/protobuf --cpp_out=/Users/marek/Documents/git/InteractiveGame/source/shared/messages/ /Users/marek/Documents/git/InteractiveGame/source/shared/messages/protobuf/*.proto

@@ -14,6 +14,7 @@ TeamSelectHandler::TeamSelectHandler()
 {
     director = Director::getInstance();
     connector = GameNet::Connector::getInstance();
+    controller = Controller::getInstance();
 }
 
 void TeamSelectHandler::execute(Ref * sender, ui::Widget::TouchEventType type)
@@ -35,6 +36,9 @@ void TeamSelectHandler::execute(Ref * sender, ui::Widget::TouchEventType type)
     auto team = button->getName();
     auto box = GameNet::BoxFactory::teamSelection(team);
     connector->send(box);
+    
+    // update controller object
+    controller->setTeam(team);
     
     // go to Lobby
     auto newScene = ControlScene::createScene();

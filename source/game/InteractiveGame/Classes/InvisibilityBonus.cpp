@@ -26,7 +26,7 @@ InvisibilityBonus::InvisibilityBonus() : BonusInterface()
     
     auto body = cocos2d::PhysicsBody::createCircle( sprite->getContentSize().width/2, MATERIAL_PLAYER);
     body->setCategoryBitmask(BITMASK_BONUS);
-    body->setContactTestBitmask(BITMASK_PLAYER);
+    body->setContactTestBitmask(BITMASK_PLAYER | BITMASK_INVISIBLE_PLAYER);
     sprite->setPhysicsBody(body);
     
     // 1 ... first time send with position
@@ -45,6 +45,8 @@ void InvisibilityBonus::activate(int playerId)
     
     // hide player (physics body works normally)
     player->getSprite()->setVisible(false);
+    player->getSprite()->getPhysicsBody()->setCategoryBitmask(BITMASK_INVISIBLE_PLAYER);
+    player->getSprite()->getPhysicsBody()->setCollisionBitmask(PLAYER_INVISIBLE_COLLIDES_WITH);
     
     // send initial data
     sendInitialGameStream(player);
@@ -64,6 +66,8 @@ void InvisibilityBonus::deactivate()
     if(player != nullptr)
     {
         player->getSprite()->setVisible(true);
+        player->getSprite()->getPhysicsBody()->setCategoryBitmask(BITMASK_PLAYER);
+        player->getSprite()->getPhysicsBody()->setCollisionBitmask(PLAYER_COLLIDES_WITH);
         player->getSprite()->unschedule(SCHEDULE_GAMESTREAM);
         sendLastGameStream(player);
     }
@@ -83,6 +87,7 @@ void InvisibilityBonus::sendInitialGameStream(Player * player)
     stream.set_playerid(player->getId());
     stream.set_width( director->getVisibleSize().width );
     stream.set_height( director->getVisibleSize().height );
+    stream.set_duration( getDuration() );
     
     GameNet::BoxFactory::gameStreamReliable(player->getAddress(), stream)->send();
 }
@@ -146,35 +151,43 @@ void InvisibilityBonus::sendGameStreamDelta(Player * player)
     
     for(auto it=game->players.begin(); it != game->players.end(); it++)
     {
-        auto player = it->second;
+        auto playerIter = it->second;
+        
+        // skip the player, if it is invisible enemy
+        if( !playerIter->getSprite()->isVisible() && playerIter->getTeam().compare( player->getTeam() ) != 0 )
+        {
+            continue;
+        }
+
         auto playerState = delta.add_player();
         auto force = new PBVec2();
         
-        force->set_x( player->getPreviousForceVector().x );
-        force->set_y( player->getPreviousForceVector().y );
+        force->set_x( playerIter->getPreviousForceVector().x );
+        force->set_y( playerIter->getPreviousForceVector().y );
         
-        if(player->getTeam() != TEAM_AUTO)
+        if(playerIter->getTeam() != TEAM_AUTO)
         {
             PBTeam team;
-            if(player->getTeam() == TEAM_BLUE) team = PBTeam::BLUE;
-            if(player->getTeam() == TEAM_RED) team = PBTeam::RED;
+            if(playerIter->getTeam() == TEAM_BLUE) team = PBTeam::BLUE;
+            if(playerIter->getTeam() == TEAM_RED) team = PBTeam::RED;
             playerState->set_team( team );
         }
         
-        playerState->set_id( player->getId() );
-        playerState->set_name( player->getName() );
+        playerState->set_id( playerIter->getId() );
+        playerState->set_name( playerIter->getName() );
         playerState->set_allocated_force(force);
-        playerState->set_speedscale( player->getSpeedScale() );
-        playerState->set_kickmultiplier( player->getKickMultiplier() );
-        playerState->set_speedmultiplier( player->getSpeedMultiplier() );
+        playerState->set_speedscale( playerIter->getSpeedScale() );
+        playerState->set_kickmultiplier( playerIter->getKickMultiplier() );
+        playerState->set_speedmultiplier( playerIter->getSpeedMultiplier() );
+        playerState->set_visible( playerIter->getSprite()->isVisible() );
         
         // position (after every PLAYER_COUNTDOWN box sent without position)
         if( --playerCountdown == 0)
         {
             playerCountdown = PLAYER_COUNTDOWN;
             auto position = new PBVec2();
-            position->set_x( player->getSprite()->getPositionX() );
-            position->set_y( player->getSprite()->getPositionY() );
+            position->set_x( playerIter->getSprite()->getPositionX() );
+            position->set_y( playerIter->getSprite()->getPositionY() );
             playerState->set_allocated_position(position);
         }
     }

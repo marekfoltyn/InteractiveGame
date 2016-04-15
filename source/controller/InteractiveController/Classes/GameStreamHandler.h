@@ -20,6 +20,7 @@
 
 class ControlScene;
 
+#define BONUS_COUNTDOWN "bonusCountdown"
 #define SCHEDULE_NETWORKING "receiveBoxesInBonusMode"
 #define NODE_FORCE "nodeForce"
 #define STADIUM_LOADBAR_OFFSET 150
@@ -46,6 +47,7 @@ private:
     Director * director;
     Controller * controller;
     StadiumScene * stadium;
+    ControlScene * controlScene;
     
     /**
      * pitch size received from server
@@ -154,6 +156,12 @@ private:
      * kick the ball! :)
      */
     bool onTouchEnded(Touch * touch, Event * event);
+    
+    /**
+     * animation counting down the last seconds of the bonus
+     * effect
+     */
+    void secondsLeftAnimation(int seconds);
     
 };
 

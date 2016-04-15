@@ -115,6 +115,9 @@ public:
      */
     GameState gameState;
     
+    void setTeam(std::string team){ this->team = team; }
+    std::string getTeam(){return team; }
+    
 private:
     
     /**
@@ -147,6 +150,11 @@ private:
      * indicator if this player is the game admin
      */
     bool admin;
+    
+    /**
+     * team of this phone
+     */
+    std::string team;
     
     /**
      * singleton - private constructor

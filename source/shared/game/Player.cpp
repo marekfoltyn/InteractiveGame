@@ -21,7 +21,7 @@ Player::Player(RakNet::SystemAddress address, std::string name)
     body->setTag( getId() );
     body->setCategoryBitmask(BITMASK_PLAYER);
     body->setContactTestBitmask(BITMASK_ALL);
-    body->setCollisionBitmask(BITMASK_ALL);
+    body->setCollisionBitmask(PLAYER_COLLIDES_WITH);
     body->setRotationEnable(false);
     sprite->setPhysicsBody(body);
     

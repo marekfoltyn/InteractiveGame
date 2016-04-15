@@ -187,6 +187,13 @@ class PBGameStream : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::PBBonus >*
       mutable_bonus();
 
+  // optional int32 duration = 11;
+  inline bool has_duration() const;
+  inline void clear_duration();
+  static const int kDurationFieldNumber = 11;
+  inline ::google::protobuf::int32 duration() const;
+  inline void set_duration(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:PBGameStream)
  private:
   inline void set_has_active();
@@ -203,6 +210,8 @@ class PBGameStream : public ::google::protobuf::Message {
   inline void clear_has_scoreleft();
   inline void set_has_scoreright();
   inline void clear_has_scoreright();
+  inline void set_has_duration();
+  inline void clear_has_duration();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -217,6 +226,7 @@ class PBGameStream : public ::google::protobuf::Message {
   ::google::protobuf::RepeatedPtrField< ::PBPlayer > player_;
   ::google::protobuf::RepeatedPtrField< ::PBBonus > bonus_;
   ::google::protobuf::int32 scoreright_;
+  ::google::protobuf::int32 duration_;
   friend void  protobuf_AddDesc_GameStream_2eproto();
   friend void protobuf_AssignDesc_GameStream_2eproto();
   friend void protobuf_ShutdownFile_GameStream_2eproto();
@@ -400,13 +410,6 @@ class PBBall : public ::google::protobuf::Message {
   inline float angularvelocity() const;
   inline void set_angularvelocity(float value);
 
-  // optional float angle = 5;
-  inline bool has_angle() const;
-  inline void clear_angle();
-  static const int kAngleFieldNumber = 5;
-  inline float angle() const;
-  inline void set_angle(float value);
-
   // @@protoc_insertion_point(class_scope:PBBall)
  private:
   inline void set_has_position();
@@ -417,8 +420,6 @@ class PBBall : public ::google::protobuf::Message {
   inline void clear_has_playerenabled();
   inline void set_has_angularvelocity();
   inline void clear_has_angularvelocity();
-  inline void set_has_angle();
-  inline void clear_has_angle();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -428,7 +429,6 @@ class PBBall : public ::google::protobuf::Message {
   ::PBVec2* velocity_;
   bool playerenabled_;
   float angularvelocity_;
-  float angle_;
   friend void  protobuf_AddDesc_GameStream_2eproto();
   friend void protobuf_AssignDesc_GameStream_2eproto();
   friend void protobuf_ShutdownFile_GameStream_2eproto();
@@ -556,6 +556,13 @@ class PBPlayer : public ::google::protobuf::Message {
   inline float speedmultiplier() const;
   inline void set_speedmultiplier(float value);
 
+  // optional bool visible = 9;
+  inline bool has_visible() const;
+  inline void clear_visible();
+  static const int kVisibleFieldNumber = 9;
+  inline bool visible() const;
+  inline void set_visible(bool value);
+
   // @@protoc_insertion_point(class_scope:PBPlayer)
  private:
   inline void set_has_position();
@@ -574,6 +581,8 @@ class PBPlayer : public ::google::protobuf::Message {
   inline void clear_has_kickmultiplier();
   inline void set_has_speedmultiplier();
   inline void clear_has_speedmultiplier();
+  inline void set_has_visible();
+  inline void clear_has_visible();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -587,6 +596,7 @@ class PBPlayer : public ::google::protobuf::Message {
   ::google::protobuf::int32 id_;
   float kickmultiplier_;
   float speedmultiplier_;
+  bool visible_;
   friend void  protobuf_AddDesc_GameStream_2eproto();
   friend void protobuf_AssignDesc_GameStream_2eproto();
   friend void protobuf_ShutdownFile_GameStream_2eproto();
@@ -967,6 +977,30 @@ PBGameStream::mutable_bonus() {
   return &bonus_;
 }
 
+// optional int32 duration = 11;
+inline bool PBGameStream::has_duration() const {
+  return (_has_bits_[0] & 0x00000200u) != 0;
+}
+inline void PBGameStream::set_has_duration() {
+  _has_bits_[0] |= 0x00000200u;
+}
+inline void PBGameStream::clear_has_duration() {
+  _has_bits_[0] &= ~0x00000200u;
+}
+inline void PBGameStream::clear_duration() {
+  duration_ = 0;
+  clear_has_duration();
+}
+inline ::google::protobuf::int32 PBGameStream::duration() const {
+  // @@protoc_insertion_point(field_get:PBGameStream.duration)
+  return duration_;
+}
+inline void PBGameStream::set_duration(::google::protobuf::int32 value) {
+  set_has_duration();
+  duration_ = value;
+  // @@protoc_insertion_point(field_set:PBGameStream.duration)
+}
+
 // -------------------------------------------------------------------
 
 // PBVec2
@@ -1151,30 +1185,6 @@ inline void PBBall::set_angularvelocity(float value) {
   set_has_angularvelocity();
   angularvelocity_ = value;
   // @@protoc_insertion_point(field_set:PBBall.angularVelocity)
-}
-
-// optional float angle = 5;
-inline bool PBBall::has_angle() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
-inline void PBBall::set_has_angle() {
-  _has_bits_[0] |= 0x00000010u;
-}
-inline void PBBall::clear_has_angle() {
-  _has_bits_[0] &= ~0x00000010u;
-}
-inline void PBBall::clear_angle() {
-  angle_ = 0;
-  clear_has_angle();
-}
-inline float PBBall::angle() const {
-  // @@protoc_insertion_point(field_get:PBBall.angle)
-  return angle_;
-}
-inline void PBBall::set_angle(float value) {
-  set_has_angle();
-  angle_ = value;
-  // @@protoc_insertion_point(field_set:PBBall.angle)
 }
 
 // -------------------------------------------------------------------
@@ -1458,6 +1468,30 @@ inline void PBPlayer::set_speedmultiplier(float value) {
   set_has_speedmultiplier();
   speedmultiplier_ = value;
   // @@protoc_insertion_point(field_set:PBPlayer.speedMultiplier)
+}
+
+// optional bool visible = 9;
+inline bool PBPlayer::has_visible() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void PBPlayer::set_has_visible() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void PBPlayer::clear_has_visible() {
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline void PBPlayer::clear_visible() {
+  visible_ = false;
+  clear_has_visible();
+}
+inline bool PBPlayer::visible() const {
+  // @@protoc_insertion_point(field_get:PBPlayer.visible)
+  return visible_;
+}
+inline void PBPlayer::set_visible(bool value) {
+  set_has_visible();
+  visible_ = value;
+  // @@protoc_insertion_point(field_set:PBPlayer.visible)
 }
 
 // -------------------------------------------------------------------

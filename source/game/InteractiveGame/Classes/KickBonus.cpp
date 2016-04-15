@@ -21,7 +21,7 @@ KickBonus::KickBonus() : BonusInterface()
     
     auto body = cocos2d::PhysicsBody::createCircle( sprite->getContentSize().width/2, MATERIAL_PLAYER);
     body->setCategoryBitmask(BITMASK_BONUS);
-    body->setContactTestBitmask(BITMASK_PLAYER);
+    body->setContactTestBitmask(BITMASK_PLAYER | BITMASK_INVISIBLE_PLAYER);
     sprite->setPhysicsBody(body);
 
     

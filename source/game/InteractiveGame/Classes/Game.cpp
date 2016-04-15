@@ -156,6 +156,7 @@ void Game::registerHandlers()
     auto logHandler = new LogHandler();
     auto disconnectHandler = new DisconnectHandler(this);
     auto kickHandler = new KickHandler(this);
+    auto playerHandler = new PlayerCollisionHandler();
     
     handlerMap->add(BOX_PLAYER_NAME, new NewPlayerHandler());
     handlerMap->add(BOX_ACCELERATION, new AccelerationBoxHandler(this));
@@ -170,7 +171,8 @@ void Game::registerHandlers()
     
     handlerMap->add(VOID_COUNTDOWN_FINISHED, new CountdownHandler());
     
-    stadium->addCollisionHandler(BITMASK_PLAYER, new PlayerCollisionHandler() );
+    stadium->addCollisionHandler(BITMASK_PLAYER, playerHandler );
+    stadium->addCollisionHandler(BITMASK_INVISIBLE_PLAYER, playerHandler );
     stadium->addCollisionHandler(BITMASK_SCORE, new GoalCollisionHandler() );
     stadium->addCollisionHandler(BITMASK_BONUS, bonusHandler);
 }

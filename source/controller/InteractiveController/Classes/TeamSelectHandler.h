@@ -13,6 +13,7 @@
 #include "extensions/cocos-ext.h"
 #include "ui/CocosGUI.h"
 #include "Connector.h"
+#include "Controller.h"
 #include "AbstractHandlers.h"
 
 /**
@@ -32,6 +33,7 @@ private:
     
     cocos2d::Director * director;
     GameNet::Connector * connector;
+    Controller * controller;
 };
 
 #endif /* ConnectionLost_h */

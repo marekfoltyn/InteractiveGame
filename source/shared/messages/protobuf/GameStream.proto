@@ -1,3 +1,7 @@
+/**
+ * message containing all information necessary for rendering the game on the
+ * mobile screen
+ */
 message PBGameStream
 {
 	/**
@@ -10,22 +14,50 @@ message PBGameStream
 	 */
 	optional uint64 playerId = 3;
 	
+	/**
+	 * pitch width in pixels (typically visible width)
+	 */
 	optional int32 width  = 4;
-	
+
+	/**
+	 * pitch height in pixels (typically visible height)
+	 */	
 	optional int32 height = 5;
 	
+	/**
+	 * ball information
+	 */
 	optional PBBall ball = 6;
 	
+	/**
+	 * list of actie players
+	 */
 	repeated PBPlayer player = 7;
 	
+	/**
+	 * game score
+	 */
 	optional int32 scoreLeft = 8;
-	
 	optional int32 scoreRight = 9;
 	
+	/**
+	 * list of bonuses placed on the pitch
+	 */
 	repeated PBBonus bonus = 10;
 	
+	/**
+	 * duration is sent only at the first message
+	 * tells, how long will the bonus effect last.
+	 * Hovewer, when an unexpected event occurs
+	 * (gameover, disconnect, ...) the bonus must
+	 * stop immediately!
+	 */
+	optional int32 duration = 11;
 }
 
+/**
+ * serializable cocos2dx Vec2
+ */
 message PBVec2
 {
 	required float x = 1;
@@ -38,13 +70,23 @@ enum PBTeam
 	BLUE = 1;
 }
 
+/**
+ * ball information
+ */
 message PBBall
 {
 	optional PBVec2 position       = 1;
+
 	optional PBVec2 velocity       = 2;
+	
+	/**
+	 * if the ball can collide with players
+	 * it is false after scoring until ball
+	 * position reset
+	 */
 	optional bool playerEnabled    = 3;
+
 	optional float angularVelocity = 4;
-	optional float angle           = 5;
 }
 
 
@@ -58,6 +100,11 @@ message PBPlayer
 	optional int32 id = 6;
 	optional float kickMultiplier = 7;
 	optional float speedMultiplier = 8;
+
+	/**
+	 * if the player has active invisibility bonus
+	 */
+	optional bool visible = 9;
 }
 
 

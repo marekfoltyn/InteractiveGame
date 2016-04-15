@@ -20,6 +20,7 @@
 
 GameStreamHandler::GameStreamHandler(ControlScene * scene)
 {
+    controlScene = scene;
     director = Director::getInstance();
     controller = Controller::getInstance();
     handlerMap = HandlerMap::create();
@@ -100,6 +101,18 @@ void GameStreamHandler::updateActive(PBGameStream stream)
         bonusMap.clear();
         bonusRefreshed.clear();
         startNetworking();
+        
+        // schedule bonus end countdown
+        int left = 3;
+        stadium->schedule([&, left] (float dt) mutable
+        {
+            secondsLeftAnimation(left--);
+            if(left <= 0)
+            {
+                stadium->unschedule(BONUS_COUNTDOWN);
+            }
+        },
+        1.0, 3, stream.duration()-3, BONUS_COUNTDOWN);
     }
     else
     {
@@ -186,6 +199,12 @@ void GameStreamHandler::updatePlayers(PBGameStream stream)
                 player->getSprite()->setVisible(false);
                 player->getSprite()->getPhysicsBody()->setEnabled(false);
                 
+                // put myself a bit higher - to be seen when going over other players
+                if(playerState.id() == myId)
+                {
+                    player->getSprite()->setZOrder(2);
+                }
+                
                 stadium->addChild(player->getSprite());
             }
         }
@@ -237,6 +256,22 @@ void GameStreamHandler::updatePlayers(PBGameStream stream)
         if(playerState.has_speedmultiplier())
         {
             player->setSpeedMultiplier( playerState.speedmultiplier() );
+        }
+        
+        // manage invisibility - if the player is invisible
+        if( !playerState.visible() )
+        {
+            player->getSprite()->setOpacity(123);
+            player->getSprite()->getPhysicsBody()->setCategoryBitmask(BITMASK_INVISIBLE_PLAYER);
+            player->getSprite()->getPhysicsBody()->setCollisionBitmask(PLAYER_INVISIBLE_COLLIDES_WITH);
+            player->getSprite()->setZOrder(2);
+        }
+        else
+        {
+            player->getSprite()->setOpacity(255);
+            player->getSprite()->getPhysicsBody()->setCategoryBitmask(BITMASK_PLAYER);
+            player->getSprite()->getPhysicsBody()->setCollisionBitmask(PLAYER_COLLIDES_WITH);
+            player->getSprite()->setZOrder(0);
         }
     }
     
@@ -334,7 +369,7 @@ void GameStreamHandler::startNetworking()
     // register handlers
     handlerMap->add(BOX_GAME_STREAM, this);
     handlerMap->add(BOX_CONNECTION_LOST, new GameStreamConnectionLostHandler(stadium));
-    handlerMap->add(BOX_ADMIN, new AdminHandler(nullptr));
+    handlerMap->add(BOX_ADMIN, new AdminHandler(controlScene));
     handlerMap->add(BOX_COLLISION, new CollisionBoxHandler());
     handlerMap->add(VOID_ADMIN_DIALOG, new AdminDialogHandler(handlerMap));
     handlerMap->add(VOID_STOP_GAME, new StopGameHandler());
@@ -520,7 +555,26 @@ bool GameStreamHandler::onTouchEnded(Touch * touch, Event * event)
 
 
 
-
+void GameStreamHandler::secondsLeftAnimation(int seconds)
+{
+    auto visibleSize = director->getVisibleSize();
+    auto origin = director->getVisibleOrigin();
+    auto lbl = Label::createWithTTF( __String::createWithFormat("%d", seconds)->getCString(), "Vanilla.ttf", Definitions::FONT_SIZE_GOAL_ANIMATION);
+    lbl->setPosition(POSITION_CENTER);
+    stadium->addChild(lbl);
+    
+    // animate the label
+    auto scale = ScaleTo::create(TIME_GOAL_ANIMATION, 4);
+    auto fade = FadeOut::create(TIME_GOAL_ANIMATION);
+    auto spawn = Spawn::create(scale, fade, nullptr);
+    auto remove = CallFunc::create([&, lbl]()
+    {
+        stadium->removeChild(lbl);
+    });
+    auto sequence = Sequence::create(spawn, remove, nullptr);
+    
+    lbl->runAction(sequence);
+}
 
 
 

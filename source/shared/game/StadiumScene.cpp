@@ -184,8 +184,8 @@ void StadiumScene::initPitch(Vec2 newOrigin, cocos2d::Size newVisibleSize)
         auto body = PhysicsBody::createBox(cocos2d::Size( SCALE_GOAL*goal->getContentSize().width/2, 10), MATERIAL_SOLID);
         body->setDynamic(false);
         body->setCategoryBitmask(BITMASK_SOLID);
-        body->setCollisionBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER);
-        body->setContactTestBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER);
+        body->setCollisionBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER | BITMASK_INVISIBLE_PLAYER);
+        body->setContactTestBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER | BITMASK_INVISIBLE_PLAYER);
         top->setPhysicsBody(body);
         
         // compute line positions based on i (topleft, bottomleft, topright, bottomright)
@@ -222,8 +222,8 @@ void StadiumScene::initPitch(Vec2 newOrigin, cocos2d::Size newVisibleSize)
     auto edgeBody = PhysicsBody::createEdgeBox(cocos2d::Size(visibleSize.width + 4*BORDER, visibleSize.height + 4*BORDER), MATERIAL_SOLID, BORDER);
     edgeBody->setDynamic(false);
     edgeBody->setCategoryBitmask(BITMASK_SOLID);
-    edgeBody->setCollisionBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER);
-    edgeBody->setContactTestBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER);
+    edgeBody->setCollisionBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER | BITMASK_INVISIBLE_PLAYER);
+    edgeBody->setContactTestBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER | BITMASK_INVISIBLE_PLAYER);
     auto edgeNode = Node::create();
     edgeNode->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
     edgeNode->setPhysicsBody(edgeBody);
