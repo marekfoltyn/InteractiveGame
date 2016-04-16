@@ -34,9 +34,8 @@ bool TestScene::init()
         return false;
     }
     
-    auto rootNode = CSLoader::createNode("MainScene.csb");
-
-    addChild(rootNode);
+    //auto rootNode = CSLoader::createNode("MainScene.csb");
+    //addChild(rootNode);
 
     return true;
 }

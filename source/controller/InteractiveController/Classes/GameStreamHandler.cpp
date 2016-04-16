@@ -30,6 +30,7 @@ GameStreamHandler::GameStreamHandler(ControlScene * scene)
     bonusRefreshed = std::map<int, bool>();
     timer = Util::Timer();
     scoreSet = false;
+    kickLoading = false;
 }
 
 bool GameStreamHandler::execute( GameNet::Box * box )
@@ -119,6 +120,12 @@ void GameStreamHandler::updateActive(PBGameStream stream)
         stopNetworking();
         controller->popStadium();
         scoreSet = false;
+        
+        // set the kick loading free
+        if(kickLoading)
+        {
+            kick();
+        }
     }
 }
 
@@ -499,6 +506,7 @@ bool GameStreamHandler::onTouchBegan(Touch * touch, Event * event)
     
     // start time measuring
     timer.reset();
+    kickLoading = true;
     
     // run animation effect
     auto forceBar = dynamic_cast<Sprite*>( controller->getStadium()->getChildByName(NODE_FORCE) );
@@ -534,16 +542,10 @@ bool GameStreamHandler::onTouchMoved(Touch * touch, Event * event)
 
 bool GameStreamHandler::onTouchEnded(Touch * touch, Event * event)
 {
-    // calculate kick force
-    unsigned long long int ms = timer.elapsed().count();
-    if( ms >= Definitions::TIME_KICK_FORCE_MAX * 1000){
-        ms = Definitions::TIME_KICK_FORCE_MAX * 1000;
-    }
-    unsigned int force = (ms / (Definitions::TIME_KICK_FORCE_MAX * 1000.0)) * 255.0;
+    kick();
     
-    // send to server
-    BoxFactory::kickReleased(force)->send();
-
+    kickLoading = false;
+    
     // stop animation
     auto forceBar = dynamic_cast<Sprite*>( controller->getStadium()->getChildByName(NODE_FORCE) );
     forceBar->stopAllActions();
@@ -578,6 +580,17 @@ void GameStreamHandler::secondsLeftAnimation(int seconds)
 
 
 
-
+void GameStreamHandler::kick()
+{
+    // calculate kick force
+    unsigned long long int ms = timer.elapsed().count();
+    if( ms >= Definitions::TIME_KICK_FORCE_MAX * 1000){
+        ms = Definitions::TIME_KICK_FORCE_MAX * 1000;
+    }
+    unsigned int force = (ms / (Definitions::TIME_KICK_FORCE_MAX * 1000.0)) * 255.0;
+    
+    // send to server
+    BoxFactory::kickReleased(force)->send();
+}
 
 

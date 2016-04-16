@@ -64,6 +64,7 @@ private:
      * used to compute kick force
      */
     Util::Timer timer;
+    bool kickLoading;
     
     /**
      * map of event handlers interacting with stadium scene
@@ -156,6 +157,11 @@ private:
      * kick the ball! :)
      */
     bool onTouchEnded(Touch * touch, Event * event);
+    
+    /**
+     * calculate the force and send kick box
+     */
+    void kick();
     
     /**
      * animation counting down the last seconds of the bonus
