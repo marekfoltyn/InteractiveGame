@@ -29,12 +29,11 @@
 #define BOX_ACCELERATION                ID_USER_PACKET_ENUM+1
 #define BOX_COLLISION                   ID_USER_PACKET_ENUM+2 // 136
 #define BOX_PLAYER_NAME                 ID_USER_PACKET_ENUM+3
-#define BOX_KICK_PRESSED                ID_USER_PACKET_ENUM+4
-#define BOX_KICK_RELEASED               ID_USER_PACKET_ENUM+5
-#define BOX_ADMIN                       ID_USER_PACKET_ENUM+6 // 140
-#define BOX_RESET_SCORE                 ID_USER_PACKET_ENUM+7
-#define BOX_TEAM_SELECT                 ID_USER_PACKET_ENUM+8
-#define BOX_GAME_STREAM                 ID_USER_PACKET_ENUM+9
+#define BOX_KICK                        ID_USER_PACKET_ENUM+4
+#define BOX_ADMIN                       ID_USER_PACKET_ENUM+5
+#define BOX_RESET_SCORE                 ID_USER_PACKET_ENUM+6
+#define BOX_TEAM_SELECT                 ID_USER_PACKET_ENUM+7
+#define BOX_GAME_STREAM                 ID_USER_PACKET_ENUM+8
 
 // Box type has range 0 - 255, so it is better that non-Box events have bigger numbers
 

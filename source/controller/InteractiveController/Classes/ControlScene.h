@@ -56,7 +56,7 @@ public:
     /**
      * send movement information to the server
      */
-    void onAcceleration(cocos2d::Acceleration* acc, cocos2d::Event* unused_event);
+    void onAcceleration(cocos2d::Acceleration * acc, cocos2d::Event * unused_event);
     
     /**
      * user clicked on the disconnect button

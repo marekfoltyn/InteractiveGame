@@ -155,7 +155,6 @@ void Game::registerHandlers()
     bonusHandler = new BonusHandler();
     auto logHandler = new LogHandler();
     auto disconnectHandler = new DisconnectHandler(this);
-    auto kickHandler = new KickHandler(this);
     auto playerHandler = new PlayerCollisionHandler();
     
     handlerMap->add(BOX_PLAYER_NAME, new NewPlayerHandler());
@@ -164,8 +163,7 @@ void Game::registerHandlers()
     handlerMap->add(BOX_CONNECTION_LOST, disconnectHandler);
     handlerMap->add(BOX_PING, logHandler);
     handlerMap->add(BOX_NEW_CONNECTION, logHandler);
-    handlerMap->add(BOX_KICK_PRESSED, kickHandler);
-    handlerMap->add(BOX_KICK_RELEASED, kickHandler);
+    handlerMap->add(BOX_KICK, new KickHandler(this));
     handlerMap->add(BOX_TEAM_SELECT, new TeamSelectHandler(this));
     handlerMap->add(BOX_ADMIN, new GameStateHandler());
     

@@ -232,11 +232,16 @@ void ControlScene::btnKickClick(Ref * sender, ui::Widget::TouchEventType type)
             // start time measuring
             kickTimer.reset();
             
+            this->schedule([&](float dt)
+            {
+                controller->setSpeedScale( controller->getSpeedScale() - 1/30.0 );
+                CCLOG("spedScale: %f", controller->getSpeedScale());
+            }
+            ,Definitions::TIME_KICK_FORCE_MAX/20, 20, 0, SCHEDULE_KICK_SLOWING);
+            
             auto force = dynamic_cast<Sprite*>( this->getChildByName(NODE_FORCE) );
             float scaleY = (0.8*visibleSize.height)/5.0;
             force->runAction(ScaleTo::create(Definitions::TIME_KICK_FORCE_MAX, force->getScaleX(), scaleY));
-            
-            BoxFactory::kickPressed()->send();
             
             break;
         }
@@ -244,6 +249,9 @@ void ControlScene::btnKickClick(Ref * sender, ui::Widget::TouchEventType type)
         case ui::Widget::TouchEventType::CANCELED:
         case ui::Widget::TouchEventType::ENDED:
         {
+            controller->setSpeedScale(1);
+            this->unschedule(SCHEDULE_KICK_SLOWING);
+            
             std::chrono::milliseconds elapsed = kickTimer.elapsed();
             unsigned long long int ms = elapsed.count();
 
@@ -259,7 +267,7 @@ void ControlScene::btnKickClick(Ref * sender, ui::Widget::TouchEventType type)
             
             CCLOG("Elapsed %lld milliseconds, force %d%%, data = %d", ms, (int)(force/255.0 * 100.0), force);
             
-            BoxFactory::kickReleased(force)->send(); // send to server
+            BoxFactory::kick(force)->send(); // send to server
 
 #if ( CC_TARGET_PLATFORM != CC_PLATFORM_IOS ) // iOS ignores vibrate duration - too long vibrations
             if( controller->isVibrateEnabled() )
@@ -279,13 +287,15 @@ void ControlScene::btnKickClick(Ref * sender, ui::Widget::TouchEventType type)
     }
 }
 
-void ControlScene::onAcceleration(cocos2d::Acceleration* acc, cocos2d::Event* unused_event)
+void ControlScene::onAcceleration(cocos2d::Acceleration * acc, cocos2d::Event * unused_event)
 {
-    Box * box = BoxFactory::acceleration(acc->x, acc->y, acc->z);
+    Vec3 vector = Vec3(acc->x, acc->y, acc->z);
+    vector *= controller->getSpeedScale();
+    Box * box = BoxFactory::acceleration(vector.x, vector.y, vector.z);
     box->send();
 }
 
-void ControlScene::adminClick(cocos2d::Ref *pSender, ui::Widget::TouchEventType type)
+void ControlScene::adminClick(cocos2d::Ref * pSender, ui::Widget::TouchEventType type)
 {
     
     auto button = dynamic_cast<cocos2d::ui::Button*>(pSender);

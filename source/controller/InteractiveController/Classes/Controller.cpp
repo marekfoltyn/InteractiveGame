@@ -33,6 +33,7 @@ Controller::Controller()
     connector = GameNet::Connector::getInstance();
     
     admin = false;
+    speedScale = 1;
     GameState state = GameState();
 }
 
@@ -133,7 +134,14 @@ void Controller::popStadium()
 
 
 
-
+void Controller::setSpeedScale(float scale)
+{
+    if( scale < 0){
+        speedScale = 0;
+    } else {
+        speedScale = scale;
+    }
+}
 
 
 

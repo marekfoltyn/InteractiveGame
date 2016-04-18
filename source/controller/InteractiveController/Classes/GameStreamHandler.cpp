@@ -21,6 +21,7 @@
 GameStreamHandler::GameStreamHandler(ControlScene * scene)
 {
     controlScene = scene;
+    stadium = nullptr;
     director = Director::getInstance();
     controller = Controller::getInstance();
     handlerMap = HandlerMap::create();
@@ -82,6 +83,21 @@ bool GameStreamHandler::execute( GameNet::Box * box )
 
 void GameStreamHandler::updateActive(PBGameStream stream)
 {
+    // reset kick loading
+    controller->setSpeedScale(1);
+    
+    /*if(controlScene->isScheduled(SCHEDULE_KICK_SLOWING))
+    {
+        controlScene->unschedule(SCHEDULE_KICK_SLOWING);
+    }
+    
+    if(stadium != nullptr && stadium->isScheduled(SCHEDULE_KICK_SLOWING))
+    {
+        stadium->unschedule(SCHEDULE_KICK_SLOWING);        
+    }*/
+
+
+    
     if(stream.active())
     {
         // it the game stream begins it has to send
@@ -119,13 +135,8 @@ void GameStreamHandler::updateActive(PBGameStream stream)
     {
         stopNetworking();
         controller->popStadium();
+        stadium = nullptr;
         scoreSet = false;
-        
-        // set the kick loading free
-        if(kickLoading)
-        {
-            kick();
-        }
     }
 }
 
@@ -415,9 +426,12 @@ void GameStreamHandler::prepareStadium(cocos2d::Size pitchSize)
     
     
     // init accelerometer
-    auto listener = EventListenerAcceleration::create([](Acceleration * acc, Event * ignore)
+    auto listener = EventListenerAcceleration::create([&](Acceleration * acc, Event * ignore)
     {
-        GameNet::BoxFactory::acceleration(acc->x, acc->y, acc->z)->send();
+        Vec3 vector = Vec3(acc->x, acc->y, acc->z);
+        vector *= controller->getSpeedScale();
+        Box * box = BoxFactory::acceleration(vector.x, vector.y, vector.z);
+        box->send();
     });
     Device::setAccelerometerEnabled(true);
     director->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, stadium);
@@ -500,13 +514,17 @@ void GameStreamHandler::prepareStadium(cocos2d::Size pitchSize)
 
 bool GameStreamHandler::onTouchBegan(Touch * touch, Event * event)
 {
-    
-    // send kick loading info (needed for player slowing)
-    BoxFactory::kickPressed()->send();
-    
     // start time measuring
     timer.reset();
     kickLoading = true;
+    
+    stadium->schedule([&](float dt)
+    {
+        controller->setSpeedScale( controller->getSpeedScale() - 1/30.0 );
+        CCLOG("spedScale: %f", controller->getSpeedScale());
+    }
+    ,Definitions::TIME_KICK_FORCE_MAX/20, 20, 0, SCHEDULE_KICK_SLOWING);
+
     
     // run animation effect
     auto forceBar = dynamic_cast<Sprite*>( controller->getStadium()->getChildByName(NODE_FORCE) );
@@ -542,6 +560,9 @@ bool GameStreamHandler::onTouchMoved(Touch * touch, Event * event)
 
 bool GameStreamHandler::onTouchEnded(Touch * touch, Event * event)
 {
+    controller->setSpeedScale(1);
+    stadium->unschedule(SCHEDULE_KICK_SLOWING);
+    
     kick();
     
     kickLoading = false;
@@ -590,7 +611,7 @@ void GameStreamHandler::kick()
     unsigned int force = (ms / (Definitions::TIME_KICK_FORCE_MAX * 1000.0)) * 255.0;
     
     // send to server
-    BoxFactory::kickReleased(force)->send();
+    BoxFactory::kick(force)->send();
 }
 
 

@@ -118,6 +118,12 @@ public:
     void setTeam(std::string team){ this->team = team; }
     std::string getTeam(){return team; }
     
+    /**
+     * speed scale getter / setter
+     */
+    float getSpeedScale(){return speedScale;}
+    void setSpeedScale(float scale);
+    
 private:
     
     /**
@@ -155,6 +161,12 @@ private:
      * team of this phone
      */
     std::string team;
+    
+    /**
+     * speed scale factor
+     * - used when loading a kick
+     */
+    float speedScale;
     
     /**
      * singleton - private constructor

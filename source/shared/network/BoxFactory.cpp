@@ -50,23 +50,14 @@ Box * BoxFactory::resetScore()
     return box;
 }
 
-Box * BoxFactory::kickPressed()
-{
-    Box * box = Box::createEmpty();
-    box->setType(BOX_KICK_PRESSED);
-    box->setReliability(PacketReliability::RELIABLE);
-    box->setPriority(PacketPriority::IMMEDIATE_PRIORITY);
-    return box;
-}
-
-Box * BoxFactory::kickReleased(unsigned int intensity)
+Box * BoxFactory::kick(unsigned int intensity)
 {
     // normalize intensity (0-255)
     if( intensity > 255) intensity = 255;
     std::stringstream ss;
     ss << intensity;
     Box * box = Box::create( ss.str() );
-    box->setType(BOX_KICK_RELEASED);
+    box->setType(BOX_KICK);
     box->setReliability(PacketReliability::RELIABLE);
     box->setPriority(PacketPriority::IMMEDIATE_PRIORITY);
     return box;

@@ -166,12 +166,14 @@ void StadiumScene::initPitch(Vec2 newOrigin, cocos2d::Size newVisibleSize)
     // left goal
     auto goal = Sprite::create("goal.png");
     goal->setScale(SCALE_GOAL);
+    goal->setAnchorPoint(Vec2(0,0.5));
     goal->setPosition(Vec2( origin.x, origin.y + visibleSize.height/2));
     this->addChild(goal, 2);
     
     // right goal
     goal = Sprite::create("goal.png");
     goal->setRotation(180);
+    goal->setAnchorPoint(Vec2(0,0.5));
     goal->setScale(SCALE_GOAL);
     goal->setPosition(Vec2( origin.x + visibleSize.width, origin.y + visibleSize.height/2));
     this->addChild(goal, 2);
@@ -181,7 +183,7 @@ void StadiumScene::initPitch(Vec2 newOrigin, cocos2d::Size newVisibleSize)
     for(int i=0; i<4; i++)
     {
         auto top = Node::create();
-        auto body = PhysicsBody::createBox(cocos2d::Size( SCALE_GOAL*goal->getContentSize().width/2, 10), MATERIAL_SOLID);
+        auto body = PhysicsBody::createBox(cocos2d::Size( SCALE_GOAL*goal->getContentSize().width, 10), MATERIAL_SOLID);
         body->setDynamic(false);
         body->setCategoryBitmask(BITMASK_SOLID);
         body->setCollisionBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER | BITMASK_INVISIBLE_PLAYER);
@@ -190,7 +192,7 @@ void StadiumScene::initPitch(Vec2 newOrigin, cocos2d::Size newVisibleSize)
         
         // compute line positions based on i (topleft, bottomleft, topright, bottomright)
         top->setPosition(Vec2(
-            origin.x + (i>1)*(visibleSize.width) + (1-(i>1)*2)*0.25*SCALE_GOAL*goal->getContentSize().width,
+            origin.x + (i>1)*(visibleSize.width) + (1-(i>1)*2)*0.5*SCALE_GOAL*goal->getContentSize().width,
             origin.y + visibleSize.height/2 + (1 - 2*(i%2)) * SCALE_GOAL*(goal->getContentSize().height/2
         )));
         this->addChild(top);
@@ -199,20 +201,21 @@ void StadiumScene::initPitch(Vec2 newOrigin, cocos2d::Size newVisibleSize)
     // score point detectors
     for(int i=0; i<2; i++)
     {
-        auto top = Node::create();
-        auto body = PhysicsBody::createBox(cocos2d::Size(
-            SCALE_GOAL*goal->getContentSize().width - 2*Sprite::create("ball.png")->getContentSize().width*SCALE_BALL,
-            SCALE_GOAL*goal->getContentSize().height - Sprite::create("ball.png")->getContentSize().width*SCALE_BALL)
+        auto size = cocos2d::Size(
+            SCALE_GOAL*goal->getContentSize().width - Sprite::create("ball.png")->getContentSize().width*SCALE_BALL,
+            SCALE_GOAL*goal->getContentSize().height - Sprite::create("ball.png")->getContentSize().width*SCALE_BALL
         );
+        auto top = Node::create();
+        auto body = PhysicsBody::createBox(size);
         body->setDynamic(false);
         body->setCategoryBitmask(BITMASK_SCORE);
         body->setCollisionBitmask(0);
         body->setContactTestBitmask(BITMASK_BALL);
-        top->setAnchorPoint(Vec2( i, 0.5 ));
+        top->setAnchorPoint(Vec2( 0.5, 0.5 ));
         top->setPhysicsBody(body);
         top->setTag(i); // LEFT and RIGHT (#defined)
         top->setPosition(Vec2(
-            origin.x + (i%2)*(visibleSize.width),
+            origin.x + size.width/2 * (1-2*i) + i*(visibleSize.width),
             origin.y + visibleSize.height/2
         ));
         this->addChild(top);

@@ -18,10 +18,6 @@ public:
     
 private:
     
-    void pressed(GameNet::Box * box);
-    
-    void released(GameNet::Box * box);
-    
     Game * game;
 };
 

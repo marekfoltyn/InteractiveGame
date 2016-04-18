@@ -6,41 +6,6 @@
 
 bool KickHandler::execute(GameNet::Box * box)
 {
-    
-    switch (box->getType()) {
-        case BOX_KICK_PRESSED:
-            pressed(box);
-        break;
-            
-        case BOX_KICK_RELEASED:
-            released(box);
-        break;
-            
-        default:
-        break;
-    }
-    return false;
-}
-
-
-void KickHandler::pressed(GameNet::Box * box)
-{
-    int id = box->getId();
-    unsigned int intensity = atoi( box->getData().c_str() );
-    auto player = game->getPlayer(id);
-    auto playerSprite = player->getSprite();
-    
-    playerSprite->schedule([player, intensity](float dt)
-    {
-        player->setSpeedScale( player->getSpeedScale() - 1/30.0 );
-        CCLOG("spedScale: %f", player->getSpeedScale());
-    }
-    ,Definitions::TIME_KICK_FORCE_MAX/20, 20, 0, SCHEDULE_KICK_SLOWING);
-}
-
-void KickHandler::released(GameNet::Box * box)
-{
-
     int id = box->getId();
     unsigned int intensity = atoi( box->getData().c_str() );
     
@@ -48,20 +13,16 @@ void KickHandler::released(GameNet::Box * box)
     auto playerSprite = player->getSprite();
     auto ball = game->getStadium()->getChildByName<cocos2d::Sprite *>(NODE_BALL);
     
-    // reset speedScale
-    playerSprite->unschedule(SCHEDULE_KICK_SLOWING);
-    player->setSpeedScale(1);
-    
     if(ball == nullptr)
     {
         CCLOG("No ball in the game...");
-        return;
+        return false;
     }
     
     if( ball->getPhysicsBody()->getTag() == StadiumScene::BALL_NON_KICKABLE)
     {
         CCLOG("Ball is non kickable.");
-        return;
+        return false;
     }
     
     float distance = ball->getPosition().distance( playerSprite->getPosition() );
@@ -91,6 +52,6 @@ void KickHandler::released(GameNet::Box * box)
         
         CCLOG("Ball pass. (force = %f%%)", force*100.0);
     }
-
     
+    return false;
 }

@@ -40,15 +40,10 @@ public:
     static Box * resetScore();
     
     /**
-     * kick loading (button is pressed)
-     */
-    static Box * kickPressed();
-    
-    /**
      * ball kick
      * intensity is the kick force from interval [0..255]
      */
-    static Box * kickReleased(unsigned int intensity);
+    static Box * kick(unsigned int intensity);
     
     /**
      * tackle (small kick)
