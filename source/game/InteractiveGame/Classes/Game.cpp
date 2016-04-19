@@ -87,7 +87,6 @@ void Game::end()
 {
     connector->stop();
     director->end();
-    exit(0);
 }
 
 

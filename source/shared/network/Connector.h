@@ -94,7 +94,7 @@ private:
     /**
      * Hidden singleton constructor
      */
-    Connector(){};
+    Connector();
     
     /**
      * RakNet interface

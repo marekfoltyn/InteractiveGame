@@ -39,8 +39,6 @@
 		EA41893D1C342867004B8934 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		EA41893E1C342867004B8934 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		EA41893F1C342867004B8934 /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D77407C86C4E7570AC0EFF9 /* libcocos2d Mac.a */; };
-		EA41894C1C342C4B004B8934 /* TestDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA4189481C342C4B004B8934 /* TestDelegate.cpp */; };
-		EA41894D1C342C4B004B8934 /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA41894A1C342C4B004B8934 /* TestScene.cpp */; };
 		EA4189501C342CEF004B8934 /* Catch.h in Sources */ = {isa = PBXBuildFile; fileRef = EA41894F1C342CEF004B8934 /* Catch.h */; };
 		EA568A3F1CAAEDF600C4A35C /* CountdownHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA568A3D1CAAEDF600C4A35C /* CountdownHandler.cpp */; };
 		EA568A401CAAEDF600C4A35C /* CountdownHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA568A3D1CAAEDF600C4A35C /* CountdownHandler.cpp */; };
@@ -71,6 +69,8 @@
 		EA90F35B1C8F41FE00C8B23C /* StartHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA90F3581C8F41FE00C8B23C /* StartHandler.cpp */; };
 		EA9913701CA4214A00442222 /* GameStateHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA99136E1CA4214A00442222 /* GameStateHandler.cpp */; };
 		EA9913711CA4214A00442222 /* GameStateHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA99136E1CA4214A00442222 /* GameStateHandler.cpp */; };
+		EAB622071CC67A7400326EC5 /* TestDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAB622031CC67A7400326EC5 /* TestDelegate.cpp */; };
+		EAB622081CC67A7400326EC5 /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAB622051CC67A7400326EC5 /* TestScene.cpp */; };
 		EACC71881C6B54A80036DB3D /* _FindFirst.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70801C6B54A70036DB3D /* _FindFirst.cpp */; };
 		EACC71891C6B54A80036DB3D /* _FindFirst.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70801C6B54A70036DB3D /* _FindFirst.cpp */; };
 		EACC718A1C6B54A80036DB3D /* Base64Encoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC70841C6B54A70036DB3D /* Base64Encoder.cpp */; };
@@ -419,10 +419,6 @@
 		EA36CE1D1C91BA2B00A498A7 /* TeamSelectHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TeamSelectHandler.h; path = Handlers/TeamSelectHandler.h; sourceTree = "<group>"; };
 		EA4189431C342867004B8934 /* InteractiveGame-unit-testing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "InteractiveGame-unit-testing.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA4189441C342867004B8934 /* InteractiveGame-desktop copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "InteractiveGame-desktop copy-Info.plist"; path = "/Users/marek/Documents/git/InteractiveGame/source/game/InteractiveGame/proj.ios_mac/InteractiveGame-desktop copy-Info.plist"; sourceTree = "<absolute>"; };
-		EA4189481C342C4B004B8934 /* TestDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestDelegate.cpp; sourceTree = "<group>"; };
-		EA4189491C342C4B004B8934 /* TestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestDelegate.h; sourceTree = "<group>"; };
-		EA41894A1C342C4B004B8934 /* TestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestScene.cpp; sourceTree = "<group>"; };
-		EA41894B1C342C4B004B8934 /* TestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestScene.h; sourceTree = "<group>"; };
 		EA41894F1C342CEF004B8934 /* Catch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Catch.h; sourceTree = "<group>"; };
 		EA568A3D1CAAEDF600C4A35C /* CountdownHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CountdownHandler.cpp; path = Handlers/CountdownHandler.cpp; sourceTree = "<group>"; };
 		EA568A3E1CAAEDF600C4A35C /* CountdownHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CountdownHandler.h; path = Handlers/CountdownHandler.h; sourceTree = "<group>"; };
@@ -454,6 +450,12 @@
 		EA90F3591C8F41FE00C8B23C /* StartHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartHandler.h; path = Handlers/StartHandler.h; sourceTree = "<group>"; };
 		EA99136E1CA4214A00442222 /* GameStateHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameStateHandler.cpp; path = Handlers/GameStateHandler.cpp; sourceTree = "<group>"; };
 		EA99136F1CA4214A00442222 /* GameStateHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameStateHandler.h; path = Handlers/GameStateHandler.h; sourceTree = "<group>"; };
+		EAB622031CC67A7400326EC5 /* TestDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TestDelegate.cpp; path = Testing/TestDelegate.cpp; sourceTree = "<group>"; };
+		EAB622041CC67A7400326EC5 /* TestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestDelegate.h; path = Testing/TestDelegate.h; sourceTree = "<group>"; };
+		EAB622051CC67A7400326EC5 /* TestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TestScene.cpp; path = Testing/TestScene.cpp; sourceTree = "<group>"; };
+		EAB622061CC67A7400326EC5 /* TestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestScene.h; path = Testing/TestScene.h; sourceTree = "<group>"; };
+		EAB622091CC67AF400326EC5 /* NetworkingTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NetworkingTests.cpp; path = Testing/NetworkingTests.cpp; sourceTree = "<group>"; };
+		EAB6220B1CC67C4200326EC5 /* GameObjectsTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameObjectsTests.cpp; path = Testing/GameObjectsTests.cpp; sourceTree = "<group>"; };
 		EACC03B01C81BC1A00971626 /* AbstractHandlers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AbstractHandlers.h; path = ../../../shared/game/AbstractHandlers.h; sourceTree = "<group>"; };
 		EACC70801C6B54A70036DB3D /* _FindFirst.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = _FindFirst.cpp; path = ../../../shared/network/raknet/_FindFirst.cpp; sourceTree = "<group>"; };
 		EACC70811C6B54A70036DB3D /* _FindFirst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _FindFirst.h; path = ../../../shared/network/raknet/_FindFirst.h; sourceTree = "<group>"; };
@@ -1037,11 +1039,12 @@
 		EA41891F1C33D2E5004B8934 /* Testing */ = {
 			isa = PBXGroup;
 			children = (
+				EAB622011CC6334C00326EC5 /* Tests */,
 				EA41894F1C342CEF004B8934 /* Catch.h */,
-				EA4189481C342C4B004B8934 /* TestDelegate.cpp */,
-				EA4189491C342C4B004B8934 /* TestDelegate.h */,
-				EA41894A1C342C4B004B8934 /* TestScene.cpp */,
-				EA41894B1C342C4B004B8934 /* TestScene.h */,
+				EAB622031CC67A7400326EC5 /* TestDelegate.cpp */,
+				EAB622041CC67A7400326EC5 /* TestDelegate.h */,
+				EAB622051CC67A7400326EC5 /* TestScene.cpp */,
+				EAB622061CC67A7400326EC5 /* TestScene.h */,
 			);
 			name = Testing;
 			sourceTree = "<group>";
@@ -1068,6 +1071,15 @@
 				EAFC04A51CAC323800EB0133 /* StadiumScene.h */,
 			);
 			name = Stadium;
+			sourceTree = "<group>";
+		};
+		EAB622011CC6334C00326EC5 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				EAB622091CC67AF400326EC5 /* NetworkingTests.cpp */,
+				EAB6220B1CC67C4200326EC5 /* GameObjectsTests.cpp */,
+			);
+			name = Tests;
 			sourceTree = "<group>";
 		};
 		EACC707F1C6B547A0036DB3D /* RakNet */ = {
@@ -1808,7 +1820,6 @@
 				EACC71DD1C6B54A80036DB3D /* NatTypeDetectionClient.cpp in Sources */,
 				EACC71F91C6B54A80036DB3D /* RakNetCommandParser.cpp in Sources */,
 				EACC71C71C6B54A80036DB3D /* HTTPConnection.cpp in Sources */,
-				EA41894C1C342C4B004B8934 /* TestDelegate.cpp in Sources */,
 				EACC725D1C6B54A80036DB3D /* VariableListDeltaTracker.cpp in Sources */,
 				EACC71AD1C6B54A80036DB3D /* DynDNS.cpp in Sources */,
 				EACC72351C6B54A80036DB3D /* SendToThread.cpp in Sources */,
@@ -1829,7 +1840,6 @@
 				EAD0D4F81C75F92400776BC3 /* AccelerationMessage.cpp in Sources */,
 				EACC718D1C6B54A80036DB3D /* BitStream.cpp in Sources */,
 				EAF1AD631CA285E90061BCCF /* stringprintf.cc in Sources */,
-				EA41894D1C342C4B004B8934 /* TestScene.cpp in Sources */,
 				EACC71DF1C6B54A80036DB3D /* NatTypeDetectionCommon.cpp in Sources */,
 				EAF1AD1F1CA285E90061BCCF /* message.cc in Sources */,
 				EAF1AD0D1CA285E90061BCCF /* generated_message_util.cc in Sources */,
@@ -1894,6 +1904,7 @@
 				EACC71F11C6B54A80036DB3D /* PluginInterface2.cpp in Sources */,
 				EACC71EF1C6B54A80036DB3D /* PacketOutputWindowLogger.cpp in Sources */,
 				EAF1AD5B1CA285E90061BCCF /* atomicops_internals_x86_gcc.cc in Sources */,
+				EAB622071CC67A7400326EC5 /* TestDelegate.cpp in Sources */,
 				EACC71911C6B54A80036DB3D /* CCRakNetUDT.cpp in Sources */,
 				EACC71A91C6B54A80036DB3D /* DS_HuffmanEncodingTree.cpp in Sources */,
 				EAF1AD651CA285E90061BCCF /* structurally_valid.cc in Sources */,
@@ -1954,6 +1965,7 @@
 				EACC72271C6B54A80036DB3D /* ReadyEvent.cpp in Sources */,
 				EACC71D51C6B54A80036DB3D /* LogCommandParser.cpp in Sources */,
 				EACC721F1C6B54A80036DB3D /* RakThread.cpp in Sources */,
+				EAB622081CC67A7400326EC5 /* TestScene.cpp in Sources */,
 				EACC72571C6B54A80036DB3D /* UDPProxyCoordinator.cpp in Sources */,
 				EAF1AD871CA285E90061BCCF /* unknown_field_set.cc in Sources */,
 				EAF1AD851CA285E90061BCCF /* text_format.cc in Sources */,
@@ -2129,6 +2141,7 @@
 					CC_TARGET_OS_MAC,
 					"COCOS2D_DEBUG=1",
 					"CC_ENABLE_CHIPMUNK_INTEGRATION=1",
+					"UNIT_TESTING=1",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (

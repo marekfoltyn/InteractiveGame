@@ -6,7 +6,6 @@
 
 #include <string>
 
-// GameNet::Connector dependency
 namespace GameNet{
     class Connector;
 }
@@ -191,7 +190,7 @@ private:
      * PacketReliability::UNRELIABLE
      * PacketReliability::UNRELIABLE_SEQUENCED
      * PacketReliability::UNRELIABLE_WITH_ACK_RECEIPT
-     
+     *
      * More info in RakNet documentation
      */
     PacketReliability reliability;

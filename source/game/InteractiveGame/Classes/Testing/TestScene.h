@@ -3,6 +3,9 @@
 
 #include "cocos2d.h"
 
+/**
+ * Scene only for unit testing
+ */
 class TestScene : public cocos2d::Layer
 {
 public:

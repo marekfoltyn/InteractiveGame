@@ -15,9 +15,11 @@
 #define LOG(...) CCLOG(__VA_ARGS__)
 
 // port used for all communication
+// Warning: the system uses PORT_RANGE ports (SERVER_PORT, SERVER_PORT+1, ..., SERVER_PORT+PORT_RANGE-1)
 #define SERVER_PORT 54027
 
 // client port used for all communication
+// Warning: the system uses PORT_RANGE ports (CLIENT_PORT, CLIENT_PORT+1, ..., CLIENT_PORT+PORT_RANGE-1)
 #define CLIENT_PORT 53027
 
 // maximum players connected to server
@@ -38,9 +40,12 @@
 // scene transition speed (in seconds)
 #define TIME_SCENE_TRANSITION 0.2
 
-/////////////////// Message types  ///////////////////
+// connection password (no need to change)
+#define RAKNET_PASSWORD "abc"
 
+#define PORT_RANGE 10
 
+/////////////////// Message types ///////////////////
 
 /**
  * #define PACKET_CUSTOM              ID_USER_PACKET_ENUM+1 // +2, +3 and so on

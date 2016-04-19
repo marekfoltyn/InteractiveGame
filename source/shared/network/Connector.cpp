@@ -15,6 +15,11 @@ Connector * Connector::getInstance(){
     return instance;
 }
 
+Connector::Connector()
+{
+    raknetInterface = nullptr;
+}
+
 
 bool Connector::start(){
     return startAsServer(1);
@@ -29,9 +34,8 @@ bool Connector::startAsServer(unsigned short maxPlayers)
     raknetInterface= RakNet::RakPeerInterface::GetInstance();
 	raknetInterface->SetTimeoutTime(CONNECTION_LOST_TIMEOUT, RakNet::UNASSIGNED_SYSTEM_ADDRESS);
 	raknetInterface->SetOccasionalPing(true);
-	raknetInterface->SetIncomingPassword("abc", strlen("abc"));
+	raknetInterface->SetIncomingPassword(RAKNET_PASSWORD, strlen(RAKNET_PASSWORD));
     raknetInterface->SetMaximumIncomingConnections(maxPlayers);
-    //interface->SetUnreliableTimeout(CONNECTION_LOST_TIMEOUT);
     
     // socket descriptor settings
     RakNet::SocketDescriptor socketDescriptors[1];
@@ -40,7 +44,7 @@ bool Connector::startAsServer(unsigned short maxPlayers)
     
     // try 10 ports
     bool result = false;
-    for(int i=0; i<10; i++)
+    for(int i=0; i<PORT_RANGE; i++)
     {
         result = raknetInterface->Startup(maxPlayers, socketDescriptors, 1) == RakNet::RAKNET_STARTED; // last arg is socketDescriptor count
         if(result == true) {
@@ -105,13 +109,13 @@ void Connector::connect( RakNet::SystemAddress server ){
         LOG("Client is not started!");
         return;
     }
-    
+
     char * ip = new char[64]; // must be new char[]! Not char ip[], BAD_ACCESS!!
     for(int i=0; i<64; i++){ ip[i] = 0; }
         
     server.ToString(false, ip);
 
-	int result = raknetInterface->Connect(ip, server.GetPort(), "abc", (int)strlen("abc"));
+	int result = raknetInterface->Connect(ip, server.GetPort(), RAKNET_PASSWORD, (int)strlen(RAKNET_PASSWORD));
     LOG("[Connector] Connecting to %s", ip);
     if(result == RakNet::CONNECTION_ATTEMPT_STARTED)
     {
@@ -231,7 +235,7 @@ void Connector::ping(){
         return;
     }
     
-    for(int i=0; i<10; i++){
+    for(int i=0; i<PORT_RANGE; i++){
         raknetInterface->Ping("255.255.255.255", SERVER_PORT+i, true); // true ... reply only if server is not full
     }
 }

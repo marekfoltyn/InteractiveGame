@@ -1,5 +1,7 @@
-#include "AppDelegate.h"
+#include "TestDelegate.h"
 #include "TestScene.h"
+#include "GameplayDefinitions.h"
+#include "StartHandler.h"
 
 #define CATCH_CONFIG_RUNNER
 #include "Catch.h"
@@ -30,7 +32,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
     if(!glview) {
-        glview = GLViewImpl::createWithRect("InteractiveController", Rect(0, 0, 960, 640));
+        glview = GLViewImpl::createWithRect("InteractiveController", cocos2d::Rect(0, 0, 960, 640));
         director->setOpenGLView(glview);
     }
 
@@ -73,13 +75,12 @@ void AppDelegate::applicationWillEnterForeground() {
     // SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
 }
 
+///////////////////////// UNIT TESTING /////////////////////////
 
-TEST_CASE("Init tests"){
-    SECTION("Helloworld test"){
-        CCLOG("Hello World from Unit Testing!");
-        
-    }
-}
+#include "NetworkingTests.cpp"
+
+#include "GameObjectsTests.cpp"
+
 
 
 

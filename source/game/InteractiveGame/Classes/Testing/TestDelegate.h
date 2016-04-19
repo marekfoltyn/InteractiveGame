@@ -4,10 +4,8 @@
 #include "cocos2d.h"
 
 /**
-@brief    The cocos2d Application.
-
-The reason for implement as private inheritance is to hide some interface call by Director.
-*/
+ * AppDelegate for unit testing only
+ */
 class  AppDelegate : private cocos2d::Application
 {
 public:
