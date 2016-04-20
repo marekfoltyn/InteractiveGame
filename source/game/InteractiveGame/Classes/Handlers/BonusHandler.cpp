@@ -12,10 +12,10 @@ USING_NS_CC;
 #define SCHEDULE_DISAPPEAR "disappear"
 #define BONUS_LIFETIME 15
 
-BonusHandler::BonusHandler()
+BonusHandler::BonusHandler(Game * game, Director * director)
 {
-    director = Director::getInstance();
-    game = Game::getInstance();
+    this->director = director;
+    this->game = game;
     stadium = game->getStadium();
     activeBonuses = std::set<BonusInterface *>();
 }

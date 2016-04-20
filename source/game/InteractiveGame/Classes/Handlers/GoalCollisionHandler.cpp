@@ -5,10 +5,10 @@
 
 USING_NS_CC;
 
-GoalCollisionHandler::GoalCollisionHandler()
+GoalCollisionHandler::GoalCollisionHandler(Game * game, Director * director)
 {
-    game = Game::getInstance();
-    director = Director::getInstance();
+    this->game = game;
+    this->director = director;
 }
 
 void GoalCollisionHandler::execute(cocos2d::PhysicsBody * first, cocos2d::PhysicsBody * second)

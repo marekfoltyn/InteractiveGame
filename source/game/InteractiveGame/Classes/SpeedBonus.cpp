@@ -4,10 +4,11 @@
 
 SpeedBonus * SpeedBonus::create()
 {
-    return new SpeedBonus();
+    auto game = Game::getInstance();
+    return new SpeedBonus(game);
 }
 
-SpeedBonus::SpeedBonus() : BonusInterface()
+SpeedBonus::SpeedBonus(Game * game) : BonusInterface(game)
 {
     name = BONUS_SPEED;
     

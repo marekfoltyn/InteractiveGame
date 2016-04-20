@@ -6,10 +6,10 @@
 #include "GameplayDefinitions.h"
 
 
-NewPlayerHandler::NewPlayerHandler()
+NewPlayerHandler::NewPlayerHandler(Game * game, Director * director)
 {
-    game = Game::getInstance();
-    director = Director::getInstance();
+    this->game = game;
+    this->director = director;
 }
 
 

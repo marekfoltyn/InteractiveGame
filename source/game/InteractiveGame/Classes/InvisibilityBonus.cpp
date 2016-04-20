@@ -6,15 +6,18 @@
 
 InvisibilityBonus * InvisibilityBonus::create()
 {
-    return new InvisibilityBonus();
+    auto game = Game::getInstance();
+    auto director = Director::getInstance();
+
+    return new InvisibilityBonus(game, director);
 }
 
-InvisibilityBonus::InvisibilityBonus() : BonusInterface()
+InvisibilityBonus::InvisibilityBonus(Game * game, Director * director) : BonusInterface(game)
 {
-    name = BONUS_INVISIBILITY;
+    this->game = game;
+    this->director = director;
     
-    game = Game::getInstance();
-    director = Director::getInstance();
+    name = BONUS_INVISIBILITY;
     
     durationMin = INVISIBILITY_MIN;
     durationMax = INVISIBILITY_MAX;

@@ -22,7 +22,7 @@ class Game;
 class BonusHandler: public CollisionHandler{
 public:
     
-    BonusHandler();
+    BonusHandler(Game *, Director *);
     
     /**
      * enabling / disabling bonus generation

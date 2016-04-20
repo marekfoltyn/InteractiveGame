@@ -19,7 +19,7 @@
 class StartHandler: public VoidHandler{
 public:
     
-    StartHandler();
+    StartHandler(Game * game, Director * director);
     
     /**
      * start networking and the Game

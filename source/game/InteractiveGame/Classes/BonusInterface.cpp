@@ -3,12 +3,12 @@
 
 int BonusInterface::lastGeneratedId = 0;
 
-BonusInterface::BonusInterface()
+BonusInterface::BonusInterface(Game * game)
 {
+    this->game = game;
     uniqueId = lastGeneratedId++;
     duration = DURATION_UNSET;
     durationMin = durationMax = ONE_TIME;
-    game = Game::getInstance();
 }
 
 

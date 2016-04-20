@@ -9,7 +9,7 @@ class Game; // avoid circular dependency
 class NewPlayerHandler: public BoxHandler{
 public:
     
-    NewPlayerHandler();
+    NewPlayerHandler(Game *, Director *);
     
     bool execute(GameNet::Box * box);
     

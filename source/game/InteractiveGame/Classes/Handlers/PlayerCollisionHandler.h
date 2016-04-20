@@ -8,7 +8,7 @@
 class PlayerCollisionHandler: public CollisionHandler{
 public:
     
-    PlayerCollisionHandler();
+    PlayerCollisionHandler(Game *);
     
     void execute(cocos2d::PhysicsBody * first, cocos2d::PhysicsBody * second);
     

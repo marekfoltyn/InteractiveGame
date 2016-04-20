@@ -2,9 +2,9 @@
 #include "Connector.h"
 #include "BoxFactory.h"
 
-PlayerCollisionHandler::PlayerCollisionHandler()
+PlayerCollisionHandler::PlayerCollisionHandler(Game * game)
 {
-    game = Game::getInstance();
+    this->game = game;
 }
 
 void PlayerCollisionHandler::execute(cocos2d::PhysicsBody * first, cocos2d::PhysicsBody * second)

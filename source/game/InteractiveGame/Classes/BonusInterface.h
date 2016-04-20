@@ -19,7 +19,7 @@ public:
     constexpr static const float DURATION_UNSET = -1;
     constexpr static const float ONE_TIME = 0;
     
-    BonusInterface();
+    BonusInterface(Game *);
     
     /**
      * bonus activation

@@ -1,9 +1,9 @@
 #include "ExitGameHandler.h"
 #include "Game.h"
 
-ExitGameHandler::ExitGameHandler()
+ExitGameHandler::ExitGameHandler(Game * game)
 {
-    game = Game::getInstance();
+    this->game = game;
 }
 
 void ExitGameHandler::execute()

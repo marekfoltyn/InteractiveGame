@@ -4,10 +4,11 @@
 
 KickBonus * KickBonus::create()
 {
-    return new KickBonus();
+    auto game = Game::getInstance();
+    return new KickBonus(game);
 }
 
-KickBonus::KickBonus() : BonusInterface()
+KickBonus::KickBonus(Game * game) : BonusInterface(game)
 {
     name = BONUS_KICK;
     

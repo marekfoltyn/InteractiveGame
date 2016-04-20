@@ -48,7 +48,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     cocos2d::FileUtils::getInstance()->addSearchPath("res");
 
     // run the game
-    StartHandler().execute();
+    auto game = Game::getInstance();
+    StartHandler(game, director).execute();
 
     return true;
 }

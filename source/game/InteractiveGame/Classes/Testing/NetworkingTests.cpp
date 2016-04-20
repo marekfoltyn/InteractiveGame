@@ -9,19 +9,20 @@
  * Networking - unit tests
  */
 
-TEST_CASE("Init tests"){
-    SECTION("Definitions"){
-    
+TEST_CASE("Init tests")
+{
+    SECTION("Definitions")
+    {
         // correct ports
         REQUIRE( SERVER_PORT > 0 );
         REQUIRE( SERVER_PORT <= 65525);
         if(SERVER_PORT<49151){
-            WARN("SERVER_PORT < 49151, port may be registered by another application.");
+            WARN("SERVER_PORT < 49151, ports may be used by another applications.");
         }
         REQUIRE( CLIENT_PORT > 0 );
         REQUIRE( CLIENT_PORT <= 65525);
         if(CLIENT_PORT<49151){
-            WARN("CLIENT_PORT < 49151, port may be registered by another application.");
+            WARN("CLIENT_PORT < 49151, ports may be used by another applications.");
         }
 
         // correctly defined constants
@@ -31,7 +32,7 @@ TEST_CASE("Init tests"){
         REQUIRE( SERVER_MENU_LIFETIME > 0 );
         REQUIRE( RECEIVE_TIMEOUT > 0 );
         REQUIRE( TIME_SCENE_TRANSITION > 0 );
-        
+        REQUIRE( PORT_RANGE > 0);
     }
 }
 

@@ -9,9 +9,9 @@
 #include "GameplayDefinitions.h"
 #include "GameStateHandler.h"
 
-GameStateHandler::GameStateHandler()
+GameStateHandler::GameStateHandler(Game * game)
 {
-    game = Game::getInstance();
+    this->game = game;
 }
 
 bool GameStateHandler::execute( GameNet::Box * box )

@@ -18,7 +18,7 @@ class Game;
 class CountdownHandler: public VoidHandler{
 public:
     
-    CountdownHandler();
+    CountdownHandler(Game *);
     
     /**
      * Match countdown finished

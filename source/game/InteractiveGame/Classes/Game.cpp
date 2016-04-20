@@ -77,7 +77,7 @@ void Game::run()
 
     // set up game and other related things
     stadium->setSecondsLeft(secondsLeft);
-    stadium->showExitButton(new ExitGameHandler());
+    stadium->showExitButton(new ExitGameHandler(this));
     playing = false;
 }
 
@@ -151,12 +151,12 @@ bool Game::startNetworking()
 
 void Game::registerHandlers()
 {
-    bonusHandler = new BonusHandler();
+    bonusHandler = new BonusHandler(this, director);
     auto logHandler = new LogHandler();
     auto disconnectHandler = new DisconnectHandler(this);
-    auto playerHandler = new PlayerCollisionHandler();
+    auto playerHandler = new PlayerCollisionHandler(this);
     
-    handlerMap->add(BOX_PLAYER_NAME, new NewPlayerHandler());
+    handlerMap->add(BOX_PLAYER_NAME, new NewPlayerHandler(this, director));
     handlerMap->add(BOX_ACCELERATION, new AccelerationBoxHandler(this));
     handlerMap->add(BOX_DISCONNECTED, disconnectHandler);
     handlerMap->add(BOX_CONNECTION_LOST, disconnectHandler);
@@ -164,13 +164,13 @@ void Game::registerHandlers()
     handlerMap->add(BOX_NEW_CONNECTION, logHandler);
     handlerMap->add(BOX_KICK, new KickHandler(this));
     handlerMap->add(BOX_TEAM_SELECT, new TeamSelectHandler(this));
-    handlerMap->add(BOX_ADMIN, new GameStateHandler());
+    handlerMap->add(BOX_ADMIN, new GameStateHandler(this));
     
-    handlerMap->add(VOID_COUNTDOWN_FINISHED, new CountdownHandler());
+    handlerMap->add(VOID_COUNTDOWN_FINISHED, new CountdownHandler(this));
     
     stadium->addCollisionHandler(BITMASK_PLAYER, playerHandler );
     stadium->addCollisionHandler(BITMASK_INVISIBLE_PLAYER, playerHandler );
-    stadium->addCollisionHandler(BITMASK_SCORE, new GoalCollisionHandler() );
+    stadium->addCollisionHandler(BITMASK_SCORE, new GoalCollisionHandler(this, director) );
     stadium->addCollisionHandler(BITMASK_BONUS, bonusHandler);
 }
 

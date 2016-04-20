@@ -10,7 +10,7 @@ public:
     
     static KickBonus * create();
     
-    KickBonus();
+    KickBonus(Game *);
         
 protected:
     

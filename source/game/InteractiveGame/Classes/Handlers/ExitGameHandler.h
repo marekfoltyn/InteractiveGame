@@ -7,7 +7,7 @@ class Game;
 class ExitGameHandler: public VoidHandler{
 public:
     
-    ExitGameHandler();
+    ExitGameHandler(Game *);
     
     virtual void execute();
     

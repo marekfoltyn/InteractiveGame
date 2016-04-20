@@ -9,9 +9,9 @@
 #include "Game.h"
 #include "CountdownHandler.h"
 
-CountdownHandler::CountdownHandler()
+CountdownHandler::CountdownHandler(Game * game)
 {
-    game = Game::getInstance();
+    this->game = game;
 }
 
 

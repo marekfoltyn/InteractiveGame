@@ -8,10 +8,10 @@
 
 #include "StartHandler.h"
 
-StartHandler::StartHandler()
+StartHandler::StartHandler(Game * game, Director * director)
 {
-    game = Game::getInstance();
-    director = Director::getInstance();
+    this->game = game;
+    this->director = director;
 }
 
 

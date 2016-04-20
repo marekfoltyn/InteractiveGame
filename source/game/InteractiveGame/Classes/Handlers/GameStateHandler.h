@@ -18,7 +18,7 @@
 class GameStateHandler: public BoxHandler{
 public:
 
-    GameStateHandler();
+    GameStateHandler(Game *);
     
     /**
      * process game state changes

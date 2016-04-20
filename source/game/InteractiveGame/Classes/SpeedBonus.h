@@ -14,7 +14,7 @@ public:
     
     static SpeedBonus * create();
     
-    SpeedBonus();
+    SpeedBonus(Game *);
         
 protected:
     

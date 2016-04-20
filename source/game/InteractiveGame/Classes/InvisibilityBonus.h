@@ -18,7 +18,7 @@ public:
     
     static InvisibilityBonus * create();
     
-    InvisibilityBonus();
+    InvisibilityBonus(Game *, Director *);
         
 protected:
     
