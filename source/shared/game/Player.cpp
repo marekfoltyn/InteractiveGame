@@ -32,6 +32,7 @@ Player::Player(RakNet::SystemAddress address, std::string name)
     lblName->setTextColor(cocos2d::Color4B(255,255,255,44));
     sprite->addChild(lblName,1);
 
+    admin = false;
     appliedForceVector = cocos2d::Vec2::ZERO;
     realPreviousForce = cocos2d::Vec2::ZERO;
     speedScale = 1;
@@ -117,11 +118,13 @@ void Player::setTeam(std::string newTeam)
 void Player::setKickMultiplier(float multiplier)
 {
     kickMultiplier = multiplier;
+    if(kickMultiplier < 0) kickMultiplier = 0;
 }
 
 void Player::addKickMultiplier(float dt)
 {
     kickMultiplier += dt;
+    if(kickMultiplier < 0) kickMultiplier = 0;
 }
 
 
@@ -129,11 +132,11 @@ void Player::addKickMultiplier(float dt)
 void Player::setSpeedMultiplier(float multiplier)
 {
     speedMultiplier = multiplier;
+    if(speedMultiplier < 0) speedMultiplier = 0;
 }
-
-
 
 void Player::addSpeedMultiplier(float dt)
 {
     speedMultiplier += dt;
+    if(speedMultiplier < 0) speedMultiplier = 0;
 }
