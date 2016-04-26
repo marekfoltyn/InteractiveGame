@@ -54,7 +54,7 @@ Počítačové hry existují od~počátku prvních počítačů \cite{rylich}. J
 
 Na~zmenšování hardwaru se adaptovaly také hry, které se v~hojné míře objevují i~na~přenosných zařízeních, jako jsou mobilní telefony, tablety a~další. Lidé tak mohou kromě počítačového stolu hrát doslova kdekoli.
 
-Spolu s~vývojem počítačů se mění i~způsoby, jak lze počítačové hry ovládat. Kromě tradiční myši a~klávesnice lze využít joystick, volant, gamepad a~jiná podobná zařízení. Všechny tyto technologie se v herním průmyslu snaží obohatit hráčův zážitek intuitivním ovládáním. Existují však elektronická zařízení s~velkým množstvím senzorů, u~kterých se nabízí otázka, jak tyto senzory využít pro~ovládání hry. Mobilní telefony.
+Spolu s~vývojem počítačů se mění i~způsoby, jak lze počítačové hry ovládat. Kromě tradiční myši a~klávesnice lze v dnešní době využít joystick, volant, gamepad a~jiná podobná zařízení. Všechny tyto technologie se v herním průmyslu snaží obohatit hráčův zážitek intuitivním ovládáním. Existují však elektronická zařízení s~velkým množstvím senzorů, u~kterých se přímo nabízí otázka, jak tyto senzory využít pro~ovládání hry, jsou to mobilní telefony.
 
 Mobilní telefony se v~dnešní době rozvíjí velmi rychlým tempem. Téměř každý nový smarthphone je vybaven dotykovým displejem, akcelerometrem společně s~gyroskopem, proximity senzorem, vibračním motorkem a~dalšímy senzory okolního prostředí. Dále pak jsou schopny bezdrátově komunikovat pomocí WiFi, bluetooth a~při tomto množství interaktivních prvků v~jediném zařízení se přirozeně nabízí otázka, jak všechny tyto nové technologie využít pro~větší zážitek z~hraní. Velké využití nabízí například dotyková obrazovka. Sjednocuje se zde vizuální část hry s~ovládáním. Pokud chce například hráč přesunout objekt, jednoduše se jej dotkne prstem a přetáhne. Všech těchto výhod široce využívají mobilní hry.
 
@@ -63,33 +63,87 @@ V~této práci se budu zabývat hledáním způsobu, jak využít interaktivní 
 
 \end{introduction}
 
-\chapter{Druhy ovládání PC her}
+\chapter{Druhy ovládání her}
 
 Ovládání počítačových her úzce souvisí se~samotným vývojem hardwaru a~především počítačových periferií. V~následující kapitole se budu zabývat uvedením do~problematiky ovládání her v~současné době a~to jak na~počítačích, tak i~na~dalších zařízeních. Hlavním obsahem bude srovnání několika rozdílných způsobů ovládání, jejich přínosů a~nevýhod. 
 
 %https://books.google.cz/books?id=hWSUAgAAQBAJ&pg=PT111&dq=game+controller+typology&hl=cs&sa=X&ved=0ahUKEwjumM6j65jMAhXFNpoKHcHEAeQQ6AEIJzAB#v=onepage&q=game%20controller%20typology&f=false
 
-\section{Historie hardware}
+\section{Historie ovladačů}
+
+Nejprve se stručně zaměřím na~historii vývoje hardwaru pro~ovládání her. Počítačové hry jako takové se začaly objevovat v~50. letech 20. století. Hardware dostupný v~této době nebyl určený pro~herní zaměření, např. známá hra \textit{Tennis for Two} vytvořená Williamem Higinbothamem v~roce 1958 v~národní laboratoři v~Brookhavenu využívala osciloskop jako grafický displej pro~zobrazení primitivní dvourozměrné hry a~jako ovládání sloužilo jedno tlačíko a~otočný regulátor.\cite{gamevshardware}
+
+Větší rozvoj herního hardwaru začal v~roce 1971. Byl vytvořen první herní automat na~mince s~hrou \textit{Galaxy Game}. Jednalo se o~hru pro~dva hráče ovládánou jednoduchým joystickem. Později se začaly objevovat další automaty, využívaly jak tlačítka a~joystick, tak i~volant.
+
+Hry se tedy objevovaly především na~herních konzolích. Vzhledem k~narustajícím prodejům osobních PC se hry dostávaly i~do~této oblasti, kde byla nejrozsířenejší periferií klávesnice. Vývoj herních konzolí se však nezastavil.
+
+Převrat v~ovládání PC, a~to i~v~herním průmyslu, způsobil příchod počítačové myši, jak ji známe dnes. Mnoho herních konceptů bylo vylepšeno a~pro~hráče to představovalo větší pohodlí při~hraní. \cite{gamevshardware}
+
+Kromě klasických ovladačů se začaly objevovat také snahy o~přirozenější ovládání pomocí pohybu, tzv. \textit{motion sensing}. Vzniklo proto několik ovladačů a~herních konzolí, z nichž nejvýznamější je Microsoft Kinect vzniklý v~roce 2010.\cite{wikicontrollers} Více se problematice ovládání pohybem věnuji v kapitole \ref{section:motion_sensing}.
+
+V~současné době se využívá široká škála způsobu a technologií ovládání. Následující kapitoly budou věnovány těm nejvíce rozšířeným především v~osobních počítačích. Vysvětlím, k~čemu se dají vhodně využít a~jaké mají nedostatky. Následující přehled bude zároveň tvořit podklad pro~analýzu v~praktické části práce.
 
 \section{Klávesnice}
 
+Klávesnice je nejpoužívanější počítačovou periferií vůbec. Její princip je velmi jednoduchý: každé stisknutí či uvolnění tlačítka způsobí odeslání informace do~PC. Je možné detekovat události více tlačítek najednou, čehož využívají klávesové zkratky.
+
+V~herním průmyslu se klávesnice využívá v~drtivé většině herních žánrů od~jednoduchých arkád, přes~závody až po~strategie. Jsou vhodné, pokud je potřeba rozlišit větší množství uživatelských vstupů, které mohou reprezentovány jednotlivými klávesami.
+
+Klávesnice ale nemusí být vždy ideální volbou. Diskrétní zpracování vstupu (stisknuto, nestisknuto) představuje nepohodlí při~ovládání závodní hry: v~zatáčení je zhoršená citlivost, auto buď zatáčí naplno, nebo vůbec. Tento nedostatek se vývojáři snaží řešit například postupným natáčením kol, ale ani to není ideální. Při zatočení v~menší zatáčce je nutné přerušovaně uvolňovat klávesu, aby se vytvořila iluze mírně natočeného volantu. V kombinaci s myší může být nevýhodou horší dostupnost kláves vzdálenějších od ruky.
+
 \section{Myš}
+
+Počítačová myš je druh polohovacího zařízení. Optický či laserový snímač detekuje pohyb myši po podložce a převádí jej na pohyb kurzoru na obrazovce. Dále bývá myš vybavena několika ovládacími tlačítky.
+
+Při hraní má široké uplatnění tam, kde je využíván klasický kurzor nebo při nutnosti souvislého, ale přesného pohybu jako například otáčení hráče v FPS hře\footnote{First-person shooter - akční hra zobrazená z pohledu herní postavy}.
+
+Nevýhodou při používání myši je jednostranná zátěž. Díky pohybu po stole hráči zatěžují ruku s myší více než ruku na klávesnici.
 
 \section{Gamepad}
 
+Gamepad je čistě herní periferie. Jedná se o ovladač pro použítí oběma rukama. Nachází se na něm množství ovládacích tlačíte a může být doplněn jedním nebo dvěma analogovými joysticky. Některé verze nabízejí dokonce vibrační odezvu. Nejdříve se objevil u herních konzolí, s rozvojem osobních PC se však stal i zde velmi populární.
+
+Primarní zaměření na hry dělá z gamepadu vynikající ovladač pro mnoho herních žánrů. Eliminuje problém ergonomie myši a klávesnice a všechna tlačítka jsou snadno dostupné. Proto se taky stal velmi oblíbeným.
+
+Z hlediska intuitivního ovládání gamepad zaostává podobně jako myš a klávesnice. Hry jsou sice s ním dobře ovladatelné, avšak někdy je třeba tréninku pro zvládnutí principu ovládání.
+
 \section{Joystick a volant}
+
+Joystick a volant představují ovladače pro specifičtější druhy her, na druhou stranu mmohem věrněji simulují realitu.
+
+Základní částí joysticku je páka umístěná kolmo v pohyblivém kloubu. Má nejlepší uplatnění v leteckých simulátorech, kde náklon páky mění nastavení leteckých klapek. Ovládání je intuitivní a snaží se přiblížit k realitě.
+
+Účelem volantu je simulace závodního prostředí. Obvykle jsou jeho součástí 2-3 pedály a případně řadicí páka. Vyšší modely mají vibrační odezvu, například při vyjetí z vozovky hráč cítí haptickou odezvu.
+
+Joystick a volant věrně simulují prostředí, pro které jsou určeny. Na rozdíl od předešlých periferií jsou použitelné pouze v úzké oblasti her.
 
 \section{Dotyková obrazovka}
 
-Více se problematice dotykové obrazovky budu věnovat v kapitole [TODO].
+Dotyková obrazovka na osobních počítačích není v současné době masově využívána. Větší rozšíření má v oblasti mobilních zařízení, jako jsou mobilní telefony a tablety, proto se více problematice dotykové obrazovky budu věnovat v kapitole \ref{section:touchscreen}.
 
 \section{Ovládání pohybem}
+\label{section:motion_sensing}
 
-\subsection{Pohybový senzor}
+Kromě tradičních hardwarových periferií existují další technologie, jak ovládat hry, a to pomocí přirozeného pohybu člověka. Tyto systémy snímají gesta a pohyby hráče nebo zařízení a podle nich vypočítají reakci ve hře. Takovéto ovládání bývá snadné na naučení, protože navozuje pocit přirozené reakce na podněty herního prostředí.
+
+V této kapitole zmíním dvě technologie: motion capture (neboli snímání pohybu těla) a akcelerometr. Obě tyto technologie silně rozšířují možnosti interakce s elektronickými zařízeními, fungují však na odlišných principech.
+
+\subsection{Akcelerometr}
+
+Akcelerometr je elektromechanické zařízení, které měří zrychlení sil ve 3 osách. Tyto síly mohou být statické jako tíhová síla, nebo dynamické - způsobeny pohybem nebo vibrováním akcelerometru.\cite{acc} Tato součástka umožňuje detekovat natočení zařízení v prostoru a jeho přibližný pohyb.
+
+V herním průmyslu se využívá především v mobilních zařízeních a v herních konzolích. Může nahradit joystick, emulace volantu nebo polohovacího zařízení. 
+
+V případě že jako vstupní zdroj informace je poloha zařízení, v nevhodném prostředí může docházet k rušení: například při jízdě v autobuse je téměř nemožné hrát závodní hru, jelikož při zatáčení autobusu bude síla působící na akcelerometr vychýlená.
+
+\subsection{Motion capture}
+
+
+
 
 Další informace o pohybovém senzoru jsou uvedeny v kapitole [TODO]
 
-\subsection{Motion capture}
+
 
 
 
@@ -98,6 +152,7 @@ Další informace o pohybovém senzoru jsou uvedeny v kapitole [TODO]
 \chapter{Interaktivní prvky v mobilních telefonech}
 
 \section{Dotykový displej}
+\label{section:touchscreen}
 
 \section{Pohybový senzor}
 

@@ -4,7 +4,7 @@
 #include "GameplayEvents.h"
 
 // toggle debug
-#define DEBUG
+//#define DEBUG
 
 /**
  * static constants and values used in both Controller and Game

@@ -1009,7 +1009,7 @@
 			children = (
 				EAD00D1B1C78A39D0037E62E /* BoxHandlers */,
 				EAD00D1C1C78A3C30037E62E /* CollisionHandlers */,
-				EAD00D1D1C78A3D10037E62E /* voidHandlers */,
+				EAD00D1D1C78A3D10037E62E /* VoidHandlers */,
 				EACC03B01C81BC1A00971626 /* AbstractHandlers.h */,
 				EA90F3501C8F41B900C8B23C /* EmptyUniversalHandler.cpp */,
 				EA90F3511C8F41B900C8B23C /* EmptyUniversalHandler.h */,
@@ -1384,7 +1384,7 @@
 			name = CollisionHandlers;
 			sourceTree = "<group>";
 		};
-		EAD00D1D1C78A3D10037E62E /* voidHandlers */ = {
+		EAD00D1D1C78A3D10037E62E /* VoidHandlers */ = {
 			isa = PBXGroup;
 			children = (
 				EA568A451CAB3AB100C4A35C /* BonusHandler.cpp */,
@@ -1396,7 +1396,7 @@
 				EA90F3581C8F41FE00C8B23C /* StartHandler.cpp */,
 				EA90F3591C8F41FE00C8B23C /* StartHandler.h */,
 			);
-			name = voidHandlers;
+			name = VoidHandlers;
 			sourceTree = "<group>";
 		};
 		EAD0D4F01C75F91B00776BC3 /* Messages */ = {
