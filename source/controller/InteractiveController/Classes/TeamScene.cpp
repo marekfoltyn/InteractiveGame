@@ -13,6 +13,8 @@
 #include "TeamSelectHandler.h"
 #include "DisconnectHandler.h"
 
+#include "Player.h"
+
 USING_NS_CC;
 using namespace GameNet;
 
@@ -24,7 +26,8 @@ const char * TeamScene::NODE_PAUSE = "nodePause";
 Scene * TeamScene::createScene()
 {
     // 'scene' is an autorelease object
-    auto scene = Scene::create();
+    auto scene = Scene::createWithPhysics();
+    scene->getPhysicsWorld()->setGravity(Vec2::ZERO);
     
     // 'layer' is an autorelease object
     auto layer = TeamScene::create();
@@ -115,7 +118,6 @@ void TeamScene::initGraphics()
 
     // blue team
     auto blue = ui::Button::create("player_blue.png");
-    blue->setTitleText("Blue");
     blue->setTitleFontName("Vanilla.ttf");
     blue->setTitleAlignment(TextHAlignment::CENTER);
     blue->setTitleColor(Color3B::WHITE);
@@ -125,6 +127,12 @@ void TeamScene::initGraphics()
     blue->setName(TEAM_BLUE);
     blue->addTouchEventListener( CC_CALLBACK_2(TeamScene::btnTeamSelected, this) );
     this->addChild(blue);
+    
+    auto bluePlayer = Player::create("blue_player");
+    bluePlayer->setTeam(TEAM_BLUE);
+    bluePlayer->getSprite()->setPosition(Vec2(origin.x + (1.0/6)*visibleSize.width, origin.y + (visibleSize.height - border - disconnect->getContentSize().height)/2 ));
+    bluePlayer->getSprite()->setScale(5);
+    this->addChild(bluePlayer->getSprite());
     
     // auto assign
     auto autoAssign = ui::Button::create("player_no_color.png");
@@ -141,7 +149,6 @@ void TeamScene::initGraphics()
     
     // red team
     auto red = ui::Button::create("player_red.png");
-    red->setTitleText("Red");
     red->setTitleFontName("Vanilla.ttf");
     red->setTitleAlignment(TextHAlignment::CENTER);
     red->setTitleColor(Color3B::WHITE);
@@ -152,6 +159,13 @@ void TeamScene::initGraphics()
     red->addTouchEventListener( CC_CALLBACK_2(TeamScene::btnTeamSelected, this) );
     this->addChild(red);
 
+    auto redPlayer = Player::create("red_player");
+    redPlayer->setTeam(TEAM_RED);
+    redPlayer->getSprite()->setPosition(Vec2(origin.x + (5.0/6)*visibleSize.width, origin.y + (visibleSize.height - border - disconnect->getContentSize().height)/2 ));
+    redPlayer->getSprite()->setScale(5);
+    this->addChild(redPlayer->getSprite());
+
+    
 }
 
 

@@ -106,7 +106,7 @@ public:
     /**
      * blink with eyes :)
      */
-    void blink(bool scheduleNext=false);
+    void blink();
     
 private:
     
@@ -162,7 +162,8 @@ private:
      * private constructor - use Player::create()
      */
     Player(RakNet::SystemAddress address, std::string name);
-    
+
+    void autoBlink();
 };
 
 #endif /* Player_h */

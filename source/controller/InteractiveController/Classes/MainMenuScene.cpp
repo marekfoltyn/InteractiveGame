@@ -9,6 +9,7 @@
 #include "ConnectionResultHandler.h"
 #include "ToggleVibrateHandler.h"
 #include "AdminHandler.h"
+#include "Player.h"
 
 USING_NS_CC;
 
@@ -29,7 +30,17 @@ const std::string MainMenuScene::NODE_VIBRATE = "vibrate";
 Scene * MainMenuScene::createScene()
 {
     // 'scene' is an autorelease object
-    auto scene = Scene::create();
+    auto scene = Scene::createWithPhysics();
+    
+    // no gravity - top view
+    scene->getPhysicsWorld()->setGravity(Vec2::ZERO);
+    
+    // toggle between fullscreen and debug windowed screen
+#ifdef DEBUG
+    scene->getPhysicsWorld()->setDebugDrawMask( PhysicsWorld::DEBUGDRAW_ALL );
+#else
+    scene->getPhysicsWorld()->setDebugDrawMask( PhysicsWorld::DEBUGDRAW_NONE );
+#endif
     
     // 'layer' is an autorelease object
     auto layer = MainMenuScene::create();
@@ -118,6 +129,30 @@ void MainMenuScene::initGraphics()
     auto background = Sprite::create("grass.png");
     background->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
     this->addChild(background, Z_INDEX_BG);
+    
+    // player sprite
+    auto player = Player::create("Player");
+    player->setTeam( cocos2d::random<int>(0, 1) == 0 ? TEAM_BLUE : TEAM_RED );
+    player->getSprite()->setPosition(origin.x + 0.75 * visibleSize.width, origin.y + 0.25 * visibleSize.height);
+    player->getSprite()->setScale(3);
+    this->addChild(player->getSprite(), Z_INDEX_BG);
+    
+    // init accelerometer
+    auto listener = EventListenerAcceleration::create([player](cocos2d::Acceleration * acc, cocos2d::Event * unused_event)
+    {
+        float x = acc->x;
+        float y = acc->y;
+        Vec2 forceVector = Vec2(x, y);
+        
+        // coord clean
+        if( fabs(x) < 0.08 ) x = 0;
+        if( fabs(y) < 0.08 ) y = 0;
+        
+        player->applyForce(2*forceVector);
+    });
+    Device::setAccelerometerEnabled(true);
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+
     
     // background game name
     auto phoneball = Label::createWithTTF("Phoneball", "Vanilla.ttf", 260);
@@ -212,6 +247,17 @@ void MainMenuScene::initGraphics()
     menuView->setScrollBarEnabled(false);
     this->addChild(menuView);
     
+    // physics boundary
+    auto edgeBody = PhysicsBody::createEdgeBox(cocos2d::Size(visibleSize.width + 2*BORDER, visibleSize.height+ 2*BORDER), MATERIAL_SOLID, BORDER);
+    edgeBody->setDynamic(false);
+    edgeBody->setCategoryBitmask(BITMASK_SOLID);
+    edgeBody->setCollisionBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER | BITMASK_INVISIBLE_PLAYER);
+    edgeBody->setContactTestBitmask(BITMASK_SOLID | BITMASK_BALL | BITMASK_PLAYER | BITMASK_INVISIBLE_PLAYER);
+    auto edgeNode = Node::create();
+    edgeNode->setPosition(Vec2( origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 ));
+    edgeNode->setPhysicsBody(edgeBody);
+    this->addChild(edgeNode);
+    
     // vibrate button
     auto btnVibrate = ui::Button::create("vibrate.png");
     btnVibrate->setName(NODE_VIBRATE);
@@ -232,6 +278,9 @@ void MainMenuScene::initGraphics()
     #endif
     #endif
     this->addChild(btnVibrate);
+    
+    // accelerometer trick with player
+    
 }
 
 

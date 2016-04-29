@@ -116,7 +116,7 @@ public:
 #define SCALE_BALL 0.8
 #define MATERIAL_SOLID cocos2d::PhysicsMaterial(0.5, 1, 0.5)
 #define MATERIAL_BALL cocos2d::PhysicsMaterial(0.5, 0.5, 0.5)
-#define MATERIAL_PLAYER cocos2d::PhysicsMaterial(0.5, 0, 0.5)
+#define MATERIAL_PLAYER cocos2d::PhysicsMaterial(0.5, 0.5   , 0.5)
 #define LABEL_SCORE_LEFT "lblScoreLeft"
 #define LABEL_SCORE_RIGHT "lblScoreRight"
 #define LABEL_ADMIN "lblAdminName"

@@ -42,7 +42,8 @@ Player::Player(RakNet::SystemAddress address, std::string name)
     team = TEAM_AUTO;
     
     // start blinking
-    blink(true);
+    autoBlink();
+    
 }
 
 Player * Player::create(std::string name)
@@ -146,7 +147,7 @@ void Player::addSpeedMultiplier(float dt)
 }
 
 
-void Player::blink(bool scheduleNext)
+void Player::blink()
 {
     auto blinkfunc = cocos2d::CallFunc::create([&](){
         if(team == TEAM_RED)
@@ -173,11 +174,19 @@ void Player::blink(bool scheduleNext)
     auto delay = cocos2d::DelayTime::create(TIME_BLINK);
     auto sequence = cocos2d::Sequence::create(blinkfunc, delay, unblinkfunc, nullptr);
     sprite->runAction(sequence);
+}
+
+void Player::autoBlink()
+{
+    blink();
     
-    if(scheduleNext)
-    {
-        // schedule another blink
-        float time = cocos2d::random<float>(2, 8);
-        sprite->scheduleOnce([&](float dt){ blink(true); },time,"anotherBlink");
-    }
+    // toggle action names - when set to constant, it will run only one
+    // because the next schedule will not be called (already scheduled?)
+    static unsigned char toggle = 4;
+    
+    // schedule another blink
+    float time = cocos2d::random<float>(2, 8);
+    sprite->scheduleOnce([&](float dt){ autoBlink(); },time,cocos2d::__String::createWithFormat("%c", toggle)->getCString());
+    
+    toggle++;
 }
