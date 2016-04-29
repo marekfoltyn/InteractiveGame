@@ -13,6 +13,7 @@
 \usepackage{graphicx} %graphics files inclusion
 \usepackage{adjustbox}
 \usepackage{tabularx}
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes} 
 % \usepackage{amsmath} %advanced maths
 % \usepackage{amssymb} %additional math symbols
 
@@ -130,6 +131,7 @@ Kromě tradičních hardwarových periferií existují další technologie, jak~
 V~této kapitole zmíním dvě technologie: motion capture (neboli snímání pohybu těla) a~akcelerometr. Obě tyto technologie silně rozšířují možnosti interakce s~elektronickými zařízeními, fungují však na~odlišném principu.
 
 \subsection{Akcelerometr}
+\label{section:accelerometer}
 
 Akcelerometr je elektromechanické zařízení, které měří zrychlení sil ve~3 osách. Tyto síly mohou být statické, jako například tíhová síla, nebo dynamické - způsobeny pohybem nebo vibrováním akcelerometru.\cite{acc} Tato součástka umožňuje detekovat natočení zařízení v~prostoru a~jeho přibližný pohyb.
 
@@ -176,23 +178,51 @@ Senzory se budu snažit využít tak, aby mobilní telefon nesloužil pouze jako
 \section{Dotykový displej}
 \label{section:touchscreen}
 
-Dotykový displej je označení pro kombinaci zobrazovacího displeje a průhledné vrstvy pokrývající displej, který je schopnej zaznamenávat dotyky vnějších těles, obvykle prstu nebo stylusu. \cite{gray2013does} Existuje několik technologií snímání dotyku, stručně popíšu ale pouze nejrozšířenejší technologi v dnešních mobilních zařízeních: kapacitní dotykový panel.
+Dotykový displej je označení pro~kombinaci zobrazovacího displeje a~průhledné vrstvy schopné zaznamenávat dotyky vnějších těles, obvykle prstu nebo~stylusu. Existuje několik technologií snímání dotyku, stručně popíšu pouze nejrozšířenejší technologi v~dnešních mobilních zařízeních: kapacitní dotykový panel.
 
-Kapacitní dotykový panel využívá elektrické vodivosti vnějších těles. Dotyk takového tělesa s povrchem displeje naruší elektrostatické pole obrazovky a jeho lokaci pak dále zpracuje řadič. Proto kapacitní displeje fungují pouze s vodivými předměty jako je lidský prst nebo speciální stylus.
+Kapacitní dotykový panel využívá elektrické vodivosti vnějších těles. Dotyk takového tělesa s~povrchem displeje naruší elektrostatické pole obrazovky a~jeho lokaci pak dále zpracuje řadič. Proto kapacitní displeje fungují pouze s~vodivými předměty jako je lidský prst nebo~speciální stylus. \cite{gray2013does}
 
-Dotykové displeje nabízejí velmi široké možnosti uplatnění ve hrách. Na rozdíl od klasických ovladačů totiž propojují zobrazení grafiky se samotným ovládáním. Například přesun objektů v herním světě je velmi přirozený: hráč se jednoduše dotkne objektu a tahem prstu přesune po obrazovce. Ve srovnání s myší pak odpadá \textit{mezivrstva} ve formě periferie připojené k zařízení a hráčův prst se tak stává samotným kurzorem.
+Dotykové displeje nabízejí velmi široké možnosti uplatnění ve~hrách. Na~rozdíl od~klasických ovladačů totiž propojují zobrazení grafiky se~samotným ovládáním. Například přesun objektů v~herním světě je velmi přirozený: hráč se jednoduše dotkne objektu a~tahem prstu jej přesune po~obrazovce. Ve~srovnání s~počítačovou myší pak odpadá \textit{mezivrstva} ve~formě periferie připojené k~zařízení a~hráčův prst se tak stává samotným kurzorem.
 
-Možnosti dotykových displejů, jako jsou gesta a snímání více dotyků najednou, zásadním způsobem zjednodušily ovládání mobilních telefonů a tedy i her. Některé hry jsou přímo postaveny na využití dotykových displejů, jednou z nich je velmi úspěšná hra \textit{Fruit Ninja}\cite{fruitninja}. Hlavním ovládacím prvkem je tah prstem, který simuluje seknutí čepelí. Hráč se snaží jedním seknutím přeseknout co největší množství letícího ovoce najednou. Hra je příkladnou ukázkou využití dotykové obrazovky: letící ovoce je podnětem, aby se hráč trefil do daného místa na obrazovce. Hra a ovládání tak splývají v jednu ucelenou část.
+Možnosti dotykových displejů, jako jsou gesta a~snímání více dotyků najednou, zásadním způsobem zjednodušily ovládání mobilních telefonů a~tedy i~jejich her, z~nichž některé jsou přímo postaveny na~využití dotykových displejů. Jednu z~nich představuje úspěšná hra \textit{Fruit Ninja}\cite{fruitninja}. \todo{Přidat obrázek s Fruit Ninja} Hlavní ovládací prvek tvoří tah prstem, který simuluje seknutí čepelí. Hráč se snaží jedním seknutím přeseknout co největší množství letícího ovoce najednou. Hra se stala příkladnou ukázkou využití dotykové obrazovky: letící ovoce je podnětem, abyse hráč trefil do~daného místa na~obrazovce. Hra a~ovládání tak splývají v~jednu ucelenou část.
+
+Této provázanosti se dá využít i~v~počítačové hře ovládané mobilním telefonem. Hlavní herní scéna je zobrazována na~displeji počítače a~hráč drží v~ruce ovladač (mobilní telefon), který je úzce provázán s~hrou v~PC. Dotyková obrazovka pak může plnit funkci jak ovládací, tak i~zobrazovací. To nemusí být nutně výhodou, protože při ovládání hry se hráč přirozeně soustředí především na~herní obraz v~PC a~může být nepohodlné často měnit pohled z~monitoru na~mobil. Pokud se ale například jedná o~hru více hráčů, otevírají se nové možnosti, jak využít individuální obrazovku pro~každého hráče, který tím získá soukromý zobrazovací prostor a~ten může poskytovat přídavné informace. Tuto techniku využívám v~kapitole \cite{chapter:implementation} v~implementaci demonstrační hry, kdy hráč při získání bonusu neviditelnosti zmizí z~hřiště na~hlavní obrazovce a~začne se mu na~mobilním displeji zobrazovat kompletní herní scéna i~se~zmizelým hráčem. Protivníci tím pádem ztrácí informaci o~hráčově pozici a~on získává herní výhodu. Této techniky lze dosáhnout pouze úzkým provázáním hry a~ovladače. Vzhledem k~těmto schopnostem mobilních telefonů v~kombinaci s~dostatečným výkonem, dalšími senzory a~rychlou bezdrátovou komunikací má využití dotykového displeje velký potenciál.
+
+Kromě toho je dotyková obrazovka v~implementaci využita jako vstupní zařízení ve~formě tlačítek a~to jak při~klasickém ovládání, tak i~při~aktivní neviditelnosti souběžně se zobrazováním hry.
 
 \section{Akcelerometr}
 \label{section:accelerometer}
 
+Dalším interaktivním senzorem akcelerometr, jehož princip vysvětluje kapitola \ref{section:accelerometer}. Objevuje se jak v~ovladačích k~herním konzolím, tak v~mobilních telefonech, kde plní několik funkcí: zajišťuje automatickou orientaci displeje v~závislosti na~natočení mobilu, pohybová gesta jako například zatřesení nebo položení displejem dolů mohou sloužit k~ovládání systému a~široké využití má ve~hrách.
+
+Existuje velké množství mobilních her využívající náklon telefonu k~ovládání. Následující výčet obsahuje přehled nejčastějších použití ve~hrách a~související příklady \cite{accelerometergames}:
+
+\begin{itemize}
+	\item Simulace volantu v~závodní hře (Lane Splitter, Jet Car Stunts)
+	\item Náklon telefonu odpovídá náklonu herní podložky (Crazy Labyrinth 3D)
+	\item Využití akcelerometru jako joysticku v~leteckém simulátoru (Skies of Glory)
+	\item Náklon telefonu mění pozici herního objektu (Donkey Jump, Box Busters)
+\end{itemize}
+
+Pro~interaktivní ovladač k~PC hře je použití akcelerometru ideální volbou. Pohyb herního objektu náklonem telefonu vtahuje hráče intenzivnějši než~ovládání například tlačítky. 
+
+Využití akcelerometru v~praktické části práce je podobné jako ve~hře Donkey Jump, na~rozdíl od~ní však nabídne pohyb do~všech směrů ve~2D prostoru.
 
 \section{Gyroskop}
 
+Gyroskop je součástka pro~detekci polohy zařízení. Měří změnu úhlu natočení telefonu kolem své osy. To umožňuje detekovat pohyb zařízení lépe než~akcelerometr, ale vzhledem k~detekci relativní změny se postupem času objevuje odchylka a~proto se gyroskop využívá v~kombinaci s~akcelerometrem a~někdy též s~kompasem. Díky tomu je možné určit natočení telefonu vůči gravitační síle a~detekovat změnu polohy zařízení ve~všech směrech. \cite{gyroscope}
+
 \section{Senzor přiblížení}
 
-Posledním zde uvedeným senzorem je senzor přiblížení, nebo také proximity senzor. Jedná se o součástku fungující na principu detekce elektromagnetického záření. \cite{proximity}
+Posledním zde uvedeným senzorem je senzor přiblížení, nebo také \textit{proximity senzor}. Funguje na~principu detekce elektromagnetického záření, které generuje vysílač. V~případě přiblížení objektu do~blízkosti snímače je zaznamenán odraz záření zpět k~senzoru a~je tak vyhodnocena blízkost objektu. \cite{proximity}
+
+Nejběžnější využití proximity senzoru v~mobilním telefonu je při~hovoru. Před~přiložením k~uchu senzor detekuje blízkost hlavy a~zhasne displej. Zabráním tím tak nechtěnému ukončení hovoru dotykem ucha s~obrazovkou.
+
+Herní využití proximity senzoru není rozšířené, neexistují žádné hry interaktivně využívající proximity senzor ve~hře, pouze simulace tlačítka v~PC hře podomácku vyrobeným senzorem přiblížení. \cite{proximitygame}
+
+\section{Shrnutí}
+
+V~této kapitole byly popsány nejčastější interaktivní senzory vyskytující se v~dnešních mobilních telefonech, jejich princip a~možné využití. V~následující kapitole se je budu snažit využít při~tvorbě interaktivního ovladače pro~PC hru. 
 
 \chapter{Tvorba systému}
 \label{chapter:implementation}
