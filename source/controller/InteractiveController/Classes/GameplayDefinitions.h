@@ -60,6 +60,7 @@ public:
 
 #define TIME_BONUS_GENERATION_MIN  5.0
 #define TIME_BONUS_GENERATION_MAX 50.0
+#define TIME_BLINK 0.1
 
 #define PROBABILITY_BONUS 0.10  
 

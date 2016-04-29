@@ -22,7 +22,8 @@ Player::Player(RakNet::SystemAddress address, std::string name)
     body->setCategoryBitmask(BITMASK_PLAYER);
     body->setContactTestBitmask(BITMASK_ALL);
     body->setCollisionBitmask(PLAYER_COLLIDES_WITH);
-    body->setRotationEnable(false);
+    //body->setRotationEnable(false);
+    body->setAngularDamping(0.8);
     sprite->setPhysicsBody(body);
     
     // label
@@ -30,7 +31,7 @@ Player::Player(RakNet::SystemAddress address, std::string name)
     lblName->setPosition(cocos2d::Vec2( sprite->getContentSize().width/2, sprite->getContentSize().height  ));
     lblName->setAnchorPoint(cocos2d::Vec2( 0.5, 0 ));
     lblName->setTextColor(cocos2d::Color4B(255,255,255,44));
-    sprite->addChild(lblName,1);
+    //sprite->addChild(lblName,1);
 
     admin = false;
     appliedForceVector = cocos2d::Vec2::ZERO;
@@ -39,6 +40,9 @@ Player::Player(RakNet::SystemAddress address, std::string name)
     kickMultiplier = 1;
     speedMultiplier = 1;
     team = TEAM_AUTO;
+    
+    // start blinking
+    blink(true);
 }
 
 Player * Player::create(std::string name)
@@ -139,4 +143,41 @@ void Player::addSpeedMultiplier(float dt)
 {
     speedMultiplier += dt;
     if(speedMultiplier < 0) speedMultiplier = 0;
+}
+
+
+void Player::blink(bool scheduleNext)
+{
+    auto blinkfunc = cocos2d::CallFunc::create([&](){
+        if(team == TEAM_RED)
+        {
+            sprite->setTexture("player_red_blink.png");
+        }
+        else if(team == TEAM_BLUE)
+        {
+            sprite->setTexture("player_blue_blink.png");
+        }
+    });
+
+    auto unblinkfunc = cocos2d::CallFunc::create([&](){
+        if(team == TEAM_RED)
+        {
+            sprite->setTexture("player_red.png");
+        }
+        else if(team == TEAM_BLUE)
+        {
+            sprite->setTexture("player_blue.png");
+        }
+    });
+
+    auto delay = cocos2d::DelayTime::create(TIME_BLINK);
+    auto sequence = cocos2d::Sequence::create(blinkfunc, delay, unblinkfunc, nullptr);
+    sprite->runAction(sequence);
+    
+    if(scheduleNext)
+    {
+        // schedule another blink
+        float time = cocos2d::random<float>(2, 8);
+        sprite->scheduleOnce([&](float dt){ blink(true); },time,"anotherBlink");
+    }
 }

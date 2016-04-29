@@ -14,4 +14,6 @@ void PlayerCollisionHandler::execute(cocos2d::PhysicsBody * first, cocos2d::Phys
     
     CCLOG("Player %s collided (handler)", player->getAddress().ToString() );
     GameNet::BoxFactory::collision(player->getAddress())->send();
+    
+    player->blink();
 }

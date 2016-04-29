@@ -103,6 +103,11 @@ public:
     void addSpeedMultiplier(float dt);
     float getSpeedMultiplier(){ return speedMultiplier; }
     
+    /**
+     * blink with eyes :)
+     */
+    void blink(bool scheduleNext=false);
+    
 private:
     
     /**
@@ -157,6 +162,7 @@ private:
      * private constructor - use Player::create()
      */
     Player(RakNet::SystemAddress address, std::string name);
+    
 };
 
 #endif /* Player_h */
