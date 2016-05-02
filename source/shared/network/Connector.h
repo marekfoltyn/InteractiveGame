@@ -29,7 +29,7 @@ public:
     /** starts a client network session
      * @return true if started, false otherwise
      */
-    bool start();
+    bool startAsClient();
     
     /** starts a server network session
      * @return true if started, false otherwise

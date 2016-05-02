@@ -42,7 +42,7 @@ Controller::Controller()
 bool Controller::startNetworking()
 {
     // run  Connector as a client
-    bool started = connector->start();
+    bool started = connector->startAsClient();
     
     if(!started){
         CCLOG("Connector not started!");
@@ -58,7 +58,7 @@ void Controller::receiveBoxes(HandlerMap * handlerMap)
 {
     GameNet::Box * box;
     
-    // c->receive() returns 0, if no received packet is in the queue
+    // c->receive() returns nullptr, when no received packet is in the queue
     bool finish = false;
     while( (box = connector->receive()) != nullptr )
     {

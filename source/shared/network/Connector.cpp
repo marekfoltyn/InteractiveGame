@@ -21,7 +21,7 @@ Connector::Connector()
 }
 
 
-bool Connector::start(){
+bool Connector::startAsClient(){
     return startAsServer(1);
 }
 

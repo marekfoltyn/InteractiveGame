@@ -9,7 +9,7 @@
  */
 
 // time (ms) during when reliable packet was not able to be received -> connection lost
-#define CONNECTION_LOST_TIMEOUT 5000
+#define CONNECTION_LOST_TIMEOUT 10000
 
 // logging function - now used with cocos2d
 #define LOG(...) CCLOG(__VA_ARGS__)
