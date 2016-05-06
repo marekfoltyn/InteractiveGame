@@ -136,7 +136,8 @@ bool Game::startNetworking()
     bool started = connector->startAsServer(MAX_PLAYERS);
     connector->setServerName(SERVER_NAME_DEFAULT);
     
-    if(!started){
+    if(!started)
+    {
         CCLOG("Server not started!");
         return false;
     }

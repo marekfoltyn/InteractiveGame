@@ -13,6 +13,8 @@
 \usepackage{graphicx} %graphics files inclusion
 \usepackage{adjustbox}
 \usepackage{tabularx}
+\usepackage{xargs} 
+\usepackage[pdftex,dvipsnames]{xcolor} 
 \usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes} 
 % \usepackage{amsmath} %advanced maths
 % \usepackage{amssymb} %additional math symbols
@@ -26,16 +28,13 @@
 
 \newcommand{\tg}{\mathop{\mathrm{tg}}} %cesky tangens
 \newcommand{\cotg}{\mathop{\mathrm{cotg}}} %cesky cotangens
-
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
-% ODTUD DAL VSE ZMENTE
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+\newcommandx{\note}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
 
 \department{Katedra softwarového inženýrství}
 \title{Interaktivn{\' i} ovl{\' a}d{\' a}n{\' i} PC hry pomoc{\' i} chytr{\' e}ho telefonu}
-\authorGN{Marek} %(křestní) jméno (jména) autora
-\authorFN{Foltýn} %příjmení autora
-\authorWithDegrees{Marek Foltýn} %jméno autora včetně současných akademických titulů
+\authorGN{Marek} 
+\authorFN{Foltýn} 
+\authorWithDegrees{Marek Foltýn} 
 \supervisor{Ing. Filip K{\v r}ikava, Ph.D.}
 \acknowledgements{Chtěl bych poděkovat vedoucímu práce Ing. Filipu K{\v r}ikavovi, Ph.D. za~pomoc a~p{\v r}íkladné vedení práce. Dále pak své manželce Veronice Foltýnové za~trpělivost a~ochotu vytvá{\v r}et prost{\v r}edí vhodné ke~tvorbě bakalářské práce, 
 rodičům a~celé mé rodině za~velkou podporu ve~všech směrech. Děkuji také všem, kteří se podíleli na~testování hratelnosti hry.}
@@ -46,58 +45,60 @@ rodičům a~celé mé rodině za~velkou podporu ve~všech směrech. Děkuji tak�
 \keywordsCS{interaktivní ovládání PC hry, smartphone, komunikační systém, Cocos2d-x, RakNet}
 \keywordsEN{interactive PC game controller, smartphone, communication system, Cocos2d-x, RakNet}
 
-\begin{document} % zacatek celeho dokumentu
+\begin{document} 
 
 % \newacronym{CVUT}{{\v C}VUT}{{\v C}esk{\' e} vysok{\' e} u{\v c}en{\' i} technick{\' e} v Praze}
 % \newacronym{FIT}{FIT}{Fakulta informa{\v c}n{\' i}ch technologi{\' i}}
 \begin{introduction}
-Videohry existují od~počátku prvních počítačů. \cite{rylich} Jejich možnosti se vyvíjejí podobně, jako se vyvíjí výpočetní a~grafický výkon, hardware a~další technologie. Neustálé zmenšování součástek v~současné době nabízí vysoký výkon ve~velmi malých strojích: notebooky, chytré telefony a~dokonce i~hodinky s~vícejádrovými procesory. \cite{kupi}
+Videohry existují od~počátku prvních počítačů. \cite{rylich} Jejich možnosti se vyvíjejí podobně, jako se vyvíjí výpočetní a~grafický výkon, hardware a~další související technologie. Neustálé zmenšování součástek v~současné době nabízí vysoký výkon ve~velmi malých strojích: notebooky, chytré telefony a~dokonce i~hodinky s~vícejádrovými procesory. \cite{kupi}
 
-Na~zmenšování hardwaru se adaptovaly také hry, které se v~hojné míře objevují i~na~přenosných zařízeních, jako jsou mobilní telefony, tablety a~další. Lidé tak~mohou kromě~počítačového stolu hrát doslova kdekoli: nejen doma, ale~i~v~čekárně, ve~škole o~přestávce, na~cestě ve~vlaku a~podobně. Pokud si hráč chce zahrát, nemusí být pouze doma, jako tomu je u~klasických počítačových a~konzolových her. Mobilní zařízení jsou dnes velmi přenosná a~spojená s~lidmi a~jejich životem. Na~základě toho se nabízí otázka, zda~by tyto vlastnosti mohly nějakým způsobem obohatit herní interakci mezi lidmi. Existuje několik způsobů, které se o~tento cíl snaží
+Na~zmenšování hardwaru se adaptovaly také hry, které se v~hojné míře objevují i~na~přenosných zařízeních, jako jsou mobilní telefony, tablety a~další. Lidé tak~mohou hrát doslova kdekoli: nejen doma, ale~i~v~čekárně, ve~škole o~přestávce, na~cestě ve~vlaku a~podobně. Pokud si hráč chce zahrát, nemusí tak být doma, jako je tomu u~klasických počítačových a~konzolových her.
 
-Způsobem, jak~dosáhnout lepší mezilidské interakce ve~hře, je hra více hráčů - multiplayer. Jedná se o~typ hry, kdy na~sebe v~herním světě reaguje více hráčů, ať už v~reálném čase, nebo pomocí sdílení pokroku ve~hře (např. žebříčky). Oba tyto způsoby sice zpřístupňují informace o~hře ostatních lidí, avšak ve~spojení s~internetem nemají až takový vliv na~mezilidskou komunikaci, ale spíše vylepšují vlasnosti herního světa, aby zlepšily hráčův zážitek. Jako příklad uvedu běžného hráče PC hry, který hraje doma v~pokoji multiplayerovou online hru přes~internet: Sice se vyskytuje ve~stejném virtuálním světě jako další lidé, ale vliv na~mezilidskou komunikaci je minimální. Dalším příkladem může být herní interakce pomocí sociálních sítí. Kromě svého pokroku ve~hře vidí hráč i~pokrok ostatních lidí a~může ovlivnit jejich hru. Opět se ale nejedná o~sociální interakci ve~smyslu fyzické přítomnosti. Virtuální realita zde tvoří pouze prostor, skrz který ostatní hráči sledují jeden druhého.
+Mobilní zařízení jsou dnes velmi spojená s~lidmi a~jejich životem. Na~základě toho se nabízí otázka, zda~by tyto vlastnosti mohly nějakým způsobem obohatit herní interakci mezi lidmi. Existuje několik způsobů, které se o~tento cíl snaží:
+
+Způsobem, jak~dosáhnout lepší mezilidské interakce ve~hře, je hra více hráčů: \textit{multiplayer}. Jedná se o~typ hry, kdy na~sebe v~herním světě reaguje více hráčů, ať už v~reálném čase, nebo pomocí sdílení pokroku ve~hře (např. žebříčky). Oba tyto způsoby sice zpřístupňují informace o~hře ostatních lidí, avšak ve~spojení s~internetem nemají až takový vliv na~mezilidskou komunikaci, spíše vylepšují vlasnosti herního světa, aby zlepšily hráčův zážitek. Jako příklad uvedu běžného hráče PC hry, který hraje doma v~pokoji multiplayerovou online hru přes~internet: Sice se pohybuje ve~stejném virtuálním světě jako další lidé, ale vliv na~mezilidskou komunikaci je minimální. Dalším příkladem je herní interakce pomocí sociálních sítí. Kromě svého pokroku ve~hře vidí hráč i~pokrok ostatních lidí a~někdy může ovlivnit jejich hru. Opět se ale nejedná o~sociální interakci ve~smyslu fyzické přítomnosti. Virtuální realita zde tvoří pouze prostor, skrz který ostatní hráči sledují jeden druhého.
 
 I~přes~tyto nevýhody některých her existují způsoby, jak spojit virtuální realitu s~širší mezilidskou komunikací. Jedním z~nich je hra v~lokální síti, kdy jsou hráči fyzicky přítomni na~jednom místě (pokoj, garáž, …). Hráči prožívají stejný herní zážitek jako v~případě hry přes~internet, avšak umocněný přítomností ostatních hráčů. Reakce při~hře pak mohou obsahovat prvky komunikace typické pro mezilidský kontakt ve~fyzické přítomnosti: zvuk, vizuální a~fyzický kontakt, atd.
 
-Další možností je hra na~jednom PC nebo konzoli. Pro~tento způsob je typické sdílení jedné obrazovky (monitor, televize) a~individuální ovládací prvky (gamepad, část klávesnice). Herní svět pak již netvoří virtuální „bariéru“, přes kterou hráč vnímá ostatní lidi, ale stává se součástí prostředí společně s~lidmi, podobně jako například stolní hry.
+Další možností je hra na~jednom PC nebo konzoli. Pro~tento způsob je typické sdílení jedné obrazovky (monitor, televize) a případně ovládacích prvků (část klávesnice). Herní svět pak netvoří virtuální „bariéru“, přes kterou hráč vnímá ostatní lidi, ale stává se součástí prostředí společně s~lidmi, podobně jako například stolní hry.
 
-Tento způsob hry se stal hlavní motivací pro~tvorbu mé práce. Přestože osobně nejsem pravidelný hráč her, velmi mě zajímá využití her ve~snaze obohatit zážitek ze~společenské akce\footnote{Společenskou akcí je myšlena jakákoli vhodná příležitost trávení času s více lidmi. Může to být například návštěva přátel, večírek nebo také volná hodina mezi vyučováním ve škole.}. 
+\subsection{Cíl projektu}
 
-Jednou z možností může být využití mobilních telefonů. Dnešní mobilní telefony v~sobě obsahují velké množství prvků, které lze použít pro interaktivní ovládání (dotykový displej, vibrace, zvuk, akcelerometr, gyroskop a další senzory okolního prostředí), proto se jeví jako vhodné zařízení k~ovládání hry. Pokud spojíme multiplayerovou hru s~jednou hlavní obrazovkou (televize nebo monitor) a~ovládáním pomocí chytrého telefonu, vzniknou nové způsoby, jak propojit reálný svět a hru. Hráči mohou kromě klasického ovládání využít vlastní displej společně s ostatními interaktivními prvky. Tím se herní pole rozšíří od~hlavní obrazovky na~další části prostoru.
+Hraní na~sdílené obrazovce a~v~lokální síti se stalo hlavní motivací pro~tvorbu této práce. Přestože nejsem pravidelný hráč her, velmi mě zajímá využití her ve~snaze obohatit zážitek ze~společenské akce\footnote{Společenskou akcí je myšlena jakákoli vhodná příležitost trávení času s~více lidmi. Může to být například návštěva přátel, večírek nebo~volná hodina mezi vyučováním ve~škole.}. 
 
-V~této práci se budu zabývat hledáním způsobu, jak využít interaktivní prvky mobilních telefonů pro~ovládání počítačové hry. Smartphone tedy nebude sloužit jen jako samostatná herní konzole, ale ani jako simulace periferie typu myš nebo gamepad, ale bude tvořit jednotný celek společně se~samostatným počítačem. Tuto myšlenku se budu snažit demonstrovat vytvořením systému komunikace mezi telefony a~počítačem a~jeho využitím v~jednoduché hře. 
+Jednou ze~způsobů, jak tohoto dosáhnout, může být využití mobilních telefonů. Dnešní mobilní telefony v~sobě obsahují velké množství prvků, které lze použít pro~interaktivní ovládání (dotykový displej, vibrace, zvuk, akcelerometr, gyroskop a~další senzory okolního prostředí), proto se jeví jako vhodné zařízení k~ovládání hry. Pokud spojíme multiplayerovou hru s~jednou hlavní obrazovkou (televize nebo monitor) a~ovládáním pomocí chytrého telefonu, vzniknou nové způsoby, jak propojit reálný svět s~hrou. Hráči mohou kromě klasického ovládání využít vlastní displej společně s~ostatními interaktivními prvky. Tím se herní pole rozšíří od~hlavní obrazovky na~další části prostoru.
+
+V~této práci se budu zabývat hledáním způsobu, jak využít interaktivní prvky mobilních telefonů pro~ovládání počítačové hry. Smartphone tedy nebude sloužit jen jako samostatná herní konzole, ale ani jako simulace periferie typu myš nebo gamepad. Bude tvořit jednotný celek společně se~samostatným počítačem. Tuto myšlenku se budu snažit demonstrovat vytvořením systému komunikace mezi telefony a~počítačem a~jeho využitím v~jednoduché hře.
 
 \end{introduction}
 
 \chapter{Ovládání her}
 
-V~první kapitole se budu nejprve zabývat problematikou ovládání her v~současné době a~to jak na~počítačích, tak i~na~dalších zařízeních. Stručně se zmíním o~historii vývoje ovladačů a~poté zmíním nejpoužívanější periferie v~dnešní době.
+V~první kapitole se budu nejprve zabývat problematikou ovládání her v~současné době a~to jak na~počítačích, tak i~na~dalších zařízeních. Stručně se zmíním o~historii vývoje ovladačů a~poté zmíním nejpoužívanější periferie v~dnešní době. Z toto přehledu budu vycházet při zkoumání alternativních ovládacích prvků, jejich možností a přínosů.
  
-Ovládání počítačových her úzce souvisí s~vývojem hardwaru a~především počítačových periferií. Nebudu se zabývat softwarovým návrhem uživatelského ovládání, ale spíše využitím hardwaru pro~herní účely. Hlavní náplní bude srovnání několika rozdílných způsobů ovládání, jejich přínosů a~nevýhod. 
-
-%https://books.google.cz/books?id=hWSUAgAAQBAJ&pg=PT111&dq=game+controller+typology&hl=cs&sa=X&ved=0ahUKEwjumM6j65jMAhXFNpoKHcHEAeQQ6AEIJzAB#v=onepage&q=game%20controller%20typology&f=false
+Ovládání počítačových her úzce souvisí s~vývojem hardwaru a~především počítačových periferií. Nebudu se zabývat softwarovým návrhem uživatelského ovládání, ale spíše využitím hardwaru pro~herní účely. Hlavní náplní bude srovnání několika rozdílných způsobů ovládání, jejich přínosů a~nevýhod.
 
 \section{Historie ovladačů}
 
-Nejprve se stručně zaměřím na~historii vývoje hardwaru pro~ovládání her. Počítačové hry jako takové se začaly objevovat v~50. letech 20. století. Hardware dostupný v~této době nebyl určený pro~herní zaměření, např. známá hra \textit{Tennis for Two} vytvořená Williamem Higinbothamem v~roce 1958 v~národní laboratoři v~Brookhavenu využívala osciloskop jako grafický displej pro~zobrazení primitivní dvourozměrné hry a~jako ovládání sloužilo jedno tlačíko a~otočný regulátor.\cite{gamevshardware}
+Počítačové hry jako takové se začaly objevovat v~50. letech 20. století. Hardware dostupný v~této době nebyl určený pro~herní zaměření, např. známá hra \textit{Tennis for Two} vytvořená Williamem Higinbothamem v~roce 1958 v~národní laboratoři v~Brookhavenu využívala osciloskop jako grafický displej pro~zobrazení primitivní dvourozměrné hry a~jako ovládání sloužilo jedno tlačíko a~otočný regulátor.\cite{gamevshardware}
 
 Větší rozvoj herního hardwaru začal v~roce 1971. Byl vytvořen první herní automat na~mince s~hrou \textit{Galaxy Game}. Jednalo se o~hru pro~dva hráče ovládánou jednoduchým joystickem. Později se začaly objevovat další automaty, využívaly jak tlačítka a~joystick, tak i~volant.
 
 Hry se tedy objevovaly především na~herních konzolích. Vzhledem k~narustajícím prodejům osobních PC se hry dostávaly i~do~této oblasti, kde byla nejrozsířenejší periferií klávesnice. Vývoj herních konzolí se však nezastavil.
 
-Převrat v~ovládání PC, a~to i~v~herním průmyslu, způsobil příchod počítačové myši, jak ji známe dnes. Mnoho herních konceptů bylo vylepšeno a~pro~hráče to představovalo větší pohodlí při~hraní. \cite{gamevshardware} Kromě toho se vyvíjely alternativní typy ovládání, některé úzce spojeny s herním žánrem (joystick, volant), nebo naopak vhodné pro velké množství her (gamepad).
+Převrat v~ovládání PC, a~to i~v~herním průmyslu, způsobil příchod počítačové myši, jak ji známe dnes. Mnoho herních konceptů bylo vylepšeno a~pro~hráče to představovalo větší pohodlí při~hraní. \cite{gamevshardware} Kromě toho se vyvíjely alternativní typy ovládání, některé úzce spojeny s~herním žánrem (joystick, volant), nebo naopak vhodné pro~velké množství her (gamepad).
 
-Kromě klasických ovladačů se začaly objevovat také snahy o~přirozenější ovládání pomocí pohybu, tzv. \textit{motion sensing}. Vzniklo proto několik ovladačů a~herních konzolí, z nichž nejvýznamější je Microsoft Kinect vzniklý v~roce 2010.\cite{wikicontrollers} Více se problematice ovládání pohybem věnuji v sekci \ref{section:motion_capture}.
+Kromě klasických ovladačů se začaly objevovat také snahy o~přirozenější ovládání pomocí pohybu, tzv. \textit{motion sensing}. Vzniklo proto několik ovladačů a~herních konzolí, z~nichž nejvýznamější je Microsoft Kinect vzniklý v~roce 2010.\cite{wikicontrollers} Více se problematice ovládání pohybem věnuji v~sekci \ref{section:motion_capture}.
 
-V~současné době se využívá široká škála způsobu a technologií ovládání. Následující kapitoly budou věnovány těm nejvíce rozšířeným především v~osobních počítačích. Vysvětlím, k~čemu se dají vhodně využít a~jaké mají nedostatky. Následující přehled bude zároveň tvořit podklad pro~analýzu v~praktické části práce.
+V~současné době se využívá široká škála způsobu a~technologií ovládání. Následující kapitoly budou věnovány těm nejvíce rozšířeným především v~osobních počítačích. Vysvětlím, k~čemu se dají vhodně využít a~jaké mají nedostatky. Následující přehled bude zároveň tvořit podklad pro~analýzu v~praktické části práce.
 
 \section{Klávesnice}
 
 Klávesnice je nejpoužívanější počítačovou periferií vůbec. Její princip je velmi jednoduchý: každé stisknutí či uvolnění tlačítka způsobí odeslání informace do~PC. Je možné detekovat události více tlačítek najednou, čehož využívají klávesové zkratky.
 
-V~herním průmyslu se klávesnice využívá v~drtivé většině herních žánrů od~jednoduchých arkád, přes~závody až po~strategie. Jsou vhodné, pokud je potřeba rozlišit větší množství uživatelských vstupů, které mohou reprezentovány jednotlivými klávesami.
+V~herním průmyslu se klávesnice využívá v~drtivé většině herních žánrů od~jednoduchých arkád, přes~závody až po~strategie. Jsou vhodné, pokud je potřeba rozlišit větší množství vstupů, které reprezentují jednotlivé klávesy.
 
-Klávesnice ale nemusí být vždy ideální volbou. Diskrétní zpracování vstupu (stisknuto, nestisknuto) představuje nepohodlí při~ovládání závodní hry: v~zatáčení je zhoršená citlivost, auto buď zatáčí naplno, nebo vůbec. Tento nedostatek se vývojáři snaží řešit například postupným natáčením kol, ale ani to není ideální. Při zatočení v~menší zatáčce je nutné přerušovaně uvolňovat klávesu, aby se vytvořila iluze mírně natočeného volantu. V~kombinaci s~myší může být nevýhodou horší dostupnost kláves vzdálenějších od~ruky.
+Klávesnice ale nemusí být vždy ideální volbou. Diskrétní zpracování vstupu (stisknuto, nestisknuto) představuje nepohodlí při~ovládání závodní hry: v~zatáčení je zhoršená citlivost, auto buď zatáčí naplno, nebo vůbec. Tento nedostatek se vývojáři snaží řešit postupným natáčením kol, ale ani to není ideální. Při zatočení v~menší zatáčce je nutné přerušovaně uvolňovat klávesu, aby se vytvořila iluze mírně natočeného volantu. V~kombinaci s~myší může být nevýhodou horší dostupnost kláves vzdálenějších od~ruky.
 
 \section{Myš}
 
@@ -109,21 +110,21 @@ Nevýhodou při~používání myši je jednostranná zátěž. Kvůli pohybu po~
 
 \section{Gamepad}
 
-Gamepad je čistě herní periferie. Je to ovladač tvarovaný pro~použítí oběma rukama. Nachází se na~něm množství tlačítek a~může být doplněn jedním, nebo dvěma analogovými joysticky. Některé verze nabízejí i vibrační odezvu. Nejdříve se využíval u~herních konzolí, s~rozvojem osobních PC se však stal i~zde velmi populární.
+Gamepad je čistě herní periferie. Je to ovladač tvarovaný pro~použítí oběma rukama. Nachází se na~něm množství tlačítek a~může být doplněn jedním, nebo dvěma analogovými joysticky. Některé verze nabízejí i~vibrační odezvu. Nejdříve se využíval u~herních konzolí, s~rozvojem osobních PC se však stal i~zde velmi populární.
 
-Primarní zaměření na~hry dělá z~gamepadu vynikající ovladač pro~mnoho herních žánrů. Eliminuje problém ergonomie myši a~klávesnice a~všechna tlačítka jsou snadno dostupná. Proto se stal velmi oblíbeným.
+Primarní zaměření na~hry dělá z~gamepadu vynikající ovladač pro~mnoho herních žánrů. Eliminuje problém ergonomie myši a~klávesnice a~všechna tlačítka jsou snadno dostupná. Proto je velmi často využíván.
 
-Z~hlediska intuitivního ovládání gamepad zaostává podobně jako myš a~klávesnice. Hry jsou sice s~ním dobře ovladatelné, avšak často je potřeba tréninku pro~zvládnutí složitějších principů ovládání.
+Z~hlediska intuitivního ovládání gamepad zaostává podobně jako myš a~klávesnice. Hry jsou s~ním sice dobře ovladatelné, avšak často je nutný trénink pro~zvládnutí složitějších principů ovládání a~tlačítkových kombinací.
 
 \section{Joystick a volant}
 
-Joystick a~volant představují ovladače pro~specifičtější druhy her, na~druhou stranu mmohem věrněji simulují realitu.
+Joystick a~volant představují ovladače pro~specifické druhy her.
 
 Základní částí joysticku je páka umístěná kolmo v~pohyblivém kloubu. Má nejlepší uplatnění v~leteckých simulátorech, kde náklon páky mění polohu leteckých klapek. Ovládání je intuitivní a~snaží se přiblížit k~realitě.
 
 Účelem volantu je simulace ovládání závodního vozu. Obvykle je dodáván s~dvěma nebo třemi pedály a~případně řadicí pákou. Vyšší modely mají vibrační odezvu, při vyjetí z~vozovky tak hráč cítí haptickou odezvu.
 
-Joystick a~volant pomáhají věrně simulují letecké nebo~závodní prostředí, pro~které jsou určeny. Na~rozdíl od~předešlých periferií jsou ale použitelné pouze v~úzké oblasti her.
+Joystick a~volant pomáhají věrně simulovat letecké nebo~závodní prostředí, pro~které jsou určeny. Na~rozdíl od~předešlých periferií jsou ale použitelné pouze v~úzké oblasti her, proto bývají nenáročnými hráči nahrazovány gamepadem nebo~klávesnicí.
 
 \section{Dotyková obrazovka}
 
@@ -131,25 +132,25 @@ Dotyková obrazovka na~osobních počítačích není v~současné době masově
 
 \section{Ovládání pohybem}
 
-Kromě tradičních hardwarových periferií existují další technologie, jak~ovládat hry, a~to~pomocí přirozeného pohybu člověka. Tyto systémy snímají gesta a~pohyby hráče nebo ovladače a~podle nich vypočítají reakci ve~hře. Takovéto ovládání bývá snadné na~naučení, protože navozuje pocit přirozené reakce na~podněty herního prostředí.
+Kromě tradičních hardwarových periferií existují další technologie, jak~ovládat hry, a~to~pomocí přirozeného pohybu člověka. Tyto systémy snímají gesta a~pohyby hráče nebo ovladače a~podle nich vypočítají reakci ve~hře. Ovládání bývá snadné na~naučení, protože navozuje pocit přirozené reakce na~podněty herního prostředí.
 
-V~této kapitole zmíním dvě technologie: motion capture (neboli snímání pohybu těla) a~akcelerometr. Obě tyto technologie silně rozšířují možnosti interakce s~elektronickými zařízeními, fungují však na~odlišném principu.
+V~této kapitole zmíním dvě technologie: motion capture (neboli snímání pohybu těla) a~ovládání pomocí akcelerometru. Obě tyto technologie rozšiřují možnosti interakce s~elektronickými zařízeními, jsou včak odlišně složité a~fungují na~jiném principu.
 
 \subsection{Akcelerometr}
 \label{section:accelerometer}
 
-Akcelerometr je elektromechanické zařízení, které měří zrychlení sil ve~3 osách. Tyto síly mohou být statické, jako například tíhová síla, nebo dynamické - způsobeny pohybem nebo vibrováním akcelerometru.\cite{acc} Tato součástka umožňuje detekovat natočení zařízení v~prostoru a~jeho přibližný pohyb.
+Akcelerometr je elektromechanická součástka, která měří zrychlení sil ve~3 osách. Tyto síly mohou být statické, jako například tíhová síla, nebo dynamické - způsobeny pohybem nebo vibrováním akcelerometru.\cite{acc} Tato součástka umožňuje detekovat natočení zařízení v~prostoru a~jeho přibližný pohyb.
 
 V~herním průmyslu se využívá především v~mobilních zařízeních a~v~herních konzolích. Může nahradit joystick, emulace volantu nebo polohovacího zařízení. 
 
-V~případě, že~jako vstupní zdroj informace je poloha zařízení, může v~nevhodném prostředí docházet k~rušení: například při~jízdě v~autobuse je téměř nemožné hrát závodní hru, jelikož při zatáčení autobusu bude síla působící na~akcelerometr vychýlená a~bude tak docházet k~nechtěnému zatáčení.
+V~případě, že~jako vstupní zdroj informace je poloha zařízení, může v~nevhodném prostředí docházet k~rušení: například při~jízdě v~autobuse je téměř nemožné hrát závodní hru, jelikož při zatáčení autobusu je síla působící na~akcelerometr vychýlená a~dochází k~nechtěnému zatáčení.
 
 Další informace o~pohybovém senzoru jsou uvedeny v~sekci \ref{section:accelerometer}.
 
 \subsection{Motion capture}
 \label{section:motion_capture}
 
-Velmi zajímavou technologií je ovládání pohybem, tzv. \textit{motion capture}. Jedná se o~snímání části nebo~celého těla a~jeho převod v~reálném čase na~digitální model. Ten se využívá mimo jiné také k~ovládání hry. Nejvýraznějším ovladačem v~herním průmyslu se stal \textit{Kinect} vyvinutý v~roce 2009 firmou Microsoft. \cite{meetthekinect}
+Velmi zajímavou technologií je ovládání pohybem, tzv. \textit{motion capture}. Jedná se o~snímání části nebo~celého těla a~jeho převod v~reálném čase na~digitální model. Ten se využívá mimo jiné k~ovládání hry. Nejvýraznějším ovladačem v~herním průmyslu se stal \textit{Kinect} vyvinutý v~roce 2009 firmou Microsoft. \cite{meetthekinect}
 
 Motion capture se hodí například pro~sportovní nebo~akční hry a~to i~při více hráčích. Nevýhodou může být nutnost poměrně velkého prostoru pro~potřeby hraní.
 
@@ -176,9 +177,9 @@ Motion capture & - velmi přirozené ovládání & - potřeba většího prostor
 
 \chapter{Interaktivní prvky v mobilních telefonech}
 
-V~první kapitole jsem představil nejčastější herní ovladače, které se využívají v~herních konzolích a~osobních počítačích. V~následující kapitole se budu věnovat analýze mobilních telefonů a~jejich senzorů interagujících s~okolním prostředím. Popíšu principy fungování a~budu zkoumat jejich herní využití jak v~mobilních hrách, tak jako interaktivní ovladač pro~počítačovou hru. Některé z těchto senzorů pak využiji při~tvorbě interaktivního ovladače v~kapitole~\ref{chapter:implementation}.
+V~první kapitole jsem představil nejběžnější herní ovladače, které využívají herní konzole a~osobní počítače. V~následující kapitole se budu věnovat analýze mobilních telefonů a~jejich senzorů interagujících s~okolním prostředím. Popíšuc jejich princip fungování a~budu zkoumat herní využití jak v~mobilních hrách, tak jako interaktivní ovladač pro~počítačovou hru. Některé z těchto senzorů pak využiji při~tvorbě interaktivního ovladače v~kapitole~\ref{chapter:implementation}.
 
-Senzory se budu snažit využít tak, aby mobilní telefon nesloužil pouze jako vstupní zařízení, a~proto se jej budu snažit provázat s~hrou samotnou. To umožní rozšířit herní realitu, kdy se ovladač stává neoddělitelnou součástí samotné hry. Zároveň to nabízí nové možnosti herních principů, které by na~tradičních periferiích nebyly realizovatelné.
+Senzory se budu snažit využít tak, aby mobilní telefon nesloužil pouze jako vstupní zařízení, ale byl provázán s~hrou samotnou. To umožní rozšířit herní realitu a ovladač vytvoří neoddělitelný celek s~hrou. Zároveň to nabídne nové možnosti herních principů, které by na~tradičních periferiích nebyly realizovatelné.
 
 \section{Dotykový displej}
 \label{section:touchscreen}
@@ -187,18 +188,18 @@ Dotykový displej je označení pro~kombinaci zobrazovacího displeje a~průhled
 
 Kapacitní dotykový panel využívá elektrické vodivosti vnějších těles. Dotyk takového tělesa s~povrchem displeje naruší elektrostatické pole obrazovky a~jeho lokaci pak dále zpracuje řadič. Proto kapacitní displeje fungují pouze s~vodivými předměty jako je lidský prst nebo~speciální stylus. \cite{gray2013does}
 
-Dotykové displeje nabízejí velmi široké možnosti uplatnění ve~hrách. Na~rozdíl od~klasických ovladačů totiž propojují zobrazení grafiky se~samotným ovládáním. Například přesun objektů v~herním světě je velmi přirozený: hráč se jednoduše dotkne objektu a~tahem prstu jej přesune po~obrazovce. Ve~srovnání s~počítačovou myší pak odpadá \textit{mezivrstva} ve~formě periferie připojené k~zařízení a~hráčův prst se tak stává samotným kurzorem.
+Dotykové displeje nabízejí velmi široké možnosti uplatnění ve~hrách. Na~rozdíl od~klasických ovladačů totiž propojují zobrazení grafiky se~samotným ovládáním. Například přesun objektů v~herním světě je velmi přirozený: hráč se jednoduše dotkne objektu a~tahem prstu jej přesune po~obrazovce. Ve~srovnání s~počítačovou myší odpadá \textit{mezivrstva} ve~formě periferie připojené k~zařízení a~hráčův prst se tak stává samotným kurzorem.
 
-Možnosti dotykových displejů, jako jsou gesta a~snímání více dotyků najednou, zásadním způsobem zjednodušily ovládání mobilních telefonů a~tedy i~jejich her, z~nichž některé jsou přímo postaveny na~využití dotykových displejů. Jednu z~nich představuje úspěšná hra \textit{Fruit Ninja}\cite{fruitninja}. \todo{Přidat obrázek s Fruit Ninja} Hlavní ovládací prvek tvoří tah prstem, který simuluje seknutí čepelí. Hráč se snaží jedním seknutím přeseknout co největší množství letícího ovoce najednou. Hra se stala příkladnou ukázkou využití dotykové obrazovky: letící ovoce je podnětem, abyse hráč trefil do~daného místa na~obrazovce. Hra a~ovládání tak splývají v~jednu ucelenou část.
+Možnosti dotykových displejů, jako jsou gesta a~snímání více dotyků najednou, zásadním způsobem zjednodušují ovládání mobilních telefonů a~tedy i~mobilních her. Některé jsou přímo postaveny na~využití dotykových displejů, např. úspěšná hra \textit{Fruit Ninja}\cite{fruitninja}. \todo{Přidat obrázek s Fruit Ninja} Hlavní ovládací prvek tvoří tah prstem, který simuluje seknutí čepelí. Hráč se snaží prstem přeseknout co největší množství letícího ovoce najednou. Hra se stala příkladnou ukázkou využití dotykové obrazovky: letící ovoce je podnětem, abyse hráč trefil do~daného místa na~obrazovce a ovládání přímo koresponduje se zobrazovanou grafikou (pokaždé je pro~optimální přeseknutí potřeba jiné gesto prstem). Hra a~ovládání tak splývají v~jednu ucelenou část.
 
-Této provázanosti se dá využít i~v~počítačové hře ovládané mobilním telefonem. Hlavní herní scéna je zobrazována na~displeji počítače a~hráč drží v~ruce ovladač (mobilní telefon), který je úzce provázán s~hrou v~PC. Dotyková obrazovka pak může plnit funkci jak ovládací, tak i~zobrazovací. To nemusí být nutně výhodou, protože při ovládání hry se hráč přirozeně soustředí především na~herní obraz v~PC a~může být nepohodlné často měnit pohled z~monitoru na~mobil. Pokud se ale například jedná o~hru více hráčů, otevírají se nové možnosti, jak využít individuální obrazovku pro~každého hráče, který tím získá soukromý zobrazovací prostor a~ten může poskytovat přídavné informace. Tuto techniku využívám v~kapitole \cite{chapter:implementation} v~implementaci demonstrační hry, kdy hráč při získání bonusu neviditelnosti zmizí z~hřiště na~hlavní obrazovce a~začne se mu na~mobilním displeji zobrazovat kompletní herní scéna i~se~zmizelým hráčem. Protivníci tím pádem ztrácí informaci o~hráčově pozici a~on získává herní výhodu. Této techniky lze dosáhnout pouze úzkým provázáním hry a~ovladače. Vzhledem k~těmto schopnostem mobilních telefonů v~kombinaci s~dostatečným výkonem, dalšími senzory a~rychlou bezdrátovou komunikací má využití dotykového displeje velký potenciál.
+Této provázanosti se dá využít i~v~počítačové hře ovládané mobilním telefonem: Hlavní herní scéna je zobrazována na~displeji počítače a~hráč drží v~ruce ovladač (mobilní telefon), který je úzce provázán s~hrou v~PC. Dotyková obrazovka pak plní funkci jak ovládací, tak i~zobrazovací. To nemusí být nutně výhodou, protože při ovládání hry se hráč přirozeně soustředí především na~herní obraz v~PC a~může být nepohodlné často měnit pohled z~monitoru na~mobil. Pokud je ale hra pro více hráčů, otevírají se nové možnosti, jak využít individuální obrazovku pro~každého hráče, který tím získá soukromý zobrazovací prostor a~ten může poskytovat přídavné informace. Tuto techniku využívám v~implementaci demonstrační hry, kdy hráč při získání bonusu neviditelnosti zmizí z~hřiště na~hlavní obrazovce a~začne se mu na~mobilním displeji zobrazovat kompletní herní scéna i~se~zmizelým hráčem. Protivníci tím pádem ztrácí informaci o~hráčově pozici a~on získává herní výhodu. Této techniky lze dosáhnout pouze úzkým provázáním hry a~ovladače. Vzhledem k~těmto schopnostem mobilních telefonů v~kombinaci s~dostatečným výkonem, dalšími senzory a~rychlou bezdrátovou komunikací má využití dotykového displeje velký potenciál.
 
-Kromě toho je dotyková obrazovka v~implementaci využita jako vstupní zařízení ve~formě tlačítek a~to jak při~klasickém ovládání, tak i~při~aktivní neviditelnosti souběžně se zobrazováním hry.
+Kromě toho je dotyková obrazovka v~implementaci využita jako vstupní zařízení ve~formě tlačítek a~to jak při~klasickém ovládání, tak i~při~aktivní neviditelnosti souběžně se~zobrazováním hry.
 
 \section{Akcelerometr}
 \label{section:accelerometer}
 
-Dalším interaktivním senzorem akcelerometr, jehož princip vysvětluje kapitola \ref{section:accelerometer}. Objevuje se jak v~ovladačích k~herním konzolím, tak v~mobilních telefonech, kde plní několik funkcí: zajišťuje automatickou orientaci displeje v~závislosti na~natočení mobilu, pohybová gesta jako například zatřesení~nebo položení displejem dolů mohou sloužit k~ovládání systému a~široké využití má ve~hrách.
+Dalším interaktivním senzorem akcelerometr, jehož princip vysvětluje kapitola \ref{section:accelerometer}. Objevuje se jak v~ovladačích k~herním konzolím, tak v~mobilních telefonech, kde plní různé funkce: zajišťuje automatickou orientaci displeje v~závislosti na~natočení mobilu, pohybová gesta jako například zatřesení~nebo položení displejem dolů mohou sloužit k~ovládání systému a~široké využití má ve~hrách.
 
 Existuje velké množství mobilních her využívající náklon telefonu k~ovládání. Následující výčet obsahuje přehled nejčastějších použití ve~hrách a~související příklady \cite{accelerometergames}:
 
@@ -209,7 +210,7 @@ Existuje velké množství mobilních her využívající náklon telefonu k~ovl
 	\item Náklon telefonu mění pozici herního objektu (Donkey Jump, Box Busters)
 \end{itemize}
 
-Pro~interaktivní ovladač k~PC hře je použití akcelerometru ideální volbou. Pohyb herního objektu náklonem telefonu vtahuje hráče intenzivnějši než~ovládání například tlačítky. 
+Pro~interaktivní ovladač k~PC hře je použití akcelerometru ideální příležitostí. Pohyb herního objektu náklonem telefonu je pro~člověka přirozenější a~vtahuje hráče intenzivnějši než~ovládání tlačítky. 
 
 Využití akcelerometru v~praktické části práce je podobné jako ve~hře Donkey Jump, na~rozdíl od~ní však nabídne pohyb do~všech směrů ve~2D prostoru.
 
@@ -219,7 +220,7 @@ Gyroskop je součástka pro~detekci polohy zařízení. Měří změnu úhlu nat
 
 \section{Senzor přiblížení}
 
-Posledním zde uvedeným senzorem je senzor přiblížení, nebo také \textit{proximity senzor}. Funguje na~principu detekce elektromagnetického záření, které generuje vysílač. V~případě přiblížení objektu do~blízkosti snímače je zaznamenán odraz záření zpět k~senzoru a~je tak vyhodnocena blízkost objektu. \cite{proximity}
+Senzor přiblížení, nebo také \textit{proximity senzor} funguje na~principu detekce elektromagnetického záření, které generuje vysílač. V~případě přiblížení objektu do~blízkosti snímače je zaznamenán odraz záření zpět k~senzoru a~je tak vyhodnocena vzdálenost objektu. \cite{proximity}
 
 Nejběžnější využití proximity senzoru v~mobilním telefonu je při~hovoru. Před~přiložením k~uchu senzor detekuje blízkost hlavy a~zhasne displej. Zabráním tím tak nechtěnému ukončení hovoru dotykem ucha s~obrazovkou.
 
@@ -233,45 +234,45 @@ Současné mobilní telefony mohou disponovat ještě několika dalšími senzor
 
 V~této kapitole byly popsány nejčastější interaktivní senzory vyskytující se v~dnešních mobilních telefonech, jejich princip a~možné využití. V~kapitole \ref{chapter:implementation} se budu snažit některé z~nich využít při~tvorbě interaktivního ovladače pro~PC hru. 
 
-\chapter{Analýza stávajících řešení}
+\chapter{Podobná řešení}
 
-V současné době existují řešení využívajíci mobilní telefon k ovládání jiné hry. Každé řešení však obsahuje nedostatky a je tak narušena výsledná interaktivita mezi hráči.
+Před samotnou tvorbou softwarového projektu zmíním podobné systémy na~trhu. V~současné době již existují řešení využívajíci mobilní telefon k~ovládání jiné hry. Každé z~nich však obsahuje nedostatky a~narušuje tak výslednou interaktivitu hry.
 
 \section{Telefon jako univerzální gamepad}
 
-Na~internetu existuje velké množství aplikací, které nabízejí funkcionalitu podobnou bezdrátovému gamepadu. Ukázkou takové aplikace je např. Mobile Gamepad \cite{mobilegamepad} Po~nainstalování příslušného ovladače do~PC je možné využít telefon jako vstupní zařízení: umožňuje nastavit si tlačítka na~displeji, pohybový senzor atd.
+Na~internetu existuje velké množství aplikací, které nabízejí funkcionalitu podobnou bezdrátovému gamepadu. Ukázkou takové aplikace je např. Mobile Gamepad \cite{mobilegamepad} Po~nainstalování příslušného ovladače do~PC je možné využít telefon jako vstupní zařízení: umožňuje nastavit si tlačítka na~displeji, pohybový senzor jako joystick atd.
 
-Výhoda tohoto řešení je možnost ovládat PC podobně jako jiné ovládací periferie a~díky tomu není ovladač vázán na~konkrétní hru. Co však brání použití v~interaktivní hře, je absence jiných funkcí než těch, které již obsahují gamepady a podobné ovládací prvky. To je způsobeno univerzálností ovladače. Pro zachování standardizovaného ovládacího rozhraní a~chování jako klasické vstupní zařízení počítače není umožněna širší komunikace s~hrou. Tyto aplikace tak nabízejí stejnou nebo často i~méně kvalitnější alternativu ke klasickým herním gamepadům a~jiným ovladačům. 
+Výhodou tohoto řešení je možnost ovládat PC podobně jako jiné ovládací periferie a~díky tomu není ovladač vázán na~konkrétní hru. Co však brání použití v~interaktivní hře, je absence jiných funkcí než těch, které již obsahují gamepady a~podobné ovládací prvky. To je způsobeno univerzálností ovladače. Pro~zachování standardizovaného ovládacího rozhraní a~chování jako klasické vstupní zařízení počítače není umožněna širší komunikace s~hrou. Tyto aplikace tak nabízejí stejnou nebo často i~méně kvalitnější alternativu ke~klasickým herním gamepadům a~jiným ovladačům. 
 
 \section{Apple AirPlay}
 
-Firma Apple nabízí pro~své telefony funkci sdílení obrazu na externí obrazovku. Toho je docíleno pomocí zařízení AppleTV a~bezdrátové technologie AirPlay\cite{airplay}.
+Společnost Apple nabízí pro~své telefony funkci sdílení obrazu na~externí obrazovku. Toho je docíleno pomocí zařízení AppleTV a~bezdrátové technologie AirPlay\cite{airplay}.
 
-Toto řešení již lépe využívá interaktivní možnosti mobilních přístrojů, integrovaný displej tvoří druhou obrazovku, může zobrazovat například ovládání dobře optimalizované pro~konkrétní hru nebo dodatečné informace o~hře (skóre, počet ujetých kol atd.). Zásadní nevýhodou však je nemožnost hrát hru ve~více hráčích. To je způsobeno zvolenou architekturou: herní logika včetně vykreslování běží na straně mobilního zařízení a~do~externí obrazovky se přenáší pouze obraz.
+Toto řešení již lépe využívá interaktivní možnosti mobilních přístrojů, integrovaný displej tvoří druhou obrazovku, může zobrazovat ovládání dobře optimalizované pro~konkrétní hru nebo~dodatečné informace o~hře (skóre, počet ujetých kol atd.). Zásadní nevýhodou však je nemožnost hrát hru ve~více hráčích kvůli zvolené architektuře: herní logika včetně vykreslování běží na~straně mobilního zařízení a~do~externí obrazovky se přenáší pouze obraz.
 
 \section{AirConsole}
 
-Řešením, které se nejvíce podobá tématu této bakalářské práce, je herní platforma švýcarského startupu AirConsole\cite{airconsole}. Jedná se o~webovou aplikaci společně s~multiplatformní mobilní aplikací. Pomocí webového prohlížeče se vytvoří hra a~k~ní se připojí telefony jako ovladače. V~nabídce je několik různých her a~každá má vlastní ovladač v rámci mobilní aplikace. Samotná hra tedy probíhá na obrazovce počítače. AirConsole také poskytuje API, takže je možné vytvořit vlastní hru v~HTML5 nebo herním enginu Unity a~propojit ji~s~tímto systémem.
+Řešením, které se nejvíce podobá tématu této bakalářské práce, je herní platforma švýcarského startupu AirConsole\cite{airconsole}. Jedná se o~webovou aplikaci společně s~multiplatformní mobilní aplikací. Pomocí webového prohlížeče se vytvoří hra a~k~ní se připojí telefony jako ovladače. V~nabídce je několik různých her a~každá má vlastní ovladač v rámci mobilní aplikace. Samotná hra tedy probíhá na obrazovce počítače. AirConsole také poskytuje API, takže lze vytvořit vlastní hru v~HTML5 nebo herním enginu Unity a~propojit ji~s~tímto systémem.
 
-Bohužel i~zde se objevují nedostatky. Spojení probíhá přes externí servery, konkrétně přes infrastrukturu Google\cite{airconsole}. Kvůli nutnosti komunikace PC - Google server a telefony - Google server má spojení vyšší odezvu, což silně ovlivňuje zážitek ze~hry. Ovládací rozhraní je vytvořené pomocí HTML5, na~displeji se tedy vykresluje webová vrstva. Zpracování dotyku v~tomto případě není ideální, objevují se chyby (například špatná detekce kliknutí) a~projevuje se vyšší odezva. Zároveň ovládání nevyužívá interaktivní možností mobilních telefonů, jediný možný způsob interakce je pomocí dotykového displeje, proto se jedná o podobný princip, jako je emulace gamepadu.
+Bohužel i~zde se objevují nedostatky. Spojení probíhá přes externí servery, konkrétně přes infrastrukturu Google\cite{airconsole}. Kvůli nutnosti komunikace \textit{PC - Google server} a \textit{telefony - Google server} má spojení vyšší odezvu, což silně ovlivňuje zážitek ze~hry. Ovládací rozhraní je vytvořené pomocí HTML5, na~displeji se tedy vykresluje webová vrstva. Zpracování dotyku v~tomto případě není ideální, objevují se chyby (například špatná detekce kliknutí) a~projevuje se vyšší odezva. Zároveň ovládání nevyužívá interaktivní možností mobilních telefonů, jediný možný způsob interakce je pomocí dotykového displeje. AirConsole tak vytváří podobnou funkcionalitu, jako je emulace gamepadu.
 
-Přes všechny tyto nedostatky se AirConsole nejvíce blíží projektu této bakalářské práce, především tedy hlavním cílem, a to vytvořit herní platformu podporující mezilidskou komunikaci lidí fyzicky přítomných na jednom místě.
+Přes~všechny tyto nedostatky se AirConsole nejvíce blíží projektu této bakalářské práce, především hlavním cílem, a~to vytvořit herní platformu podporující mezilidskou komunikaci lidí fyzicky přítomných na jednom místě.
 
 \section{Možnosti řešení}
 
-V rámci bakalářské práce jsem nalezl tři možnosti řešení a z nich si zvolím jedno řešení, které bude implementováno.
+V rámci bakalářské práce jsem nalezl tři možnosti řešení, jak odstranit nedostatky předchozích systémů:
 
 \subsection{Rozšíření existující PC hry}
 
-Prvním způsobem vytvoření ovládání pomocí mobilního telefonu je vytoření mobilního ovladače k již existující PC hře s otevřeným zdrojovým kódem. Stěžejní částí by bylo vytvoření „adaptéru“ napojeného na mobilní telefon. Nevýhodou je rozsáhlost takového projektu a složitost jejího rozšíření o interaktivní prvky.
+Prvním způsobem vytvoření ovládání pomocí mobilního telefonu je vytoření mobilního ovladače k~již existující PC hře s~otevřeným zdrojovým kódem. Stěžejní částí by bylo vytvoření „adaptéru“ napojeného na~mobilní telefon. Nevýhodou je rozsáhlost takového projektu a~složitost jejího rozšíření o~interaktivní prvky.
 
 \subsection{Univerzální herní ovladač}
 
-Druhým způsobem je vytvoření mobilní aplikace poskytující rozhraní pro komunikaci s libovolnou hrou. Takto je vytvořen systém AirConsole. Jeho velkou výhodou je univerzálnost použítí, kdy jedna mobilní aplikace může být využita pro mnoho her, které implemetují požadované rozhraní. Pro univerzální použití včetně interaktivních senzorů by však muselo rozhraní podporovat velké množství funkcí, např. definice ovládání, načtení grafiky z libovolné hry, poskytnutí ovládací logiky mobilnímu ovladači a funkce pro využití mobilních senzorů. Složitost tohoto řešení však překračuje rozsah bakalářské práce.
+Druhým způsobem je vytvoření mobilní aplikace poskytující rozhraní pro~komunikaci s~libovolnou hrou. Takto je vytvořen systém AirConsole. Jeho velkou výhodou je univerzálnost použítí, kdy jedna mobilní aplikace může být využita pro~mnoho her, které implemetují požadované rozhraní. Pro~univerzální použití včetně interaktivních senzorů by však muselo rozhraní podporovat velké množství funkcí, např. definice ovládání, načtení grafiky z~libovolné hry, poskytnutí ovládací logiky mobilnímu ovladači a~funkce pro~využití mobilních senzorů. Složitost tohoto řešení však překračuje rozsah bakalářské práce.
 
 \subsection{Komunikační modul}
 
-Třetí možností je vytvoření systému pro síťovou komunikaci jak na straně PC, tak na straně ovladače. Takovéto řešení by bylo možné použít v libovolné hře, ale s nutností vytvořit mobilní ovladač na míru ke hře. Není třeba však vytvářet rozhraní pro sdílení herní logiky a grafických prvků, neboť to může být implementováno v ovladači. Zařízení si budou mezi sebou posílat zprávy s herními informacemi, na které budou obě zařízení reagovat definovaným způsobem. Tento návrh umožňuje vytvořit snadno integrovatelný systém komunikace nezávislý na konkrétní hře. Mobilní zařízení budou mít zároveň širší možnosti využití hardwaru. Jelikož návrh není rozsahem tak komplikovaný jako univerzální mobilní ovladač, zvolil jsem ho proto jako implemetaci v bakalářské práci.
+Třetí možností je vytvoření systému pro~síťovou komunikaci PC~a ovladače. Takovéto řešení by bylo možné použít v~libovolné hře, ale~s~nutností vytvořit mobilní ovladač na~míru ke~hře. Není třeba vytvářet rozhraní pro~sdílení herní logiky a~grafických prvků, neboť to může být implementováno v~ovladači nebo~vyřešeno sdílením zdrojového kódu s~hrou. Zařízení si budou mezi~sebou posílat zprávy s~herními informacemi, na~které budou obě zařízení reagovat definovaným způsobem. Tento návrh umožňuje vytvořit snadno integrovatelný systém komunikace nezávislý na~konkrétní hře. Mobilní zařízení budou mít zároveň širší možnosti využití hardwaru. Tento systém jsem zvolil jako~implemetaci v~bakalářské práci, protože eliminuje nevýhody stávajících řešení a~zároveň nabízí přijatelný kompromis mezi složitostí a~univerzálností pro~případ použití v~dalších hrách. 
 
 \chapter{Tvorba systému}
 \label{chapter:implementation}
@@ -280,23 +281,25 @@ Informace o~možnostech ovládání hry pomocí mobilního telefonu v~následuj�
 
 Struktura kapitoly odpovídá vývojovým fázím softwarového projektu. \cite{si} První část je zaměřena na~analýzu systému, požadavky a~softwarový návrh, v~implementační fázi zmíním některé zásadní části realizace, testování programu a~hratelnosti a~na~závěr se budu zabývat možnostmi, jak by bylo možné vytvořený systém rozšířit v~budoucnosti.
 
-\section{Analýza}
+\section{Požadavky}
 
-Cílem první fáze softwarového projektu je specifikace vlastností projektu. Určení prostředí, ve kterém bude systém nasazen a vymezení funkcionalit, které jsou nutné pro naplnění účelu systému.
+Cílem první fáze softwarového projektu je specifikace vlastností projektu. Určení prostředí, ve kterém bude systém nasazen a vymezení funkcionalit nutných pro naplnění účelu systému.
 
-Pro ucelený přehled o systému nejprve popíšu nejběžnější scénář hraní hry postavené na systému vytvořeném v této práci:
+Pro ucelený přehled o systému nejprve popíšu běžný průběh hraní hry postavené na systému vytvořeném v této práci:
 
-Skupina hráčů s chytrými telefony se připojí do jedné WiFi sítě společně s PC, kde poběží hra (server). Poté spustí ovladač v mobilním telefonu, který automaticky vyhledá hry dostupné v lokální síti. Po kliknutí na název nalezené hry naváže ovladač spojení s hrou. Hráč, který může měnit nastavení hry (administrátor, typicky první připojený hráč), nastaví požadované vlastnosti a po připojení všech hráčů zahájí hru. Během ní hráči využijí úzké propojení ovladače s hrou. V případě odpojení nebo ztráty spojení bude možné se do hry opět připojit. Po skončení hry se systém dostane do stejné fáze jako před jejím zahájením, tj. bude opět možné měnit herní parametry apod.
+Skupina hráčů s chytrými telefony se připojí do jedné WiFi sítě společně s PC, kde poběží hra (server). Poté spustí ovladač v mobilním telefonu, který automaticky vyhledá hry dostupné v lokální síti. Po kliknutí na název nalezené hry naváže ovladač spojení s hrou. Hráč, který může měnit nastavení hry (administrátor, typicky první připojený hráč), nastaví parametry hry a po připojení všech hráčů zahájí hru. V případě odpojení nebo ztráty spojení bude možné se do hry opět připojit. Po skončení hry se systém dostane do stejné fáze jako před jejím zahájením, tj. bude opět možné měnit herní parametry apod.
 
-Z toho scénáře budu vycházet při tvorbě požadavků, které jsem rozdělil do dvou částí: komunikační protokol a~hra samotná. Každá část má vlastní seznam funkčních a~nefunkčních požadavků. Tyto požadavky představují základní kritéria pro~návrh architektury systému a~jeho funkcionalit.
+Z výše uvedeného scénáře budu vycházet při tvorbě požadavků, které jsem rozdělil do dvou částí: komunikační protokol a~hra samotná. Každá část má vlastní seznam funkčních a~nefunkčních požadavků. Tyto požadavky představují základní kritéria pro~návrh architektury systému a~jeho funkcionalit.
 
 \subsection{Komunikační protokol}
 
-Účelem komunikačního protokolu je v tomto případě zajistit obousměrnou výměnu zpráv mezi mobilním telefonem (dále jen \textit{ovladačem}) a počítačem (dále jen \textit{hrou}). K tomu je vhodné použít stejný systém v obou zařízeních, aby bylo nutné implementovat komunikační systém pouze jednou a ne na každou platformu zvlášť. Stejně tak je třeba zachovat definici síťových zpráv identickou mezi všemi zařízeními.
+Účelem komunikačního protokolu je v tomto případě zajistit obousměrnou výměnu zpráv mezi mobilním telefonem (dále jen \textit{ovladačem}) a počítačem (dále jen \textit{hrou}). K tomu je vhodné použít stejný systém v obou zařízeních, aby bylo možné implementovat komunikační systém pouze jednou a ne na každou platformu zvlášť. Stejně tak je třeba zachovat identickou definici síťových zpráv mezi všemi zařízeními.
 
-Ovladače budou s hrou komunikovat v lokální WiFi síti. Při návrhu komunikačního protokolu tak musíme brát v potaz vlastnosti technologie, v tomto případě spolehlivost spojení. Při bezdrátové komunikaci je nutné počítat s výpadky signálu. Může je způsobovat nedostatečný výkon WiFi routeru, příliš velká vzdálenost od vysílače nebo objekty v prostoru, které brání šíření signálu. Proto je třeba u každé zprávy rozlišit, zda je nutné, aby byla doručena (např. kliknutí hráče na tlačítko), nebo zda systému nevadí případná ztráta zprávy (např. často se opakující informace z pohybového senzoru). 
+Ovladače budou s hrou komunikovat v lokální WiFi síti. Při návrhu protokolu tak musíme brát v potaz nedostatky technologie, v tomto případě především spolehlivost spojení. Při bezdrátové komunikaci je nutné počítat s výpadky signálu. Může je způsobovat nedostatečný výkon WiFi routeru, příliš velká vzdálenost od vysílače nebo objekty v prostoru, které brání šíření signálu. Proto je třeba u zpráv rozlišit, zda je nutné, aby byla doručena spolehlivě (např. kliknutí hráče na tlačítko), nebo zda systému nevadí případná ztráta zprávy (např. často se opakující informace z pohybového senzoru,). 
 
-Vzhledem k univerzálnímu zaměření systému je vhodné oddělit přenos zpráv a zpracování zpráv (parsování) pro dosažení větší modularity. Dále je výhodné umožnit konfiguraci modulu, aby nastavení síťových parametrů odpovídalo požadavkům konkrétní hry.
+Vzhledem k univerzálnímu zaměření systému je vhodné oddělit přenos zpráv a jejich zpracování (parsování) pro dosažení větší modularity. Dále je výhodné umožnit  konfiguraci síťových parametrů, a odpovídala požadavkům konkrétní hry.
+
+Specifikace funkčních požadavků softwarového systému popisuje základní chování systému a jeho dílčích částí. Tato specifikace slouží jako nutný základ při návrhu projektu a také jako podklad pro zhodnocení úspěšnosti aplikace. \cite{pozadavky}
 
 Pro komunikační protokol platí tedy následující funkční požadavky:
 
@@ -305,50 +308,88 @@ Pro komunikační protokol platí tedy následující funkční požadavky:
 	\item Každá síťová zpráva má tyto vlastnosti: typ zprávy, data zprávy, spolehlivost doručení, zachování pořadí.
 	\item Hra i ovladač dokáží detekovat ztrátu spojení.
 	\item Síťový port (nebo jejich rozsah) a další lze definovat zvlášť jak pro ovladač, tak pro hru.
+	\item Ovladač umožňuje odeslání informací o interakci uživatele (kliknutí na tlačítko, data z pohybového senzoru)
+	\item Ovladač je schopen přijímat informace o stavu hry (herní události, kompletní stav hry pro vykreslení na mobilním displeji)
 \end{enumerate}
 
-Funkční požadavky jsou doplněny požadavky nefunkčními. Zaměřil jsem se především na cílovou platformu, rozšiřitelnost a modulárnost pro jednoduché použití v dalších hrách:
+Funkční požadavky jsou doplněny požadavky nefunkčními, které specifikují kvalitu aplikace podle kritérií, mezi která se řadí například výkon, splolehlivost, rozšiřitelnost a další. Zaměřil jsem se především na cílovou platformu, rozšiřitelnost a modulárnost pro jednoduché nasazení v dalších hrách:
 
 \begin{enumerate}
-	\item Síťová komunikace bude probíhat v rámci stejné WiFi sítě. Podpora pro bluetooth a další technologie nebude implementována.
-	\item Komunikační systém poběží na alespoň jedné mobilní platformě (Android, iOS nebo Windows Phone) a alespoň jedné PC platformě (Windows, Linux nebo OS X).
-	\item Systém bude modulární: bude možné definovat vlastní typy zpráv, jejich strukturu a vlastnosti.
-	\item Parsování zpráv bude nezávislé na komunikačním frameworku. Bude možné implementovat rozdílné parsování nebo i několik různých metodik najednou.
-	\item Zdrojový kód komunikačního modulu bude sdílený mezi hrou a ovladačem.
-	\item Komunikační modul bude nezávislý na herním engine a tím pádem využitelný v libovolné jiné hře.
+	\item Síťová komunikace probíhá v rámci stejné WiFi sítě. Podpora pro bluetooth a další technologie není implementována.
+	\item Komunikační systém běží na alespoň jedné mobilní platformě (Android, iOS nebo Windows Phone) a alespoň jedné PC platformě (Windows, Linux nebo OS X).
+	\item Systém je modulární: je možné definovat vlastní typy zpráv, jejich strukturu a vlastnosti podle požadavků hry.
+	\item Parsování zpráv nezávisí na komunikačním frameworku. Je možné implementovat rozdílné parsování nebo i několik různých metodik najednou.
+	\item Zdrojový kód komunikačního modulu je sdílený mezi hrou a ovladačem.
+	\item Komunikační modul nezávisí na herním engine a tím pádem je využitelný v libovolné jiné hře.
 \end{enumerate}
 
 \subsection{Hra}
 
-Požadavky na hru samotnou se v první řadě netýkají herního žánru a obsahu, ale především využití komunikačního systému a možností interaktivity. Volba žánru a konkrétního typu hry je proto přesunuta až do fáze návrhu, kde bude nutné vhodně navrhnout zapracování interaktivních možností do herních mechanik.
+Požadavky na hru samotnou se v první řadě netýkají herního žánru a obsahu, ale snaží se především využít komunikační systém a možnosti interaktivity. Volba žánru a konkrétního typu hry je proto přesunuta až do fáze návrhu, kde bude nutné vhodně navrhnout zapracování interaktivních prvků do herních mechanik.
 
-Jednou z důležitých vlastností hry je demonstrace nových možností oproti klasickým ovladačům. Mezi ně se mimo jiné řadí schopnost vykreslování herní scény v mobilní obrazovce. Tuto a další nové možnosti je třeba ve hře výrazně prezentovat.
+Důležitou vlastností hry je demonstrace nových možností oproti klasickým ovladačům. Mezi ně se mimo jiné řadí schopnost vykreslování grafiky v mobilní obrazovce. Tuto a další nové možnosti je třeba ve hře 
+výrazně prezentovat.
 
 Pro celou hru (ovladač i PC) platí následující funkční požadavky:
 
 \begin{enumerate}
 	\item Hra využívá k ovládání pohybový senzor mobilního telefonu a dotykovou obrazovku.
-	\item Ovladač je schopen vykreslit herní scénu nebo její část na obrazovce mobilního telefonu.
+	\item Ovladač je schopen vykreslit herní scénu nebo její část na~obrazovce mobilního telefonu.
 	\item Hra je určena pro 2 až 8 hráčů (ovladačů).
-	\item Mobilní telefon může využívat vibrace jako interaktivní odezvu na události ve hře.
- obsluhy PC (kromě ukončení hry).
- 	\item Každá instance hry může mít nastaven svůj název a herní parametry.
-	\item Vlastnosti hry může měnit vždy právě jeden z připojených hráčů.
+	\item Mobilní telefon může využívat vibrace jako interaktivní odezvu na~události ve hře.
+ 	\item Každá instance hry může mít nastaven název serveru a herní parametry.
+	\item Parametry hry může měnit právě jeden z připojených hráčů.
+	\item Zvolený herní žánr je vhodný pro hru více hráčů a obsahuje jak kooperativní, tak kompetitivní složku.
+	\item Veškerá konfigurace hry probíhá pomocí ovladače: po spuštění hry na PC již není potřeba další obsluha PC (mimo ukončení hry).
+	\item Zobrazováním hry nebo její části na displeji mobilního telefonu přináší danému hráči taktickou výhodu oproti ostatním.
+
 \end{enumerate}
 
-Nefunkční požadavky na hru zahrnují použití cílové platformy, důraz na hru více hráčů a vlastnosti týkající se hratelnosti:
+Nefunkční požadavky na hru zahrnují především použití cílové platformy:
 
 \begin{enumerate}
 	\item Ovladač poběží na alespoň jedné mobilní platformě (Android, iOS nebo Windows Phone).
 	\item Hra poběží alespoň na jedné PC platformě (Windows, Linux nebo OS~X).
-	\item Zvolený herní žánr je vhodný pro hru více hráčů a obsahuje jak kooperativní, tak kompetitivní složku hry.
-	\item Veškerá konfigurace hry probíhá pomocí ovladače: po spuštění hry na PC již není potřeba další obsluha PC (mimo ukončení hry).
-	\item Zobrazováním hry nebo její části na displeji mobilního telefonu přináší danému hráči taktickou výhodu oproti ostatním.
+	\item Použitý herní engine je multiplatformní a použitelný jak ve hře, tak v ovladači.
 \end{enumerate}
 
 \section{Návrh}
 
+Návrh systému je druhou fází softwarového projektu. Obsahuje podrobnější popis jednotlivých komponent systému a jejich vzájemných vztahů. V první části se budu věnovat návrhu síťového modulu a v druhé části vlastní hře.
 
+\subsection{Komunikační modul}
+
+Úkolem komunikačního modulu je zajistit výměnu zpráv v lokální síti. Kromě toho definuje obecnou síťovou zprávu a její vlastnosti. Modul tedy tvoří dvě základní komponenty: \textit{Box} a \textit{Connector}. 
+
+Hlavním přínosem modulu je odstínění implementace síťové vrstvy od hry a herního enginu a možnost velmi snadného nasazení v libovolné jiné hře nejen zaměřené na interaktivní ovládání pomocí mobilního telefonu.
+
+\todo{obrázek tříd Connector a Box}
+
+\subsubsection{Box}
+
+\textit{Box} je objekt reprezentující síťovou zprávu. Jeho cílem je zapouzdřit veškeré informace potřebné pro práci se síťovou zprávou Používá se při obou směrech komunikace, což znamená, že se vytváří před odesláním, ale také po přijetí zprávy.
+
+Obsahuje data zprávy, typ zprávy, adresu příjemce (pokud bude zpráva odeslána), nebo adresu odesílatele (pokud byla zpráva přijata), dále vlastnosti doručení, mezi které patří spolehlivost (spolehlivé doručení znamená, že odesílající zařízení čeká na přijetí potvrzení, že příjemce zprávu přijal), priorita, jak rychle má být zpráva doručena (zprávy s nízkou prioritou mohou být řazeny do fronty a odeslány najednou, což šetří síťový provoz), nebo nastavení, zda je nutné dbát na zachování pořadí zpráv, v jakém byly odeslány.
+
+\subsubsection{Box}
+
+\textit{Connector} je objekt, který spravuje veškeré fungování síťové komunikace: aktivování síťových rozhraní, připojování a odpojování klientů, posílání a příjem \textit{Boxů}.
+
+\subsubsection{RakNet}
+
+Hlavičková definice \textit{Connectoru} i \textit{Boxu} tvoří abstraktní rozhraní nad samotnou implementací a umožňuje tak snadnou změnu platformy, případně síťové knihovny. Pro implementaci rozhraní jsem zvolil knihovnu RakNet.
+
+RakNet je multiplatformní síťová se zaměřením na hry napsaná v C++. Vyznačuje se velmi nízkými nároky na hardware, kvalitní dokumentací a množstvím funkcionalit, které se často využívají v multiplayerových hrách. \cite{raknet} Mezi ně patří například Lobby systém\footnote{Lobby systém - virtální místnost, kde se shromažďují hráči před začátkem online hry. Obvykle nabízí chat mezi hráči, volbu herních místností nebo žebříček výsledků.}, šifrování komunikace nebo peer-to-peer spojení mezi hráči. Veškerá komunikace je postavena na protokole UDP, přesto knihovna obsahuje podporu pro spolehlivé doručení zpráv.
+
+Knihovnu jsem zvolil především pro její snadné použití a podporu jak klasických počítačů i mobilních platforem. Jednu implementaci modulu tak je možné využít v ovladači i ve hře na PC.
+
+\todo{lobby, peer-to-peer, herní engine do slovníčku pojmů}
+
+% návrh hry
+  % herní žánr a prinicp
+  % návrh ovládání
+  % architektura hry
+  % architektura ovladače
 
 \section{Implementace}
 \section{Testování}

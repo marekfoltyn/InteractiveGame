@@ -80,7 +80,7 @@ TEST_CASE("GameNet tests")
         auto connector = GameNet::Connector::getInstance();
         
         // client
-        REQUIRE( connector->start() == true );
+        REQUIRE( connector->startAsClient() == true );
         connector->stop();
         
         // server
