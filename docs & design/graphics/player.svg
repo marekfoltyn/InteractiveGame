@@ -29,10 +29,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.28"
-     inkscape:cx="446.9166"
-     inkscape:cy="751.34687"
+     inkscape:cx="606.49395"
+     inkscape:cy="756.59522"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g4368"
      showgrid="false"
      inkscape:window-width="1680"
      inkscape:window-height="987"
@@ -56,19 +56,10 @@
      inkscape:groupmode="layer"
      id="layer1">
     <circle
-       style="fill:#006eff;fill-opacity:1;stroke:#ffffff;stroke-width:10;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="path4265"
-       cx="93.035706"
-       cy="104.97382"
-       r="100"
-       inkscape:export-filename="/Users/marek/Documents/git/InteractiveGame/source/game/InteractiveGame/Resources/res/player_blue.png"
-       inkscape:export-xdpi="42.860001"
-       inkscape:export-ydpi="42.860001" />
-    <circle
        style="fill:#53a0ff;fill-opacity:1;stroke:#000000;stroke-width:4;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path4265-4"
-       cx="377.34375"
-       cy="145.33098"
+       cx="116.40625"
+       cy="128.92473"
        r="100"
        inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_blue.png"
        inkscape:export-xdpi="44.117645"
@@ -76,8 +67,8 @@
     <ellipse
        style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:3.69300389;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path3349"
-       cx="412.97729"
-       cy="108.99472"
+       cx="152.03979"
+       cy="92.58847"
        rx="31.462387"
        ry="28.669123"
        inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_blue.png"
@@ -85,7 +76,7 @@
        inkscape:export-ydpi="44.117645" />
     <g
        id="g4160"
-       transform="translate(-62.55552,-5.0111043)"
+       transform="translate(-323.49302,-21.417354)"
        inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_blue.png"
        inkscape:export-xdpi="44.117645"
        inkscape:export-ydpi="44.117645">
@@ -109,8 +100,8 @@
     <ellipse
        ry="22.15675"
        rx="25.226227"
-       cy="114.24278"
-       cx="342.81903"
+       cy="97.836533"
+       cx="81.881531"
        id="ellipse4164"
        style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_blue.png"
@@ -118,7 +109,7 @@
        inkscape:export-ydpi="44.117645" />
     <g
        id="g4160-9"
-       transform="matrix(-0.98819285,0.15321516,-0.15321516,-0.98819285,824.65315,159.73381)"
+       transform="matrix(-0.98819285,0.15321516,-0.15321516,-0.98819285,563.71565,143.32756)"
        inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_blue.png"
        inkscape:export-xdpi="44.117645"
        inkscape:export-ydpi="44.117645">
@@ -141,7 +132,7 @@
     </g>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 447.26562,163.69035 c 0,0 -4.49128,33.36178 -68.36868,34.07829 -63.8774,0.71652 -74.60006,-39.15642 -74.60006,-39.15642"
+       d="m 186.32812,147.2841 c 0,0 -4.49128,33.36178 -68.36868,34.07829 -63.8774,0.71652 -74.60006,-39.15642 -74.60006,-39.15642"
        id="path4195"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="czc"
@@ -150,7 +141,7 @@
        inkscape:export-ydpi="44.117645" />
     <path
        style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:2.22831964;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 385.2728,198.09739 a 13.33858,13.004202 68.527945 0 0 14.738,11.40605 13.33858,13.004202 68.527945 0 0 11.08641,-14.7062 l -25.82441,3.30015 z"
+       d="m 124.3353,181.69114 a 13.33858,13.004202 68.527945 0 0 14.738,11.40605 13.33858,13.004202 68.527945 0 0 11.08641,-14.7062 l -25.82441,3.30015 z"
        id="ellipse4197"
        inkscape:connector-curvature="0"
        inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_blue.png"
@@ -158,7 +149,7 @@
        inkscape:export-ydpi="44.117645" />
     <path
        style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:2.22831964;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 358.85634,198.2042 a 13.33858,13.004202 76.186166 0 0 13.08653,13.26835 13.33858,13.004202 76.186166 0 0 12.94733,-13.09762 l -26.03386,-0.17073 z"
+       d="m 97.91884,181.79795 a 13.33858,13.004202 76.186166 0 0 13.08653,13.26835 13.33858,13.004202 76.186166 0 0 12.94733,-13.09762 l -26.03386,-0.17073 z"
        id="ellipse4197-4"
        inkscape:connector-curvature="0"
        inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_blue.png"
@@ -169,8 +160,8 @@
        inkscape:export-xdpi="44.117645"
        inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red.png"
        r="100"
-       cy="399.44748"
-       cx="372.37192"
+       cy="383.04123"
+       cx="111.43442"
        id="circle4217"
        style="fill:#ff7356;fill-opacity:1;stroke:#000000;stroke-width:4;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <ellipse
@@ -179,15 +170,15 @@
        inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red.png"
        ry="28.669123"
        rx="31.462387"
-       cy="363.11121"
-       cx="408.00546"
+       cy="346.70496"
+       cx="147.06796"
        id="ellipse4219"
        style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:3.69300389;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <g
        inkscape:export-ydpi="44.117645"
        inkscape:export-xdpi="44.117645"
        inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red.png"
-       transform="translate(-66.422508,255.18209)"
+       transform="translate(-327.36001,238.77584)"
        id="g4221">
       <ellipse
          style="fill:#000000;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
@@ -212,15 +203,15 @@
        inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red.png"
        style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="ellipse4227"
-       cx="337.8472"
-       cy="368.35928"
+       cx="76.909698"
+       cy="351.95303"
        rx="25.226227"
        ry="22.15675" />
     <g
        inkscape:export-ydpi="44.117645"
        inkscape:export-xdpi="44.117645"
        inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red.png"
-       transform="matrix(-0.98819285,0.15321516,-0.15321516,-0.98819285,821.89098,416.61244)"
+       transform="matrix(-0.98819285,0.15321516,-0.15321516,-0.98819285,560.95348,400.20619)"
        id="g4229">
       <ellipse
          style="fill:#000000;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
@@ -246,7 +237,7 @@
        sodipodi:nodetypes="czc"
        inkscape:connector-curvature="0"
        id="path4235"
-       d="m 442.29378,417.80684 c 0,0 -4.49128,33.36178 -68.36868,34.07829 -63.8774,0.71652 -74.60006,-39.15642 -74.60006,-39.15642"
+       d="m 181.35628,401.40059 c 0,0 -4.49128,33.36178 -68.36868,34.07829 -63.8774,0.71652 -74.60006,-39.15642 -74.60006,-39.15642"
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <path
        inkscape:export-ydpi="44.117645"
@@ -254,7 +245,7 @@
        inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red.png"
        inkscape:connector-curvature="0"
        id="path4237"
-       d="m 397.02182,449.99351 a 13.33858,13.004202 61.331614 0 0 16.05073,9.46997 13.33858,13.004202 61.331614 0 0 9.15684,-15.97914 l -25.20757,6.50917 z"
+       d="m 136.08432,433.58726 a 13.33858,13.004202 61.331614 0 0 16.05073,9.46997 13.33858,13.004202 61.331614 0 0 9.15684,-15.97914 l -25.20757,6.50917 z"
        style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:2.22831964;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <path
        inkscape:export-ydpi="44.117645"
@@ -262,15 +253,15 @@
        inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red.png"
        inkscape:connector-curvature="0"
        id="path4239"
-       d="m 316.86416,438.7328 a 13.004202,13.33858 10.375289 0 0 6.5008,17.46557 13.004202,13.33858 10.375289 0 0 17.17727,-6.64246 L 316.86416,438.7328 Z"
+       d="m 55.92666,422.32655 a 13.004202,13.33858 10.375289 0 0 6.5008,17.46557 13.004202,13.33858 10.375289 0 0 17.17727,-6.64246 L 55.92666,422.32655 Z"
        style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:2.22831964;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <circle
        inkscape:export-ydpi="44.117645"
        inkscape:export-xdpi="44.117645"
        inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_blue_blink.png"
        r="100"
-       cy="145.33098"
-       cx="592.1875"
+       cy="128.92473"
+       cx="331.25"
        id="circle4256"
        style="fill:#53a0ff;fill-opacity:1;stroke:#000000;stroke-width:4;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <path
@@ -280,7 +271,7 @@
        sodipodi:nodetypes="czc"
        inkscape:connector-curvature="0"
        id="path4274"
-       d="m 662.10937,163.69035 c 0,0 -4.49128,33.36178 -68.36868,34.07829 -63.8774,0.71652 -74.60006,-39.15642 -74.60006,-39.15642"
+       d="m 401.17187,147.2841 c 0,0 -4.49128,33.36178 -68.36868,34.07829 -63.8774,0.71652 -74.60006,-39.15642 -74.60006,-39.15642"
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <path
        inkscape:export-ydpi="44.117645"
@@ -288,7 +279,7 @@
        inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_blue_blink.png"
        inkscape:connector-curvature="0"
        id="path4276"
-       d="m 600.11655,198.09739 a 13.33858,13.004202 68.527945 0 0 14.738,11.40605 13.33858,13.004202 68.527945 0 0 11.08641,-14.7062 l -25.82441,3.30015 z"
+       d="m 339.17905,181.69114 a 13.33858,13.004202 68.527945 0 0 14.738,11.40605 13.33858,13.004202 68.527945 0 0 11.08641,-14.7062 l -25.82441,3.30015 z"
        style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:2.22831964;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <path
        inkscape:export-ydpi="44.117645"
@@ -296,20 +287,20 @@
        inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_blue_blink.png"
        inkscape:connector-curvature="0"
        id="path4278"
-       d="m 573.70009,198.2042 a 13.33858,13.004202 76.186166 0 0 13.08653,13.26835 13.33858,13.004202 76.186166 0 0 12.94733,-13.09762 l -26.03386,-0.17073 z"
+       d="m 312.76259,181.79795 a 13.33858,13.004202 76.186166 0 0 13.08653,13.26835 13.33858,13.004202 76.186166 0 0 12.94733,-13.09762 l -26.03386,-0.17073 z"
        style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:2.22831964;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <circle
        style="fill:#ff7356;fill-opacity:1;stroke:#000000;stroke-width:4;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="circle4280"
-       cx="587.21564"
-       cy="399.44748"
+       cx="326.27814"
+       cy="383.04123"
        r="100"
        inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red_blink.png"
        inkscape:export-xdpi="44.117645"
        inkscape:export-ydpi="44.117645" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 657.13753,417.80684 c 0,0 -4.49128,33.36178 -68.36868,34.07829 -63.8774,0.71652 -74.60006,-39.15642 -74.60006,-39.15642"
+       d="m 396.20003,401.40059 c 0,0 -4.49128,33.36178 -68.36868,34.07829 -63.8774,0.71652 -74.60006,-39.15642 -74.60006,-39.15642"
        id="path4298"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="czc"
@@ -318,7 +309,7 @@
        inkscape:export-ydpi="44.117645" />
     <path
        style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:2.22831964;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 611.86557,449.99351 a 13.33858,13.004202 61.331614 0 0 16.05073,9.46997 13.33858,13.004202 61.331614 0 0 9.15684,-15.97914 l -25.20757,6.50917 z"
+       d="m 350.92807,433.58726 a 13.33858,13.004202 61.331614 0 0 16.05073,9.46997 13.33858,13.004202 61.331614 0 0 9.15684,-15.97914 l -25.20757,6.50917 z"
        id="path4300"
        inkscape:connector-curvature="0"
        inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red_blink.png"
@@ -326,7 +317,7 @@
        inkscape:export-ydpi="44.117645" />
     <path
        style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:2.22831964;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 531.70791,438.7328 a 13.004202,13.33858 10.375289 0 0 6.5008,17.46557 13.004202,13.33858 10.375289 0 0 17.17727,-6.64246 L 531.70791,438.7328 Z"
+       d="m 270.77041,422.32655 a 13.004202,13.33858 10.375289 0 0 6.5008,17.46557 13.004202,13.33858 10.375289 0 0 17.17727,-6.64246 l -23.67807,-10.82311 z"
        id="path4302"
        inkscape:connector-curvature="0"
        inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red_blink.png"
@@ -334,7 +325,7 @@
        inkscape:export-ydpi="44.117645" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 530.80069,372.94061 c 0,0 9.58376,-6.87394 23.74177,-7.17714 14.15801,-0.30321 24.26425,4.1957 24.26425,4.1957"
+       d="m 269.86319,356.53436 c 0,0 9.58376,-6.87394 23.74177,-7.17714 14.15801,-0.30321 24.26425,4.1957 24.26425,4.1957"
        id="path4304"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="czc"
@@ -348,11 +339,11 @@
        sodipodi:nodetypes="czc"
        inkscape:connector-curvature="0"
        id="path4306"
-       d="m 600.95894,371.83575 c 0,0 9.58376,-6.87394 23.74177,-7.17714 14.15801,-0.30321 24.26425,4.1957 24.26425,4.1957"
+       d="m 340.02144,355.4295 c 0,0 9.58376,-6.87394 23.74177,-7.17714 14.15801,-0.30321 24.26425,4.1957 24.26425,4.1957"
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 535.59371,112.14111 c 0,0 9.58376,-6.87394 23.74177,-7.17714 14.15801,-0.30321 24.26425,4.1957 24.26425,4.1957"
+       d="m 274.65621,95.73486 c 0,0 9.58376,-6.87394 23.74177,-7.17714 14.15801,-0.30321 24.26425,4.1957 24.26425,4.1957"
        id="path4304-0"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="czc"
@@ -366,7 +357,435 @@
        sodipodi:nodetypes="czc"
        inkscape:connector-curvature="0"
        id="path4306-1"
-       d="m 605.75196,111.03625 c 0,0 9.58376,-6.87394 23.74177,-7.17714 14.15801,-0.30321 24.26425,4.1957 24.26425,4.1957"
+       d="m 344.81446,94.63 c 0,0 9.58376,-6.87394 23.74177,-7.17714 14.15801,-0.30321 24.26425,4.1957 24.26425,4.1957"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <circle
+       style="fill:#53a0ff;fill-opacity:1;stroke:#000000;stroke-width:4;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path4265-4-6"
+       cx="554.82965"
+       cy="129.99144"
+       r="100"
+       inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_blue_smile.png"
+       inkscape:export-xdpi="44.117645"
+       inkscape:export-ydpi="44.117645" />
+    <path
+       style="fill:#a02c2c;fill-opacity:1;stroke:none;stroke-width:4;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 481.83594,144.94032 c 0,0 20.18868,30.6731 77.55073,28.76083 57.36204,-1.91226 65.0274,-23.87802 65.0274,-23.87802 0,0 -6.41903,67.52149 -70.50782,65.82032 -64.08878,-1.70117 -72.07031,-70.70313 -72.07031,-70.70313 z"
+       id="rect4292"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="czczc"
+       inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_blue_smile.png"
+       inkscape:export-xdpi="44"
+       inkscape:export-ydpi="44" />
+    <ellipse
+       style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:3.69300389;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path3349-1"
+       cx="590.4632"
+       cy="93.65519"
+       rx="31.462387"
+       ry="28.669123"
+       inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_blue_smile.png"
+       inkscape:export-xdpi="44.117645"
+       inkscape:export-ydpi="44.117645" />
+    <g
+       id="g4160-5"
+       transform="translate(114.93039,-20.350635)"
+       inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_blue_smile.png"
+       inkscape:export-xdpi="44.117645"
+       inkscape:export-ydpi="44.117645">
+      <ellipse
+         ry="10.393592"
+         rx="11.498447"
+         cy="116.8268"
+         cx="462.38156"
+         id="path4154-2"
+         style="fill:#000000;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none" />
+      <ellipse
+         inkscape:transform-center-y="-2.5056724"
+         inkscape:transform-center-x="3.7498923"
+         style="fill:#ffffff;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
+         id="ellipse4158-3"
+         cx="460.03372"
+         cy="116.13626"
+         rx="3.9025772"
+         ry="3.6263623" />
+    </g>
+    <ellipse
+       ry="22.15675"
+       rx="25.226227"
+       cy="98.903252"
+       cx="520.30493"
+       id="ellipse4164-1"
+       style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_blue_smile.png"
+       inkscape:export-xdpi="44.117645"
+       inkscape:export-ydpi="44.117645" />
+    <g
+       id="g4160-9-5"
+       transform="matrix(-0.98819285,0.15321516,-0.15321516,-0.98819285,1002.1391,144.39428)"
+       inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_blue_smile.png"
+       inkscape:export-xdpi="44.117645"
+       inkscape:export-ydpi="44.117645">
+      <ellipse
+         ry="10.393592"
+         rx="11.498447"
+         cy="116.8268"
+         cx="462.38156"
+         id="path4154-6-7"
+         style="fill:#000000;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none" />
+      <ellipse
+         inkscape:transform-center-y="-2.5056724"
+         inkscape:transform-center-x="3.7498923"
+         style="fill:#ffffff;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
+         id="ellipse4158-5-8"
+         cx="460.03372"
+         cy="116.13626"
+         rx="3.9025772"
+         ry="3.6263623" />
+    </g>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 624.75153,148.35082 c 0,0 -5.66316,23.59615 -69.54056,24.31266 C 491.33358,173.38 481.7828,143.27269 481.7828,143.27269"
+       id="path4195-9"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="czc"
+       inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_blue_smile.png"
+       inkscape:export-xdpi="44.117645"
+       inkscape:export-ydpi="44.117645" />
+    <path
+       style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:2.22831964;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 561.97746,172.99223 a 13.33858,13.004202 68.527945 0 0 14.738,11.40605 13.33858,13.004202 68.527945 0 0 11.08641,-14.7062 l -25.82441,3.30015 z"
+       id="ellipse4197-1"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_blue_smile.png"
+       inkscape:export-xdpi="44.117645"
+       inkscape:export-ydpi="44.117645" />
+    <path
+       style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:2.22831964;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 535.56101,173.09904 a 13.33858,13.004202 76.186166 0 0 13.08652,13.26835 13.33858,13.004202 76.186166 0 0 12.94733,-13.09762 l -26.03385,-0.17073 z"
+       id="ellipse4197-4-2"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_blue_smile.png"
+       inkscape:export-xdpi="44.117645"
+       inkscape:export-ydpi="44.117645" />
+    <circle
+       inkscape:export-ydpi="44.117645"
+       inkscape:export-xdpi="44.117645"
+       inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red_smile.png"
+       r="100"
+       cy="384.10797"
+       cx="549.85785"
+       id="circle4217-8"
+       style="fill:#ff7356;fill-opacity:1;stroke:#000000;stroke-width:4;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <g
+       id="g4368"
+       transform="translate(-60.546875,-57.03125)">
+      <path
+         sodipodi:nodetypes="czczc"
+         inkscape:connector-curvature="0"
+         id="rect4292-2"
+         d="m 537.14333,456.36043 c 0,0 20.18868,30.6731 77.55073,28.76083 57.36204,-1.91226 65.0274,-23.87802 65.0274,-23.87802 0,0 -6.41903,67.52149 -70.50782,65.82032 -64.08878,-1.70117 -72.07031,-70.70313 -72.07031,-70.70313 z"
+         style="fill:#a02c2c;fill-opacity:1;stroke:none;stroke-width:4;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red_smile.png"
+         inkscape:export-xdpi="44"
+         inkscape:export-ydpi="44" />
+      <path
+         inkscape:export-ydpi="44.117645"
+         inkscape:export-xdpi="44.117645"
+         inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red_smile.png"
+         sodipodi:nodetypes="czc"
+         inkscape:connector-curvature="0"
+         id="path4195-9-3"
+         d="m 680.05892,459.77093 c 0,0 -5.66316,23.59615 -69.54056,24.31266 -63.87739,0.71652 -73.42817,-29.39079 -73.42817,-29.39079"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="44.117645"
+         inkscape:export-xdpi="44.117645"
+         inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red_smile.png"
+         sodipodi:nodetypes="czc"
+         inkscape:connector-curvature="0"
+         id="path4195-9-8-3"
+         d="m 679.89139,460.35749 c 0,0 -7.22566,65.68212 -71.10306,66.39863 -63.87739,0.71652 -71.58946,-71.51128 -71.58946,-71.51128"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="44.117645"
+         inkscape:export-xdpi="44.117645"
+         inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red_smile.png"
+         inkscape:connector-curvature="0"
+         id="ellipse4197-4-2-2-9"
+         d="m 632.53578,522.91157 a 13.33858,13.004202 68.369487 0 0 -14.76948,-11.36524 13.33858,13.004202 68.369487 0 0 -11.0457,14.7368 l 25.81518,-3.37156 z"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:2.22831964;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="44.117645"
+         inkscape:export-xdpi="44.117645"
+         inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red_smile.png"
+         inkscape:connector-curvature="0"
+         id="ellipse4197-4-2-2-9-8"
+         d="m 605.31544,526.08949 a 13.33858,13.004202 88.110518 0 0 -10.06263,-15.68597 13.33858,13.004202 88.110518 0 0 -15.37417,10.1398 l 25.4368,5.54617 z"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:2.22831964;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <circle
+         style="fill:#53a0ff;fill-opacity:1;stroke:#000000;stroke-width:4;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path4265-4-6-0"
+         cx="835.68903"
+         cy="190.92896"
+         r="100"
+         inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_blue_blink_smile.png"
+         inkscape:export-xdpi="44.117645"
+         inkscape:export-ydpi="44.117645" />
+      <path
+         style="fill:#a02c2c;fill-opacity:1;stroke:none;stroke-width:4;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 762.69532,205.87783 c 0,0 20.18868,30.6731 77.55072,28.76083 57.36204,-1.91226 65.0274,-23.87802 65.0274,-23.87802 0,0 -6.41903,67.52149 -70.50781,65.82032 -64.08878,-1.70117 -72.07031,-70.70313 -72.07031,-70.70313 z"
+         id="rect4292-5"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="czczc"
+         inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_blue_blink_smile.png"
+         inkscape:export-xdpi="44"
+         inkscape:export-ydpi="44" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 905.6109,209.28833 c 0,0 -5.66316,23.59615 -69.54056,24.31266 -63.87738,0.71652 -73.42816,-29.39079 -73.42816,-29.39079"
+         id="path4195-9-2"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="czc"
+         inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_blue_blink_smile.png"
+         inkscape:export-xdpi="44.117645"
+         inkscape:export-ydpi="44.117645" />
+      <path
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:2.22831964;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 842.83683,233.92974 a 13.33858,13.004202 68.527945 0 0 14.738,11.40605 13.33858,13.004202 68.527945 0 0 11.08641,-14.7062 l -25.82441,3.30015 z"
+         id="ellipse4197-1-5"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_blue_blink_smile.png"
+         inkscape:export-xdpi="44.117645"
+         inkscape:export-ydpi="44.117645" />
+      <path
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:2.22831964;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 816.42039,234.03655 a 13.33858,13.004202 76.186166 0 0 13.08651,13.26835 13.33858,13.004202 76.186166 0 0 12.94733,-13.09762 l -26.03384,-0.17073 z"
+         id="ellipse4197-4-2-3"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_blue_blink_smile.png"
+         inkscape:export-xdpi="44.117645"
+         inkscape:export-ydpi="44.117645" />
+      <circle
+         inkscape:export-ydpi="44.117645"
+         inkscape:export-xdpi="44.117645"
+         inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red_blink_smile.png"
+         r="100"
+         cy="445.04547"
+         cx="830.71722"
+         id="circle4217-8-2"
+         style="fill:#ff7356;fill-opacity:1;stroke:#000000;stroke-width:4;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="czczc"
+         inkscape:connector-curvature="0"
+         id="rect4292-2-8"
+         d="m 757.45583,460.26669 c 0,0 20.18868,30.6731 77.55073,28.76083 57.36205,-1.91226 65.0274,-23.87802 65.0274,-23.87802 0,0 -6.41902,67.52149 -70.50782,65.82032 -64.08878,-1.70117 -72.07031,-70.70313 -72.07031,-70.70313 z"
+         style="fill:#a02c2c;fill-opacity:1;stroke:none;stroke-width:4;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red_blink_smile.png"
+         inkscape:export-xdpi="44"
+         inkscape:export-ydpi="44" />
+      <path
+         inkscape:export-ydpi="44.117645"
+         inkscape:export-xdpi="44.117645"
+         inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red_blink_smile.png"
+         sodipodi:nodetypes="czc"
+         inkscape:connector-curvature="0"
+         id="path4195-9-3-5"
+         d="m 900.37142,463.67719 c 0,0 -5.66316,23.59615 -69.54056,24.31266 -63.87739,0.71652 -73.42817,-29.39079 -73.42817,-29.39079"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="44.117645"
+         inkscape:export-xdpi="44.117645"
+         inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red_blink_smile.png"
+         sodipodi:nodetypes="czc"
+         inkscape:connector-curvature="0"
+         id="path4195-9-8-3-1"
+         d="m 900.20389,464.26375 c 0,0 -7.22566,65.68212 -71.10306,66.39863 -63.87739,0.71652 -71.58946,-71.51128 -71.58946,-71.51128"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="44.117645"
+         inkscape:export-xdpi="44.117645"
+         inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red_blink_smile.png"
+         inkscape:connector-curvature="0"
+         id="ellipse4197-4-2-2-9-2"
+         d="m 852.84828,526.81783 a 13.33858,13.004202 68.369487 0 0 -14.76948,-11.36524 13.33858,13.004202 68.369487 0 0 -11.0457,14.7368 l 25.81518,-3.37156 z"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:2.22831964;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="44.117645"
+         inkscape:export-xdpi="44.117645"
+         inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red_blink_smile.png"
+         inkscape:connector-curvature="0"
+         id="ellipse4197-4-2-2-9-8-3"
+         d="m 825.62794,529.99575 a 13.33858,13.004202 88.110518 0 0 -10.06263,-15.68597 13.33858,13.004202 88.110518 0 0 -15.37417,10.1398 l 25.4368,5.54617 z"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:2.22831964;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="44.117645"
+         inkscape:export-xdpi="44.117645"
+         inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red_blink_smile.png"
+         inkscape:connector-curvature="0"
+         id="path4237-2-7"
+         d="m 854.40035,487.99562 a 13.33858,13.004202 61.331614 0 0 16.05073,9.46997 13.33858,13.004202 61.331614 0 0 9.15684,-15.97914 l -25.20757,6.50917 z"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:2.22831964;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="44.117645"
+         inkscape:export-xdpi="44.117645"
+         inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red_blink_smile.png"
+         inkscape:connector-curvature="0"
+         id="path4239-1-4"
+         d="m 775.65993,478.31474 a 13.004202,13.33858 6.0550335 0 0 7.79803,16.92623 13.004202,13.33858 6.0550335 0 0 16.62808,-7.91758 l -24.42611,-9.00865 z"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:2.22831964;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 905.44337,209.87489 c 0,0 -7.22566,65.68212 -71.10306,66.39863 -63.87738,0.71652 -71.58945,-71.51128 -71.58945,-71.51128"
+         id="path4195-9-8-9"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="czc"
+         inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_blue_blink_smile.png"
+         inkscape:export-xdpi="44.117645"
+         inkscape:export-ydpi="44.117645" />
+      <path
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:2.22831964;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 858.08776,272.42897 a 13.33858,13.004202 68.369487 0 0 -14.76947,-11.36524 13.33858,13.004202 68.369487 0 0 -11.04571,14.7368 l 25.81518,-3.37156 z"
+         id="ellipse4197-4-2-2-2"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_blue_blink_smile.png"
+         inkscape:export-xdpi="44.117645"
+         inkscape:export-ydpi="44.117645" />
+    </g>
+    <ellipse
+       inkscape:export-ydpi="44.117645"
+       inkscape:export-xdpi="44.117645"
+       inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red_smile.png"
+       ry="28.669123"
+       rx="31.462387"
+       cy="347.77167"
+       cx="585.49139"
+       id="ellipse4219-8"
+       style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:3.69300389;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <g
+       inkscape:export-ydpi="44.117645"
+       inkscape:export-xdpi="44.117645"
+       inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red_smile.png"
+       transform="translate(111.0634,239.84256)"
+       id="g4221-5">
+      <ellipse
+         style="fill:#000000;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
+         id="ellipse4223-9"
+         cx="462.38156"
+         cy="116.8268"
+         rx="11.498447"
+         ry="10.393592" />
+      <ellipse
+         ry="3.6263623"
+         rx="3.9025772"
+         cy="116.13626"
+         cx="460.03372"
+         id="ellipse4225-2"
+         style="fill:#ffffff;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
+         inkscape:transform-center-x="3.7498923"
+         inkscape:transform-center-y="-2.5056724" />
+    </g>
+    <ellipse
+       inkscape:export-ydpi="44.117645"
+       inkscape:export-xdpi="44.117645"
+       inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red_smile.png"
+       style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="ellipse4227-9"
+       cx="515.33313"
+       cy="353.01978"
+       rx="25.226227"
+       ry="22.15675" />
+    <g
+       inkscape:export-ydpi="44.117645"
+       inkscape:export-xdpi="44.117645"
+       inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red_smile.png"
+       transform="matrix(-0.98819285,0.15321516,-0.15321516,-0.98819285,999.37689,401.27291)"
+       id="g4229-0">
+      <ellipse
+         style="fill:#000000;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
+         id="ellipse4231-6"
+         cx="462.38156"
+         cy="116.8268"
+         rx="11.498447"
+         ry="10.393592" />
+      <ellipse
+         ry="3.6263623"
+         rx="3.9025772"
+         cy="116.13626"
+         cx="460.03372"
+         id="ellipse4233-1"
+         style="fill:#ffffff;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
+         inkscape:transform-center-x="3.7498923"
+         inkscape:transform-center-y="-2.5056724" />
+    </g>
+    <path
+       inkscape:export-ydpi="44.117645"
+       inkscape:export-xdpi="44.117645"
+       inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red_smile.png"
+       inkscape:connector-curvature="0"
+       id="path4237-2"
+       d="m 573.54098,427.05811 a 13.33858,13.004202 61.331614 0 0 16.05073,9.46997 13.33858,13.004202 61.331614 0 0 9.15684,-15.97914 l -25.20757,6.50917 z"
+       style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:2.22831964;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       inkscape:export-ydpi="44.117645"
+       inkscape:export-xdpi="44.117645"
+       inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red_smile.png"
+       inkscape:connector-curvature="0"
+       id="path4239-1"
+       d="m 494.80055,417.37723 a 13.004202,13.33858 6.0550335 0 0 7.79803,16.92623 13.004202,13.33858 6.0550335 0 0 16.62808,-7.91758 l -24.42611,-9.00865 z"
+       style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:2.22831964;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 624.584,148.93738 c 0,0 -7.22566,65.68212 -71.10306,66.39863 -63.87739,0.71652 -71.58946,-71.51128 -71.58946,-71.51128"
+       id="path4195-9-8"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="czc"
+       inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_blue_smile.png"
+       inkscape:export-xdpi="44.117645"
+       inkscape:export-ydpi="44.117645" />
+    <path
+       style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:2.22831964;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 577.22839,211.49146 a 13.33858,13.004202 68.369487 0 0 -14.76948,-11.36524 13.33858,13.004202 68.369487 0 0 -11.0457,14.7368 l 25.81518,-3.37156 z"
+       id="ellipse4197-4-2-2"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_blue_smile.png"
+       inkscape:export-xdpi="44.117645"
+       inkscape:export-ydpi="44.117645" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 720.00026,97.91663 c 0,0 9.58376,-6.873938 23.74177,-7.177138 14.15801,-0.30321 24.26425,4.195698 24.26425,4.195698"
+       id="path4304-0-7"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="czc"
+       inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_blue_blink_smile.png"
+       inkscape:export-xdpi="44.117645"
+       inkscape:export-ydpi="44.117645" />
+    <path
+       inkscape:export-ydpi="44.117645"
+       inkscape:export-xdpi="44.117645"
+       inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_blue_blink_smile.png"
+       sodipodi:nodetypes="czc"
+       inkscape:connector-curvature="0"
+       id="path4306-1-4"
+       d="m 790.15851,96.81177 c 0,0 9.58376,-6.873938 23.74177,-7.177138 14.15801,-0.30321 24.26425,4.195698 24.26425,4.195698"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 713.75026,355.13538 c 0,0 9.58376,-6.87394 23.74177,-7.17714 14.15801,-0.30321 24.26425,4.1957 24.26425,4.1957"
+       id="path4304-0-7-4"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="czc"
+       inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red_blink_smile.png"
+       inkscape:export-xdpi="44.117645"
+       inkscape:export-ydpi="44.117645" />
+    <path
+       inkscape:export-ydpi="44.117645"
+       inkscape:export-xdpi="44.117645"
+       inkscape:export-filename="Z:\Documents\git\InteractiveGame\source\shared\resources\player_red_blink_smile.png"
+       sodipodi:nodetypes="czc"
+       inkscape:connector-curvature="0"
+       id="path4306-1-4-2"
+       d="m 783.90851,354.03052 c 0,0 9.58376,-6.87394 23.74177,-7.17714 14.15801,-0.30321 24.26425,4.1957 24.26425,4.1957"
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   </g>
 </svg>

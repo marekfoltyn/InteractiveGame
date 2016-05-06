@@ -12,7 +12,7 @@
 
 \usepackage{graphicx} %graphics files inclusion
 \usepackage{adjustbox}
-\usepackage{tabularx}
+\usepackage{multirow,tabularx}
 \usepackage{xargs} 
 \usepackage[pdftex,dvipsnames]{xcolor} 
 \usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes} 
@@ -22,9 +22,9 @@
 \usepackage{dirtree} %directory tree visualisation
 
 % % list of acronyms
-% \usepackage[acronym,nonumberlist,toc,numberedsection=autolabel]{glossaries}
-% \iflanguage{czech}{\renewcommand*{\acronymname}{Seznam pou{\v z}it{\' y}ch zkratek}}{}
-% \makeglossaries
+%\usepackage[acronym,nonumberlist,toc,numberedsection=autolabel]{glossaries}
+%\iflanguage{czech}{\renewcommand*{\acronymname}{Seznam pou{\v z}it{\' y}ch zkratek}}{}
+%\makeglossaries
 
 \newcommand{\tg}{\mathop{\mathrm{tg}}} %cesky tangens
 \newcommand{\cotg}{\mathop{\mathrm{cotg}}} %cesky cotangens
@@ -361,7 +361,7 @@ Návrh systému je druhou fází softwarového projektu. Obsahuje podrobnější
 
 Úkolem komunikačního modulu je zajistit výměnu zpráv v lokální síti. Kromě toho definuje obecnou síťovou zprávu a její vlastnosti. Modul tedy tvoří dvě základní komponenty: \textit{Box} a \textit{Connector}. 
 
-Hlavním přínosem modulu je odstínění implementace síťové vrstvy od hry a herního enginu a možnost velmi snadného nasazení v libovolné jiné hře nejen zaměřené na interaktivní ovládání pomocí mobilního telefonu.
+Hlavním přínosem modulu je odstínění implementace síťové vrstvy od hry a herního enginu a velmi snadné nasazení v libovolné jiné hře zaměřené nejen na interaktivní ovládání pomocí mobilního telefonu.
 
 \todo{obrázek tříd Connector a Box}
 
@@ -369,11 +369,11 @@ Hlavním přínosem modulu je odstínění implementace síťové vrstvy od hry 
 
 \textit{Box} je objekt reprezentující síťovou zprávu. Jeho cílem je zapouzdřit veškeré informace potřebné pro práci se síťovou zprávou Používá se při obou směrech komunikace, což znamená, že se vytváří před odesláním, ale také po přijetí zprávy.
 
-Obsahuje data zprávy, typ zprávy, adresu příjemce (pokud bude zpráva odeslána), nebo adresu odesílatele (pokud byla zpráva přijata), dále vlastnosti doručení, mezi které patří spolehlivost (spolehlivé doručení znamená, že odesílající zařízení čeká na přijetí potvrzení, že příjemce zprávu přijal), priorita, jak rychle má být zpráva doručena (zprávy s nízkou prioritou mohou být řazeny do fronty a odeslány najednou, což šetří síťový provoz), nebo nastavení, zda je nutné dbát na zachování pořadí zpráv, v jakém byly odeslány.
+Obsahuje data zprávy, typ zprávy, adresu příjemce (pokud bude zpráva odeslána), nebo adresu odesílatele (pokud byla zpráva přijata), dále vlastnosti doručení, mezi které patří spolehlivost (spolehlivé doručení znamená, že odesílající zařízení čeká na potvrzení přijetí zprávy), priorita, jak rychle má být zpráva doručena (zprávy s nízkou prioritou mohou být řazeny do fronty a odeslány najednou, což šetří síťový provoz), nebo nastavení, zda je nutné dbát na zachování pořadí zpráv, v jakém byly odeslány.
 
 \subsubsection{Box}
 
-\textit{Connector} je objekt, který spravuje veškeré fungování síťové komunikace: aktivování síťových rozhraní, připojování a odpojování klientů, posílání a příjem \textit{Boxů}.
+\textit{Connector} je objekt, který stanovuje programové rozhraní veškerého fungování síťové komunikace: obsahuje metody pro aktivování síťových rozhraní, připojování a odpojování klientů, posílání a příjem \textit{Boxů}. 
 
 \subsubsection{RakNet}
 
@@ -381,12 +381,53 @@ Hlavičková definice \textit{Connectoru} i \textit{Boxu} tvoří abstraktní ro
 
 RakNet je multiplatformní síťová se zaměřením na hry napsaná v C++. Vyznačuje se velmi nízkými nároky na hardware, kvalitní dokumentací a množstvím funkcionalit, které se často využívají v multiplayerových hrách. \cite{raknet} Mezi ně patří například Lobby systém\footnote{Lobby systém - virtální místnost, kde se shromažďují hráči před začátkem online hry. Obvykle nabízí chat mezi hráči, volbu herních místností nebo žebříček výsledků.}, šifrování komunikace nebo peer-to-peer spojení mezi hráči. Veškerá komunikace je postavena na protokole UDP, přesto knihovna obsahuje podporu pro spolehlivé doručení zpráv.
 
-Knihovnu jsem zvolil především pro její snadné použití a podporu jak klasických počítačů i mobilních platforem. Jednu implementaci modulu tak je možné využít v ovladači i ve hře na PC.
+Knihovnu jsem zvolil především pro její snadné použití a podporu jak klasických počítačů i mobilních platforem. Stejnou implementaci modulu je tak možné využít v ovladači i ve hře na PC.
 
-\todo{lobby, peer-to-peer, herní engine do slovníčku pojmů}
+\subsection{Hra}
+
+% rozdělení návrhu hry - žánr, herní objekty, ostatní objekty (handlery) 
+
+\subsubsection{Volba herního žánru}
+
+Jak bylo zmíněno v analýze, důležitým požadavkem pro hru je možnost efektního využití interaktivních možností chytrých telefonů. K tomu musí být uzpůsobem herní žánr tvořící kostru veškeré hratelnosti. Proto jsem nejprve zvolil dva směry a porovnával jejich výhody a nevýhody:
+
+Prvním z nich je akční 2D hra, kde kamera zobrazuje scénu zhora. Hlavním pilířem hry je souboj dvou týmm a cílem je dosáhnout většího počtu zásahů, než protivník. Každý hráč by ovládal jednu postavu vybavenou zbraní. Mezi interaktivní prvky lze zařadit ovládání postavy pohybovým senzorem a intuitivní míření pomocí dotykového displeje (místo dotyku prstu a střed obrazovky vytvoří přímku definující směr výstřelu). Inovativní by mohlo obsahovat zobrazení herní mapy: hlavní herní území se zobrazuje na obrazovce, kterou vidí všichni hráči. Mohou se tam ale vyskytovat místa, kde by hráč mohl vyjít ze všemi viděné mapy (např dveře nebo vchod do domu). Po vkročení na místo by postava zmizela z hlavní obrazovky a danému hráči by se na mobilním displeji vykreslil interiér domu i s hráčem. Tímto by se elegantně rozšířil herní prostor na další objekty a zároveň by mohla být zachována interaktivita mezi hráči (např. by bylo možné zasáhnout hráče v domě skrz okno). Tento prvek považuji za velmi efektní příklad využití mobilního telefonu, který obohacuje samotnou hru a přináší nové taktické možnosti.
+
+Tento návrh hry bohužel obsahuje i méně vhodné prvky. Zobrazení velké části mapy, kterou uvidí hráči obou týmů zveřejňuje pozice všech hráčů a ubírá tak možnost taktizace v terénu, jelikož se hráč nemůže skrýt před protivníky jinak, než že vejde do výše zmiňované interaktivní místnosti. Tím by však mohla nastat situace, že hráči budou takto skrytí příliš často a hlavní obrazovka tak téměř ztratí význam.
+
+Druhým návrhem je sportovní zameření, konkrétně 2D fotbal. Podobně jako u akční hry má kamera pohled zhora a soupeří proti sobě dva týmy s cílem skórovat vícekrát než soupeř. Hlavní obrazovka zobrazuje fotbalové hřiště s hráči. Hráč ovládá svou postavu pomocí akcelerometru a dotyk s obrazovkou mu umožňuje vystřelit (sílu výstřelu určuje doba dotyku před uvolněním prstu z obrazovky). Oživením klasické hry jsou bonusy. Objevují se náhodně a při jejich sebrání poskytují danému hráči časově omezenou výhodu. Mezi bonusy patří zvýšení rychlosti, zvětšení maximální síly kopu a především neviditelnost. Neviditelný hráč zmizí z hlavní obrazovky a kompletní hřiště se mu začne vykreslovat na mobilní obrazovce. Jeho taktická výhoda je, že není viděn ostatními a může procházet skrz hráče. Bonus neviditelnosti představuje výraznou inovaci podobně jako rozšířené místnosti v návrhu akční hry, eliminuje však případné nedostatečné využití hlavního displeje.
+
+Všechny zmíněné a ještě některé další výhody a nevýhody těchto dvou návrhů shrnuje tabulka \ref{table:game_comparison} (prvek s větším přínosem je vyznačen kurzivou).
+
+\todo{dopsat vlastnosti v tabulce}
+
+\begin{table}[h]
+\caption{Porovnání herních žánrů}
+\label{table:game_comparison}
+\begin{tabularx}{\textwidth}{|X|X|}
+\hline
+\textbf{Akční hra} & \textbf{Fotbal} \\ \hline
+\multicolumn{2}{|c|}{Pohyb postavy pomocí akcelerometru}\\ \hline
+\multicolumn{2}{|c|}{Taktická výhoda při zobrazení hry v mobilním displeji}\\ \hline
+\multicolumn{2}{|c|}{Obsahuje kooperativní i kompetitivní složku hry}\\ \hline
+% & \\ \hline
+\emph{Rozšíření scény o interaktivní místnosti} & Bonus neviditelnosti \\ \hline
+Riziko časté nepřítomnosti na hlavní obrazovce & \emph{Možnost neviditelnosti je časově omezena} \\ \hline
+Hlavní obrazovka ubírá možnosti taktizace & \emph{Hřiště je optimální pro zobrazení na společné obrazovce} \\ \hline
+
+Střelba na základě místa dotyku s obrazovkou & Síla kopu se odvíjí od délky dotyku \\ \hline
+Míření může být těžké na naučení & \emph{Kopnutí je velmi intuitivní} \\ \hline
+
+ & \emph{} \\ \hline
+
+\end{tabularx}
+\end{table}
+
+
+
 
 % návrh hry
-  % herní žánr a prinicp
+
   % návrh ovládání
   % architektura hry
   % architektura ovladače
@@ -407,12 +448,10 @@ Knihovnu jsem zvolil především pro její snadné použití a podporu jak klas
 
 \appendix
 
-\chapter{Seznam použitých zkratek}
-% \printglossaries
-\begin{description}
-	\item[GUI] Graphical user interface
-	\item[XML] Extensible markup language
-\end{description}
+%\chapter{Seznam použitých zkratek}
+%\printglossaries
+%\begin{description}
+%\end{description}
 
 \chapter{Obsah přiloženého CD}
 
