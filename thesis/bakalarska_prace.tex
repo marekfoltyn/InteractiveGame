@@ -29,6 +29,7 @@
 \newcommand{\tg}{\mathop{\mathrm{tg}}} %cesky tangens
 \newcommand{\cotg}{\mathop{\mathrm{cotg}}} %cesky cotangens
 \newcommandx{\note}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+\newcommand{\code}[1]{\texttt{#1}}
 
 \department{Katedra softwarového inženýrství}
 \title{Interaktivn{\' i} ovl{\' a}d{\' a}n{\' i} PC hry pomoc{\' i} chytr{\' e}ho telefonu}
@@ -355,13 +356,15 @@ Nefunkční požadavky na hru zahrnují především použití cílové platform
 
 \section{Návrh}
 
-Návrh systému je druhou fází softwarového projektu. Obsahuje podrobnější popis jednotlivých komponent systému a jejich vzájemných vztahů. V první části se budu věnovat návrhu síťového modulu a v druhé části vlastní hře.
+Návrh systému je druhou fází softwarového projektu. Obsahuje podrobnější popis komponent systému, jejich objektů a popis jejich vzájemných vztahů.
+
+Hra pro PC i ovladač používají dvě základní komponenty. První z nich je síťový modul zajišťující veškerou síťovou komunikaci a druhou komponentou je herní engine. 
 
 \subsection{Komunikační modul}
 
 Úkolem komunikačního modulu je zajistit výměnu zpráv v lokální síti. Kromě toho definuje obecnou síťovou zprávu a její vlastnosti. Modul tedy tvoří dvě základní komponenty: \textit{Box} a \textit{Connector}. 
 
-Hlavním přínosem modulu je odstínění implementace síťové vrstvy od hry a herního enginu a velmi snadné nasazení v libovolné jiné hře zaměřené nejen na interaktivní ovládání pomocí mobilního telefonu.
+Hlavním přínosem modulu je odstínění implementace síťové vrstvy od hry a herního enginu a velmi snadné nasazení v libovolné jiné hře zaměřené nejen na interaktivní ovládání pomocí mobilního telefonu. Výhodou vytvoření abstraktní vrstvy v porovnání s přímým použitím RakNetu je především zjednodušení navázání spojení, manipulace s dakovými pakety (Boxy) a nezávislost na vnitřní implementaci.
 
 \todo{obrázek tříd Connector a Box}
 
@@ -385,7 +388,7 @@ Knihovnu jsem zvolil především pro její snadné použití a podporu jak klas
 
 \subsection{Hra}
 
-% rozdělení návrhu hry - žánr, herní objekty, ostatní objekty (handlery) 
+Návrh hry se skládá z několika částí. Prvním krokem je volba herního žánru. Poté se budu věnovat hledání herního enginu, na kterém bude hra postavena. Poslední částí bude již samotný návrh struktury systému, objektů, vztahů mezi nimi a tvorba samotného komunikačního protokolu.
 
 \subsubsection{Volba herního žánru}
 
@@ -399,10 +402,8 @@ Druhým návrhem je sportovní zameření, konkrétně 2D fotbal. Podobně jako 
 
 Všechny zmíněné a ještě některé další výhody a nevýhody těchto dvou návrhů shrnuje tabulka \ref{table:game_comparison} (prvek s větším přínosem je vyznačen kurzivou).
 
-\todo{dopsat vlastnosti v tabulce}
-
 \begin{table}[h]
-\caption{Porovnání herních žánrů}
+\caption{Srovnání vybraných herních žánrů}
 \label{table:game_comparison}
 \begin{tabularx}{\textwidth}{|X|X|}
 \hline
@@ -417,24 +418,79 @@ Hlavní obrazovka ubírá možnosti taktizace & \emph{Hřiště je optimální p
 
 Střelba na základě místa dotyku s obrazovkou & Síla kopu se odvíjí od délky dotyku \\ \hline
 Míření může být těžké na naučení & \emph{Kopnutí je velmi intuitivní} \\ \hline
+% & \emph{} \\ \hline
+\end{tabularx}
+\end{table}
 
- & \emph{} \\ \hline
+Podle tabulky se jeví jako vhodnější kandidát implementace fotbalu. Mě osobně více zaujal i z důvodu atraktivity pro diváky například na večírku s přáteli, kteří mohou být jako pozorovatelé lépe začleněni do hry. 
+
+Po zvážení všech těchto aspektů jsem se rozhodl použít fotbal jako téma demonstrační hry.
+
+\subsection{Herní engine}
+
+Slovní spojení herní engine je možné definovat různými způsoby. Závisí například na provázanosti herní logiky s vykreslování, obecnosti enginu z pohledu herního žánru apod. V této práci je pod pojmem \textit{herní engine} myšlen softwarový framework, který obsahuje základní komponenty potřebné pro vývoj her, jako je vykreslování grafiky, detekce kolizí, zpracování uživatelských vstupů, práce se zvukem a další. \cite{gameengine}
+
+Důležitou částí návrhu je výběr herního enginu. Pro účely této hry jsem stanovil několik požadavků, které musí engine splňovat:
+
+\begin{itemize}
+	\item Podpora více platforem (jak PC, tak i mobilní telefony) podobně jako RakNet, aby bylo možné použít oba tyto frameworky současně. Pokud engine nebude napsán v jazyce C++, měl by podporovat práci se sítí, nebo musí existovat alternativní síťová knihovna použitelná s tímto enginem.
+	\item Vzhledem k nulovému finančnímu rozpočtu tohoto projektu by měl být engine licencován zdarma.
+	\item Engine musí umět pracovat s 2D grafikou a být nezávislý na herním žánru
+	\item Mezi funkce musí patřit mimo jiné podpora dotykové obrazovky a zpracování pohybového senzoru.
+	\item Musí existovat volně dostupná kvalitní dokumentace a návody, jak engine používat.
+\end{itemize}
+
+Z velkého množství různých systémů se do výběru použitelných enginů se dostal Torque 2D, Cocos2d-x a Marmalade. Všechny tyto enginy nabízejí funkce splňující výše uvedené požadavky. Nevýhodou Torque 2D je méně rozsáhlá dokumentace a návody v porovnání s Cocos2d-x a Marmalade, proto jsem jej vyřadil. Při rozhodování mezi Cocos2d-x a Marmalade jsem pak bral v potaz subjektivní přehlednost systému a osobní preference a zvolil jsem proto Cocos2d-x.
+
+\subsubsection{Návrh ovládání}
+
+Ovládání hry je realizováno pomocí mobilního telefonu spojeného se hrou. Pro připojení do hry a nastavení parametrů zápasu počítá návrh s klasickým využitím tlačítek zobrazených na dotykové ploše. Mimo to je třeba navrhnout ovládání akcí herní postavy v zápase. Tyto akce jsou dvě: pohyb a kopnutí do míče.
+
+Hlavní ovládací prvek pohybu tvoří akcelerometr. Zajišťuje pohyb herní postavy po dvourozměrné ploše hřiště. Změřením velikosti náklonu telefonu se vypočítá směr a rychlost hráče. Toto ovládání je zajímavé především z pohledu křivky učení: je velmi jednoduché pochopit princip pohybu pomocí akcelerometru, ale získání dostatečné citlivost pro přesnou a rychlou hru vyžaduje delší cvik. Tento princip názorně popisuje aforismus Nolana Bushnella\footnote{Nolan Bushnell je americký podnikatel. Ve videoherním průmyslu se proslavil založením společnosti Atari, což byla průkopnická firma v oblasti počítačových her.\cite{atari}}: Nejlepší hry jsou lehké na naučení, avšak obtížné na ovládnutí. \cite{atari} Tento princip platí v menším měřítku i pro ovládání akcelerometrem.
+
+Ovládání kopnutí do míče počítá zajišťuje dotyková obrazovka, konkrétně výrazné tlačítko umístěné na snado dostupném místě pro prst. Při stisknutí tlačítka ještě nedojde ke kopu, pouze se začne měřit doba stisknutí tlačítka. Ke kopu dojde až po uvolnění tlačítka a jeho síla se vypočítá právě na době stisku. Aby se hráči nepohybovali po hřišti se stále \uv{nabitým kopnutím}, přidal jsem do návrhu ještě snížení maximální rychlosti pohybu v závislosti na stupni intenzity střely. Tento prvek motivuje hráče, aby \uv{nabíjeli} pouze, pokud potřebují kopnout míč. Herními parametry, které je nutné citlivě nastavit pro vyváženou hratelnost, jsou počáteční a maximální intenzita kopu, rychlost nárůstu intenzity kopu, rychlost klesání maximální rychlosti. Ladění těchto parametrů probíhalo během testování hratelnosti. Výsledné parametry popisuje kapitola \ref{section:testing}.
+
+\subsubsection{Architektura hry}
+
+\todo{nějakým diagramem vyjádřit architekturu hry}
+
+Hra na PC tvoří server pro interaktivní ovladače. Každý ovladač je spojen s jednou postavou a z těcho ovladačů je zvolen jeden (typicky označovaný jako \textit{admin}), který může spravovat nastavení hry.
+
+Jedinou herní scénou je samotné hřiště. Je zobrazeno po celou dobu spuštění hry. Před zahájením zápasu se však na něm nevyskytuje míč. Hráči se na hřišti objeví po připojení a volbě týmu. Poté se mohou volně pohybovat po hřišti jak během zápasu, tak i před ním. 
+
+Z hlediska objektového návrhu jsou objekty rozděleny do dvou kategorií: herní a systémové objekty. Herní objekty reprezentují části hry z pohledu reálného světa. Patří mezi ně fotbalové hřiště (třída \textit{StadiumScene}), míč (\textit{Ball}), Hráč (\textit{Player}) a obecná reprezentace herního bonusu \textit{BonusInterface}, kterou implementují tři použité bonusy (neviditelnost, rychlost a síla kopu). Systémovou kostru hry tvoří třída \textit{Game} a zpracování herních událostí pomocí návrhového vzoru \textit{Handler}\cite{patterns}: každá interakce s hrou nebo změna stavu hry vyvolá událost, která je zpracována příslušným \textit{handlerem}. Tyto události jsem rozdělil na 6 kategorií. Kromě toho má každá událost identifikátor, ke kterému je přiřazen příslušný handler. Příkladem události může být kliknutí na tlačítko nastavení vibrací. Identifikátorem události je hodnota \code{TOUCH\_TOGGLE\_VIBRATE}. Zpracování události zajišťuje třída \code{ToggleVibrateHandler}, která přepíná, zda budou použity vibrace ve hře. Přehled typů událostí, jejich popis a příklady použití shrnuje tabulka \ref{table:handlers}.
+
+\begin{table}[h]
+\caption{Kategorie handlerů}
+\label{table:handlers}
+\begin{tabularx}{\textwidth}{|X|X|X|}
+\hline
+\textbf{Kategorie} & \textbf{Popis} & \textbf{Příklady událostí} \\ \hline
+\code{Void} & Obecná událost, která nepotřebuje dodatečná data \\ \hline
+\code{Box} & \\ \hline
+\code{Touch} & \\ \hline
+\code{Acceleration} & \\ \hline
+\code{Collision} & \\ \hline
+\code{String} & \\ \hline
 
 \end{tabularx}
 \end{table}
 
+\subsubsection{Architektura ovladače}
 
+\subsubsection{Komunikace mezi ovladačem a hrou}
 
-
-% návrh hry
-
-  % návrh ovládání
-  % architektura hry
-  % architektura ovladače
+\subsubsection{Herní bonusy}
 
 \section{Implementace}
+
 \section{Testování}
+\label{section:testing}
+
+% zmínit tady tabulku s herními parametry z kapitoly návrh ovládání - síla kopu atd...
+
 \section{Dokumentace}
+
 \section{Možnosti rozšíření}
 
 \begin{conclusion}
