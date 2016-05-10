@@ -609,13 +609,26 @@ Pro řešení tohoto problému byly potřeba dva kroky. Prvním z nich je odesl�
 
 \subsubsection{Vykreslování hráčů v mobilní obrazovce}
 
-% 1) vykreslím pozici
+Jako velmi zajímavou část během vývoje považuji ladění vykreslování hráčů na mobilním displeji. Aktivní bonus neviditelnosti začne periodicky posílat informace o hře, jejíž součástí jsou také data o jednotlivých hráčích. Na počátku vývoje obsahovaly tyto údaje mimo jiné souřadnice hráče na hřišti. Tyto souřadnice pak používá ovladač pro nastavení pozice hráče na mobilním displeji. Při testování se však ukázalo, že tento návrh je téměř nepoužitelný: pohyb hráčů byl velmi trhaný, nepomohlo ani zvýšení frekvence posílání zpráv (z 30 na 60 zpráv za vteřinu) a je proto potřeba vykreslování optimalizovat.
 
-% 2) vykreslím pozici a rychlost
+\todo{obrázek se sekaným pohybem}
 
-% 3) vykreslím pouze aktuální pozici a rychlost
+Pro docílení plynulejšího pohybu jsem rozšířil zprávu o hráčích o vektor pohybu. Z dat se tak dala rekonstruovat nejen pozice, ale i rychlost a směr pohybu. Hráč na mobilní obrazovce se tedy pohyboval i v případě, že delší dobu nebyl přijat paket s aktualizovanými údaji. Toto řešení o něco vylepšilo celkový dojem z vykreslování, stále se však objevoval trhaný pohyb a občasné uskakování hráčů, byť v menší míře.
 
-% 4) vykreslím aktuální pozici, rychlost a pokud dojde k odchylce, plynule posunu
+\todo{obrázek s predikcí pohybu}
+
+Jelikož bylo při tvorbě \code{Boxu} obsahujícího data o hráčích nastaveno odesílání a přijímání zpráv bez zajištění spolehlivosti, kromě ztrát mohlo také docházet ke změně pořadí přijatých zpráv. Ztráta zpráv v tomto případě nepředstavuje zásadní problém, jelikož neaktuální zprávy nejsou z hlediska hry informačně hodnotné, problém představuje změna pořadí. \uv{Starší} zprávy, které se dostanou před ty novější, mohou způsobit problém s \uv{přeskakováním} hráčů. Kdy je hráč přesunut z aktuálního místa zpět na nějaké místo z minulosti a až přijde aktuální zpráva, tak je hráč opětovně přesunut na správně místo. Tento problém vyřešilo jednoduché nastavení spolehlivosti zprávy na \code{UNRELIABLE\_SEQUENCED}, což způsobilo zahazování neaktuálních paketů a elegantně vyřešilo problém přeskakování hráčů.
+
+Zprávy o hráčích nyní poskytují všechny informace potřebné pro vykreslení. Další vylepšování plynulosti se týkají ovladače. Predikce pohybu s využitím aktuální rychlosti vykzuje nedostatky ve chvíli, kdy hráč změní rychlost nebo směr pohybu a zpráva s touto informací přijde později. Tato situace způsobuje zmiňované trhání. Způsob, jak eliminovat toho trhání je plynulá změna pozice pomocí animace objektu. Při zpracování nově přijaté zprávy se tak vypočítá vektor změny přijaté pozice od pozice na mobilním displeji, z toho se vytvoří animace, která přesune objekt hráče o vypočítaný vektor. Zároveň však zůstane zachována predikce pohybu. 
+
+\todo{obrázek s predikcí i s plynulou opravou pozice}
+
+Kombinace všech těchto vylepšení vytváří iluzi téměr totožného pohybu s minimální odchylkou jak na hlavní obrazovce, tak na mobilním displeji.
+
+\subsection{Shrnutí}
+
+Ve fázi implementace byl podle návrhu vytvořen funkční systém. Aplikace se podařilo vytvořit podle očekávání, stěžejní části a případné komplikace zde byly rozebrány do větší podrobností. 
+
 
 \section{Testování}
 \label{section:testing}
@@ -639,6 +652,8 @@ Pro řešení tohoto problému byly potřeba dva kroky. Prvním z nich je odesl�
 \section{Možnosti rozšíření}
 
 % Grafika
+
+% Bonusy?
 
 % 
 
