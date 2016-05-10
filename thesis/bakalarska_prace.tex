@@ -30,6 +30,7 @@
 \newcommand{\cotg}{\mathop{\mathrm{cotg}}} %cesky cotangens
 \newcommandx{\note}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
 \newcommand{\code}[1]{\texttt{#1}}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
 
 \department{Katedra softwarového inženýrství}
 \title{Interaktivn{\' i} ovl{\' a}d{\' a}n{\' i} PC hry pomoc{\' i} chytr{\' e}ho telefonu}
@@ -191,7 +192,12 @@ Kapacitní dotykový panel využívá elektrické vodivosti vnějších těles. 
 
 Dotykové displeje nabízejí velmi široké možnosti uplatnění ve~hrách. Na~rozdíl od~klasických ovladačů totiž propojují zobrazení grafiky se~samotným ovládáním. Například přesun objektů v~herním světě je velmi přirozený: hráč se jednoduše dotkne objektu a~tahem prstu jej přesune po~obrazovce. Ve~srovnání s~počítačovou myší odpadá \textit{mezivrstva} ve~formě periferie připojené k~zařízení a~hráčův prst se tak stává samotným kurzorem.
 
-Možnosti dotykových displejů, jako jsou gesta a~snímání více dotyků najednou, zásadním způsobem zjednodušují ovládání mobilních telefonů a~tedy i~mobilních her. Některé jsou přímo postaveny na~využití dotykových displejů, např. úspěšná hra \textit{Fruit Ninja}\cite{fruitninja}. \todo{Přidat obrázek s Fruit Ninja} Hlavní ovládací prvek tvoří tah prstem, který simuluje seknutí čepelí. Hráč se snaží prstem přeseknout co největší množství letícího ovoce najednou. Hra se stala příkladnou ukázkou využití dotykové obrazovky: letící ovoce je podnětem, abyse hráč trefil do~daného místa na~obrazovce a ovládání přímo koresponduje se zobrazovanou grafikou (pokaždé je pro~optimální přeseknutí potřeba jiné gesto prstem). Hra a~ovládání tak splývají v~jednu ucelenou část.
+Možnosti dotykových displejů, jako jsou gesta a~snímání více dotyků najednou, zásadním způsobem zjednodušují ovládání mobilních telefonů a~tedy i~mobilních her. Některé jsou přímo postaveny na~využití dotykových displejů, např. úspěšná hra \textit{Fruit Ninja}\cite{fruitninja}. Hlavní ovládací prvek tvoří tah prstem, který simuluje seknutí čepelí. Hráč se snaží prstem přeseknout co největší množství letícího ovoce najednou. Hra se stala příkladnou ukázkou využití dotykové obrazovky: letící ovoce je podnětem, abyse hráč trefil do~daného místa na~obrazovce a ovládání přímo koresponduje se zobrazovanou grafikou (pokaždé je pro~optimální přeseknutí potřeba jiné gesto prstem). Hra a~ovládání tak splývají v~jednu ucelenou část.
+
+\begin{figure}
+\includegraphics[width=\textwidth]{fruit_ninja}
+\caption{Využití dotykové obrazovky ve hře Fruit ninja\cite{fruitninja}}
+\end{figure}
 
 Této provázanosti se dá využít i~v~počítačové hře ovládané mobilním telefonem: Hlavní herní scéna je zobrazována na~displeji počítače a~hráč drží v~ruce ovladač (mobilní telefon), který je úzce provázán s~hrou v~PC. Dotyková obrazovka pak plní funkci jak ovládací, tak i~zobrazovací. To nemusí být nutně výhodou, protože při ovládání hry se hráč přirozeně soustředí především na~herní obraz v~PC a~může být nepohodlné často měnit pohled z~monitoru na~mobil. Pokud je ale hra pro více hráčů, otevírají se nové možnosti, jak využít individuální obrazovku pro~každého hráče, který tím získá soukromý zobrazovací prostor a~ten může poskytovat přídavné informace. Tuto techniku využívám v~implementaci demonstrační hry, kdy hráč při získání bonusu neviditelnosti zmizí z~hřiště na~hlavní obrazovce a~začne se mu na~mobilním displeji zobrazovat kompletní herní scéna i~se~zmizelým hráčem. Protivníci tím pádem ztrácí informaci o~hráčově pozici a~on získává herní výhodu. Této techniky lze dosáhnout pouze úzkým provázáním hry a~ovladače. Vzhledem k~těmto schopnostem mobilních telefonů v~kombinaci s~dostatečným výkonem, dalšími senzory a~rychlou bezdrátovou komunikací má využití dotykového displeje velký potenciál.
 
@@ -374,7 +380,7 @@ Hlavním přínosem modulu je odstínění implementace síťové vrstvy od hry 
 
 Obsahuje data zprávy, typ zprávy, adresu příjemce (pokud bude zpráva odeslána), nebo adresu odesílatele (pokud byla zpráva přijata), dále vlastnosti doručení, mezi které patří spolehlivost (spolehlivé doručení znamená, že odesílající zařízení čeká na potvrzení přijetí zprávy), priorita, jak rychle má být zpráva doručena (zprávy s nízkou prioritou mohou být řazeny do fronty a odeslány najednou, což šetří síťový provoz), nebo nastavení, zda je nutné dbát na zachování pořadí zpráv, v jakém byly odeslány.
 
-\subsubsection{Box}
+\subsubsection{Connector}
 
 \textit{Connector} je objekt, který stanovuje programové rozhraní veškerého fungování síťové komunikace: obsahuje metody pro aktivování síťových rozhraní, připojování a odpojování klientů, posílání a příjem \textit{Boxů}. 
 
@@ -450,6 +456,8 @@ Hlavní ovládací prvek pohybu tvoří akcelerometr. Zajišťuje pohyb herní p
 
 Ovládání kopnutí do míče počítá zajišťuje dotyková obrazovka, konkrétně výrazné tlačítko umístěné na snado dostupném místě pro prst. Při stisknutí tlačítka ještě nedojde ke kopu, pouze se začne měřit doba stisknutí tlačítka. Ke kopu dojde až po uvolnění tlačítka a jeho síla se vypočítá právě na době stisku. Aby se hráči nepohybovali po hřišti se stále \uv{nabitým kopnutím}, přidal jsem do návrhu ještě snížení maximální rychlosti pohybu v závislosti na stupni intenzity střely. Tento prvek motivuje hráče, aby \uv{nabíjeli} pouze, pokud potřebují kopnout míč. Herními parametry, které je nutné citlivě nastavit pro vyváženou hratelnost, jsou počáteční a maximální intenzita kopu, rychlost nárůstu intenzity kopu, rychlost klesání maximální rychlosti. Ladění těchto parametrů probíhalo během testování hratelnosti. Výsledné parametry popisuje kapitola \ref{section:testing}.
 
+\todo{porovnat ovládání s tradičními ovladači z první kapitoly}
+
 \subsubsection{Architektura hry}
 
 \todo{nějakým diagramem vyjádřit architekturu hry}
@@ -458,31 +466,85 @@ Hra na PC tvoří server pro interaktivní ovladače. Každý ovladač je spojen
 
 Jedinou herní scénou je samotné hřiště. Je zobrazeno po celou dobu spuštění hry. Před zahájením zápasu se však na něm nevyskytuje míč. Hráči se na hřišti objeví po připojení a volbě týmu. Poté se mohou volně pohybovat po hřišti jak během zápasu, tak i před ním. 
 
-Z hlediska objektového návrhu jsou objekty rozděleny do dvou kategorií: herní a systémové objekty. Herní objekty reprezentují části hry z pohledu reálného světa. Patří mezi ně fotbalové hřiště (třída \textit{StadiumScene}), míč (\textit{Ball}), Hráč (\textit{Player}) a obecná reprezentace herního bonusu \textit{BonusInterface}, kterou implementují tři použité bonusy (neviditelnost, rychlost a síla kopu). Systémovou kostru hry tvoří třída \textit{Game} a zpracování herních událostí pomocí návrhového vzoru \textit{Handler}\cite{patterns}: každá interakce s hrou nebo změna stavu hry vyvolá událost, která je zpracována příslušným \textit{handlerem}. Tyto události jsem rozdělil na 6 kategorií. Kromě toho má každá událost identifikátor, ke kterému je přiřazen příslušný handler. Příkladem události může být kliknutí na tlačítko nastavení vibrací. Identifikátorem události je hodnota \code{TOUCH\_TOGGLE\_VIBRATE}. Zpracování události zajišťuje třída \code{ToggleVibrateHandler}, která přepíná, zda budou použity vibrace ve hře. Přehled typů událostí, jejich popis a příklady použití shrnuje tabulka \ref{table:handlers}.
+Z hlediska objektového návrhu jsou objekty rozděleny do dvou kategorií: herní a systémové objekty. Herní objekty reprezentují části hry z pohledu reálného světa. Patří mezi ně fotbalové hřiště (třída \textit{StadiumScene}), míč (\textit{Ball}), Hráč (\textit{Player}) a obecná reprezentace herního bonusu \textit{BonusInterface}, kterou implementují tři použité bonusy (neviditelnost, rychlost a síla kopu). 
+% Strukturu těchto tříd popisuje diagram ...
+
+Systémovou kostru hry tvoří třída \textit{Game} a zpracování herních událostí pomocí návrhového vzoru \textit{Handler}\cite{patterns}: každá interakce s hrou nebo změna stavu hry vyvolá událost, která je zpracována příslušným \textit{handlerem}. Tyto události jsem rozdělil na 6 kategorií. Kromě toho má každá událost identifikátor, ke kterému je přiřazen příslušný handler. Přehled typů událostí, jejich popis a příklady použití shrnuje tabulka \ref{table:handlers}.
 
 \begin{table}[h]
-\caption{Kategorie handlerů}
+\caption{Rozdělení herních handlerů}
 \label{table:handlers}
 \begin{tabularx}{\textwidth}{|X|X|X|}
 \hline
 \textbf{Kategorie} & \textbf{Popis} & \textbf{Příklady událostí} \\ \hline
-\code{Void} & Obecná událost, která nepotřebuje dodatečná data \\ \hline
-\code{Box} & \\ \hline
-\code{Touch} & \\ \hline
-\code{Acceleration} & \\ \hline
-\code{Collision} & \\ \hline
-\code{String} & \\ \hline
+\code{Void} & Událost, která nevyžaduje žádná data & Prvotní spuštění hry, konec zápasu (časomíry) \\ \hline
+\code{Box} & Přijetí Boxu ze síťě & Data z akcelerometru, připojení do hry, zahájení hry adminem, ... \\ \hline
+\code{Touch} & Uživatelský dotyk a jedna z fází \textit{pressed, moved, released} & Kopnutí, podržení tlačítka pro odpojení \\ \hline
+\code{Acceleration} & Událost vyvolaná přečtením dat z pohybového senzoru & Naklonění telefonu, periodické čtení senzoru \\ \hline
+\code{Collision} & Kolize dvou herních objektů & Srážka dvou hráčů, vstřelení gólu\\ \hline
+\code{String} & Událost zpracovávající textový řetězec & Změna jména hráče nebo hry \\ \hline
 
 \end{tabularx}
 \end{table}
 
-\subsubsection{Architektura ovladače}
+Důležitou součástí obsluhy handlerů je jejich správa a přístup k nim. K tomu slouží třída \code{HandlerMap}, která přiřažuje každému identifikátoru události nejvýše jeden Handler. Obsluhu události popisuje následující příklad: Každý zápas má časový limit a po jeho skončení se vyvolá událost s identifikátorem \code{VOID\_COUNTDOWN\_FINISHED}. Pro její obsluhu je nutné najít handler kategorie \code{Void} (nepředáváme handleru žádná další data) s tímto identifikátorem. Zavolání obsluhy se provede následujícím příkazem: 
 
-\subsubsection{Komunikace mezi ovladačem a hrou}
+\begin{figure}[h!]
+	\code{handlerMap->getVoidHandler(VOID\_COUNTDOWN\_FINISHED)->execute();}
+\end{figure}
+
+Podobně se volají i ostatní kategorie, mění se pouze argumenty metody \code{execute()}. Použití handlerů výrazně zpřehledňuje celý systém a odděluje vznik události od jejich obsluhy, čímž je docíleno vyšší modularity celé aplikace.
 
 \subsubsection{Herní bonusy}
 
+Prvkem, který obohacuje celkovou hratelnost, jsou bonusy. Umožňují dočasné zvýhodnění hráče během zápasu změnou jeho vlastností na hřišti. 
+
+Obecnou definici herního bonusu obsahuje abstraktní třída \code{BonusInterface}. Mezi její základní metody patří \code{activate()} a \code{deactivate()}. Bonusy dále obsahují informace o době, jak dlouho budou aktivní, kdo vzal daný bonus a jakou má bonus grafiku. Návrh počítá se třemi implementacemi bonusů: rychlost, síla kopu a neviditelnost.
+
+Bonus rychlosti zvyšuje hráči maximální rychlost, jakou se může pohybovat po hřišti. Může tak doběhnout míč lépe než protivník nebo se rychleji přiblížit k brance.
+Podobně jako rychlost zvyšuje bonus kopnutí sílu, která bude aplikována na míč. Pokud hráč s tímto bonusem vystřelí, míč letí rychleji a může doletět přes značnou část celého hřiště.
+Nejinteraktivnějším bonusem je neviditelnost. Hráč po sebrání bonusu zmizí z hlavní obrazovky a celé hřiště se mu zobrazí na mobilní obrazovce a kromě toho může procházet skrz ostatní hráče. Neviditelný hráč získává velkou taktickou výhodu, může volněji manipulovat s míčem a překvapit protivníka svou pozicí na hřišti.
+
+\subsubsection{Architektura ovladače}
+
+Základní struktura ovladače je velmi podobná hře, jelikož využívá velké množství stejných komponent: Návrhový vzor Handler je použit jak ve hře, tak i v ovladači, obě aplikace spolu sdílí abstraktní části kódu, jen implementace konkrétnéch handlerů jsou odlišné. Stejně tak je využíván síťový modul a sdílené jsou i grafické zdroje. Proto se zde budu věnovat především odlišným prvkům.
+
+Na rozdíl od hry ovladač obsahuje více herních scén (obrazovek). Konkrétně se jedná o hlavní menu, obrazovku s výběrem týmu, ovládací obrazovka a scéna s vykresleným hřištěm. Přechody mezi jednotlivými obrazovkami popisuje diagram \todo{diagram přechodů obrazovky}.
+
+Hlavní menu je první zobrazenou scénou po spuštění ovladače. Obsahuje nastavení hráčovy přezdívky, aktivace vibrací a seznam nalezených serverů. Po kliknutí na vybraný server naváže ovladač spojení s hrou a zobrazí volbu týmu. Hráč si může zvolit ze dvou týmů (červený nebo modrý), případně si nechat určit tým automaticky. Po přiřazení týmu se zobrazí ovládací obrazovka, které dominuje velké tlačítko pro kopnutí do míče. Pokud během hry hráč vezme bonus neviditelnosti, zobrazí se mu na mobilní obrazovce totožné hřiště jako na hlavní obrazovce. Kopnout do míče při neviditelnosti lze dotykem na libovolné místo obrazovky, aby se předešlo stínění prstem na místo, kde zrovna probíhá hra. V případě odpojení nebo ztráty spojení se ovladač vrátí do hlavního menu a případně zobrazí chybovou hlášku.
+
+\subsubsection{Komunikace mezi ovladačem a hrou}
+
+Vzhledem k použití handlerů v systému je možné návrh síťové komunikace realizovat s využitím handlerů: přijetí síťové zprávy vyvolá událost a její zpracování. Vzhledem k tomu, že jak síťové zprávy, tak události jsou rozlišeny identifikátorem, je možné tyto identifikátory konsolidovat a použít pro událost i zprávu totožný identifikátor. 
+
+Nejběžnějším scénářem komunikace je nejprve vyhledání her v lokální síti, připojení na zvolenou hru, volba týmu, spuštění hry a poté probíhá herní komunikace. V případě bonusu neviditelnosti začne hra posílat informace o svém stavu danému ovladači, aby byl schopen vykreslit kompletní hru na své obrazovce.
+
+Stavový diagram \todo{Stavový diagram hry + stavový diagram ovladače} přehledně zobrazuje jednotlivé stavy hry i ovladače z hlediska síťové komunikace a zachycuje, kdy se posílají důležité informace.
+
+Nedílnou součástí návrhu celého systému je zpracování dat ze zpráv. Některé zprávy žádná data nemají, postačí pouze identifikátor Boxu, jiné obsahují pouze textový řetězec a jejich zpracování je pak triviální, ale existují i zprávy s komplexní strukturou a tím pádem i složitým zpracováním. Takovou zprávou je například stav hry posílaný ze serveru, aby mohl ovladač vykreslit hru při neviditelnosti. Zpráva musí obsahovat informace o všech viditelných hráčích (pozice, rychlost a směr pohybu, tým), míči a další informace. Takováto zpráva musí mít definovanou jasnou strukturu a protože se její obsah může měnit (např. když se změní počet hráčů), její zpracování vyžaduje hloubější analýzu.
+
+Původním záměrem, jak zpracovávat zprávy, bylo vytvořit vlastní parsovací systém pro každou zprávu. Ukázalo se však, že tento způsob je nedostačující především u složitějších zpráv. Lepší variantou se nabízelo využití existujících technologií pro serializaci dat. Z několika vhodných řešení jsem si zvolil knihovnu \textit{Protocol Buffers} vytvořenou firmou Google. Jedná se o multiplatformní knihovnu s otevřeným zdrojovým kódem, která umožňuje definici struktury zprávy, její serializaci a deserializaci a použití i více programovacími jazyky současně. \cite{protobuf} Použití Protocol Buffers je velmi jednoduché. Nejprve je třeba definovat strukturu zprávy s určenou syntaxí a poté za pomocí příkazové řádky vygenerovat soubory s požadovaným zdrojovým kódem (v tomto případě C++). Tyto vygenerované soubory se poté importují do projektu a je možné je přímo využívat.
+
+Využití Protocol Buffers elegantně vyřešilo problém zpracování zpráv a umožnilo velmi jednoduše specifikovat komplexní struktury dat posílané po síti:
+
+\begin{figure}[h]
+\code{message Person \{ \\
+\tab required string name = 1; \\
+\tab required int32 id = 2; \\
+\tab optional string email = 3; \\
+\tab repeated string address = 4; \\
+\}}
+\end{figure}
+
+Jak je vidět ze zdrojového kódu, v přehledné definici lze určit, zda se daná proměnná ve zprávě musí vyskytovat (parametr \code{required}), nebo se nutně vyskytovat nemusí (\code{optional}), či může existovat několik instancí (\code{repeated}), ale také nemusí být žádná.
+
+Pokud je nutné změnit strukturu zprávy, stačí upravit soubor s definicí a znovu vygenerovat zdrojové soubory. Není potřeba ručně měnit algoritmus parsování zprávy, jako by tomu bylo při použití vlastního primitivního parsování.
+
 \section{Implementace}
+
+% integrace knihoven: RakNet, cocos2d-x
+
+% vykreslování hráčů v mobilní obrazovce
 
 \section{Testování}
 \label{section:testing}
