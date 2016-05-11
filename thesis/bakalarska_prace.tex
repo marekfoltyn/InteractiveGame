@@ -617,30 +617,89 @@ Pro docílení plynulejšího pohybu jsem rozšířil zprávu o hráčích o vek
 
 \todo{obrázek s predikcí pohybu}
 
-Jelikož bylo při tvorbě \code{Boxu} obsahujícího data o hráčích nastaveno odesílání a přijímání zpráv bez zajištění spolehlivosti, kromě ztrát mohlo také docházet ke změně pořadí přijatých zpráv. Ztráta zpráv v tomto případě nepředstavuje zásadní problém, jelikož neaktuální zprávy nejsou z hlediska hry informačně hodnotné, problém představuje změna pořadí. \uv{Starší} zprávy, které se dostanou před ty novější, mohou způsobit problém s \uv{přeskakováním} hráčů. Kdy je hráč přesunut z aktuálního místa zpět na nějaké místo z minulosti a až přijde aktuální zpráva, tak je hráč opětovně přesunut na správně místo. Tento problém vyřešilo jednoduché nastavení spolehlivosti zprávy na \code{UNRELIABLE\_SEQUENCED}, což způsobilo zahazování neaktuálních paketů a elegantně vyřešilo problém přeskakování hráčů.
+Protože bylo při tvorbě \code{Boxu} s daty o hráčích nastaveno odesílání a přijímání zpráv bez zajištění spolehlivosti, kromě ztrát zpráv mohlo také docházet ke změně pořadí přijatých zpráv. Ztráta zpráv v tomto případě nepředstavuje zásadní problém, jelikož neaktuální zprávy nejsou z hlediska hry informačně hodnotné, větší problém představuje změna pořadí. \uv{Starší} zprávy, které se dostanou před ty novější, mohou způsobit problém s \uv{přeskakováním} hráčů. Kdy je hráč přesunut z aktuálního místa zpět na nějaké místo z minulosti a až přijde aktuální zpráva, tak je hráč opětovně přesunut na správně místo. Tento problém vyřešilo jednoduché nastavení spolehlivosti zprávy na \code{UNRELIABLE\_SEQUENCED}, což způsobilo zahazování neaktuálních paketů a elegantně vyřešilo problém přeskakování hráčů.
 
 Zprávy o hráčích nyní poskytují všechny informace potřebné pro vykreslení. Další vylepšování plynulosti se týkají ovladače. Predikce pohybu s využitím aktuální rychlosti vykzuje nedostatky ve chvíli, kdy hráč změní rychlost nebo směr pohybu a zpráva s touto informací přijde později. Tato situace způsobuje zmiňované trhání. Způsob, jak eliminovat toho trhání je plynulá změna pozice pomocí animace objektu. Při zpracování nově přijaté zprávy se tak vypočítá vektor změny přijaté pozice od pozice na mobilním displeji, z toho se vytvoří animace, která přesune objekt hráče o vypočítaný vektor. Zároveň však zůstane zachována predikce pohybu. 
 
 \todo{obrázek s predikcí i s plynulou opravou pozice}
 
-Kombinace všech těchto vylepšení vytváří iluzi téměr totožného pohybu s minimální odchylkou jak na hlavní obrazovce, tak na mobilním displeji.
+Kombinace všech těchto vylepšení splňuje požadavky na plynulost pohybu, který je tak téměř identický jako na hlavní obrazovce.
 
 \subsection{Shrnutí}
 
-Ve fázi implementace byl podle návrhu vytvořen funkční systém. Aplikace se podařilo vytvořit podle očekávání, stěžejní části a případné komplikace zde byly rozebrány do větší podrobností. 
+Ve fázi implementace byl podle návrhu vytvořen funkční systém. Obě aplikace se podařilo vytvořit podle očekávání, stěžejní části a případné komplikace zde byly rozebrány do větší podrobností. 
 
 
 \section{Testování}
 \label{section:testing}
 
-% zmínit tady tabulku s herními parametry z kapitoly návrh ovládání - síla kopu atd...
+Následující sekce se věnuje testování software a to jak automatické, tak manuální. Je sice zařazena až po fázi implementace, některé testy však probíhali souběžně s implementací. 
 
-% Unit testy
+\subsection{Unit testy}
 
-% Testy hratelnosti
-  % Rohy, kraje hřiště
-  
-% Alokace paměti
+Základní formou testování jsou automatizované testy, tzv. \textit{unit testy}. Pomocí nich se kontroluje elementární fukčnost jednotlivých komponent a funkcí. Pro implementaci jsem použil testovací framework \textit{Catch} \cite{catch}. Mezi jeho výhody patří velmi snadná integrace a velké množství testovacích maker. Následující ukázka zobrazuje jeden z automatických testů síťového modulu, konkrétně kontroluje správnou inicializaci třídy \code{Box}:
+
+\begin{verbatim}
+TEST_CASE("GameNet tests")
+{
+    SECTION("Box") 
+    { 
+        GameNet::Box * box = nullptr;
+        
+        // string to box
+        box = GameNet::Box::create("test");
+        REQUIRE( box->getData().compare("test") == 0 );
+        box->deallocate();
+        
+        // packet to box
+        RakNet::Packet * packet = new RakNet::Packet();
+        packet->data = new unsigned char[5];
+        packet->length = 5;
+        memcpy(packet->data, "\0test", 5*sizeof(char));
+        box = GameNet::Box::create(packet);
+        REQUIRE( box->getData().compare("test") == 0 );
+		
+        // custom dealloc - not the "real" RakNet packet
+        delete [] box->getPacketData();
+        delete [] packet->data;
+        delete box;
+    }
+}
+\end{verbatim}
+
+Vzhledem k vývoji v prostředí Xcode jsou automatické testy implementovány na platformách iOS a Mac OS X. Toto řešení splňuje požadavky uvedené v návrhu hry. Rozšíření testování i na platformu Android je komplikovanější a překračuje požadavky této práce.
+
+Při vývoji pro více mobilních platforem by však bylo vhodné automaticky testovat všechny platformy, aby se zamezilo chybám způsobeným např. odlišnou architekturou či hardware.
+
+\subsection{Testy paměti}
+
+Dalším systémovým testem je kontrola správné alokace paměti. Vzhledem k tomu, že celý systém je psán v jazyce C++, nejsou paměťové chyby automaticky kontrolovány. Herní engine Cocos2d-x sice pracuje s pamětí efektivně, přesto však během vývoje docházelo v aplikacích ke špatnému uvolňování paměti. Za následek této chyby bylo nekontrolovatelný růst spotřeby operační paměti.
+
+Velkou pomocí při řešení těchto problémů se staly nástroje ve vývojovém prostředí Xcode. Ty umožňují kontrolovat správu paměti za běhu programu a zobrazují špatně uvolněnou pamět v reálném čase a dokonce i s detekcí, na jakém místě v kódu k úniku došlo. Tímto způsobem bylo možné efektivně odstranit příčiny chyb a zajistit optimální správu paměti.
+
+\subsection{Testování hratelnosti}
+
+Důležitou fázi při vývoji počítačových her představuje testování hratelnosti. Jeho cílem je nastavení parametrů hry pro vyvážení obtížnosti, ovládání a dalších metrik. Testování hratelnosti se účastnilo více nezávislých lidí a jejich poznatky byly konzultovány během hry či po ní.
+
+\subsubsection{Pohyb hráče}
+
+V případě fotbalu bylo nutné najít optimální model pohybu hráčů, aby hra nepůsobila jako příliš pomalá nebo naopak dynamická. V počátcích návrhu měli hráči nízkou rychlost a hra s nižším počtem hráčů byla příliš zdlouhavá. Problém vyřešilo mírné zvýšení maximální rychlosti  hráčů.
+
+Jako druhý poznatek při ovládání hráči reportovali nepohodlné ovládání hry v případě aktivního bonusu neviditelnosti. Aby viděli na displej, měli tendence naklánět telefon méně než při sledování hlavní obrazovky a dosahovali tak nižších rychlostí. Toto bylo vyřešeno úpravou zpracování dat z akcelerometru: pro dosažení maximální rychlosti stačí naklonit telefon méně než doposud. Hráči tak mohou sledovat obrazovku z lepšího úhlu.
+
+\subsubsection{Okraje hřiště}
+
+Zajímavý problém během hraní se vyskytl v situacích, kdy se míč dostal do okrajových částí hřiště: hrany a rohy hřiště, případně vnější strana branek. \todo{obrázek rohů bez opravy}. Pokud míč následoval jeden nebo více hráčů, nebylo snadné míč dostat z rohů. Tento problém negativně ovlivňoval herní zážitek.
+
+Cílem vyřešení toho problému bylo předejít či eliminovat zaseknutí míče v rozích a jeho snadné odsunutí z okraje hřiště. Pro tyto účely jsem využil možností fyzikálního enginu a hřiště rozšíříil o další neviditelné objekty:
+
+\begin{itemize}
+	\item Zdvojení okrajů hřiště: první okraj je určen pro míč a druhý (mírně přesahující \uv{za hřiště}) pro hráče. Ti se tak mohou dostat mírně za okrajovou čáru, což umožní lepší manipulaci s míčem.
+	\item Rohy hřiště: zabránit zaseknutí míče v rozích se podařilo přidáním neviditelných objektů do rohů, které kolidují pouze s míčem.
+	\item Branky: podobně jako v rozích jsem přidal neviditelné objekty ke hranám branek.
+\end{itemize}
+
+Nově přidané objekty ilustruje obrázek \todo{obrázek s krytými rohy}. Toto řešení elegantně eliminovalo problémy s míčem a vylepšilo celkovou hratelnost.
 
 
 \section{Dokumentace}

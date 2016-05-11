@@ -39,7 +39,6 @@
 		EA41893D1C342867004B8934 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		EA41893E1C342867004B8934 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		EA41893F1C342867004B8934 /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D77407C86C4E7570AC0EFF9 /* libcocos2d Mac.a */; };
-		EA4189501C342CEF004B8934 /* Catch.h in Sources */ = {isa = PBXBuildFile; fileRef = EA41894F1C342CEF004B8934 /* Catch.h */; };
 		EA568A3F1CAAEDF600C4A35C /* CountdownHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA568A3D1CAAEDF600C4A35C /* CountdownHandler.cpp */; };
 		EA568A401CAAEDF600C4A35C /* CountdownHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA568A3D1CAAEDF600C4A35C /* CountdownHandler.cpp */; };
 		EA568A431CAB053300C4A35C /* GoalCollisionHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA568A411CAB053300C4A35C /* GoalCollisionHandler.cpp */; };
@@ -415,11 +414,11 @@
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		EA2B94ED1CE333DE00BC2F19 /* Catch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Catch.h; sourceTree = "<group>"; };
 		EA36CE1C1C91BA2B00A498A7 /* TeamSelectHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TeamSelectHandler.cpp; path = Handlers/TeamSelectHandler.cpp; sourceTree = "<group>"; };
 		EA36CE1D1C91BA2B00A498A7 /* TeamSelectHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TeamSelectHandler.h; path = Handlers/TeamSelectHandler.h; sourceTree = "<group>"; };
 		EA4189431C342867004B8934 /* InteractiveGame-unit-testing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "InteractiveGame-unit-testing.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA4189441C342867004B8934 /* InteractiveGame-desktop copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "InteractiveGame-desktop copy-Info.plist"; path = "/Users/marek/Documents/git/InteractiveGame/source/game/InteractiveGame/proj.ios_mac/InteractiveGame-desktop copy-Info.plist"; sourceTree = "<absolute>"; };
-		EA41894F1C342CEF004B8934 /* Catch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Catch.h; sourceTree = "<group>"; };
 		EA568A3D1CAAEDF600C4A35C /* CountdownHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CountdownHandler.cpp; path = Handlers/CountdownHandler.cpp; sourceTree = "<group>"; };
 		EA568A3E1CAAEDF600C4A35C /* CountdownHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CountdownHandler.h; path = Handlers/CountdownHandler.h; sourceTree = "<group>"; };
 		EA568A411CAB053300C4A35C /* GoalCollisionHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GoalCollisionHandler.cpp; path = Handlers/GoalCollisionHandler.cpp; sourceTree = "<group>"; };
@@ -454,8 +453,6 @@
 		EAB622041CC67A7400326EC5 /* TestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestDelegate.h; path = Testing/TestDelegate.h; sourceTree = "<group>"; };
 		EAB622051CC67A7400326EC5 /* TestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TestScene.cpp; path = Testing/TestScene.cpp; sourceTree = "<group>"; };
 		EAB622061CC67A7400326EC5 /* TestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestScene.h; path = Testing/TestScene.h; sourceTree = "<group>"; };
-		EAB622091CC67AF400326EC5 /* NetworkingTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NetworkingTests.cpp; path = Testing/NetworkingTests.cpp; sourceTree = "<group>"; };
-		EAB6220B1CC67C4200326EC5 /* GameObjectsTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameObjectsTests.cpp; path = Testing/GameObjectsTests.cpp; sourceTree = "<group>"; };
 		EACC03B01C81BC1A00971626 /* AbstractHandlers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AbstractHandlers.h; path = ../../../shared/game/AbstractHandlers.h; sourceTree = "<group>"; };
 		EACC70801C6B54A70036DB3D /* _FindFirst.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = _FindFirst.cpp; path = ../../../shared/network/raknet/_FindFirst.cpp; sourceTree = "<group>"; };
 		EACC70811C6B54A70036DB3D /* _FindFirst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _FindFirst.h; path = ../../../shared/network/raknet/_FindFirst.h; sourceTree = "<group>"; };
@@ -1040,7 +1037,7 @@
 			isa = PBXGroup;
 			children = (
 				EAB622011CC6334C00326EC5 /* Tests */,
-				EA41894F1C342CEF004B8934 /* Catch.h */,
+				EA2B94ED1CE333DE00BC2F19 /* Catch.h */,
 				EAB622031CC67A7400326EC5 /* TestDelegate.cpp */,
 				EAB622041CC67A7400326EC5 /* TestDelegate.h */,
 				EAB622051CC67A7400326EC5 /* TestScene.cpp */,
@@ -1076,8 +1073,6 @@
 		EAB622011CC6334C00326EC5 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				EAB622091CC67AF400326EC5 /* NetworkingTests.cpp */,
-				EAB6220B1CC67C4200326EC5 /* GameObjectsTests.cpp */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -1919,7 +1914,6 @@
 				EACC72211C6B54A80036DB3D /* RakWString.cpp in Sources */,
 				EAF1AD151CA285E90061BCCF /* strtod.cc in Sources */,
 				EAF1A9281CA1FFD00061BCCF /* GameState.pb.cc in Sources */,
-				EA4189501C342CEF004B8934 /* Catch.h in Sources */,
 				EACC719F1C6B54A80036DB3D /* DataCompressor.cpp in Sources */,
 				EACC71B71C6B54A80036DB3D /* FileOperations.cpp in Sources */,
 				EACC721D1C6B54A80036DB3D /* RakString.cpp in Sources */,
@@ -2081,6 +2075,7 @@
 					"/Applications/Cocos/frameworks/cocos2d-x-3.9/external/chipmunk/include/chipmunk",
 					"$(SRCROOT)/../../../shared/network/raknet",
 					/Users/marek/Documents/git/InteractiveGame/source/shared,
+					/Users/marek/Documents/git/InteractiveGame/source/shared/testing,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "";
@@ -2114,6 +2109,7 @@
 					"/Applications/Cocos/frameworks/cocos2d-x-3.9/external/chipmunk/include/chipmunk",
 					"$(SRCROOT)/../../../shared/network/raknet",
 					/Users/marek/Documents/git/InteractiveGame/source/shared,
+					/Users/marek/Documents/git/InteractiveGame/source/shared/testing,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "";

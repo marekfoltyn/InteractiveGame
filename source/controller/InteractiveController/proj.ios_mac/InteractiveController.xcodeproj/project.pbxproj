@@ -11,20 +11,9 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
-		46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8419C43A87006E1F66 /* AppDelegate.cpp */; };
-		46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8419C43A87006E1F66 /* AppDelegate.cpp */; };
-		503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 503AE0F617EB97AB00D1A890 /* Icon.icns */; };
 		503AE10017EB989F00D1A890 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FB17EB989F00D1A890 /* AppController.mm */; };
 		503AE10117EB989F00D1A890 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FC17EB989F00D1A890 /* main.m */; };
 		503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FF17EB989F00D1A890 /* RootViewController.mm */; };
-		503AE10517EB98FF00D1A890 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 503AE10317EB98FF00D1A890 /* main.cpp */; };
-		503AE11B17EB9C5A00D1A890 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503AE11A17EB9C5A00D1A890 /* IOKit.framework */; };
-		5087E76317EB910900C73F5D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
-		5087E76717EB910900C73F5D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
-		5087E76817EB910900C73F5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
-		5087E76917EB910900C73F5D /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
-		5087E76A17EB910900C73F5D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
-		5087E76B17EB910900C73F5D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5087E77217EB970100C73F5D /* Default-568h@2x.png */; };
 		5087E77E17EB970100C73F5D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5087E77317EB970100C73F5D /* Default.png */; };
 		5087E77F17EB970100C73F5D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5087E77417EB970100C73F5D /* Default@2x.png */; };
@@ -35,8 +24,6 @@
 		5087E78417EB970100C73F5D /* Icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 5087E77917EB970100C73F5D /* Icon-57.png */; };
 		5087E78517EB970100C73F5D /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 5087E77A17EB970100C73F5D /* Icon-72.png */; };
 		5087E78617EB970100C73F5D /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 5087E77B17EB970100C73F5D /* Icon-76.png */; };
-		5087E78917EB974C00C73F5D /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5087E78817EB974C00C73F5D /* AppKit.framework */; };
-		5087E78B17EB975400C73F5D /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5087E78A17EB975400C73F5D /* OpenGL.framework */; };
 		50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF629217ECD46A001EB2F8 /* Icon-40.png */; };
 		50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF629317ECD46A001EB2F8 /* Icon-58.png */; };
 		50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF629417ECD46A001EB2F8 /* Icon-80.png */; };
@@ -46,18 +33,231 @@
 		521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6219F0C34300D177D7 /* Default-667h@2x.png */; };
 		521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6319F0C34300D177D7 /* Default-736h@3x.png */; };
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
-		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
-		B41F41C0B96371BB9588626F /* res in Resources */ = {isa = PBXBuildFile; fileRef = 55014BDBA322584F88CF3D18 /* res */; };
 		B65B4F94A3BF1EC5CB00022A /* res in Resources */ = {isa = PBXBuildFile; fileRef = 55014BDBA322584F88CF3D18 /* res */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
-		C1304BE0A531567F64D85B7A /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D77407C86C4E7570AC0EFF9 /* libcocos2d Mac.a */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 		EA0767A71C883C4300A5280B /* AdminHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA0767A51C883C4300A5280B /* AdminHandler.cpp */; };
+		EA2B93FC1CE32E5E00BC2F19 /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 5087E77617EB970100C73F5D /* Icon-120.png */; };
+		EA2B93FD1CE32E5E00BC2F19 /* descriptor.proto in Resources */ = {isa = PBXBuildFile; fileRef = EAF1AC6F1CA282840061BCCF /* descriptor.proto */; };
+		EA2B93FE1CE32E5E00BC2F19 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 5087E77B17EB970100C73F5D /* Icon-76.png */; };
+		EA2B93FF1CE32E5E00BC2F19 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5087E77417EB970100C73F5D /* Default@2x.png */; };
+		EA2B94001CE32E5E00BC2F19 /* Icon-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF629517ECD46A001EB2F8 /* Icon-100.png */; };
+		EA2B94011CE32E5E00BC2F19 /* Icon-152.png in Resources */ = {isa = PBXBuildFile; fileRef = 5087E77817EB970100C73F5D /* Icon-152.png */; };
+		EA2B94021CE32E5E00BC2F19 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5087E77217EB970100C73F5D /* Default-568h@2x.png */; };
+		EA2B94031CE32E5E00BC2F19 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 5087E77A17EB970100C73F5D /* Icon-72.png */; };
+		EA2B94041CE32E5E00BC2F19 /* Default-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6319F0C34300D177D7 /* Default-736h@3x.png */; };
+		EA2B94051CE32E5E00BC2F19 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
+		EA2B94061CE32E5E00BC2F19 /* Icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = 5087E77517EB970100C73F5D /* Icon-114.png */; };
+		EA2B94071CE32E5E00BC2F19 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A017ECD613001EB2F8 /* Icon-29.png */; };
+		EA2B94081CE32E5E00BC2F19 /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF629217ECD46A001EB2F8 /* Icon-40.png */; };
+		EA2B94091CE32E5E00BC2F19 /* Icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 5087E77717EB970100C73F5D /* Icon-144.png */; };
+		EA2B940A1CE32E5E00BC2F19 /* Icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF629417ECD46A001EB2F8 /* Icon-80.png */; };
+		EA2B940B1CE32E5E00BC2F19 /* Icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 5087E77917EB970100C73F5D /* Icon-57.png */; };
+		EA2B940C1CE32E5E00BC2F19 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5087E77317EB970100C73F5D /* Default.png */; };
+		EA2B940D1CE32E5E00BC2F19 /* Default-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6219F0C34300D177D7 /* Default-667h@2x.png */; };
+		EA2B940E1CE32E5E00BC2F19 /* Icon-58.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF629317ECD46A001EB2F8 /* Icon-58.png */; };
+		EA2B940F1CE32E5E00BC2F19 /* res in Resources */ = {isa = PBXBuildFile; fileRef = 55014BDBA322584F88CF3D18 /* res */; };
+		EA2B94111CE32E5E00BC2F19 /* message_lite.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1AB8E1CA281360061BCCF /* message_lite.cc */; };
+		EA2B94121CE32E5E00BC2F19 /* RakNetSocket2_PS4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888ADD1C58A6B200534275 /* RakNetSocket2_PS4.cpp */; };
+		EA2B94131CE32E5E00BC2F19 /* StringCompressor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AF91C58A6B200534275 /* StringCompressor.cpp */; };
+		EA2B94141CE32E5E00BC2F19 /* text_format.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1ABD81CA281360061BCCF /* text_format.cc */; };
+		EA2B94151CE32E5E00BC2F19 /* descriptor.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1AB691CA281360061BCCF /* descriptor.cc */; };
+		EA2B94161CE32E5E00BC2F19 /* UDPProxyCoordinator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888B051C58A6B200534275 /* UDPProxyCoordinator.cpp */; };
+		EA2B94171CE32E5E00BC2F19 /* SimpleMutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AF61C58A6B200534275 /* SimpleMutex.cpp */; };
+		EA2B94181CE32E5E00BC2F19 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAEA97501C7DD52900AF1EEA /* Controller.cpp */; };
+		EA2B94191CE32E5E00BC2F19 /* BoxFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4B31C75F0DC00776BC3 /* BoxFactory.cpp */; };
+		EA2B941A1CE32E5E00BC2F19 /* dynamic_message.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1AB6F1CA281360061BCCF /* dynamic_message.cc */; };
+		EA2B941B1CE32E5E00BC2F19 /* TCPInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AFD1C58A6B200534275 /* TCPInterface.cpp */; };
+		EA2B941C1CE32E5E00BC2F19 /* LocklessTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AC31C58A6B100534275 /* LocklessTypes.cpp */; };
+		EA2B941D1CE32E5E00BC2F19 /* CloudCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AA41C58A6B100534275 /* CloudCommon.cpp */; };
+		EA2B941E1CE32E5E00BC2F19 /* TeamSelectHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA8840B51C9C21E600DEC852 /* TeamSelectHandler.cpp */; };
+		EA2B941F1CE32E5E00BC2F19 /* extension_set_heavy.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1AB731CA281360061BCCF /* extension_set_heavy.cc */; };
+		EA2B94201CE32E5E00BC2F19 /* PacketizedTCP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888ACF1C58A6B200534275 /* PacketizedTCP.cpp */; };
+		EA2B94211CE32E5E00BC2F19 /* RakNetSocket2_Berkley_NativeClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AD91C58A6B200534275 /* RakNetSocket2_Berkley_NativeClient.cpp */; };
+		EA2B94231CE32E5E00BC2F19 /* HTTPConnection2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888ABE1C58A6B100534275 /* HTTPConnection2.cpp */; };
+		EA2B94241CE32E5E00BC2F19 /* RakSleep.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AE71C58A6B200534275 /* RakSleep.cpp */; };
+		EA2B94251CE32E5E00BC2F19 /* printer.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1AB801CA281360061BCCF /* printer.cc */; };
+		EA2B94261CE32E5E00BC2F19 /* ServerSizeUpdateHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA3215571CA696D900D79A48 /* ServerSizeUpdateHandler.cpp */; };
+		EA2B94271CE32E5E00BC2F19 /* CommandParserInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AA61C58A6B100534275 /* CommandParserInterface.cpp */; };
+		EA2B94281CE32E5E00BC2F19 /* StringTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AFA1C58A6B200534275 /* StringTable.cpp */; };
+		EA2B94291CE32E5E00BC2F19 /* message.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1AB8C1CA281360061BCCF /* message.cc */; };
+		EA2B942A1CE32E5E00BC2F19 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA36A80E1C7CD74D000E1636 /* Timer.cpp */; };
+		EA2B942B1CE32E5E00BC2F19 /* CloudClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AA31C58A6B100534275 /* CloudClient.cpp */; };
+		EA2B942C1CE32E5E00BC2F19 /* ReplicaManager3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AF01C58A6B200534275 /* ReplicaManager3.cpp */; };
+		EA2B942D1CE32E5E00BC2F19 /* RelayPlugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AEE1C58A6B200534275 /* RelayPlugin.cpp */; };
+		EA2B942E1CE32E5E00BC2F19 /* LinuxStrings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AC21C58A6B100534275 /* LinuxStrings.cpp */; };
+		EA2B942F1CE32E5E00BC2F19 /* CCRakNetSlidingWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AA11C58A6B100534275 /* CCRakNetSlidingWindow.cpp */; };
+		EA2B94301CE32E5E00BC2F19 /* TwoWayAuthentication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888B021C58A6B200534275 /* TwoWayAuthentication.cpp */; };
+		EA2B94311CE32E5E00BC2F19 /* TeamManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AFF1C58A6B200534275 /* TeamManager.cpp */; };
+		EA2B94321CE32E5E00BC2F19 /* AccelerationMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4AD1C75D11A00776BC3 /* AccelerationMessage.cpp */; };
+		EA2B94331CE32E5E00BC2F19 /* StopGameHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA568A2B1CAAB0BF00C4A35C /* StopGameHandler.cpp */; };
+		EA2B94341CE32E5E00BC2F19 /* GameStreamHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA568A551CABDE5600C4A35C /* GameStreamHandler.cpp */; };
+		EA2B94351CE32E5E00BC2F19 /* PacketLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AD01C58A6B200534275 /* PacketLogger.cpp */; };
+		EA2B94361CE32E5E00BC2F19 /* VitaIncludes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888B0A1C58A6B200534275 /* VitaIncludes.cpp */; };
+		EA2B94371CE32E5E00BC2F19 /* HandlerMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC03B31C81C01600971626 /* HandlerMap.cpp */; };
+		EA2B94381CE32E5E00BC2F19 /* RakNetSocket2_WindowsStore8.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AE11C58A6B200534275 /* RakNetSocket2_WindowsStore8.cpp */; };
+		EA2B94391CE32E5E00BC2F19 /* repeated_field.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1AB931CA281360061BCCF /* repeated_field.cc */; };
+		EA2B943A1CE32E5E00BC2F19 /* RakNetSocket2_Berkley.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888ADA1C58A6B200534275 /* RakNetSocket2_Berkley.cpp */; };
+		EA2B943B1CE32E5E00BC2F19 /* RakPeer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AE61C58A6B200534275 /* RakPeer.cpp */; };
+		EA2B943C1CE32E5E00BC2F19 /* gettimeofday.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888ABB1C58A6B100534275 /* gettimeofday.cpp */; };
+		EA2B943D1CE32E5E00BC2F19 /* GameStream.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = EA568A581CABEBCB00C4A35C /* GameStream.pb.cc */; };
+		EA2B943E1CE32E5E00BC2F19 /* FullyConnectedMesh2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AB71C58A6B100534275 /* FullyConnectedMesh2.cpp */; };
+		EA2B943F1CE32E5E00BC2F19 /* CollisionBoxHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA59272D1C9FD5E5005ECB92 /* CollisionBoxHandler.cpp */; };
+		EA2B94401CE32E5E00BC2F19 /* SuperFastHash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AFB1C58A6B200534275 /* SuperFastHash.cpp */; };
+		EA2B94411CE32E5E00BC2F19 /* GridSectorizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888ABC1C58A6B100534275 /* GridSectorizer.cpp */; };
+		EA2B94421CE32E5E00BC2F19 /* NatTypeDetectionCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AC91C58A6B100534275 /* NatTypeDetectionCommon.cpp */; };
+		EA2B94431CE32E5E00BC2F19 /* SocketLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AF71C58A6B200534275 /* SocketLayer.cpp */; };
+		EA2B94441CE32E5E00BC2F19 /* ConnectionLostHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAE6C6211C84EB3F000A8EBC /* ConnectionLostHandler.cpp */; };
+		EA2B94451CE32E5E00BC2F19 /* BitStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AA01C58A6B100534275 /* BitStream.cpp */; };
+		EA2B94461CE32E5E00BC2F19 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FB17EB989F00D1A890 /* AppController.mm */; };
+		EA2B94471CE32E5E00BC2F19 /* DS_ByteQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AAD1C58A6B100534275 /* DS_ByteQueue.cpp */; };
+		EA2B94481CE32E5E00BC2F19 /* NatTypeDetectionClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AC81C58A6B100534275 /* NatTypeDetectionClient.cpp */; };
+		EA2B94491CE32E5E00BC2F19 /* Box.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A5B1C59F27000171969 /* Box.cpp */; };
+		EA2B944A1CE32E5E00BC2F19 /* PacketConsoleLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888ACD1C58A6B200534275 /* PacketConsoleLogger.cpp */; };
+		EA2B944B1CE32E5E00BC2F19 /* ToggleVibrateHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA5927301C9FE599005ECB92 /* ToggleVibrateHandler.cpp */; };
+		EA2B944C1CE32E5E00BC2F19 /* DataCompressor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AA91C58A6B100534275 /* DataCompressor.cpp */; };
+		EA2B944D1CE32E5E00BC2F19 /* ControlScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888A001C58A18F00534275 /* ControlScene.cpp */; };
+		EA2B944E1CE32E5E00BC2F19 /* PacketOutputWindowLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AD11C58A6B200534275 /* PacketOutputWindowLogger.cpp */; };
+		EA2B944F1CE32E5E00BC2F19 /* TeamBalancer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AFE1C58A6B200534275 /* TeamBalancer.cpp */; };
+		EA2B94501CE32E5E00BC2F19 /* NetworkIDObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888ACC1C58A6B200534275 /* NetworkIDObject.cpp */; };
+		EA2B94511CE32E5E00BC2F19 /* RakNetSocket2_Windows_Linux_360.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888ADF1C58A6B200534275 /* RakNetSocket2_Windows_Linux_360.cpp */; };
+		EA2B94521CE32E5E00BC2F19 /* gzip_stream.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1AB7D1CA281360061BCCF /* gzip_stream.cc */; };
+		EA2B94531CE32E5E00BC2F19 /* StartHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAE6C6251C84FF52000A8EBC /* StartHandler.cpp */; };
+		EA2B94541CE32E5E00BC2F19 /* RakNetSocket2_PS3_PS4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888ADC1C58A6B200534275 /* RakNetSocket2_PS3_PS4.cpp */; };
+		EA2B94551CE32E5E00BC2F19 /* StatisticsHistory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AF81C58A6B200534275 /* StatisticsHistory.cpp */; };
+		EA2B94561CE32E5E00BC2F19 /* Getche.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AB81C58A6B100534275 /* Getche.cpp */; };
+		EA2B94571CE32E5E00BC2F19 /* atomicops_internals_x86_gcc.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1ABBE1CA281360061BCCF /* atomicops_internals_x86_gcc.cc */; };
+		EA2B94581CE32E5E00BC2F19 /* structurally_valid.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1ABCD1CA281360061BCCF /* structurally_valid.cc */; };
+		EA2B94591CE32E5E00BC2F19 /* zero_copy_stream.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1AB861CA281360061BCCF /* zero_copy_stream.cc */; };
+		EA2B945A1CE32E5E00BC2F19 /* GameState.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1AD8C1CA287D40061BCCF /* GameState.pb.cc */; };
+		EA2B945B1CE32E5E00BC2F19 /* reflection_ops.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1AB911CA281360061BCCF /* reflection_ops.cc */; };
+		EA2B945C1CE32E5E00BC2F19 /* Gets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AB91C58A6B100534275 /* Gets.cpp */; };
+		EA2B945D1CE32E5E00BC2F19 /* RakNetTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AE51C58A6B200534275 /* RakNetTypes.cpp */; };
+		EA2B945E1CE32E5E00BC2F19 /* ConnectionGraph2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AA71C58A6B100534275 /* ConnectionGraph2.cpp */; };
+		EA2B945F1CE32E5E00BC2F19 /* RakNetSocket2_360_720.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AD81C58A6B200534275 /* RakNetSocket2_360_720.cpp */; };
+		EA2B94601CE32E5E00BC2F19 /* generated_message_reflection.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1AB751CA281360061BCCF /* generated_message_reflection.cc */; };
+		EA2B94611CE32E5E00BC2F19 /* CheckSum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888ABF1C58A6B100534275 /* CheckSum.cpp */; };
+		EA2B94621CE32E5E00BC2F19 /* RakWString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AEA1C58A6B200534275 /* RakWString.cpp */; };
+		EA2B94631CE32E5E00BC2F19 /* unknown_field_set.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1ABDA1CA281360061BCCF /* unknown_field_set.cc */; };
+		EA2B94641CE32E5E00BC2F19 /* TableSerializer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AFC1C58A6B200534275 /* TableSerializer.cpp */; };
+		EA2B94651CE32E5E00BC2F19 /* EmptyUniversalHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EACC03B61C81C14B00971626 /* EmptyUniversalHandler.cpp */; };
+		EA2B94661CE32E5E00BC2F19 /* stringprintf.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1ABCB1CA281360061BCCF /* stringprintf.cc */; };
+		EA2B94671CE32E5E00BC2F19 /* FileOperations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AB51C58A6B100534275 /* FileOperations.cpp */; };
+		EA2B94681CE32E5E00BC2F19 /* atomicops_internals_x86_msvc.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1ABC01CA281360061BCCF /* atomicops_internals_x86_msvc.cc */; };
+		EA2B94691CE32E5E00BC2F19 /* RakNetStatistics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AE31C58A6B200534275 /* RakNetStatistics.cpp */; };
+		EA2B946A1CE32E5E00BC2F19 /* coded_stream.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1AB7A1CA281360061BCCF /* coded_stream.cc */; };
+		EA2B946B1CE32E5E00BC2F19 /* DS_HuffmanEncodingTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AAE1C58A6B100534275 /* DS_HuffmanEncodingTree.cpp */; };
+		EA2B946C1CE32E5E00BC2F19 /* SecureHandshake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AF31C58A6B200534275 /* SecureHandshake.cpp */; };
+		EA2B946D1CE32E5E00BC2F19 /* SignaledEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AF51C58A6B200534275 /* SignaledEvent.cpp */; };
+		EA2B946E1CE32E5E00BC2F19 /* RakNetSocket2_Vita.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888ADE1C58A6B200534275 /* RakNetSocket2_Vita.cpp */; };
+		EA2B946F1CE32E5E00BC2F19 /* common.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1ABC21CA281360061BCCF /* common.cc */; };
+		EA2B94701CE32E5E00BC2F19 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FF17EB989F00D1A890 /* RootViewController.mm */; };
+		EA2B94711CE32E5E00BC2F19 /* Rand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AEB1C58A6B200534275 /* Rand.cpp */; };
+		EA2B94721CE32E5E00BC2F19 /* ConnectionResultHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAE6C61E1C84DC74000A8EBC /* ConnectionResultHandler.cpp */; };
+		EA2B94731CE32E5E00BC2F19 /* extension_set.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1AB711CA281360061BCCF /* extension_set.cc */; };
+		EA2B94741CE32E5E00BC2F19 /* Connector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A581C59F21E00171969 /* Connector.cpp */; };
+		EA2B94751CE32E5E00BC2F19 /* wire_format.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1ABDC1CA281360061BCCF /* wire_format.cc */; };
+		EA2B94761CE32E5E00BC2F19 /* DisconnectHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA8840B21C9C1E9200DEC852 /* DisconnectHandler.cpp */; };
+		EA2B94771CE32E5E00BC2F19 /* RakNetSocket2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AE21C58A6B200534275 /* RakNetSocket2.cpp */; };
+		EA2B94781CE32E5E00BC2F19 /* Router2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AF11C58A6B200534275 /* Router2.cpp */; };
+		EA2B94791CE32E5E00BC2F19 /* CloudServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AA51C58A6B100534275 /* CloudServer.cpp */; };
+		EA2B947A1CE32E5E00BC2F19 /* DS_BytePool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AAC1C58A6B100534275 /* DS_BytePool.cpp */; };
+		EA2B947B1CE32E5E00BC2F19 /* descriptor_database.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1AB6D1CA281360061BCCF /* descriptor_database.cc */; };
+		EA2B947C1CE32E5E00BC2F19 /* RakNetSocket2_NativeClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888ADB1C58A6B200534275 /* RakNetSocket2_NativeClient.cpp */; };
+		EA2B947D1CE32E5E00BC2F19 /* CCRakNetUDT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AA21C58A6B100534275 /* CCRakNetUDT.cpp */; };
+		EA2B947E1CE32E5E00BC2F19 /* ConsoleServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AA81C58A6B100534275 /* ConsoleServer.cpp */; };
+		EA2B947F1CE32E5E00BC2F19 /* PacketFileLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888ACE1C58A6B200534275 /* PacketFileLogger.cpp */; };
+		EA2B94801CE32E5E00BC2F19 /* AdminHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA0767A51C883C4300A5280B /* AdminHandler.cpp */; };
+		EA2B94811CE32E5E00BC2F19 /* HTTPConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888ABD1C58A6B100534275 /* HTTPConnection.cpp */; };
+		EA2B94821CE32E5E00BC2F19 /* RakMemoryOverride.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AD51C58A6B200534275 /* RakMemoryOverride.cpp */; };
+		EA2B94831CE32E5E00BC2F19 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FC17EB989F00D1A890 /* main.m */; };
+		EA2B94841CE32E5E00BC2F19 /* zero_copy_stream_impl.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1AB881CA281360061BCCF /* zero_copy_stream_impl.cc */; };
+		EA2B94851CE32E5E00BC2F19 /* TelnetTransport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888B001C58A6B200534275 /* TelnetTransport.cpp */; };
+		EA2B94861CE32E5E00BC2F19 /* VariableDeltaSerializer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888B071C58A6B200534275 /* VariableDeltaSerializer.cpp */; };
+		EA2B94881CE32E5E00BC2F19 /* MainMenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAAB6A641C59F77D00171969 /* MainMenuScene.cpp */; };
+		EA2B94891CE32E5E00BC2F19 /* FormatString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AB61C58A6B100534275 /* FormatString.cpp */; };
+		EA2B948A1CE32E5E00BC2F19 /* StartGameHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA568A281CAAAEAC00C4A35C /* StartGameHandler.cpp */; };
+		EA2B948B1CE32E5E00BC2F19 /* descriptor.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1AB6B1CA281360061BCCF /* descriptor.pb.cc */; };
+		EA2B948C1CE32E5E00BC2F19 /* RandSync.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AEC1C58A6B200534275 /* RandSync.cpp */; };
+		EA2B948D1CE32E5E00BC2F19 /* FileList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AB31C58A6B100534275 /* FileList.cpp */; };
+		EA2B948E1CE32E5E00BC2F19 /* PluginInterface2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AD21C58A6B200534275 /* PluginInterface2.cpp */; };
+		EA2B948F1CE32E5E00BC2F19 /* UDPForwarder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888B031C58A6B200534275 /* UDPForwarder.cpp */; };
+		EA2B94901CE32E5E00BC2F19 /* RakNetSocket2_Windows_Linux.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AE01C58A6B200534275 /* RakNetSocket2_Windows_Linux.cpp */; };
+		EA2B94911CE32E5E00BC2F19 /* UDPProxyClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888B041C58A6B200534275 /* UDPProxyClient.cpp */; };
+		EA2B94921CE32E5E00BC2F19 /* TeamScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA36CE201C91BEE900A498A7 /* TeamScene.cpp */; };
+		EA2B94931CE32E5E00BC2F19 /* ThreadsafePacketLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888B011C58A6B200534275 /* ThreadsafePacketLogger.cpp */; };
+		EA2B94941CE32E5E00BC2F19 /* NatPunchthroughServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AC71C58A6B100534275 /* NatPunchthroughServer.cpp */; };
+		EA2B94951CE32E5E00BC2F19 /* EpochTimeToString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AB21C58A6B100534275 /* EpochTimeToString.cpp */; };
+		EA2B94961CE32E5E00BC2F19 /* Base64Encoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888A9F1C58A6B100534275 /* Base64Encoder.cpp */; };
+		EA2B94971CE32E5E00BC2F19 /* DynDNS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AB01C58A6B100534275 /* DynDNS.cpp */; };
+		EA2B94981CE32E5E00BC2F19 /* VariableListDeltaTracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888B081C58A6B200534275 /* VariableListDeltaTracker.cpp */; };
+		EA2B94991CE32E5E00BC2F19 /* WindowManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA36CE241C91C62600A498A7 /* WindowManager.cpp */; };
+		EA2B949A1CE32E5E00BC2F19 /* RakNetTransport2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AE41C58A6B200534275 /* RakNetTransport2.cpp */; };
+		EA2B949B1CE32E5E00BC2F19 /* RakNetCommandParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AD61C58A6B200534275 /* RakNetCommandParser.cpp */; };
+		EA2B949C1CE32E5E00BC2F19 /* GetTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888ABA1C58A6B100534275 /* GetTime.cpp */; };
+		EA2B949D1CE32E5E00BC2F19 /* ReadyEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AED1C58A6B200534275 /* ReadyEvent.cpp */; };
+		EA2B949E1CE32E5E00BC2F19 /* NatTypeDetectionServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888ACA1C58A6B200534275 /* NatTypeDetectionServer.cpp */; };
+		EA2B949F1CE32E5E00BC2F19 /* StadiumScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAFC04AC1CAC324D00EB0133 /* StadiumScene.cpp */; };
+		EA2B94A01CE32E5E00BC2F19 /* ServerNameUpdateHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA99136B1CA41B8500442222 /* ServerNameUpdateHandler.cpp */; };
+		EA2B94A11CE32E5E00BC2F19 /* WSAStartupSingleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888B0B1C58A6B200534275 /* WSAStartupSingleton.cpp */; };
+		EA2B94A21CE32E5E00BC2F19 /* substitute.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1ABD01CA281360061BCCF /* substitute.cc */; };
+		EA2B94A31CE32E5E00BC2F19 /* DS_Table.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AAF1C58A6B100534275 /* DS_Table.cpp */; };
+		EA2B94A41CE32E5E00BC2F19 /* Rackspace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AD41C58A6B200534275 /* Rackspace.cpp */; };
+		EA2B94A51CE32E5E00BC2F19 /* Itoa.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AC11C58A6B100534275 /* Itoa.cpp */; };
+		EA2B94A61CE32E5E00BC2F19 /* RakString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AE81C58A6B200534275 /* RakString.cpp */; };
+		EA2B94A71CE32E5E00BC2F19 /* RakThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AE91C58A6B200534275 /* RakThread.cpp */; };
+		EA2B94A81CE32E5E00BC2F19 /* AdminDialogHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAF1A91C1CA1C8D00061BCCF /* AdminDialogHandler.cpp */; };
+		EA2B94A91CE32E5E00BC2F19 /* NatPunchthroughClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AC61C58A6B100534275 /* NatPunchthroughClient.cpp */; };
+		EA2B94AA1CE32E5E00BC2F19 /* generated_message_util.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1AB771CA281360061BCCF /* generated_message_util.cc */; };
+		EA2B94AB1CE32E5E00BC2F19 /* wire_format_lite.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1ABDE1CA281360061BCCF /* wire_format_lite.cc */; };
+		EA2B94AC1CE32E5E00BC2F19 /* EmailSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AB11C58A6B100534275 /* EmailSender.cpp */; };
+		EA2B94AE1CE32E5E00BC2F19 /* tokenizer.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1AB841CA281360061BCCF /* tokenizer.cc */; };
+		EA2B94AF1CE32E5E00BC2F19 /* strutil.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1ABCE1CA281360061BCCF /* strutil.cc */; };
+		EA2B94B01CE32E5E00BC2F19 /* _FindFirst.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888A9E1C58A6B100534275 /* _FindFirst.cpp */; };
+		EA2B94B11CE32E5E00BC2F19 /* VariadicSQLParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888B091C58A6B200534275 /* VariadicSQLParser.cpp */; };
+		EA2B94B21CE32E5E00BC2F19 /* zero_copy_stream_impl_lite.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1AB8A1CA281360061BCCF /* zero_copy_stream_impl_lite.cc */; };
+		EA2B94B31CE32E5E00BC2F19 /* once.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1ABC61CA281360061BCCF /* once.cc */; };
+		EA2B94B41CE32E5E00BC2F19 /* ServerDurationUpdateHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA3215551CA696D900D79A48 /* ServerDurationUpdateHandler.cpp */; };
+		EA2B94B51CE32E5E00BC2F19 /* RakNetSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AD71C58A6B200534275 /* RakNetSocket.cpp */; };
+		EA2B94B61CE32E5E00BC2F19 /* LogCommandParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AC41C58A6B100534275 /* LogCommandParser.cpp */; };
+		EA2B94B71CE32E5E00BC2F19 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA6457721CAD4C4D003C732B /* Player.cpp */; };
+		EA2B94B81CE32E5E00BC2F19 /* GameStreamConnectionLostHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA6457761CAD510F003C732B /* GameStreamConnectionLostHandler.cpp */; };
+		EA2B94B91CE32E5E00BC2F19 /* service.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1AB951CA281360061BCCF /* service.cc */; };
+		EA2B94BA1CE32E5E00BC2F19 /* SendToThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AF41C58A6B200534275 /* SendToThread.cpp */; };
+		EA2B94BB1CE32E5E00BC2F19 /* NetworkIDManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888ACB1C58A6B200534275 /* NetworkIDManager.cpp */; };
+		EA2B94BC1CE32E5E00BC2F19 /* IncrementalReadInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AC01C58A6B100534275 /* IncrementalReadInterface.cpp */; };
+		EA2B94BD1CE32E5E00BC2F19 /* DR_SHA1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AAB1C58A6B100534275 /* DR_SHA1.cpp */; };
+		EA2B94BE1CE32E5E00BC2F19 /* UDPProxyServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888B061C58A6B200534275 /* UDPProxyServer.cpp */; };
+		EA2B94BF1CE32E5E00BC2F19 /* ServerNameMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD0D4AF1C75D11A00776BC3 /* ServerNameMessage.cpp */; };
+		EA2B94C01CE32E5E00BC2F19 /* FileListTransfer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AB41C58A6B100534275 /* FileListTransfer.cpp */; };
+		EA2B94C11CE32E5E00BC2F19 /* PS4Includes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AD31C58A6B200534275 /* PS4Includes.cpp */; };
+		EA2B94C21CE32E5E00BC2F19 /* ReliabilityLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AEF1C58A6B200534275 /* ReliabilityLayer.cpp */; };
+		EA2B94C31CE32E5E00BC2F19 /* RPC4Plugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AF21C58A6B200534275 /* RPC4Plugin.cpp */; };
+		EA2B94C41CE32E5E00BC2F19 /* ServersHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAE6C6281C85135F000A8EBC /* ServersHandler.cpp */; };
+		EA2B94C51CE32E5E00BC2F19 /* strtod.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1AB821CA281360061BCCF /* strtod.cc */; };
+		EA2B94C61CE32E5E00BC2F19 /* DirectoryDeltaTransfer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AAA1C58A6B100534275 /* DirectoryDeltaTransfer.cpp */; };
+		EA2B94C71CE32E5E00BC2F19 /* MessageFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA888AC51C58A6B100534275 /* MessageFilter.cpp */; };
+		EA2B94C91CE32E5E00BC2F19 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
+		EA2B94CA1CE32E5E00BC2F19 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
+		EA2B94CB1CE32E5E00BC2F19 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
+		EA2B94CC1CE32E5E00BC2F19 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		EA2B94CD1CE32E5E00BC2F19 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		EA2B94CE1CE32E5E00BC2F19 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		EA2B94CF1CE32E5E00BC2F19 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
+		EA2B94D01CE32E5E00BC2F19 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
+		EA2B94D11CE32E5E00BC2F19 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
+		EA2B94D21CE32E5E00BC2F19 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
+		EA2B94D31CE32E5E00BC2F19 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
+		EA2B94D41CE32E5E00BC2F19 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
+		EA2B94D51CE32E5E00BC2F19 /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 034F43A6BC63D68FDA683FB9 /* libcocos2d iOS.a */; };
+		EA2B94DF1CE32ED100BC2F19 /* TestDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2B94DB1CE32ED100BC2F19 /* TestDelegate.cpp */; };
+		EA2B94E01CE32ED100BC2F19 /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2B94DD1CE32ED100BC2F19 /* TestScene.cpp */; };
+		EA2B94E11CE3307600BC2F19 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8419C43A87006E1F66 /* AppDelegate.cpp */; };
 		EA3215591CA696D900D79A48 /* ServerDurationUpdateHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA3215551CA696D900D79A48 /* ServerDurationUpdateHandler.cpp */; };
 		EA32155A1CA696D900D79A48 /* ServerSizeUpdateHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA3215571CA696D900D79A48 /* ServerSizeUpdateHandler.cpp */; };
 		EA36A80F1C7CD74D000E1636 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA36A80E1C7CD74D000E1636 /* Timer.cpp */; };
@@ -236,7 +436,6 @@
 		EAF1AD8E1CA287D40061BCCF /* GameState.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = EAF1AD8C1CA287D40061BCCF /* GameState.pb.cc */; };
 		EAFC04AF1CAC324E00EB0133 /* StadiumScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAFC04AC1CAC324D00EB0133 /* StadiumScene.cpp */; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
-		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -261,7 +460,6 @@
 		503AE10417EB98FF00D1A890 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = mac/Prefix.pch; sourceTree = "<group>"; };
 		503AE11117EB99EE00D1A890 /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
 		503AE11A17EB9C5A00D1A890 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
-		5087E76F17EB910900C73F5D /* InteractiveController-desktop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "InteractiveController-desktop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5087E77217EB970100C73F5D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		5087E77317EB970100C73F5D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		5087E77417EB970100C73F5D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -295,6 +493,12 @@
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		EA0767A51C883C4300A5280B /* AdminHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AdminHandler.cpp; sourceTree = "<group>"; };
 		EA0767A61C883C4300A5280B /* AdminHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminHandler.h; sourceTree = "<group>"; };
+		EA2B94D91CE32E5E00BC2F19 /* InteractiveController-testing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "InteractiveController-testing.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA2B94DA1CE32E5E00BC2F19 /* InteractiveController-mobile copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "InteractiveController-mobile copy-Info.plist"; path = "/Users/marek/Documents/git/InteractiveGame/source/controller/InteractiveController/proj.ios_mac/InteractiveController-mobile copy-Info.plist"; sourceTree = "<absolute>"; };
+		EA2B94DB1CE32ED100BC2F19 /* TestDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TestDelegate.cpp; path = Testing/TestDelegate.cpp; sourceTree = "<group>"; };
+		EA2B94DC1CE32ED100BC2F19 /* TestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestDelegate.h; path = Testing/TestDelegate.h; sourceTree = "<group>"; };
+		EA2B94DD1CE32ED100BC2F19 /* TestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TestScene.cpp; path = Testing/TestScene.cpp; sourceTree = "<group>"; };
+		EA2B94DE1CE32ED100BC2F19 /* TestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestScene.h; path = Testing/TestScene.h; sourceTree = "<group>"; };
 		EA3215551CA696D900D79A48 /* ServerDurationUpdateHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServerDurationUpdateHandler.cpp; sourceTree = "<group>"; };
 		EA3215561CA696D900D79A48 /* ServerDurationUpdateHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerDurationUpdateHandler.h; sourceTree = "<group>"; };
 		EA3215571CA696D900D79A48 /* ServerSizeUpdateHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServerSizeUpdateHandler.cpp; sourceTree = "<group>"; };
@@ -744,22 +948,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5087E75C17EB910900C73F5D /* Frameworks */ = {
+		EA2B94C81CE32E5E00BC2F19 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */,
-				5087E76717EB910900C73F5D /* libz.dylib in Frameworks */,
-				8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */,
-				503AE11B17EB9C5A00D1A890 /* IOKit.framework in Frameworks */,
-				5087E78B17EB975400C73F5D /* OpenGL.framework in Frameworks */,
-				5087E78917EB974C00C73F5D /* AppKit.framework in Frameworks */,
-				5087E76317EB910900C73F5D /* Foundation.framework in Frameworks */,
-				5087E76817EB910900C73F5D /* QuartzCore.framework in Frameworks */,
-				5087E76917EB910900C73F5D /* OpenAL.framework in Frameworks */,
-				5087E76A17EB910900C73F5D /* AVFoundation.framework in Frameworks */,
-				5087E76B17EB910900C73F5D /* AudioToolbox.framework in Frameworks */,
-				C1304BE0A531567F64D85B7A /* libcocos2d Mac.a in Frameworks */,
+				EA2B94C91CE32E5E00BC2F19 /* libiconv.dylib in Frameworks */,
+				EA2B94CA1CE32E5E00BC2F19 /* Security.framework in Frameworks */,
+				EA2B94CB1CE32E5E00BC2F19 /* CoreMotion.framework in Frameworks */,
+				EA2B94CC1CE32E5E00BC2F19 /* Foundation.framework in Frameworks */,
+				EA2B94CD1CE32E5E00BC2F19 /* UIKit.framework in Frameworks */,
+				EA2B94CE1CE32E5E00BC2F19 /* CoreGraphics.framework in Frameworks */,
+				EA2B94CF1CE32E5E00BC2F19 /* OpenGLES.framework in Frameworks */,
+				EA2B94D01CE32E5E00BC2F19 /* libz.dylib in Frameworks */,
+				EA2B94D11CE32E5E00BC2F19 /* QuartzCore.framework in Frameworks */,
+				EA2B94D21CE32E5E00BC2F19 /* OpenAL.framework in Frameworks */,
+				EA2B94D31CE32E5E00BC2F19 /* AVFoundation.framework in Frameworks */,
+				EA2B94D41CE32E5E00BC2F19 /* AudioToolbox.framework in Frameworks */,
+				EA2B94D51CE32E5E00BC2F19 /* libcocos2d iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -785,7 +990,7 @@
 			isa = PBXGroup;
 			children = (
 				1D6058910D05DD3D006BFB54 /* InteractiveController-mobile.app */,
-				5087E76F17EB910900C73F5D /* InteractiveController-desktop.app */,
+				EA2B94D91CE32E5E00BC2F19 /* InteractiveController-testing.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -801,6 +1006,7 @@
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				79B749788DE743800872A043 /* ios-libs */,
 				7722448299D115D24F40A470 /* mac-libs */,
+				EA2B94DA1CE32E5E00BC2F19 /* InteractiveController-mobile copy-Info.plist */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -948,6 +1154,10 @@
 		EA4189211C33D31D004B8934 /* Testing */ = {
 			isa = PBXGroup;
 			children = (
+				EA2B94DB1CE32ED100BC2F19 /* TestDelegate.cpp */,
+				EA2B94DC1CE32ED100BC2F19 /* TestDelegate.h */,
+				EA2B94DD1CE32ED100BC2F19 /* TestScene.cpp */,
+				EA2B94DE1CE32ED100BC2F19 /* TestScene.h */,
 			);
 			name = Testing;
 			sourceTree = "<group>";
@@ -1536,21 +1746,21 @@
 			productReference = 1D6058910D05DD3D006BFB54 /* InteractiveController-mobile.app */;
 			productType = "com.apple.product-type.application";
 		};
-		5087E73D17EB910900C73F5D /* InteractiveController-desktop */ = {
+		EA2B93FA1CE32E5E00BC2F19 /* InteractiveController-testing */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5087E76C17EB910900C73F5D /* Build configuration list for PBXNativeTarget "InteractiveController-desktop" */;
+			buildConfigurationList = EA2B94D61CE32E5E00BC2F19 /* Build configuration list for PBXNativeTarget "InteractiveController-testing" */;
 			buildPhases = (
-				5087E74817EB910900C73F5D /* Resources */,
-				5087E75617EB910900C73F5D /* Sources */,
-				5087E75C17EB910900C73F5D /* Frameworks */,
+				EA2B93FB1CE32E5E00BC2F19 /* Resources */,
+				EA2B94101CE32E5E00BC2F19 /* Sources */,
+				EA2B94C81CE32E5E00BC2F19 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "InteractiveController-desktop";
+			name = "InteractiveController-testing";
 			productName = iphone;
-			productReference = 5087E76F17EB910900C73F5D /* InteractiveController-desktop.app */;
+			productReference = EA2B94D91CE32E5E00BC2F19 /* InteractiveController-testing.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1581,7 +1791,7 @@
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* InteractiveController-mobile */,
-				5087E73D17EB910900C73F5D /* InteractiveController-desktop */,
+				EA2B93FA1CE32E5E00BC2F19 /* InteractiveController-testing */,
 			);
 		};
 /* End PBXProject section */
@@ -1614,12 +1824,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5087E74817EB910900C73F5D /* Resources */ = {
+		EA2B93FB1CE32E5E00BC2F19 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
-				B41F41C0B96371BB9588626F /* res in Resources */,
+				EA2B93FC1CE32E5E00BC2F19 /* Icon-120.png in Resources */,
+				EA2B93FD1CE32E5E00BC2F19 /* descriptor.proto in Resources */,
+				EA2B93FE1CE32E5E00BC2F19 /* Icon-76.png in Resources */,
+				EA2B93FF1CE32E5E00BC2F19 /* Default@2x.png in Resources */,
+				EA2B94001CE32E5E00BC2F19 /* Icon-100.png in Resources */,
+				EA2B94011CE32E5E00BC2F19 /* Icon-152.png in Resources */,
+				EA2B94021CE32E5E00BC2F19 /* Default-568h@2x.png in Resources */,
+				EA2B94031CE32E5E00BC2F19 /* Icon-72.png in Resources */,
+				EA2B94041CE32E5E00BC2F19 /* Default-736h@3x.png in Resources */,
+				EA2B94051CE32E5E00BC2F19 /* Icon-50.png in Resources */,
+				EA2B94061CE32E5E00BC2F19 /* Icon-114.png in Resources */,
+				EA2B94071CE32E5E00BC2F19 /* Icon-29.png in Resources */,
+				EA2B94081CE32E5E00BC2F19 /* Icon-40.png in Resources */,
+				EA2B94091CE32E5E00BC2F19 /* Icon-144.png in Resources */,
+				EA2B940A1CE32E5E00BC2F19 /* Icon-80.png in Resources */,
+				EA2B940B1CE32E5E00BC2F19 /* Icon-57.png in Resources */,
+				EA2B940C1CE32E5E00BC2F19 /* Default.png in Resources */,
+				EA2B940D1CE32E5E00BC2F19 /* Default-667h@2x.png in Resources */,
+				EA2B940E1CE32E5E00BC2F19 /* Icon-58.png in Resources */,
+				EA2B940F1CE32E5E00BC2F19 /* res in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1647,9 +1875,9 @@
 				EAF1AC371CA281360061BCCF /* extension_set_heavy.cc in Sources */,
 				EA888B3D1C58A6B200534275 /* PacketizedTCP.cpp in Sources */,
 				EA888B471C58A6B200534275 /* RakNetSocket2_Berkley_NativeClient.cpp in Sources */,
-				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				EA888B2C1C58A6B200534275 /* HTTPConnection2.cpp in Sources */,
 				EA888B551C58A6B200534275 /* RakSleep.cpp in Sources */,
+				EA2B94E11CE3307600BC2F19 /* AppDelegate.cpp in Sources */,
 				EAF1AC3C1CA281360061BCCF /* printer.cc in Sources */,
 				EA32155A1CA696D900D79A48 /* ServerSizeUpdateHandler.cpp in Sources */,
 				EA888B141C58A6B200534275 /* CommandParserInterface.cpp in Sources */,
@@ -1814,12 +2042,192 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5087E75617EB910900C73F5D /* Sources */ = {
+		EA2B94101CE32E5E00BC2F19 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
-				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
+				EA2B94111CE32E5E00BC2F19 /* message_lite.cc in Sources */,
+				EA2B94121CE32E5E00BC2F19 /* RakNetSocket2_PS4.cpp in Sources */,
+				EA2B94131CE32E5E00BC2F19 /* StringCompressor.cpp in Sources */,
+				EA2B94141CE32E5E00BC2F19 /* text_format.cc in Sources */,
+				EA2B94151CE32E5E00BC2F19 /* descriptor.cc in Sources */,
+				EA2B94161CE32E5E00BC2F19 /* UDPProxyCoordinator.cpp in Sources */,
+				EA2B94171CE32E5E00BC2F19 /* SimpleMutex.cpp in Sources */,
+				EA2B94181CE32E5E00BC2F19 /* Controller.cpp in Sources */,
+				EA2B94191CE32E5E00BC2F19 /* BoxFactory.cpp in Sources */,
+				EA2B941A1CE32E5E00BC2F19 /* dynamic_message.cc in Sources */,
+				EA2B941B1CE32E5E00BC2F19 /* TCPInterface.cpp in Sources */,
+				EA2B941C1CE32E5E00BC2F19 /* LocklessTypes.cpp in Sources */,
+				EA2B941D1CE32E5E00BC2F19 /* CloudCommon.cpp in Sources */,
+				EA2B941E1CE32E5E00BC2F19 /* TeamSelectHandler.cpp in Sources */,
+				EA2B941F1CE32E5E00BC2F19 /* extension_set_heavy.cc in Sources */,
+				EA2B94201CE32E5E00BC2F19 /* PacketizedTCP.cpp in Sources */,
+				EA2B94211CE32E5E00BC2F19 /* RakNetSocket2_Berkley_NativeClient.cpp in Sources */,
+				EA2B94231CE32E5E00BC2F19 /* HTTPConnection2.cpp in Sources */,
+				EA2B94241CE32E5E00BC2F19 /* RakSleep.cpp in Sources */,
+				EA2B94251CE32E5E00BC2F19 /* printer.cc in Sources */,
+				EA2B94261CE32E5E00BC2F19 /* ServerSizeUpdateHandler.cpp in Sources */,
+				EA2B94271CE32E5E00BC2F19 /* CommandParserInterface.cpp in Sources */,
+				EA2B94281CE32E5E00BC2F19 /* StringTable.cpp in Sources */,
+				EA2B94291CE32E5E00BC2F19 /* message.cc in Sources */,
+				EA2B942A1CE32E5E00BC2F19 /* Timer.cpp in Sources */,
+				EA2B942B1CE32E5E00BC2F19 /* CloudClient.cpp in Sources */,
+				EA2B942C1CE32E5E00BC2F19 /* ReplicaManager3.cpp in Sources */,
+				EA2B942D1CE32E5E00BC2F19 /* RelayPlugin.cpp in Sources */,
+				EA2B942E1CE32E5E00BC2F19 /* LinuxStrings.cpp in Sources */,
+				EA2B942F1CE32E5E00BC2F19 /* CCRakNetSlidingWindow.cpp in Sources */,
+				EA2B94301CE32E5E00BC2F19 /* TwoWayAuthentication.cpp in Sources */,
+				EA2B94311CE32E5E00BC2F19 /* TeamManager.cpp in Sources */,
+				EA2B94321CE32E5E00BC2F19 /* AccelerationMessage.cpp in Sources */,
+				EA2B94331CE32E5E00BC2F19 /* StopGameHandler.cpp in Sources */,
+				EA2B94341CE32E5E00BC2F19 /* GameStreamHandler.cpp in Sources */,
+				EA2B94351CE32E5E00BC2F19 /* PacketLogger.cpp in Sources */,
+				EA2B94361CE32E5E00BC2F19 /* VitaIncludes.cpp in Sources */,
+				EA2B94371CE32E5E00BC2F19 /* HandlerMap.cpp in Sources */,
+				EA2B94381CE32E5E00BC2F19 /* RakNetSocket2_WindowsStore8.cpp in Sources */,
+				EA2B94391CE32E5E00BC2F19 /* repeated_field.cc in Sources */,
+				EA2B943A1CE32E5E00BC2F19 /* RakNetSocket2_Berkley.cpp in Sources */,
+				EA2B943B1CE32E5E00BC2F19 /* RakPeer.cpp in Sources */,
+				EA2B943C1CE32E5E00BC2F19 /* gettimeofday.cpp in Sources */,
+				EA2B943D1CE32E5E00BC2F19 /* GameStream.pb.cc in Sources */,
+				EA2B943E1CE32E5E00BC2F19 /* FullyConnectedMesh2.cpp in Sources */,
+				EA2B943F1CE32E5E00BC2F19 /* CollisionBoxHandler.cpp in Sources */,
+				EA2B94401CE32E5E00BC2F19 /* SuperFastHash.cpp in Sources */,
+				EA2B94411CE32E5E00BC2F19 /* GridSectorizer.cpp in Sources */,
+				EA2B94421CE32E5E00BC2F19 /* NatTypeDetectionCommon.cpp in Sources */,
+				EA2B94431CE32E5E00BC2F19 /* SocketLayer.cpp in Sources */,
+				EA2B94441CE32E5E00BC2F19 /* ConnectionLostHandler.cpp in Sources */,
+				EA2B94451CE32E5E00BC2F19 /* BitStream.cpp in Sources */,
+				EA2B94461CE32E5E00BC2F19 /* AppController.mm in Sources */,
+				EA2B94471CE32E5E00BC2F19 /* DS_ByteQueue.cpp in Sources */,
+				EA2B94481CE32E5E00BC2F19 /* NatTypeDetectionClient.cpp in Sources */,
+				EA2B94491CE32E5E00BC2F19 /* Box.cpp in Sources */,
+				EA2B944A1CE32E5E00BC2F19 /* PacketConsoleLogger.cpp in Sources */,
+				EA2B944B1CE32E5E00BC2F19 /* ToggleVibrateHandler.cpp in Sources */,
+				EA2B944C1CE32E5E00BC2F19 /* DataCompressor.cpp in Sources */,
+				EA2B944D1CE32E5E00BC2F19 /* ControlScene.cpp in Sources */,
+				EA2B944E1CE32E5E00BC2F19 /* PacketOutputWindowLogger.cpp in Sources */,
+				EA2B944F1CE32E5E00BC2F19 /* TeamBalancer.cpp in Sources */,
+				EA2B94501CE32E5E00BC2F19 /* NetworkIDObject.cpp in Sources */,
+				EA2B94511CE32E5E00BC2F19 /* RakNetSocket2_Windows_Linux_360.cpp in Sources */,
+				EA2B94521CE32E5E00BC2F19 /* gzip_stream.cc in Sources */,
+				EA2B94531CE32E5E00BC2F19 /* StartHandler.cpp in Sources */,
+				EA2B94541CE32E5E00BC2F19 /* RakNetSocket2_PS3_PS4.cpp in Sources */,
+				EA2B94551CE32E5E00BC2F19 /* StatisticsHistory.cpp in Sources */,
+				EA2B94561CE32E5E00BC2F19 /* Getche.cpp in Sources */,
+				EA2B94571CE32E5E00BC2F19 /* atomicops_internals_x86_gcc.cc in Sources */,
+				EA2B94581CE32E5E00BC2F19 /* structurally_valid.cc in Sources */,
+				EA2B94591CE32E5E00BC2F19 /* zero_copy_stream.cc in Sources */,
+				EA2B945A1CE32E5E00BC2F19 /* GameState.pb.cc in Sources */,
+				EA2B945B1CE32E5E00BC2F19 /* reflection_ops.cc in Sources */,
+				EA2B945C1CE32E5E00BC2F19 /* Gets.cpp in Sources */,
+				EA2B945D1CE32E5E00BC2F19 /* RakNetTypes.cpp in Sources */,
+				EA2B945E1CE32E5E00BC2F19 /* ConnectionGraph2.cpp in Sources */,
+				EA2B945F1CE32E5E00BC2F19 /* RakNetSocket2_360_720.cpp in Sources */,
+				EA2B94601CE32E5E00BC2F19 /* generated_message_reflection.cc in Sources */,
+				EA2B94611CE32E5E00BC2F19 /* CheckSum.cpp in Sources */,
+				EA2B94621CE32E5E00BC2F19 /* RakWString.cpp in Sources */,
+				EA2B94631CE32E5E00BC2F19 /* unknown_field_set.cc in Sources */,
+				EA2B94641CE32E5E00BC2F19 /* TableSerializer.cpp in Sources */,
+				EA2B94651CE32E5E00BC2F19 /* EmptyUniversalHandler.cpp in Sources */,
+				EA2B94661CE32E5E00BC2F19 /* stringprintf.cc in Sources */,
+				EA2B94671CE32E5E00BC2F19 /* FileOperations.cpp in Sources */,
+				EA2B94681CE32E5E00BC2F19 /* atomicops_internals_x86_msvc.cc in Sources */,
+				EA2B94691CE32E5E00BC2F19 /* RakNetStatistics.cpp in Sources */,
+				EA2B946A1CE32E5E00BC2F19 /* coded_stream.cc in Sources */,
+				EA2B946B1CE32E5E00BC2F19 /* DS_HuffmanEncodingTree.cpp in Sources */,
+				EA2B946C1CE32E5E00BC2F19 /* SecureHandshake.cpp in Sources */,
+				EA2B946D1CE32E5E00BC2F19 /* SignaledEvent.cpp in Sources */,
+				EA2B946E1CE32E5E00BC2F19 /* RakNetSocket2_Vita.cpp in Sources */,
+				EA2B946F1CE32E5E00BC2F19 /* common.cc in Sources */,
+				EA2B94701CE32E5E00BC2F19 /* RootViewController.mm in Sources */,
+				EA2B94711CE32E5E00BC2F19 /* Rand.cpp in Sources */,
+				EA2B94721CE32E5E00BC2F19 /* ConnectionResultHandler.cpp in Sources */,
+				EA2B94731CE32E5E00BC2F19 /* extension_set.cc in Sources */,
+				EA2B94741CE32E5E00BC2F19 /* Connector.cpp in Sources */,
+				EA2B94751CE32E5E00BC2F19 /* wire_format.cc in Sources */,
+				EA2B94761CE32E5E00BC2F19 /* DisconnectHandler.cpp in Sources */,
+				EA2B94771CE32E5E00BC2F19 /* RakNetSocket2.cpp in Sources */,
+				EA2B94781CE32E5E00BC2F19 /* Router2.cpp in Sources */,
+				EA2B94791CE32E5E00BC2F19 /* CloudServer.cpp in Sources */,
+				EA2B947A1CE32E5E00BC2F19 /* DS_BytePool.cpp in Sources */,
+				EA2B947B1CE32E5E00BC2F19 /* descriptor_database.cc in Sources */,
+				EA2B947C1CE32E5E00BC2F19 /* RakNetSocket2_NativeClient.cpp in Sources */,
+				EA2B947D1CE32E5E00BC2F19 /* CCRakNetUDT.cpp in Sources */,
+				EA2B947E1CE32E5E00BC2F19 /* ConsoleServer.cpp in Sources */,
+				EA2B947F1CE32E5E00BC2F19 /* PacketFileLogger.cpp in Sources */,
+				EA2B94801CE32E5E00BC2F19 /* AdminHandler.cpp in Sources */,
+				EA2B94811CE32E5E00BC2F19 /* HTTPConnection.cpp in Sources */,
+				EA2B94821CE32E5E00BC2F19 /* RakMemoryOverride.cpp in Sources */,
+				EA2B94831CE32E5E00BC2F19 /* main.m in Sources */,
+				EA2B94841CE32E5E00BC2F19 /* zero_copy_stream_impl.cc in Sources */,
+				EA2B94851CE32E5E00BC2F19 /* TelnetTransport.cpp in Sources */,
+				EA2B94861CE32E5E00BC2F19 /* VariableDeltaSerializer.cpp in Sources */,
+				EA2B94DF1CE32ED100BC2F19 /* TestDelegate.cpp in Sources */,
+				EA2B94881CE32E5E00BC2F19 /* MainMenuScene.cpp in Sources */,
+				EA2B94891CE32E5E00BC2F19 /* FormatString.cpp in Sources */,
+				EA2B948A1CE32E5E00BC2F19 /* StartGameHandler.cpp in Sources */,
+				EA2B948B1CE32E5E00BC2F19 /* descriptor.pb.cc in Sources */,
+				EA2B948C1CE32E5E00BC2F19 /* RandSync.cpp in Sources */,
+				EA2B948D1CE32E5E00BC2F19 /* FileList.cpp in Sources */,
+				EA2B948E1CE32E5E00BC2F19 /* PluginInterface2.cpp in Sources */,
+				EA2B948F1CE32E5E00BC2F19 /* UDPForwarder.cpp in Sources */,
+				EA2B94901CE32E5E00BC2F19 /* RakNetSocket2_Windows_Linux.cpp in Sources */,
+				EA2B94911CE32E5E00BC2F19 /* UDPProxyClient.cpp in Sources */,
+				EA2B94921CE32E5E00BC2F19 /* TeamScene.cpp in Sources */,
+				EA2B94931CE32E5E00BC2F19 /* ThreadsafePacketLogger.cpp in Sources */,
+				EA2B94941CE32E5E00BC2F19 /* NatPunchthroughServer.cpp in Sources */,
+				EA2B94951CE32E5E00BC2F19 /* EpochTimeToString.cpp in Sources */,
+				EA2B94961CE32E5E00BC2F19 /* Base64Encoder.cpp in Sources */,
+				EA2B94971CE32E5E00BC2F19 /* DynDNS.cpp in Sources */,
+				EA2B94981CE32E5E00BC2F19 /* VariableListDeltaTracker.cpp in Sources */,
+				EA2B94991CE32E5E00BC2F19 /* WindowManager.cpp in Sources */,
+				EA2B949A1CE32E5E00BC2F19 /* RakNetTransport2.cpp in Sources */,
+				EA2B949B1CE32E5E00BC2F19 /* RakNetCommandParser.cpp in Sources */,
+				EA2B949C1CE32E5E00BC2F19 /* GetTime.cpp in Sources */,
+				EA2B949D1CE32E5E00BC2F19 /* ReadyEvent.cpp in Sources */,
+				EA2B949E1CE32E5E00BC2F19 /* NatTypeDetectionServer.cpp in Sources */,
+				EA2B949F1CE32E5E00BC2F19 /* StadiumScene.cpp in Sources */,
+				EA2B94A01CE32E5E00BC2F19 /* ServerNameUpdateHandler.cpp in Sources */,
+				EA2B94A11CE32E5E00BC2F19 /* WSAStartupSingleton.cpp in Sources */,
+				EA2B94A21CE32E5E00BC2F19 /* substitute.cc in Sources */,
+				EA2B94A31CE32E5E00BC2F19 /* DS_Table.cpp in Sources */,
+				EA2B94A41CE32E5E00BC2F19 /* Rackspace.cpp in Sources */,
+				EA2B94A51CE32E5E00BC2F19 /* Itoa.cpp in Sources */,
+				EA2B94A61CE32E5E00BC2F19 /* RakString.cpp in Sources */,
+				EA2B94A71CE32E5E00BC2F19 /* RakThread.cpp in Sources */,
+				EA2B94A81CE32E5E00BC2F19 /* AdminDialogHandler.cpp in Sources */,
+				EA2B94A91CE32E5E00BC2F19 /* NatPunchthroughClient.cpp in Sources */,
+				EA2B94AA1CE32E5E00BC2F19 /* generated_message_util.cc in Sources */,
+				EA2B94AB1CE32E5E00BC2F19 /* wire_format_lite.cc in Sources */,
+				EA2B94AC1CE32E5E00BC2F19 /* EmailSender.cpp in Sources */,
+				EA2B94E01CE32ED100BC2F19 /* TestScene.cpp in Sources */,
+				EA2B94AE1CE32E5E00BC2F19 /* tokenizer.cc in Sources */,
+				EA2B94AF1CE32E5E00BC2F19 /* strutil.cc in Sources */,
+				EA2B94B01CE32E5E00BC2F19 /* _FindFirst.cpp in Sources */,
+				EA2B94B11CE32E5E00BC2F19 /* VariadicSQLParser.cpp in Sources */,
+				EA2B94B21CE32E5E00BC2F19 /* zero_copy_stream_impl_lite.cc in Sources */,
+				EA2B94B31CE32E5E00BC2F19 /* once.cc in Sources */,
+				EA2B94B41CE32E5E00BC2F19 /* ServerDurationUpdateHandler.cpp in Sources */,
+				EA2B94B51CE32E5E00BC2F19 /* RakNetSocket.cpp in Sources */,
+				EA2B94B61CE32E5E00BC2F19 /* LogCommandParser.cpp in Sources */,
+				EA2B94B71CE32E5E00BC2F19 /* Player.cpp in Sources */,
+				EA2B94B81CE32E5E00BC2F19 /* GameStreamConnectionLostHandler.cpp in Sources */,
+				EA2B94B91CE32E5E00BC2F19 /* service.cc in Sources */,
+				EA2B94BA1CE32E5E00BC2F19 /* SendToThread.cpp in Sources */,
+				EA2B94BB1CE32E5E00BC2F19 /* NetworkIDManager.cpp in Sources */,
+				EA2B94BC1CE32E5E00BC2F19 /* IncrementalReadInterface.cpp in Sources */,
+				EA2B94BD1CE32E5E00BC2F19 /* DR_SHA1.cpp in Sources */,
+				EA2B94BE1CE32E5E00BC2F19 /* UDPProxyServer.cpp in Sources */,
+				EA2B94BF1CE32E5E00BC2F19 /* ServerNameMessage.cpp in Sources */,
+				EA2B94C01CE32E5E00BC2F19 /* FileListTransfer.cpp in Sources */,
+				EA2B94C11CE32E5E00BC2F19 /* PS4Includes.cpp in Sources */,
+				EA2B94C21CE32E5E00BC2F19 /* ReliabilityLayer.cpp in Sources */,
+				EA2B94C31CE32E5E00BC2F19 /* RPC4Plugin.cpp in Sources */,
+				EA2B94C41CE32E5E00BC2F19 /* ServersHandler.cpp in Sources */,
+				EA2B94C51CE32E5E00BC2F19 /* strtod.cc in Sources */,
+				EA2B94C61CE32E5E00BC2F19 /* DirectoryDeltaTransfer.cpp in Sources */,
+				EA2B94C71CE32E5E00BC2F19 /* MessageFilter.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1906,72 +2314,6 @@
 			};
 			name = Release;
 		};
-		5087E76D17EB910900C73F5D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = mac/Prefix.pch;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					USE_FILE32API,
-					CC_TARGET_OS_MAC,
-					"COCOS2D_DEBUG=1",
-					"CC_ENABLE_CHIPMUNK_INTEGRATION=1",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Applications/Cocos/frameworks/cocos2d-x-3.9/cocos/platform/mac",
-					"/Applications/Cocos/frameworks/cocos2d-x-3.9/external/glfw3/include/mac",
-				);
-				INFOPLIST_FILE = mac/Info.plist;
-				LIBRARY_SEARCH_PATHS = " /Applications/Cocos/frameworks/cocos2d-x-3.9/prebuilt/mac";
-				OTHER_LDFLAGS = (
-					"$(_COCOS_LIB_MAC_BEGIN)",
-					"$(_COCOS_LIB_MAC_END)",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = foltyma1.interactivecontroller;
-				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_MAC_BEGIN) $(_COCOS_HEADER_MAC_END)";
-			};
-			name = Debug;
-		};
-		5087E76E17EB910900C73F5D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = mac/Prefix.pch;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					USE_FILE32API,
-					CC_TARGET_OS_MAC,
-					"CC_ENABLE_CHIPMUNK_INTEGRATION=1",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Applications/Cocos/frameworks/cocos2d-x-3.9/cocos/platform/mac",
-					"/Applications/Cocos/frameworks/cocos2d-x-3.9/external/glfw3/include/mac",
-				);
-				INFOPLIST_FILE = mac/Info.plist;
-				LIBRARY_SEARCH_PATHS = " /Applications/Cocos/frameworks/cocos2d-x-3.9/prebuilt/mac";
-				OTHER_LDFLAGS = (
-					"$(_COCOS_LIB_MAC_BEGIN)",
-					"$(_COCOS_LIB_MAC_END)",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = foltyma1.interactivecontroller;
-				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_MAC_BEGIN) $(_COCOS_HEADER_MAC_END)";
-			};
-			name = Release;
-		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1998,6 +2340,7 @@
 					"/Applications/Cocos/frameworks/cocos2d-x-3.9/external/chipmunk/include/chipmunk",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2029,12 +2372,97 @@
 					"/Applications/Cocos/frameworks/cocos2d-x-3.9/external/chipmunk/include/chipmunk",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EA2B94D71CE32E5E00BC2F19 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COMPRESS_PNG_FILES = NO;
+				ENABLE_BITCODE = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ios/Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					USE_FILE32API,
+					CC_TARGET_OS_IPHONE,
+					"COCOS2D_DEBUG=1",
+					"CC_ENABLE_CHIPMUNK_INTEGRATION=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Applications/Cocos/frameworks/cocos2d-x-3.9/cocos/platform/ios",
+					"/Applications/Cocos/frameworks/cocos2d-x-3.9/cocos/platform/ios/Simulation",
+					/Users/marek/Documents/git/InteractiveGame/source/shared,
+					/Users/marek/Documents/git/InteractiveGame/source/shared/testing,
+				);
+				INFOPLIST_FILE = "InteractiveController-mobile copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = "/Applications/Cocos/frameworks/cocos2d-x-3.9/prebuilt/ios";
+				OTHER_LDFLAGS = (
+					"$(_COCOS_LIB_IOS_BEGIN)",
+					"$(_COCOS_LIB_IOS_END)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = foltyma1.interactivecontroller;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
+				VALID_ARCHS = "arm64 armv7";
+			};
+			name = Debug;
+		};
+		EA2B94D81CE32E5E00BC2F19 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COMPRESS_PNG_FILES = NO;
+				ENABLE_BITCODE = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ios/Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					USE_FILE32API,
+					CC_TARGET_OS_IPHONE,
+					"CC_ENABLE_CHIPMUNK_INTEGRATION=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Applications/Cocos/frameworks/cocos2d-x-3.9/cocos/platform/ios",
+					"/Applications/Cocos/frameworks/cocos2d-x-3.9/cocos/platform/ios/Simulation",
+					/Users/marek/Documents/git/InteractiveGame/source/shared,
+					/Users/marek/Documents/git/InteractiveGame/source/shared/testing,
+				);
+				INFOPLIST_FILE = "InteractiveController-mobile copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = "/Applications/Cocos/frameworks/cocos2d-x-3.9/prebuilt/ios";
+				OTHER_LDFLAGS = (
+					"$(_COCOS_LIB_IOS_BEGIN)",
+					"$(_COCOS_LIB_IOS_END)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = foltyma1.interactivecontroller;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
+				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Release;
 		};
@@ -2050,20 +2478,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		5087E76C17EB910900C73F5D /* Build configuration list for PBXNativeTarget "InteractiveController-desktop" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5087E76D17EB910900C73F5D /* Debug */,
-				5087E76E17EB910900C73F5D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
 		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "InteractiveController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		EA2B94D61CE32E5E00BC2F19 /* Build configuration list for PBXNativeTarget "InteractiveController-testing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA2B94D71CE32E5E00BC2F19 /* Debug */,
+				EA2B94D81CE32E5E00BC2F19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
