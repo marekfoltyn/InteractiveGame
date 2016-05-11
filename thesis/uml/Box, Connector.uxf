@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>260</x>
+      <y>160</y>
+      <w>290</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>Box
+--
+_+ create(String data): Box *_
+_+ create(RakNet::Packet * p): Box *_
+_+ createEmpty(): Box *_
+
++ setType(unsigned char type): void
++ getType(): unsigned char
++ setReliability(PacketReliability r): void
++ getReliability(): PacketReliability
++ setPriority(PacketPriority p): void
++ getPriority(): PacketPriority
++ setAddress(SystemAddress addr): void
++ getAddress(): SystemAddress
++ getId(): int
++ getData(): String
++ send(): void
++ deallocate(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>560</x>
+      <y>160</y>
+      <w>280</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>Connector
+--
+_getInstance(): Connector *_
+
+startAsClient(): bool
+startAsServer(): bool
+stop(): void
+
+connect(SystemAddress addr): void
+disconnect(SystemAddress addr): void
+
+send(Box * b): void
+receive(): Box *
+ping(): void
+getServer(): SystemAddress
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>240</x>
+      <y>110</y>
+      <w>620</w>
+      <h>460</h>
+    </coordinates>
+    <panel_attributes>*Network module*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>260</x>
+      <y>460</y>
+      <w>580</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>
+
+*RakNet library*</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
