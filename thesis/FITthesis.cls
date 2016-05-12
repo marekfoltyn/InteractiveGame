@@ -442,9 +442,9 @@ sp\^ osobom, ktor\'y nezni\v zuje hodnotu Diela (vr\'atane komer\v cn\'eho vyu\v
 	\frontmatter
 	\thispagestyle{empty}
 
-	\listoftodos[TODO]
-    ~
-	\newpage
+	%\listoftodos[TODO]
+    %~
+	%\newpage
 
 	Vytvo{\v r}te syst{\' e}m pro interaktivn{\' i} ovl{\' a}d{\' a}n{\' i} PC hry pomoc{\' i} chytr{\' e}ho telefonu. 
 	PC i telefony budou p{\v r}ipojeny ve stejn{\' e} lok{\' a}ln{\' i} s{\' i}ti. 

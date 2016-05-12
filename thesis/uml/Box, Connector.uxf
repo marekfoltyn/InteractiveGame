@@ -77,7 +77,7 @@ getServer(): SystemAddress
     </coordinates>
     <panel_attributes>
 
-*RakNet library*</panel_attributes>
+RakNet library</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>

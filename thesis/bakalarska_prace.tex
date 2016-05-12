@@ -41,9 +41,9 @@
 \authorWithDegrees{Marek Foltýn} 
 \supervisor{Ing. Filip K{\v r}ikava, Ph.D.}
 \acknowledgements{Chtěl bych poděkovat vedoucímu práce Ing. Filipu K{\v r}ikavovi, Ph.D. za pomoc a~p{\v r}íkladné vedení práce. Dále pak své manželce Veronice Foltýnové za trpělivost a~ochotu vytvá{\v r}et prost{\v r}edí vhodné k~tvorbě bakalářské práce, 
-rodičům a~celé mé rodině za velkou podporu ve všech směrech. Děkuji také všem, kteří se podíleli na testování hratelnosti hry.}
+rodičům a~celé mé rodině za velkou podporu ve všech směrech. Děkuji také všem, kdo se podíleli na testování hratelnosti hry.}
 \abstractCS{Tato bakalářská práce se zabývá tvorbou systému pro ovládání PC hry pomocí mobilního telefonu. Hlavním cílem je obohacení herního zážitku pomocí interaktivních prvků, které jsou na mobilních telefonech k~dispozici. Součástí práce je analýza způsobů ovládání her, přehled interaktivních technologií v~mobilních telefonech a~samotná tvorba komunikačního systému, který je demonstrován na jednoduché hře. }
-\abstractEN{The main purpose of this thesis is to create an interactive PC game control system using smartphones in order to enhance the game experience. The thesis contains the analysis of different ways how a PC game can be controlled, the overwiev of interactive mobile technologies and also the communication system implementation, which is demonstrated in a simple game. }
+\abstractEN{The main purpose of this thesis is to create an interactive PC game control system using smartphones in order to enhance the game experience. The thesis contains the analysis of different ways how a~PC game can be controlled, the overwiev of interactive mobile technologies and also the communication system implementation, which is demonstrated in a~simple game. }
 \placeForDeclarationOfAuthenticity{V~Praze}
 \declarationOfAuthenticityOption{1} %volba Prohlášení (číslo 1-6)
 \keywordsCS{interaktivní ovládání PC hry, smartphone, komunikační systém, Cocos2d-x, RakNet}
@@ -54,7 +54,7 @@ rodičům a~celé mé rodině za velkou podporu ve všech směrech. Děkuji tak�
 % \newacronym{CVUT}{{\v C}VUT}{{\v C}esk{\' e} vysok{\' e} u{\v c}en{\' i} technick{\' e} v Praze}
 % \newacronym{FIT}{FIT}{Fakulta informa{\v c}n{\' i}ch technologi{\' i}}
 \begin{introduction}
-Videohry existují od počátku prvních počítačů. \cite{rylich} Jejich možnosti úzce souvisí s vývojem výpočetního a~grafického výkonu, hardwaru a~dalších souvisejících technologií. Neustálé zmenšování součástek v~současné době nabízí vysoký výkon ve velmi malých strojích: notebooky, chytré telefony a~dokonce i~hodinky s~vícejádrovými procesory. \cite{kupi}
+Videohry existují od počátku prvních počítačů. \cite{rylich} Jejich možnosti úzce souvisí s~vývojem výpočetního a~grafického výkonu, hardwaru a~dalších souvisejících technologií. Neustálé zmenšování součástek v~současné době nabízí vysoký výkon ve velmi malých strojích: notebooky, chytré telefony a~dokonce i~hodinky s~vícejádrovými procesory. \cite{kupi}
 
 Na moderní typy hardwaru se adaptovaly i~hry, jsou vyvíjeny pro přenosná zařízení, jako například mobilní telefony, tablety a~další. Lidé tak mohou hrát doslova kdekoli: nemusí být doma, jako je tomu u~klasických počítačových a~konzolových her, ale mohou hrát v~čekárně, ve škole o~přestávce, na cestě ve vlaku a~podobně.
 
@@ -62,9 +62,9 @@ Mobilní zařízení jsou v~dnešní době velmi úzce propojená s~lidmi a~jeji
 
 Způsobem, jak dosáhnout lepší mezilidské interakce ve hře, je hra více hráčů, tzv. \textit{multiplayer}. Jedná se o~typ, kdy na~sebe v~herním světě reaguje více hráčů, ať už v~reálném čase, nebo pomocí sdílení pokroku ve hře (např. žebříčky s~výsledným skóre). Obě tyto varianty sice poskytují informace o~hře ostatních lidí, avšak ve spojení s~internetem nemají zásadní vliv na mezilidskou komunikaci, spíše vylepšují vlasnosti herního světa, aby zlepšily hráčův zážitek. Jako příklad uvedu běžného hráče PC hry, který hraje doma v~pokoji multiplayerovou online hru přes internet: Sice se pohybuje ve stejném virtuálním světě jako další hráči, ale vliv na mezilidskou komunikaci je minimální. Dalším příkladem může být herní interakce pomocí sociálních sítí. Kromě svého pokroku ve hře vidí hráč i~pokrok ostatních lidí a~může ovlivnit jejich hru. Opět se ale nejedná o~sociální interakci ve smyslu fyzické přítomnosti. Virtuální realita zde tvoří pouze prostor, skrz který ostatní hráči sledují jeden druhého.
 
-I~přes tyto nevýhody existují způsoby, jak spojit virtuální realitu ve hře s~širší mezilidskou komunikací. Jedním z~nich je hra v~lokální síti, kdy jsou hráči fyzicky přítomni na jednom místě (pokoj, garáž, …). Hráči prožívají stejný herní zážitek jako v~případě hry přes internet, avšak umocněný přítomností ostatních hráčů. Reakce během hry pak mohou obsahovat prvky komunikace typické pro mezilidský kontakt ve fyzické přítomnosti: zvuk, vizuální a~fyzický kontakt a podobně.
+I~přes tyto nevýhody existují způsoby, jak spojit virtuální realitu ve hře s~širší mezilidskou komunikací. Jedním z~nich je hra v~lokální síti, kdy jsou hráči fyzicky přítomni na jednom místě (pokoj, garáž, …). Hráči prožívají stejný herní zážitek jako v~případě hry přes internet, avšak umocněný přítomností ostatních hráčů. Reakce během hry pak mohou obsahovat prvky komunikace typické pro mezilidský kontakt ve fyzické přítomnosti: zvuk, vizuální a~fyzický kontakt a~podobně.
 
-Dalším způsobem je hra na jednom PC nebo konzoli. Pro tento způsob je typické sdílení jedné obrazovky (monitor, televize) a případně ovládacích periferií (klávesnice). Herní svět pak netvoří virtuální „bariéru“, přes kterou hráč vnímá ostatní lidi, ale stává se součástí prostředí společně s~lidmi, podobně jako například stolní hry.
+Dalším způsobem je hra na jednom PC nebo konzoli. Pro tento způsob je typické sdílení jedné obrazovky (monitor, televize) a~případně ovládacích periferií (klávesnice). Herní svět pak netvoří virtuální „bariéru“, přes kterou hráč vnímá ostatní lidi, ale stává se součástí prostředí společně s~lidmi, podobně jako například stolní hry.
 
 \subsection{Cíl projektu}
 
@@ -78,7 +78,7 @@ V~této práci se budu zabývat zkoumáním možností, jak využít interaktivn
 
 \chapter{Ovládání her}
 
-V~první kapitole se budu nejprve zabývat problematikou ovládání her v~současné době a~to jak na~počítačích, tak na~ostatních zařízeních. Stručně se zmíním o~historii ovladačů a~poté popíšu nejpoužívanější ovladače v~dnešní době. Z~toto přehledu budu vycházet během srovnávání alternativních ovládacích prvků v mobilních telefonech a jejich přínosů. V této kapitole se nebudu podrobně zabývat softwarovým návrhem uživatelského ovládání, ale spíše využitím hardwaru pro~herní účely. Hlavní náplní bude srovnání několika rozdílných způsobů ovládání, jejich výhod a~nedostatků.
+V~první kapitole se budu nejprve zabývat problematikou ovládání her v~současné době a~to jak na~počítačích, tak na~ostatních zařízeních. Stručně se zmíním o~historii ovladačů a~poté popíšu nejpoužívanější ovladače v~dnešní době. Z~toto přehledu budu vycházet během srovnávání alternativních ovládacích prvků v~mobilních telefonech a~jejich přínosů. V~této kapitole se nebudu podrobně zabývat softwarovým návrhem uživatelského ovládání, ale spíše využitím hardwaru pro~herní účely. Hlavní náplní bude srovnání několika rozdílných způsobů ovládání, jejich výhod a~nedostatků.
 
 \section{Historie ovladačů}
 
@@ -91,7 +91,7 @@ Počítačové hry se začaly objevovat v~50. letech 20. století. Hardware dost
 \end{figure}
 
 
-Větší rozvoj herního hardwaru začal v~roce 1971. Byl vytvořen první herní automat na mince s~hrou \textit{Galaxy Game}. Jednalo se o~hru pro dva hráče ovládánou jednoduchým joystickem. Později se začaly objevovat další automaty a využívat jak tlačítka, tak i joystick nebo volant.
+Větší rozvoj herního hardwaru začal v~roce 1971. Byl vytvořen první herní automat na mince s~hrou \textit{Galaxy Game}. Jednalo se o~hru pro dva hráče ovládánou jednoduchým joystickem. Později se začaly objevovat další automaty a~využívat jak tlačítka, tak i~joystick nebo volant.
 
 Hry se v~této době vyskytovaly především na herních konzolích. Vzhledem k~narustajícím prodejům osobních PC se však začaly dostávat i~do této oblasti, kde byla nejrozsířenejší periferií klávesnice. Vývoj herních konzolí se však nezastavil.
 
@@ -125,7 +125,7 @@ Primarní zaměření na hry dělá z~gamepadu vynikající ovladač pro mnoho h
 
 Z~hlediska intuitivního ovládání gamepad zaostává podobně jako myš s~klávesnicí. Hry jsou s~ním sice dobře ovladatelné, avšak často je nutný trénink pro~zvládnutí složitějších principů ovládání a~tlačítkových kombinací.
 
-\section{Joystick a volant}
+\section{Joystick a~volant}
 
 Joystick a~volant představují ovladače pro specifické druhy her.
 
@@ -186,9 +186,9 @@ Motion capture & - velmi přirozené ovládání & - potřeba většího prostor
 
 \chapter{Interaktivní prvky v~mobilních telefonech}
 
-V~první kapitole jsem představil nejběžnější ovladače pro herní konzole a~osobní počítače. V~následující kapitole se budu věnovat analýze senzorů v mobilních telefonech, které interagují s~okolním prostředím. Popíšu jejich princip fungování a~budu zkoumat herní využití jak v~mobilních hrách, tak jako interaktivní ovladač pro počítačovou hru. Některé z~těchto senzorů pak využiji při tvorbě interaktivního ovladače v~kapitole~\ref{chapter:implementation}.
+V~první kapitole jsem představil nejběžnější ovladače pro herní konzole a~osobní počítače. V~následující kapitole se budu věnovat analýze senzorů v~mobilních telefonech, které interagují s~okolním prostředím. Popíšu jejich princip fungování a~budu zkoumat herní využití jak v~mobilních hrách, tak jako interaktivní ovladač pro počítačovou hru. Některé z~těchto senzorů pak využiji při tvorbě interaktivního ovladače v~kapitole~\ref{chapter:implementation}.
 
-Senzory se budu snažit využít tak, aby mobilní telefon nesloužil pouze jako vstupní zařízení, ale byl provázán s~hrou samotnou. To umožní rozšířit herní realitu a vytvořit neoddělitelný celek ovladače s~hrou a nabídne nové možnosti herních principů, které by na tradičních periferiích nebylo možné realizovat.
+Senzory se budu snažit využít tak, aby mobilní telefon nesloužil pouze jako vstupní zařízení, ale byl provázán s~hrou samotnou. To umožní rozšířit herní realitu a~vytvořit neoddělitelný celek ovladače s~hrou a~nabídne nové možnosti herních principů, které by na tradičních periferiích nebylo možné realizovat.
 
 \section{Dotykový displej}
 \label{section:touchscreen}
@@ -199,7 +199,7 @@ Kapacitní dotykový panel využívá elektrické vodivosti vnějších těles. 
 
 Dotykové displeje nabízejí velmi široké možnosti uplatnění ve hrách. Na rozdíl od klasických ovladačů totiž propojují zobrazení grafiky se samotným ovládáním. Například přesun objektů v~herním světě je velmi přirozený: hráč se jednoduše dotkne objektu a~tahem prstu jej přesune po obrazovce. Ve srovnání s~počítačovou myší odpadá \uv{mezivrstva} ve formě periferie připojené k~zařízení a~hráčův prst se tak stává samotným kurzorem.
 
-Schopnosti dotykových displejů, jako jsou gesta a~snímání více dotyků najednou, zásadním způsobem zjednodušují ovládání mobilních telefonů a~tedy i~mobilních her. Některé jsou přímo postaveny na využití dotykových displejů, např. úspěšná hra \textit{Fruit Ninja}\cite{fruitninja}. Hlavní ovládací prvek tvoří tah prstem, který simuluje seknutí čepelí. Hráč se snaží prstem přeseknout co největší množství padajícího ovoce najednou. Hra je příkladnou ukázkou využití dotykové obrazovky: letící ovoce představuje podnět, aby se hráč trefil do daného místa na obrazovce. Ovládání tak přímo koresponduje se zobrazovanou grafikou (pokaždé je pro optimální přeseknutí potřeba jiné gesto prstem) a splývá s~hrou v~jednu ucelenou část.
+Schopnosti dotykových displejů, jako jsou gesta a~snímání více dotyků najednou, zásadním způsobem zjednodušují ovládání mobilních telefonů a~tedy i~mobilních her. Některé jsou přímo postaveny na využití dotykových displejů, např. úspěšná hra \textit{Fruit Ninja}\cite{fruitninja}. Hlavní ovládací prvek tvoří tah prstem, který simuluje seknutí čepelí. Hráč se snaží prstem přeseknout co největší množství padajícího ovoce najednou. Hra je příkladnou ukázkou využití dotykové obrazovky: letící ovoce představuje podnět, aby se hráč trefil do daného místa na obrazovce. Ovládání tak přímo koresponduje se zobrazovanou grafikou (pokaždé je pro optimální přeseknutí potřeba jiné gesto prstem) a~splývá s~hrou v~jednu ucelenou část.
 
 \begin{figure}
 \includegraphics[width=\textwidth]{fruit_ninja}
@@ -267,7 +267,7 @@ Výhodou tohoto řešení je možnost ovládat PC podobně jako jiné ovládací
 
 Společnost Apple nabízí pro své telefony funkci sdílení obrazu na externí obrazovku. Toho je docíleno pomocí zařízení AppleTV a~bezdrátové technologie AirPlay\cite{airplay}.
 
-Toto řešení již lépe využívá interaktivní možnosti mobilních přístrojů, integrovaný displej tvoří druhou obrazovku, může zobrazovat ovládání dobře optimalizované pro konkrétní hru nebo dodatečné informace o~hře (skóre, počet ujetých kol atd.). Zásadní nevýhodou však je nemožnost hrát hru s více hráči kvůli zvolené architektuře: herní logika včetně vykreslování běží na straně mobilního zařízení a~do externí obrazovky se přenáší pouze obraz.
+Toto řešení již lépe využívá interaktivní možnosti mobilních přístrojů, integrovaný displej tvoří druhou obrazovku, může zobrazovat ovládání dobře optimalizované pro konkrétní hru nebo dodatečné informace o~hře (skóre, počet ujetých kol atd.). Zásadní nevýhodou však je nemožnost hrát hru s~více hráči kvůli zvolené architektuře: herní logika včetně vykreslování běží na straně mobilního zařízení a~do externí obrazovky se přenáší pouze obraz.
 
 \begin{figure}[h]
 \includegraphics[width=\textwidth]{airplay}
@@ -279,7 +279,7 @@ Toto řešení již lépe využívá interaktivní možnosti mobilních přístr
 
 Řešením, které se nejvíce podobá tématu této bakalářské práce, je herní platforma švýcarského startupu AirConsole\cite{airconsole}. Jedná se o~webovou aplikaci společně s~multiplatformní mobilní aplikací. Pomocí webového prohlížeče se vytvoří hra a~k~ní se připojí telefony jako ovladače. V~nabídce je několik různých her a~každá má vlastní ovladač v~rámci mobilní aplikace. Samotná hra tedy probíhá na obrazovce počítače. AirConsole také poskytuje API, takže lze vytvořit vlastní hru v~HTML5 nebo herním enginu Unity a~propojit ji s~tímto systémem.
 
-Bohužel i~zde se objevují nedostatky. Spojení probíhá přes externí servery, konkrétně přes infrastrukturu Google\cite{airconsole}. Kvůli nutnosti komunikace \textit{PC - Google server} a \textit{telefony - Google server} má spojení vyšší odezvu, což silně ovlivňuje zážitek ze hry. Ovládací rozhraní je vytvořené pomocí HTML5, na displeji se tedy vykresluje webová vrstva. Zpracování dotyku v~tomto případě není ideální, objevují se chyby (například špatná detekce kliknutí) a~projevuje se vyšší odezva. Zároveň ovládání nevyužívá interaktivní možností mobilních telefonů, jediný možný způsob interakce je pomocí dotykového displeje. AirConsole tak vytváří podobnou funkcionalitu, jako je emulace gamepadu.
+Bohužel i~zde se objevují nedostatky. Spojení probíhá přes externí servery, konkrétně přes infrastrukturu Google\cite{airconsole}. Kvůli nutnosti komunikace \textit{PC - Google server} a~\textit{telefony - Google server} má spojení vyšší odezvu, což silně ovlivňuje zážitek ze hry. Ovládací rozhraní je vytvořené pomocí HTML5, na displeji se tedy vykresluje webová vrstva. Zpracování dotyku v~tomto případě není ideální, objevují se chyby (například špatná detekce kliknutí) a~projevuje se vyšší odezva. Zároveň ovládání nevyužívá interaktivní možností mobilních telefonů, jediný možný způsob interakce je pomocí dotykového displeje. AirConsole tak vytváří podobnou funkcionalitu, jako je emulace gamepadu.
 
 Přes všechny tyto nedostatky se AirConsole nejvíce blíží zaměření této práce, především hlavním cílem, a~to vytvořit herní platformu podporující mezilidskou komunikaci lidí fyzicky přítomných na jednom místě.
 
@@ -314,23 +314,23 @@ Struktura kapitoly odpovídá vývojovým fázím softwarového projektu. \cite{
 \section{Požadavky}
 \label{section:requirements}
 
-Cílem první fáze softwarového projektu je specifikace vlastností projektu. Určení prostředí, ve kterém bude systém nasazen a vymezení funkcionalit nutných pro naplnění účelu systému.
+Cílem první fáze softwarového projektu je specifikace vlastností projektu. Určení prostředí, ve kterém bude systém nasazen a~vymezení funkcionalit nutných pro naplnění účelu systému.
 
 Pro ucelený přehled o~systému nejprve popíšu běžný průběh hraní hry postavené na systému vytvořeném v~této práci:
 
-Skupina hráčů s~chytrými telefony se připojí do jedné WiFi sítě společně s~PC, kde poběží hra (server). Poté spustí ovladač v~mobilním telefonu, který automaticky vyhledá hry dostupné v~lokální síti. Po kliknutí na název nalezené hry naváže ovladač spojení s~hrou. Hráč, který může měnit nastavení hry (\textit{admin}, typicky první připojený hráč), nastaví parametry hry a po připojení všech hráčů zahájí hru. V~případě odpojení nebo ztráty spojení bude možné se do hry opět připojit. Po skončení hry se systém dostane do stejné fáze jako před jejím zahájením, tj. bude opět možné měnit herní parametry apod.
+Skupina hráčů s~chytrými telefony se připojí do jedné WiFi sítě společně s~PC, kde poběží hra (server). Poté spustí ovladač v~mobilním telefonu, který automaticky vyhledá hry dostupné v~lokální síti. Po kliknutí na název nalezené hry naváže ovladač spojení s~hrou. Hráč, který může měnit nastavení hry (\textit{admin}, typicky první připojený hráč), nastaví parametry hry a~po připojení všech hráčů zahájí hru. V~případě odpojení nebo ztráty spojení bude možné se do hry opět připojit. Po skončení hry se systém dostane do stejné fáze jako před jejím zahájením, tj. bude opět možné měnit herní parametry apod.
 
 Z~výše uvedeného scénáře budu vycházet při tvorbě požadavků, které jsou rozděleny do dvou částí: komunikační protokol a~hra samotná. Každá část má vlastní seznam funkčních a~nefunkčních požadavků. Tyto požadavky představují základní kritéria pro~návrh architektury systému a~jeho funkcionalit.
 
 \subsection{Komunikační protokol}
 
-Účelem komunikačního protokolu je zajistit obousměrnou výměnu zpráv mezi mobilním telefonem (dále jen \textit{ovladačem}) a počítačem (dále jen \textit{hrou}). K~tomu je vhodné použít stejný systém v~obou zařízeních, aby je bylo možné implementovat pouze jednou a ne pro každou platformu zvlášť. Stejně tak je třeba zachovat identickou strukturu síťových zpráv mezi všemi zařízeními.
+Účelem komunikačního protokolu je zajistit obousměrnou výměnu zpráv mezi mobilním telefonem (dále jen \textit{ovladačem}) a~počítačem (dále jen \textit{hrou}). K~tomu je vhodné použít stejný systém v~obou zařízeních, aby je bylo možné implementovat pouze jednou a~ne pro každou platformu zvlášť. Stejně tak je třeba zachovat identickou strukturu síťových zpráv mezi všemi zařízeními.
 
 Ovladače budou s~hrou komunikovat v~lokální WiFi síti. Při návrhu protokolu tak musíme brát v~potaz nedostatky technologie, v~tomto případě především spolehlivost spojení. Při bezdrátové komunikaci je nutné počítat s~výpadky signálu. Může je způsobovat nedostatečný výkon WiFi routeru, příliš velká vzdálenost od vysílače nebo objekty v~prostoru, které brání šíření signálu. Proto je třeba u~zpráv rozlišit, zda je nutné, aby byla doručena spolehlivě (např. kliknutí hráče na tlačítko), nebo zda systému nevadí případná ztráta zprávy (např. často se opakující informace z~pohybového senzoru,). 
 
-Vzhledem k~univerzálnímu zaměření systému je vhodné oddělit přenos zpráv a jejich zpracování (parsování) pro dosažení větší modularity. Dále je výhodné umožnit  konfiguraci síťových parametrů, a odpovídala požadavkům konkrétní hry.
+Vzhledem k~univerzálnímu zaměření systému je vhodné oddělit přenos zpráv a~jejich zpracování (parsování) pro dosažení větší modularity. Dále je výhodné umožnit  konfiguraci síťových parametrů, a~odpovídala požadavkům konkrétní hry.
 
-Specifikace funkčních požadavků softwarového systému popisuje základní chování systému a jeho dílčích částí. Tato specifikace slouží jako nutný základ při návrhu projektu a také jako podklad pro zhodnocení úspěšnosti aplikace. \cite{pozadavky}
+Specifikace funkčních požadavků softwarového systému popisuje základní chování systému a~jeho dílčích částí. Tato specifikace slouží jako nutný základ při návrhu projektu a~také jako podklad pro zhodnocení úspěšnosti aplikace. \cite{pozadavky}
 
 Pro komunikační protokol platí tedy následující funkční požadavky:
 
@@ -343,15 +343,15 @@ Pro komunikační protokol platí tedy následující funkční požadavky:
 	\item Ovladač je schopen přijímat informace o~stavu hry (herní události, kompletní stav hry pro vykreslení na mobilním displeji)
 \end{enumerate}
 
-Funkční požadavky jsou doplněny požadavky nefunkčními, které specifikují kvalitu aplikace podle kritérií. Mezi ně se řadí například výkon, spolehlivost, rozšiřitelnost a~další. Zaměřil jsem se především na cílovou platformu, rozšiřitelnost,modulárnost a jednoduché nasazení v~dalších hrách:
+Funkční požadavky jsou doplněny požadavky nefunkčními, které specifikují kvalitu aplikace podle kritérií. Mezi ně se řadí například výkon, spolehlivost, rozšiřitelnost a~další. Zaměřil jsem se především na cílovou platformu, rozšiřitelnost,modulárnost a~jednoduché nasazení v~dalších hrách:
 
 \begin{enumerate}
 	\item Síťová komunikace probíhá v~rámci stejné WiFi sítě. Podpora pro bluetooth a~další bezdrátové technologie není implementována.
 	\item Komunikační systém běží na alespoň jedné mobilní platformě (Android, iOS nebo Windows Phone) a~alespoň jedné PC platformě (Windows, Linux nebo OS X).
-	\item Systém je modulární: je možné definovat vlastní typy zpráv, jejich strukturu a vlastnosti podle požadavků hry.
+	\item Systém je modulární: je možné definovat vlastní typy zpráv, jejich strukturu a~vlastnosti podle požadavků hry.
 	\item Parsování zpráv nezávisí na komunikačním frameworku. Je možné implementovat rozdílné parsování nebo i~několik různých metodik najednou.
 	\item Zdrojový kód komunikačního modulu je sdílený mezi hrou a~ovladačem.
-	\item Komunikační modul nezávisí na herním engine a herním žánru a~je tak použitelný v~libovolné hře.
+	\item Komunikační modul nezávisí na herním engine a~herním žánru a~je tak použitelný v~libovolné hře.
 \end{enumerate}
 
 \subsection{Hra}
@@ -361,14 +361,14 @@ Požadavky na hru samotnou se v~první řadě netýkají herního žánru a~obsa
 Důležitou vlastností hry je demonstrace nových možností oproti klasickým ovladačům. Mezi ně se mimo jiné řadí schopnost vykreslování grafiky v~mobilní obrazovce. Tuto a~další nové možnosti je třeba ve hře 
 výrazně prezentovat.
 
-Pro celou hru (ovladač i PC) platí následující funkční požadavky:
+Pro celou hru (ovladač i~PC) platí následující funkční požadavky:
 
 \begin{enumerate}
 	\item Hra využívá k~ovládání pohybový senzor mobilního telefonu a~dotykovou obrazovku.
 	\item Ovladač je schopen vykreslit herní scénu nebo její část na obrazovce mobilního telefonu.
 	\item Hra je určena pro 2 až 8 hráčů (ovladačů).
 	\item Mobilní telefon může využívat vibrace jako interaktivní odezvu na události ve hře.
- 	\item Každá instance hry má nastaven název serveru a herní parametry.
+ 	\item Každá instance hry má nastaven název serveru a~herní parametry.
 	\item Parametry hry může měnit právě jeden z~připojených hráčů.
 	\item Zvolený herní žánr je vhodný pro hru více hráčů a~obsahuje jak kooperativní, tak kompetitivní složku.
 	\item Veškerá konfigurace hry probíhá pomocí ovladače: po spuštění hry na PC již není potřeba další obsluha PC (mimo ukončení hry).
@@ -381,7 +381,7 @@ Nefunkční požadavky na hru zahrnují především použití cílové platform
 \begin{enumerate}
 	\item Ovladač poběží na alespoň jedné mobilní platformě (Android, iOS nebo Windows Phone).
 	\item Hra poběží alespoň na jedné PC platformě (Windows, Linux nebo OS~X).
-	\item Použitý herní engine je multiplatformní a použitelný jak ve hře, tak v~ovladači.
+	\item Použitý herní engine je multiplatformní a~použitelný jak ve hře, tak v~ovladači.
 \end{enumerate}
 
 \section{Návrh}
@@ -392,7 +392,7 @@ Hra pro PC i~ovladač používají dvě základní komponenty. První z~nich je 
 
 \subsection{Komunikační modul}
 
-Úkolem komunikačního modulu je zajistit výměnu zpráv v~lokální síti. Kromě toho definuje obecnou síťovou zprávu a~její vlastnosti. Modul tedy tvoří dvě základní komponenty: \textit{Box} a \textit{Connector}. 
+Úkolem komunikačního modulu je zajistit výměnu zpráv v~lokální síti. Kromě toho definuje obecnou síťovou zprávu a~její vlastnosti. Modul tedy tvoří dvě základní komponenty: \textit{Box} a~\textit{Connector}. 
 
 Hlavním přínosem modulu je odstínění implementace síťové vrstvy od hry a~herního enginu a~velmi snadné nasazení v~libovolné jiné hře zaměřené nejen na interaktivní ovládání pomocí mobilního telefonu. Výhodou vytvoření abstraktní vrstvy v~porovnání s~přímým použitím RakNetu je především zjednodušení navázání spojení, manipulace s~dakovými pakety (Boxy) a~nezávislost na vnitřní implementaci síťové komunikace.
 
@@ -401,12 +401,11 @@ Hlavním přínosem modulu je odstínění implementace síťové vrstvy od hry 
 \caption{Struktura síťového modulu}
 \end{figure}
 
-
 \subsubsection{Box}
 
-\textit{Box} je objekt reprezentující síťovou zprávu. Jeho cílem je zapouzdřit veškeré informace potřebné pro práci se síťovou zprávou Používá se při obou směrech komunikace, což znamená, že se vytváří před odesláním, ale také po přijetí zprávy.
+\textit{Box} je objekt reprezentující síťovou zprávu. Jeho cílem je zapouzdřit veškeré informace potřebné pro práci se síťovou zprávou Používá se v~obou směrech komunikace, což znamená, že se vytváří před odesláním, ale také po přijetí zprávy.
 
-Obsahuje data zprávy, typ zprávy, adresu příjemce (pokud bude zpráva odeslána), nebo adresu odesílatele (pokud byla zpráva přijata), dále vlastnosti doručení, mezi které patří spolehlivost (spolehlivé doručení znamená, že odesílající zařízení čeká na potvrzení přijetí zprávy), priorita, jak rychle má být zpráva doručena (zprávy s~nízkou prioritou mohou být řazeny do fronty a odeslány najednou, což šetří síťový provoz) a~nastavení, zda je nutné dbát na zachování pořadí zpráv, v~jakém byly odeslány.
+Obsahuje data zprávy, typ zprávy, adresu příjemce (pokud bude zpráva odeslána), nebo adresu odesílatele (pokud byla zpráva přijata), dále vlastnosti doručení, mezi které patří spolehlivost (spolehlivé doručení znamená, že odesílající zařízení čeká na potvrzení přijetí zprávy), priorita, jak rychle má být zpráva doručena (zprávy s~nízkou prioritou mohou být řazeny do fronty a~odeslány najednou, což šetří síťový provoz) a~nastavení, zda je nutné dbát na zachování pořadí zpráv, v~jakém byly odeslány.
 
 \subsubsection{Connector}
 
@@ -414,7 +413,7 @@ Obsahuje data zprávy, typ zprávy, adresu příjemce (pokud bude zpráva odesl�
 
 \subsubsection{RakNet}
 
-Hlavičková definice \textit{Connectoru} i \textit{Boxu} tvoří abstraktní rozhraní nad samotnou implementací a umožňuje tak snadnou změnu platformy, případně síťové knihovny. Pro implementaci rozhraní jsem zvolil knihovnu RakNet.
+Hlavičková definice \textit{Connectoru} i~\textit{Boxu} tvoří abstraktní rozhraní nad samotnou implementací a~umožňuje tak snadnou změnu platformy, případně síťové knihovny. Pro implementaci rozhraní jsem zvolil knihovnu RakNet.
 
 RakNet je multiplatformní síťová knihovna se zaměřením na hry. Je napsaná v~jazyce C++. Vyznačuje se velmi nízkými nároky na hardware, kvalitní dokumentací a~množstvím funkcionalit, které se často využívají v~multiplayerových hrách. \cite{raknet} Mezi ně patří například Lobby systém\footnote{Lobby systém - virtuální místnost, kde se shromažďují hráči před začátkem online hry. Obvykle nabízí chat mezi hráči, volbu herních místností nebo žebříček výsledků.}, šifrování komunikace nebo peer-to-peer spojení mezi hráči. Veškerá komunikace je postavena na protokolu UDP, přesto knihovna obsahuje vlastní implementaci pro podporu spolehlivého doručení zpráv.
 
@@ -422,19 +421,19 @@ Knihovnu jsem zvolil především pro její snadné použití, kvalitní dokumen
 
 \subsection{Hra}
 
-Návrh hry se skládá z~několika částí. Prvním krokem je volba herního žánru. Poté se budu věnovat hledání herního enginu, na kterém bude hra postavena. Poslední částí bude již samotný návrh struktury systému, objektů, vztahů mezi nimi a tvorba samotného komunikačního protokolu.
+Návrh hry se skládá z~několika částí. Prvním krokem je volba herního žánru. Poté se budu věnovat hledání herního enginu, na kterém bude hra postavena. Poslední částí bude již samotný návrh struktury systému, objektů, vztahů mezi nimi a~tvorba samotného komunikačního protokolu.
 
 \subsubsection{Volba herního žánru}
 
-Jak bylo zmíněno v~analýze, důležitým požadavkem pro hru je možnost efektního využití interaktivních možností chytrých telefonů. K~tomu musí být uzpůsobem herní žánr tvořící kostru veškeré hratelnosti. Proto jsem nejprve zvolil dva směry a porovnával jejich výhody a nevýhody:
+Jak bylo zmíněno v~analýze, důležitým požadavkem pro hru je možnost efektního využití interaktivních možností chytrých telefonů. K~tomu musí být uzpůsobem herní žánr tvořící kostru veškeré hratelnosti. Proto jsem nejprve zvolil dva směry a~porovnával jejich výhody a~nevýhody:
 
-Prvním z~nich je akční 2D hra, kde kamera zobrazuje scénu zhora. Hlavním pilířem hry je souboj dvou týmm a cílem je dosáhnout většího počtu zásahů, než protivník. Každý hráč by ovládal jednu postavu vybavenou zbraní. Mezi interaktivní prvky lze zařadit ovládání postavy pohybovým senzorem a intuitivní míření pomocí dotykového displeje (místo dotyku prstu a střed obrazovky vytvoří přímku definující směr výstřelu). Inovativní by mohlo obsahovat zobrazení herní mapy: hlavní herní území se zobrazuje na obrazovce, kterou vidí všichni hráči. Mohou se tam ale vyskytovat místa, kde by hráč mohl vyjít ze všemi viděné mapy (např dveře nebo vchod do domu). Po vkročení na místo by postava zmizela z~hlavní obrazovky a danému hráči by se na mobilním displeji vykreslil interiér domu i s~hráčem. Tímto by se elegantně rozšířil herní prostor na další objekty a zároveň by mohla být zachována interaktivita mezi hráči (např. by bylo možné zasáhnout hráče v~domě skrz okno). Tento prvek považuji za velmi efektní příklad využití mobilního telefonu, který obohacuje samotnou hru a přináší nové taktické možnosti.
+Prvním z~nich je akční 2D hra, kde kamera zobrazuje scénu zhora. Hlavním pilířem hry je souboj dvou týmů. Cílem je dosáhnout většího počtu zásahů, než protivník. Každý hráč ovládá jednu postavu vybavenou zbraní. Mezi interaktivní prvky lze zařadit ovládání postavy pohybovým senzorem a~intuitivní míření pomocí dotykového displeje (místo dotyku prstu a~střed obrazovky vytvoří přímku definující směr výstřelu). Inovativním prvkem je zobrazení herní mapy: většina herního území se zobrazuje na obrazovce, kterou vidí všichni hráči. Vyskytují se ale místa, kde hráč může vyjít mimo herní území (např dveře nebo vchod do domu). Po vkročení na tyto místá postava zmizí z~hlavní obrazovky a~danému hráči se na mobilním displeji vykreslí interiér domu i~s~hráčem. Tímto se elegantně rozšíří herní prostor na další objekty a~zároveň je zachována interaktivita mezi hráči (např. je možné zasáhnout hráče v~domě skrz okno). Tento prvek považuji za velmi efektní příklad využití mobilního telefonu, který obohacuje samotnou hru a~přináší nové taktické možnosti.
 
-Tento návrh hry bohužel obsahuje i méně vhodné prvky. Zobrazení velké části mapy, kterou uvidí hráči obou týmů zveřejňuje pozice všech hráčů a ubírá tak možnost taktizace v~terénu, jelikož se hráč nemůže skrýt před protivníky jinak, než že vejde do výše zmiňované interaktivní místnosti. Tím by však mohla nastat situace, že hráči budou takto skrytí příliš často a hlavní obrazovka tak téměř ztratí význam.
+Tento návrh hry bohužel obsahuje i~méně vhodné prvky. Zobrazení velké části mapy, kterou uvidí hráči obou týmů odhaluje pozice všech hráčů a~ubírá tak možnost taktizování v~terénu, jelikož se hráč nemůže skrýt před protivníky jinak, než že vejde do výše zmiňované \uv{interaktivní místnosti}. Tím by však mohla nastat situace, že hráči budou takto skrytí příliš často a~hlavní obrazovka téměř ztratí význam.
 
-Druhým návrhem je sportovní zameření, konkrétně 2D fotbal. Podobně jako u~akční hry má kamera pohled zhora a soupeří proti sobě dva týmy s~cílem skórovat vícekrát než soupeř. Hlavní obrazovka zobrazuje fotbalové hřiště s~hráči. Hráč ovládá svou postavu pomocí akcelerometru a dotyk s~obrazovkou mu umožňuje vystřelit (sílu výstřelu určuje doba dotyku před uvolněním prstu z~obrazovky). Oživením klasické hry jsou bonusy. Objevují se náhodně a při jejich sebrání poskytují danému hráči časově omezenou výhodu. Mezi bonusy patří zvýšení rychlosti, zvětšení maximální síly kopu a především neviditelnost. Neviditelný hráč zmizí z~hlavní obrazovky a kompletní hřiště se mu začne vykreslovat na mobilní obrazovce. Jeho taktická výhoda je, že není viděn ostatními a může procházet skrz hráče. Bonus neviditelnosti představuje výraznou inovaci podobně jako rozšířené místnosti v~návrhu akční hry, eliminuje však případné nedostatečné využití hlavního displeje.
+Druhým návrhem je sportovní zameření, konkrétně 2D fotbal. Podobně jako u~akční hry má kamera pohled zhora a~soupeří proti sobě dva týmy s~cílem skórovat vícekrát než soupeř. Hlavní obrazovka zobrazuje fotbalové hřiště s~hráči. Hráč ovládá svou postavu pomocí akcelerometru a~dotyk s~obrazovkou mu umožňuje vystřelit (sílu výstřelu určuje doba dotyku před uvolněním prstu z~obrazovky). Obohacením hry jsou bonusy. Objevují se náhodně na hřišti a~při jejich sebrání poskytuje danému hráči časově omezenou výhodu. Mezi bonusy patří zvýšení rychlosti, zvětšení maximální síly kopu a~především neviditelnost. Neviditelný hráč zmizí z~hlavní obrazovky a~na mobilním displeji se mu začne vykreslovat hřiště totožné s~hlavní obrazovkou. Jeho taktická výhoda spočívá v~tom, že sám sebe vidí, ale není viděn ostatními a~může procházet skrz hráče. Bonus neviditelnosti představuje výraznou inovaci podobně jako rozšířené místnosti v~návrhu akční hry, eliminuje však případné nedostatečné využití hlavního displeje.
 
-Všechny zmíněné a ještě některé další výhody a nevýhody těchto dvou návrhů shrnuje tabulka \ref{table:game_comparison} (prvek s~větším přínosem je vyznačen kurzivou).
+Všechny zmíněné a~ještě některé další výhody a~nevýhody těchto dvou návrhů shrnuje tabulka \ref{table:game_comparison} (prvek s~větším přínosem je vyznačen kurzivou).
 
 \begin{table}[h]
 \caption{Srovnání vybraných herních žánrů}
@@ -444,7 +443,7 @@ Všechny zmíněné a ještě některé další výhody a nevýhody těchto dvou
 \textbf{Akční hra} & \textbf{Fotbal} \\ \hline
 \multicolumn{2}{|c|}{Pohyb postavy pomocí akcelerometru}\\ \hline
 \multicolumn{2}{|c|}{Taktická výhoda při zobrazení hry v~mobilním displeji}\\ \hline
-\multicolumn{2}{|c|}{Obsahuje kooperativní i kompetitivní složku hry}\\ \hline
+\multicolumn{2}{|c|}{Obsahuje kooperativní i~kompetitivní složku hry}\\ \hline
 % & \\ \hline
 \emph{Rozšíření scény o~interaktivní místnosti} & Bonus neviditelnosti \\ \hline
 Riziko časté nepřítomnosti na hlavní obrazovce & \emph{Možnost neviditelnosti je časově omezena} \\ \hline
@@ -456,48 +455,47 @@ Míření může být těžké na naučení & \emph{Kopnutí je velmi intuitivn�
 \end{tabularx}
 \end{table}
 
-Podle tabulky se jeví jako vhodnější kandidát implementace fotbalu. Mě osobně více zaujal i z~důvodu atraktivity pro diváky například na večírku s~přáteli, kteří mohou být jako pozorovatelé lépe začleněni do hry. 
+Podle tabulky se jeví jako vhodnější kandidát implementace fotbalu. Mě osobně více zaujal i~z~důvodu atraktivity pro diváky například na večírku s~přáteli, kteří mohou být jako pozorovatelé lépe začleněni do hry. 
 
 Po zvážení všech těchto aspektů jsem se rozhodl použít fotbal jako téma demonstrační hry.
 
 \subsection{Herní engine}
 
-Slovní spojení herní engine je možné definovat různými způsoby. Závisí například na provázanosti herní logiky s~vykreslování, obecnosti enginu z~pohledu herního žánru apod. V~této práci je pod pojmem \textit{herní engine} myšlen softwarový framework, který obsahuje základní komponenty potřebné pro vývoj her, jako je vykreslování grafiky, detekce kolizí, zpracování uživatelských vstupů, práce se zvukem a další. \cite{gameengine}
+Slovní spojení herní engine je možné definovat různými způsoby. Závisí například na provázanosti herní logiky s~vykreslování, obecnosti enginu z~pohledu herního žánru apod. V~této práci je pod pojmem \textit{herní engine} myšlen softwarový framework, který obsahuje základní komponenty potřebné pro vývoj her, jako je vykreslování grafiky, detekce kolizí, zpracování uživatelských vstupů, práce se zvukem a~další. \cite{gameengine}
 
 Důležitou částí návrhu je výběr herního enginu. Pro účely této hry jsem stanovil několik požadavků, které musí engine splňovat:
 
 \begin{itemize}
-	\item Podpora více platforem (jak PC, tak i mobilní telefony) podobně jako RakNet, aby bylo možné použít oba tyto frameworky současně. Pokud engine nebude napsán v~jazyce C++, měl by podporovat práci se sítí, nebo musí existovat alternativní síťová knihovna použitelná s~tímto enginem.
-	\item Vzhledem k~nulovému finančnímu rozpočtu tohoto projektu by měl být engine licencován zdarma.
-	\item Engine musí umět pracovat s~2D grafikou a~být nezávislý na herním žánru
-	\item Mezi funkce musí patřit mimo jiné podpora dotykové obrazovky a zpracování pohybového senzoru.
-	\item Musí existovat volně dostupná kvalitní dokumentace a návody, jak engine používat.
+	\item Podpora více platforem (jak PC, tak i~mobilní telefony) podobně jako RakNet, aby bylo možné použít oba tyto frameworky současně. Pokud engine nebude napsán v~jazyce C++, měl by podporovat práci se sítí, nebo musí existovat alternativní síťová knihovna použitelná s~tímto enginem.
+	\item Vzhledem k~nulovému finančnímu rozpočtu tohoto projektu musí být engine licencován zdarma.
+	\item Herní engine musí umět pracovat s~2D grafikou a~být nezávislý na herním žánru
+	\item Mezi funkce herního enginu musí patřit mimo jiné podpora dotykové obrazovky a~zpracování pohybového senzoru.
+	\item Musí existovat volně dostupná kvalitní dokumentace a~návody, jak herní engine používat.
 \end{itemize}
 
-Z~velkého množství různých systémů se do výběru použitelných enginů se dostal Torque 2D, Cocos2d-x a Marmalade. Všechny tyto enginy nabízejí funkce splňující výše uvedené požadavky. Nevýhodou Torque 2D je méně rozsáhlá dokumentace a návody v~porovnání s~Cocos2d-x a Marmalade, proto jsem jej vyřadil. Při rozhodování mezi Cocos2d-x a Marmalade jsem pak bral v~potaz subjektivní přehlednost systému a osobní preference a zvolil jsem proto Cocos2d-x.
+Z~velkého množství různých možností se do výběru použitelných enginů dostal \textit{Torque 2D}, \textit{Cocos2d-x} a~\textit{Marmalade}. Všechny tyto enginy nabízejí funkce splňující výše uvedené požadavky. Nevýhodou Torque 2D je méně rozsáhlá dokumentace a~návody v~porovnání s~Cocos2d-x a~Marmalade, proto jsem jej vyřadil. Při rozhodování mezi Cocos2d-x a~Marmalade jsem pak bral v~potaz subjektivní přehlednost systému a~osobní preference. Zvolil jsem proto Cocos2d-x.
 
 \subsection{Návrh ovládání}
 
-Ovládání hry je realizováno pomocí mobilního telefonu spojeného se hrou. Pro připojení do hry a nastavení parametrů zápasu počítá návrh s~klasickým využitím tlačítek zobrazených na dotykové ploše. Mimo to je třeba navrhnout ovládání akcí herní postavy v~zápase. Tyto akce jsou dvě: pohyb a kopnutí do míče.
+Ovládání hry je realizováno pomocí mobilního telefonu spojeného se hrou. Pro připojení do hry a~nastavení parametrů zápasu počítá návrh s~klasickým využitím tlačítek zobrazených na dotykové ploše. Mimo to je třeba navrhnout ovládání akcí herní postavy v~zápase. Tyto akce jsou dvě: pohyb a~kopnutí do míče.
 
-Hlavní ovládací prvek pohybu tvoří akcelerometr. Zajišťuje pohyb herní postavy po dvourozměrné ploše hřiště. Změřením velikosti náklonu telefonu se vypočítá směr a rychlost hráče. Toto ovládání je zajímavé především z~pohledu křivky učení: je velmi jednoduché pochopit princip pohybu pomocí akcelerometru, ale získání dostatečné citlivost pro přesnou a rychlou hru vyžaduje delší cvik. Tento princip názorně popisuje aforismus Nolana Bushnella\footnote{Nolan Bushnell je americký podnikatel. Ve videoherním průmyslu se proslavil založením společnosti Atari, což byla průkopnická firma v~oblasti počítačových her.\cite{atari}}: Nejlepší hry jsou lehké na naučení, avšak obtížné na ovládnutí. \cite{atari} Tento princip platí v~menším měřítku i pro ovládání akcelerometrem.
+Hlavní ovládací prvek pohybu tvoří akcelerometr. Zajišťuje pohyb herní postavy po dvourozměrné ploše hřiště. Změřením velikosti náklonu telefonu se vypočítá směr a~rychlost hráče. Toto ovládání je zajímavé především z~pohledu křivky učení: je velmi jednoduché pochopit princip pohybu pomocí akcelerometru, ale získání dostatečné citlivost pro přesnou a~rychlou hru vyžaduje delší cvik. Tento princip názorně popisuje aforismus Nolana Bushnella\footnote{Nolan Bushnell je americký podnikatel. Ve videoherním průmyslu se proslavil založením společnosti Atari, což byla průkopnická firma v~oblasti počítačových her.\cite{atari}}: Nejlepší hry jsou lehké na naučení, avšak obtížné na ovládnutí. \cite{atari} Tento princip platí v~menším měřítku i~pro ovládání akcelerometrem.
 
-Ovládání kopnutí do míče počítá zajišťuje dotyková obrazovka, konkrétně výrazné tlačítko umístěné na snado dostupném místě pro prst. Při stisknutí tlačítka ještě nedojde ke kopu, pouze se začne měřit doba stisknutí tlačítka. Ke kopu dojde až po uvolnění tlačítka a jeho síla se vypočítá právě na době stisku. Aby se hráči nepohybovali po hřišti se stále \uv{nabitým kopnutím}, přidal jsem do návrhu ještě snížení maximální rychlosti pohybu v~závislosti na stupni intenzity střely. Tento prvek motivuje hráče, aby \uv{nabíjeli} pouze, pokud potřebují kopnout míč. Herními parametry, které je nutné citlivě nastavit pro vyváženou hratelnost, jsou počáteční a maximální intenzita kopu, rychlost nárůstu intenzity kopu, rychlost klesání maximální rychlosti. Ladění těchto parametrů probíhalo během testování hratelnosti. Výsledné parametry popisuje kapitola \ref{section:testing}.
+Ovládání kopnutí do míče zajišťuje dotyková obrazovka, konkrétně výrazné tlačítko umístěné optimálně pro dotyk palce. Při stisknutí tlačítka ještě nedojde ke kopu, pouze se začne měřit doba stisknutí tlačítka. Ke kopu dojde až po uvolnění tlačítka a~jeho síla se vypočítá právě podle doby stisku. Aby se hráči nepohybovali po hřišti se stále \uv{nabitým kopnutím}, přidal jsem do návrhu ještě snížení maximální rychlosti pohybu v~závislosti na stupni intenzity střely. Tento prvek motivuje hráče, aby \uv{nabíjeli} pouze v~situacích, kdy potřebují kopnout do míče. Herními parametry, které je nutné citlivě nastavit pro vyváženou hratelnost, jsou počáteční a~maximální intenzita kopu, rychlost nárůstu intenzity kopu, rychlost klesání maximální rychlosti. Ladění těchto parametrů probíhalo během testování hratelnosti.
 
-\todo{porovnat ovládání s~tradičními ovladači z~první kapitoly}
+Využití interaktivních senzorů v~mobilním telefonu je vhodné analyzovat, zda přináší nějaké benefity ve srovnání s~tradičními způsoby ovládání z~první kapitoly. Ovládání kopnutá je srovnatelné s~klasickými hardwarovými požadavky, dostačující informaci tvoří stavy \textit{stisknuto} a~\textit{nestisknuto}. Z~tohoto hlediska nenabízí dotyková opbrazovka žádný přínos.
+
+Zajímavější výsledky přináší srovnání akcelerometru s~ostatnímy typy ovládání. Použití tlačítek pro pohyb podobně jako na klávesnici nebo gamepadu znamená nemožnost citlivosti pohybu a~představuje komplikaci při vykreslování hřiště na mobilní obrazovce: prsty brání ve viditelnosti. Z~hlediska principu fungování ovladače se jako nejpodobnější jeví joystick. Umožňuje plynule měnit směr ve dvou dimenzích, má tak podobné možnosti jako akcelerometr. Výhodou akcelerometru je však přítomnost v~mobilním telefonu a~tím velká dostupnost.
 
 \subsection{Architektura hry}
 
-\todo{nějakým diagramem vyjádřit architekturu hry}
+Hra na PC tvoří server pro interaktivní ovladače. Každý ovladač je spojen s~jednou postavou a~z~těcho ovladačů je zvolen jeden (typicky označovaný jako \textit{admin}), který může spravovat nastavení hry.
 
-Hra na PC tvoří server pro interaktivní ovladače. Každý ovladač je spojen s~jednou postavou a z~těcho ovladačů je zvolen jeden (typicky označovaný jako \textit{admin}), který může spravovat nastavení hry.
+Jedinou herní scénou je samotné hřiště. Je zobrazeno po celou dobu spuštění hry. Před zahájením zápasu se však na něm nevyskytuje míč. Hráči se na hřišti objeví po připojení a~volbě týmu. Poté se mohou volně pohybovat po hřišti jak během zápasu, tak i~před ním. 
 
-Jedinou herní scénou je samotné hřiště. Je zobrazeno po celou dobu spuštění hry. Před zahájením zápasu se však na něm nevyskytuje míč. Hráči se na hřišti objeví po připojení a volbě týmu. Poté se mohou volně pohybovat po hřišti jak během zápasu, tak i před ním. 
+Z~hlediska objektového návrhu jsou objekty rozděleny do dvou kategorií: herní a~systémové objekty. Herní objekty reprezentují části hry z~pohledu reálného světa. Patří mezi ně fotbalové hřiště (třída \textit{StadiumScene}), míč (\textit{Ball}), Hráč (\textit{Player}) a~obecná reprezentace herního bonusu \textit{BonusInterface}, kterou implementují tři použité bonusy (neviditelnost, rychlost a~síla kopu). 
 
-Z~hlediska objektového návrhu jsou objekty rozděleny do dvou kategorií: herní a systémové objekty. Herní objekty reprezentují části hry z~pohledu reálného světa. Patří mezi ně fotbalové hřiště (třída \textit{StadiumScene}), míč (\textit{Ball}), Hráč (\textit{Player}) a obecná reprezentace herního bonusu \textit{BonusInterface}, kterou implementují tři použité bonusy (neviditelnost, rychlost a síla kopu). 
-% Strukturu těchto tříd popisuje diagram ...
-
-Systémovou kostru hry tvoří třída \textit{Game} a zpracování herních událostí pomocí návrhového vzoru \textit{Handler}\cite{patterns}: každá interakce s~hrou nebo změna stavu hry vyvolá událost, která je zpracována příslušným \textit{handlerem}. Tyto události jsem rozdělil na 6 kategorií. Kromě toho má každá událost identifikátor, ke kterému je přiřazen příslušný handler. Přehled typů událostí, jejich popis a příklady použití shrnuje tabulka \ref{table:handlers}.
+Systémovou kostru hry tvoří třída \textit{Game} a~zpracování herních událostí pomocí návrhového vzoru \textit{Handler}\cite{patterns}: každá interakce s~hrou nebo změna stavu hry vyvolá událost, která je zpracována příslušným \textit{handlerem}. Tyto události jsem rozdělil na 6 kategorií. Každá událost je rozlišena identifikátorem, ke kterému je přiřazen příslušný handler. Přehled typů událostí, jejich popis a~příklady použití shrnuje tabulka \ref{table:handlers}.
 
 \begin{table}[h]
 \caption{Rozdělení herních handlerů}
@@ -507,7 +505,7 @@ Systémovou kostru hry tvoří třída \textit{Game} a zpracování herních ud�
 \textbf{Kategorie} & \textbf{Popis} & \textbf{Příklady událostí} \\ \hline
 \code{Void} & Událost, která nevyžaduje žádná data & Prvotní spuštění hry, konec zápasu (časomíry) \\ \hline
 \code{Box} & Přijetí Boxu ze síťě & Data z~akcelerometru, připojení do hry, zahájení hry adminem, ... \\ \hline
-\code{Touch} & Uživatelský dotyk a jedna z~fází \textit{pressed, moved, released} & Kopnutí, podržení tlačítka pro odpojení \\ \hline
+\code{Touch} & Uživatelský dotyk a~jedna z~fází \textit{pressed, moved, released} & Kopnutí, podržení tlačítka pro odpojení \\ \hline
 \code{Acceleration} & Událost vyvolaná přečtením dat z~pohybového senzoru & Naklonění telefonu, periodické čtení senzoru \\ \hline
 \code{Collision} & Kolize dvou herních objektů & Srážka dvou hráčů, vstřelení gólu\\ \hline
 \code{String} & Událost zpracovávající textový řetězec & Změna jména hráče nebo hry \\ \hline
@@ -515,45 +513,65 @@ Systémovou kostru hry tvoří třída \textit{Game} a zpracování herních ud�
 \end{tabularx}
 \end{table}
 
-Důležitou součástí obsluhy handlerů je jejich správa a přístup k~nim. K~tomu slouží třída \code{HandlerMap}, která přiřažuje každému identifikátoru události nejvýše jeden Handler. Obsluhu události popisuje následující příklad: Každý zápas má časový limit a po jeho skončení se vyvolá událost s~identifikátorem \code{VOID\_COUNTDOWN\_FINISHED}. Pro její obsluhu je nutné najít handler kategorie \code{Void} (nepředáváme handleru žádná další data) s~tímto identifikátorem. Zavolání obsluhy se provede následujícím příkazem: 
+Důležitou součástí obsluhy handlerů je jejich správa a~přístup k~nim. K~tomu slouží třída \code{HandlerMap}, která přiřažuje každému identifikátoru události nejvýše jeden Handler. Obsluhu události popisuje následující příklad: Každý zápas má časový limit a~po jeho skončení se vyvolá událost s~identifikátorem \code{VOID\_COUNTDOWN\_FINISHED}. Pro její obsluhu je nutné najít handler kategorie \code{Void} (nepředáváme handleru žádná další data) s~tímto identifikátorem. Zpracování události handlerem zajistí následující příkaz: 
 
 \begin{figure}[h!]
 	\code{handlerMap->getVoidHandler(VOID\_COUNTDOWN\_FINISHED)->execute();}
 \end{figure}
 
-Podobně se volají i ostatní kategorie, mění se pouze argumenty metody \code{execute()}. Použití handlerů výrazně zpřehledňuje celý systém a odděluje vznik události od jejich obsluhy, čímž je docíleno vyšší modularity celé aplikace.
+Podobně se volají metody v~ostatních kategorií, mění se pouze argumenty metody \code{execute()}. Použití handlerů výrazně zpřehledňuje celý systém a~odděluje vznik události od jejich obsluhy, čímž je docíleno vyšší modularity celé aplikace.
+
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{game_architecture}
+\caption{Architektura hry}
+\end{figure}
 
 \subsubsection{Herní bonusy}
 
 Prvkem, který obohacuje celkovou hratelnost, jsou bonusy. Umožňují dočasné zvýhodnění hráče během zápasu změnou jeho vlastností na hřišti. 
 
-Obecnou definici herního bonusu obsahuje abstraktní třída \code{BonusInterface}. Mezi její základní metody patří \code{activate()} a \code{deactivate()}. Bonusy dále obsahují informace o~době, jak dlouho budou aktivní, kdo vzal daný bonus a jakou má bonus grafiku. Návrh počítá se třemi implementacemi bonusů: rychlost, síla kopu a neviditelnost.
+Obecnou definici herního bonusu obsahuje abstraktní třída \code{BonusInterface}. Mezi její základní metody patří \code{activate()} a~\code{deactivate()}. Bonusy dále obsahují informace o~době, jak dlouho budou aktivní, kdo vzal daný bonus a~jakou má bonus grafiku. Návrh počítá se třemi implementacemi bonusů: rychlost, síla kopu a~neviditelnost.
 
 Bonus rychlosti zvyšuje hráči maximální rychlost, jakou se může pohybovat po hřišti. Může tak doběhnout míč lépe než protivník nebo se rychleji přiblížit k~brance.
-Podobně jako rychlost zvyšuje bonus kopnutí sílu, která bude aplikována na míč. Pokud hráč s~tímto bonusem vystřelí, míč letí rychleji a může doletět přes značnou část celého hřiště.
-Nejinteraktivnějším bonusem je neviditelnost. Hráč po sebrání bonusu zmizí z~hlavní obrazovky a celé hřiště se mu zobrazí na mobilní obrazovce a kromě toho může procházet skrz ostatní hráče. Neviditelný hráč získává velkou taktickou výhodu, může volněji manipulovat s~míčem a překvapit protivníka svou pozicí na hřišti.
+Podobně jako rychlost zvyšuje bonus kopnutí sílu, která bude aplikována na míč. Pokud hráč s~tímto bonusem vystřelí, míč letí rychleji a~může doletět přes značnou část celého hřiště.
+Nejinteraktivnějším bonusem je neviditelnost. Hráč po sebrání bonusu zmizí z~hlavní obrazovky a~celé hřiště se mu zobrazí na mobilní obrazovce a~kromě toho může procházet skrz ostatní hráče. Neviditelný hráč získává velkou taktickou výhodu, může volněji manipulovat s~míčem a~překvapit protivníka svou pozicí na hřišti.
 
 \subsection{Architektura ovladače}
 
-Základní struktura ovladače je velmi podobná hře, jelikož využívá velké množství stejných komponent: Návrhový vzor Handler je použit jak ve hře, tak i v~ovladači, obě aplikace spolu sdílí abstraktní části kódu, jen implementace konkrétnéch handlerů jsou odlišné. Stejně tak je využíván síťový modul a sdílené jsou i grafické zdroje. Proto se zde budu věnovat především odlišným prvkům.
+Základní struktura ovladače je velmi podobná hře, jelikož využívá velké množství stejných komponent: Návrhový vzor Handler je použit jak ve hře, tak i~v~ovladači, obě aplikace spolu sdílí abstraktní části kódu, jen implementace konkrétnéch handlerů jsou odlišné. Stejně tak je využíván síťový modul a~sdílené jsou i~grafické zdroje. Proto se zde budu věnovat především odlišným prvkům.
 
-Na rozdíl od hry ovladač obsahuje více herních scén (obrazovek). Konkrétně se jedná o~hlavní menu, obrazovku s~výběrem týmu, ovládací obrazovka a scéna s~vykresleným hřištěm. Přechody mezi jednotlivými obrazovkami popisuje diagram \todo{diagram přechodů obrazovky}.
+Na rozdíl od hry ovladač obsahuje více herních scén (obrazovek). Konkrétně se jedná o~hlavní menu, obrazovku s~výběrem týmu, ovládací obrazovka a~scéna s~vykresleným hřištěm. Přechody mezi jednotlivými obrazovkami a~události, které vyvolají přechody, popisuje diagram \ref{picture:controller_scenes}.
 
-Hlavní menu je první zobrazenou scénou po spuštění ovladače. Obsahuje nastavení hráčovy přezdívky, aktivace vibrací a seznam nalezených serverů. Po kliknutí na vybraný server naváže ovladač spojení s~hrou a zobrazí volbu týmu. Hráč si může zvolit ze dvou týmů (červený nebo modrý), případně si nechat určit tým automaticky. Po přiřazení týmu se zobrazí ovládací obrazovka, které dominuje velké tlačítko pro kopnutí do míče. Pokud během hry hráč vezme bonus neviditelnosti, zobrazí se mu na mobilní obrazovce totožné hřiště jako na hlavní obrazovce. Kopnout do míče při neviditelnosti lze dotykem na libovolné místo obrazovky, aby se předešlo stínění prstem na místo, kde zrovna probíhá hra. V~případě odpojení nebo ztráty spojení se ovladač vrátí do hlavního menu a případně zobrazí chybovou hlášku.
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{controller_scenes}
+\caption{Události přechodů mezi obrazovkami}
+\label{picture:controller_scenes}
+\end{figure}
 
-\subsection{Komunikace mezi ovladačem a hrou}
 
-Vzhledem k~použití handlerů v~systému je možné návrh síťové komunikace realizovat s~využitím handlerů: přijetí síťové zprávy vyvolá událost a její zpracování. Vzhledem k~tomu, že jak síťové zprávy, tak události jsou rozlišeny identifikátorem, je možné tyto identifikátory konsolidovat a použít pro událost i zprávu totožný identifikátor. 
+Hlavní menu je první zobrazenou scénou po spuštění ovladače. Obsahuje nastavení hráčovy přezdívky, aktivace vibrací a~seznam nalezených serverů. Po kliknutí na vybraný server naváže ovladač spojení s~hrou a~zobrazí volbu týmu. Hráč si může zvolit ze dvou týmů (červený nebo modrý), případně si nechat určit tým automaticky. Po přiřazení týmu se zobrazí ovládací obrazovka, které dominuje velké tlačítko pro kopnutí do míče. Pokud vezme hráč během zápasu bonus neviditelnosti, zobrazí se mu na mobilním displeji totožné hřiště jako na hlavní obrazovce. Kopnout do míče při neviditelnosti lze dotykem llibovolně na obrazovce, aby se předešlo stínění prstem v~místě, kde zrovna probíhá hra. V~případě odpojení se ovladač vrátí do hlavního menu a~v~případě ztráty spojení zobrazí chybovou hlášku.
 
-Nejběžnějším scénářem komunikace je nejprve vyhledání her v~lokální síti, připojení na zvolenou hru, volba týmu, spuštění hry a poté probíhá herní komunikace. V~případě bonusu neviditelnosti začne hra posílat informace o~svém stavu danému ovladači, aby byl schopen vykreslit kompletní hru na své obrazovce.
+\subsection{Komunikace mezi ovladačem a~hrou}
 
-Stavový diagram \todo{Stavový diagram hry + stavový diagram ovladače} přehledně zobrazuje jednotlivé stavy hry i ovladače z~hlediska síťové komunikace a zachycuje, kdy se posílají důležité informace.
+Vzhledem k~použití handlerů v~systému je možné návrh síťové komunikace realizovat s~jejich využitím: přijetí síťové zprávy vyvolá herní událost a~následně proběhne její zpracování. Vzhledem k~tomu, že síťové zprávy i~události jsou rozlišeny identifikátorem, je možné tyto identifikátory konsolidovat a~použít pro událost i~zprávu totožný identifikátor. 
 
-Nedílnou součástí návrhu celého systému je zpracování dat ze zpráv. Některé zprávy žádná data nemají, postačí pouze identifikátor Boxu, jiné obsahují pouze textový řetězec a jejich zpracování je pak triviální, ale existují i zprávy s~komplexní strukturou a tím pádem i složitým zpracováním. Takovou zprávou je například stav hry posílaný ze serveru, aby mohl ovladač vykreslit hru při neviditelnosti. Zpráva musí obsahovat informace o~všech viditelných hráčích (pozice, rychlost a směr pohybu, tým), míči a další informace. Takováto zpráva musí mít definovanou jasnou strukturu a protože se její obsah může měnit (např. když se změní počet hráčů), její zpracování vyžaduje hloubější analýzu.
+Nejběžnějším scénářem komunikace je sled následujícíh kroků: vyhledání her v~lokální síti, připojení na zvolenou hru, volba týmu, spuštění hry a~poté herní komunikace. V~případě aktivace bonusu neviditelnosti začne hra posílat informace o~svém stavu danému ovladači, aby byl schopen vykreslit kompletní hru na své obrazovce.
 
-Původním záměrem, jak zpracovávat zprávy, bylo vytvořit vlastní parsovací systém pro každou zprávu. Ukázalo se však, že tento způsob je nedostačující především u~složitějších zpráv. Lepší variantou se nabízelo využití existujících technologií pro serializaci dat. Z~několika vhodných řešení jsem si zvolil knihovnu \textit{Protocol Buffers} vytvořenou firmou Google. Jedná se o~multiplatformní knihovnu s~otevřeným zdrojovým kódem, která umožňuje definici struktury zprávy, její serializaci a deserializaci a použití i více programovacími jazyky současně. \cite{protobuf} Použití Protocol Buffers je velmi jednoduché. Nejprve je třeba definovat strukturu zprávy s~určenou syntaxí a poté za pomocí příkazové řádky vygenerovat soubory s~požadovaným zdrojovým kódem (v~tomto případě C++). Tyto vygenerované soubory se poté importují do projektu a je možné je přímo využívat.
+Stavový diagram \ref{picture:communication_states} přehledně zobrazuje jednotlivé stavy hry i~ovladače z~hlediska síťové komunikace a~zachycuje, kdy se posílají důležité informace.
 
-Využití Protocol Buffers elegantně vyřešilo problém zpracování zpráv a umožnilo velmi jednoduše specifikovat komplexní struktury dat posílané po síti:
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{communication_states}
+\caption{Komunikační stavy hry a~ovladače}
+\label{picture:communication_states}
+\end{figure}
+
+Nedílnou součástí návrhu celého systému je zpracování dat ze zpráv. Některé zprávy žádná data neobsahují, informační hodnotu představuje pouze identifikátor Boxu. Jiné obsahují jednoduchý textový řetězec a~jejich zpracování je pak triviální, ale existují i~zprávy s~komplexní strukturou a~tím pádem i~složitým zpracováním. Takovou zprávou je například stav hry posílaný ze serveru pro vykreslování hry při neviditelnosti. Zpráva musí obsahovat informace o~všech viditelných hráčích (pozice, rychlost a~směr pohybu, barva týmu), míči a~některé další informace. Takováto zpráva musí mít definovanou pevnou strukturu. Protože se obsah může měnit (např. když se změní počet hráčů), její návrh vyžaduje hloubější analýzu.
+
+Původním záměrem, jak zpracovávat zprávy, bylo vytvořit vlastní parsovací systém pro každou zprávu. Ukázalo se však, že tento způsob je nedostačující především u~složitějších zpráv. Jako lepší varianta se nabízelo využití existujících technologií pro serializaci dat. Z~několika vhodných řešení jsem si zvolil knihovnu \textit{Protocol Buffers} vyvíjenou společností Google. Jedná se o~multiplatformní knihovnu s~otevřeným zdrojovým kódem, která umožňuje definici struktury zprávy, její serializaci a~deserializaci a~použití více programovacími jazyky současně. \cite{protobuf} Použití Protocol Buffers je velmi jednoduché. Nejprve je třeba definovat strukturu zprávy s~určenou syntaxí a~poté v~příkazové řádce vygenerovat soubory s~požadovaným zdrojovým kódem (v~tomto případě C++). Tyto vygenerované soubory se poté importují do projektu a~je možné je přímo využívat.
+
+Využití Google Protocol Buffers elegantně vyřešilo problém zpracování zpráv a~umožnilo velmi jednoduše specifikovat komplexní struktury dat posílané po síti.
+
+V~definici zprávy lze určit, zda se proměnná ve zprávě musí vyskytovat (parametr \code{required}), nebo se nutně vyskytovat nemusí (\code{optional}), či může existovat několik instancí (\code{repeated}), ale také nemusí být žádná. Následující ukázka ilustruje definici jednoduché zprávy v~systému Protocol Buffers:
 
 \begin{figure}[h]
 \code{message Person \{ \\
@@ -564,33 +582,38 @@ Využití Protocol Buffers elegantně vyřešilo problém zpracování zpráv a 
 \}}
 \end{figure}
 
-Jak je vidět ze zdrojového kódu, v~přehledné definici lze určit, zda se daná proměnná ve zprávě musí vyskytovat (parametr \code{required}), nebo se nutně vyskytovat nemusí (\code{optional}), či může existovat několik instancí (\code{repeated}), ale také nemusí být žádná.
-
-Pokud je nutné změnit strukturu zprávy, stačí upravit soubor s~definicí a znovu vygenerovat zdrojové soubory. Není potřeba ručně měnit algoritmus parsování zprávy, jako by tomu bylo při použití vlastního primitivního parsování.
+Pokud je nutné změnit strukturu zprávy, stačí upravit soubor s~definicí a~znovu vygenerovat zdrojové soubory. Není potřeba ručně měnit algoritmus parsování zprávy, jako by tomu bylo při použití vlastního primitivního parsování.
 
 \subsection{Shrnutí}
 
-Ve fázi návrhu jsem vytvořil základní strukturu síťového modulu včetně zpracování zpráv, hry a ovladače. Následující fází je implementace: naprogramování navržených funkcionalit a vytvoření funkčního systému.
+Ve fázi návrhu jsem vytvořil základní strukturu síťového modulu včetně zpracování zpráv, hry a~ovladače. Následující fází je implementace: naprogramování navržených funkcionalit a~vytvoření funkčního systému.
 
 \section{Implementace}
 
-Přesto, že implementace zabrala značnou část tvorby této práce, není možné obsáhnout všechny části tvorby hry a ovladače, proto se zde budu zabývat především těmi částmi, které jsou něčím zajímavé, komplikované nebo důležité pro celý systém.
+Přesto, že implementace zabrala značnou část tvorby této práce, není možné obsáhnout všechny části tvorby hry a~ovladače, proto se zde budu zabývat především těmi částmi, které jsou něčím zajímavé, komplikované nebo důležité pro celý systém.
 
 \subsection{Vývojové prostředí}
 
-Celý vývoj probíhal na platformě OS X, konkrétně ve vývojovém prostředí Xcode. Jednalo se o~moji první zkušenost s~tímto prostředím i s~operačním systémem OS X, proto byla tvorba v~počátcích komplikovaná, později však vývoj probíhal bez problémů a začal jsem využívat možnosti, které mi toto prostředí nabízelo.
+Celý vývoj probíhal v~operačním systému OS X, konkrétně ve vývojovém prostředí Xcode. Jednalo se o~mou první zkušenost s~tímto prostředím i~s~operačním systémem OS X, proto byla tvorba v~počátcích komplikovaná, později však vývoj probíhal bez problémů a~začal jsem dokonce využívat výhod, které mi toto prostředí nabízelo.
+
+Kromě vývojového prostředí jsem hojně využíval příkazovou řádku, především pro kompilaci projektu pro operační systém Android.
 
 \subsection{Struktura projektu, integrace knihoven}
 
-Počátečním krokem celé implementace je založení projektu. Postupoval jsem podle návodů a vytvořil základní projekt pro herní engine Cocos2d-x. Do tohoto projektu jsem pak importoval knihovnu RakNet a vytvořil modul pro síťovou komunikaci. Přesto, že vývoj tohoto modulu probíhal z~důvodu praktičnosti sloučeně se zbytkem hry, byl vyvíjen tak, aby jej bylo možné snadno importovat do libovolné jiné aplikace.
+Prvním krokem každé implementace je založení projektu. Podle návodů jsem vytvořil prázdný projekt s~herním engine Cocos2d-x. Do tohoto projektu jsem poté importoval knihovnu RakNet a~vytvořil modul pro síťovou komunikaci. Přesto, že vývoj tohoto modulu probíhal z~důvodu praktičnosti sloučeně se zbytkem hry, byl vyvíjen tak, aby jej bylo možné snadno importovat do libovolné jiné aplikace.
 
-Vytvořil jsem tedy 2 projekty: jeden pro hru na PC a druhý pro mobilní ovladač. Oba projekty odkazují na stejné zdrojové soubory síťového modulu a změna v~něm se tak projeví v~obou aplikacích. Kromě toho sdílí projekty také několik dalších souborů, z~nichž nejvýznamnější je objekt \code{StadiumScene} (více v~sekci \todo{sekce se StadiumScene}).
+Vytvořil jsem tedy 2 projekty: jeden pro hru na PC a~druhý pro mobilní ovladač. Oba projekty odkazují na stejné zdrojové soubory síťového modulu a~změna v~něm se tak projeví v~obou aplikacích. Kromě toho sdílí projekty také několik dalších souborů, z~nichž nejvýznamnější je objekt \code{StadiumScene} obsahující implementaci fotbalového hřiště. Sdílení některých souborů ilustruje obrázek \ref{picture:source_sharing}.
 
-\todo{diagram sdílení zdrojů - GameNet, StadiumScene, ...}
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{source_sharing}
+\caption{Sdílení částí aplikace mezi hrou a~ovladačem}
+\label{picture:source_sharing}
+\end{figure}
+
 
 \subsection{Síťový modul}
 
-Implementace síťového modulu probíhala bez větších komplikací. Během studování knihovny RakNet jsem vytvořil testovací aplikace \textit{klient} a \textit{server}, abych si vyzkoušel práci s~knihovnou. Velmi kvalitním zdrojem informací byla sada ukázkových programů nacházející se přímo v~distribuci knihovny. Programy jsou velmi dobře zdokumentované a pomáhají pochopit daný kód.
+Implementace síťového modulu probíhala bez větších komplikací. Během studování knihovny RakNet jsem vytvořil testovací aplikace \textit{klient} a~\textit{server}, abych si vyzkoušel práci s~knihovnou. Velmi kvalitním zdrojem informací byla sada ukázkových programů nacházející se přímo v~distribuci knihovny. Programy jsou velmi dobře zdokumentované a~pomáhají pochopit daný kód.
 
 \subsection{Připojení nového hráče}
 
@@ -599,67 +622,101 @@ Stěžejním krokem síťové komunikace je navázání spojení s~ovladačem. V
 \begin{enumerate}
 	\item Hledání serverů: Ovladače periodicky posílají dotazovací zprávu na všesměrovou adresu v~lokální síti.
 	\item Odpověď serverů: Herní servery, které přijali dotazovací zprávu, odpovídají zprávou obsahující název serveru.
-	\item Připojení na server: Ovladač zobrazuje aktivní servery a po kliknutí na vybraný server naváže ovladač aktivní spojení se serverem.
-	\item Volba týmu: Ovladač je sice spojen se serverem, hráč se však stále nezobrazil na hřišti, musí si totiž nejprve zvolit tým. Provedená volba se odešle na server a hráč je zobrazen na hřišti.
+	\item Připojení na server: Ovladač zobrazuje aktivní servery a~po kliknutí na vybraný server naváže ovladač aktivní spojení se serverem.
+	\item Volba týmu: Ovladač je sice spojen se serverem, hráč se však stále nezobrazil na hřišti, musí si totiž nejprve zvolit tým. Provedená volba se odešle na server a~hráč je zobrazen na hřišti.
 	\item Admin: Pokud je hráč první připojený, server mu odešle dodatečnou informaci, že má ovladač práva na správu hry.
 	\item Spojení je navázáno, ovladač může volně komunikovat se hrou.
 \end{enumerate}
 
-Číslování jednotlivých kroků koresponduje pro lepší přehlednost s~kroky v~diagramu \todo{diagram navázání spojení}. 
+Číslování jednotlivých kroků koresponduje pro lepší přehlednost s~kroky v~diagramu \ref{picture:connection}, který názorně ilustruje připojení nového hráče. 
+
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{connection}
+\caption{Připojení nového hráče}
+\label{picture:connection}
+\end{figure}
 
 \subsection{Fyzikální engine}
 
-Jednou z~funkcí knihovny Cocos2d-x je simulace fyzikálních vlastností objektů za pomoci integrovaného fyzikálního engine. Herní princip fotbalu vychází ze simulace reálného světa, proto je zde fyzikální engine hojně využíván. Nejdůležitější prvky v~tomto případě tvoří fyzikální objekty, jejich kolize a detekce překryvu.
+Jednou z~funkcí knihovny Cocos2d-x je simulace chování objektů za pomoci integrovaného fyzikálního enginu. Herní princip fotbalu vychází ze simulace reálného světa, proto je zde fyzikální engine hojně využíván. Nejdůležitější prvky v~tomto případě tvoří objekty, jejich kolize a~detekce překryvu.
 
-Fyzikální objekt obsahuje 2 elementy: tvar a definice materiálu. Materiál má 3 složky: hustota, pružnost a odpor tření. Ve hře jsou fyzikálními objekty hráči, míč, branky, okraje hřiště a detektory gólu. U~každého fyzikalního objektu lze definovat, s~jakým typem jiných fyzikálních objektů může kolidovat (například srážka dvou hráčů). Použití této definice je výhodné pro detekci gólu (obrázek \todo{obrázek stadionu detektorem gólu}): do prostoru branky jsou umístěny neviditelné fyzikální objekty reprezentující detektory gólu, se kterými sice nekoliduje ani hráč, ani míč, ale je detekován překryv dvou objektů. Pokud se míč překryje s~detektory, vyvolá se událost gólu a je přičten bod příslušnému týmu. Pohyb míče i případného hráče v~brance je však neovlivněn.
+Fyzikální objekt obsahuje 2 elementy: tvar a~definice materiálu. Materiál má 3 složky: hustota, pružnost a~tření. Ve hře jsou fyzikálními objekty hráči, míč, branky, okraje hřiště a~detektory gólu. U~každého fyzikalního objektu lze definovat, s~jakým typem jiných fyzikálních objektů může kolidovat (například srážka dvou hráčů). Použití této definice je výhodné pro detekci gólu (obrázek \ref{picture:goal_detector}): do prostoru branky jsou umístěny neviditelné fyzikální objekty reprezentující detektory gólu, se kterými sice nekoliduje ani hráč, ani míč, ale je detekován překryv dvou objektů. Pokud se míč překryje s~detektory, vyvolá se událost gólu a~je přičten bod příslušnému týmu. Pohyb míče i~případného hráče v~brance je však neovlivněn.
 
-Dalším příkladem je bonus neviditelnosti: Pokud jej hráč vezme, změní se jeho definice kolizí a přestane kolidovat s~ostatními hráči. Přesto, že je na hřišti neviditelný, jeho fyzikální reprezentace se pohybuje po hřišti a kolize s~míčem tak funguje zcela normálně.
+\begin{figure}
+\center
+\includegraphics{goal_detector}
+\caption{Zobrazení fyzikálních objektů a~detektoru gólu}
+\label{picture:goal_detector}
+\end{figure}
+
+Dalším příkladem je bonus neviditelnosti: Pokud jej hráč vezme, změní se jeho definice kolizí a~přestane kolidovat s~ostatními hráči. Přesto, že je na hřišti neviditelný, jeho fyzikální reprezentace se pohybuje po hřišti a~kolize s~míčem tak funguje zcela normálně.
 
 \subsection{Neviditelnost}
 
-Stěžejní funkce, která výrazně obohacuje interaktivitu v~porovnání s~klasickými obladači, je projekce kompletní herní scény na mobilní obrazovku při aktivním bonusu neviditelnosti. Její realizace však přinesla několik komplikací, které jsou podrobně rozebrány v~této práci. 
+Stěžejní funkce, která výrazně obohacuje interaktivitu v~porovnání s~klasickými obladači, je projekce kompletní herní scény na mobilní obrazovku při aktivním bonusu neviditelnosti. Její realizace s~sebou přinesla několik komplikací, které jsou podrobně rozebrány v~následující části. 
 
 \subsubsection{Poměr stran hřiště}
 
-Vzhledem ke snaze, aby zobrazení v~mobilní telefonu co nejvěrněji odpovídalo hře, se logicky nabízí otázka, jak efektivně sdílet zdrojový kód mezi oběma platformami. Použití identického herního enginu tuto potřebu zjednodušuje, ale je potřeba vytvořit dostatčně obecné třídy a umožnit jejich modifikaci pro potřeby dané platformy. Jako první byl vytvořena třída \code{StadiumScene} a \code{Player} pouze na PC. Ukázalo se však, že přes veškeré výhody herního enginu existují komplikace, které zabraňují bezproblémovému použití stejného zdrojového kódu:
+Při snaze o~co nejvěrnější zobrazení stejného hřiště v~mobilní telefonu i~ve hře se logicky nabízí otázka, jak efektivně sdílet zdrojový kód mezi oběma platformami. Použití identického herního enginu tuto potřebu zjednodušuje, ale je potřeba vytvořit dostatečně obecné třídy a~umožnit jejich modifikaci pro potřeby dané platformy. Jako první byl vytvořena třída \code{StadiumScene} a~\code{Player} pouze na PC. Ukázalo se však, že přes veškeré výhody herního enginu existují komplikace, které zabraňují bezproblémovému použití stejného zdrojového kódu:
 
-První komplikací bylo použití herních handlerů přímo ve \code{StadiumScene}. Mobilní platforma tyto handlery neznala, proto nebylo možné projekt zkompilovat. Oprava této chyby spočívala v~přesunu použití handleru do třídy \code{Game}. \code{StadiumScene} se tak stala nezávislou na herních událostech.
+První komplikací bylo použití herních handlerů přímo ve \code{StadiumScene}. Mobilní platforma disponuje odlišnými implementaci handlerů, proto nebylo možné projekt zkompilovat. Oprava této chyby spočívala v~přesunu použití handleru do třídy \code{Game}. Třída \code{StadiumScene} se tak stala nezávislou na herních událostech a~bylo ji možné importovat do mobilní aplikace.
 
-Druhý, avšak komplikovanější problém představovala rozdílnost herních obrazovek, zvláště poměru stran. Návrh hřiště počítá s~tím, že se hra bude snažit přizpůsobit rozměry hřiště monitoru tak, aby byl vyplněn prostor obrazu. Například pokud hra běží na monitoru s~poměrem stran 16:9, herní hřiště bude mít totožný poměr stran. Komplikace nastávají, pokud se do hry připojí zařízení s~odlišným poměrem stran. Vzhledem k~tomu, že poměry stran mobilních displejů jsou značně rozdílné, je velká šance výskytu tohoto problému. Hřiště v~mobilním displeji se, podobně jako u~PC, vykreslí přes celou obrazovku a při rozdílných poměrech stran vznikají odchylky od skutečné polohy. To způsobuje nepřesnou hru či přesah objektu \uv{za hřiště}.
+Druhý, avšak komplikovanější problém představovala rozdílnost herních obrazovek, zejména různorodost poměrů stran. Návrh hřiště počítá s~tím, že se hra bude snažit přizpůsobit rozměry hřiště monitoru tak, aby byla vyplněna celá plocha obrazovky. Například pokud hra běží na monitoru s~poměrem stran 16:9, herní hřiště bude mít totožný poměr stran. Komplikace nastávají, pokud se do hry připojí zařízení s~odlišným poměrem stran. Vzhledem k~tomu, že rozměry mobilních displejů jsou značně rozdílné, je velká pravděpodobnost výskytu tohoto problému. Hřiště v~mobilním displeji se, podobně jako u~PC, vykreslí přes celou obrazovku a~při rozdílných poměrech stran vznikají odchylky od skutečné polohy. To způsobuje nepřesnou hru či přesah objektu \uv{za hřiště}.
 
-Pro řešení tohoto problému byly potřeba dva kroky. Prvním z~nich je odeslání rozměrů hřiště do mobilního telefonu. Hřiště se vykreslí s~totožnými rozměry jako na PC. To ale způsobuje přesah hřiště přes ty strany, které jsou na mobilním displeji menší než na PC (možné přesahy ilustruje obrázek \todo{obrázek poměrů stran hřiště}). Pro zobrazení zbytků hřiště jsem upravil vykreslování scény tak, že se hřiště posouvá v~závislosti na pozici hráče a jsou tak skryty jen nejvzdálenější části. Tyto úpravy ale musely být vytvořeny nad samotnou třídou \code{StadiumScene}, aby neovlivnili vykreslování na PC.
+\begin{figure}
+\center
+\includegraphics[width=\textwidth]{stadium_proportions_2}
+\caption{Přesahy hřiště při různých poměrech stran}
+\label{picture:stadium_proportions}
+\end{figure}
+
+Řešení tohoto problému spočívá ve dvou krocích. Prvním z~nich je odeslání rozměrů hřiště do mobilního telefonu. Hřiště se vykreslí s~totožnými rozměry jako na PC. To ale způsobuje přesah hřiště přes ty strany, které jsou na mobilním displeji menší než na PC. Přesahy ilustruje obrázek \ref{picture:stadium_proportions}, oranžová barva vyznačuje přesahující oblasti v~mobilním displeji. Pro zobrazení těchto oblastí jsem upravil vykreslování scény, aby se hřiště posouvalo v~závislosti na pozici hráče a~byly tak skryty jen nejvzdálenější části herní plochy. Tyto úpravy ale musely být vytvořeny nad samotnou třídou \code{StadiumScene}, aby neovlivnily vykreslování na PC.
 
 \subsubsection{Vykreslování hráčů v~mobilní obrazovce}
 
-Jako velmi zajímavou část během vývoje považuji ladění vykreslování hráčů na mobilním displeji. Aktivní bonus neviditelnosti začne periodicky posílat informace o~hře, jejíž součástí jsou také data o~jednotlivých hráčích. Na počátku vývoje obsahovaly tyto údaje mimo jiné souřadnice hráče na hřišti. Tyto souřadnice pak používá ovladač pro nastavení pozice hráče na mobilním displeji. Při testování se však ukázalo, že tento návrh je téměř nepoužitelný: pohyb hráčů byl velmi trhaný, nepomohlo ani zvýšení frekvence posílání zpráv (z~30 na 60 zpráv za vteřinu) a je proto potřeba vykreslování optimalizovat.
+Jako velmi zajímavou část během vývoje považuji ladění vykreslování hráčů na mobilním displeji. Aktivní bonus neviditelnosti periodicky posílá informace o~hře, jejíž součástí jsou také data o~jednotlivých hráčích. Na počátku vývoje obsahovaly tyto údaje pouze souřadnice hráče na hřišti. Tyto souřadnice pak používá ovladač pro nastavení pozice hráče na mobilním displeji. Při testování se však ukázalo, že tento návrh je téměř nepoužitelný: pohyb hráčů byl velmi trhaný, nepomohlo ani zvýšení frekvence posílání zpráv (z~30 na 60 zpráv za vteřinu) a~je proto potřeba vykreslování optimalizovat. Obrázek \ref{picture:player_rendering_1} znázorňuje pozice hráče přijaté po síti a~ilustruje nedostatečnost tohoto řešení. Jednotlivé pozice jsou nepravidelně vzdáleny. Překreslování tak netvoří dojem plynulosti.
 
-\todo{obrázek se sekaným pohybem}
+\begin{figure}[h]
+\center
+\includegraphics[width=\textwidth]{player_rendering_1}
+\caption{Trhané vykreslování hráče}
+\label{picture:player_rendering_1}
+\end{figure}
 
-Pro docílení plynulejšího pohybu jsem rozšířil zprávu o~hráčích o~vektor pohybu. Z~dat se tak dala rekonstruovat nejen pozice, ale i rychlost a směr pohybu. Hráč na mobilní obrazovce se tedy pohyboval i v~případě, že delší dobu nebyl přijat paket s~aktualizovanými údaji. Toto řešení o~něco vylepšilo celkový dojem z~vykreslování, stále se však objevoval trhaný pohyb a občasné uskakování hráčů, byť v~menší míře.
+Pro docílení plynulejšího pohybu jsem přidal do zprávy o~hráčích informaci o~vektoru pohybu. Z~dat se tak dala rekonstruovat nejen pozice, ale i~rychlost a~směr pohybu. Hráč na mobilní obrazovce se tedy pohyboval i~v~případě, že delší dobu nebyla přijata zpráva s~aktualizovanými údaji. Toto řešení vylepšilo celkový dojem z~vykreslování, stále se však objevoval trhaný pohyb a~občasné uskakování hráčů, byť v~menší míře.
 
-\todo{obrázek s~predikcí pohybu}
+\begin{figure}[h]
+\center
+\includegraphics[width=\textwidth]{player_rendering_2}
+\caption{Vykreslování hráče s~predikcí pohybu}
+\label{picture:player_rendering_2}
+\end{figure}
 
-Protože bylo při tvorbě \code{Boxu} s~daty o~hráčích nastaveno odesílání a přijímání zpráv bez zajištění spolehlivosti, kromě ztrát zpráv mohlo také docházet ke změně pořadí přijatých zpráv. Ztráta zpráv v~tomto případě nepředstavuje zásadní problém, jelikož neaktuální zprávy nejsou z~hlediska hry informačně hodnotné, větší problém představuje změna pořadí. \uv{Starší} zprávy, které se dostanou před ty novější, mohou způsobit problém s~\uv{přeskakováním} hráčů. Kdy je hráč přesunut z~aktuálního místa zpět na nějaké místo z~minulosti a až přijde aktuální zpráva, tak je hráč opětovně přesunut na správně místo. Tento problém vyřešilo jednoduché nastavení spolehlivosti zprávy na \code{UNRELIABLE\_SEQUENCED}, což způsobilo zahazování neaktuálních paketů a elegantně vyřešilo problém přeskakování hráčů.
+Protože bylo při tvorbě \code{Boxu} s~daty o~hráčích nastaveno odesílání a~přijímání zpráv bez zajištění spolehlivosti, kromě ztrát zpráv mohlo také docházet ke změně pořadí přijatých zpráv. Ztráta zpráv v~tomto případě nepředstavuje zásadní problém, jelikož neaktuální zprávy nejsou z~hlediska hry informačně hodnotné, větší problém představuje změna pořadí. \uv{Starší} zprávy, které se dostanou před ty novější, mohou způsobit problém s~\uv{přeskakováním} hráčů. Kdy je hráč přesunut z~aktuálního místa zpět na nějaké místo z~minulosti a~až přijde aktuální zpráva, tak je hráč opětovně přesunut na správně místo. Tento problém vyřešilo jednoduché nastavení spolehlivosti zprávy na \code{UNRELIABLE\_SEQUENCED}, což způsobilo zahazování neaktuálních paketů a~elegantně vyřešilo problém přeskakování hráčů.
 
-Zprávy o~hráčích nyní poskytují všechny informace potřebné pro vykreslení. Další vylepšování plynulosti se týkají ovladače. Predikce pohybu s~využitím aktuální rychlosti vykzuje nedostatky ve chvíli, kdy hráč změní rychlost nebo směr pohybu a zpráva s~touto informací přijde později. Tato situace způsobuje zmiňované trhání. Způsob, jak eliminovat toho trhání je plynulá změna pozice pomocí animace objektu. Při zpracování nově přijaté zprávy se tak vypočítá vektor změny přijaté pozice od pozice na mobilním displeji, z~toho se vytvoří animace, která přesune objekt hráče o~vypočítaný vektor. Zároveň však zůstane zachována predikce pohybu. 
+Zprávy o~hráčích nyní poskytují všechny informace potřebné pro vykreslení. Další vylepšování plynulosti se proto týkaly ovladače. Predikce pohybu s~využitím aktuální rychlosti vykazuje nedostatky ve chvíli, kdy hráč změní rychlost nebo směr pohybu a~zpráva s~touto informací přijde se zpožděním. Tato situace způsobuje zmiňované trhání. Způsobem, jak eliminovat toho trhání, je plynulá změna pozice pomocí animace objektu. Při zpracování nově přijaté zprávy se tak vypočítá vektor změny přijaté pozice od pozice na mobilním displeji. Z~toho se vytvoří animace, která přesune objekt hráče relativně o~vzdálenost vypočítaného vektoru. Zároveň však zůstane zachována predikce pohybu. 
 
-\todo{obrázek s~predikcí i s~plynulou opravou pozice}
+\begin{figure}[h]
+\center
+\includegraphics[width=\textwidth]{player_rendering_3}
+\caption{Vykreslování s~predikcí pohybu a~plynulou korekcí}
+\label{picture:player_rendering_3}
+\end{figure}
 
-Kombinace všech těchto vylepšení splňuje požadavky na plynulost pohybu, který je tak téměř identický jako na hlavní obrazovce.
+Kombinace všech těchto vylepšení splňuje požadavky na plynulost pohybu, který je tak téměř identický jako na hlavní obrazovce. Výsledné řešení ilustruje obrázek \ref{picture:player_rendering_3}.
 
 \subsection{Shrnutí}
 
-Ve fázi implementace byl podle návrhu vytvořen funkční systém. Obě aplikace se podařilo vytvořit podle očekávání, stěžejní části a případné komplikace zde byly rozebrány do větší podrobností. 
-
+Ve fázi implementace byl podle návrhu vytvořen funkční systém. Obě aplikace se podařilo vytvořit podle očekávání, stěžejní části a~případné komplikace zde byly rozebrány do větší podrobností. 
 
 \section{Testování}
 \label{section:testing}
 
-Následující sekce se věnuje testování software a to jak automatické, tak manuální. Je sice zařazena až po fázi implementace, některé testy však probíhali souběžně s~implementací. 
+Následující sekce se věnuje testování software a~to jak automatické, tak manuální. Je sice zařazena až po fázi implementace, některé testy však probíhali souběžně s~implementací. 
 
 \subsection{Unit testy}
 
-Základní formou testování jsou automatizované testy, tzv. \textit{unit testy}. Pomocí nich se kontroluje elementární fukčnost jednotlivých komponent a funkcí. Pro implementaci jsem použil testovací framework \textit{Catch} \cite{catch}. Mezi jeho výhody patří velmi snadná integrace a velké množství testovacích maker. Následující ukázka zobrazuje jeden z~automatických testů síťového modulu, konkrétně kontroluje správnou inicializaci třídy \code{Box}:
+Základní formou testování jsou automatizované testy, tzv. \textit{unit testy}. Pomocí nich se kontroluje elementární fukčnost jednotlivých komponent a~funkcí. Pro implementaci jsem použil testovací framework \textit{Catch} \cite{catch}. Mezi jeho výhody patří velmi snadná integrace a~velké množství testovacích maker. Následující ukázka zobrazuje jeden z~automatických testů síťového modulu, který kontroluje správnou inicializaci třídy \code{Box}:
 
 \begin{verbatim}
 TEST_CASE("GameNet tests")
@@ -689,70 +746,90 @@ TEST_CASE("GameNet tests")
 }
 \end{verbatim}
 
-Vzhledem k~vývoji v~prostředí Xcode jsou automatické testy implementovány na platformách iOS a Mac OS X. Toto řešení splňuje požadavky uvedené v~návrhu hry, je zahrnuta alespoň jedna mobilní a jedna počítačová platforma.. Rozšíření testování i na Android je komplikovanější a překračuje požadavky této práce.
+Vzhledem k~vývoji v~prostředí Xcode jsou automatické testy implementovány na platformách iOS a~Mac OS X. Toto řešení splňuje požadavky uvedené v~návrhu hry, je zahrnuta alespoň jedna mobilní a~jedna počítačová platforma. Rozšíření testování i~na Android je komplikovanější a~přesahuje požadavky této práce.
 
 Při vývoji pro více mobilních platforem by však bylo vhodné automaticky testovat všechny platformy, aby se zamezilo chybám způsobeným např. odlišnou architekturou či hardware.
 
 \subsection{Testy paměti}
 
-Dalším systémovým testem je kontrola správné alokace paměti. Vzhledem k~tomu, že celý systém je psán v~jazyce C++, nejsou paměťové chyby automaticky kontrolovány. Herní engine Cocos2d-x sice pracuje s~pamětí efektivně, přesto však během vývoje docházelo v~aplikacích ke špatnému uvolňování paměti. Za následek této chyby bylo nekontrolovatelný růst spotřeby operační paměti.
+Dalším systémovým testem je kontrola správné alokace paměti. Vzhledem k~tomu, že celý systém je napsán v~jazyce C++, nejsou paměťové chyby automaticky kontrolovány. Herní engine Cocos2d-x sice pracuje s~pamětí efektivně, přesto však během vývoje docházelo v~aplikacích ke špatnému uvolňování paměti. Za následek této chyby bylo nekontrolovatelný růst spotřeby operační paměti.
 
-Velkou pomocí při řešení těchto problémů se staly nástroje ve vývojovém prostředí Xcode. Ty umožňují kontrolovat správu paměti za běhu programu a zobrazují špatně uvolněnou pamět v~reálném čase a dokonce i s~detekcí, na jakém místě v~kódu k~úniku došlo. Tímto způsobem bylo možné efektivně odstranit příčiny chyb a zajistit optimální správu paměti.
+Velké zásluhy za vyřešení těchto problémů mají integrované nástroje ve vývojovém prostředí Xcode. Ty umožňují kontrolovat správu paměti za běhu programu a~zobrazují špatně uvolněnou pamět v~reálném čase dokonce i~s~detekcí, na jakém místě v~kódu k~úniku došlo. Tímto způsobem bylo možné efektivně odstranit příčiny chyb a~zajistit optimální správu paměti.
 
 \subsection{Testování hratelnosti}
 
-Důležitou fázi při vývoji počítačových her představuje testování hratelnosti. Jeho cílem je nastavení parametrů hry pro vyvážení obtížnosti, ovládání a dalších metrik. Testování hratelnosti se účastnilo více nezávislých lidí a jejich poznatky byly konzultovány během hry či po ní.
+Důležitou fázi při vývoji počítačových her představuje testování hratelnosti. Jeho cílem je nastavení parametrů hry pro vyvážení obtížnosti, ovládání a~dalších metrik. Testování hratelnosti se účastnilo přibližně 12 lidí a~jejich poznatky byly konzultovány během hry či po ní.
+
+\begin{figure}[h]
+\center
+\includegraphics[width=\textwidth]{testing}
+\caption{Testování hratelnosti}
+\label{picture:testing}
+\end{figure}
 
 \subsubsection{Pohyb hráče}
 
-V~případě fotbalu bylo nutné najít optimální model pohybu hráčů, aby hra nepůsobila jako příliš pomalá nebo naopak dynamická. V~počátcích návrhu měli hráči nízkou rychlost a hra s~nižším počtem hráčů byla příliš zdlouhavá. Problém vyřešilo mírné zvýšení maximální rychlosti  hráčů.
+V~případě fotbalu bylo nutné najít optimální model pohybu hráčů, aby hra nepůsobila jako pomalá nebo naopak příliš dynamická. V~počátcích návrhu měli hráči nízkou rychlost a~hra s~nižším počtem hráčů byla příliš zdlouhavá. Problém vyřešilo mírné zvýšení maximální rychlosti hráčů.
 
-Jako druhý poznatek při ovládání hráči reportovali nepohodlné ovládání hry v~případě aktivního bonusu neviditelnosti. Aby viděli na displej, měli tendence naklánět telefon méně než při sledování hlavní obrazovky a dosahovali tak nižších rychlostí. Toto bylo vyřešeno úpravou zpracování dat z~akcelerometru: pro dosažení maximální rychlosti stačí naklonit telefon méně než doposud. Hráči tak mohou sledovat obrazovku z~lepšího úhlu.
+Jako druhý poznatek při ovládání hráči reportovali nepohodlné ovládání hry v~případě aktivního bonusu neviditelnosti. Aby viděli na displej, měli tendence naklánět telefon méně než při sledování hlavní obrazovky a~dosahovali tak nižších rychlostí. Toto bylo vyřešeno úpravou zpracování dat z~akcelerometru: pro dosažení maximální rychlosti stačí naklonit telefon méně než doposud. Hráči tak mohou sledovat obrazovku z~lepšího úhlu.
 
 \subsubsection{Okraje hřiště}
 
-Zajímavý problém během hraní se vyskytl v~situacích, kdy se míč dostal do okrajových částí hřiště: hrany a rohy hřiště, případně vnější strana branek. \todo{obrázek rohů bez opravy}. Pokud míč následoval jeden nebo více hráčů, nebylo snadné míč dostat z~rohů. Tento problém negativně ovlivňoval herní zážitek.
+Další problém během hraní se vyskytl v~situacích, kdy se míč dostal do okrajových částí hřiště: hrany a~rohy hřiště, případně vnější strana branek. Pokud míč následoval jeden nebo více hráčů, nebylo snadné míč dostat z~rohů zpět do hry. Tento problém negativně ovlivňoval herní zážitek.
 
-Cílem vyřešení toho problému bylo předejít či eliminovat zaseknutí míče v~rozích a jeho snadné odsunutí z~okraje hřiště. Pro tyto účely jsem využil možností fyzikálního enginu a hřiště rozšíříil o~další neviditelné objekty:
+Cílem vyřešení toho problému bylo předejít či eliminovat zaseknutí míče v~rozích a~jeho snadné odsunutí z~okraje hřiště. Pro tyto účely jsem využil možností fyzikálního enginu a~hřiště rozšíříil o~další neviditelné objekty:
 
 \begin{itemize}
-	\item Zdvojení okrajů hřiště: první okraj je určen pro míč a druhý (mírně přesahující \uv{za hřiště}) pro hráče. Ti se tak mohou dostat mírně za okrajovou čáru, což umožní lepší manipulaci s~míčem.
+	\item Zdvojení okrajů hřiště: první okraj je určen pro míč a~druhý (mírně přesahující \uv{za hřiště}) pro hráče. Ti se tak mohou dostat mírně za okrajovou čáru, což umožnilo lepší manipulaci s~míčem.
 	\item Rohy hřiště: zabránit zaseknutí míče v~rozích se podařilo přidáním neviditelných objektů do rohů, které kolidují pouze s~míčem.
 	\item Branky: podobně jako v~rozích jsem přidal neviditelné objekty ke hranám branek.
 \end{itemize}
 
-Nově přidané objekty ilustruje obrázek \todo{obrázek s~krytými rohy}. Toto řešení elegantně eliminovalo problémy s~míčem a vylepšilo celkovou hratelnost.
+\begin{figure}[h]
+\center
+\includegraphics[width=\textwidth/2]{corners}
+\caption{Oprava okrajů hřiště}
+\label{picture:corners}
+\end{figure}
 
+Opravu tohoto problému ilustruje obrázek \ref{picture:corners}. Řešení elegantně eliminovalo problémy s~míčem a~vylepšilo celkovou hratelnost.
 
 \section{Dokumentace}
 
-Nedílnou součást každého softwarového produktu tvoří dokumentace. Jedná se o~soubor textů a dalších materiálů, které provazejí celý vývoj projektu. V~této práci tvoří nejdůležitější části dokumentace požadavků, informační diagramy jednotlivých komponent a dokumentace zdrojového kódu. Kromě toho je součástí také návod na kompilaci a spuštění aplikací.
+Nedílnou součást každého softwarového produktu tvoří dokumentace. Jedná se o~soubor textů a~dalších materiálů, které provazejí celý vývoj projektu. V~této práci tvoří nejdůležitější části dokumentace požadavků, informační diagramy jednotlivých komponent a~dokumentace zdrojového kódu. Kromě toho je součástí také návod na kompilaci a~spuštění aplikací.
 
 Dokumentace požadavků je uvedena v~kapitole \label{section:requirements}. Obsahuje popis základních funkcionalit potřebných pro vytvoření funkčního systému.
 
-Dokumentace zdrojového kódu zlepšuje přehledonst a srozumitelnost kódu především pro vývojáře. V~deklaraci metod a rozhraní vysvětluje použití jednotlivých metod a v~implementaci pomáhá např. s~pochopením algoritmů či složitějších míst v~kódu. Obrázek \todo{obrázek s~dokumentací} zobrazuje část dokumentace rozhraní třídy \code{Connector}. 
+Dokumentace zdrojového kódu zlepšuje přehledonst a~srozumitelnost kódu především pro vývojáře. V~definici metod a~rozhraní vysvětluje účel jejich použití a~v~implementaci pomáhá např. s~pochopením algoritmů či složitějších oblastí kódu. Obrázek \ref{picture:source_documentation} zobrazuje část dokumentace rozhraní třídy \code{Connector}. 
 
-Kromě textového popisu je důležité také znázornění vztahů mezi komponentami a jejich spolupráce. Vhodně navržený diagram může pomoci pochopit problematiku lépe než velké množství textu. Obrázek \todo{moduly, zdrojáky a jejich sdílení} znázorňuje použití jednotlivých modulů v~aplikacích a sdílení jejich kódů.  Jednoduše tak poskytuje přehled o~základní struktuře celého projektu. 
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{source_docs}
+\caption{Ukázka dokumentace zdrojového kódu v~prostředí Xcode}
+\label{picture:source_documentation}
+\end{figure}
+
+
+Kromě textového popisu je důležité také znázornění vztahů mezi komponentami a~jejich spolupráce. Vhodně navržený diagram může pomoci pochopit problematiku lépe než velké množství textu. Množství diagramů v~předešlých částech práce tak tvoří součást projektové dokumentace.
 
 \section{Možnosti rozšíření}
 
 Jako v~mnoha softwarových projektech zde existuje prostor pro další vývoj. Některé prvky nebyly implementovány, ať už z~důvodu časové náročnosti, nebo protože nespadají do nutných požadavků práce.
 
-Jedním z~návrhů na vylepšení je grafika. Lepší zpracování obrázků, vytvoření více animací, případně použití částicových efektů by hru vizuálně oživilo a pomohlo tak k~intenzivnějšímu hernímu zážitku.
+Jedním z~návrhů na vylepšení je grafika. Lepší zpracování obrázků, vytvoření více animací a~použití částicových efektů by hru vizuálně oživilo a~pomohlo tak k~intenzivnějšímu hernímu zážitku.
 
-Dalším možností rozšíření je použití zvukových efektů. Ty nebyly z~časových důvodů implementovány, jejich nasazení by však umocnilo celkovou atmosféru hry.
+Dalším možností rozšíření je použití zvukových efektů. Ty nebyly z~časových důvodů implementovány, jejich nasazení umocní celkovou atmosféru hry.
 
-Podobných návrhů na další vývoj existuje celá řada, například: nové herní bonusy, integrace herního serveru do mobilní obrazovky (server by tak mohl být použit v~mobilním zařízení například při připojení do externí obrazovky), vytvoření hráčů s~umělou inteligencí (využitelné, když je připojen lichý počet hráčů) a mnoho dalších.
+Podobných návrhů na další vývoj existuje celá řada, například: nové typy herních bonusů, integrace herního serveru do mobilní obrazovky (server by tak mohl být použit v~mobilním zařízení například při připojení do externí obrazovky), vytvoření hráčů s~umělou inteligencí (využitelné, když je připojen lichý počet hráčů) a~mnoho dalších.
 
 \begin{conclusion}
 	
-Tato bakalářský práce se zabývá zkoumáním možností, jak ovládat PC hru pomocí chytrého telefonu. V~první kapitole jsem popsal nejběžnější herní ovladače a jejich schopnosti a porovnal je se senzory chytrých telefonů v~druhé kapitole. Součástí teoretické části bylo také nalezení podobných existujících řešení a diskuse jejich vlastností.
+V této bakalářské práci jsem se zabýval zkoumáním možností, jak ovládat PC hru pomocí chytrého telefonu. V~první kapitole jsem popsal nejběžnější herní ovladače a~jejich schopnosti a~porovnal je se senzory chytrých telefonů v~druhé kapitole. Součástí teoretické části bylo také nalezení podobných existujících řešení a~diskuse jejich vlastností.
 
-Všechny tyto kapitoly sloužily jako teoretický základ pro analýzu a realizaci softwarového projektu. Ten měl za cíl vytvořit systém pro interaktivní ovládání PC hry a demonstrovat jeho schopnosti v~jednoduché hře. Tohoto cíle se podařilo dosáhnout a demonstrovat jej na hře s~tématikou fotbalu. Softwarový projekt byl rozdělen na standardní fáze: analýza, návrh, implementace a testování.
+Všechny tyto kapitoly sloužily jako teoretický základ pro analýzu a~realizaci softwarového projektu. Ten měl za cíl vytvořit systém pro interaktivní ovládání PC hry a~demonstrovat jeho schopnosti v~jednoduché hře. Tohoto cíle se podařilo dosáhnout na hře s~tématikou fotbalu. Softwarový projekt byl rozdělen na standardní fáze: analýza, návrh, implementace a~testování.
 
 Systém vytvořený v~této práci pro podporu interaktivních her ulehčuje případný návrh dalších her. Není omezen na konkrétní herní žánr, jeho modularita jej předurčuje k~použití v~libovolném typu interaktivní hry. 
 
-V~rámci bakalářské práce jsem využil poznatky získané při studiu, především z~oblastí softwarového projektu, objektového modelování a síťové komunikace. Kromě toho považuji za osobní přínos první větší zkušenost s~herním enginem a vývojem her. Z~dlouhodobého hlediska bych chtěl využít získané zkušenosti pro další výzkum způsobů ovládání her a jejich interakce s~cílem propojit herní svět s~realitou. 
+V~rámci bakalářské práce jsem využil poznatky získané při studiu, především z~oblastí softwarového projektu, objektového modelování a~síťové komunikace. Kromě toho považuji za osobní přínos první větší zkušenost s~herním enginem a~vývojem her. Z~dlouhodobého hlediska bych chtěl využít získané zkušenosti pro další výzkum způsobů ovládání her a~jejich interakce s~cílem propojit herní svět s~realitou. 
 	
 \end{conclusion}
 
@@ -768,19 +845,16 @@ V~rámci bakalářské práce jsem využil poznatky získané při studiu, před
 
 \chapter{Obsah přiloženého CD}
 
-%upravte podle skutecnosti
-
-\todo{struktura CD}
 \begin{figure}
 	\dirtree{%
 		.1 readme.txt\DTcomment{stručný popis obsahu CD}.
-		.1 exe\DTcomment{adresář se spustitelnou formou implementace}.
+		.1 bin\DTcomment{adresář se spustitelnou formou implementace}.
 		.1 src.
 		.2 impl\DTcomment{zdrojové kódy implementace}.
 		.2 thesis\DTcomment{zdrojová forma práce ve formátu \LaTeX{}}.
 		.1 text\DTcomment{text práce}.
 		.2 thesis.pdf\DTcomment{text práce ve formátu PDF}.
-		.2 thesis.ps\DTcomment{text práce ve formátu PS}.
+%		.2 thesis.ps\DTcomment{text práce ve formátu PS}.
 	}
 \end{figure}
 
