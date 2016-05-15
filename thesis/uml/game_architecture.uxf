@@ -329,7 +329,11 @@
 
 
 Handler
-implementations</panel_attributes>
+implementations
+
+(PlayerCollision,
+NewPlayer, Score,
+Disconnect...)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -393,5 +397,16 @@ Box
     </coordinates>
     <panel_attributes>HandlerMap</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>420</x>
+      <y>170</y>
+      <w>130</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>110.0;10.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
