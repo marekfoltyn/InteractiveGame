@@ -11,6 +11,8 @@
 #include "GameplayDefinitions.h"
 #include "cocos2d.h"
 
+
+
 Player::Player(RakNet::SystemAddress address, std::string name)
 {
     this->address = address;
@@ -22,16 +24,16 @@ Player::Player(RakNet::SystemAddress address, std::string name)
     body->setCategoryBitmask(BITMASK_PLAYER);
     body->setContactTestBitmask(BITMASK_ALL);
     body->setCollisionBitmask(PLAYER_COLLIDES_WITH);
-    //body->setRotationEnable(false);
-    body->setAngularDamping(0.8);
+    body->setAngularDamping(ANGULAR_DAMPING);
     sprite->setPhysicsBody(body);
     
     // label
     auto lblName = cocos2d::Label::createWithTTF(name.c_str(), "Vanilla.ttf", sprite->getContentSize().height/2);
-    lblName->setPosition(cocos2d::Vec2( sprite->getContentSize().width/2, sprite->getContentSize().height  ));
-    lblName->setAnchorPoint(cocos2d::Vec2( 0.5, 0 ));
+    lblName->setPosition(cocos2d::Vec2( sprite->getContentSize().width/2, sprite->getContentSize().height/2  ));
+    lblName->setAnchorPoint(cocos2d::Vec2( 0.5, -1 ));
     lblName->setTextColor(cocos2d::Color4B(255,255,255,44));
-    //sprite->addChild(lblName,1);
+    lblName->setName(LABEL_NAME);
+    sprite->addChild(lblName,1);
 
     admin = false;
     appliedForceVector = cocos2d::Vec2::ZERO;
@@ -44,6 +46,9 @@ Player::Player(RakNet::SystemAddress address, std::string name)
     // start blinking
     autoBlink();
     
+    lblName->schedule([&,lblName](float dt){
+        lblName->setRotation( - sprite->getRotation() );
+    }, 0.005, "correct");
 }
 
 Player * Player::create(std::string name)
@@ -76,8 +81,9 @@ void Player::destroy()
 void Player::applyForce(cocos2d::Vec2 forceVector)
 {
     appliedForceVector = forceVector;
-    auto x = forceVector.x;
-    auto y = forceVector.y;
+    float x = forceVector.x;
+    float y = forceVector.y;
+    
     auto forceSize = forceVector.getLength();
     
     auto force = cocos2d::Vec2(1000000000*x*(getSpeedMultiplier()), 1000000000*y*(getSpeedMultiplier()));

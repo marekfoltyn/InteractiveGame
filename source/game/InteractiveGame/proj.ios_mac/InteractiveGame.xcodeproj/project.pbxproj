@@ -419,6 +419,7 @@
 		EA36CE1D1C91BA2B00A498A7 /* TeamSelectHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TeamSelectHandler.h; path = Handlers/TeamSelectHandler.h; sourceTree = "<group>"; };
 		EA4189431C342867004B8934 /* InteractiveGame-unit-testing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "InteractiveGame-unit-testing.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA4189441C342867004B8934 /* InteractiveGame-desktop copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "InteractiveGame-desktop copy-Info.plist"; path = "/Users/marek/Documents/git/InteractiveGame/source/game/InteractiveGame/proj.ios_mac/InteractiveGame-desktop copy-Info.plist"; sourceTree = "<absolute>"; };
+		EA445E2E1CEAEB7500945986 /* GameObjectsTests.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GameObjectsTests.hpp; path = Testing/GameObjectsTests.hpp; sourceTree = "<group>"; };
 		EA568A3D1CAAEDF600C4A35C /* CountdownHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CountdownHandler.cpp; path = Handlers/CountdownHandler.cpp; sourceTree = "<group>"; };
 		EA568A3E1CAAEDF600C4A35C /* CountdownHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CountdownHandler.h; path = Handlers/CountdownHandler.h; sourceTree = "<group>"; };
 		EA568A411CAB053300C4A35C /* GoalCollisionHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GoalCollisionHandler.cpp; path = Handlers/GoalCollisionHandler.cpp; sourceTree = "<group>"; };
@@ -1073,6 +1074,7 @@
 		EAB622011CC6334C00326EC5 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				EA445E2E1CEAEB7500945986 /* GameObjectsTests.hpp */,
 			);
 			name = Tests;
 			sourceTree = "<group>";

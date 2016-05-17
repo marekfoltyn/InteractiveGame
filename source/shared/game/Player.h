@@ -164,6 +164,17 @@ private:
     Player(RakNet::SystemAddress address, std::string name);
 
     void autoBlink();
+    
+    /**
+     * gaussian function
+     */
+    float gauss(float x, float m, float s)
+    {
+        static const float inv_sqrt_2pi = 0.3989422804014327;
+        float a = (x - m) / s;
+        
+        return inv_sqrt_2pi / s * std::exp(-0.5f * a * a);
+    }
 };
 
 #endif /* Player_h */

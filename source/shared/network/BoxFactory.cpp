@@ -41,15 +41,6 @@ Box * BoxFactory::collision(RakNet::SystemAddress address)
     return box;
 }
 
-Box * BoxFactory::resetScore()
-{
-    Box * box = Box::createEmpty();
-    box->setType(BOX_RESET_SCORE);
-    box->setReliability(PacketReliability::RELIABLE);
-    box->setPriority(PacketPriority::LOW_PRIORITY);
-    return box;
-}
-
 Box * BoxFactory::kick(unsigned int intensity)
 {
     // normalize intensity (0-255)

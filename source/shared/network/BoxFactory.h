@@ -35,20 +35,10 @@ public:
     static Box * collision(RakNet::SystemAddress address);
     
     /**
-     * reset game score
-     */
-    static Box * resetScore();
-    
-    /**
      * ball kick
      * intensity is the kick force from interval [0..255]
      */
     static Box * kick(unsigned int intensity);
-    
-    /**
-     * tackle (small kick)
-     */
-    static Box * tackle();
     
     /**
      * player name info

@@ -4,7 +4,7 @@
 #include "GameplayEvents.h"
 
 // toggle debug
-#define DEBUG
+//#define DEBUG
 
 /**
  * static constants and values used in both Controller and Game
@@ -62,7 +62,7 @@ public:
 #define TIME_BONUS_GENERATION_MAX 50.0
 #define TIME_BLINK 0.1
 
-#define PROBABILITY_BONUS 0.10  
+#define PROBABILITY_BONUS 0.07  
 
 #define COLOR_GRAY                      Color4B(1, 52, 4, 120)
 #define COLOR_GREEN                     Color4B(11, 112, 14, 255)
@@ -124,7 +124,10 @@ public:
 #define LABEL_TIME "lblTime"
 #define LABEL_GOAL_ANIMATION "lblGoalAnimation"
 #define LABEL_BONUS "lblBonus"
+#define LABEL_NAME "lblName"
 #define BUTTON_ADMIN "btnAdmin"
+
+#define ANGULAR_DAMPING 0.8
 
 #define SCHEDULE_KICK_SLOWING "kickSlowing"
 #define SCHEDULE_GENERATE_BONUS "generateBonus"

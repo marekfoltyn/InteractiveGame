@@ -132,6 +132,7 @@ void TeamScene::initGraphics()
     bluePlayer->setTeam(TEAM_BLUE);
     bluePlayer->getSprite()->setPosition(Vec2(origin.x + (1.0/6)*visibleSize.width, origin.y + (visibleSize.height - border - disconnect->getContentSize().height)/2 ));
     bluePlayer->getSprite()->setScale(5);
+    bluePlayer->getSprite()->getChildByName(LABEL_NAME)->setVisible(false);
     this->addChild(bluePlayer->getSprite());
     
     // auto assign
@@ -163,6 +164,7 @@ void TeamScene::initGraphics()
     redPlayer->setTeam(TEAM_RED);
     redPlayer->getSprite()->setPosition(Vec2(origin.x + (5.0/6)*visibleSize.width, origin.y + (visibleSize.height - border - disconnect->getContentSize().height)/2 ));
     redPlayer->getSprite()->setScale(5);
+    redPlayer->getSprite()->getChildByName(LABEL_NAME)->setVisible(false);
     this->addChild(redPlayer->getSprite());
 
     

@@ -184,7 +184,7 @@ Box * Connector::receive(){
     }
     else
     {
-        /*/debug
+        /* debugging packet information
         LOG("Packet:\n=======\n");
         LOG("type: %d\n", p->data[0]);
         LOG("length: %d\n", p->length);

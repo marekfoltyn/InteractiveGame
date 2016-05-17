@@ -22,6 +22,7 @@ FILE_LIST7 := $(wildcard $(LOCAL_PATH)/../../../../shared/google/protobuf/*.cc)
 FILE_LIST8 := $(wildcard $(LOCAL_PATH)/../../../../shared/google/protobuf/io/*.cc)
 FILE_LIST9 := $(wildcard $(LOCAL_PATH)/../../../../shared/google/protobuf/stubs/*.cc)
 
+LOCAL_SRC_FILES += $(FILE_LIST0:$(LOCAL_PATH)/%=%)
 LOCAL_SRC_FILES += $(FILE_LIST1:$(LOCAL_PATH)/%=%)
 LOCAL_SRC_FILES += $(FILE_LIST2:$(LOCAL_PATH)/%=%)
 LOCAL_SRC_FILES += $(FILE_LIST3:$(LOCAL_PATH)/%=%)
@@ -37,6 +38,7 @@ LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../../shared
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../../shared/network
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../../shared/messages
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../../shared/game
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../../shared/testing
 
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../../shared/google/protobuf
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../../shared/google/protobuf/io

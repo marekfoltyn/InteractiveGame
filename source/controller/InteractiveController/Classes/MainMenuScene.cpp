@@ -135,6 +135,7 @@ void MainMenuScene::initGraphics()
     player->setTeam( cocos2d::random<int>(0, 1) == 0 ? TEAM_BLUE : TEAM_RED );
     player->getSprite()->setPosition(origin.x + 0.75 * visibleSize.width, origin.y + 0.25 * visibleSize.height);
     player->getSprite()->setScale(3);
+    player->getSprite()->getChildByName(LABEL_NAME)->setVisible(false);
     this->addChild(player->getSprite(), Z_INDEX_BG);
     
     // init accelerometer

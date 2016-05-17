@@ -3,6 +3,8 @@
 #define __GAME_OBJECTS_TESTS__
 
 #include "Game.h"
+#include "TeamSelectHandler.h"
+#include "StartHandler.h"
 
 /**
  * Networking - unit tests
@@ -69,6 +71,44 @@ TEST_CASE("Player test")
         player->addSpeedMultiplier(-50.52356);
         REQUIRE( player->getSpeedMultiplier() == Approx(0));
         
+    }
+}
+
+TEST_CASE("Handler test")
+{
+    SECTION("HandlerMap")
+    {
+        HandlerMap * map = HandlerMap::create();
+        REQUIRE(map != nullptr);
+        
+        // never-empty test
+        int WHATEVER = 123;
+        
+        REQUIRE_NOTHROW( map->getVoidHandler(WHATEVER)->execute() );
+        REQUIRE_NOTHROW( map->getBoxHandler(WHATEVER)->execute(GameNet::Box::create("ahoj")) );
+        REQUIRE_NOTHROW( map->getClickHandler(WHATEVER)->execute(nullptr) );
+        REQUIRE_NOTHROW( map->getTouchHandler(WHATEVER)->execute(nullptr, cocos2d::ui::Widget::TouchEventType::BEGAN) );
+        REQUIRE_NOTHROW( map->getAccHandler(WHATEVER)->execute(new cocos2d::Acceleration(), nullptr) );
+        REQUIRE_NOTHROW( map->getStringHandler(WHATEVER)->execute("hello") );
+        
+        // add, remove
+        auto game = Game::getInstance();
+
+        BaseHandler * handler = new StartHandler(game, cocos2d::Director::getInstance());
+        map->add(WHATEVER, handler);
+        BaseHandler * got = map->getVoidHandler(WHATEVER);
+        REQUIRE(got == handler);
+        got = map->getBoxHandler(WHATEVER);
+        REQUIRE(got != handler);
+        delete handler;
+        
+        handler = new TeamSelectHandler(game);
+        map->add(WHATEVER, handler);
+        got = map->getBoxHandler(WHATEVER);
+        REQUIRE(got == handler);
+        got = map->getVoidHandler(WHATEVER);
+        REQUIRE(got != handler);
+        delete handler;
     }
 }
 

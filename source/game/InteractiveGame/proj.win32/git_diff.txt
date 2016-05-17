@@ -1,0 +1,168 @@
+diff --git a/proj.win32/test.sln b/proj.win32/test.sln
+index 7004f32..e14146e 100644
+--- a/proj.win32/test.sln
++++ b/proj.win32/test.sln
+@@ -1,22 +1,9 @@
+ ﻿
+ Microsoft Visual Studio Solution File, Format Version 12.00
+-# Visual Studio 2013
+-VisualStudioVersion = 12.0.31101.0
++# Visual Studio 14
++VisualStudioVersion = 14.0.23107.0
+ MinimumVisualStudioVersion = 10.0.40219.1
+ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "test.vcxproj", "{76A39BB2-9B84-4C65-98A5-654D86B86F2A}"
+-	ProjectSection(ProjectDependencies) = postProject
+-		{98A51BA8-FC3A-415B-AC8F-8C7BD464E93E} = {98A51BA8-FC3A-415B-AC8F-8C7BD464E93E}
+-	EndProjectSection
+-EndProject
+-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libcocos2d", "..\cocos2d\cocos\2d\libcocos2d.vcxproj", "{98A51BA8-FC3A-415B-AC8F-8C7BD464E93E}"
+-EndProject
+-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libbox2d", "..\cocos2d\external\Box2D\proj.win32\libbox2d.vcxproj", "{929480E7-23C0-4DF6-8456-096D71547116}"
+-EndProject
+-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libSpine", "..\cocos2d\cocos\editor-support\spine\proj.win32\libSpine.vcxproj", "{B7C2A162-DEC9-4418-972E-240AB3CBFCAE}"
+-EndProject
+-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libbullet", "..\cocos2d\external\bullet\proj.win32\libbullet.vcxproj", "{012DFF48-A13F-4F52-B07B-F8B9D21CE95B}"
+-EndProject
+-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "librecast", "..\cocos2d\external\recast\proj.win32\librecast.vcxproj", "{41E34993-647E-4282-8384-4AB1AE31A452}"
+ EndProject
+ Global
+ 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+@@ -28,26 +15,6 @@ Global
+ 		{76A39BB2-9B84-4C65-98A5-654D86B86F2A}.Debug|Win32.Build.0 = Debug|Win32
+ 		{76A39BB2-9B84-4C65-98A5-654D86B86F2A}.Release|Win32.ActiveCfg = Release|Win32
+ 		{76A39BB2-9B84-4C65-98A5-654D86B86F2A}.Release|Win32.Build.0 = Release|Win32
+-		{98A51BA8-FC3A-415B-AC8F-8C7BD464E93E}.Debug|Win32.ActiveCfg = Debug|Win32
+-		{98A51BA8-FC3A-415B-AC8F-8C7BD464E93E}.Debug|Win32.Build.0 = Debug|Win32
+-		{98A51BA8-FC3A-415B-AC8F-8C7BD464E93E}.Release|Win32.ActiveCfg = Release|Win32
+-		{98A51BA8-FC3A-415B-AC8F-8C7BD464E93E}.Release|Win32.Build.0 = Release|Win32
+-		{929480E7-23C0-4DF6-8456-096D71547116}.Debug|Win32.ActiveCfg = Debug|Win32
+-		{929480E7-23C0-4DF6-8456-096D71547116}.Debug|Win32.Build.0 = Debug|Win32
+-		{929480E7-23C0-4DF6-8456-096D71547116}.Release|Win32.ActiveCfg = Release|Win32
+-		{929480E7-23C0-4DF6-8456-096D71547116}.Release|Win32.Build.0 = Release|Win32
+-		{B7C2A162-DEC9-4418-972E-240AB3CBFCAE}.Debug|Win32.ActiveCfg = Debug|Win32
+-		{B7C2A162-DEC9-4418-972E-240AB3CBFCAE}.Debug|Win32.Build.0 = Debug|Win32
+-		{B7C2A162-DEC9-4418-972E-240AB3CBFCAE}.Release|Win32.ActiveCfg = Release|Win32
+-		{B7C2A162-DEC9-4418-972E-240AB3CBFCAE}.Release|Win32.Build.0 = Release|Win32
+-		{012DFF48-A13F-4F52-B07B-F8B9D21CE95B}.Debug|Win32.ActiveCfg = Debug|Win32
+-		{012DFF48-A13F-4F52-B07B-F8B9D21CE95B}.Debug|Win32.Build.0 = Debug|Win32
+-		{012DFF48-A13F-4F52-B07B-F8B9D21CE95B}.Release|Win32.ActiveCfg = Release|Win32
+-		{012DFF48-A13F-4F52-B07B-F8B9D21CE95B}.Release|Win32.Build.0 = Release|Win32
+-		{41E34993-647E-4282-8384-4AB1AE31A452}.Debug|Win32.ActiveCfg = Debug|Win32
+-		{41E34993-647E-4282-8384-4AB1AE31A452}.Debug|Win32.Build.0 = Debug|Win32
+-		{41E34993-647E-4282-8384-4AB1AE31A452}.Release|Win32.ActiveCfg = Release|Win32
+-		{41E34993-647E-4282-8384-4AB1AE31A452}.Release|Win32.Build.0 = Release|Win32
+ 	EndGlobalSection
+ 	GlobalSection(SolutionProperties) = preSolution
+ 		HideSolutionNode = FALSE
+diff --git a/proj.win32/test.vcxproj b/proj.win32/test.vcxproj
+index 7da7bc3..3e73549 100644
+--- a/proj.win32/test.vcxproj
++++ b/proj.win32/test.vcxproj
+@@ -1,5 +1,5 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
++﻿<?xml version="1.0" encoding="utf-8"?>
++<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+   <ItemGroup Label="ProjectConfigurations">
+     <ProjectConfiguration Include="Debug|Win32">
+       <Configuration>Debug</Configuration>
+@@ -38,13 +38,13 @@
+   </ImportGroup>
+   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+-    <Import Project="..\cocos2d\cocos\2d\cocos2dx.props" />
+-    <Import Project="..\cocos2d\cocos\2d\cocos2d_headers.props" />
++    <Import Project="..\..\cocos2d\cocos\2d\cocos2dx.props" />
++    <Import Project="..\..\cocos2d\cocos\2d\cocos2d_headers.props" />
+   </ImportGroup>
+   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+-    <Import Project="..\cocos2d\cocos\2d\cocos2dx.props" />
+-    <Import Project="..\cocos2d\cocos\2d\cocos2d_headers.props" />
++    <Import Project="..\..\cocos2d\cocos\2d\cocos2dx.props" />
++    <Import Project="..\..\cocos2d\cocos\2d\cocos2d_headers.props" />
+   </ImportGroup>
+   <PropertyGroup Label="UserMacros" />
+   <PropertyGroup>
+@@ -63,7 +63,7 @@
+     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+-    <LibraryPath>$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A\lib;$(LibraryPath)</LibraryPath>
++    <LibraryPath>G:\gen-libs-test\cocos2d\prebuilt\win32;$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A\lib;$(LibraryPath)</LibraryPath>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+     <LibraryPath>$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A\lib;$(LibraryPath)</LibraryPath>
+@@ -84,7 +84,7 @@
+       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+     </ClCompile>
+     <Link>
+-      <AdditionalDependencies>%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END)</AdditionalDependencies>
++      <AdditionalDependencies>libcocos2d.lib;%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END)</AdditionalDependencies>
+       <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+       <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories);$(_COCOS_LIB_PATH_WIN32_BEGIN);$(_COCOS_LIB_PATH_WIN32_END)</AdditionalLibraryDirectories>
+       <GenerateDebugInformation>true</GenerateDebugInformation>
+@@ -96,7 +96,8 @@
+       </Command>
+     </PostBuildEvent>
+     <PreLinkEvent>
+-      <Command></Command>
++      <Command>
++      </Command>
+     </PreLinkEvent>
+   </ItemDefinitionGroup>
+   <ItemDefinitionGroup>
+@@ -108,7 +109,6 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
+       <Inputs>$(TargetFileName)</Inputs>
+     </CustomBuildStep>
+   </ItemDefinitionGroup>
+-
+   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+     <ClCompile>
+       <Optimization>MaxSpeed</Optimization>
+@@ -139,7 +139,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
+       </Command>
+     </PostBuildEvent>
+     <PreLinkEvent>
+-      <Command></Command>
++      <Command>
++      </Command>
+     </PreLinkEvent>
+   </ItemDefinitionGroup>
+   <ItemGroup>
+@@ -153,21 +154,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
+     <ClInclude Include="main.h" />
+   </ItemGroup>
+   <ItemGroup>
+-    <ProjectReference Include="..\cocos2d\cocos\2d\libcocos2d.vcxproj">
+-      <Project>{98a51ba8-fc3a-415b-ac8f-8c7bd464e93e}</Project>
+-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+-    </ProjectReference>
+-    <ProjectReference Include="..\cocos2d\cocos\editor-support\spine\proj.win32\libSpine.vcxproj">
+-      <Project>{b7c2a162-dec9-4418-972e-240ab3cbfcae}</Project>
+-    </ProjectReference>
+-    <ProjectReference Include="..\cocos2d\external\Box2D\proj.win32\libbox2d.vcxproj">
+-      <Project>{929480e7-23c0-4df6-8456-096d71547116}</Project>
+-    </ProjectReference>
+-  </ItemGroup>
+-  <ItemGroup>
+     <ResourceCompile Include="game.rc" />
+   </ItemGroup>
+   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+   <ImportGroup Label="ExtensionTargets">
+   </ImportGroup>
+-</Project>
++</Project>
+\ No newline at end of file
+diff --git a/proj.win32/test.vcxproj.user b/proj.win32/test.vcxproj.user
+index 32a6296..6585e17 100644
+--- a/proj.win32/test.vcxproj.user
++++ b/proj.win32/test.vcxproj.user
+@@ -3,6 +3,7 @@
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+     <LocalDebuggerWorkingDirectory>$(ProjectDir)..\Resources</LocalDebuggerWorkingDirectory>
+     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
++    <LocalDebuggerEnvironment>PATH=g:\gen-libs-test\cocos2d\prebuilt\win32;%PATH%</LocalDebuggerEnvironment>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+     <LocalDebuggerWorkingDirectory>$(ProjectDir)..\Resources</LocalDebuggerWorkingDirectory>
